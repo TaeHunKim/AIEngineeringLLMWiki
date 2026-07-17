@@ -74,7 +74,7 @@ RRF(d) = Σ  1 / (k + rank_i(d))
 
 **Vector RAG** (비정형 텍스트 청크 검색)와 **GraphRAG** (Knowledge Graph 엔티티·관계 쿼리)를 결합한다. 두 retriever가 서로 다른 유형의 지식을 담당하며, Query Router 또는 병렬 실행으로 결합한다.
 
-Microsoft의 GraphRAG 논문(Edge et al., 2024)이 "local mode"(엔티티 기반 벡터 검색)와 "global mode"(커뮤니티 요약 검색)를 나눈 것과 같은 맥락이다. 실전에서는 두 모드를 결합한 "hybrid mode"가 가장 높은 성능을 보인다[4].
+Microsoft의 GraphRAG 논문(Edge et al., 2024)이 "local mode"(엔티티 기반 벡터 검색)와 "global mode"(커뮤니티 요약 검색)를 나눈 것과 같은 맥락이다. 실전에서는 두 모드를 결합한 "hybrid mode"가 가장 높은 성능을 보인다[4]. Sarmah et al. (2024)은 금융 문서(earnings call transcript) 도메인에서 VectorRAG와 GraphRAG를 결합한 HybridRAG가 두 방식 각각보다 retrieval accuracy와 answer generation 모두에서 우수함을 실험으로 검증했다[5].
 
 ### 각 Retriever의 역할
 
@@ -154,3 +154,4 @@ flowchart LR
 - [2] Digital Applied "Hybrid Search: BM25, Vector & Reranking Reference 2026" — [digitalapplied.com/blog/hybrid-search-bm25-vector-reranking-reference-2026](https://www.digitalapplied.com/blog/hybrid-search-bm25-vector-reranking-reference-2026)
 - [3] GoPenAI "Hybrid Search in RAG: Dense + Sparse (BM25/SPLADE), Reciprocal Rank Fusion" — [blog.gopenai.com](https://blog.gopenai.com/hybrid-search-in-rag-dense-sparse-bm25-splade-reciprocal-rank-fusion-and-when-to-use-which-fafe4fd6156e)
 - [4] Edge et al. (2024) "From Local to Global: A Graph RAG Approach to Query-Focused Summarization" — [arXiv:2404.16130](https://arxiv.org/abs/2404.16130)
+- [5] Sarmah et al. (2024) "HybridRAG: Integrating Knowledge Graphs and Vector Retrieval Augmented Generation for Efficient Information Extraction" — ACM ICAIF '24 — [arXiv:2408.04948](https://arxiv.org/abs/2408.04948)
