@@ -221,9 +221,9 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 
 ## 출처
 
-- [1] Zhuge et al. (2024) "Agent-as-a-Judge: Evaluate Agents with Agents" — [arXiv:2410.10934](https://arxiv.org/abs/2410.10934) (ICML 2025)
-- [2] Anthropic Engineering (2026) "Demystifying evals for AI agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
-- [3] "Multi-Agent-as-Judge: Aligning LLM-Agent-Based Automated Evaluation with Multi-Dimensional Human Evaluation" — [arXiv:2507.21028](https://arxiv.org/html/2507.21028v1)
-- [4] "Gaming the Judge: Unfaithful Chain-of-Thought Can Undermine Agent Evaluation" — [arXiv:2601.14691](https://arxiv.org/pdf/2601.14691)
+1. Zhuge et al. (2024) "Agent-as-a-Judge: Evaluate Agents with Agents" — [arXiv:2410.10934](https://arxiv.org/abs/2410.10934) (ICML 2025)
+2. Anthropic Engineering (2026) "Demystifying evals for AI agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+3. "Multi-Agent-as-Judge: Aligning LLM-Agent-Based Automated Evaluation with Multi-Dimensional Human Evaluation" — [arXiv:2507.21028](https://arxiv.org/html/2507.21028v1)
+4. "Gaming the Judge: Unfaithful Chain-of-Thought Can Undermine Agent Evaluation" — [arXiv:2601.14691](https://arxiv.org/pdf/2601.14691)
 - [[Agent_Quality]] (이 위키의 소스 문서, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
 - Arize AI (2024) "Agent-as-a-Judge: Evaluate Agents with Agents" — [arize.com/blog](https://arize.com/blog/agent-as-a-judge-evaluate-agents-with-agents/)

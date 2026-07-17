@@ -128,9 +128,9 @@ Multimodal RAG는 Retrieval Strategies의 경계를 텍스트 코퍼스 너머�
 
 ## 출처
 
-- [1] Rileylearning Medium "Recent Multimodal RAG Papers (ColPali, SV-RAG, URaG, MetaEmbed)" (2025) — [rileylearning.medium.com](https://rileylearning.medium.com/recent-multimodal-rag-papers-colpali-sv-rag-urag-metaembed-2f3069f9a9ae)
-- [2] Hélain Zimmermann "Multimodal RAG 2026: Vision and Text for State-of-the-Art Pipelines" — [helain-zimmermann.com](https://helain-zimmermann.com/blog/multimodal-rag-2026-vision-and-text-for-state-of-the-art-pipelines)
-- [3] Spheron "ColPali and Multimodal Document RAG on GPU Cloud: Visual PDF Retrieval Without OCR (2026)" — [spheron.network/blog](https://www.spheron.network/blog/colpali-multimodal-document-rag-gpu-cloud/)
-- [4] NVIDIA Technical Blog "An Easy Introduction to Multimodal Retrieval-Augmented Generation" — [developer.nvidia.com](https://developer.nvidia.com/blog/an-easy-introduction-to-multimodal-retrieval-augmented-generation/)
-- [5] Faysse et al. (2024) "ColPali: Efficient Document Retrieval with Vision Language Models" — [ICLR 2025](https://arxiv.org/abs/2407.01449)
-- [6] KX Systems "Guide to Multimodal RAG for Images and Text (2025)" — [medium.com/kx-systems](https://medium.com/kx-systems/guide-to-multimodal-rag-for-images-and-text-10dab36e3117)
+1. Rileylearning Medium "Recent Multimodal RAG Papers (ColPali, SV-RAG, URaG, MetaEmbed)" (2025) — [rileylearning.medium.com](https://rileylearning.medium.com/recent-multimodal-rag-papers-colpali-sv-rag-urag-metaembed-2f3069f9a9ae)
+2. Hélain Zimmermann "Multimodal RAG 2026: Vision and Text for State-of-the-Art Pipelines" — [helain-zimmermann.com](https://helain-zimmermann.com/blog/multimodal-rag-2026-vision-and-text-for-state-of-the-art-pipelines)
+3. Spheron "ColPali and Multimodal Document RAG on GPU Cloud: Visual PDF Retrieval Without OCR (2026)" — [spheron.network/blog](https://www.spheron.network/blog/colpali-multimodal-document-rag-gpu-cloud/)
+4. NVIDIA Technical Blog "An Easy Introduction to Multimodal Retrieval-Augmented Generation" — [developer.nvidia.com](https://developer.nvidia.com/blog/an-easy-introduction-to-multimodal-retrieval-augmented-generation/)
+5. Faysse et al. (2024) "ColPali: Efficient Document Retrieval with Vision Language Models" — [ICLR 2025](https://arxiv.org/abs/2407.01449)
+6. KX Systems "Guide to Multimodal RAG for Images and Text (2025)" — [medium.com/kx-systems](https://medium.com/kx-systems/guide-to-multimodal-rag-for-images-and-text-10dab36e3117)

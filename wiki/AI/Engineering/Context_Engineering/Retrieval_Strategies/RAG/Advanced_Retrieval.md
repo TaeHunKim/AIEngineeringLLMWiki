@@ -282,13 +282,13 @@ Advanced Retrieval은 RAG 파이프라인의 **정밀도 레이어**다. 기본 
 [[Chunking_Strategies]] · [[Vector_Storage]] · [[HyDE]]
 
 ## 출처
-- [1] Reranking for RAG: +40% Accuracy with Cross-Encoders (2025 Guide) — [ailog.fr](https://app.ailog.fr/en/blog/guides/reranking)
-- [2] Build BGE Reranker: Cross-Encoder Reranking for Better RAG — [markaicode.com](https://markaicode.com/bge-reranker-cross-encoder-reranking-rag/)
-- [3] Cohere Rerank Best Practices — [docs.cohere.com](https://docs.cohere.com/docs/reranking-best-practices)
-- [4] Reranking with ColBERT: Precision Without Pain — [Medium](https://medium.com/@ThinkingLoop/reranking-with-colbert-precision-without-pain-b390dda517f0)
-- [5] Nogueira & Cho (2019) "Passage Re-ranking with BERT" — [arXiv:1901.04085](https://arxiv.org/abs/1901.04085)
-- [6] Gao et al. (2023) "RAG Survey" — [arXiv:2312.10997](https://arxiv.org/abs/2312.10997)
-- [7] Top 7 Rerankers for RAG — [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2025/06/top-rerankers-for-rag/)
-- [8] Houir Alami (2025) "Should You Use LLMs for Reranking? Pointwise, Listwise, and Cross-Encoders" — [zeroentropy.dev](https://zeroentropy.dev/articles/should-you-use-llms-for-reranking-a-deep-dive-into-pointwise-listwise-and-cross-encoders/)
-- [9] "A Thorough Comparison of Cross-Encoders and LLMs for Reranking SPLADE" — [arXiv:2403.10407](https://arxiv.org/html/2403.10407v1)
+1. Reranking for RAG: +40% Accuracy with Cross-Encoders (2025 Guide) — [ailog.fr](https://app.ailog.fr/en/blog/guides/reranking)
+2. Build BGE Reranker: Cross-Encoder Reranking for Better RAG — [markaicode.com](https://markaicode.com/bge-reranker-cross-encoder-reranking-rag/)
+3. Cohere Rerank Best Practices — [docs.cohere.com](https://docs.cohere.com/docs/reranking-best-practices)
+4. Reranking with ColBERT: Precision Without Pain — [Medium](https://medium.com/@ThinkingLoop/reranking-with-colbert-precision-without-pain-b390dda517f0)
+5. Nogueira & Cho (2019) "Passage Re-ranking with BERT" — [arXiv:1901.04085](https://arxiv.org/abs/1901.04085)
+6. Gao et al. (2023) "RAG Survey" — [arXiv:2312.10997](https://arxiv.org/abs/2312.10997)
+7. Top 7 Rerankers for RAG — [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2025/06/top-rerankers-for-rag/)
+8. Houir Alami (2025) "Should You Use LLMs for Reranking? Pointwise, Listwise, and Cross-Encoders" — [zeroentropy.dev](https://zeroentropy.dev/articles/should-you-use-llms-for-reranking-a-deep-dive-into-pointwise-listwise-and-cross-encoders/)
+9. "A Thorough Comparison of Cross-Encoders and LLMs for Reranking SPLADE" — [arXiv:2403.10407](https://arxiv.org/html/2403.10407v1)
 - LangChain Advanced RAG 문서 — [python.langchain.com](https://python.langchain.com/docs/how_to/multi_query/)
