@@ -119,30 +119,54 @@ flowchart TD
 
 ---
 
-## 3. Full Hybrid (Dense + Sparse + Graph)
+## 3. Vector + Graph + Key-Value (Multi-Store Hybrid)
 
-세 가지를 모두 조합하는 구성으로, 대규모 엔터프라이즈 검색 시스템에서 사용된다.
+세 종류의 **스토리지 백엔드**를 조합하는 구성이다. 각 스토어가 서로 다른 유형의 지식을 담당한다.
+
+| 스토어 | 역할 | 적합한 쿼리 |
+|--------|------|-------------|
+| **Vector Store** | 청크 임베딩 → 의미 유사도 검색 | "이 개념과 비슷한 내용은?" |
+| **Graph DB** | 엔티티·관계 → 구조적 탐색 | "A와 B의 관계는? 다중 홉 추론" |
+| **Key-Value Store** | 엔티티 속성·커뮤니티 요약 → 정확 조회 | "X의 요약 정보를 빠르게" |
+
+### 대표 접근법
+
+**StructRAG** (2024)[6]: **Hybrid Structure Router**가 쿼리 특성에 따라 최적 구조를 동적으로 선택한다. 5가지 후보 구조 중 하나를 DPO로 훈련된 라우터가 선택하고, 해당 구조로 문서를 변환한 뒤 답변을 생성한다.
+
+| 구조 타입 | 해당 스토어 유형 | 적합한 태스크 |
+|-----------|----------------|---------------|
+| Table | 정형 Key-Value | 통계·비교 질문 |
+| Graph | Graph DB | 다중 홉 추론, 관계 탐색 |
+| Algorithm | 절차 표현 | 계획·순서 질문 |
+| Catalogue | Key-Value 목록 | 전체 요약, 목록화 |
+| Chunk | Vector Store | 단순 단일 홉 사실 검색 |
+
+→ Router가 쿼리마다 하나의 최적 구조를 선택하므로, 동시 병렬 실행이 아닌 **동적 라우팅** 방식이다.
+
+**RAGU** (2025)[7]: 세 스토리지 티어(graph DB + key-value store + vector store)를 **병렬로 동시 실행**하는 MixSearch 엔진을 제공한다.
 
 ```mermaid
-flowchart LR
-    Q["쿼리"] --> D["Dense<br/>(벡터)"]
-    Q --> S["Sparse<br/>(BM25)"]
-    Q --> G["Graph<br/>(KG)"]
-    D --> RRF["RRF / 가중합"]
-    S --> RRF
-    G --> RRF
-    RRF --> LLM["LLM"]
+flowchart TD
+    Q["쿼리"] --> LS["LocalSearch<br/>(벡터 유사도 → 엔티티 → 관계·청크 확장)"]
+    Q --> GS["GlobalSearch<br/>(커뮤니티 요약 → KV 조회)"]
+    Q --> NS["NaiveSearch<br/>(순수 Vector RAG)"]
+    LS --> MIX["MixSearch<br/>(병렬 실행 + 병합)"]
+    GS --> MIX
+    NS --> MIX
+    MIX --> RE["Cross-encoder Reranker"]
+    RE --> LLM["LLM → 최종 답변"]
 ```
 
-- Dense+Sparse RRF → Recall 확보
-- Graph 결과 추가 주입 → 관계·전역 맥락 보강
-- Cross-encoder Reranker로 최종 Top-K 선별 (→ [[Advanced_Retrieval]])
+- **LocalSearch**: Vector 유사도로 엔티티를 찾고, Graph DB로 관계·청크 확장
+- **GlobalSearch**: Leiden 커뮤니티 요약을 KV Store에서 직접 조회
+- **MixSearch**: 세 엔진을 모두 병렬 실행해 컨텍스트를 합산
+- **QueryPlanEngine**: 복잡한 쿼리를 DAG로 분해해 순차·병렬 실행
 
 ---
 
 ## AI Engineering에서의 역할
 
-[[Advanced_Retrieval]]의 Two-Stage 파이프라인에서 Stage 1(Recall 확보)을 담당한다: Hybrid Search(Dense+Sparse)로 Top-100을 뽑고 → Cross-encoder Reranker로 Top-5로 좁히는 조합이 현재 표준 실무 패턴이다. Vector+Graph 결합은 관계 추론이 필요한 도메인(의료, 법률, 지식 집약 산업)에서 특히 효과적이다.
+[[Advanced_Retrieval]]의 Two-Stage 파이프라인에서 Stage 1(Recall 확보)을 담당한다: Hybrid Search(Dense+Sparse)로 Top-100을 뽑고 → Cross-encoder Reranker로 Top-5로 좁히는 조합이 현재 표준 실무 패턴이다. Vector+Graph 결합은 관계 추론이 필요한 도메인(의료, 법률, 지식 집약 산업)에서 특히 효과적이다. Multi-Store Hybrid(Vector+Graph+KV)는 단일 쿼리가 사실 검색·관계 탐색·전역 요약을 동시에 요구할 때 가장 큰 이점을 보이며, StructRAG의 Router 방식과 RAGU의 MixSearch 방식이 현재 대표적인 구현이다.
 
 ## 관련 개념
 
@@ -155,3 +179,5 @@ flowchart LR
 - [3] GoPenAI "Hybrid Search in RAG: Dense + Sparse (BM25/SPLADE), Reciprocal Rank Fusion" — [blog.gopenai.com](https://blog.gopenai.com/hybrid-search-in-rag-dense-sparse-bm25-splade-reciprocal-rank-fusion-and-when-to-use-which-fafe4fd6156e)
 - [4] Edge et al. (2024) "From Local to Global: A Graph RAG Approach to Query-Focused Summarization" — [arXiv:2404.16130](https://arxiv.org/abs/2404.16130)
 - [5] Sarmah et al. (2024) "HybridRAG: Integrating Knowledge Graphs and Vector Retrieval Augmented Generation for Efficient Information Extraction" — ACM ICAIF '24 — [arXiv:2408.04948](https://arxiv.org/abs/2408.04948)
+- [6] Xu et al. (2024) "StructRAG: Boosting Knowledge Intensive Reasoning of LLMs via Inference-time Hybrid Information Structurization" — [arXiv:2410.08815](https://arxiv.org/abs/2410.08815)
+- [7] (2025) "RAGU: A Multi-Step GraphRAG Engine with a Compact Domain-Adapted LLM" — [arXiv:2607.11683](https://arxiv.org/abs/2607.11683)

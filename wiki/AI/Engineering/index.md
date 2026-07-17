@@ -57,7 +57,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
         - [[Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] — Reranking, Multi-Query, RAG Fusion
         - [[Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]] — Hypothetical Document Embeddings
         - [[Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] — Self-RAG, CRAG, Multi-Agent RAG, Query Routing
-        - [[Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — ① Dense+Sparse(BM25) Hybrid Search, ② Vector RAG + GraphRAG 결합
+        - [[Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — ① Dense+Sparse(BM25), ② Vector+Graph, ③ Vector+Graph+Key-Value (StructRAG/RAGU)
         - [[Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] — CLIP/ColPali 공유 임베딩, 텍스트+이미지 통합 검색
 - GraphRAG (구조적 관계·전역 분석)
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden 클러스터링
