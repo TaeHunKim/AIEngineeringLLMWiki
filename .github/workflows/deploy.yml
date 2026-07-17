@@ -53,6 +53,9 @@ jobs:
       - name: Build site
         run: npx quartz build -d wiki
 
+      - name: Patch order into content index
+        run: node scripts/patch-content-index.mjs
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

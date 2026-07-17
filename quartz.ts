@@ -12,42 +12,41 @@ componentRegistry.setOptionOverrides("explorer", {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sortFn: (a: any, b: any) => {
     const FOLDER_ORDER: Record<string, number> = {
+      // Quartz가 slugSegment를 소문자로 변환하므로 키도 소문자 사용
       // Engineering 최상위 챕터 순서 (Engineering/index.md 기준)
-      Engineering: 0,
-      Model_Engineering: 1,
-      Prompt_Engineering: 2,
-      Context_Engineering: 3,
-      Flow_Engineering: 4,
-      Agent_Engineering: 5,
-      Harness_Engineering: 6,
-      Loop_Engineering: 7,
+      engineering: 0,
+      model_engineering: 1,
+      prompt_engineering: 2,
+      context_engineering: 3,
+      flow_engineering: 4,
+      agent_engineering: 5,
+      harness_engineering: 6,
+      loop_engineering: 7,
       sources: 8,
-      // Flow_Engineering 하위 (Flow_Engineering.md order:0 이후에 등장)
-      Linear_Flow: 1,
-      Graph_Flow: 2,
+      // Flow_Engineering 하위 (flow_engineering.md order:0 이후에 등장)
+      linear_flow: 1,
+      graph_flow: 2,
       // Context_Engineering 하위 (파일 order:0~5 이후에 등장)
-      Retrieval_Strategies: 6,
+      retrieval_strategies: 6,
       // Retrieval_Strategies 하위
-      RAG: 1,
-      GraphRAG: 2,
-      NL2SQL: 3,
-      SQL_RAG: 4,
+      rag: 1,
+      graphrag: 2,
+      nl2sql: 3,
+      sql_rag: 4,
       // GraphRAG 하위
-      Knowledge_Graph: 1,
-      // Agent_Engineering 하위 (Agent_Memory order:5 이후, Agent_Frameworks order:7 이전)
-      Agent_Skills_and_Protocols: 6,
+      knowledge_graph: 1,
+      // Agent_Engineering 하위 (agent_memory order:5 이후, agent_frameworks order:7 이전)
+      agent_skills_and_protocols: 6,
     }
 
-    const getOrder = (node: any): number => {
-      if (node.isFolder) {
-        const o = FOLDER_ORDER[node.slugSegment]
-        return o !== undefined ? o : 99
-      }
-      return typeof node.data?.order === "number" ? (node.data.order as number) : 99
-    }
-
-    const ao = getOrder(a)
-    const bo = getOrder(b)
+    // 내부 named 함수를 쓰면 esbuild가 __name() 헬퍼를 주입해 브라우저 eval에서 오류 발생
+    // → 순서 계산 로직을 직접 인라인으로 작성
+    const ao = a.isFolder
+      ? (FOLDER_ORDER[a.slugSegment] !== undefined ? FOLDER_ORDER[a.slugSegment] : 99)
+      : (typeof a.data?.order === "number" ? a.data.order : 99)
+    const bo = b.isFolder
+      ? (FOLDER_ORDER[b.slugSegment] !== undefined ? FOLDER_ORDER[b.slugSegment] : 99)
+      : (typeof b.data?.order === "number" ? b.data.order : 99)
     if (ao !== bo) return ao - bo
 
     // 같은 order라면 폴더 → 파일 순, 그 다음 알파벳
