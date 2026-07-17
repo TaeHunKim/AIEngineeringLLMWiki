@@ -6,11 +6,26 @@ order: 6
 
 ## 개요
 
-**Hybrid RAG**는 Dense 벡터 검색과 Sparse 키워드 검색(BM25/SPLADE)을 병렬로 실행한 뒤, Reciprocal Rank Fusion(RRF)으로 결과를 합산하는 RAG 아키텍처다. 두 방식이 서로 다른 유형의 쿼리에서 실패하기 때문에, 조합함으로써 각각의 약점을 상호 보완한다.
+"Hybrid RAG"는 두 가지 독립된 의미로 쓰인다.
 
-단일 Dense 검색 대비 Recall@10 기준 15~30% 향상이 보고되며[1], Weaviate·Qdrant·Pinecone·Elasticsearch 등 주요 벡터 DB에서 기본(production default)으로 채택됐다 [2].
+| 유형 | 조합 | 주요 목적 |
+|------|------|-----------|
+| **Hybrid Search RAG** | Dense(벡터) + Sparse(BM25/SPLADE) | 검색 Recall 향상 |
+| **Vector + Graph RAG** | Vector RAG + GraphRAG(Knowledge Graph) | 로컬 유사도 + 전역 구조 동시 처리 |
 
-## Dense vs Sparse 비교
+두 개념은 서로 독립적이며, 실전에서는 셋 모두를 조합하는 "Full Hybrid" 구성도 가능하다.
+
+---
+
+## 1. Hybrid Search RAG (Dense + Sparse)
+
+### 원리
+
+Dense 벡터 검색과 Sparse 키워드 검색(BM25/SPLADE)을 병렬로 실행한 뒤, **Reciprocal Rank Fusion(RRF)** 으로 결과를 합산한다. 두 방식이 서로 다른 쿼리 유형에서 실패하기 때문에, 조합하면 각각의 약점을 상호 보완한다.
+
+단일 Dense 검색 대비 Recall@10 기준 15~30% 향상이 보고되며[1], Weaviate·Qdrant·Pinecone·Elasticsearch 등 주요 벡터 DB에서 기본(production default)으로 채택됐다[2].
+
+### Dense vs Sparse 비교
 
 | 특성 | Dense (벡터) | Sparse (BM25/SPLADE) |
 |------|-------------|----------------------|
@@ -20,9 +35,9 @@ order: 6
 | 대표 모델 | text-embedding-3, BGE, E5 | BM25, SPLADE, BM42 |
 | 인덱스 구조 | HNSW (ANN) | 역색인 (Inverted Index) |
 
-**BM25 vs SPLADE**: BM25는 토큰 빈도(TF-IDF 계열) 기반으로 학습 없이 동작한다. SPLADE는 BERT 기반 Masked LM으로 암묵적 term expansion을 수행해 "automobile" 문서에 "car", "vehicle" 가중치를 자동 부여한다. BEIR 벤치마크에서 BM25보다 일관적으로 우세하나 추론 비용이 발생한다 [3].
+**BM25 vs SPLADE**: BM25는 토큰 빈도(TF-IDF 계열) 기반으로 학습 없이 동작한다. SPLADE는 BERT 기반 Masked LM으로 암묵적 term expansion을 수행해 "automobile" 문서에 "car", "vehicle" 가중치를 자동 부여한다. BEIR 벤치마크에서 BM25보다 일관적으로 우세하나 추론 비용이 발생한다[3].
 
-## 파이프라인
+### 파이프라인
 
 ```mermaid
 flowchart TD
@@ -33,7 +48,7 @@ flowchart TD
     VI -->|"Top-K Dense"| RRF["RRF<br/>Reciprocal Rank Fusion"]
     II -->|"Top-K Sparse"| RRF
     RRF --> RC["재정렬된 후보군"]
-    RC --> LLM["Multimodal/Text LLM<br/>→ 최종 답변"]
+    RC --> LLM["LLM → 최종 답변"]
 ```
 
 ① 쿼리를 Dense/Sparse 인코더에 동시에 전달  
@@ -41,7 +56,7 @@ flowchart TD
 ③ RRF로 두 랭킹 리스트를 수학적으로 결합  
 ④ 결합된 Top-K를 LLM 컨텍스트로 주입
 
-## RRF (Reciprocal Rank Fusion)
+### RRF (Reciprocal Rank Fusion)
 
 점수 스케일 불일치 문제(Dense: 코사인 0.6~0.95, Sparse: BM25 0~15)를 피하기 위해 점수 대신 **순위(rank)만** 사용하는 rank-only 알고리즘이다.
 
@@ -51,62 +66,91 @@ RRF(d) = Σ  1 / (k + rank_i(d))
   rank_i(d) = retriever i에서 문서 d의 순위
 ```
 
-- 두 리스트 모두 상위에 있는 문서가 가장 높은 점수를 받음
-- 한 쪽 리스트에만 있어도 일정 점수를 얻어 누락되지 않음
-- 학습 불필요, 추가 지연 <10ms
+---
 
-### Weighted Sum vs RRF
+## 2. Vector + Graph Hybrid RAG
 
-| | Weighted Sum (α·dense + β·sparse) | RRF |
-|---|---|---|
-| 점수 정규화 필요 | 예 (Min-Max / Z-score) | 아니오 |
-| 도메인 튜닝 필요 | α, β 최적화 필요 | 불필요 |
-| 최신 지원 | Weaviate Hybrid 2.0 (동적 가중치) | 대부분 DB 기본값 |
-| 권장 | 고도로 튜닝된 시스템 | 빠른 구현, 안정적 기본값 |
+### 원리
 
-## 장단점
+**Vector RAG** (비정형 텍스트 청크 검색)와 **GraphRAG** (Knowledge Graph 엔티티·관계 쿼리)를 결합한다. 두 retriever가 서로 다른 유형의 지식을 담당하며, Query Router 또는 병렬 실행으로 결합한다.
+
+Microsoft의 GraphRAG 논문(Edge et al., 2024)이 "local mode"(엔티티 기반 벡터 검색)와 "global mode"(커뮤니티 요약 검색)를 나눈 것과 같은 맥락이다. 실전에서는 두 모드를 결합한 "hybrid mode"가 가장 높은 성능을 보인다[4].
+
+### 각 Retriever의 역할
+
+| 질문 유형 | 적합한 Retriever | 예시 |
+|-----------|-----------------|------|
+| 특정 문서 내 사실 확인 | Vector RAG | "A 제품의 스펙은?" |
+| 엔티티 간 관계 추론 | Graph RAG | "A와 B는 어떤 관계인가?" |
+| 전역 요약·패턴 파악 | Graph RAG (커뮤니티) | "이 도메인의 핵심 토픽은?" |
+| 의미적 유사 문서 탐색 | Vector RAG | "이 개념과 비슷한 사례는?" |
+
+### 파이프라인
+
+```mermaid
+flowchart TD
+    Q["사용자 쿼리"] --> QR["Query Router<br/>(분류: local / global / hybrid)"]
+    QR -->|"local 사실 쿼리"| VR["Vector RAG<br/>(Chunk 검색)"]
+    QR -->|"관계·전역 쿼리"| GR["Graph RAG<br/>(KG 쿼리 + 커뮤니티 요약)"]
+    QR -->|"복합 쿼리"| BOTH["Vector + Graph<br/>병렬 실행"]
+    VR --> MERGE["컨텍스트 병합"]
+    GR --> MERGE
+    BOTH --> MERGE
+    MERGE --> LLM["LLM → 최종 답변"]
+```
+
+**구현 패턴**
+
+- **Query Router**: LLM 분류기 또는 키워드 휴리스틱으로 쿼리 유형을 판별해 적합한 retriever로 라우팅
+- **병렬 실행 + 컨텍스트 병합**: 두 retriever를 항상 동시에 실행하고 결과를 합쳐 LLM에 전달 (컨텍스트 윈도우 내에 수용 가능한 경우)
+- **Agentic RAG**: Agent가 실행 중 동적으로 Vector/Graph 검색을 선택 → [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] 참고
+
+### 장단점
 
 **장점**
-- 정확 매칭(제품 코드, 법령 조항, 기술 용어)과 의미 검색을 동시에 처리
-- 추가 학습 없이 즉시 적용 가능 (RRF)
-- 기존 벡터 DB에 sparse 인덱스만 추가하면 구축 가능
+- 사실 기반 쿼리(벡터)와 관계·전역 쿼리(그래프)를 단일 파이프라인에서 처리
+- GraphRAG 단독 대비 로컬 사실 검색 품질 향상
+- Vector RAG 단독 대비 복잡한 다중 홉 추론 가능
 
 **단점**
-- Dense + Sparse 인덱스 두 개 유지 → 스토리지 1.5~2× 증가
-- 인덱싱 시간 및 쿼리 지연 소폭 증가
-- SPLADE 사용 시 인코딩 추론 비용 발생
+- Knowledge Graph 구축·유지 비용 (엔티티 추출, 관계 링킹)
+- 파이프라인 복잡도 증가 (두 인덱스 + 라우터 + 병합 로직)
+- 컨텍스트 길이: 두 retriever 결과를 합치면 LLM 컨텍스트 윈도우 압박
 
-## 적합한 사용 사례
+---
 
-| 사용 사례 | 이유 |
-|-----------|------|
-| 기술 문서 / API 레퍼런스 검색 | 함수명, 파라미터명 등 정확 매칭 필수 |
-| 법률·계약서 검색 | 조항 번호, 법령명 정확 매칭 |
-| 전자상거래 상품 검색 | SKU, 브랜드명 + 의미 검색 |
-| 의학 문헌 검색 | 약물명, ICD 코드 + 의미 추론 |
-| 다국어 코퍼스 | 언어별 희귀 용어 BM25로 보완 |
+## 3. Full Hybrid (Dense + Sparse + Graph)
 
-## 구현 체크리스트
+세 가지를 모두 조합하는 구성으로, 대규모 엔터프라이즈 검색 시스템에서 사용된다.
 
+```mermaid
+flowchart LR
+    Q["쿼리"] --> D["Dense<br/>(벡터)"]
+    Q --> S["Sparse<br/>(BM25)"]
+    Q --> G["Graph<br/>(KG)"]
+    D --> RRF["RRF / 가중합"]
+    S --> RRF
+    G --> RRF
+    RRF --> LLM["LLM"]
 ```
-□ 벡터 DB: Weaviate / Qdrant / Elasticsearch (hybrid search 내장)
-□ Dense 인덱스: HNSW + 임베딩 모델 (BGE-M3, text-embedding-3-large 등)
-□ Sparse 인덱스: BM25 (빠른 시작) 또는 SPLADE (더 높은 품질)
-□ Fusion: RRF k=60 (기본값) → 도메인 데이터로 α, β 튜닝 (선택)
-□ 평가: NDCG@10, Recall@K로 Dense-only 대비 검증
-```
+
+- Dense+Sparse RRF → Recall 확보
+- Graph 결과 추가 주입 → 관계·전역 맥락 보강
+- Cross-encoder Reranker로 최종 Top-K 선별 (→ [[Advanced_Retrieval]])
+
+---
 
 ## AI Engineering에서의 역할
 
-[[Advanced_Retrieval]]의 Two-Stage 파이프라인에서 Stage 1(Recall 확보)을 담당한다. 즉, Hybrid RAG로 Top-100을 뽑고 → Cross-encoder Reranker로 Top-5로 좁히는 조합이 현재 표준 실무 패턴이다.
+[[Advanced_Retrieval]]의 Two-Stage 파이프라인에서 Stage 1(Recall 확보)을 담당한다: Hybrid Search(Dense+Sparse)로 Top-100을 뽑고 → Cross-encoder Reranker로 Top-5로 좁히는 조합이 현재 표준 실무 패턴이다. Vector+Graph 결합은 관계 추론이 필요한 도메인(의료, 법률, 지식 집약 산업)에서 특히 효과적이다.
 
 ## 관련 개념
 
-[[Advanced_Retrieval]] · [[Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
+[[Advanced_Retrieval]] · [[Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]
 
 ## 출처
 
 - [1] Pinecone Research (2024) "Hybrid Search: 15-30% Retrieval Improvement" — [atlan.com/know/hybrid-rag](https://atlan.com/know/hybrid-rag/)
 - [2] Digital Applied "Hybrid Search: BM25, Vector & Reranking Reference 2026" — [digitalapplied.com/blog/hybrid-search-bm25-vector-reranking-reference-2026](https://www.digitalapplied.com/blog/hybrid-search-bm25-vector-reranking-reference-2026)
 - [3] GoPenAI "Hybrid Search in RAG: Dense + Sparse (BM25/SPLADE), Reciprocal Rank Fusion" — [blog.gopenai.com](https://blog.gopenai.com/hybrid-search-in-rag-dense-sparse-bm25-splade-reciprocal-rank-fusion-and-when-to-use-which-fafe4fd6156e)
-- [4] Yan et al. (2024) "Corrective RAG" — 비교 참조 — [arXiv:2401.15884](https://arxiv.org/abs/2401.15884)
+- [4] Edge et al. (2024) "From Local to Global: A Graph RAG Approach to Query-Focused Summarization" — [arXiv:2404.16130](https://arxiv.org/abs/2404.16130)
