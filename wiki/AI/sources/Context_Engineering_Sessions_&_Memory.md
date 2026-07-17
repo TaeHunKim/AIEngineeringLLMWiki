@@ -4,7 +4,7 @@
 - **파일명**: `Context Engineering_ Sessions & Memory.pdf`
 - **저자**: Kimberly Milam, Antonio Gulli (Google) — 기여자 Anant Nawalgaria, Kanchana Patlolla 외
 - **발행 시점**: 2025년 11월 최초 발행 → **2026년 5월 업데이트**
-- **주제**: stateful·개인화 LLM Agent를 만들기 위한 [[Context_Engineering]] — 대화 단위 working memory인 [[Session_Management]]과 세션 간 영속성인 [[Memory]] 레이어
+- **주제**: stateful·개인화 LLM Agent를 만들기 위한 [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — 대화 단위 working memory인 [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]과 세션 간 영속성인 [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] 레이어
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory
 
 ## 요약
@@ -189,4 +189,4 @@ Race condition 완화: 트랜잭션/optimistic locking, 메시지 큐, exponenti
 - Provenance/Lineage가 빠지면 "garbage in, confident garbage out"이 된다.
 
 ## 관련 개념
-[[Context_Engineering]] · [[Session_Management]] · [[Memory]] · [[Agents]] · [[RAG]] · [[Embeddings]] · [[Vectorstore]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]]

@@ -11,7 +11,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ## 목차
 
-### 1. [[Model_Engineering/Model_Engineering|Model Engineering]] — 모델 자체를 다루는 기법
+### 1. [[AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] — 모델 자체를 다루는 기법
 
 - [[Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — 초기 학습 + 지속 적응
 - Fine-Tuning
@@ -23,7 +23,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 2. [[Prompt_Engineering/Prompt_Engineering|Prompt Engineering]] — 입출력 제어 기법
+### 2. [[AI/Engineering/Prompt_Engineering/Prompt_Engineering|Prompt Engineering]] — 입출력 제어 기법
 
 - Input Control
     - [[Prompt_Engineering/System_and_Role_Prompting|System & Role Prompting]] — 시스템 프롬프트 & 역할 설정
@@ -35,7 +35,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 3. [[Context_Engineering/Context_Engineering|Context Engineering]] — 컨텍스트 구성 전략
+### 3. [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — 컨텍스트 구성 전략
 
 - Memory & Caching
     - [[Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] — 개요 인덱스
@@ -47,10 +47,10 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 3-1. [[Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] — 검색 전략
+### 3-1. [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] — 검색 전략
 
 - RAG (벡터 기반 비정형 문서 검색)
-    - [[Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG 개요]] — Retrieval-Augmented Generation 기초
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG 개요]] — Retrieval-Augmented Generation 기초
     - [[Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] — Fixed-size, Semantic, Hierarchical
     - [[Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN 검색 (HNSW, FAISS)
     - Advanced Retrieval
@@ -60,24 +60,24 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
         - [[Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — Dense(벡터) + Sparse(BM25/SPLADE) + Reciprocal Rank Fusion
         - [[Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] — CLIP/ColPali 공유 임베딩, 텍스트+이미지 통합 검색
 - GraphRAG (구조적 관계·전역 분석)
-    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden 클러스터링
-    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph 개요]]
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden 클러스터링
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph 개요]]
     - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] — Neo4j Cypher vs SPARQL
     - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, 도메인 온톨로지, 추론
 - NL2SQL (정형 DB 자연어 질의)
-    - [[Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
 - SQL RAG (정형+비정형 Hybrid)
-    - [[Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
 
 ---
 
-### 4. [[Flow_Engineering/Flow_Engineering|Flow Engineering]] — 실행 흐름 설계
+### 4. [[AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] — 실행 흐름 설계
 
-- [[Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow 개요]]
+- [[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow 개요]]
     - [[Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL 파이프라인 (Harrison Chase, 2022)
     - [[Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] — RAG 특화 인덱싱-질의 파이프라인 (Jerry Liu, 2022)
     - [[Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — OpenAI/Anthropic Function Calling
-- [[Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow 개요]]
+- [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow 개요]]
     - [[Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] — StateGraph, ReAct Agent (LangChain AI, 2024)
     - [[Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic Flows]] — Evaluate-and-Retry, Self-Correction
     - [[Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] — Thought-Action-Observation (Yao, 2022)
@@ -85,7 +85,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 5. [[Agent_Engineering/Agent_Engineering|Agent Engineering]] — 자율 에이전트 설계
+### 5. [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] — 자율 에이전트 설계
 
 - [[Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] — Planning, Memory, Tools, **Deployment** (Weng, 2023 + 2026년 5월)
 - [[Agent_Engineering/Agent_Architectures|Agent Architectures]] — Single / Orchestrator / Router / Multi-Agent / Long-running
@@ -106,7 +106,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 6. [[Harness_Engineering/Harness_Engineering|Harness Engineering]] — 안전·평가·운영 인프라
+### 6. [[AI/Engineering/Harness_Engineering/Harness_Engineering|Harness Engineering]] — 안전·평가·운영 인프라
 
 - Guardrails
     - [[Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer 보안, ADK SafetyPlugin, Agent Sandbox
@@ -125,7 +125,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 7. [[Loop_Engineering/Loop_Engineering|Loop Engineering]] — 지속 개선 루프
+### 7. [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] — 지속 개선 루프
 
 - [[Loop_Engineering/Data_Flywheel|Data Flywheel]] — Agent-in-the-Loop, 자기 강화 데이터 사이클, Self-Evolving Flywheel *(2025)*
 - [[Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*

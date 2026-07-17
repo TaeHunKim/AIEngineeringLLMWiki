@@ -47,4 +47,4 @@ Semantic Cache:
 - **Semantic Cache**: Loop Engineering의 Runtime Optimization 계층에서 비용 제어 역할을 한다.
 
 ## 관련 개념
-[[Context_Engineering/Context_Engineering]] · [[RAG/RAG]] · [[Agent_Engineering/Agent_Memory]] · [[Loop_Engineering/Runtime_Optimization]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[Agent_Engineering/Agent_Memory]] · [[Loop_Engineering/Runtime_Optimization]]

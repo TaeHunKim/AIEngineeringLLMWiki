@@ -52,4 +52,4 @@ flowchart TD
 Linear Flow는 **가장 단순하고 신뢰할 수 있는 LLM 파이프라인 패턴**이다. 예측 가능한 동작, 쉬운 디버깅, 낮은 레이턴시가 장점이며, 많은 프로덕션 RAG 시스템의 기반이 된다.
 
 ## 관련 개념
-[[Graph_Flow/Graph_Flow]] · [[Retrieval_Strategies/RAG/RAG]]
+[[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]]

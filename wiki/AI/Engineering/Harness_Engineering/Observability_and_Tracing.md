@@ -275,7 +275,7 @@ Gemini Enterprise Agent Platform에 내장된 네이티브 관찰 도구:
 Observability는 **프로덕션 AI 시스템의 신경계**다. "왜 사용자 불만이 늘었나", "어떤 쿼리가 비용을 많이 쓰나", "파인튜닝 후 성능이 개선됐나" 같은 질문에 데이터 기반으로 답할 수 있게 한다. 에이전트 시스템에서는 Three Pillars + Dynamic Sampling + 이중 대시보드로 단순 LLM 추적을 넘어 에이전트 품질까지 관찰해야 한다. 없으면 블랙박스 운영이 되어 개선이 불가능하다.
 
 ## 관련 개념
-[[LLM_as_a_Judge]] · [[Benchmarking]] · [[Guardrail_Engineering]] · [[Data_Flywheel]] · [[Evaluation]]
+[[LLM_as_a_Judge]] · [[Benchmarking]] · [[Guardrail_Engineering]] · [[Data_Flywheel]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
 
 ## 출처
 - MLflow "Top 5 LLM and Agent Observability Tools in 2026" — [mlflow.org](https://mlflow.org/top-5-agent-observability-tools/)

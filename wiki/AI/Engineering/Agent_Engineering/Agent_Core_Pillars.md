@@ -108,7 +108,7 @@ memories = memory_store.search(
 | **브라우저** | Playwright, Selenium | 웹 자동화 |
 
 ### MCP (Model Context Protocol)
-Anthropic이 제안한 도구 통합 표준. 자세한 내용 → [[Model_Context_Protocol]]
+Anthropic이 제안한 도구 통합 표준. 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## Pillar 4: Deployment (배포) *(2026년 5월 추가)*
 
@@ -178,7 +178,7 @@ Deployment:
 4 Core Pillars는 에이전트 시스템 설계의 **개념적 프레임워크**다. 에이전트가 제대로 작동하지 않을 때 "Planning이 부족한가, Memory가 부족한가, 적절한 Tools가 없는가, Deployment 인프라가 충분한가"를 진단하는 기준이 된다. 특히 Deployment는 로컬 프로토타입과 엔터프라이즈 프로덕션을 가르는 핵심 레이어로, 실제 구현에서 각 Pillar를 독립적으로 최적화할 수 있다.
 
 ## 관련 개념
-[[Agent_Architectures]] · [[Planning_and_Reflection]] · [[Agent_Memory]] · [[Agent_Skills_and_Protocols]] · [[Production]]
+[[Agent_Architectures]] · [[Planning_and_Reflection]] · [[Agent_Memory]] · [[Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## 출처
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)

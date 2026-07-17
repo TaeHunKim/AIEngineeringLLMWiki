@@ -48,4 +48,4 @@ flowchart TD
 Model Engineering은 **AI 시스템의 두뇌를 만드는 계층**이다. 대부분의 팀은 기반 모델(GPT-4, Claude, Llama)을 그대로 사용하거나 LoRA로 경량 튜닝하지만, 특수 도메인이나 엄격한 비용/레이턴시 요건이 있을 때는 이 계층 전체를 직접 다뤄야 한다.
 
 ## 관련 개념
-[[Prompt_Engineering/Prompt_Engineering]] · [[Harness_Engineering/Benchmarking]] · [[Loop_Engineering/Continuous_Optimization]]
+[[AI/Engineering/Prompt_Engineering/Prompt_Engineering|Prompt Engineering]] · [[Harness_Engineering/Benchmarking]] · [[Loop_Engineering/Continuous_Optimization]]

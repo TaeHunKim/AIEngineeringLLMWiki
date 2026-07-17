@@ -310,5 +310,5 @@ MCP는 **도구 통합의 표준 레이어**다. Function Calling이 "어떻게 
 - MCP 공식 스펙 "Transports" · "Authorization" — [modelcontextprotocol.io/specification](https://modelcontextprotocol.io/specification)
 - LiteLLM 문서 (MCP Gateway) — [docs.litellm.ai](https://docs.litellm.ai)
 - AI Engineering from Scratch, Phase 13 · Lessons 06-18 (MCP 심화, 보안, 게이트웨이) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols)
-- [[Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
 - [[Prototype_to_Production]] (MCP vs A2A 비교, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

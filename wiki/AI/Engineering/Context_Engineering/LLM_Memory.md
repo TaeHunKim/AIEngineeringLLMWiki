@@ -309,7 +309,7 @@ memory.add("사용자가 지금 이 메시지를 보내는 중")  # 불필요
 LLM Memory는 에이전트를 **"일회용 도구"에서 "지속 학습하는 어시스턴트"로** 전환시키는 핵심 인프라다. 단순한 챗봇을 넘어 사용자와 장기 관계를 형성하고, 조직의 노하우를 축적하며, 반복 실수를 방지하는 개인화 AI 경험의 토대가 된다.
 
 ## 관련 개념
-[[Semantic_Cache]] · [[Context_Engineering/Context_Engineering]] · [[Agent_Engineering/Agent_Memory]] · [[Retrieval_Strategies/RAG/RAG]]
+[[Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[Agent_Engineering/Agent_Memory]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]]
 
 ## 참고 문헌
 1. Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)

@@ -196,7 +196,7 @@ grading_cot_prompt = """
 LLM-as-a-Judge는 **Evaluation Engineering의 핵심 도구**다. 수천 개의 응답을 인간 평가자 없이 빠르게 평가하고, CI/CD 파이프라인에 통합하여 모델 변경 시 품질 회귀를 자동 감지할 수 있다. A/B 테스트, 프롬프트 최적화, 모델 선택 등 모든 LLMOps 결정의 기반이 된다. 에이전트 시스템에서는 [[Agent_as_a_Judge]]로 확장하여 실행 궤적 수준의 평가와 배포 전 스트레스 테스트까지 수행한다.
 
 ## 관련 개념
-[[Benchmarking]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[Evaluation]] · [[Agent_as_a_Judge]]
+[[Benchmarking]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[Agent_as_a_Judge]]
 
 ## 출처
 - Zheng et al. (2023) "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — [arXiv:2306.05685](https://arxiv.org/pdf/2306.05685)

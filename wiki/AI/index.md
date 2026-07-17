@@ -8,7 +8,7 @@ order: 0
 
 ## Engineering
 
-- [[Engineering/index]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop 7계층
+- [[AI/Engineering/index|AI Engineering Wiki]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop 7계층
 
 #### Model Engineering
 - [[Engineering/Model_Engineering/Pre-training_and_Continual_Learning]]: Pre-training 기초, Chinchilla 스케일링 법칙, 재앙적 망각 대응 전략
@@ -88,8 +88,8 @@ order: 0
 - [[Agents_Companion_v2]]: AgentOps 계층, BFCL/τ-bench/PlanBench, 6 trajectory metrics, Contractor 패러다임
 
 ### 도구 통합 및 컨텍스트
-- [[Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)]]: Host/Client/Server 아키텍처, JSON-RPC 2.0, primitives, 보안 위협 5가지
-- [[Context_Engineering_Sessions_&_Memory]]: 3 Buckets, Session vs Memory 구분, ETL pipeline, Provenance, Memory-as-a-Tool
+- [[AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]]: Host/Client/Server 아키텍처, JSON-RPC 2.0, primitives, 보안 위협 5가지
+- [[AI/sources/Context_Engineering_Sessions_&_Memory|Context Engineering Sessions & Memory]]: 3 Buckets, Session vs Memory 구분, ETL pipeline, Provenance, Memory-as-a-Tool
 
 ### 임베딩 및 기반 모델
 - [[whitepaper_emebddings_vectorstores_v2]]: Precision@k/nDCG, Word2Vec~ColPali 진화, LSH/HNSW/ScaNN, Vertex Vector Search

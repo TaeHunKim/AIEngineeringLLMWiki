@@ -218,11 +218,11 @@ async def sql_rag_with_correction(question: str, max_retries: int = 3):
 
 ## AI Engineering에서의 역할
 
-SQL RAG는 **엔터프라이즈 데이터 레이어와 LLM을 연결하는 핵심 브릿지**다. BI 대시보드 대화형 분석, ERP 데이터 질의 챗봇, 실시간 재고·매출 조회 에이전트 등에서 필수 패턴으로 자리잡고 있다. [[NL2SQL]]이 변환 품질을 담당하고, SQL RAG는 이를 시스템 아키텍처 수준에서 통합한다. 2026년 현재 Databricks, Microsoft SQL Server 2025 등 주요 플랫폼이 네이티브 SQL RAG 지원을 추가하며 채택이 가속화되고 있다.
+SQL RAG는 **엔터프라이즈 데이터 레이어와 LLM을 연결하는 핵심 브릿지**다. BI 대시보드 대화형 분석, ERP 데이터 질의 챗봇, 실시간 재고·매출 조회 에이전트 등에서 필수 패턴으로 자리잡고 있다. [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]]이 변환 품질을 담당하고, SQL RAG는 이를 시스템 아키텍처 수준에서 통합한다. 2026년 현재 Databricks, Microsoft SQL Server 2025 등 주요 플랫폼이 네이티브 SQL RAG 지원을 추가하며 채택이 가속화되고 있다.
 
 ## 관련 개념
 
-[[NL2SQL]] · [[RAG/RAG]] · [[RAG/Advanced_Retrieval]] · [[GraphRAG/GraphRAG]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[RAG/Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
 
 ## References
 

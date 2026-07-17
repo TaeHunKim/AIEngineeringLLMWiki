@@ -4,7 +4,7 @@
 - **파일명**: 22365_14_Operationalizing Generative AI on Vertex AI_v7 (1).pdf
 - **저자**: Anant Nawalgaria, Gabriela Hernandez Larios, Elia Secchi, Mike Styer, Christos Aniftos, Onofrio Petragallo, Sokratis Kartakis (Google)
 - **발행 시점**: February 2025
-- **주제**: Vertex AI 플랫폼으로 생성형 AI를 MLOps 관점에서 운영화하는 방법론 — [[Vertex_AI]], [[LLMOps]], [[MLOps]], [[Evaluation]], [[Agents]], [[RAG]]
+- **주제**: Vertex AI 플랫폼으로 생성형 AI를 MLOps 관점에서 운영화하는 방법론 — [[AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]], [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]], [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]], [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]], [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]], [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]]
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-operationalizing-generative-ai-on-vertex-ai-using-mlops
 
 ## 요약
@@ -134,4 +134,4 @@ gen AI의 최소 독립 단위. Foundation Model 단독으로는 충분하지 �
 - Vertex AI는 8개 기능군으로 Discovery → Governance 전체 lifecycle을 단일 플랫폼에서 지원
 
 ## 관련 개념
-[[Vertex_AI]] · [[LLMOps]] · [[MLOps]] · [[Agents]] · [[RAG]] · [[Fine-Tuning]] · [[Evaluation]] · [[Foundational_Models]] · [[Production]]
+[[AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]

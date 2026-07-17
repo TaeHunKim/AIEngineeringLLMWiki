@@ -217,7 +217,7 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 
 ## 관련 개념
 
-[[LLM_as_a_Judge]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[Evaluation]] · [[Agent_Deployment]]
+[[LLM_as_a_Judge]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[Agent_Deployment]]
 
 ## 출처
 

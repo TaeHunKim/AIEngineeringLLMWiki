@@ -56,4 +56,4 @@ Red Team 없음 → 악의적 사용자가 시스템 오용
 Harness Engineering은 **AI 시스템을 실험에서 프로덕션으로 전환하는 관문**이다. 규제 산업(금융, 의료, 법률)에서는 이 계층이 컴플라이언스 요건의 핵심이며, B2C 서비스에서는 브랜드 신뢰의 기반이다.
 
 ## 관련 개념
-[[Agent_Engineering/Agent_Engineering]] · [[Loop_Engineering/Data_Flywheel]]
+[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[Loop_Engineering/Data_Flywheel]]

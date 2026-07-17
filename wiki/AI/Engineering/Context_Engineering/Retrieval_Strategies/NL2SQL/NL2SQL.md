@@ -186,11 +186,11 @@ Synthesizing NL2SQL Data (2024):
 
 ## AI Engineering에서의 역할
 
-NL2SQL은 **정형 데이터 대상 Retrieval Strategy의 핵심**이다. 기업 내 ERP, CRM, 데이터웨어하우스에 자연어로 접근하는 BI Chatbot, 데이터 분석 에이전트 구현에 필수적이다. [[SQL_RAG]]와 결합하면 벡터 검색(비정형 지식) + SQL 검색(정형 데이터)을 동시에 활용하는 Hybrid 시스템을 구축할 수 있다.
+NL2SQL은 **정형 데이터 대상 Retrieval Strategy의 핵심**이다. 기업 내 ERP, CRM, 데이터웨어하우스에 자연어로 접근하는 BI Chatbot, 데이터 분석 에이전트 구현에 필수적이다. [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]]와 결합하면 벡터 검색(비정형 지식) + SQL 검색(정형 데이터)을 동시에 활용하는 Hybrid 시스템을 구축할 수 있다.
 
 ## 관련 개념
 
-[[SQL_RAG]] · [[RAG/RAG]] · [[RAG/Advanced_Retrieval]] · [[GraphRAG/GraphRAG]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[RAG/Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
 
 ## References
 

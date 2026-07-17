@@ -28,11 +28,11 @@ flowchart LR
 
 | 문서 | 내용 |
 |------|------|
-| [[Linear_Flow/Linear_Flow]] | 순차적 파이프라인 개요 |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow]] | 순차적 파이프라인 개요 |
 | [[Linear_Flow/LangChain]] | LCEL 파이프라인 (Harrison Chase, 2022) |
 | [[Linear_Flow/LlamaIndex]] | 인덱싱-질의 파이프라인 (Jerry Liu, 2022) |
 | [[Linear_Flow/Tool_Use_and_Function_Calling]] | OpenAI/Anthropic Function Calling |
-| [[Graph_Flow/Graph_Flow]] | 순환 그래프 플로우 개요 |
+| [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow]] | 순환 그래프 플로우 개요 |
 | [[Graph_Flow/LangGraph]] | StateGraph 에이전트 (LangChain AI, 2024) |
 | [[Graph_Flow/Cyclic_Flows]] | Evaluate-and-Retry, Self-Correction |
 | [[Graph_Flow/ReAct_Pattern]] | Thought-Action-Observation (Yao, 2022) |
@@ -54,4 +54,4 @@ flowchart TD
 Flow Engineering은 **LLM 단독으로는 불가능한 태스크를 시스템으로 해결하는 계층**이다. 단일 모델 호출의 한계(컨텍스트 길이, 단계적 추론)를 파이프라인으로 극복하며, Agent Engineering의 직접적 기반이 된다.
 
 ## 관련 개념
-[[Context_Engineering/Context_Engineering]] · [[Agent_Engineering/Agent_Engineering]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]]

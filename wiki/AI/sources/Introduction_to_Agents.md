@@ -5,10 +5,10 @@
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-introduction-to-agents
 - **저자**: Alan Blount, Antonio Gulli, Shubham Saboo, Michael Zimmermann, Vladimir Vuskovic 외
 - **발행 시점**: 2025년 11월 최초 발행 → **2026년 5월 업데이트** (Google/Kaggle 시리즈)
-- **주제**: 자율(autonomous) AI [[Agents]] 입문 — 아키텍처, 분류 체계(Taxonomy), 운영(Ops), 보안, 상호 운용성, Self-evolution
+- **주제**: 자율(autonomous) AI [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] 입문 — 아키텍처, 분류 체계(Taxonomy), 운영(Ops), 보안, 상호 운용성, Self-evolution
 
 ## 요약
-이 문서는 LM(Language Model)을 두뇌로 사용하는 [[Agents]]가 예측형 AI(Predictive AI)에서 자율 시스템으로 진화한 흐름을 정리하고, 프로덕션 수준의 Agent를 만드는 데 필요한 구조·운영·보안·상호 운용성 전반을 다룬다. 개발자의 역할이 "벽돌공(bricklayer)"에서 "감독(director)"으로 이동했음을 강조하며, "Prompt Engineering"의 후속 개념인 [[Context_Engineering]]을 본격적으로 소개한다.
+이 문서는 LM(Language Model)을 두뇌로 사용하는 [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]]가 예측형 AI(Predictive AI)에서 자율 시스템으로 진화한 흐름을 정리하고, 프로덕션 수준의 Agent를 만드는 데 필요한 구조·운영·보안·상호 운용성 전반을 다룬다. 개발자의 역할이 "벽돌공(bricklayer)"에서 "감독(director)"으로 이동했음을 강조하며, "Prompt Engineering"의 후속 개념인 [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]을 본격적으로 소개한다.
 
 ## 핵심 정의
 - **Agent = Model + Tools + Orchestration Layer + Runtime Services**, 즉 "도구를 쥔 LM이 루프 안에서 목표를 추구하는 시스템".
@@ -17,8 +17,8 @@
 ## Agentic Problem-Solving Process (5단계)
 1. **Get the Mission** — 사용자의 의도/목표 수신
 2. **Scan the Scene** — 사용 가능한 도구·메모리·세션 상태 탐색
-3. **Think It Through** — Plan/Reason ([[Reasoning]])
-4. **Take Action** — Tool 호출 ([[Tool_Use]])
+3. **Think It Through** — Plan/Reason ([[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]])
+4. **Take Action** — Tool 호출 ([[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]])
 5. **Observe and Iterate** — 결과 관찰 후 다시 Plan
    - 예: "Where is my order #12345?" → `find_order("12345")` → `get_shipping_status("ZYX987")` → 최종 답변
 
@@ -34,7 +34,7 @@
 - **Tools — "손"**: 3가지 — Information Retrieval(RAG·Vector DB·Knowledge Graph·NL2SQL), Action Execution(API wrap, sandbox 코드 실행, `ask_for_confirmation()`/`ask_for_date_input()` 같은 HITL 도구), Function Calling(OpenAPI, MCP, Gemini 네이티브 Google Search).
 - **Orchestration Layer — "신경계"**: Think–Act–Observe 루프. 결정형 워크플로우 ↔ LM 주도 실행 사이의 스펙트럼. Google **ADK(Agent Development Kit)** 같은 코드 우선 프레임워크 vs no-code 빌더.
 - **Deployment — "몸체와 다리"** *(2026년 5월 추가)*: 로컬 빌드에서 벗어나 항상 실행되는 서버로 배포. 세션 히스토리·메모리 영속성·보안·규정 준수 등 서비스가 포함 범위. 새로 출시된 **Gemini Enterprise Agent Platform**을 활용하면 Build·Scale·Govern·Optimize를 단일 플랫폼에서 처리 가능: **Agent Studio**(프롬프트→배포 원활 전환), **Agent Runtime**(sub-second cold start, 멀티데이 워크플로우), **Memory Bank**(세션 간 장기 컨텍스트). Cloud Run/GKE 컨테이너 배포도 지원.
-- **Memory ([[Memory]])**: 단기 = (Action, Observation) 쌍을 state/artifacts/sessions/threads로 저장. 장기 = vector DB / search 엔진 기반 RAG로 세션 간 지속.
+- **Memory ([[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]])**: 단기 = (Action, Observation) 쌍을 state/artifacts/sessions/threads로 저장. 장기 = vector DB / search 엔진 기반 RAG로 세션 간 지속.
 
 ## Multi-Agent Patterns
 - **Coordinator** (관리자가 서브 태스크 라우팅)
@@ -79,10 +79,10 @@
 
 ## Key Takeaways
 - Agent는 단순한 챗봇이 아니라 도구·메모리·오케스트레이션을 갖춘 시스템이다.
-- 개발자의 작업은 "프롬프트 작성"에서 "[[Context_Engineering]]"으로 이동했다.
+- 개발자의 작업은 "프롬프트 작성"에서 "[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]"으로 이동했다.
 - 단일 에이전트보다 **multi-agent + HITL** 조합이 프로덕션의 기본형이 된다.
 - 보안·아이덴티티·게이트웨이는 옵션이 아닌 필수 인프라다.
 - *(2026년 5월 추가)* Deployment는 4번째 핵심 구성요소 — 로컬 에이전트를 항상 실행되는 서비스로 만드는 것이 아키텍처의 완성이다. Gemini Enterprise Agent Platform이 이를 단일 플랫폼으로 제공.
 
 ## 관련 개념
-[[Agents]] · [[Tool_Use]] · [[Reasoning]] · [[Memory]] · [[Context_Engineering]] · [[Model_Context_Protocol]] · [[Evaluation]]
+[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]

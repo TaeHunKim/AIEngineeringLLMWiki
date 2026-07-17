@@ -27,7 +27,7 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 | [[Lost_in_the_Middle]] | LLM의 긴 컨텍스트 중간 활용도 저하 현상 및 회피 전략 |
 
 > **RAG, GraphRAG, NL2SQL, SQL RAG** 문서는 별도 챕터로 분리됐습니다.
-> → [[../Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies 챕터]] 참고
+> → [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies 챕터]] 참고
 
 ## 핵심 과제
 
@@ -43,4 +43,4 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 Context Engineering은 **LLM의 즉각적 성능을 결정하는 계층**이다. 파인튜닝 없이도 올바른 컨텍스트 구성만으로 성능을 2-3배 향상시킬 수 있다. RAG 아키텍처 설계가 이 계층의 핵심 실무다.
 
 ## 관련 개념
-[[Prompt_Engineering/Prompt_Engineering]] · [[Flow_Engineering/Flow_Engineering]] · [[Agent_Engineering/Agent_Memory]]
+[[AI/Engineering/Prompt_Engineering/Prompt_Engineering|Prompt Engineering]] · [[AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] · [[Agent_Engineering/Agent_Memory]]

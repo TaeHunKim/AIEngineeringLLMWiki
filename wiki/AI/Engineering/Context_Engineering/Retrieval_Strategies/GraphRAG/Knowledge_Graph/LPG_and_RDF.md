@@ -114,7 +114,7 @@ LLM 시대: 의미 = 임베딩 공간에서의 위치
 AI 시스템에서 Knowledge Graph는 LLM의 **구조화된 기억** 역할을 한다. RDF는 공식적 추론이 필요한 엔터프라이즈 지식 관리에, LPG는 빠른 그래프 탐색이 필요한 추천·사기탐지·RAG 시스템에 적합하다. Graph RAG는 주로 LPG(Neo4j)를 기반으로 구현된다.
 
 ## 관련 개념
-[[Ontology]] · [[../GraphRAG]] · [[Vector_Storage]]
+[[Ontology]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[Vector_Storage]]
 
 ## 출처
 - W3C RDF 1.1 명세 — [w3.org](https://www.w3.org/TR/rdf11-concepts/)

@@ -4,11 +4,11 @@
 - **파일명**: `Agent Tools & Interoperability with Model Context Protocol (MCP).pdf`
 - **저자**: Mike Styer, Kanchana Patlolla, Madhuranjan Mohan, Sal Diaz (Google)
 - **발행 시점**: 2025년 11월 최초 발행 → **2026년 5월 업데이트**
-- **주제**: Foundation 모델이 도구를 어떻게 사용하는가, 그리고 이를 표준화하는 Anthropic의 [[Model_Context_Protocol]](MCP) — 아키텍처·primitive·보안 위협·엔터프라이즈 준비도
+- **주제**: Foundation 모델이 도구를 어떻게 사용하는가, 그리고 이를 표준화하는 Anthropic의 [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]](MCP) — 아키텍처·primitive·보안 위협·엔터프라이즈 준비도
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp
 
 ## 요약
-도구 없는 foundation model은 "패턴 예측 엔진"에 불과하다는 전제에서 출발해, [[Tool_Use]]를 (1) Function Tools, (2) Built-in Tools, (3) Agent Tools로 분류하고, 2024년 11월 도입된 MCP가 N×M 통합 문제를 어떻게 푸는지 설명한다. JSON-RPC 2.0과 stdio/Streamable HTTP transport, server·client primitives, 그리고 Tool Shadowing·Confused Deputy 등 보안 위협까지 광범위하게 다룬다. *(2026년 5월 업데이트)* AI 실험에서 보안·프로덕션급 agentic 시스템으로 전환을 돕기 위해 Vertex AI가 **Gemini Enterprise Agent Platform**(Build·Scale·Govern·Optimize 4 pillars)으로 진화했다는 맥락이 추가됨.
+도구 없는 foundation model은 "패턴 예측 엔진"에 불과하다는 전제에서 출발해, [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]]를 (1) Function Tools, (2) Built-in Tools, (3) Agent Tools로 분류하고, 2024년 11월 도입된 MCP가 N×M 통합 문제를 어떻게 푸는지 설명한다. JSON-RPC 2.0과 stdio/Streamable HTTP transport, server·client primitives, 그리고 Tool Shadowing·Confused Deputy 등 보안 위협까지 광범위하게 다룬다. *(2026년 5월 업데이트)* AI 실험에서 보안·프로덕션급 agentic 시스템으로 전환을 돕기 위해 Vertex AI가 **Gemini Enterprise Agent Platform**(Build·Scale·Govern·Optimize 4 pillars)으로 진화했다는 맥락이 추가됨.
 
 ## Tool 정의와 분류
 - **Tool**: LLM 기반 앱이 모델 외부 작업을 수행하기 위해 사용하는 함수/프로그램. 두 기능 — "know something"(retrieve) 또는 "do something"(act).
@@ -105,4 +105,4 @@ Google ADK (`LlmAgent`, `AgentTool`, `ToolContext`, Artifact Service), Gemini AP
 - 보안 위협은 단순 입력 검증이 아니라 Confused Deputy·Tool Shadowing 같은 시스템적 문제로 다뤄야 한다.
 
 ## 관련 개념
-[[Model_Context_Protocol]] · [[Tool_Use]] · [[Agents]] · [[Context_Engineering]] · [[Memory]]
+[[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]]

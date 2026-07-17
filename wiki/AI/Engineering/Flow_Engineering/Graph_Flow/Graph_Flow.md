@@ -61,4 +61,4 @@ class AgentState(TypedDict):
 Graph Flow는 **에이전트 시스템 구현의 표준 패턴**이다. Linear Flow가 "레시피대로 요리"라면, Graph Flow는 "상황에 따라 재료를 조정하며 요리"에 해당한다. 복잡한 태스크 자동화, 품질 보장, 인간-AI 협업이 필요한 곳에서 필수적이다.
 
 ## 관련 개념
-[[Linear_Flow/Linear_Flow]] · [[Agent_Engineering/Agent_Architectures]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow]] · [[Agent_Engineering/Agent_Architectures]]

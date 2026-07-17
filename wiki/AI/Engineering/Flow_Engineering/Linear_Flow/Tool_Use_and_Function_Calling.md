@@ -13,7 +13,7 @@ order: 3
 - **OpenAI Function Calling** (2023년 6월): 최초 공식 API 지원
 - **Anthropic Tool Use** (2024년 초): Claude에서 공식 지원
 - **Google Function Declarations**: Gemini에서 지원
-- **MCP (Model Context Protocol)**: Anthropic이 제안한 오픈 도구 표준 (2024) → [[Model_Context_Protocol]]
+- **MCP (Model Context Protocol)**: Anthropic이 제안한 오픈 도구 표준 (2024) → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## 작동 원리
 
@@ -218,7 +218,7 @@ writer_agent = LlmAgent(
 
 외부 지식 소스에서 데이터를 가져오는 도구. LLM의 학습 시점 이후 최신 정보나 내부 데이터에 접근한다.
 
-- **예시**: [[Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[NL2SQL]](자연어 → SQL 변환), [[RAG/RAG|RAG]](벡터 DB 검색), [[Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] 조회
+- **예시**: [[Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]](자연어 → SQL 변환), [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]](벡터 DB 검색), [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] 조회
 - **특징**: 읽기 전용, 사이드 이펙트 없음, 캐싱 가능
 
 ### 2. API 연결 (API Integration)
@@ -257,7 +257,7 @@ def ask_for_input(prompt: str) -> str:
 
 ## Tool Use와 Agent의 관계
 
-Tool Use는 [[Agent_Engineering]]의 핵심 구성 요소다:
+Tool Use는 [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]]의 핵심 구성 요소다:
 ```
 Agent = LLM + Tools + Memory + Planning
               ↑
@@ -307,6 +307,6 @@ Function Calling은 LLM을 "텍스트 생성기"에서 "실제 행동 실행자"
 
 ## References
 
-[1] Mike Styer et al. (Google), "Agent Tools & Interoperability with Model Context Protocol (MCP)" — [kaggle.com](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp) (2025년 11월 최초 발행, 2026년 5월 업데이트) · 이 위키: [[Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)]]
+[1] Mike Styer et al. (Google), "Agent Tools & Interoperability with Model Context Protocol (MCP)" — [kaggle.com](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp) (2025년 11월 최초 발행, 2026년 5월 업데이트) · 이 위키: [[AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]]
 
 [2] Kaggle 5-Day Gen AI Course (2026년 5월), "Agent Tools" (Day 2) — `raw/kaggle/2026may/2025_Day_2_Rewrite_v1_AgentTools.pdf`

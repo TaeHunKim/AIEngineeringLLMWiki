@@ -102,7 +102,7 @@ RRF(d) = Σ  1 / (k + rank_i(d))
 
 ## 관련 개념
 
-[[Advanced_Retrieval]] · [[Vector_Storage]] · [[Agentic_RAG]] · [[../GraphRAG/GraphRAG]]
+[[Advanced_Retrieval]] · [[Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
 
 ## 출처
 

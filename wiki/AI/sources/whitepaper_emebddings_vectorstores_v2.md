@@ -4,7 +4,7 @@
 - **파일명**: `whitepaper_emebddings_vectorstores_v2.pdf`
 - **저자**: Anant Nawalgaria, Xiaoqi Ren, Charles Sugnet (Google)
 - **발행 시점**: 2025년 2월
-- **주제**: [[Embeddings]] (text/image/multimodal/structured/graph), 벡터 검색 알고리즘 (LSH, HNSW, ScaNN), [[Vectorstore]], 그리고 LLM과 결합된 [[RAG]] 활용
+- **주제**: [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] (text/image/multimodal/structured/graph), 벡터 검색 알고리즘 (LSH, HNSW, ScaNN), [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]], 그리고 LLM과 결합된 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] 활용
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-embeddings-and-vector-stores
 
 ## 요약
@@ -111,4 +111,4 @@ HNSW, PQ 등 다수 인덱스 지원
 - Embeddings + Vector DB + ANN = 검색·추천·RAG의 인프라 substrate.
 
 ## 관련 개념
-[[Embeddings]] · [[Vectorstore]] · [[RAG]] · [[Foundational_Models]] · [[Fine-Tuning]]
+[[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]]

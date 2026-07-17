@@ -128,7 +128,7 @@ OWL Turtle 형식으로 제안하세요:
 온톨로지는 도메인 지식을 **기계가 이해할 수 있는 형태**로 명확히 정의한다. Knowledge Graph와 결합하여 AI 시스템에 추론 능력을 부여하며, RAG 파이프라인에서 검색 정밀도를 높이는 데 활용된다. Graph RAG 시스템에서 온톨로지는 LLM이 추출하는 엔티티와 관계의 **스키마 역할**을 한다.
 
 ## 관련 개념
-[[LPG_and_RDF]] · [[../GraphRAG]] · [[Knowledge_Graph]]
+[[LPG_and_RDF]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]
 
 ## 출처
 - Gruber (1993) "A translation approach to portable ontology specifications"

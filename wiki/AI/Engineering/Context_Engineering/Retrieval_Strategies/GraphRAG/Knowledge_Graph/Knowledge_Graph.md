@@ -24,7 +24,7 @@ order: 0
 |------|------|
 | [[LPG_and_RDF]] | 두 가지 KG 표준 — Property Graph(Neo4j) vs RDF(SPARQL) |
 | [[Ontology]] | 도메인 지식의 형식적 명세 — OWL, 추론 엔진 |
-| [[../GraphRAG]] | Microsoft 2024 — KG + RAG 결합으로 전역 검색 실현 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] | Microsoft 2024 — KG + RAG 결합으로 전역 검색 실현 |
 
 ## 벡터 DB vs Knowledge Graph
 
@@ -50,7 +50,7 @@ order: 0
 Knowledge Graph는 **LLM이 구조적 지식을 다루어야 할 때** 핵심 구성요소다. 기업 데이터(제품-카테고리-브랜드 관계), 의료 온톨로지(질병-증상-치료 관계), 법률 체계(법령-조항-판례 관계) 등에서 RAG만으로는 불가능한 정밀한 다단계 추론을 가능하게 한다.
 
 ## 관련 개념
-[[../../RAG/RAG]] · [[../GraphRAG]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
 
 ## 출처
 - Google "Introducing the Knowledge Graph" (2012) — [google.com/intl/es419/insidesearch](https://www.google.com/intl/es419/insidesearch/features/search/knowledge.html)

@@ -11,7 +11,7 @@
 Agents 백서의 후속편. Model + Tools + Orchestration이라는 3-구성 복기에서 시작해, 다중 에이전트 패턴, AgentOps, Agentic RAG, "Agent를 Contractor로 다루기"라는 새로운 패러다임, Google Agentspace 제품 라인업, 그리고 자동차 환경의 5가지 패턴이 적용된 풍부한 케이스 스터디로 마무리한다.
 
 ## AgentOps 계층
-DevOps → MLOps → FMOps → PromptOps → RAGOps → **AgentOps**. AgentOps는 GenAIOps의 하위 분류이며, 여기에 추가되는 요소: tool 관리, agent brain prompt(목표/페르소나/지시), 오케스트레이션, [[Memory]], 작업 분해.
+DevOps → MLOps → FMOps → PromptOps → RAGOps → **AgentOps**. AgentOps는 GenAIOps의 하위 분류이며, 여기에 추가되는 요소: tool 관리, agent brain prompt(목표/페르소나/지시), 오케스트레이션, [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]], 작업 분해.
 
 ## Agent Success Metrics
 - 비즈니스 north-star (revenue, engagement)
@@ -77,7 +77,7 @@ Planner, Retriever, Execution, Evaluator Agent
 - Scalability
 
 ## Agentic RAG
-정적 [[RAG]] 대비 개선:
+정적 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] 대비 개선:
 - Context-Aware Query Expansion
 - Multi-Step Reasoning
 - Adaptive Source Selection
@@ -154,4 +154,4 @@ Definition → Negotiation → Execution. Co-Scientist·AlphaCode 식 반복. Su
 - Trajectory 평가는 6가지 ground-truth 매칭 메트릭으로 정량화 가능하다.
 
 ## 관련 개념
-[[Agents]] · [[Tool_Use]] · [[Memory]] · [[Reasoning]] · [[RAG]] · [[Vectorstore]] · [[Embeddings]] · [[Evaluation]] · [[Vertex_AI]]
+[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]]

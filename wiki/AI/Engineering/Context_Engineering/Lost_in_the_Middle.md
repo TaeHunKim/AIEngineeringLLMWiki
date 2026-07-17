@@ -170,7 +170,7 @@ flowchart TD
 Lost in the Middle은 RAG 파이프라인 설계에서 간과하기 쉬운 함정이다. 좋은 Retriever와 Reranker를 구축해도, 최종적으로 LLM에 전달하는 **문서 순서 설계를 소홀히 하면 성능이 저하**된다. 특히 컨텍스트 창이 수십만 토큰으로 커지는 환경일수록 이 문제가 두드러지므로, 컨텍스트 순서를 명시적으로 최적화하는 로직을 파이프라인에 포함시켜야 한다.
 
 ## 관련 개념
-[[Context_Engineering]] · [[Context_Compression]] · [[RAG/Advanced_Retrieval]] · [[RAG/Chunking_Strategies]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[Context_Compression]] · [[RAG/Advanced_Retrieval]] · [[RAG/Chunking_Strategies]]
 
 ## 출처
 - [1] Liu et al. (2023) "Lost in the Middle: How Language Models Use Long Contexts" — [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)

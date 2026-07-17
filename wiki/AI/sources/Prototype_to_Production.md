@@ -4,7 +4,7 @@
 - **파일명**: Prototype to Production.pdf
 - **저자**: Sokratis Kartakis, Gabriela Hernandez Larios, Ran Li, Elia Secchi, Huang Xia (Google)
 - **발행 시점**: 2025년 11월 최초 발행 → **2026년 5월 업데이트**
-- **주제**: AI Agent를 프로토타입에서 프로덕션으로 전환하는 AgentOps 방법론 — [[Production]], [[LLMOps]], [[Agents]], [[Model_Context_Protocol]], [[Evaluation]]
+- **주제**: AI Agent를 프로토타입에서 프로덕션으로 전환하는 AgentOps 방법론 — [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]], [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]], [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]], [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]], [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-prototype-to-production
 
 ## 요약
@@ -216,4 +216,4 @@ Evolution Loop (프로덕션 인사이트 → 다음 개선 사이클)
 - **모든 것을 버전 관리**: 코드·프롬프트·모델·tool schema·메모리·평가 데이터셋 — 이것이 production "undo 버튼"
 
 ## 관련 개념
-[[Production]] · [[LLMOps]] · [[Agents]] · [[Model_Context_Protocol]] · [[Evaluation]] · [[Vertex_AI]] · [[MLOps]] · [[Memory]] · [[Tool_Use]]
+[[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]]

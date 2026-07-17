@@ -4,7 +4,7 @@
 - **파일명**: `Agent Quality.pdf`
 - **저자**: Meltem Subasioglu, Turan Bulmus, Wafae Bakkali (Google) — 기여자 Anant Nawalgaria, Julia Wiesinger 외
 - **발행 시점**: 2025년 11월 최초 발행 → **2026년 5월 업데이트**
-- **주제**: 비결정적(non-deterministic) AI [[Agents]]를 평가·관측·지속 개선하기 위한 실무 플레이북 — "Agent Quality Flywheel"
+- **주제**: 비결정적(non-deterministic) AI [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]]를 평가·관측·지속 개선하기 위한 실무 플레이북 — "Agent Quality Flywheel"
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-agent-quality
 
 ## 요약
@@ -106,4 +106,4 @@
 3. **Human is the arbiter.**
 
 ## 관련 개념
-[[Agents]] · [[Evaluation]] · [[Reasoning]] · [[Tool_Use]] · [[RAG]] · [[Memory]]
+[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]]

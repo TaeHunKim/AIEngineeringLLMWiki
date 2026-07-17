@@ -46,4 +46,4 @@ Prompt Engineering: 입력 텍스트 변경 (비용 낮음, 즉시 적용)
 Prompt Engineering은 **가장 비용 효율적인 모델 동작 제어 수단**이다. 모델 개선의 80%는 프롬프트 수준에서 해결 가능하다는 것이 현장의 통념이다. 모든 AI 시스템의 첫 번째 최적화 포인트.
 
 ## 관련 개념
-[[Model_Engineering/Model_Engineering]] · [[Context_Engineering/Context_Engineering]] · [[Loop_Engineering/Continuous_Optimization]]
+[[AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[Loop_Engineering/Continuous_Optimization]]

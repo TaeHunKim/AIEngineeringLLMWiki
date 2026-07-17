@@ -145,14 +145,14 @@ GraphRAG는 Knowledge Graph 개념을 기반으로 한다. 관련 하위 문서:
 
 | 문서 | 내용 |
 |------|------|
-| [[Knowledge_Graph/Knowledge_Graph]] | 지식 그래프 개요 — 트리플, 엔티티-관계 모델 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] | 지식 그래프 개요 — 트리플, 엔티티-관계 모델 |
 | [[Knowledge_Graph/LPG_and_RDF]] | Labeled Property Graph (Neo4j) vs RDF (SPARQL) |
 | [[Knowledge_Graph/Ontology]] | OWL 온톨로지, 도메인 온톨로지, 추론 엔진 |
 
 Graph RAG의 Phase 1(지식 그래프 구축)은 위 Knowledge Graph 개념을 LLM으로 자동화한 것이다. 수동으로 Knowledge Graph를 구축하는 전통적 방식과 달리, LLM이 문서에서 엔티티와 관계를 자동 추출한다.
 
 ## 관련 개념
-[[Knowledge_Graph/LPG_and_RDF]] · [[Knowledge_Graph/Ontology]] · [[RAG/Advanced_Retrieval]] · [[RAG/Vector_Storage]] · [[../Retrieval_Strategies]]
+[[Knowledge_Graph/LPG_and_RDF]] · [[Knowledge_Graph/Ontology]] · [[RAG/Advanced_Retrieval]] · [[RAG/Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]]
 
 ## 출처
 - Microsoft Research "GraphRAG: Unlocking LLM discovery on narrative private data" — [microsoft.com](https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)

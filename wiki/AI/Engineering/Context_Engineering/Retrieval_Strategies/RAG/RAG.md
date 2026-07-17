@@ -48,7 +48,7 @@ flowchart TD
 | [[Vector_Storage]] | 임베딩을 어떻게 저장하고 검색할 것인가 |
 | [[Advanced_Retrieval]] | 더 정확한 검색 — 리랭킹, Multi-Query, HyDE |
 | [[HyDE]] | 가상 문서로 검색 품질 높이기 |
-| [[Agentic_RAG]] | 에이전트 기반 동적 검색 — Self-RAG, CRAG, Multi-Agent RAG |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] | 에이전트 기반 동적 검색 — Self-RAG, CRAG, Multi-Agent RAG |
 | [[Hybrid_RAG]] | Dense(벡터) + Sparse(BM25/SPLADE) 결합 — Reciprocal Rank Fusion |
 | [[Multimodal_RAG]] | 텍스트+이미지+표 통합 검색 — CLIP, ColPali, Multimodal LLM |
 
@@ -66,7 +66,7 @@ Context Recall:    필요한 문서가 검색됐는가?
 RAG는 **지식 집약적 AI 서비스의 기반 아키텍처**다. 엔터프라이즈 QA, 법률 리서치, 의료 정보 제공, 코드 문서 검색 등 "정확한 정보가 중요한" 모든 도메인에서 기본값으로 채택된다.
 
 ## 관련 개념
-[[../GraphRAG/GraphRAG]] · [[../SQL_RAG/SQL_RAG]] · [[../../Context_Engineering/Memory_and_Semantic_Cache]] · [[../../Context_Engineering/Context_Compression]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] · [[../../Context_Engineering/Memory_and_Semantic_Cache]] · [[../../Context_Engineering/Context_Compression]]
 
 ## 출처
 - Lewis et al. (2020) "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" — [arxiv.org/abs/2005.11401](https://arxiv.org/abs/2005.11401)
