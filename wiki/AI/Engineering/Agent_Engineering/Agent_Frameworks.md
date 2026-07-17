@@ -12,6 +12,39 @@ order: 7
 
 [[LangGraph]] 문서에서 상세히 다룬다. StateGraph 기반으로 노드·엣지를 명시적으로 정의하며, cyclical flow와 durable execution(체크포인트 기반 재개)이 강점이다. LangChain 생태계와 통합이 깊다.
 
+## LangChain Deep Agents — Agent Harness
+
+LangGraph가 저수준 실행 런타임이라면, **Deep Agents**(`pip install deepagents`)는 그 위에 올라가는 "batteries-included agent harness"다. 장기 태스크(long-horizon task)에서 팀마다 직접 구현해야 했던 플래닝·컨텍스트 관리·하위 위임·안전 장치를 표준 레이어로 제공한다.
+
+```python
+from deepagents import DeepAgent
+
+agent = DeepAgent(
+    model="claude-sonnet-4-6",
+    system_prompt="대규모 코드베이스 리팩토링을 수행하는 에이전트",
+)
+
+# write_todos로 태스크를 구조화 → subagent에 병렬 위임
+result = await agent.run("src/ 디렉터리 전체를 async/await 패턴으로 마이그레이션해줘")
+```
+
+**4개 레이어 아키텍처**:
+
+| 레이어 | 역할 | 주요 기능 |
+|--------|------|----------|
+| Execution Environment | 도구 실행 환경 | MCP 서버 연동, 샌드박스 코드 실행, 타입 안전 이벤트 스트리밍 |
+| Context Management | 컨텍스트 최적화 | 자동 요약·오프로딩, AGENTS.md 기반 skill loading, prompt caching |
+| Delegation | 하위 위임 | `write_todos`로 태스크 플래닝, subagent spawning(독립 context window) |
+| Steering | 제어·안전 | Human-in-the-Loop 인터럽트, 파일시스템 접근 제어(선언적) |
+
+**LangGraph와의 관계**: LangGraph = 저수준 그래프 런타임(커스텀 워크플로 최대 제어권), Deep Agents = 프로덕션 에이전트를 위한 opinionated harness 레이어(기본값 제공, 빠른 시작). 두 레이어는 스택에서 공존한다.
+
+**특징**:
+- **`write_todos`**: 복잡한 목표를 구조화된 태스크 트리로 분해 → 단계별 추적
+- **Subagent spawning**: 각 서브태스크를 독립된 context window에서 병렬 실행 — 메인 에이전트 컨텍스트 오염 없음 (→ [[Agent_Architectures]]의 Orchestrator 패턴)
+- **Virtual filesystem**: 세션 간 지식 영속화 — AGENTS.md로 skill을 정적 로딩, 대형 tool 결과는 파일에 오프로드
+- **Context offloading**: 대화 히스토리 자동 압축 + 정적 시스템 프롬프트 prompt caching으로 토큰 비용 절감
+
 ## AutoGen v0.4 — Actor Model
 
 Microsoft Research가 개발. v0.4에서 **액터 모델(Actor Model)** 기반으로 전면 재설계됐다 — 각 에이전트가 독립된 액터로서 비동기 메시지를 주고받는다.
@@ -115,6 +148,7 @@ agent = ClaudeAgent(
 | 프레임워크 | 핵심 은유 | 강점 | 적합 상황 |
 |-----------|---------|------|----------|
 | LangGraph | 상태 그래프 | Durable execution, cyclical flow | 복잡한 조건부 분기, 체크포인트 필요 |
+| Deep Agents | Agent harness | 장기 태스크 플래닝, subagent spawning, 컨텍스트 오프로딩 | LangGraph 위에서 프로덕션 에이전트를 빠르게 구축 |
 | AutoGen v0.4 | 액터 모델 | 비동기 확장성, 분산 배포 | 대규모 멀티 에이전트, 이벤트 기반 시스템 |
 | CrewAI | 역할 크루 | 빠른 프로토타이핑, 직관적 역할 분담 | 명확히 분업 가능한 태스크 (조사→작성→검토) |
 | OpenAI Agents SDK | Handoff | 내장 Guardrails/Tracing | OpenAI 생태계, 고객지원형 분기 |

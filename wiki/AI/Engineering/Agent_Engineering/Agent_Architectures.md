@@ -175,6 +175,8 @@ async def long_running_agent(task: str):
 
 **인프라 요구사항**: Long-running Agent는 Agent Runtime(sub-second cold start, 최대 7일 운영, auto-resume) 없이는 구현이 매우 복잡하다. 자세한 내용 → [[Production]]
 
+**관련 프레임워크**: LangChain **Deep Agents**(`pip install deepagents`)는 이 패턴을 위한 opinionated harness로, `write_todos` 기반 태스크 플래닝·subagent spawning·context offloading을 내장 제공한다 → [[Agent_Frameworks#LangChain Deep Agents — Agent Harness]]
+
 ## 아키텍처 선택 가이드
 
 ```mermaid
