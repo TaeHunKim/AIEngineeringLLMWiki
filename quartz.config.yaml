@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics: null
   locale: ko-KR
-  baseUrl: "rapaellk.github.io/LLMWiki"
+  baseUrl: "TaeHunKim.github.io/AIEngineeringLLMWiki"
   ignorePatterns:
     - private
     - templates
@@ -172,7 +172,7 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/rapaellk/LLMWiki
+        GitHub: https://github.com/TaeHunKim/AIEngineeringLLMWiki
   - source: github:quartz-community/spacer
     enabled: true
     options: {}
