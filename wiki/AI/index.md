@@ -27,13 +27,13 @@ order: 0
 #### Context Engineering
 - [[Engineering/Context_Engineering/Memory_and_Semantic_Cache]]: GPTCache, Redis 기반 시맨틱 캐시
 - [[Engineering/Context_Engineering/Context_Compression]]: LLM Lingua, Map-Reduce, Lost in the Middle
-- [[Engineering/Retrieval_Strategies/RAG/Chunking_Strategies]]: 5가지 청킹 전략, NVIDIA 2024 벤치마크
-- [[Engineering/Retrieval_Strategies/RAG/Vector_Storage]]: HNSW/FAISS/ScaNN, 7개 DB 비교표
-- [[Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval]]: Cross-Encoder 리랭킹, Multi-Query, RAG Fusion
-- [[Engineering/Retrieval_Strategies/RAG/HyDE]]: 가상 문서 임베딩, Gao 2022
-- [[Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF 비교
-- [[Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology]]: OWL/Turtle, 도메인 온톨로지, LLM 통합 패턴
-- [[Engineering/Retrieval_Strategies/GraphRAG/GraphRAG]]: Microsoft 2024, Leiden 클러스터링, Local/Global Search
+- [[Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies]]: 5가지 청킹 전략, NVIDIA 2024 벤치마크
+- [[Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage]]: HNSW/FAISS/ScaNN, 7개 DB 비교표
+- [[Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval]]: Cross-Encoder 리랭킹, Multi-Query, RAG Fusion
+- [[Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE]]: 가상 문서 임베딩, Gao 2022
+- [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF 비교
+- [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology]]: OWL/Turtle, 도메인 온톨로지, LLM 통합 패턴
+- [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG]]: Microsoft 2024, Leiden 클러스터링, Local/Global Search
 
 #### Flow Engineering
 - [[Engineering/Flow_Engineering/Linear_Flow/LangChain]]: LCEL 파이프라인, Memory, LangSmith

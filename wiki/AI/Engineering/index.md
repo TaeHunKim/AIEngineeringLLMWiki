@@ -47,27 +47,27 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ---
 
-### 3-1. [[Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] — 검색 전략
+### 3-1. [[Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] — 검색 전략
 
 - RAG (벡터 기반 비정형 문서 검색)
-    - [[Retrieval_Strategies/RAG/RAG|RAG 개요]] — Retrieval-Augmented Generation 기초
-    - [[Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] — Fixed-size, Semantic, Hierarchical
-    - [[Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN 검색 (HNSW, FAISS)
+    - [[Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG 개요]] — Retrieval-Augmented Generation 기초
+    - [[Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] — Fixed-size, Semantic, Hierarchical
+    - [[Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN 검색 (HNSW, FAISS)
     - Advanced Retrieval
-        - [[Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] — Reranking, Multi-Query, RAG Fusion
-        - [[Retrieval_Strategies/RAG/HyDE|HyDE]] — Hypothetical Document Embeddings
-        - [[Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] — Self-RAG, CRAG, Multi-Agent RAG, Query Routing
-        - [[Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — Dense(벡터) + Sparse(BM25/SPLADE) + Reciprocal Rank Fusion
-        - [[Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] — CLIP/ColPali 공유 임베딩, 텍스트+이미지 통합 검색
+        - [[Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] — Reranking, Multi-Query, RAG Fusion
+        - [[Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]] — Hypothetical Document Embeddings
+        - [[Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] — Self-RAG, CRAG, Multi-Agent RAG, Query Routing
+        - [[Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — Dense(벡터) + Sparse(BM25/SPLADE) + Reciprocal Rank Fusion
+        - [[Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] — CLIP/ColPali 공유 임베딩, 텍스트+이미지 통합 검색
 - GraphRAG (구조적 관계·전역 분석)
-    - [[Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden 클러스터링
-    - [[Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph 개요]]
-    - [[Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] — Neo4j Cypher vs SPARQL
-    - [[Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, 도메인 온톨로지, 추론
+    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden 클러스터링
+    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph 개요]]
+    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] — Neo4j Cypher vs SPARQL
+    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, 도메인 온톨로지, 추론
 - NL2SQL (정형 DB 자연어 질의)
-    - [[Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
+    - [[Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
 - SQL RAG (정형+비정형 Hybrid)
-    - [[Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
+    - [[Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
 
 ---
 
