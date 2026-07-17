@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: LLMWiki
+created: 2026-05-02T17:40:21+09:00
