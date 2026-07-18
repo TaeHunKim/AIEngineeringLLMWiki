@@ -110,5 +110,85 @@ export default (() => {
     )
   }
 
+  Head.css = `
+.lang-switch {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  background: var(--secondary);
+  color: var(--light) !important;
+  font-size: 0.8rem;
+  font-family: var(--bodyFont);
+  text-decoration: none !important;
+  opacity: 0.85;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+.lang-switch:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+`
+
+  Head.afterDOMLoaded = `
+(function() {
+  function updateLangSwitch() {
+    var existing = document.querySelector('.lang-switch');
+    if (existing) {
+      existing.remove();
+    }
+
+    var slug = document.body.dataset.slug || "";
+    var basepath = document.body.dataset.basepath || "";
+    if (basepath && !basepath.startsWith("/")) {
+      basepath = "/" + basepath;
+    }
+
+    var isEn = slug === "en" || slug.startsWith("en/");
+    var targetSlug = isEn
+      ? (slug === "en" ? "index" : slug.slice(3))
+      : (slug === "index" ? "en/index" : "en/" + slug);
+
+    var fallbackSlug = isEn ? "index" : "en/index";
+    var label = isEn ? '한국어' : 'English';
+
+    function getHref(s) {
+      if (s === "index") return basepath + "/";
+      if (s === "en/index") return basepath + "/en/";
+      return basepath + "/" + s;
+    }
+
+    var targetHref = getHref(targetSlug);
+    var fallbackHref = getHref(fallbackSlug);
+
+    function mount(href) {
+      var a = document.createElement('a');
+      a.className = 'lang-switch';
+      a.textContent = label;
+      a.href = href;
+      document.body.appendChild(a);
+    }
+
+    if (typeof fetchData !== 'undefined') {
+      fetchData.then(function(index) {
+        var exists = targetSlug in index || (targetSlug + '/index') in index;
+        mount(exists ? targetHref : fallbackHref);
+      }).catch(function() { mount(targetHref); });
+    } else {
+      mount(targetHref);
+    }
+  }
+
+  updateLangSwitch();
+  document.addEventListener("nav", updateLangSwitch);
+})();
+`
+
   return Head
 }) satisfies QuartzComponentConstructor
