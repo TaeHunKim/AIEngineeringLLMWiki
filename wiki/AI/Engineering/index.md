@@ -136,13 +136,4 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 
 ## AI Engineering 전체 아키텍처
 
-```mermaid
-flowchart TD
-    ME["**Model Engineering**<br/>Pre-train → Fine-Tune (Full/LoRA/QLoRA) → Compress"]
-    PC["**Prompt & Context Engineering**<br/>System Prompt / CoT / RAG / KG / Memory / Cache"]
-    FA["**Flow & Agent Engineering**<br/>LangChain / LangGraph / ReAct / HITL / Multi-Agent"]
-    HE["**Harness Engineering**<br/>Guardrails / Evaluation / Observability / Red Team"]
-    LE["**Loop Engineering**<br/>Data Flywheel → Continuous Optimization → Runtime"]
-
-    ME --> PC --> FA --> HE --> LE
-```
+![[assets/structured-llm-engineering-hierarchy.png]]
