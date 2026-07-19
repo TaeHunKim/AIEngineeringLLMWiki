@@ -117,3 +117,11 @@
 - AI/index.md — Sources에 AI Engineering from Scratch 항목 추가, Agent/Harness/Loop Engineering 섹션 링크 갱신
 - Engineering/index.md — 목차에 신규 9개 문서 반영, order/nav_order 프론트매터 정합성 유지
 - Agent_Engineering.md, Harness_Engineering.md, Loop_Engineering.md — 하위 문서 표 갱신
+
+## [2026-07-20] ingest | Open Knowledge Format (OKF)
+
+- 출처: Google Cloud Blog (2026-06-12), GoogleCloudPlatform/knowledge-catalog GitHub
+- 신규 문서: Context_Engineering/Open_Knowledge_Format.md (order: 6)
+- 영어 버전: en/AI/Engineering/Context_Engineering/Open_Knowledge_Format.md
+- 위치 선정 이유: OKF는 AI 에이전트에게 제공할 조직 지식의 구조화 표준 → Context Engineering 소속
+- 관련 링크: Retrieval_Strategies, RAG, Knowledge_Graph, MCP
