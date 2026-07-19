@@ -44,6 +44,7 @@ From pre-training to post-deployment continuous improvement loops — covering 7
 - Context Optimization
     - [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, cost reduction
     - [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] — Long context middle degradation and avoidance strategies (Liu et al., 2023)
+    - [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]] — Open standard for packaging organizational knowledge for AI agents, markdown+YAML frontmatter bundle (Google Cloud, 2026)
 
 ---
 
@@ -101,6 +102,7 @@ From pre-training to post-deployment continuous improvement loops — covering 7
 - [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — Claude/OpenAI CUA/Gemini computer use, Pipecat/LiveKit voice agents
 - [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL *(2026)*
 - [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3-stage evaluation layers, Agent Workbench 7 surfaces
+- [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] — Safe Rollout 4 strategies, multi-agent observability, cost & latency optimization
 - [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(May 2026)*
 
 ---

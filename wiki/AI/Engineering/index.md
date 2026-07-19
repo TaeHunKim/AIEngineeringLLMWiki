@@ -44,6 +44,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 - Context Optimization
     - [[Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, 비용 절감
     - [[Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] — 긴 컨텍스트 중간 활용도 저하 및 회피 전략 (Liu et al., 2023)
+    - [[Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]] — AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026)
 
 ---
 
@@ -96,12 +97,12 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
     - [[Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — LLM↔도구 통합 오픈 표준, Transports/Sampling/OAuth 2.1/Gateway (Anthropic, 2024)
     - [[Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — 에이전트 간 통신 오픈 표준 (Google, 2025)
     - [[Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|AG-UI (Agent-User Interaction Protocol)]] — 에이전트↔사용자 UI 실시간 양방향 스트리밍 표준 (CopilotKit, 2025)
-    - [[Agent_Engineering/Agent_Skills_and_Protocols|A2UI (Agent-to-UI Protocol)]] — 에이전트가 동적 UI 컴포넌트를 직접 생성하는 선언적 프로토콜 (Google, 2026)
 - [[Agent_Engineering/Agent_Frameworks|Agent Frameworks]] — AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra
 - [[Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] — 조정 패턴, 통신 프로토콜, 실패 모드 (MASFT/MAST, NeurIPS 2025)
 - [[Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — Claude/OpenAI CUA/Gemini 컴퓨터 사용, Pipecat/LiveKit 음성 에이전트
 - [[Agent_Engineering/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL *(2026)*
 - [[Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3단계 평가 레이어, Agent Workbench 7가지 표면
+- [[Agent_Engineering/AgentOps|AgentOps]] — Safe Rollout 4전략, 멀티에이전트 관찰가능성, 비용·레이턴시 최적화
 - [[Agent_Engineering/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(2026년 5월)*
 
 ---

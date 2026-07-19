@@ -116,25 +116,25 @@ flowchart TD
     R -->|"복합 질문"| D[여러 전략 병렬 실행 후 결합]
 ```
 
-→ [[RAG/Agentic_RAG]] 참고
+→ [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] 참고
 
 ## 하위 문서
 
 | 챕터 | 문서 | 내용 |
 |------|------|------|
 | **RAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] | 벡터 기반 RAG 기초 |
-| | [[RAG/Chunking_Strategies]] | 문서 분할 전략 5가지 |
-| | [[RAG/Vector_Storage]] | 벡터 DB, HNSW, FAISS |
-| | [[RAG/Advanced_Retrieval]] | Reranking, Multi-Query, RAG Fusion |
-| | [[RAG/HyDE]] | 가상 문서 임베딩 검색 개선 |
-| | [[RAG/Agentic_RAG]] | Self-RAG, CRAG, Multi-Agent RAG |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] | 문서 분할 전략 5가지 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] | 벡터 DB, HNSW, FAISS |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] | Reranking, Multi-Query, RAG Fusion |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]] | 가상 문서 임베딩 검색 개선 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] | Self-RAG, CRAG, Multi-Agent RAG |
 | **GraphRAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] | Microsoft GraphRAG, 커뮤니티 클러스터링 |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] | 지식 그래프 개요 |
-| | [[GraphRAG/Knowledge_Graph/LPG_and_RDF]] | Neo4j Cypher vs SPARQL |
-| | [[GraphRAG/Knowledge_Graph/Ontology]] | OWL, 도메인 온톨로지 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] | Neo4j Cypher vs SPARQL |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] | OWL, 도메인 온톨로지 |
 | **NL2SQL** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] | Text-to-SQL 파이프라인, 벤치마크, 최신 기법 |
 | **SQL RAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] | 정형 데이터 RAG, Hybrid 아키텍처 |
 
 ## 관련 개념
 
-[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[RAG/Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
