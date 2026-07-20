@@ -44,7 +44,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 - Context Optimization
     - [[Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, 비용 절감
     - [[Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] — 긴 컨텍스트 중간 활용도 저하 및 회피 전략 (Liu et al., 2023)
-    - [[Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]] — AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026)
+    - [[AI/Engineering/Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]] — AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026)
 
 ---
 

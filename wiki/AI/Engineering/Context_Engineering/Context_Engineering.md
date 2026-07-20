@@ -25,6 +25,7 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 | [[Semantic_Cache]] | 의미 유사도 캐싱, GPTCache, 비용 절감 효과 |
 | [[Context_Compression]] | LLM Lingua, Map-Reduce, 비용 절감 |
 | [[Lost_in_the_Middle]] | LLM의 긴 컨텍스트 중간 활용도 저하 현상 및 회피 전략 |
+| [[Open_Knowledge_Format]] | AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026) |
 
 > **RAG, GraphRAG, NL2SQL, SQL RAG** 문서는 별도 챕터로 분리됐습니다.
 > → [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies 챕터]] 참고

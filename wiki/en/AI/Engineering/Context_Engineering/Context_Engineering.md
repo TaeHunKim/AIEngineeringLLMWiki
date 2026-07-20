@@ -25,6 +25,7 @@ Context Engineering = the art of filling this space most usefully
 | [[en/AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic Cache]] | Semantic similarity caching, GPTCache, cost reduction effects |
 | [[en/AI/Engineering/Context_Engineering/Context_Compression\|Context Compression]] | LLM Lingua, Map-Reduce, cost reduction |
 | [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle\|Lost in the Middle]] | LLM performance degradation for middle-of-context info and avoidance strategies |
+| [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format\|Open Knowledge Format (OKF)]] | Open standard for packaging organizational knowledge for AI agents, markdown+YAML frontmatter bundle (Google Cloud, 2026) |
 
 > **RAG, GraphRAG, NL2SQL, SQL RAG** documents are in a separate chapter.
 > → See [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies chapter]]
