@@ -8,7 +8,7 @@ order: 12
 
 ## Ops 진화 체계
 
-(출처: [[Agents_Companion_v2]])
+(출처: [[AI/sources/Agents_Companion_v2|Agents_Companion_v2]])
 
 ```
 DevOps → MLOps → FMOps → PromptOps → RAGOps → AgentOps
@@ -23,7 +23,7 @@ AgentOps는 **GenAIOps**의 하위 분류이며, 이전 단계에 비해 추가�
 
 ## 에이전트 고유의 운영 과제
 
-(출처: [[Prototype_to_Production]])
+(출처: [[AI/sources/Prototype_to_Production|Prototype_to_Production]])
 
 전통 소프트웨어와 달리 에이전트는 **자율적·상태보존적·동적 경로**를 가진다. 이것이 기존 MLOps로는 불충분한 이유다:
 
@@ -43,7 +43,7 @@ AgentOps는 **GenAIOps**의 하위 분류이며, 이전 단계에 비해 추가�
 
 ## 3 Pillars of AgentOps
 
-(출처: [[Prototype_to_Production]])
+(출처: [[AI/sources/Prototype_to_Production|Prototype_to_Production]])
 
 ### Pillar 1: Automated Evaluation (자동화된 평가)
 
@@ -51,7 +51,7 @@ Golden dataset 기반 quality gate — 어떤 버전도 평가 통과 없이 프
 
 전통 단위 테스트만으로 불충분한 이유: 100개 tool unit test를 통과해도 잘못된 도구 선택이나 환각이 발생 가능. 에이전트는 **전체 reasoning trajectory**를 평가해야 한다.
 
-평가 구성 3요소 (출처: [[Agents_Companion_v2]]):
+평가 구성 3요소 (출처: [[AI/sources/Agents_Companion_v2|Agents_Companion_v2]]):
 1. **Capabilities** — 에이전트가 의도한 능력을 갖추고 있는가
 2. **Trajectory & Tool Use** — 올바른 도구를 올바른 순서로 선택했는가
 3. **Final Response** — 최종 응답이 기대 품질을 충족하는가
@@ -90,7 +90,7 @@ flowchart TD
 
 ## Observe → Act → Evolve 운영 루프
 
-(출처: [[Prototype_to_Production]])
+(출처: [[AI/sources/Prototype_to_Production|Prototype_to_Production]])
 
 ```mermaid
 flowchart LR
@@ -164,7 +164,7 @@ flowchart LR
 
 ## Prototype → Production 전환 체크리스트
 
-(출처: [[Prototype_to_Production]])
+(출처: [[AI/sources/Prototype_to_Production|Prototype_to_Production]])
 
 ```
 □ Golden dataset 구성 + 자동화 평가 harness
@@ -180,12 +180,12 @@ flowchart LR
 
 ## 관련 개념
 
-[[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[Agent_Architectures]] · [[Agent_Deployment]]
+[[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]
 
 ## 출처
 
-- [[Prototype_to_Production]] (Google, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
-- [[Agents_Companion_v2]] (Google Kaggle, 2025)
+- [[AI/sources/Prototype_to_Production|Prototype_to_Production]] (Google, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agents_Companion_v2|Agents_Companion_v2]] (Google Kaggle, 2025)
 
 ## 참고 문헌
 

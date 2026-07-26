@@ -31,8 +31,8 @@ Anthropic의 지침: "단순한 프롬프트로 시작하고, 포괄적 평가�
 
 3. Online Evals (온라인/프로덕션 평가)
      - 세션 리플레이 (Langfuse)
-     - 가드레일 트리거 알람 (→ [[Guardrail_Engineering]])
-     - 스텝별 비용·지연시간 추적 (OTel 스팬 → [[Observability_and_Tracing]])
+     - 가드레일 트리거 알람 (→ [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])
+     - 스텝별 비용·지연시간 추적 (OTel 스팬 → [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]])
 ```
 
 ### Evaluator-Optimizer 타이트 루프
@@ -41,7 +41,7 @@ Anthropic의 지침: "단순한 프롬프트로 시작하고, 포괄적 평가�
 2. Evaluator(평가자)가 판정
 3. 평가자가 통과할 때까지 개선 반복
 
-[[Planning_and_Reflection]]의 Self-Refine을 일반화한 형태이며, 신경 쓰는 어떤 에이전트 플로우든 이 루프로 감쌀 수 있다.
+[[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]]의 Self-Refine을 일반화한 형태이며, 신경 쓰는 어떤 에이전트 플로우든 이 루프로 감쌀 수 있다.
 
 ### 2026년 실무 표준
 
@@ -94,7 +94,7 @@ flowchart LR
 
 **워크벤치 vs 프롬프트 엔지니어링**: 프롬프팅은 "이번 턴에 무엇을 원하는지"를 알려준다. 워크벤치는 "여러 턴·여러 세션에 걸쳐 어떻게 작업할지"를 알려준다. 대부분의 에이전트 실패 사례는 프롬프트 엔지니어링의 옷을 입은 워크벤치 실패다.
 
-**워크벤치 vs 프레임워크**: 프레임워크([[Agent_Frameworks]])는 런타임(LangGraph, AutoGen, Agents SDK)을 제공한다. 워크벤치는 그 런타임 "안에서" 에이전트가 작업할 공간을 제공한다. 둘 다 필요하다.
+**워크벤치 vs 프레임워크**: 프레임워크([[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]])는 런타임(LangGraph, AutoGen, Agents SDK)을 제공한다. 워크벤치는 그 런타임 "안에서" 에이전트가 작업할 공간을 제공한다. 둘 다 필요하다.
 
 ### 분산 시스템 원시 요소(Primitives)로 환원
 
@@ -168,14 +168,14 @@ agent-workbench-pack/
 
 ## Eval-Driven Development와 Workbench의 관계
 
-두 방법론은 상호 보완적이다: Eval-Driven Development가 "무엇이 성공인지 어떻게 측정할 것인가"를 다룬다면, Agent Workbench의 Verification Gate가 그 측정을 실제 실행 루프 안에 강제한다. Phase 14의 모든 레슨은 대응하는 평가 케이스를 만들어낸다 — 예를 들어 Reflexion(→ [[Planning_and_Reflection]])은 "재시도 시 학습된 반성이 실제로 적용되는가"라는 평가 케이스를, 실패 모드([[Multi_Agent_Coordination]])는 "탐지기가 알려진 실패를 태깅하는가"라는 케이스를 만든다.
+두 방법론은 상호 보완적이다: Eval-Driven Development가 "무엇이 성공인지 어떻게 측정할 것인가"를 다룬다면, Agent Workbench의 Verification Gate가 그 측정을 실제 실행 루프 안에 강제한다. Phase 14의 모든 레슨은 대응하는 평가 케이스를 만들어낸다 — 예를 들어 Reflexion(→ [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]])은 "재시도 시 학습된 반성이 실제로 적용되는가"라는 평가 케이스를, 실패 모드([[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]])는 "탐지기가 알려진 실패를 태깅하는가"라는 케이스를 만든다.
 
 ## AI Engineering에서의 역할
 
-Eval-Driven Development와 Agent Workbench는 "모델이 얼마나 똑똑한가"에서 "시스템이 얼마나 신뢰할 수 있는가"로 초점을 옮기는 2026년의 핵심 흐름이다. Terminal Bench·Vercel·Harvey의 사례가 보여주듯, 같은 모델이라도 하네스(워크벤치) 설계만으로 성공률이 극적으로 달라진다. [[Eval_Driven_Development_and_Agent_Workbench|본 문서]]의 7가지 표면은 [[Multi_Agent_Coordination]]의 실패 모드(MASFT/MAST)를 예방하는 구체적 엔지니어링 대응책이기도 하다 — 예를 들어 Verification Gate는 "Verification Gap" 실패를, Handoff는 "Coordination Failure"를 구조적으로 줄인다.
+Eval-Driven Development와 Agent Workbench는 "모델이 얼마나 똑똑한가"에서 "시스템이 얼마나 신뢰할 수 있는가"로 초점을 옮기는 2026년의 핵심 흐름이다. Terminal Bench·Vercel·Harvey의 사례가 보여주듯, 같은 모델이라도 하네스(워크벤치) 설계만으로 성공률이 극적으로 달라진다. [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|본 문서]]의 7가지 표면은 [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]의 실패 모드(MASFT/MAST)를 예방하는 구체적 엔지니어링 대응책이기도 하다 — 예를 들어 Verification Gate는 "Verification Gap" 실패를, Handoff는 "Coordination Failure"를 구조적으로 줄인다.
 
 ## 관련 개념
-[[Multi_Agent_Coordination]] · [[Agent_Frameworks]] · [[Planning_and_Reflection]] · [[Guardrail_Engineering]] · [[Observability_and_Tracing]] · [[Benchmarking]]
+[[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
 
 ## 출처
 - Anthropic "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/research/building-effective-agents)

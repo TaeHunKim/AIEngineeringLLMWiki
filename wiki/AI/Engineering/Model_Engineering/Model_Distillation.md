@@ -91,7 +91,7 @@ Student (소형 모델):
 증류는 "API 비용을 줄이고 싶지만 성능은 유지하고 싶다"는 니즈를 충족시킨다. GPT-4 수준 성능의 작은 모델을 자체 인프라에서 서빙하거나, 엣지 디바이스(모바일, IoT)에 LLM 능력을 탑재하는 데 핵심 기술이다.
 
 ## 관련 개념
-[[Full_Fine-Tuning]] · [[PEFT_LoRA_QLoRA]] · [[Quantization]]
+[[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]]
 
 ## 출처
 - Hinton et al. (2015) "Distilling the Knowledge in a Neural Network" — [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)

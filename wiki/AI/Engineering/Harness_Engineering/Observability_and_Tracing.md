@@ -275,11 +275,11 @@ Gemini Enterprise Agent Platform에 내장된 네이티브 관찰 도구:
 Observability는 **프로덕션 AI 시스템의 신경계**다. "왜 사용자 불만이 늘었나", "어떤 쿼리가 비용을 많이 쓰나", "파인튜닝 후 성능이 개선됐나" 같은 질문에 데이터 기반으로 답할 수 있게 한다. 에이전트 시스템에서는 Three Pillars + Dynamic Sampling + 이중 대시보드로 단순 LLM 추적을 넘어 에이전트 품질까지 관찰해야 한다. 없으면 블랙박스 운영이 되어 개선이 불가능하다.
 
 ## 관련 개념
-[[LLM_as_a_Judge]] · [[Benchmarking]] · [[Guardrail_Engineering]] · [[Data_Flywheel]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
 
 ## 출처
 - MLflow "Top 5 LLM and Agent Observability Tools in 2026" — [mlflow.org](https://mlflow.org/top-5-agent-observability-tools/)
 - Langfuse 공식 문서 — [langfuse.com](https://langfuse.com)
 - Arize Phoenix 문서 — [docs.arize.com/phoenix](https://docs.arize.com/phoenix)
 - "LLMOps Observability: LangSmith vs Arize vs Langfuse" — [Medium](https://medium.com/@kanerika/llmops-observability-langsmith-vs-arize-vs-langfuse-vs-w-b-f1baeabd1bbf)
-- [[Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

@@ -175,7 +175,7 @@ async def long_running_agent(task: str):
 
 **인프라 요구사항**: Long-running Agent는 Agent Runtime(sub-second cold start, 최대 7일 운영, auto-resume) 없이는 구현이 매우 복잡하다. 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
-**관련 프레임워크**: LangChain **Deep Agents**(`pip install deepagents`)는 이 패턴을 위한 opinionated harness로, `write_todos` 기반 태스크 플래닝·subagent spawning·context offloading을 내장 제공한다 → [[Agent_Frameworks#LangChain Deep Agents — Agent Harness]]
+**관련 프레임워크**: LangChain **Deep Agents**(`pip install deepagents`)는 이 패턴을 위한 opinionated harness로, `write_todos` 기반 태스크 플래닝·subagent spawning·context offloading을 내장 제공한다 → [[AI/Engineering/Agent_Engineering/Agent_Frameworks#LangChain Deep Agents — Agent Harness|Agent_Frameworks]]
 
 ## 아키텍처 선택 가이드
 
@@ -205,9 +205,9 @@ flowchart TD
 에이전트 아키텍처 선택은 AI 시스템 설계의 **핵심 아키텍처 결정**이다. 단순함에서 시작하고(Single Agent), 복잡성이 필요한 경우에만 Multi-Agent로 확장하는 것이 모범 사례다. 복잡한 아키텍처는 성능을 높이지만 디버깅과 비용도 함께 증가한다.
 
 ## 관련 개념
-[[Agent_Core_Pillars]] · [[LangGraph]] · [[Human_in_the_Loop]] · [[Agent_Skills_and_Protocols]]
+[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]
 
 ## 출처
 - Anthropic "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/engineering/building-effective-agents)
 - LangGraph Multi-Agent 문서 — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)
-- [[Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

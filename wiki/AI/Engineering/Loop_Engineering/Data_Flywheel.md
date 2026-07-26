@@ -202,7 +202,7 @@ Agent Quality Flywheel:
   핵심 차이: 데이터가 텍스트가 아닌 "실행 궤적"
 ```
 
-에이전트 플라이휠이 잘 돌기 위한 인프라: Agent Observability Suite(계측) + Critic Agent(평가) + Agent Simulation(검증) + Agent Registry(버전 관리). 자세한 내용 → [[Agent_Deployment]] · [[LLM_as_a_Judge]]
+에이전트 플라이휠이 잘 돌기 위한 인프라: Agent Observability Suite(계측) + Critic Agent(평가) + Agent Simulation(검증) + Agent Registry(버전 관리). 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]
 
 ## Self-Evolving Data Flywheel *(2025-2026)*
 
@@ -244,7 +244,7 @@ Dual Data Flywheel:
 Data Flywheel은 AI 시스템이 **정적인 제품에서 살아있는 시스템**으로 진화하게 하는 핵심 메커니즘이다. 2025년 이후로는 외부 인간 레이블 없이 모델 스스로가 훈련 데이터를 생성·검증하는 Self-Evolving 패턴이 확산되고 있다. 에이전트 시스템에서는 Agent Quality Flywheel과 Dual Flywheel로 실행 궤적 수준의 개선 루프를 구축해야 한다.
 
 ## 관련 개념
-[[Continuous_Optimization]] · [[LLM_as_a_Judge]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Agent_Deployment]]
+[[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]
 
 ## 출처
 - Lilian Weng (2023) "LLM-powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)

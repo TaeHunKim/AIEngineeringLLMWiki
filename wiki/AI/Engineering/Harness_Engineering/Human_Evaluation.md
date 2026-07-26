@@ -190,7 +190,7 @@ LMSYS가 운영하는 대규모 인간 선호도 수집 플랫폼:
 Human Evaluation은 **AI 시스템의 최종 품질 게이트**다. 자동 평가로 빠른 이터레이션을 하고, 정기적으로 인간 평가로 검증하는 사이클이 권장된다. RLHF를 통해 수집된 인간 선호도 데이터는 모델 개선의 가장 직접적인 입력이며, 이 데이터의 품질이 최종 모델 품질을 결정한다.
 
 ## 관련 개념
-[[LLM_as_a_Judge]] · [[Benchmarking]] · [[Data_Flywheel]] · [[Full_Fine-Tuning]]
+[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]]
 
 ## 출처
 - Ouyang et al. (2022) "InstructGPT (RLHF)" — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)

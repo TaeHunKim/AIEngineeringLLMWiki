@@ -207,7 +207,7 @@ OKF는 Context Engineering의 **"조직 지식 계층"**을 표준화한다. RAG
 - 에이전트 간 동일한 조직 지식 공유 (MCP Server의 "Knowledge" 리소스로 서빙 가능)
 
 ## 관련 개념
-[[Context_Engineering]] · [[Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] · [[Retrieval_Strategies/RAG/RAG|RAG]] · [[Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] · [[../Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context_Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## 출처
 - Google Cloud (2026-06-12) "How the Open Knowledge Format can improve data sharing" — [cloud.google.com/blog](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing/)

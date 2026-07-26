@@ -146,7 +146,7 @@ Question: {question}
 
 ## Reflexion과의 관계
 
-Reflexion(→ [[Planning_and_Reflection]])은 ReAct를 확장하여 **실패 후 언어적 자기 반성**을 추가:
+Reflexion(→ [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]])은 ReAct를 확장하여 **실패 후 언어적 자기 반성**을 추가:
 ```
 ReAct:    생각 → 행동 → 관찰 → 반복
 Reflexion: 실패 → 반성 생성 → 반성을 메모리에 저장 → 다음 시도에 활용
@@ -157,7 +157,7 @@ Reflexion: 실패 → 반성 생성 → 반성을 메모리에 저장 → 다음
 ReAct는 현대 LLM 에이전트 아키텍처의 **기본 설계 원칙**이다. LangGraph의 기본 에이전트 패턴, OpenAI Assistants, Anthropic Claude의 에이전트 모드 모두 ReAct의 아이디어를 기반으로 한다. "생각하고 행동하는" 에이전트를 구현할 때 가장 먼저 적용하는 패턴이다.
 
 ## 관련 개념
-[[Chain_of_Thought]] · [[Tool_Use_and_Function_Calling]] · [[LangGraph]] · [[Planning_and_Reflection]]
+[[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]]
 
 ## 출처
 - Yao et al. (2022) "ReAct: Synergizing Reasoning and Acting in Language Models" — [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)

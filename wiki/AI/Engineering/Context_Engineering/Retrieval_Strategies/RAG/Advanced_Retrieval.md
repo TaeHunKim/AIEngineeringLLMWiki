@@ -279,7 +279,7 @@ compression_retriever = ContextualCompressionRetriever(
 Advanced Retrieval은 RAG 파이프라인의 **정밀도 레이어**다. 기본 검색이 "관련 문서를 찾는" 것이라면, 고급 검색은 "가장 유용한 컨텍스트를 최적 형태로 제공하는" 것이다. Reranking만으로도 RAG 응답 품질을 15~30% 향상시킬 수 있다.
 
 ## 관련 개념
-[[Chunking_Strategies]] · [[Vector_Storage]] · [[HyDE]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]]
 
 ## 출처
 1. Reranking for RAG: +40% Accuracy with Cross-Encoders (2025 Guide) — [ailog.fr](https://app.ailog.fr/en/blog/guides/reranking)

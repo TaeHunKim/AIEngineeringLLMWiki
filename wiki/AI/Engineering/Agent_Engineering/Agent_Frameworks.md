@@ -6,11 +6,11 @@ order: 7
 
 ## 개요
 
-[[Anthropic_Workflow_Patterns|Workflow Patterns]]가 "언제 프레임워크가 필요한가"의 기준을 제시했다면, 이 문서는 "어떤 프레임워크를 고를 것인가"를 다룬다. 2024~2026년 사이 프로덕션급 에이전트 프레임워크가 빠르게 성숙했다. 각 프레임워크는 서로 다른 설계 철학(상태 그래프, 액터 모델, 역할 크루, SDK 네이티브)에서 출발했다.
+[[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Workflow Patterns]]가 "언제 프레임워크가 필요한가"의 기준을 제시했다면, 이 문서는 "어떤 프레임워크를 고를 것인가"를 다룬다. 2024~2026년 사이 프로덕션급 에이전트 프레임워크가 빠르게 성숙했다. 각 프레임워크는 서로 다른 설계 철학(상태 그래프, 액터 모델, 역할 크루, SDK 네이티브)에서 출발했다.
 
 ## LangGraph — 상태 그래프
 
-[[LangGraph]] 문서에서 상세히 다룬다. StateGraph 기반으로 노드·엣지를 명시적으로 정의하며, cyclical flow와 durable execution(체크포인트 기반 재개)이 강점이다. LangChain 생태계와 통합이 깊다.
+[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] 문서에서 상세히 다룬다. StateGraph 기반으로 노드·엣지를 명시적으로 정의하며, cyclical flow와 durable execution(체크포인트 기반 재개)이 강점이다. LangChain 생태계와 통합이 깊다.
 
 ## LangChain Deep Agents — Agent Harness
 
@@ -41,7 +41,7 @@ result = await agent.run("src/ 디렉터리 전체를 async/await 패턴으로 �
 
 **특징**:
 - **`write_todos`**: 복잡한 목표를 구조화된 태스크 트리로 분해 → 단계별 추적
-- **Subagent spawning**: 각 서브태스크를 독립된 context window에서 병렬 실행 — 메인 에이전트 컨텍스트 오염 없음 (→ [[Agent_Architectures]]의 Orchestrator 패턴)
+- **Subagent spawning**: 각 서브태스크를 독립된 context window에서 병렬 실행 — 메인 에이전트 컨텍스트 오염 없음 (→ [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]의 Orchestrator 패턴)
 - **Virtual filesystem**: 세션 간 지식 영속화 — AGENTS.md로 skill을 정적 로딩, 대형 tool 결과는 파일에 오프로드
 - **Context offloading**: 대화 히스토리 자동 압축 + 정적 시스템 프롬프트 prompt caching으로 토큰 비용 절감
 
@@ -91,7 +91,7 @@ crew = Crew(
 crew.kickoff()
 ```
 
-**Flows**는 CrewAI의 결정론적 오케스트레이션 레이어로, Crew(자율적) + 명시적 제어 흐름(결정론적)을 결합한다 — [[Anthropic_Workflow_Patterns]]의 Workflow/Agent 스펙트럼에서 중간 지점에 해당한다.
+**Flows**는 CrewAI의 결정론적 오케스트레이션 레이어로, Crew(자율적) + 명시적 제어 흐름(결정론적)을 결합한다 — [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]]의 Workflow/Agent 스펙트럼에서 중간 지점에 해당한다.
 
 ## OpenAI Agents SDK — Handoffs, Guardrails, Tracing
 
@@ -112,7 +112,7 @@ result = Runner.run_sync(support_agent, "환불 어떻게 하나요?")
 
 **핵심 개념**:
 - **Handoffs**: 한 에이전트가 대화의 제어권을 통째로 다른 에이전트에 넘김 (CrewAI의 역할 분담과 달리 대화 컨텍스트가 그대로 이전)
-- **Guardrails**: 입출력에 대한 병렬 체크 함수 — 조건 위반 시 실행 중단 → [[Guardrail_Engineering]]
+- **Guardrails**: 입출력에 대한 병렬 체크 함수 — 조건 위반 시 실행 중단 → [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
 - **Tracing**: 내장 실행 추적 — OpenAI 대시보드에서 바로 시각화
 
 ## Claude Agent SDK — Subagents and Session Store
@@ -134,7 +134,7 @@ agent = ClaudeAgent(
 
 **특징**:
 - **Subagents**: 컨텍스트를 분리한 채로 위임되는 하위 에이전트 — 메인 에이전트의 컨텍스트 창을 오염시키지 않음
-- **Session Store**: 파일 기반 세션 저장 — 프로세스가 죽어도 정확한 지점에서 재개 (→ [[Autonomous_Systems]]의 durable execution과 같은 문제의식)
+- **Session Store**: 파일 기반 세션 저장 — 프로세스가 죽어도 정확한 지점에서 재개 (→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 durable execution과 같은 문제의식)
 - Claude Code가 실전에서 검증한 "하네스" 설계를 그대로 재사용 가능
 
 ## Agno와 Mastra — 프로덕션 런타임
@@ -158,7 +158,7 @@ agent = ClaudeAgent(
 
 ## Agent Framework Tradeoffs
 
-프레임워크 도입은 공짜가 아니다. [[Anthropic_Workflow_Patterns]]가 지적하듯, 프레임워크는 프롬프트와 제어 흐름을 추가 레이어 뒤에 숨긴다.
+프레임워크 도입은 공짜가 아니다. [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]]가 지적하듯, 프레임워크는 프롬프트와 제어 흐름을 추가 레이어 뒤에 숨긴다.
 
 ```
 프레임워크 도입 비용:
@@ -172,14 +172,14 @@ agent = ClaudeAgent(
   - 팀 표준화 — 여러 엔지니어가 같은 패턴으로 작업
 ```
 
-**실무 권고**: 먼저 [[Anthropic_Workflow_Patterns]]의 5가지 패턴을 직접 API 호출로 구현해보고, 상태 관리·동시성·역할 분담 중 실제로 부족한 지점이 드러나면 그때 해당 강점을 가진 프레임워크로 이전한다.
+**실무 권고**: 먼저 [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]]의 5가지 패턴을 직접 API 호출로 구현해보고, 상태 관리·동시성·역할 분담 중 실제로 부족한 지점이 드러나면 그때 해당 강점을 가진 프레임워크로 이전한다.
 
 ## AI Engineering에서의 역할
 
-Agent Frameworks는 에이전트 설계의 "언어"에서 "제품"으로의 전환을 대표한다. 프레임워크 선택은 아키텍처([[Agent_Architectures]])와 워크플로 패턴([[Anthropic_Workflow_Patterns]]) 결정 이후에 이뤄져야 하는 구현 세부사항이며, 잘못된 순서로 접근하면(프레임워크부터 고르고 아키텍처를 끼워 맞추면) 불필요한 복잡도로 이어진다.
+Agent Frameworks는 에이전트 설계의 "언어"에서 "제품"으로의 전환을 대표한다. 프레임워크 선택은 아키텍처([[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]])와 워크플로 패턴([[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]]) 결정 이후에 이뤄져야 하는 구현 세부사항이며, 잘못된 순서로 접근하면(프레임워크부터 고르고 아키텍처를 끼워 맞추면) 불필요한 복잡도로 이어진다.
 
 ## 관련 개념
-[[Anthropic_Workflow_Patterns]] · [[Agent_Architectures]] · [[LangGraph]] · [[Multi_Agent_Coordination]] · [[Agent_Skills_and_Protocols]]
+[[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]
 
 ## 출처
 - Microsoft Research "AutoGen v0.4: A New Foundation" — [microsoft.com/research](https://www.microsoft.com/en-us/research/blog/autogen-v0-4-reimagining-the-foundation-agentic-ai-frameworks/)

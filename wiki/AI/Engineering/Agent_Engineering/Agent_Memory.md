@@ -216,7 +216,7 @@ Sleep-time Compute:
   → 실제 요청 시점에는 이미 정리된 메모리만 조회 (지연시간 감소)
 ```
 
-**효과**: 응답 시점의 지연시간과 토큰 비용을 줄이면서도 메모리 품질(모순 해소, 최신성)을 유지. Runtime Optimization의 캐싱 전략([[Loop_Engineering/Runtime_Optimization]])과 철학이 비슷하지만, 대상이 응답 자체가 아니라 메모리 상태라는 점이 다르다.
+**효과**: 응답 시점의 지연시간과 토큰 비용을 줄이면서도 메모리 품질(모순 해소, 최신성)을 유지. Runtime Optimization의 캐싱 전략([[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]])과 철학이 비슷하지만, 대상이 응답 자체가 아니라 메모리 상태라는 점이 다르다.
 
 ## Mem0 — Hybrid Memory (Vector + Graph + KV)
 
@@ -286,7 +286,7 @@ class SkillLibrary:
 
 **Voyager의 3요소**: ① 자동 커리큘럼(Automatic Curriculum) — 현재 상태 기준으로 다음 도전 과제를 스스로 설정, ② 스킬 라이브러리 — 검증된 코드를 영구 축적, ③ 반복 프롬프팅(Iterative Prompting) — 환경 피드백·실행 오류·자기 검증을 결합해 코드를 개선.
 
-**AI Engineering 관점에서의 의의**: 기존 Memory가 "사실을 기억"하는 데 초점을 둔다면, Skill Library는 "능력을 기억"한다 — 에이전트가 시간이 지날수록 더 유능해지는 평생 학습(lifelong learning)의 실용적 구현체다. [[Agent_Skills_and_Protocols]]의 Agent Skills와 개념적으로 연결되지만, Voyager의 스킬은 사람이 아니라 **에이전트 스스로 생성·검증·축적**한다는 점이 다르다.
+**AI Engineering 관점에서의 의의**: 기존 Memory가 "사실을 기억"하는 데 초점을 둔다면, Skill Library는 "능력을 기억"한다 — 에이전트가 시간이 지날수록 더 유능해지는 평생 학습(lifelong learning)의 실용적 구현체다. [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]의 Agent Skills와 개념적으로 연결되지만, Voyager의 스킬은 사람이 아니라 **에이전트 스스로 생성·검증·축적**한다는 점이 다르다.
 
 ## LangMem / Memory 전문 라이브러리
 
@@ -379,7 +379,7 @@ Gemini Enterprise Agent Platform:
 Agent Memory는 에이전트를 "일회용 도구"에서 "지속 학습하는 어시스턴트"로 만드는 핵심 요소다. 사용자와의 장기 관계 구축, 조직의 노하우 축적, 반복 실수 방지 등 개인화된 AI 경험의 기반이다. 프로덕션에서는 Memory ETL 파이프라인으로 기억의 품질을 관리하고, Agent Runtime + Memory Bank로 세션 영속성과 장기 운영을 보장해야 한다.
 
 ## 관련 개념
-[[Agent_Core_Pillars]] · [[Memory_and_Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[Planning_and_Reflection]] · [[Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## 출처
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)

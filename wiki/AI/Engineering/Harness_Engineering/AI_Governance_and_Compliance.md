@@ -6,7 +6,7 @@ order: 9
 
 ## 개요
 
-[[Alignment_Research]]가 "모델이 실제로 정렬되어 있는가"라는 기술적 질문을 다룬다면, 이 문서는 **조직·산업·국가 수준에서 AI를 안전하게 개발·배포하도록 강제하는 프레임워크와 규제**를 다룬다. 프론티어 연구소의 자율적 안전 서약부터 각국의 법적 규제까지, AI Engineering 실무자가 알아야 할 거버넌스 지형을 정리한다.
+[[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]가 "모델이 실제로 정렬되어 있는가"라는 기술적 질문을 다룬다면, 이 문서는 **조직·산업·국가 수준에서 AI를 안전하게 개발·배포하도록 강제하는 프레임워크와 규제**를 다룬다. 프론티어 연구소의 자율적 안전 서약부터 각국의 법적 규제까지, AI Engineering 실무자가 알아야 할 거버넌스 지형을 정리한다.
 
 ## 프론티어 안전 프레임워크 (Frontier Safety Frameworks)
 
@@ -42,7 +42,7 @@ Google DeepMind Frontier Safety Framework (FSF):
 
 ## METR 외부 평가와 독립 감사
 
-프론티어 연구소의 자체 평가만으로는 이해상충(conflict of interest) 우려가 있다. **METR**(→ [[Autonomous_Systems]]에서 Time Horizon 벤치마크로 소개)은 여러 연구소의 모델을 출시 전 독립적으로 평가하는 제3자 기관 역할을 한다.
+프론티어 연구소의 자체 평가만으로는 이해상충(conflict of interest) 우려가 있다. **METR**(→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]에서 Time Horizon 벤치마크로 소개)은 여러 연구소의 모델을 출시 전 독립적으로 평가하는 제3자 기관 역할을 한다.
 
 ```
 METR의 외부 평가 프로세스:
@@ -112,7 +112,7 @@ Dataset Card (데이터셋 카드):
 
 ## 데이터 출처와 학습 데이터 거버넌스
 
-학습 데이터의 **출처(Provenance)**를 추적하고 관리하는 것은 저작권 분쟁 대응, 데이터 오염 방지([[Benchmarking]]), 규제 대응(EU AI Act의 데이터 거버넌스 요구사항)에 모두 필요하다. 데이터 수집 파이프라인 단계에서부터 출처 메타데이터를 유지하는 것이 사후 감사보다 훨씬 저비용이다.
+학습 데이터의 **출처(Provenance)**를 추적하고 관리하는 것은 저작권 분쟁 대응, 데이터 오염 방지([[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]), 규제 대응(EU AI Act의 데이터 거버넌스 요구사항)에 모두 필요하다. 데이터 수집 파이프라인 단계에서부터 출처 메타데이터를 유지하는 것이 사후 감사보다 훨씬 저비용이다.
 
 ## Dual-Use 리스크와 WMDP
 
@@ -144,10 +144,10 @@ RSP·Preparedness Framework의 CBRN 리스크 평가가 실무적으로 이 벤�
 
 ## AI Engineering에서의 역할
 
-AI Governance and Compliance는 기술적 안전 조치([[Guardrail_Engineering]], [[Alignment_Research]])를 조직·법적 책임으로 연결하는 다리다. 프론티어 연구소의 자율 서약(RSP/Preparedness/FSF)이 "능력에 비례한 안전조치"라는 원칙을 확립했다면, EU AI Act 같은 법적 규제는 이를 산업 전반에 강제한다. 실무자에게는 두 계층 모두 실질적 제약이다 — 하나는 사용하는 프론티어 모델의 정책을 통해, 다른 하나는 자사 애플리케이션에 대한 직접 규제를 통해 적용된다.
+AI Governance and Compliance는 기술적 안전 조치([[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]], [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]])를 조직·법적 책임으로 연결하는 다리다. 프론티어 연구소의 자율 서약(RSP/Preparedness/FSF)이 "능력에 비례한 안전조치"라는 원칙을 확립했다면, EU AI Act 같은 법적 규제는 이를 산업 전반에 강제한다. 실무자에게는 두 계층 모두 실질적 제약이다 — 하나는 사용하는 프론티어 모델의 정책을 통해, 다른 하나는 자사 애플리케이션에 대한 직접 규제를 통해 적용된다.
 
 ## 관련 개념
-[[Alignment_Research]] · [[Guardrail_Engineering]] · [[Red_Teaming]] · [[Autonomous_Systems]] · [[Benchmarking]] · [[Production_Operations]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (노드 단위 거버넌스)]]
+[[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (노드 단위 거버넌스)]]
 
 ## 출처
 - Anthropic "Responsible Scaling Policy" — [anthropic.com](https://www.anthropic.com/rsp)

@@ -180,11 +180,11 @@ async def summarize_via_host(large_document: str):
 4. Server: 작업 완료 시 notification 전송
 ```
 
-[[Autonomous_Systems]]의 장기 실행 에이전트와 자연스럽게 맞물리는 패턴이다 — 몇 시간짜리 MCP 도구 호출도 동일한 프로토콜로 다룰 수 있다.
+[[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 장기 실행 에이전트와 자연스럽게 맞물리는 패턴이다 — 몇 시간짜리 MCP 도구 호출도 동일한 프로토콜로 다룰 수 있다.
 
 ## MCP Apps (UI 확장)
 
-MCP Server가 텍스트/데이터뿐 아니라 **인터랙티브 UI 컴포넌트**를 Host 안에 렌더링할 수 있게 하는 확장. 도구 호출 결과를 표·차트·폼 형태로 직접 보여줄 수 있다. Agent Skills & Protocols의 A2UI([[Agent_Skills_and_Protocols]])와 목적은 비슷하지만, MCP Apps는 "MCP Server가 자신의 도구 결과를 표현하는" 좁은 범위인 반면 A2UI는 에이전트가 임의 UI를 생성하는 더 일반적인 프로토콜이다.
+MCP Server가 텍스트/데이터뿐 아니라 **인터랙티브 UI 컴포넌트**를 Host 안에 렌더링할 수 있게 하는 확장. 도구 호출 결과를 표·차트·폼 형태로 직접 보여줄 수 있다. Agent Skills & Protocols의 A2UI([[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]])와 목적은 비슷하지만, MCP Apps는 "MCP Server가 자신의 도구 결과를 표현하는" 좁은 범위인 반면 A2UI는 에이전트가 임의 UI를 생성하는 더 일반적인 프로토콜이다.
 
 ## MCP 보안 심화: OAuth 2.1
 
@@ -214,7 +214,7 @@ MCP 특화 요구사항:
 | **Portkey** | MCP 트래픽 관측성, 캐싱, 폴백(fallback) 정책 |
 | **Kong / Bifrost** | API Gateway 계층에서 MCP 요청에 인증·속도제한·로깅 적용 |
 
-이 도구들은 [[Agent_Deployment]]에서 다룬 Google의 엔터프라이즈 전용 Agent Gateway/Registry와 같은 문제(중앙 인증, 거버넌스, 관측성)를 플랫폼 독립적으로 해결한다. 프로덕션 운영 관점의 상세 비교는 → [[Loop_Engineering/Production_Operations]]
+이 도구들은 [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]에서 다룬 Google의 엔터프라이즈 전용 Agent Gateway/Registry와 같은 문제(중앙 인증, 거버넌스, 관측성)를 플랫폼 독립적으로 해결한다. 프로덕션 운영 관점의 상세 비교는 → [[AI/Engineering/Loop_Engineering/Production_Operations|Loop_Engineering/Production_Operations]]
 
 ## MCP vs Function Calling vs A2A
 
@@ -226,7 +226,7 @@ MCP 특화 요구사항:
 | **상태** | Stateless | Stateless | Stateful |
 | **거버넌스** | 각 모델 공급사 | Linux Foundation (구 Anthropic) | Linux Foundation |
 
-자세한 A2A 비교 → [[A2A]]
+자세한 A2A 비교 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]]
 
 ## 보안 위협 5가지
 
@@ -300,7 +300,7 @@ MCP 표준화 효과:
 MCP는 **도구 통합의 표준 레이어**다. Function Calling이 "어떻게 함수를 호출하는가"의 문제를 풀었다면, MCP는 "어떤 도구가 어떤 방식으로 노출되는가"를 표준화한다. Agent Engineering 스택에서 외부 세계와의 인터페이스를 담당하며, 에이전트가 커지고 복잡해질수록 MCP의 역할이 중요해진다.
 
 ## 관련 개념
-[[A2A]] · [[Agent_Skills_and_Protocols]] · [[Tool_Use_and_Function_Calling]] · [[Guardrail_Engineering]]
+[[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
 
 ## 출처
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)
@@ -311,4 +311,4 @@ MCP는 **도구 통합의 표준 레이어**다. Function Calling이 "어떻게 
 - LiteLLM 문서 (MCP Gateway) — [docs.litellm.ai](https://docs.litellm.ai)
 - AI Engineering from Scratch, Phase 13 · Lessons 06-18 (MCP 심화, 보안, 게이트웨이) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols)
 - [[AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
-- [[Prototype_to_Production]] (MCP vs A2A 비교, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Prototype_to_Production|Prototype_to_Production]] (MCP vs A2A 비교, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

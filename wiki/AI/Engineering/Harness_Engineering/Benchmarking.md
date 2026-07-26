@@ -118,7 +118,7 @@ AgentBench의 8개 환경 유형:
           → 한 환경에 특화된 에이전트가 다른 환경에서도 잘 작동하는지 검증
 ```
 
-GAIA·AgentBench 모두 [[Eval_Driven_Development_and_Agent_Workbench]]에서 다룬 "정적 벤치마크" 레이어에 해당하며, 실제 제품 평가에는 이를 보완하는 커스텀 오프라인·온라인 평가가 함께 필요하다.
+GAIA·AgentBench 모두 [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]]에서 다룬 "정적 벤치마크" 레이어에 해당하며, 실제 제품 평가에는 이를 보완하는 커스텀 오프라인·온라인 평가가 함께 필요하다.
 
 ## 벤치마크의 한계
 
@@ -172,7 +172,7 @@ weekly_benchmark_run = schedule(
 Benchmarking은 **모델 선택, 프롬프트 최적화, 파인튜닝 효과 측정**의 객관적 기준을 제공한다. 커뮤니티 공인 벤치마크로 모델 간 비교를 하되, 실제 프로덕션 성능은 내부 도메인 특화 테스트로 측정하는 이중 전략이 권장된다.
 
 ## 관련 개념
-[[LLM_as_a_Judge]] · [[Human_Evaluation]] · [[Continuous_Optimization]] · [[Eval_Driven_Development_and_Agent_Workbench]] · [[Multi_Agent_Coordination]]
+[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]
 
 ## 출처
 - Hendrycks et al. (2021) "MMLU" — [arXiv:2009.03300](https://arxiv.org/abs/2009.03300)

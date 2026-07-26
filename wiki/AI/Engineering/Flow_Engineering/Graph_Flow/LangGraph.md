@@ -148,7 +148,7 @@ supervisor = create_supervisor(
 
 ### 3. Human-in-the-Loop
 
-→ [[Human_in_the_Loop]] 참조
+→ [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] 참조
 
 ## LangGraph Platform
 
@@ -165,7 +165,7 @@ langgraph deploy --config langgraph.json
 LangGraph는 복잡한 Agent 시스템과 Multi-Agent 워크플로우를 프로덕션에서 안정적으로 운영하기 위한 기반이다. 상태 관리, 체크포인팅, Human-in-the-Loop, 조건 분기가 모두 내장되어 있어 에이전트 엔지니어링의 사실상 표준 프레임워크로 자리잡았다.
 
 ## 관련 개념
-[[LangChain]] · [[ReAct_Pattern]] · [[Cyclic_Flows]] · [[Human_in_the_Loop]] · [[Agent_Architectures]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic_Flows]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]
 
 ## 출처
 - LangGraph 공식 문서 — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/)

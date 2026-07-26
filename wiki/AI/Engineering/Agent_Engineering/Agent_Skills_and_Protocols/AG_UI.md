@@ -416,7 +416,7 @@ async def research_node(state: AgentState, config: RunnableConfig):
 AG-UI는 **에이전트 생태계의 프레젠테이션 레이어**다. MCP가 에이전트와 도구를, A2A가 에이전트와 에이전트를 연결한다면, AG-UI는 에이전트와 사람을 연결한다. 사용자가 에이전트의 동작을 실시간으로 관찰하고 개입할 수 있는 Human-in-the-Loop 인터페이스를 표준화함으로써, 에이전트를 불투명한 블랙박스에서 사용자와 협력하는 파트너로 변환한다.
 
 ## 관련 개념
-[[Agent_Skills_and_Protocols]] · [[Agent_Skills_and_Protocols/MCP]] · [[Agent_Skills_and_Protocols/A2A]] · [[Agent_Architectures]] · [[Human_in_the_Loop]]
+[[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|Agent_Skills_and_Protocols/A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]]
 
 ## 출처
 - CopilotKit Blog (2025) "AG-UI Protocol: Bridging Agents to Any Front End" — [copilotkit.ai](https://www.copilotkit.ai/blog/ag-ui-protocol-bridging-agents-to-any-front-end) [1]

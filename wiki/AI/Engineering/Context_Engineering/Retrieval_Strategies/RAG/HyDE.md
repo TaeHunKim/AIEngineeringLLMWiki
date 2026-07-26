@@ -117,7 +117,7 @@ results = vectorstore.similarity_search_by_vector(avg_embedding)
 HyDE는 Advanced Retrieval 기법 중 쿼리 변환 계열의 대표 기법이다. 특히 전문 도메인에서 RAG 파이프라인의 recall을 높이는 데 효과적이며, 비용 대비 효과 측면에서 reranking과 보완적으로 사용하면 시너지가 크다.
 
 ## 관련 개념
-[[Advanced_Retrieval]] · [[Chunking_Strategies]] · [[Vector_Storage]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]]
 
 ## 출처
 - Gao et al. (2022) "Precise Zero-Shot Dense Retrieval without Relevance Labels" — [arXiv:2212.10496](https://arxiv.org/abs/2212.10496)

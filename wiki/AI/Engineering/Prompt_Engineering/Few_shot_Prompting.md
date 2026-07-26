@@ -109,14 +109,14 @@ Few-shot은 특정 출력 형식을 강제하는 데 매우 효과적:
   A: ?
 ```
 
-→ [[Chain_of_Thought]] 참조
+→ [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] 참조
 
 ## AI Engineering에서의 역할
 
 Few-shot Prompting은 Fine-tuning 전 빠른 프로토타이핑의 핵심 기법이다. "이 예시들처럼 해줘"는 가장 직관적인 모델 제어 방법이며, 새로운 도메인에 빠르게 적응시킬 때 Fine-tuning보다 훨씬 저렴하다. 단, 컨텍스트 창 비용과 Prompt Injection 위험도 고려해야 한다.
 
 ## 관련 개념
-[[System_and_Role_Prompting]] · [[Chain_of_Thought]] · [[Structured_Output]]
+[[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System_and_Role_Prompting]] · [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] · [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]]
 
 ## 출처
 - Brown et al. (2020) "Language Models are Few-Shot Learners" — [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)

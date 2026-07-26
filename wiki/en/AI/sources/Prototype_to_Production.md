@@ -4,7 +4,7 @@
 - **File Name**: Prototype to Production.pdf
 - **Author**: Sokratis Kartakis, Gabriela Hernandez Larios, Ran Li, Elia Secchi, Huang Xia (Google)
 - **Publication Date**: First published November 2025 → **Updated May 2026**
-- **Topic**: AgentOps methodology for transitioning AI Agents from prototype to production — [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]], [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]], [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]], [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]], [[en/AI/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+- **Topic**: AgentOps methodology for transitioning AI Agents from prototype to production — [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]], [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]], [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]], [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]], [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
 - **Source (URL)**: https://www.kaggle.com/whitepaper-prototype-to-production
 
 ## Summary
@@ -216,4 +216,4 @@ Evolution Loop (production insights → next improvement cycle)
 - **Version everything**: Code, prompts, models, tool schemas, memory, and evaluation datasets — this is the production "undo button"
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]]

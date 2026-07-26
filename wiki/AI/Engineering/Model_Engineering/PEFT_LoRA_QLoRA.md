@@ -124,7 +124,7 @@ GPU 메모리 >80GB    → Full FT (또는 LoRA for 속도)
 PEFT는 실무 AI Engineering의 핵심 도구다. 수십억 파라미터 모델을 소규모 팀이 단일 GPU로 커스터마이즈할 수 있게 만들어, LLM 민주화의 핵심 기술이 되었다. LoRA 어댑터는 교환 가능하여 동일 Base Model에 여러 태스크별 어댑터를 운용하는 Multi-LoRA 서빙 패턴도 가능하다.
 
 ## 관련 개념
-[[Full_Fine-Tuning]] · [[Quantization]] · [[Pre-training_and_Continual_Learning]]
+[[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]]
 
 ## 출처
 - Hu et al. (2021) "LoRA: Low-Rank Adaptation of Large Language Models" — [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)

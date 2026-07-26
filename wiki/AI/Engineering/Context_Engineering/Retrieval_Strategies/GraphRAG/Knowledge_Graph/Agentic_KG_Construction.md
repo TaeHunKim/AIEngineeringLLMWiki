@@ -62,10 +62,10 @@ flowchart TD
 
 ## AI Engineering에서의 역할
 
-Agentic KG Construction은 [[Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]에서 다루는 조정 패턴(역할 분담, 공유 메모리/Blackboard 패턴)을 [[Knowledge_Graph|Knowledge Graph]]·[[Ontology]] 구축이라는 구체적 도메인에 적용한 사례다. Context Engineering이 "LLM에게 어떤 구조적 지식을 줄 것인가"를 다뤘다면, 이 접근은 "그 구조적 지식 자체를 에이전트가 만들게 하려면 어떻게 조직해야 하는가"라는 질문에 답한다 — [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]에서 다루는 노드 유형 구분(대화형 에이전트, 순차 워크플로, 반복 루프)이 그대로 적용되는 실제 사례이기도 하다.
+Agentic KG Construction은 [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]에서 다루는 조정 패턴(역할 분담, 공유 메모리/Blackboard 패턴)을 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]·[[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] 구축이라는 구체적 도메인에 적용한 사례다. Context Engineering이 "LLM에게 어떤 구조적 지식을 줄 것인가"를 다뤘다면, 이 접근은 "그 구조적 지식 자체를 에이전트가 만들게 하려면 어떻게 조직해야 하는가"라는 질문에 답한다 — [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]에서 다루는 노드 유형 구분(대화형 에이전트, 순차 워크플로, 반복 루프)이 그대로 적용되는 실제 사례이기도 하다.
 
 ## 관련 개념
-[[Knowledge_Graph]] · [[Ontology]] · [[LPG_and_RDF]] · [[Agent_Engineering/Multi_Agent_Coordination]] · [[Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge_Graph]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG_and_RDF]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
 
 ## 출처
 - DeepLearning.AI, ["Agentic Knowledge Graph Construction"](https://www.deeplearning.ai/courses/agentic-knowledge-graph-construction) — Andreas Kollegger (Neo4j), 2026

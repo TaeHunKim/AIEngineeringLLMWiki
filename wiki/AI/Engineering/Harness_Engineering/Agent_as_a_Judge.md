@@ -217,7 +217,7 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 
 ## 관련 개념
 
-[[LLM_as_a_Judge]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[Agent_Deployment]]
+[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]
 
 ## 출처
 
@@ -225,5 +225,5 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 2. Anthropic Engineering (2026) "Demystifying evals for AI agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
 3. "Multi-Agent-as-Judge: Aligning LLM-Agent-Based Automated Evaluation with Multi-Dimensional Human Evaluation" — [arXiv:2507.21028](https://arxiv.org/html/2507.21028v1)
 4. "Gaming the Judge: Unfaithful Chain-of-Thought Can Undermine Agent Evaluation" — [arXiv:2601.14691](https://arxiv.org/pdf/2601.14691)
-- [[Agent_Quality]] (이 위키의 소스 문서, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 소스 문서, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
 - Arize AI (2024) "Agent-as-a-Judge: Evaluate Agents with Agents" — [arize.com/blog](https://arize.com/blog/agent-as-a-judge-evaluate-agents-with-agents/)

@@ -1,6 +1,6 @@
 # Sources: Agentic RAG
 
-References for the wiki document [[../Engineering/Context_Engineering/RAG/Agentic_RAG|Agentic RAG]].
+References for the wiki document [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]].
 
 ---
 

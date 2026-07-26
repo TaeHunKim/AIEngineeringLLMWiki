@@ -24,8 +24,8 @@ Semantic Cache:
 
 | 문서 | 내용 |
 |------|------|
-| [[LLM_Memory]] | LLM Memory 4유형, Conversation 전략, Letta/Mem0/Zep 구현, Memory vs RAG |
-| [[Semantic_Cache]] | 의미 유사도 캐싱, GPTCache, Redis 구현, 비용 절감 효과 |
+| [[AI/Engineering/Context_Engineering/LLM_Memory\|LLM_Memory]] | LLM Memory 4유형, Conversation 전략, Letta/Mem0/Zep 구현, Memory vs RAG |
+| [[AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic_Cache]] | 의미 유사도 캐싱, GPTCache, Redis 구현, 비용 절감 효과 |
 
 ---
 
@@ -47,4 +47,4 @@ Semantic Cache:
 - **Semantic Cache**: Loop Engineering의 Runtime Optimization 계층에서 비용 제어 역할을 한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[Agent_Engineering/Agent_Memory]] · [[Loop_Engineering/Runtime_Optimization]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Engineering/Agent_Memory]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]]

@@ -138,7 +138,7 @@ os.environ["LANGCHAIN_API_KEY"] = "..."
 LangChain은 Linear Flow Engineering의 표준 도구다. 프로토타이핑부터 프로덕션까지 빠르게 LLM 애플리케이션을 구축할 수 있게 해주며, 방대한 생태계(100+ 통합, 커뮤니티)가 장점이다. 다만 추상화가 복잡하고 업그레이드 시 breaking change가 잦아 학습 곡선이 있다.
 
 ## 관련 개념
-[[LlamaIndex]] · [[Tool_Use_and_Function_Calling]] · [[LangGraph]] · [[Observability_and_Tracing]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
 
 ## 출처
 - LangChain 공식 문서 — [python.langchain.com](https://python.langchain.com)

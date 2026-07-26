@@ -140,7 +140,7 @@ print(adversarial_results.security_report)
 
 **Agent Simulation이 기존 자동화 Red Teaming과 다른 점**: 공격 성공(유해 텍스트 출력)이 아니라 **에이전트의 행동 패턴 전체**를 분석하므로, 최종 출력이 안전해 보여도 중간 단계의 정책 위반을 탐지할 수 있다.
 
-자세한 내용 → [[Agent_Deployment]] · [[LLM_as_a_Judge]] (Agent-as-a-Judge 섹션)
+자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] (Agent-as-a-Judge 섹션)
 
 ### RL 기반 공격자
 
@@ -302,7 +302,7 @@ PAIR의 개선판. 트리 탐색으로 더 효율적으로 성공적인 공격 �
 Red Teaming은 **배포 전 필수 안전 검증 단계**다. 특히 에이전트 시스템(웹 크롤링, 코드 실행 등 도구를 가진 AI)에서는 취약점의 파급효과가 크므로 체계적인 Red Team이 더욱 중요하다. CI/CD 파이프라인에 자동화 Red Team을 통합하면 모델 업데이트마다 안전 회귀를 방지할 수 있다.
 
 ## 관련 개념
-[[Guardrail_Engineering]] · [[LLM_as_a_Judge]] · [[Human_in_the_Loop]] · [[Benchmarking]] · [[Agent_Deployment]] · [[Alignment_Research]]
+[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]
 
 ## 출처
 - Mazeika et al. (2024) "HarmBench" — [arxiv.org/abs/2402.04249](https://arxiv.org/abs/2402.04249)

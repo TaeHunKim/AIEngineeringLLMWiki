@@ -189,17 +189,17 @@ grading_cot_prompt = """
 
 에이전트 시스템 평가에 특화된 LLM-as-a-Judge의 확장 패러다임. LLM-as-a-Judge가 최종 텍스트 출력을 평가하는 데 반해, **실행 궤적(execution trajectory) 전체를 평가 대상**으로 삼는 것이 핵심 차이다.
 
-자세한 내용(원본 논문, Critic Agent 패턴, Multi-Agent-as-Judge, Agent Simulation, 장단점 등) → **[[Agent_as_a_Judge]]**
+자세한 내용(원본 논문, Critic Agent 패턴, Multi-Agent-as-Judge, Agent Simulation, 장단점 등) → **[[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent_as_a_Judge]]**
 
 ## AI Engineering에서의 역할
 
-LLM-as-a-Judge는 **Evaluation Engineering의 핵심 도구**다. 수천 개의 응답을 인간 평가자 없이 빠르게 평가하고, CI/CD 파이프라인에 통합하여 모델 변경 시 품질 회귀를 자동 감지할 수 있다. A/B 테스트, 프롬프트 최적화, 모델 선택 등 모든 LLMOps 결정의 기반이 된다. 에이전트 시스템에서는 [[Agent_as_a_Judge]]로 확장하여 실행 궤적 수준의 평가와 배포 전 스트레스 테스트까지 수행한다.
+LLM-as-a-Judge는 **Evaluation Engineering의 핵심 도구**다. 수천 개의 응답을 인간 평가자 없이 빠르게 평가하고, CI/CD 파이프라인에 통합하여 모델 변경 시 품질 회귀를 자동 감지할 수 있다. A/B 테스트, 프롬프트 최적화, 모델 선택 등 모든 LLMOps 결정의 기반이 된다. 에이전트 시스템에서는 [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent_as_a_Judge]]로 확장하여 실행 궤적 수준의 평가와 배포 전 스트레스 테스트까지 수행한다.
 
 ## 관련 개념
-[[Benchmarking]] · [[Human_Evaluation]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[Agent_as_a_Judge]]
+[[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent_as_a_Judge]]
 
 ## 출처
 - Zheng et al. (2023) "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — [arXiv:2306.05685](https://arxiv.org/pdf/2306.05685)
 - Evidently AI "LLM-as-a-judge: a complete guide" — [evidentlyai.com](https://www.evidentlyai.com/llm-guide/llm-as-a-judge)
 - RAGAS 문서 — [docs.ragas.io](https://docs.ragas.io)
-- [[Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

@@ -148,7 +148,7 @@ if total_tokens > BUDGET_TOKENS:
 Cyclic Flows는 Agent Engineering의 **핵심 실행 메커니즘**이다. 에이전트가 "목표 달성까지 지속 시도"하는 능력은 사이클릭 플로우 없이는 불가능하다. 단순 파이프라인과 진정한 에이전트 시스템의 가장 근본적인 차이가 바로 사이클(루프)의 유무다.
 
 ## 관련 개념
-[[LangGraph]] · [[ReAct_Pattern]] · [[Human_in_the_Loop]] · [[Agent_Architectures]]
+[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]
 
 ## 출처
 - LangGraph 공식 문서 — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/)

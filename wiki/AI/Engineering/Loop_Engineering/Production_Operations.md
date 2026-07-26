@@ -6,7 +6,7 @@ order: 4
 
 ## 개요
 
-[[Runtime_Optimization]]이 "요청 하나를 얼마나 저렴하고 빠르게 처리할 것인가"를 다룬다면, Production Operations는 **조직 전체의 LLM 트래픽을 어떻게 안전하게 배포·라우팅·관측·과금할 것인가**를 다룬다. 여러 팀, 여러 모델, 여러 벤더가 얽히는 순간 개별 최적화만으로는 부족해지고 게이트웨이·배포 전략·컴플라이언스 같은 조직 차원의 인프라가 필요해진다.
+[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]이 "요청 하나를 얼마나 저렴하고 빠르게 처리할 것인가"를 다룬다면, Production Operations는 **조직 전체의 LLM 트래픽을 어떻게 안전하게 배포·라우팅·관측·과금할 것인가**를 다룬다. 여러 팀, 여러 모델, 여러 벤더가 얽히는 순간 개별 최적화만으로는 부족해지고 게이트웨이·배포 전략·컴플라이언스 같은 조직 차원의 인프라가 필요해진다.
 
 ## 관리형 LLM 플랫폼과 추론 플랫폼 경제성
 
@@ -26,7 +26,7 @@ order: 4
 
 ## AI 게이트웨이 (AI Gateways)
 
-여러 LLM Provider·내부 팀·MCP Server를 관통하는 트래픽의 **단일 제어점**. [[Agent_Skills_and_Protocols/MCP]]에서 다룬 MCP Gateway/Registry 생태계와 겹치지만, AI 게이트웨이는 MCP 트래픽뿐 아니라 모든 LLM API 호출을 포괄하는 더 넓은 개념이다.
+여러 LLM Provider·내부 팀·MCP Server를 관통하는 트래픽의 **단일 제어점**. [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]에서 다룬 MCP Gateway/Registry 생태계와 겹치지만, AI 게이트웨이는 MCP 트래픽뿐 아니라 모든 LLM API 호출을 포괄하는 더 넓은 개념이다.
 
 | 게이트웨이 | 특징 |
 |-----------|------|
@@ -45,7 +45,7 @@ order: 4
 
 ## 배포 전략: Shadow, Canary, Progressive Deployment
 
-새 모델·프롬프트·에이전트 버전을 안전하게 프로덕션에 내보내는 전략. [[AgentOps]]에서 다룬 Safe Rollout 4전략(Canary/Blue-Green/A-B/Feature Flags)의 인프라적 기반이다.
+새 모델·프롬프트·에이전트 버전을 안전하게 프로덕션에 내보내는 전략. [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]]에서 다룬 Safe Rollout 4전략(Canary/Blue-Green/A-B/Feature Flags)의 인프라적 기반이다.
 
 ```
 Shadow Deployment (섀도 배포):
@@ -75,7 +75,7 @@ system_prompt = PROMPT_V1 if variant == "control" else PROMPT_V2
 # 이후 각 그룹의 태스크 완료율·비용을 비교해 승자 결정
 ```
 
-**LLM 특화 고려사항**: 전통적 웹 A/B 테스트와 달리 LLM 응답은 비결정적이라 표본 크기가 더 커야 하고, 품질 지표를 LLM-as-a-Judge([[LLM_as_a_Judge]])로 정량화해야 하는 경우가 많다.
+**LLM 특화 고려사항**: 전통적 웹 A/B 테스트와 달리 LLM 응답은 비결정적이라 표본 크기가 더 커야 하고, 품질 지표를 LLM-as-a-Judge([[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]])로 정량화해야 하는 경우가 많다.
 
 ## 부하 테스트 (Load Testing)
 
@@ -85,33 +85,33 @@ LLMPerf:     LLM 서빙 특화 — TTFT, 토큰당 지연시간(ITL), 처리량�
 GenAI-Perf:  NVIDIA의 생성형 AI 특화 벤치마킹 도구, 서빙 엔진 비교에 최적화
 ```
 
-일반 웹 서비스와 달리 LLM 부하 테스트는 응답 "완료 시간"뿐 아니라 [[Runtime_Optimization]]에서 다룬 TTFT(Time-to-First-Token)·TPOT(Time-per-Output-Token) 같은 스트리밍 특화 지표를 함께 측정해야 실제 사용자 체감 속도를 반영할 수 있다.
+일반 웹 서비스와 달리 LLM 부하 테스트는 응답 "완료 시간"뿐 아니라 [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]에서 다룬 TTFT(Time-to-First-Token)·TPOT(Time-per-Output-Token) 같은 스트리밍 특화 지표를 함께 측정해야 실제 사용자 체감 속도를 반영할 수 있다.
 
 ## SRE for AI와 카오스 엔지니어링
 
-**멀티 에이전트 인시던트 대응**: [[Multi_Agent_Coordination]]에서 다룬 STRATUS 패턴(Detection/Diagnosis/Validation 3인조 에이전트)이 실제로는 SRE의 사고 대응 프로세스를 에이전트 시스템에 적용한 것이다. 전통적 SRE 관행(온콜, 포스트모템, SLO)에 LLM 고유의 실패 모드(환각, 프롬프트 인젝션, 모델 벤더 장애)를 추가한 형태로 확장된다.
+**멀티 에이전트 인시던트 대응**: [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]에서 다룬 STRATUS 패턴(Detection/Diagnosis/Validation 3인조 에이전트)이 실제로는 SRE의 사고 대응 프로세스를 에이전트 시스템에 적용한 것이다. 전통적 SRE 관행(온콜, 포스트모템, SLO)에 LLM 고유의 실패 모드(환각, 프롬프트 인젝션, 모델 벤더 장애)를 추가한 형태로 확장된다.
 
-**카오스 엔지니어링**: 프로덕션과 유사한 환경에서 의도적으로 장애를 주입해(모델 API 타임아웃, MCP Server 다운, 컨텍스트 창 초과) 시스템의 복원력을 검증한다. [[Multi_Agent_Coordination]]의 Retry Storm·Circuit Breaker 방어가 실제로 작동하는지 사전에 확인하는 실전 훈련이다.
+**카오스 엔지니어링**: 프로덕션과 유사한 환경에서 의도적으로 장애를 주입해(모델 API 타임아웃, MCP Server 다운, 컨텍스트 창 초과) 시스템의 복원력을 검증한다. [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]의 Retry Storm·Circuit Breaker 방어가 실제로 작동하는지 사전에 확인하는 실전 훈련이다.
 
 ## 보안 운영: Secrets, PII, 감사 로그
 
 ```
 Secrets 관리:
   API 키·인증 토큰을 코드/프롬프트에 하드코딩 금지 — Vault, AWS Secrets Manager 등 사용
-  MCP Server 인증 정보는 특히 주의 (→ [[Agent_Skills_and_Protocols/MCP]] 보안 위협 참고)
+  MCP Server 인증 정보는 특히 주의 (→ [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] 보안 위협 참고)
 
 PII 스크러빙:
   로그·트레이스에 사용자 개인정보가 그대로 남지 않도록 자동 마스킹
-  → [[Guardrail_Engineering]]의 Output Validation과 같은 기법을 로깅 파이프라인에도 적용
+  → [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]의 Output Validation과 같은 기법을 로깅 파이프라인에도 적용
 
 감사 로그 (Audit Logs):
   "누가·언제·어떤 프롬프트로·어떤 도구를 호출했는가"를 불변(immutable) 기록으로 보존
-  → [[Agent_Deployment]]의 Agent Identity와 결합하면 에이전트별 책임 추적 가능
+  → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]의 Agent Identity와 결합하면 에이전트별 책임 추적 가능
 ```
 
 ## 컴플라이언스
 
-SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프로덕션 시스템에 요구하는 기술적 통제(데이터 처리 위치 제한, 로그 보존 기간, 설명가능성 요구사항)를 시스템 설계에 반영해야 한다. 규제 자체의 상세 내용과 조직 거버넌스 관점은 → [[AI_Governance_and_Compliance]]
+SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프로덕션 시스템에 요구하는 기술적 통제(데이터 처리 위치 제한, 로그 보존 기간, 설명가능성 요구사항)를 시스템 설계에 반영해야 한다. 규제 자체의 상세 내용과 조직 거버넌스 관점은 → [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
 
 ## FinOps for LLMs
 
@@ -125,15 +125,15 @@ SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프�
 멀티테넌트 비용 귀속 (Multi-Tenant Attribution):
   공유 인프라(캐시, 배치 처리, 파인튜닝된 모델)를 여러 고객/팀이 사용할 때
   실제 소비량에 비례해 비용을 정확히 배분하는 회계 체계
-  → [[Runtime_Optimization]]의 Cost Control Loop를 조직 전체로 확장한 형태
+  → [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]의 Cost Control Loop를 조직 전체로 확장한 형태
 ```
 
 ## AI Engineering에서의 역할
 
-Production Operations는 개별 최적화 기법([[Runtime_Optimization]])들을 조직 규모에서 안전하고 관측 가능하며 책임 추적 가능한 방식으로 운영하는 계층이다. 하나의 프롬프트 변경이나 모델 업그레이드가 수백만 사용자에게 영향을 미치는 규모에서는, 게이트웨이·점진적 배포·A/B 테스트·카오스 엔지니어링 없이 변경을 내보내는 것 자체가 리스크가 된다.
+Production Operations는 개별 최적화 기법([[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]])들을 조직 규모에서 안전하고 관측 가능하며 책임 추적 가능한 방식으로 운영하는 계층이다. 하나의 프롬프트 변경이나 모델 업그레이드가 수백만 사용자에게 영향을 미치는 규모에서는, 게이트웨이·점진적 배포·A/B 테스트·카오스 엔지니어링 없이 변경을 내보내는 것 자체가 리스크가 된다.
 
 ## 관련 개념
-[[Runtime_Optimization]] · [[AgentOps]] · [[Agent_Deployment]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI_Governance_and_Compliance]]
+[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
 
 ## 출처
 - LiteLLM 공식 문서 — [docs.litellm.ai](https://docs.litellm.ai)

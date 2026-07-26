@@ -6,7 +6,7 @@ order: 8
 
 ## 개요
 
-[[Agent_Architectures]]가 단일 시스템 안에서의 아키텍처 선택(Single/Orchestrator/Router/Multi-Agent)을 다룬다면, 이 문서는 **여러 에이전트가 어떻게 통신하고 조정하며, 왜 실패하는가**를 더 깊이 다룬다. 2025~2026년 연구는 멀티 에이전트 시스템(MAS)이 특정 태스크에서 성능을 크게 높이지만, 동시에 **실제 태스크에서 41~86.7%의 실패율**을 보인다는 사실도 함께 드러냈다 (Cemri et al., 2025). 조정 패턴을 아는 것만큼, 실패 모드를 아는 것이 프로덕션에서는 더 중요하다.
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]가 단일 시스템 안에서의 아키텍처 선택(Single/Orchestrator/Router/Multi-Agent)을 다룬다면, 이 문서는 **여러 에이전트가 어떻게 통신하고 조정하며, 왜 실패하는가**를 더 깊이 다룬다. 2025~2026년 연구는 멀티 에이전트 시스템(MAS)이 특정 태스크에서 성능을 크게 높이지만, 동시에 **실제 태스크에서 41~86.7%의 실패율**을 보인다는 사실도 함께 드러냈다 (Cemri et al., 2025). 조정 패턴을 아는 것만큼, 실패 모드를 아는 것이 프로덕션에서는 더 중요하다.
 
 ## 통신 프로토콜의 계보
 
@@ -20,14 +20,14 @@ FIPA-ACL (1990년대 후반, Foundation for Intelligent Physical Agents)
 
 현대 표준: A2A (Agent-to-Agent Protocol, Google 2025)
   → 에이전트 간 상태 유지형(stateful) 통신 표준
-  → 자세한 내용 → [[A2A]]
+  → 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]]
 ```
 
 ## 조정 패턴 (Coordination Patterns)
 
 ### Supervisor / Orchestrator-Worker
 
-[[Agent_Architectures]]에서 다룬 Orchestrator & Sub-Agents 패턴의 멀티 에이전트 버전. 상위 Supervisor가 작업을 분배하고 결과를 취합한다. 가장 널리 쓰이는 패턴이며 디버깅이 상대적으로 쉽다(모든 통신이 Supervisor를 거침).
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]에서 다룬 Orchestrator & Sub-Agents 패턴의 멀티 에이전트 버전. 상위 Supervisor가 작업을 분배하고 결과를 취합한다. 가장 널리 쓰이는 패턴이며 디버깅이 상대적으로 쉽다(모든 통신이 Supervisor를 거침).
 
 ### Hierarchical Architecture와 Decomposition Drift
 
@@ -43,7 +43,7 @@ Supervisor 아래 다시 하위 Supervisor를 두는 다층 구조. 대규모 �
 
 ### Society of Mind and Multi-Agent Debate
 
-Minsky의 "Society of Mind" 개념을 차용 — 단일 지능이 아니라 여러 단순한 에이전트의 상호작용에서 지능이 창발한다는 관점. [[Agent_Architectures]]의 Debate 패턴(제안→비평→방어→중재)이 대표적 구현이다. 여러 독립 에이전트가 같은 문제에 다른 관점으로 답한 뒤 토론을 거쳐 합의에 도달하면, 단일 에이전트보다 추론 오류가 줄어든다는 연구가 다수 있다.
+Minsky의 "Society of Mind" 개념을 차용 — 단일 지능이 아니라 여러 단순한 에이전트의 상호작용에서 지능이 창발한다는 관점. [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]의 Debate 패턴(제안→비평→방어→중재)이 대표적 구현이다. 여러 독립 에이전트가 같은 문제에 다른 관점으로 답한 뒤 토론을 거쳐 합의에 도달하면, 단일 에이전트보다 추론 오류가 줄어든다는 연구가 다수 있다.
 
 ### Role Specialization — Planner / Critic / Executor / Verifier
 
@@ -52,7 +52,7 @@ Minsky의 "Society of Mind" 개념을 차용 — 단일 지능이 아니라 여�
 ```
 Planner:  목표를 실행 가능한 단계로 분해
 Executor: 각 단계를 실제로 실행 (도구 호출)
-Critic:   Executor의 결과를 비평 (Self-Refine/CRITIC과 유사, → [[Planning_and_Reflection]])
+Critic:   Executor의 결과를 비평 (Self-Refine/CRITIC과 유사, → [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]])
 Verifier: 최종 결과가 원래 목표를 충족하는지 독립적으로 검증 (Verifier는 Executor와 다른 정보원 사용 권장)
 ```
 
@@ -60,11 +60,11 @@ Verifier: 최종 결과가 원래 목표를 충족하는지 독립적으로 검�
 
 ### Parallel Swarm과 Group Chat
 
-**Parallel Swarm**: 여러 에이전트가 동일 목표를 향해 독립적으로 작업하고 결과를 나중에 통합(→ [[Agent_Architectures]]의 병렬 실행). **Group Chat**(AutoGen 스타일): 여러 에이전트가 하나의 공유 대화방에서 순서를 정해가며 발언한다. Speaker Selection(다음 발언자 선정)이 핵심 설계 지점 — 고정 순서, 라운드로빈, LLM 기반 동적 선택 등.
+**Parallel Swarm**: 여러 에이전트가 동일 목표를 향해 독립적으로 작업하고 결과를 나중에 통합(→ [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]의 병렬 실행). **Group Chat**(AutoGen 스타일): 여러 에이전트가 하나의 공유 대화방에서 순서를 정해가며 발언한다. Speaker Selection(다음 발언자 선정)이 핵심 설계 지점 — 고정 순서, 라운드로빈, LLM 기반 동적 선택 등.
 
 ### Handoffs and Routines
 
-OpenAI Agents SDK가 대중화한 패턴(→ [[Agent_Frameworks]]). 무거운 오케스트레이션 레이어 없이, 한 에이전트가 대화의 제어권 자체를 다른 에이전트에 완전히 이전한다. Supervisor가 계속 개입하는 방식보다 가볍고, 상태 비저장(stateless) 오케스트레이션에 가깝다.
+OpenAI Agents SDK가 대중화한 패턴(→ [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]]). 무거운 오케스트레이션 레이어 없이, 한 에이전트가 대화의 제어권 자체를 다른 에이전트에 완전히 이전한다. Supervisor가 계속 개입하는 방식보다 가볍고, 상태 비저장(stateless) 오케스트레이션에 가깝다.
 
 ## Shared Memory and Blackboard Patterns
 
@@ -96,12 +96,12 @@ class Blackboard:
 
 ### Voting, Self-Consistency, Debate Topology
 
-- **Voting**: N개 에이전트(또는 같은 에이전트의 N회 샘플링)가 각자 답하고 다수결 채택 — Self-Consistency([[Chain_of_Thought]])의 멀티 에이전트 버전
+- **Voting**: N개 에이전트(또는 같은 에이전트의 N회 샘플링)가 각자 답하고 다수결 채택 — Self-Consistency([[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]])의 멀티 에이전트 버전
 - **Debate Topology**: 토론 참여 에이전트를 어떤 그래프 구조로 연결할 것인가 — 전원 연결(모두가 서로의 주장을 봄), 체인(순차 전달), 트리(계층적 종합) 등 구조에 따라 최종 정확도와 비용이 달라진다
 
 ### Negotiation and Bargaining
 
-목표가 부분적으로만 일치하는 에이전트들(예: 구매자 에이전트 vs 판매자 에이전트) 사이의 협상. 게임이론의 협상 모델을 차용하며, [[Agent_Skills_and_Protocols]]의 AP2(Agent Payments Protocol) 같은 프로토콜이 실제 거래 단계의 신뢰 문제를 다룬다.
+목표가 부분적으로만 일치하는 에이전트들(예: 구매자 에이전트 vs 판매자 에이전트) 사이의 협상. 게임이론의 협상 모델을 차용하며, [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]의 AP2(Agent Payments Protocol) 같은 프로토콜이 실제 거래 단계의 신뢰 문제를 다룬다.
 
 ## 창발적 행동
 
@@ -117,7 +117,7 @@ Park et al. (2023, Stanford "Generative Agents")이 제안한, 수십 개의 LLM
 
 **MARL (Multi-Agent Reinforcement Learning)**: MADDPG, QMIX, MAPPO 등은 다수 에이전트가 보상을 놓고 협력·경쟁하도록 학습시키는 RL 알고리즘 계열이다. LLM 에이전트 시대에는 프롬프트/역할 설계로 대체되는 경우가 많지만, 대규모 반복 상호작용이 필요한 시뮬레이션·게임형 태스크에서는 여전히 유효하다.
 
-**Agent Economies**: 다수의 자율 에이전트가 토큰 인센티브·평판(reputation) 시스템으로 상호작용하는 신흥 연구 영역. 에이전트 간 신뢰를 프로토콜 수준에서 담보하려는 시도([[Agent_Skills_and_Protocols]]의 AP2, Agent Identity)와 맞닿아 있다.
+**Agent Economies**: 다수의 자율 에이전트가 토큰 인센티브·평판(reputation) 시스템으로 상호작용하는 신흥 연구 영역. 에이전트 간 신뢰를 프로토콜 수준에서 담보하려는 시도([[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]의 AP2, Agent Identity)와 맞닿아 있다.
 
 ---
 
@@ -172,7 +172,7 @@ Cemri et al. (2025, arXiv:2503.13657, NeurIPS 2025)이 **1,642개의 실제 실�
 
 ### Memory Poisoning (기억 오염)
 
-위 Blackboard 패턴에서 예고한 문제: 한 에이전트의 환각이 공유 메모리에 "사실"로 기록되면, 하위 에이전트들이 이를 검증 없이 참으로 취급한다. 증상은 급격한 오류가 아니라 **정확도의 서서히 진행되는 감소(gradual decay)**라서 근본 원인 진단이 어렵다. 대응책: append-only 로그 + provenance 추적(→ [[Agent_Memory]]) + 수정 불가능한 Verifier.
+위 Blackboard 패턴에서 예고한 문제: 한 에이전트의 환각이 공유 메모리에 "사실"로 기록되면, 하위 에이전트들이 이를 검증 없이 참으로 취급한다. 증상은 급격한 오류가 아니라 **정확도의 서서히 진행되는 감소(gradual decay)**라서 근본 원인 진단이 어렵다. 대응책: append-only 로그 + provenance 추적(→ [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]]) + 수정 불가능한 Verifier.
 
 ### STRATUS — 탐지·진단·검증 3인조
 
@@ -202,7 +202,7 @@ SRE(Site Reliability Engineering)의 사고 대응 방식을 멀티 에이전트
 멀티 에이전트 시스템은 단일 에이전트보다 강력하지만, 조정 실패의 새로운 표면을 함께 들여온다. Cemri et al.의 수치(41~86.7% 실패율)가 보여주듯 "에이전트를 여러 개 두면 더 낫다"는 직관은 검증 없이는 위험하다. 실무에서는 조정 패턴을 고를 때 항상 대응하는 실패 모드와 완화책(명시적 역할 계약, 독립 Verifier, Circuit Breaker, 정기 MAST 감사)을 함께 설계해야 한다.
 
 ## 관련 개념
-[[Agent_Architectures]] · [[Anthropic_Workflow_Patterns]] · [[Agent_Frameworks]] · [[A2A]] · [[Agent_Memory]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
 
 ## 출처
 - Cemri et al. (2025) "Why Do Multi-Agent LLM Systems Fail? (MAST)" — [arXiv:2503.13657](https://arxiv.org/abs/2503.13657), NeurIPS 2025

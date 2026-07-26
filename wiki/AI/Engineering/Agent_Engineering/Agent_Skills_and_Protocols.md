@@ -98,7 +98,7 @@ class SkillRegistry:
 
 에이전트가 외부 세계와 통신하기 위한 주요 오픈 표준:
 
-| | [[Agent_Skills_and_Protocols/MCP\|MCP]] | [[Agent_Skills_and_Protocols/A2A\|A2A]] | [[Agent_Skills_and_Protocols/AG_UI\|AG-UI]] | A2UI | AP2 |
+| | [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP\|MCP]] | [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A\|A2A]] | [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI\|AG-UI]] | A2UI | AP2 |
 |--|-----|-----|-----|-----|-----|
 | **대상** | LLM ↔ 도구/서비스 | 에이전트 ↔ 에이전트 | 에이전트 ↔ 사용자 UI | 에이전트 → UI 컴포넌트 생성 | 에이전트 ↔ 결제 시스템 |
 | **발표** | Anthropic, 2024년 11월 | Google, 2025년 4월 | CopilotKit, 2025년 6월 | Google, 2026년 | Google, 2025년 9월 |
@@ -107,9 +107,9 @@ class SkillRegistry:
 
 MCP, A2A, AG-UI, A2UI, AP2는 상호 보완 관계다 — MCP로 도구를 호출하고, A2A로 에이전트에 위임하고, AG-UI로 사용자와 실시간 상호작용하며, A2UI로 동적 UI 컴포넌트를 제공하고, AP2로 에이전트 결제를 처리한다.
 
-- 자세한 내용 → [[Agent_Skills_and_Protocols/MCP]]
-- 자세한 내용 → [[Agent_Skills_and_Protocols/A2A]]
-- 자세한 내용 → [[Agent_Skills_and_Protocols/AG_UI]]
+- 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]
+- 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|Agent_Skills_and_Protocols/A2A]]
+- 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|Agent_Skills_and_Protocols/AG_UI]]
 
 ---
 
@@ -220,7 +220,7 @@ AG-UI (Agent-User Interaction Protocol, CopilotKit):
   에이전트-클라이언트 간 상태를 실시간 동기화
   이벤트 기반 스트리밍으로 텍스트·도구 호출·상태 변경을 전달
   → 에이전트와 사용자의 양방향 협력에 적합
-  자세한 내용 → [[Agent_Skills_and_Protocols/AG_UI]]
+  자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|Agent_Skills_and_Protocols/AG_UI]]
 
 A2UI:
   에이전트가 새로운 UI 컴포넌트를 즉석 생성·스트리밍
@@ -271,7 +271,7 @@ AP2는 구매 흐름을 세 단계의 서명된 문서로 구조화한다:
 Agent Skills는 능력의 **모듈화와 재사용성**을 가능하게 하고, MCP/A2A/A2UI는 에이전트 생태계의 **상호운용성**을 확보한다. 에이전트 시스템이 단일 에이전트에서 에이전트 네트워크로, 그리고 풍부한 사용자 경험까지 진화하면서 이 프로토콜들의 중요성이 빠르게 높아지고 있다.
 
 ## 관련 개념
-[[Agent_Architectures]] · [[Tool_Use_and_Function_Calling]] · [[Agent_Core_Pillars]] · [[Agent_Deployment]]
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]
 
 ## 출처
 - Anthropic (2025) "Equipping Agents for the Real World with Agent Skills" — [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
@@ -281,8 +281,8 @@ Agent Skills는 능력의 **모듈화와 재사용성**을 가능하게 하고, 
 - A2UI GitHub — [github.com/google/A2UI](https://github.com/google/A2UI) [4]
 - Google Cloud Blog "Announcing Agent Payments Protocol (AP2)" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol) [5]
 - Cloud Security Alliance "Secure Use of the Agent Payments Protocol (AP2)" — [cloudsecurityalliance.org](https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions) [6]
-- [[Agent_Skills_and_Protocols/MCP]] — MCP 상세 문서
-- [[Agent_Skills_and_Protocols/A2A]] — A2A 상세 문서
+- [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] — MCP 상세 문서
+- [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|Agent_Skills_and_Protocols/A2A]] — A2A 상세 문서
 
 ### 참고 문헌
 [1] https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/

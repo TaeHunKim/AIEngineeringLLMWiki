@@ -83,7 +83,7 @@ memories = memory_store.search(
 )
 ```
 
-### Memory 유형 분류 (자세한 내용 → [[Agent_Memory]])
+### Memory 유형 분류 (자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]])
 
 | 유형 | 예시 | 저장 위치 |
 |------|------|---------|
@@ -178,9 +178,9 @@ Deployment:
 4 Core Pillars는 에이전트 시스템 설계의 **개념적 프레임워크**다. 에이전트가 제대로 작동하지 않을 때 "Planning이 부족한가, Memory가 부족한가, 적절한 Tools가 없는가, Deployment 인프라가 충분한가"를 진단하는 기준이 된다. 특히 Deployment는 로컬 프로토타입과 엔터프라이즈 프로덕션을 가르는 핵심 레이어로, 실제 구현에서 각 Pillar를 독립적으로 최적화할 수 있다.
 
 ## 관련 개념
-[[Agent_Architectures]] · [[Planning_and_Reflection]] · [[Agent_Memory]] · [[Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## 출처
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)
-- [[22365_19_Agents_v8]] (이 위키의 기존 소스)
-- [[Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/22365_19_Agents_v8|22365_19_Agents_v8]] (이 위키의 기존 소스)
+- [[AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

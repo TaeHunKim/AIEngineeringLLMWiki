@@ -138,7 +138,7 @@ Anthropic의 Contextual Retrieval(2024)에서 제안. Recall ↑49%, Full RAG er
 청킹 전략은 RAG 시스템의 **기반**이다. 잘못된 청킹은 좋은 임베딩 모델이나 검색 알고리즘으로도 보완하기 어렵다. 프로덕션에서는 태스크·문서 특성에 맞는 전략을 실험으로 검증한 후 선택해야 한다.
 
 ## 관련 개념
-[[Vector_Storage]] · [[Advanced_Retrieval]] · [[HyDE]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]]
 
 ## 출처
 - Atlan "Chunking Strategies for RAG: Methods, Trade-offs & Best Practices" — [atlan.com](https://atlan.com/know/chunking-strategies-rag/)

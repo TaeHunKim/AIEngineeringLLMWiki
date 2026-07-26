@@ -78,10 +78,10 @@ Full FT 메모리 = 파라미터 × (가중치 + 그래디언트 + 옵티마이�
 
 ## AI Engineering에서의 역할
 
-Full FT는 Model Engineering 레이어의 가장 강력한 도구이나, 대부분의 실무 적용에서는 LoRA/QLoRA(→ [[PEFT_LoRA_QLoRA]])로 대체된다. RLHF는 GPT-4, Claude, Gemini 등 상용 모델의 핵심 훈련 파이프라인이다.
+Full FT는 Model Engineering 레이어의 가장 강력한 도구이나, 대부분의 실무 적용에서는 LoRA/QLoRA(→ [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])로 대체된다. RLHF는 GPT-4, Claude, Gemini 등 상용 모델의 핵심 훈련 파이프라인이다.
 
 ## 관련 개념
-[[Pre-training_and_Continual_Learning]] · [[PEFT_LoRA_QLoRA]] · [[Model_Distillation]]
+[[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]]
 
 ## 출처
 - Ouyang et al. (2022) "Training language models to follow instructions with human feedback" (InstructGPT) — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)

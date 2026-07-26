@@ -290,7 +290,7 @@ Gemini Enterprise Agent Platform에서는 Agent Sandbox가 Agent Runtime에 통�
 
 ## 간접 프롬프트 인젝션 방어: PVE
 
-**Indirect Prompt Injection**(→ [[Red_Teaming]])은 에이전트가 도구·문서·웹페이지를 통해 관찰한 외부 콘텐츠에 숨겨진 지시를 실행 지시로 오인하는 공격이다. **PVE (Prompt Vaccination / Verification-based Defense)** 계열 방어는 신뢰 레벨을 구조적으로 분리한다.
+**Indirect Prompt Injection**(→ [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]])은 에이전트가 도구·문서·웹페이지를 통해 관찰한 외부 콘텐츠에 숨겨진 지시를 실행 지시로 오인하는 공격이다. **PVE (Prompt Vaccination / Verification-based Defense)** 계열 방어는 신뢰 레벨을 구조적으로 분리한다.
 
 ```
 핵심 원칙: "데이터"와 "지시"를 신뢰 경계로 분리
@@ -305,7 +305,7 @@ Gemini Enterprise Agent Platform에서는 Agent Sandbox가 Agent Runtime에 통�
   - 민감 행동(결제, 삭제, 외부 전송) 직전에는 "직전 근거가 신뢰된 소스인가"를 재검증
 ```
 
-이 원칙은 [[Computer_Use_and_Voice_Agents]]의 브라우저 기반 에이전트, [[Autonomous_Systems]]의 장기 실행 에이전트에서 특히 중요하다 — 실행이 길어질수록 비신뢰 콘텐츠에 노출되는 빈도가 누적되기 때문이다.
+이 원칙은 [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]의 브라우저 기반 에이전트, [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 장기 실행 에이전트에서 특히 중요하다 — 실행이 길어질수록 비신뢰 콘텐츠에 노출되는 빈도가 누적되기 때문이다.
 
 ## 워터마킹 (Watermarking)
 
@@ -345,7 +345,7 @@ OpenAI Moderation API, Google Perspective API, Meta Llama Guard 등 범용 유�
 Guardrail Engineering은 **프로덕션 AI 시스템의 안전벨트**다. 아무리 잘 만든 LLM 애플리케이션도 악의적 사용자나 예상치 못한 입력으로 인해 의도치 않은 행동을 할 수 있다. 에이전트 시스템에서는 단순 입출력 필터를 넘어 3-Layer 프레임워크(Policy/Guardrails/Continuous Assurance)와 SafetyPlugin 패턴, Agent Sandbox로 심층 방어를 구현해야 한다. 규제가 있는 산업(금융, 의료, 법률)에서 가드레일은 선택이 아닌 필수다.
 
 ## 관련 개념
-[[Red_Teaming]] · [[Human_in_the_Loop]] · [[LLM_as_a_Judge]] · [[Observability_and_Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[Computer_Use_and_Voice_Agents]] · [[Autonomous_Systems]] · [[Alignment_Research]] · [[AI_Governance_and_Compliance]]
+[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
 
 ## 출처
 - NVIDIA NeMo Guardrails 문서 — [docs.nvidia.com](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html)
@@ -356,6 +356,6 @@ Guardrail Engineering은 **프로덕션 AI 시스템의 안전벨트**다. 아�
 - Meta AI "Stable Signature" — [ai.meta.com](https://ai.meta.com/blog/stable-signature-watermarking-generative-ai/)
 - C2PA 공식 스펙 — [c2pa.org](https://c2pa.org)
 - Kleinberg, Mullainathan & Raghavan (2016) "Inherent Trade-Offs in the Fair Determination of Risk Scores" — [arXiv:1609.05807](https://arxiv.org/abs/1609.05807)
-- [[Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
-- [[Prototype_to_Production]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Prototype_to_Production|Prototype_to_Production]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
 - AI Engineering from Scratch, Phase 14 · Lesson 27, Phase 18 (프롬프트 인젝션 방어, 워터마킹, 차등 프라이버시, 편향/공정성, 모더레이션) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment)

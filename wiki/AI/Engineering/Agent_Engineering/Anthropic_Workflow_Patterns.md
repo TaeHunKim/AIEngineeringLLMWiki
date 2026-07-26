@@ -57,11 +57,11 @@ N개의 LLM 호출을 동시에 실행하고 결과를 취합한다. 두 형태:
 
 ### 4. Orchestrator-Workers (오케스트레이터-워커)
 
-오케스트레이터 LLM이 어떤 워커(역시 LLM)를 실행할지 동적으로 결정하고 결과를 종합한다. 에이전트 루프와 비슷하지만 오케스트레이터는 무한정 반복하지 않는다. 자세한 아키텍처 비교 → [[Agent_Architectures]]
+오케스트레이터 LLM이 어떤 워커(역시 LLM)를 실행할지 동적으로 결정하고 결과를 종합한다. 에이전트 루프와 비슷하지만 오케스트레이터는 무한정 반복하지 않는다. 자세한 아키텍처 비교 → [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]]
 
 ### 5. Evaluator-Optimizer (평가자-최적화자)
 
-한 LLM이 답을 제안하고, 다른 LLM이 이를 평가한다. 평가자가 통과할 때까지 반복한다. [[Planning_and_Reflection]]의 Self-Refine 패턴을 일반화한 형태다.
+한 LLM이 답을 제안하고, 다른 LLM이 이를 평가한다. 평가자가 통과할 때까지 반복한다. [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]]의 Self-Refine 패턴을 일반화한 형태다.
 
 ```python
 def evaluator_optimizer(task: str, proposer, evaluator, max_iter: int = 5) -> str:
@@ -99,12 +99,12 @@ def evaluator_optimizer(task: str, proposer, evaluator, max_iter: int = 5) -> st
 ## 프레임워크는 언제 필요한가
 
 Anthropic의 결론은 명확하다: **대부분의 작업에는 직접 API 호출이면 충분하다.** 프레임워크는 패턴이 진짜로 다음을 필요로 할 때만 도입한다:
-- 지속적 상태(durable state)가 필요할 때 → LangGraph ([[LangGraph]])
+- 지속적 상태(durable state)가 필요할 때 → LangGraph ([[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]])
 - 액터 모델 기반 동시성이 필요할 때 → AutoGen v0.4
 - 역할 템플릿화가 필요할 때 → CrewAI
 - Claude Code 하네스와 같은 형태가 필요할 때 → Claude Agent SDK
 
-프레임워크 상세 비교 → [[Agent_Frameworks]]
+프레임워크 상세 비교 → [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]]
 
 ## Context Engineering과의 관계
 
@@ -112,10 +112,10 @@ Anthropic의 결론은 명확하다: **대부분의 작업에는 직접 API 호�
 
 ## AI Engineering에서의 역할
 
-Anthropic의 5가지 워크플로 패턴은 에이전트 설계에서 가장 자주 인용되는 "어휘"다. 복잡한 멀티 에이전트 프레임워크를 도입하기 전에, 이 5가지 패턴만으로 문제가 풀리는지 먼저 검토하는 것이 실무 표준이 되고 있다. Agent Architectures([[Agent_Architectures]])가 "누가 실행하는가"를 다룬다면, Workflow Patterns는 "어떤 순서로 LLM 호출을 조합하는가"를 다룬다.
+Anthropic의 5가지 워크플로 패턴은 에이전트 설계에서 가장 자주 인용되는 "어휘"다. 복잡한 멀티 에이전트 프레임워크를 도입하기 전에, 이 5가지 패턴만으로 문제가 풀리는지 먼저 검토하는 것이 실무 표준이 되고 있다. Agent Architectures([[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]])가 "누가 실행하는가"를 다룬다면, Workflow Patterns는 "어떤 순서로 LLM 호출을 조합하는가"를 다룬다.
 
 ## 관련 개념
-[[Agent_Architectures]] · [[Planning_and_Reflection]] · [[Agent_Frameworks]] · [[LangGraph]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]
 
 ## 출처
 - Schluntz, E. & Zhang, B. (Anthropic, 2024) "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/research/building-effective-agents)

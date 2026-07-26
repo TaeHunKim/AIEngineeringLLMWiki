@@ -132,14 +132,14 @@ flowchart TD
 - Mechanic은 진단 도구를 MCP로 호출 (스캐너, DB 조회 등)
 - → MCP와 A2A는 경쟁이 아닌 **상호 보완** 관계
 
-자세한 MCP 내용 → [[MCP]]
+자세한 MCP 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## AI Engineering에서의 역할
 
 A2A는 **에이전트 생태계의 상호운용성 레이어**다. 단일 에이전트 시스템을 넘어 여러 전문 에이전트가 협력하는 멀티에이전트 아키텍처가 보편화될수록, A2A 없이는 각 에이전트가 고립된 사일로로 남게 된다. MCP가 에이전트와 도구를 연결한다면, A2A는 에이전트와 에이전트를 연결하여 **진정한 에이전트 네트워크**를 가능하게 한다.
 
 ## 관련 개념
-[[MCP]] · [[Agent_Skills_and_Protocols]] · [[Agent_Architectures]] · [[Human_in_the_Loop]]
+[[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]]
 
 ## 출처
 - Google Developers Blog (2025) "Announcing the Agent2Agent Protocol (A2A)" — [developers.googleblog.com](https://developers.googleblog.com/en/a2a-a2a-new-era-of-agent-interoperability/)
@@ -147,4 +147,4 @@ A2A는 **에이전트 생태계의 상호운용성 레이어**다. 단일 에이
 - A2A GitHub — [github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
 - Linux Foundation (2026) "A2A Protocol Surpasses 150 Organizations" — [linuxfoundation.org](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year)
 - Wikipedia "Agent2Agent" — [en.wikipedia.org](https://en.wikipedia.org/wiki/Agent2Agent)
-- [[Prototype_to_Production]] (이 위키의 기존 소스 — A2A vs MCP 비교)
+- [[AI/sources/Prototype_to_Production|Prototype_to_Production]] (이 위키의 기존 소스 — A2A vs MCP 비교)

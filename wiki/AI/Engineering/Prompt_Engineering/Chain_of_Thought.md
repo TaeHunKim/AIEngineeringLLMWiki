@@ -99,7 +99,7 @@ flowchart TD
 
 - **Graph of Thoughts (GoT)**: ToT를 그래프로 일반화 (순환·병합 허용)
 - **Algorithm of Thoughts**: 단일 컨텍스트에서 탐색
-- **ReAct**: 외부 도구 호출과 CoT 결합 (→ [[ReAct_Pattern]])
+- **ReAct**: 외부 도구 호출과 CoT 결합 (→ [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]])
 
 ## Thinking Mode (Extended Thinking)
 
@@ -112,7 +112,7 @@ flowchart TD
 CoT는 LLM의 추론 능력을 끌어내는 가장 검증된 기법이다. 수학, 코딩, 법률 분석 등 복잡한 추론이 필요한 LLM 애플리케이션의 기본 프롬프팅 패턴이며, "Think step by step" 한 줄로도 유의미한 성능 향상을 얻을 수 있다.
 
 ## 관련 개념
-[[Few_shot_Prompting]] · [[System_and_Role_Prompting]] · [[ReAct_Pattern]] · [[Planning_and_Reflection]]
+[[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few_shot_Prompting]] · [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System_and_Role_Prompting]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]]
 
 ## 출처
 - Wei et al. (2022) "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models" — [arXiv:2201.11903](https://arxiv.org/pdf/2201.11903)

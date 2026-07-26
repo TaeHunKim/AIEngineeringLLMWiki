@@ -1,6 +1,6 @@
 # Sources: Agentic RAG
 
-wiki 문서 [[../Engineering/Context_Engineering/RAG/Agentic_RAG|Agentic RAG]]의 참고 문헌.
+wiki 문서 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]]의 참고 문헌.
 
 ---
 

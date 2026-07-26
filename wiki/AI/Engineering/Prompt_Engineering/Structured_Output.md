@@ -139,7 +139,7 @@ task:
     }
 }
 ```
-→ [[Tool_Use_and_Function_Calling]] 참조
+→ [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] 참조
 
 ## Instructor 라이브러리
 
@@ -190,7 +190,7 @@ def get_structured_output(prompt: str) -> dict:
 구조화 출력은 LLM을 실제 소프트웨어 시스템에 통합하는 핵심 가교다. Information Extraction, NLU 파이프라인, Tool Use, Agent 시스템 모두 구조화 출력에 의존한다. 프로덕션 LLM 애플리케이션에서 구조화 출력 없이는 안정적인 시스템 구축이 거의 불가능하다.
 
 ## 관련 개념
-[[Tool_Use_and_Function_Calling]] · [[Sampling_Controls]] · [[Guardrail_Engineering]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling_Controls]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
 
 ## 출처
 - OpenAI Structured Outputs 문서 — [platform.openai.com](https://platform.openai.com/docs/guides/structured-outputs)

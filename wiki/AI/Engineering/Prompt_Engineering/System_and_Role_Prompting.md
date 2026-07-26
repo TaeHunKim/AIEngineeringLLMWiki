@@ -273,7 +273,7 @@ System Prompt는 LLM 애플리케이션의 **설계 계약서**다. 잘 설계�
 - 프로덕션 배포 시 System Prompt는 코드만큼 중요한 자산으로 버전 관리 필요
 
 ## 관련 개념
-[[Few_shot_Prompting]] · [[Chain_of_Thought]] · [[Structured_Output]] · [[Guardrail_Engineering]]
+[[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few_shot_Prompting]] · [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] · [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
 
 ## 출처
 

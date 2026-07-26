@@ -207,7 +207,7 @@ Agentic RAG는 Context Engineering과 Agent Engineering의 **교차점**에 위�
 
 ## 관련 개념
 
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[Advanced_Retrieval]] · [[HyDE]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[../../Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[../../Agent_Engineering/Planning_and_Reflection|Planning & Reflection]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]]
 
 ## 출처
 

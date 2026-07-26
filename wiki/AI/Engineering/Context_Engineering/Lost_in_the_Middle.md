@@ -125,7 +125,7 @@ XML 태그, 헤더, 구분자 등으로 중요 정보 구역을 명시적으로 
 
 ### 전략 4: 컨텍스트 크기 최소화 (Context Compression)
 
-불필요한 문서 자체를 제거하면 중간 문제를 원천적으로 줄일 수 있다. [[Context_Compression]] 문서 참조.
+불필요한 문서 자체를 제거하면 중간 문제를 원천적으로 줄일 수 있다. [[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] 문서 참조.
 
 ```
 원칙: "필요한 문서만 컨텍스트에 넣는다"
@@ -149,7 +149,7 @@ flowchart TD
 
 ### 전략 6: Reranking으로 문서 순서 최적화
 
-[[RAG/Advanced_Retrieval|Advanced Retrieval]]의 Reranking 단계에서 relevance score를 기준으로 문서를 재정렬할 때, 단순히 내림차순으로 정렬하는 것이 아니라 전략 1의 앞/뒤 배치 원칙을 적용한다.
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]]의 Reranking 단계에서 relevance score를 기준으로 문서를 재정렬할 때, 단순히 내림차순으로 정렬하는 것이 아니라 전략 1의 앞/뒤 배치 원칙을 적용한다.
 
 ## 현재 상황: 최신 모델에서의 개선
 
@@ -170,7 +170,7 @@ flowchart TD
 Lost in the Middle은 RAG 파이프라인 설계에서 간과하기 쉬운 함정이다. 좋은 Retriever와 Reranker를 구축해도, 최종적으로 LLM에 전달하는 **문서 순서 설계를 소홀히 하면 성능이 저하**된다. 특히 컨텍스트 창이 수십만 토큰으로 커지는 환경일수록 이 문제가 두드러지므로, 컨텍스트 순서를 명시적으로 최적화하는 로직을 파이프라인에 포함시켜야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[Context_Compression]] · [[RAG/Advanced_Retrieval]] · [[RAG/Chunking_Strategies]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|RAG/Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|RAG/Chunking_Strategies]]
 
 ## 출처
 1. Liu et al. (2023) "Lost in the Middle: How Language Models Use Long Contexts" — [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)

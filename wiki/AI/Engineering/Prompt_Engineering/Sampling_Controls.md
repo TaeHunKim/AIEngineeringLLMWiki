@@ -215,7 +215,7 @@ response = client.messages.create(
 ```
 
 ## 관련 개념
-[[Structured_Output]] · [[Chain_of_Thought]] · [[LLM_as_a_Judge]]
+[[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]
 
 ## 출처
 - Holtzman et al. (2020) "The Curious Case of Neural Text Degeneration (Top-P)" — [arXiv:1904.09751](https://arxiv.org/abs/1904.09751)

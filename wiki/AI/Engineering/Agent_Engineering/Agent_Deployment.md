@@ -326,7 +326,7 @@ flowchart TD
     DEP["재배포<br/>Agent Registry에 새 버전 등록"] --> OBS
 ```
 
-이 루프는 [[Loop_Engineering/Continuous_Optimization|Continuous Optimization]]의 에이전트 특화 구현체로 볼 수 있다.
+이 루프는 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]의 에이전트 특화 구현체로 볼 수 있다.
 
 ---
 
@@ -356,12 +356,12 @@ flowchart TD
 Agent Deployment는 **에이전트를 프로토타입에서 엔터프라이즈 시스템으로 격상시키는 레이어**다. 아무리 뛰어난 Planning·Memory·Tools를 갖춘 에이전트도 적절한 Deployment 인프라 없이는 장기 운영·보안·감사·규모 확장이 불가능하다. 특히 규제 산업(금융, 의료, 법률)에서 Agent Identity + Agent Gateway + Agent Registry의 조합은 AI 자동화 도입의 전제 조건이 되고 있다.
 
 ## 관련 개념
-[[Agent_Core_Pillars]] · [[Agent_Architectures]] · [[Agent_Memory]] · [[Guardrail_Engineering]] · [[Observability_and_Tracing]] · [[LLM_as_a_Judge]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## 출처
-- [[Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
-- [[Prototype_to_Production]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
-- [[Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Prototype_to_Production|Prototype_to_Production]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
+- [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
 - Google Cloud "Optimize your agents" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize) [1]
 - Google Cloud "Optimize agent prompts" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/optimize-agent) [2]
 - Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform) [3]

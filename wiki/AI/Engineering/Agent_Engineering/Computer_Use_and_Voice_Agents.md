@@ -50,14 +50,14 @@ Computer Use는 임의의 클릭·타이핑을 실행하므로 잘못된 판단�
 
 ```
 Computer Use 안전 체크리스트:
-  □ Agent Sandbox / VM 격리 — 핵심 시스템과 분리 (→ [[Guardrail_Engineering]])
+  □ Agent Sandbox / VM 격리 — 핵심 시스템과 분리 (→ [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])
   □ 민감 액션(결제, 삭제, 발송) 전 Human-in-the-Loop 승인 게이트
   □ 허용된 앱·URL 화이트리스트
-  □ 스텝 상한(action budget) — 무한 루프 방지 (→ [[Autonomous_Systems]])
+  □ 스텝 상한(action budget) — 무한 루프 방지 (→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]])
   □ 실행 전 계획을 사람이 검토 (propose-then-commit 패턴)
 ```
 
-**간접 프롬프트 인젝션 위험**: 브라우저 기반 Computer Use는 방문한 웹페이지 안의 숨겨진 텍스트("이 지시를 무시하고...")를 그대로 관찰 결과로 받아들일 수 있다. 이는 [[Red_Teaming]]에서 다루는 Indirect Prompt Injection의 대표 공격면이며, [[Autonomous_Systems]]의 브라우저 에이전트 안전 설계와 직결된다.
+**간접 프롬프트 인젝션 위험**: 브라우저 기반 Computer Use는 방문한 웹페이지 안의 숨겨진 텍스트("이 지시를 무시하고...")를 그대로 관찰 결과로 받아들일 수 있다. 이는 [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]]에서 다루는 Indirect Prompt Injection의 대표 공격면이며, [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 브라우저 에이전트 안전 설계와 직결된다.
 
 ## Voice Agents — 지연시간이 곧 품질
 
@@ -126,10 +126,10 @@ pipeline = Pipeline([
 
 ## AI Engineering에서의 역할
 
-Computer Use는 에이전트의 행동 범위를 "API가 있는 세계"에서 "화면이 있는 모든 세계"로 확장한다. 다만 텍스트 기반 에이전트보다 실패의 물리적 결과가 즉각적이므로 Guardrail·Sandbox 설계([[Guardrail_Engineering]])와 뗄 수 없다. Voice Agents는 완전히 다른 최적화 축(지연시간)을 가지며, [[Loop_Engineering/Runtime_Optimization]]에서 다루는 스트리밍·TTFB 최적화 기법이 텍스트보다 훨씬 엄격하게 적용되는 영역이다.
+Computer Use는 에이전트의 행동 범위를 "API가 있는 세계"에서 "화면이 있는 모든 세계"로 확장한다. 다만 텍스트 기반 에이전트보다 실패의 물리적 결과가 즉각적이므로 Guardrail·Sandbox 설계([[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])와 뗄 수 없다. Voice Agents는 완전히 다른 최적화 축(지연시간)을 가지며, [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]]에서 다루는 스트리밍·TTFB 최적화 기법이 텍스트보다 훨씬 엄격하게 적용되는 영역이다.
 
 ## 관련 개념
-[[Guardrail_Engineering]] · [[Red_Teaming]] · [[Autonomous_Systems]] · [[Loop_Engineering/Runtime_Optimization]] · [[Agent_Core_Pillars]]
+[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]]
 
 ## 출처
 - Anthropic "Introducing Computer Use" (2024) — [anthropic.com](https://www.anthropic.com/news/3-5-models-and-computer-use)

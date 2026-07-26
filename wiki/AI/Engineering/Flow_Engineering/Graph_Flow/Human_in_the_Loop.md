@@ -220,14 +220,14 @@ async def multi_day_audit_agent(audit_scope: dict):
     }
 ```
 
-**핵심 인프라 요구사항**: Long-running HITL은 Agent Runtime의 auto-resume(며칠 후 재개)과 Memory Bank(상태 영속)가 없으면 구현이 매우 복잡하다. 자세한 내용 → [[Agent_Deployment]]
+**핵심 인프라 요구사항**: Long-running HITL은 Agent Runtime의 auto-resume(며칠 후 재개)과 Memory Bank(상태 영속)가 없으면 구현이 매우 복잡하다. 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]
 
 ## AI Engineering에서의 역할
 
 HITL은 **에이전트 시스템의 안전 밸브**다. 완전 자동화와 안전성 사이의 균형을 잡아주며, 규제 산업(금융, 의료, 법률)에서 AI 자동화 도입을 가능하게 한다. Anthropic의 에이전트 안전 가이드라인에서도 위험 작업 전 인간 검토를 강력 권고한다.
 
 ## 관련 개념
-[[LangGraph]] · [[Cyclic_Flows]] · [[Guardrail_Engineering]] · [[Agent_Architectures]] · [[Agent_Deployment]]
+[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic_Flows]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]
 
 ## 출처
 - LangChain 공식 "Making it easier to build HITL agents with interrupt" — [langchain.com](https://www.langchain.com/blog/making-it-easier-to-build-human-in-the-loop-agents-with-interrupt)

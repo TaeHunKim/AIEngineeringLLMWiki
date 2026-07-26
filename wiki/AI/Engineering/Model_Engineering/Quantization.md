@@ -101,7 +101,7 @@ AWQ:
 Quantization은 Compression & Optimization 레이어의 핵심 도구로, **배포 비용을 직접 결정**한다. 70B 모델을 단일 서버에서 서빙하거나, 소비자 GPU에서 실행하는 것을 가능하게 만든다. LLM 서비스 비용의 상당 부분이 추론 GPU 비용임을 감안하면, 적절한 양자화 전략은 비즈니스 경쟁력과 직결된다.
 
 ## 관련 개념
-[[PEFT_LoRA_QLoRA]] · [[Model_Distillation]] · [[Observability_and_Tracing]]
+[[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
 
 ## 출처
 - Lin et al. (2023) "AWQ: Activation-aware Weight Quantization" — [arXiv:2306.00978](https://arxiv.org/pdf/2306.00978)

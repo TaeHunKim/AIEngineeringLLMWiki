@@ -166,11 +166,11 @@ flowchart TD
 
 ## AI Engineering에서의 역할
 
-[[Advanced_Retrieval]]의 Two-Stage 파이프라인에서 Stage 1(Recall 확보)을 담당한다: Hybrid Search(Dense+Sparse)로 Top-100을 뽑고 → Cross-encoder Reranker로 Top-5로 좁히는 조합이 현재 표준 실무 패턴이다. Vector+Graph 결합은 관계 추론이 필요한 도메인(의료, 법률, 지식 집약 산업)에서 특히 효과적이다. Multi-Store Hybrid(Vector+Graph+KV)는 단일 쿼리가 사실 검색·관계 탐색·전역 요약을 동시에 요구할 때 가장 큰 이점을 보이며, StructRAG의 Router 방식과 RAGU의 MixSearch 방식이 현재 대표적인 구현이다.
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]]의 Two-Stage 파이프라인에서 Stage 1(Recall 확보)을 담당한다: Hybrid Search(Dense+Sparse)로 Top-100을 뽑고 → Cross-encoder Reranker로 Top-5로 좁히는 조합이 현재 표준 실무 패턴이다. Vector+Graph 결합은 관계 추론이 필요한 도메인(의료, 법률, 지식 집약 산업)에서 특히 효과적이다. Multi-Store Hybrid(Vector+Graph+KV)는 단일 쿼리가 사실 검색·관계 탐색·전역 요약을 동시에 요구할 때 가장 큰 이점을 보이며, StructRAG의 Router 방식과 RAGU의 MixSearch 방식이 현재 대표적인 구현이다.
 
 ## 관련 개념
 
-[[Advanced_Retrieval]] · [[Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]
 
 ## 출처
 

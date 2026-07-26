@@ -128,9 +128,9 @@ MMR 점수 = λ × sim(query, doc) - (1-λ) × max_sim(doc, already_selected)
 벡터 DB는 RAG 시스템의 **장기 기억** 역할을 한다. 수백만 개의 문서를 수 밀리초 안에 의미 기반으로 검색하는 것을 가능하게 만든다. 선택은 규모(문서 수), 호스팅 요구사항, 필터링 복잡도, 비용에 따라 결정된다.
 
 ## 관련 개념
-[[Chunking_Strategies]] · [[Advanced_Retrieval]] · [[Memory_and_Semantic_Cache]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]]
 
 ## 출처
-- Vertex AI Vector Search 문서 — [[22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)]]
+- Vertex AI Vector Search 문서 — [[AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)]]
 - Johnson et al. (2019) "Billion-scale similarity search with GPUs (FAISS)" — [arXiv:1702.08734](https://arxiv.org/abs/1702.08734)
 - Malkov & Yashunin (2018) "Efficient and robust approximate nearest neighbor search using HNSW" — [arXiv:1603.09320](https://arxiv.org/abs/1603.09320)

@@ -161,7 +161,7 @@ def self_refine(task: str, llm, max_iterations: int = 3) -> str:
     return output
 ```
 
-**성능**: GPT-4 기준 코드 최적화·수학 추론·대화 응답 등 7개 태스크에서 평균 약 20% 품질 향상 (사람 평가 기준). [[Anthropic_Workflow_Patterns]]의 Evaluator-Optimizer 패턴이 Self-Refine을 일반화한 형태다.
+**성능**: GPT-4 기준 코드 최적화·수학 추론·대화 응답 등 7개 태스크에서 평균 약 20% 품질 향상 (사람 평가 기준). [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]]의 Evaluator-Optimizer 패턴이 Self-Refine을 일반화한 형태다.
 
 ### CRITIC (Correcting with Tool-Interactive Critiquing)
 
@@ -262,7 +262,7 @@ def collaborative_planning(goal: str):
 Planning & Reflection은 에이전트를 "실행기"에서 "자기 개선 시스템"으로 격상시킨다. 특히 반복적인 태스크(코드 디버깅, 리서치, 콘텐츠 생성)에서 Reflexion 패턴은 인간 감독 없이도 품질이 지속적으로 향상되는 효과를 낸다. ReWOO·ToT·LATS는 "얼마나 넓게 탐색할 것인가"의 스펙트럼을, Self-Refine·CRITIC은 "무엇을 근거로 스스로를 고칠 것인가"의 스펙트럼을 이루며, 태스크의 난이도와 비용 허용치에 따라 선택한다.
 
 ## 관련 개념
-[[Agent_Core_Pillars]] · [[ReAct_Pattern]] · [[Chain_of_Thought]] · [[Human_in_the_Loop]] · [[Anthropic_Workflow_Patterns]] · [[Multi_Agent_Coordination]]
+[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]
 
 ## 출처
 - Shinn et al. (2023) "Reflexion: Language Agents with Verbal Reinforcement Learning" — [NeurIPS 2023](https://proceedings.neurips.cc/paper_files/paper/2023/file/1b44b878bb782e6954cd888628510e90-Paper-Conference.pdf)

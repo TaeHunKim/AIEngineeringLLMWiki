@@ -64,7 +64,7 @@ train_data = new_domain_data * 0.8 + replay_buffer * 0.2
 #### 3. Architecture-Based (아키텍처)
 새 태스크를 위한 파라미터를 분리:
 - **Adapter 레이어 추가**: 기존 파라미터 동결 후 소규모 어댑터만 학습
-- **LoRA**: 저랭크 분해로 분리된 파라미터 학습 (→ [[PEFT_LoRA_QLoRA]])
+- **LoRA**: 저랭크 분해로 분리된 파라미터 학습 (→ [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])
 
 #### 4. Learning Rate 전략
 - **LR Re-warming + Re-decay + Replay** 조합: 완전 재학습 성능에 근접 가능 (2024 연구 결과)
@@ -83,7 +83,7 @@ train_data = new_domain_data * 0.8 + replay_buffer * 0.2
 Pre-training은 AI Engineering 피라미드의 가장 아래에 위치한다. 대부분의 팀은 이 단계를 직접 수행하지 않고 OpenAI, Anthropic, Meta 등의 Foundation Model을 활용한다. 그러나 **Continual Pre-training**은 도메인 특화 서비스(금융 AI, 의료 AI 등)에서 핵심 경쟁 우위가 된다.
 
 ## 관련 개념
-[[Full_Fine-Tuning]] · [[PEFT_LoRA_QLoRA]] · [[Model_Distillation]] · [[Quantization]]
+[[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]]
 
 ## 출처
 - Hoffmann et al. (2022) "Training Compute-Optimal Large Language Models" (Chinchilla) — [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)

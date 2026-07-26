@@ -149,7 +149,7 @@ LlamaIndex의 관리형 클라우드 서비스:
 LlamaIndex는 RAG 파이프라인의 "스위스 군용 칼"이다. 단순한 VectorStore 기반 RAG부터 Multi-hop RAG, 계층적 검색, 멀티 인덱스 등 복잡한 데이터-LLM 통합 패턴을 지원한다. 데이터가 복잡하거나 정교한 검색 전략이 필요할 때 LangChain보다 LlamaIndex가 더 적합하다.
 
 ## 관련 개념
-[[LangChain]] · [[Chunking_Strategies]] · [[Advanced_Retrieval]] · [[Vector_Storage]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]]
 
 ## 출처
 - LlamaIndex 공식 문서 — [docs.llamaindex.ai](https://docs.llamaindex.ai)

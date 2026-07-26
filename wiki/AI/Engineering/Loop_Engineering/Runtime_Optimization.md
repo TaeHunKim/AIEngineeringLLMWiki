@@ -351,7 +351,7 @@ Prefix가 많이 겹치는 멀티턴 대화·Few-shot 프롬프팅·에이전트
 
 ### TensorRT-LLM — FP8 / NVFP4
 
-NVIDIA의 서빙 엔진으로, 최신 GPU 아키텍처(Blackwell)의 저정밀도 연산을 적극 활용한다. FP8·NVFP4(4비트 부동소수점) 양자화로 처리량을 늘리면서 정확도 손실을 최소화하는 것이 핵심 — 프로덕션 양자화 기법 상세는 → [[Quantization]]
+NVIDIA의 서빙 엔진으로, 최신 GPU 아키텍처(Blackwell)의 저정밀도 연산을 적극 활용한다. FP8·NVFP4(4비트 부동소수점) 양자화로 처리량을 늘리면서 정확도 손실을 최소화하는 것이 핵심 — 프로덕션 양자화 기법 상세는 → [[AI/Engineering/Model_Engineering/Quantization|Quantization]]
 
 ### Disaggregated Prefill/Decode (분리형 서빙)
 
@@ -400,10 +400,10 @@ Disaggregated Serving (NVIDIA Dynamo, llm-d 등):
 
 ## AI Engineering에서의 역할
 
-Runtime Optimization은 AI 서비스가 **경제적으로 지속 가능하도록 하는 엔지니어링**이다. 2025년 이후로 RouteLLM 같은 학습된 라우터가 단순 휴리스틱을 대체하고, Speculative Decoding이 프로덕션 표준이 되면서 같은 모델 품질을 훨씬 낮은 비용·레이턴시로 제공하는 것이 가능해졌다. API 호출 측 최적화(캐싱·라우팅·배칭)와 자체 호스팅 서빙 엔진 내부 최적화(PagedAttention, RadixAttention, Disaggregated Serving)는 서로 다른 레이어이며, 두 레이어를 함께 고려해야 총소유비용(TCO)을 최소화할 수 있다. 게이트웨이·배포 전략 등 조직 차원의 프로덕션 운영은 → [[Production_Operations]]
+Runtime Optimization은 AI 서비스가 **경제적으로 지속 가능하도록 하는 엔지니어링**이다. 2025년 이후로 RouteLLM 같은 학습된 라우터가 단순 휴리스틱을 대체하고, Speculative Decoding이 프로덕션 표준이 되면서 같은 모델 품질을 훨씬 낮은 비용·레이턴시로 제공하는 것이 가능해졌다. API 호출 측 최적화(캐싱·라우팅·배칭)와 자체 호스팅 서빙 엔진 내부 최적화(PagedAttention, RadixAttention, Disaggregated Serving)는 서로 다른 레이어이며, 두 레이어를 함께 고려해야 총소유비용(TCO)을 최소화할 수 있다. 게이트웨이·배포 전략 등 조직 차원의 프로덕션 운영은 → [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]
 
 ## 관련 개념
-[[Context_Compression]] · [[Quantization]] · [[Continuous_Optimization]] · [[Data_Flywheel]] · [[Memory_and_Semantic_Cache]] · [[Production_Operations]]
+[[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]
 
 ## 출처
 - GPTCache GitHub — [github.com/zilliztech/GPTCache](https://github.com/zilliztech/GPTCache)
