@@ -23,11 +23,11 @@ flowchart LR
 
 | 문서 | 내용 |
 |------|------|
-| [[Pre-training_and_Continual_Learning]] | 대규모 사전 학습, Chinchilla 법칙, 재앙적 망각 |
-| [[Full_Fine-Tuning]] | SFT, RLHF(PPO), DPO — 전체 가중치 업데이트 |
-| [[PEFT_LoRA_QLoRA]] | 파라미터 효율적 파인튜닝, LoRA/QLoRA 수학 |
-| [[Quantization]] | INT8/INT4 양자화, GPTQ/AWQ/GGUF |
-| [[Model_Distillation]] | Teacher-Student, DistilBERT/Phi 계열 |
+| [[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning\|Pre-training_and_Continual_Learning]] | 대규모 사전 학습, Chinchilla 법칙, 재앙적 망각 |
+| [[AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]] | SFT, RLHF(PPO), DPO — 전체 가중치 업데이트 |
+| [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA\|PEFT_LoRA_QLoRA]] | 파라미터 효율적 파인튜닝, LoRA/QLoRA 수학 |
+| [[AI/Engineering/Model_Engineering/Quantization\|Quantization]] | INT8/INT4 양자화, GPTQ/AWQ/GGUF |
+| [[AI/Engineering/Model_Engineering/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi 계열 |
 
 ## 언제 어떤 기술을 선택하는가
 

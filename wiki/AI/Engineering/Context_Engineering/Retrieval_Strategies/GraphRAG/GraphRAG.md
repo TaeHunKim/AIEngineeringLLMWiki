@@ -145,7 +145,7 @@ GraphRAG는 Knowledge Graph 개념을 기반으로 한다. 관련 하위 문서:
 
 | 문서 | 내용 |
 |------|------|
-| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] | 지식 그래프 개요 — 트리플, 엔티티-관계 모델 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph\|Knowledge Graph]] | 지식 그래프 개요 — 트리플, 엔티티-관계 모델 |
 | [[Knowledge_Graph/LPG_and_RDF]] | Labeled Property Graph (Neo4j) vs RDF (SPARQL) |
 | [[Knowledge_Graph/Ontology]] | OWL 온톨로지, 도메인 온톨로지, 추론 엔진 |
 

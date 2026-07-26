@@ -17,14 +17,14 @@ Harness = Guardrails (안전) + Evaluation (품질) + Observability (관찰)
 
 | 문서 | 내용 |
 |------|------|
-| [[Guardrail_Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
-| [[LLM_as_a_Judge]] | 자동 품질 평가 — MT-Bench, RAGAS |
-| [[Benchmarking]] | MMLU/HumanEval/SWE-bench, pass@k |
-| [[Human_Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
-| [[Observability_and_Tracing]] | LangSmith/Langfuse/Arize Phoenix |
-| [[Red_Teaming]] | HarmBench, PAIR, Jailbreaking 탐지, Garak/PyRIT |
-| [[Alignment_Research]] | Reward Hacking, Sleeper Agents, Alignment Faking, AI Control |
-| [[AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, METR 외부평가, EU AI Act, 모델 카드 |
+| [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
+| [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM_as_a_Judge]] | 자동 품질 평가 — MT-Bench, RAGAS |
+| [[AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench, pass@k |
+| [[AI/Engineering/Harness_Engineering/Human_Evaluation\|Human_Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
+| [[AI/Engineering/Harness_Engineering/Observability_and_Tracing\|Observability_and_Tracing]] | LangSmith/Langfuse/Arize Phoenix |
+| [[AI/Engineering/Harness_Engineering/Red_Teaming\|Red_Teaming]] | HarmBench, PAIR, Jailbreaking 탐지, Garak/PyRIT |
+| [[AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Alignment Faking, AI Control |
+| [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, METR 외부평가, EU AI Act, 모델 카드 |
 
 ## 평가 계층 구조
 

@@ -29,8 +29,8 @@ flowchart TD
 | **Deterministic Function** | 비-에이전트 연산. 고정된 입출력 규칙 |
 | **Router** | 다음 노드를 결정하는 분기점 |
 | **Join** | 병렬 경로의 결과를 통합 |
-| **Tool** | MCP 서버 또는 함수 호출 (→ [[Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]) |
-| **Human Checkpoint** | 승인 게이트. [[Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]]의 조직 그래프 버전 |
+| **Tool** | MCP 서버 또는 함수 호출 (→ [[Agent_Engineering/Agent_Skills_and_Protocols/MCP\|MCP]]) |
+| **Human Checkpoint** | 승인 게이트. [[Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human-in-the-Loop]]의 조직 그래프 버전 |
 
 엣지는 노드 간의 **위임·신뢰·데이터 흐름**을 인코딩한다 — 어떤 노드가 다른 노드를 감시(monitor)하거나, 소유(own)하거나, 거부권(veto)을 행사할 수 있는지가 엣지의 방향과 속성으로 표현된다.
 

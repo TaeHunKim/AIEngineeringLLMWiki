@@ -28,7 +28,7 @@ Eigent는 그래프를 두 종류로 구분한다:
 | 구분 | 정의 | 예시 |
 |------|------|------|
 | **Work Graph** | 에이전트가 **무엇을 실행하는가**. 노드=도구/스킬/파일/서브태스크, 엣지=어떤 도구가 어떤 산출물을 만들었고 그 산출물이 어떤 단계로 흘러갔는가 | [[Multi_Agent_Topology]]에서 다룬 노드/엣지 토폴로지 |
-| **Improvement Graph** | 에이전트가 시간이 지나며 **스스로를 어떻게 바꾸는가**. 노드=측정 지점·최적화 대상 변수(지연시간/품질/비용)·액션, 엣지=신뢰·권한·주기(cadence)를 인코딩한 방향성 관계 — 어떤 loop가 다른 loop를 먹이고(feed), 소유하고(own), 감시하고(monitor), 거부권을 행사하는지(veto) | [[Loop_Engineering/Loop_Engineering|Loop Engineering]]의 4개 하위 문서(Data Flywheel, Continuous Optimization, Runtime Optimization, Production Operations)가 각각 단일 loop이며, 이 문서는 그 4개를 네트워크로 엮는 상위 레이어 |
+| **Improvement Graph** | 에이전트가 시간이 지나며 **스스로를 어떻게 바꾸는가**. 노드=측정 지점·최적화 대상 변수(지연시간/품질/비용)·액션, 엣지=신뢰·권한·주기(cadence)를 인코딩한 방향성 관계 — 어떤 loop가 다른 loop를 먹이고(feed), 소유하고(own), 감시하고(monitor), 거부권을 행사하는지(veto) | [[Loop_Engineering/Loop_Engineering\|Loop Engineering]]의 4개 하위 문서(Data Flywheel, Continuous Optimization, Runtime Optimization, Production Operations)가 각각 단일 loop이며, 이 문서는 그 4개를 네트워크로 엮는 상위 레이어 |
 
 ## 4대 구조적 실패 모드
 

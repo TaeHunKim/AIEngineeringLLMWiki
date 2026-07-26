@@ -17,9 +17,9 @@ flowchart TD
 
 | 문서 | 내용 |
 |------|------|
-| [[LangChain]] | LCEL `\|` 연산자 기반 체인 조립 (Harrison Chase, 2022) |
-| [[LlamaIndex]] | 5단계 인덱싱-질의 파이프라인 (Jerry Liu, 2022) |
-| [[Tool_Use_and_Function_Calling]] | LLM이 외부 함수를 호출하는 단일 라운드 트립 |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|LangChain]] | LCEL `\|` 연산자 기반 체인 조립 (Harrison Chase, 2022) |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|LlamaIndex]] | 5단계 인덱싱-질의 파이프라인 (Jerry Liu, 2022) |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Tool_Use_and_Function_Calling]] | LLM이 외부 함수를 호출하는 단일 라운드 트립 |
 
 ## Linear vs Graph Flow
 

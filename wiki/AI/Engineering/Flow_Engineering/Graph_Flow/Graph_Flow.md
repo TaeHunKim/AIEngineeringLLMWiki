@@ -22,10 +22,10 @@ flowchart TD
 
 | 문서 | 내용 |
 |------|------|
-| [[LangGraph]] | StateGraph로 에이전트 워크플로우 구현 (LangChain AI, 2024) |
-| [[Cyclic_Flows]] | 루프 패턴 — Evaluate-and-Retry, Self-Correction |
-| [[ReAct_Pattern]] | 사고-행동-관찰 루프 (Yao et al. 2022) |
-| [[Human_in_the_Loop]] | 인간 승인/개입 포인트 — Breakpoints, Time Travel |
+| [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|LangGraph]] | StateGraph로 에이전트 워크플로우 구현 (LangChain AI, 2024) |
+| [[AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows\|Cyclic_Flows]] | 루프 패턴 — Evaluate-and-Retry, Self-Correction |
+| [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern\|ReAct_Pattern]] | 사고-행동-관찰 루프 (Yao et al. 2022) |
+| [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human_in_the_Loop]] | 인간 승인/개입 포인트 — Breakpoints, Time Travel |
 
 ## Graph Flow가 필요한 이유
 

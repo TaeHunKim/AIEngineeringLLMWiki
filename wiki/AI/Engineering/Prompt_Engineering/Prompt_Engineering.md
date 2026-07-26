@@ -13,11 +13,11 @@ nav_order: 20
 
 | 문서 | 내용 |
 |------|------|
-| [[System_and_Role_Prompting]] | System Prompt 구조 설계, 역할 부여, Constitutional AI |
-| [[Few_shot_Prompting]] | 예시로 가르치기 — Zero/One/Few-shot (Brown 2020) |
-| [[Chain_of_Thought]] | 단계적 추론 유도 — CoT/ToT/Self-Consistency |
-| [[Sampling_Controls]] | Temperature/Top-K/Top-P/Min-P로 출력 다양성 제어 |
-| [[Structured_Output]] | JSON/YAML/Pydantic으로 구조화된 출력 보장 |
+| [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting\|System_and_Role_Prompting]] | System Prompt 구조 설계, 역할 부여, Constitutional AI |
+| [[AI/Engineering/Prompt_Engineering/Few_shot_Prompting\|Few_shot_Prompting]] | 예시로 가르치기 — Zero/One/Few-shot (Brown 2020) |
+| [[AI/Engineering/Prompt_Engineering/Chain_of_Thought\|Chain_of_Thought]] | 단계적 추론 유도 — CoT/ToT/Self-Consistency |
+| [[AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling_Controls]] | Temperature/Top-K/Top-P/Min-P로 출력 다양성 제어 |
+| [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON/YAML/Pydantic으로 구조화된 출력 보장 |
 
 ## 프롬프트 설계 원칙
 

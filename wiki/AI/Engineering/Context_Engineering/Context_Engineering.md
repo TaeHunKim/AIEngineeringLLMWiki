@@ -20,11 +20,11 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 
 | 문서 | 내용 |
 |------|------|
-| [[Memory_and_Semantic_Cache]] | Memory & Semantic Cache 개요 (인덱스) |
-| [[LLM_Memory]] | LLM Memory 4유형, Conversation 전략, Letta/Mem0/Zep 구현 |
-| [[Semantic_Cache]] | 의미 유사도 캐싱, GPTCache, 비용 절감 효과 |
-| [[Context_Compression]] | LLM Lingua, Map-Reduce, 비용 절감 |
-| [[Lost_in_the_Middle]] | LLM의 긴 컨텍스트 중간 활용도 저하 현상 및 회피 전략 |
+| [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache\|Memory_and_Semantic_Cache]] | Memory & Semantic Cache 개요 (인덱스) |
+| [[AI/Engineering/Context_Engineering/LLM_Memory\|LLM_Memory]] | LLM Memory 4유형, Conversation 전략, Letta/Mem0/Zep 구현 |
+| [[AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic_Cache]] | 의미 유사도 캐싱, GPTCache, 비용 절감 효과 |
+| [[AI/Engineering/Context_Engineering/Context_Compression\|Context_Compression]] | LLM Lingua, Map-Reduce, 비용 절감 |
+| [[AI/Engineering/Context_Engineering/Lost_in_the_Middle\|Lost_in_the_Middle]] | LLM의 긴 컨텍스트 중간 활용도 저하 현상 및 회피 전략 |
 | [[AI/Engineering/Context_Engineering/Open_Knowledge_Format\|Open Knowledge Format (OKF)]] | AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026) |
 
 > **RAG, GraphRAG, NL2SQL, SQL RAG** 문서는 별도 챕터로 분리됐습니다.
@@ -36,7 +36,7 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 1. 무엇을 넣을까?     → Retrieval Strategies (RAG / GraphRAG / SQL RAG)로 관련 정보 검색
 2. 어떻게 압축할까?  → Context Compression으로 토큰 절약
 3. 어떻게 기억할까?  → Memory & Semantic Cache
-4. 어떤 순서로?      → "Lost in the Middle" 문제 회피 (→ [[Lost_in_the_Middle]])
+4. 어떤 순서로?      → "Lost in the Middle" 문제 회피 (→ [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]])
 ```
 
 ## AI Engineering에서의 역할
