@@ -31,14 +31,14 @@ Carlos E. Perez(Intuition Machine)는 이를 `prompt engineering → context eng
 | **TrueFoundry** | 멀티에이전트 시스템의 **토폴로지**(누가 존재하고, 무엇을 소유하고, 어떤 전이가 허용되는가)를 명시적으로 설계 | 조직 구조 + 거버넌스 |
 | **Eigent** | 여러 feedback loop(메트릭, eval, 감사, 정책, 워크플로)를 서로 감시·제약·교정하는 네트워크로 엮는 작업 | loop들의 네트워크 |
 
-이 챕터는 TrueFoundry·Eigent의 관점(조직 토폴로지, loop-of-loops)을 중심으로 다루며, [[Multi_Agent_Topology]] · [[Loop_Networks_and_Anchors]] 두 하위 문서로 구성된다.
+이 챕터는 TrueFoundry·Eigent의 관점(조직 토폴로지, loop-of-loops)을 중심으로 다루며, [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]] · [[AI/Engineering/Graph_Engineering/Loop_Networks_and_Anchors|Loop Networks and Anchors]] 두 하위 문서로 구성된다.
 
 ## 하위 문서
 
 | 문서 | 내용 |
 |------|------|
-| [[Multi_Agent_Topology]] | 노드/엣지 유형, 동적 라우팅(LangGraph `Send()`), 거버넌스(identity/budget/guardrail hook), Graph-of-Agents 학술 근거 |
-| [[Loop_Networks_and_Anchors]] | Work Graph vs Improvement Graph, 4대 구조적 실패 모드(Goodhart's Law 등), Anchor(외부 고정 기준점) |
+| [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology\|Multi-Agent Topology]] | 노드/엣지 유형, 동적 라우팅(LangGraph `Send()`), 거버넌스(identity/budget/guardrail hook), Graph-of-Agents 학술 근거 |
+| [[AI/Engineering/Graph_Engineering/Loop_Networks_and_Anchors\|Loop Networks and Anchors]] | Work Graph vs Improvement Graph, 4대 구조적 실패 모드(Goodhart's Law 등), Anchor(외부 고정 기준점) |
 
 ## 기존 위키의 "그래프" 관련 내용과의 관계
 

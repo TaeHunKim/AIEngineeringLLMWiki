@@ -22,9 +22,9 @@ order: 0
 
 | 문서 | 내용 |
 |------|------|
-| [[LPG_and_RDF]] | 두 가지 KG 표준 — Property Graph(Neo4j) vs RDF(SPARQL) |
-| [[Ontology]] | 도메인 지식의 형식적 명세 — OWL, 추론 엔진 |
-| [[Agentic_KG_Construction]] | 멀티에이전트가 원본 데이터로부터 KG를 자동 구축 — DeepLearning.AI, Google ADK + Neo4j *(2026)* |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF\|LPG & RDF]] | 두 가지 KG 표준 — Property Graph(Neo4j) vs RDF(SPARQL) |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology\|Ontology]] | 도메인 지식의 형식적 명세 — OWL, 추론 엔진 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | 멀티에이전트가 원본 데이터로부터 KG를 자동 구축 — DeepLearning.AI, Google ADK + Neo4j *(2026)* |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] | Microsoft 2024 — KG + RAG 결합으로 전역 검색 실현 |
 
 ## 벡터 DB vs Knowledge Graph
