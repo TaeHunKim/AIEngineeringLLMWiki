@@ -1,8 +1,9 @@
 ---
+title: AI Wiki (한국어)
 order: 0
 ---
 
-# AI Wiki Index
+# AI Wiki (한국어)
 
 이 위키는 LLM 기반 AI 시스템을 설계·구축·운영하는 Engineering 지식을 정리한 공간입니다.
 
