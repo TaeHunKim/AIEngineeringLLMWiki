@@ -147,3 +147,12 @@
 - 위치 선정 이유: KG를 "무엇인가/어떻게 저장하는가"가 아니라 "에이전트가 어떻게 자동으로 구축하는가"를 다루는 새 각도 → 새 최상위 챕터가 아니라 기존 Knowledge_Graph/ 하위 문서로 편입 (사용자 명시적 요청)
 - 갱신: `Knowledge_Graph.md`(KO+EN) 하위 문서 표에 행 추가, `Engineering/index.md`·`AI/index.md`(KO+EN 4개 파일)의 GraphRAG 관련 목록에 항목 추가
 - 관련 링크: Knowledge_Graph, Ontology, LPG_and_RDF, Multi_Agent_Coordination, Agent_Frameworks, Graph_Engineering/Multi_Agent_Topology
+
+## [2026-07-26] update | Structured LLM Engineering Hierarchy 다이어그램 8티어 반영
+
+- 배경: Graph Engineering 챕터 추가로 7계층 → 8계층이 됐는데, `Engineering/index.md`(KO+EN)에 임베드된 `structured-llm-engineering-hierarchy.png`(피라미드+동심원 인포그래픽)는 여전히 7계층이었음. 이미지 생성 AI로 두 차례 갱신 시도했으나 티어 누락(Loop Engineering 통째로 빠짐)·라벨 오기 등 세밀한 텍스트 통제가 안 되는 문제가 반복돼, 직접 SVG로 제작하는 방식으로 전환
+- 신규 파일: `Engineering/assets/structured-llm-engineering-hierarchy.svg` (KO), `en/AI/Engineering/assets/structured-llm-engineering-hierarchy.svg` (EN, 동일 내용 복제 — 아래 이유로 상대경로를 언어별로 자기완결시키기 위함)
+- 8개 티어 반영: ① Model ② Prompt ③ Context ④ Flow ⑤ **Agent**(기존 PNG "Agentic Engineering" 오기 수정) ⑥ Harness ⑦ **Loop**(기존 PNG에서 6번과 라벨이 중복돼 있던 오류 수정) ⑧ **Graph**(신규) Engineering — 아이콘·설명·번호 배지 모두 8단계로 확장
+- 오른쪽 다이어그램은 동심원+곡선 텍스트(`<textPath>`) 대신 **중첩 사각형(nested frame)** 방식으로 설계 — 로컬 렌더링 테스트(sharp/librsvg)에서 `<textPath>` 텍스트가 전혀 표시되지 않는 신뢰성 문제가 발견됐고(실제 브라우저 재현 확인이 불가능한 환경), 별도 범례도 사용자 피드백상 한눈에 스캔하기 어려워 각 프레임 자체에 라벨을 바로 붙이는 방식으로 최종 확정. 왼쪽 축 라벨도 사용자 피드백 반영해 화살촉 마커 제거, "Macro-/(Macro-scopic)" 2줄 중복을 "Macro-scopic" 1줄로 단순화, 부제목도 "Structured LLM Engineering Hierarchy: " 중복 프리픽스 제거
+- 임베드 방식: `![[...]]` wikilink SVG embed(`<object>` 태그로 변환됨)는 crawl-links의 상대경로 재작성 로직을 타지 않아 페이지 위치에 따라 깨지는 것을 발견(EN 페이지에서 기존 PNG도 사실 계속 깨져 있었음) → 대신 raw `<img src="ai/engineering/assets/...">` / `en/ai/engineering/assets/...` (콘텐츠 루트 기준 전체 경로, crawl-links의 `transformLink` 폴백 로직으로 정확히 상대경로 계산됨을 로컬 빌드로 확인) 사용. `<img>`이므로 사이트 공통 `img{max-width:100%}` CSS도 자동 적용됨
+- 기존 PNG(`structured-llm-engineering-hierarchy.png`, KO assets)는 더 이상 어디서도 참조되지 않아 삭제 (사용자 승인)

@@ -145,4 +145,4 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 ## AI Engineering 전체 아키텍처
 
-![[assets/structured-llm-engineering-hierarchy.png]]
+<img src="ai/engineering/assets/structured-llm-engineering-hierarchy.svg" alt="Structured LLM Engineering Hierarchy — 8-layer pyramid and nested-frame scope diagram">

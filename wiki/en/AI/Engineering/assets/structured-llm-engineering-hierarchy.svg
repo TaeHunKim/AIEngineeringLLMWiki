@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1850 920" width="1850" height="920" font-family="Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1850" height="920" fill="#ffffff"/>
+<text x="925.0" y="42" text-anchor="middle" font-size="34" font-weight="800" fill="#1a1a1a">Structured LLM Engineering Hierarchy</text>
+<text x="925.0" y="70" text-anchor="middle" font-size="17" fill="#333333">Micro-scopic to Macro-scopic</text>
+<polygon points="100.0,860.0 640,860.0 640,768.8 118.8,768.8" fill="#e8934a" stroke="#ffffff" stroke-width="2"/>
+<circle cx="109.4" cy="814.4" r="16" fill="#ffffff" stroke="#e8934a" stroke-width="2.5"/>
+<text x="109.4" y="819.9" text-anchor="middle" font-size="16" font-weight="700" fill="#e8934a">1</text>
+<rect x="129.4" y="792.4" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(151.375,814.375)"><path d="M -14 -10 Q -14 -14 -10 -14 L -1 -14 L -1 12 L -10 12 Q -14 12 -14 8 Z" fill="#fff3e6" stroke="#2b2b2b" stroke-width="1.6"/><path d="M 14 -10 Q 14 -14 10 -14 L 1 -14 L 1 12 L 10 12 Q 14 12 14 8 Z" fill="#fff3e6" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="9" cy="-10" r="6.4" fill="#e8934a" stroke="#2b2b2b" stroke-width="1.3"/><line x1="13.4" y1="-10.0" x2="16.6" y2="-10.0" stroke="#2b2b2b" stroke-width="1.3"/><line x1="11.2" y1="-6.2" x2="12.8" y2="-3.4" stroke="#2b2b2b" stroke-width="1.3"/><line x1="6.8" y1="-6.2" x2="5.2" y2="-3.4" stroke="#2b2b2b" stroke-width="1.3"/><line x1="4.6" y1="-10.0" x2="1.4" y2="-10.0" stroke="#2b2b2b" stroke-width="1.3"/><line x1="6.8" y1="-13.8" x2="5.2" y2="-16.6" stroke="#2b2b2b" stroke-width="1.3"/><line x1="11.2" y1="-13.8" x2="12.8" y2="-16.6" stroke="#2b2b2b" stroke-width="1.3"/><circle cx="9" cy="-10" r="2" fill="#fff3e6"/></g>
+<text x="187.4" y="812.4" font-size="18" font-weight="700" fill="#1a1a1a">1. Model Engineering</text>
+<text x="665" y="797.4" font-size="13.5" fill="#333333">Optimize internal model parameters</text>
+<text x="665" y="814.4" font-size="13.5" fill="#333333">and perform training via</text>
+<text x="665" y="831.4" font-size="13.5" fill="#333333">fine-tuning, LoRA, etc.</text>
+<polygon points="118.8,768.8 640,768.8 640,677.5 137.5,677.5" fill="#eaa868" stroke="#ffffff" stroke-width="2"/>
+<circle cx="128.1" cy="723.1" r="16" fill="#ffffff" stroke="#eaa868" stroke-width="2.5"/>
+<text x="128.1" y="728.6" text-anchor="middle" font-size="16" font-weight="700" fill="#eaa868">2</text>
+<rect x="148.1" y="701.1" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(170.125,723.125)"><rect x="-14" y="-10" width="28" height="18" rx="2.5" fill="#fef6ec" stroke="#2b2b2b" stroke-width="1.6"/><line x1="-9" y1="-4" x2="9" y2="-4" stroke="#2b2b2b" stroke-width="1.5"/><line x1="-9" y1="1" x2="4" y2="1" stroke="#2b2b2b" stroke-width="1.5"/><circle cx="8" cy="13" r="6.5" fill="#ffe9a8" stroke="#2b2b2b" stroke-width="1.4"/><line x1="8" y1="19.5" x2="8" y2="22.5" stroke="#2b2b2b" stroke-width="1.4"/><line x1="5" y1="22" x2="5" y2="24" stroke="#2b2b2b" stroke-width="1.2"/><line x1="11" y1="22" x2="11" y2="24" stroke="#2b2b2b" stroke-width="1.2"/></g>
+<text x="206.1" y="721.1" font-size="18" font-weight="700" fill="#1a1a1a">2. Prompt Engineering</text>
+<text x="665" y="706.1" font-size="13.5" fill="#333333">Design input phrases (prompts)</text>
+<text x="665" y="723.1" font-size="13.5" fill="#333333">and techniques to maximize</text>
+<text x="665" y="740.1" font-size="13.5" fill="#333333">model performance.</text>
+<polygon points="137.5,677.5 640,677.5 640,586.2 156.2,586.2" fill="#7bab6e" stroke="#ffffff" stroke-width="2"/>
+<circle cx="146.9" cy="631.9" r="16" fill="#ffffff" stroke="#7bab6e" stroke-width="2.5"/>
+<text x="146.9" y="637.4" text-anchor="middle" font-size="16" font-weight="700" fill="#7bab6e">3</text>
+<rect x="166.9" y="609.9" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(188.875,631.875)"><ellipse cx="0" cy="-9" rx="13" ry="4.2" fill="#eaf5e6" stroke="#2b2b2b" stroke-width="1.5"/><path d="M -13 -9 L -13 9 Q -13 13.2 0 13.2 Q 13 13.2 13 9 L 13 -9" fill="#eaf5e6" stroke="#2b2b2b" stroke-width="1.5"/><ellipse cx="0" cy="9" rx="13" ry="4.2" fill="none" stroke="#2b2b2b" stroke-width="1.3"/><circle cx="19" cy="-2" r="3.3" fill="#bfe3ff" stroke="#2b2b2b" stroke-width="1.1"/><circle cx="21" cy="10" r="3.3" fill="#bfe3ff" stroke="#2b2b2b" stroke-width="1.1"/><line x1="13" y1="1" x2="17.2" y2="-1" stroke="#2b2b2b" stroke-width="1.1"/><line x1="13" y1="7" x2="18.5" y2="9" stroke="#2b2b2b" stroke-width="1.1"/></g>
+<text x="224.9" y="629.9" font-size="18" font-weight="700" fill="#1a1a1a">3. Context Engineering</text>
+<text x="665" y="614.9" font-size="13.5" fill="#333333">Connect and manage external</text>
+<text x="665" y="631.9" font-size="13.5" fill="#333333">knowledge sources, such as RAG,</text>
+<text x="665" y="648.9" font-size="13.5" fill="#333333">vector databases, and memory.</text>
+<polygon points="156.2,586.2 640,586.2 640,495.0 175.0,495.0" fill="#5fa392" stroke="#ffffff" stroke-width="2"/>
+<circle cx="165.6" cy="540.6" r="16" fill="#ffffff" stroke="#5fa392" stroke-width="2.5"/>
+<text x="165.6" y="546.1" text-anchor="middle" font-size="16" font-weight="700" fill="#5fa392">4</text>
+<rect x="185.6" y="518.6" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(207.625,540.625)"><circle cx="-16" cy="10" r="5.6" fill="#e4f2e8" stroke="#2b2b2b" stroke-width="1.5"/><rect x="-6.5" y="-19.5" width="13" height="13" rx="2" fill="#ffe3b0" transform="rotate(45 0 -13)" stroke="#2b2b2b" stroke-width="1.4"/><circle cx="16" cy="10" r="5.6" fill="#ffd0cf" stroke="#2b2b2b" stroke-width="1.5"/><line x1="-12" y1="6" x2="-4.5" y2="-8" stroke="#2b2b2b" stroke-width="1.4"/><line x1="4.5" y1="-8" x2="12" y2="6" stroke="#2b2b2b" stroke-width="1.4"/></g>
+<text x="243.6" y="538.6" font-size="18" font-weight="700" fill="#1a1a1a">4. Flow Engineering</text>
+<text x="665" y="523.6" font-size="13.5" fill="#333333">Design the logical flow and</text>
+<text x="665" y="540.6" font-size="13.5" fill="#333333">orchestration of multi-step and</text>
+<text x="665" y="557.6" font-size="13.5" fill="#333333">interactive processes.</text>
+<polygon points="175.0,495.0 640,495.0 640,403.8 193.8,403.8" fill="#4f97a3" stroke="#ffffff" stroke-width="2"/>
+<circle cx="184.4" cy="449.4" r="16" fill="#ffffff" stroke="#4f97a3" stroke-width="2.5"/>
+<text x="184.4" y="454.9" text-anchor="middle" font-size="16" font-weight="700" fill="#4f97a3">5</text>
+<rect x="204.4" y="427.4" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(226.375,449.375)"><rect x="-13" y="-12" width="26" height="22" rx="7" fill="#e2f0ee" stroke="#2b2b2b" stroke-width="1.6"/><circle cx="-5.5" cy="-2" r="3" fill="#2b2b2b"/><circle cx="5.5" cy="-2" r="3" fill="#2b2b2b"/><path d="M -6 6 Q 0 10 6 6" fill="none" stroke="#2b2b2b" stroke-width="1.5" stroke-linecap="round"/><line x1="0" y1="-12" x2="0" y2="-17" stroke="#2b2b2b" stroke-width="1.5"/><circle cx="0" cy="-19" r="2.3" fill="#ffd35c" stroke="#2b2b2b" stroke-width="1"/></g>
+<text x="262.4" y="447.4" font-size="18" font-weight="700" fill="#1a1a1a">5. Agent Engineering</text>
+<text x="665" y="432.4" font-size="13.5" fill="#333333">Build agents with autonomous</text>
+<text x="665" y="449.4" font-size="13.5" fill="#333333">decision-making, planning, and</text>
+<text x="665" y="466.4" font-size="13.5" fill="#333333">tool-use capabilities.</text>
+<polygon points="193.8,403.8 640,403.8 640,312.5 212.5,312.5" fill="#4a86b0" stroke="#ffffff" stroke-width="2"/>
+<circle cx="203.1" cy="358.1" r="16" fill="#ffffff" stroke="#4a86b0" stroke-width="2.5"/>
+<text x="203.1" y="363.6" text-anchor="middle" font-size="16" font-weight="700" fill="#4a86b0">6</text>
+<rect x="223.1" y="336.1" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(245.125,358.125)"><circle cx="-2" cy="0" r="12.5" fill="#dfeaf5" stroke="#2b2b2b" stroke-width="1.5"/><line x1="9.5" y1="0.0" x2="13.5" y2="0.0" stroke="#2b2b2b" stroke-width="2.1"/><line x1="6.1" y1="8.1" x2="9.0" y2="11.0" stroke="#2b2b2b" stroke-width="2.1"/><line x1="-2.0" y1="11.5" x2="-2.0" y2="15.5" stroke="#2b2b2b" stroke-width="2.1"/><line x1="-10.1" y1="8.1" x2="-13.0" y2="11.0" stroke="#2b2b2b" stroke-width="2.1"/><line x1="-13.5" y1="0.0" x2="-17.5" y2="0.0" stroke="#2b2b2b" stroke-width="2.1"/><line x1="-10.1" y1="-8.1" x2="-13.0" y2="-11.0" stroke="#2b2b2b" stroke-width="2.1"/><line x1="-2.0" y1="-11.5" x2="-2.0" y2="-15.5" stroke="#2b2b2b" stroke-width="2.1"/><line x1="6.1" y1="-8.1" x2="9.0" y2="-11.0" stroke="#2b2b2b" stroke-width="2.1"/><path d="M -8 -3 Q -2 -9 4 -3 Q -2 3 -8 -3" fill="#c7ddb0" stroke="#2b2b2b" stroke-width="1"/><rect x="10" y="10" width="14" height="4.4" rx="2" fill="#f2d38a" stroke="#2b2b2b" stroke-width="1.2" transform="rotate(45 17 12)"/></g>
+<text x="281.1" y="356.1" font-size="18" font-weight="700" fill="#1a1a1a">6. Harness Engineering</text>
+<text x="665" y="341.1" font-size="13.5" fill="#333333">Build external infrastructure,</text>
+<text x="665" y="358.1" font-size="13.5" fill="#333333">safety guardrails, evaluation,</text>
+<text x="665" y="375.1" font-size="13.5" fill="#333333">and validation frameworks.</text>
+<polygon points="212.5,312.5 640,312.5 640,221.2 231.2,221.2" fill="#4570ab" stroke="#ffffff" stroke-width="2"/>
+<circle cx="221.9" cy="266.9" r="16" fill="#ffffff" stroke="#4570ab" stroke-width="2.5"/>
+<text x="221.9" y="272.4" text-anchor="middle" font-size="16" font-weight="700" fill="#4570ab">7</text>
+<rect x="241.9" y="244.9" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(263.875,266.875)"><path d="M -13 -3 A 13 13 0 1 1 -13 4" fill="none" stroke="#2b2b2b" stroke-width="3.4" stroke-linecap="round"/><path d="M -3 -13 L -13 -3 L -3 6" fill="none" stroke="#2b2b2b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M 13 3 A 13 13 0 1 1 13 -4" fill="none" stroke="#7a9bd6" stroke-width="3.4" stroke-linecap="round"/><path d="M 3 13 L 13 3 L 3 -6" fill="none" stroke="#7a9bd6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="299.9" y="264.9" font-size="18" font-weight="700" fill="#1a1a1a">7. Loop Engineering</text>
+<text x="665" y="249.9" font-size="13.5" fill="#333333">Design self-improving post-</text>
+<text x="665" y="266.9" font-size="13.5" fill="#333333">deployment feedback loops: data</text>
+<text x="665" y="283.9" font-size="13.5" fill="#333333">flywheels, continuous optimization.</text>
+<polygon points="231.2,221.2 640,221.2 640,130.0 250.0,130.0" fill="#455a86" stroke="#ffffff" stroke-width="2"/>
+<circle cx="240.6" cy="175.6" r="16" fill="#ffffff" stroke="#455a86" stroke-width="2.5"/>
+<text x="240.6" y="181.1" text-anchor="middle" font-size="16" font-weight="700" fill="#455a86">8</text>
+<rect x="260.6" y="153.6" width="44" height="44" rx="9" fill="#ffffff" opacity="0.92"/>
+<g transform="translate(282.625,175.625)"><line x1="-15" y1="-13" x2="15" y2="-15" stroke="#2b2b2b" stroke-width="1.4"/><line x1="-15" y1="-13" x2="0" y2="2" stroke="#2b2b2b" stroke-width="1.4"/><line x1="15" y1="-15" x2="0" y2="2" stroke="#2b2b2b" stroke-width="1.4"/><line x1="0" y1="2" x2="-14" y2="15" stroke="#2b2b2b" stroke-width="1.4"/><line x1="0" y1="2" x2="15" y2="14" stroke="#2b2b2b" stroke-width="1.4"/><line x1="-14" y1="15" x2="15" y2="14" stroke="#2b2b2b" stroke-width="1.4"/><circle cx="-15" cy="-13" r="5.2" fill="#f2b06d" stroke="#2b2b2b" stroke-width="1.3"/><circle cx="15" cy="-15" r="5.2" fill="#8fc499" stroke="#2b2b2b" stroke-width="1.3"/><circle cx="0" cy="2" r="5.2" fill="#6fb3c9" stroke="#2b2b2b" stroke-width="1.3"/><circle cx="-14" cy="15" r="5.2" fill="#f2b06d" stroke="#2b2b2b" stroke-width="1.3"/><circle cx="15" cy="14" r="5.2" fill="#8fc499" stroke="#2b2b2b" stroke-width="1.3"/></g>
+<text x="318.6" y="173.6" font-size="18" font-weight="700" fill="#1a1a1a">8. Graph Engineering</text>
+<text x="665" y="158.6" font-size="13.5" fill="#333333">Design the topology and governance</text>
+<text x="665" y="175.6" font-size="13.5" fill="#333333">of multi-agent, multi-loop</text>
+<text x="665" y="192.6" font-size="13.5" fill="#333333">organizations and networks of loops.</text>
+<line x1="118.8" y1="768.8" x2="970" y2="768.8" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="137.5" y1="677.5" x2="970" y2="677.5" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="156.2" y1="586.2" x2="970" y2="586.2" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="175.0" y1="495.0" x2="970" y2="495.0" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="193.8" y1="403.8" x2="970" y2="403.8" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="212.5" y1="312.5" x2="970" y2="312.5" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="231.2" y1="221.2" x2="970" y2="221.2" stroke="#e5e5e5" stroke-width="1"/>
+<line x1="35" y1="860" x2="35" y2="122" stroke="url(#axisGrad)" stroke-width="5" stroke-linecap="round"/>
+<defs>
+<linearGradient id="axisGrad" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#e8934a"/><stop offset="100%" stop-color="#455a86"/></linearGradient>
+</defs>
+<text x="22" y="110" font-size="15.5" font-weight="700" fill="#1a1a1a">Macro-scopic</text>
+<text x="22" y="878" font-size="15.5" font-weight="700" fill="#1a1a1a">Micro-scopic</text>
+<text x="70" y="405.0" font-size="14.5" font-weight="700" fill="#1a1a1a" transform="rotate(-90 70 405.0)">System/Process</text>
+<text x="88" y="405.0" font-size="11.5" fill="#555555" transform="rotate(-90 88 405.0)">(System/Process-Centric)</text>
+<text x="70" y="685.0" font-size="14.5" font-weight="700" fill="#1a1a1a" transform="rotate(-90 70 685.0)">Model</text>
+<text x="88" y="685.0" font-size="11.5" fill="#555555" transform="rotate(-90 88 685.0)">(Model-Centric)</text>
+<rect x="1080.0" y="130.0" width="720.0" height="730.0" rx="14" fill="#455a86" fill-opacity="0.160" stroke="#455a86" stroke-width="2"/>
+<text x="1096.0" y="163.3" font-size="14.5" font-weight="700" fill="#1a1a1a">8. Graph Engineering</text>
+<rect x="1125.0" y="175.6" width="630.0" height="638.8" rx="14" fill="#4570ab" fill-opacity="0.180" stroke="#4570ab" stroke-width="2"/>
+<text x="1141.0" y="208.9" font-size="14.5" font-weight="700" fill="#1a1a1a">7. Loop Engineering</text>
+<rect x="1170.0" y="221.2" width="540.0" height="547.5" rx="14" fill="#4a86b0" fill-opacity="0.200" stroke="#4a86b0" stroke-width="2"/>
+<text x="1186.0" y="254.5" font-size="14.5" font-weight="700" fill="#1a1a1a">6. Harness Engineering</text>
+<rect x="1215.0" y="266.9" width="450.0" height="456.2" rx="14" fill="#4f97a3" fill-opacity="0.220" stroke="#4f97a3" stroke-width="2"/>
+<text x="1231.0" y="300.2" font-size="14.5" font-weight="700" fill="#1a1a1a">5. Agent Engineering</text>
+<rect x="1260.0" y="312.5" width="360.0" height="365.0" rx="14" fill="#5fa392" fill-opacity="0.240" stroke="#5fa392" stroke-width="2"/>
+<text x="1276.0" y="345.8" font-size="14.5" font-weight="700" fill="#1a1a1a">4. Flow Engineering</text>
+<rect x="1305.0" y="358.1" width="270.0" height="273.8" rx="14" fill="#7bab6e" fill-opacity="0.260" stroke="#7bab6e" stroke-width="2"/>
+<text x="1321.0" y="391.4" font-size="14.5" font-weight="700" fill="#1a1a1a">3. Context Engineering</text>
+<rect x="1350.0" y="403.8" width="180.0" height="182.5" rx="14" fill="#eaa868" fill-opacity="0.280" stroke="#eaa868" stroke-width="2"/>
+<text x="1366.0" y="437.0" font-size="14.5" font-weight="700" fill="#1a1a1a">2. Prompt Engineering</text>
+<rect x="1395.0" y="449.4" width="90.0" height="91.2" rx="14" fill="#e8934a" fill-opacity="0.300" stroke="#e8934a" stroke-width="2"/>
+<text x="1440.0" y="492.0" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">1. Model</text>
+<text x="1440.0" y="509.0" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">Engineering</text>
+<text x="1440.0" y="110" text-anchor="middle" font-size="15" fill="#333333">Each layer builds on and expands the scope of the one inside it &#8594;</text>
+</svg>

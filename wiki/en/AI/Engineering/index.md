@@ -145,4 +145,4 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 ## AI Engineering Overall Architecture
 
-![[assets/structured-llm-engineering-hierarchy.png]]
+<img src="en/ai/engineering/assets/structured-llm-engineering-hierarchy.svg" alt="Structured LLM Engineering Hierarchy — 8-layer pyramid and nested-frame scope diagram">
