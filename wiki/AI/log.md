@@ -125,3 +125,25 @@
 - 영어 버전: en/AI/Engineering/Context_Engineering/Open_Knowledge_Format.md
 - 위치 선정 이유: OKF는 AI 에이전트에게 제공할 조직 지식의 구조화 표준 → Context Engineering 소속
 - 관련 링크: Retrieval_Strategies, RAG, Knowledge_Graph, MCP
+
+## [2026-07-26] ingest | Graph Engineering
+
+- 출처: LangChain "3 Years of Graph Engineering with LangGraph" (2026), TrueFoundry "Graph Engineering for Multi-Agent Systems" (2026), Eigent "Graph Engineering for AI Agents" (2026), Carlos E. Perez/Intuition Machine "Is Graph Engineering Here?" (2026), arXiv:2604.17148 (Graph-of-Agents)
+- 신규 챕터: `Engineering/Graph_Engineering/` (order:0, nav_order:90) — Model/Prompt/Context/Flow/Agent/Harness/Loop 7계층 → 8계층으로 확장
+  - Graph_Engineering.md — 챕터 개요, 명명 계보(prompt→context→harness→loop→graph), 기존 Graph_Flow/GraphRAG와의 관계 구분
+  - Multi_Agent_Topology.md (order:1) — 노드/엣지 유형, LangGraph `Send()` 동적 라우팅, identity/budget/guardrail 거버넌스, Graph-of-Agents 학술 근거
+  - Loop_Networks_and_Anchors.md (order:2) — Work Graph vs Improvement Graph, Goodhart's Law/Upward Blindness/Inter-loop Conflict/Measurement Decay, Anchor
+- 영어 버전: `en/AI/Engineering/Graph_Engineering/` 동일 구조로 생성
+- 위치 선정 이유: 업계에서 Loop Engineering의 다음 단계로 프레이밍되는 상위 개념(멀티에이전트 조직 토폴로지 + 거버넌스, loop-of-loops)이며, 기존 Flow_Engineering/Graph_Flow(구현 메커니즘)나 Context_Engineering/GraphRAG(데이터 그래프)와는 다른 층위라 신규 최상위 챕터로 분리
+- 인덱스 업데이트: `Engineering/index.md`, `AI/index.md` (KO+EN 4개 파일)에 8번째 챕터 등록, `SCHEMA.md`의 "7계층" 표기를 "8계층"으로 갱신
+- 관련 링크 보강: `Loop_Engineering.md`, `Flow_Engineering/Graph_Flow/Graph_Flow.md`, `Agent_Engineering/Multi_Agent_Coordination.md`, `Harness_Engineering/AI_Governance_and_Compliance.md` (KO+EN)에 신규 챕터로의 역링크 추가
+- 참고: "Andrew Ng이 'From Loop Engineering to Graph Engineering' PDF를 작성했다"는 SNS(X) 발 주장은 1차 출처를 확인할 수 없어 인용하지 않음
+
+## [2026-07-26] ingest | Agentic Knowledge Graph Construction
+
+- 출처: DeepLearning.AI 강좌 "Agentic Knowledge Graph Construction" (Andreas Kollegger, Neo4j GenAI Innovation Lead, 2026) — [deeplearning.ai/courses/agentic-knowledge-graph-construction](https://www.deeplearning.ai/courses/agentic-knowledge-graph-construction)
+- 신규 문서: `Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction.md` (order:3) — User Intent Agent → File-Suggestion Agent → Schema Proposal Agents(정형 루프/비정형 순차) → Graph Construction 4단계 파이프라인, Google ADK + Neo4j
+- 영어 버전: `en/AI/.../Knowledge_Graph/Agentic_KG_Construction.md` 동일 구조로 생성
+- 위치 선정 이유: KG를 "무엇인가/어떻게 저장하는가"가 아니라 "에이전트가 어떻게 자동으로 구축하는가"를 다루는 새 각도 → 새 최상위 챕터가 아니라 기존 Knowledge_Graph/ 하위 문서로 편입 (사용자 명시적 요청)
+- 갱신: `Knowledge_Graph.md`(KO+EN) 하위 문서 표에 행 추가, `Engineering/index.md`·`AI/index.md`(KO+EN 4개 파일)의 GraphRAG 관련 목록에 항목 추가
+- 관련 링크: Knowledge_Graph, Ontology, LPG_and_RDF, Multi_Agent_Coordination, Agent_Frameworks, Graph_Engineering/Multi_Agent_Topology

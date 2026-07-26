@@ -149,7 +149,7 @@ Governance checks before production deployment:
 AI Governance and Compliance bridges the gap between technical safety measures ([[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]], [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]) and organizational and legal accountability. If frontier labs' voluntary pledges (RSP/Preparedness/FSF) establish the principle of "safety measures proportional to capabilities," legal regulations like the EU AI Act enforce this across the industry. For practitioners, both layers are real constraints — one through the policies of the frontier model used, the other through direct regulation of their own applications.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (per-node governance)]]
 
 ## Sources
 - Anthropic "Responsible Scaling Policy" — [anthropic.com](https://www.anthropic.com/rsp)

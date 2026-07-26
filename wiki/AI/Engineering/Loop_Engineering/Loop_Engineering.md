@@ -46,4 +46,4 @@ Loop Engineering이 있으면:
 Loop Engineering은 **AI 시스템에 진화 능력을 부여하는 최상위 계층**이다. 데이터 플라이휠이 돌면 사용자 기반이 클수록 더 빠르게 개선되는 네트워크 효과가 발생한다. 이것이 AI 스타트업과 대형 플랫폼의 경쟁에서 핵심 해자(moat)가 된다.
 
 ## 관련 개념
-[[Harness_Engineering/Observability_and_Tracing]] · [[Harness_Engineering/LLM_as_a_Judge]] · [[Model_Engineering/PEFT_LoRA_QLoRA]]
+[[Harness_Engineering/Observability_and_Tracing]] · [[Harness_Engineering/LLM_as_a_Judge]] · [[Model_Engineering/PEFT_LoRA_QLoRA]] · [[AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering (여러 loop의 네트워크로 확장)]]

@@ -24,6 +24,7 @@ Samsung Electronics → [partner] → TSMC → [CEO] → C.C. Wei
 |----------|---------|
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF\|LPG & RDF]] | Two KG standards — Property Graph (Neo4j) vs RDF (SPARQL) |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology\|Ontology]] | Formal specification of domain knowledge — OWL, inference engines |
+| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | Multi-agent system automatically builds a KG from raw data — DeepLearning.AI, Google ADK + Neo4j *(2026)* |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft 2024 — realizing global search by combining KG + RAG |
 
 ## Vector DB vs Knowledge Graph

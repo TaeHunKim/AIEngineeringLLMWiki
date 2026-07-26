@@ -61,4 +61,4 @@ class AgentState(TypedDict):
 Graph Flow is the **standard pattern for implementing agent systems**. If Linear Flow is "cooking by following a recipe," Graph Flow is "cooking while adjusting ingredients based on the situation." It is essential for complex task automation, quality assurance, and human-AI collaboration.
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]]
+[[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering (organizational topology, not implementation mechanics)]]

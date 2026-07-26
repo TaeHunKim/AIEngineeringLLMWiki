@@ -147,7 +147,7 @@ RSP·Preparedness Framework의 CBRN 리스크 평가가 실무적으로 이 벤�
 AI Governance and Compliance는 기술적 안전 조치([[Guardrail_Engineering]], [[Alignment_Research]])를 조직·법적 책임으로 연결하는 다리다. 프론티어 연구소의 자율 서약(RSP/Preparedness/FSF)이 "능력에 비례한 안전조치"라는 원칙을 확립했다면, EU AI Act 같은 법적 규제는 이를 산업 전반에 강제한다. 실무자에게는 두 계층 모두 실질적 제약이다 — 하나는 사용하는 프론티어 모델의 정책을 통해, 다른 하나는 자사 애플리케이션에 대한 직접 규제를 통해 적용된다.
 
 ## 관련 개념
-[[Alignment_Research]] · [[Guardrail_Engineering]] · [[Red_Teaming]] · [[Autonomous_Systems]] · [[Benchmarking]] · [[Production_Operations]]
+[[Alignment_Research]] · [[Guardrail_Engineering]] · [[Red_Teaming]] · [[Autonomous_Systems]] · [[Benchmarking]] · [[Production_Operations]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (노드 단위 거버넌스)]]
 
 ## 출처
 - Anthropic "Responsible Scaling Policy" — [anthropic.com](https://www.anthropic.com/rsp)

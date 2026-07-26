@@ -8,7 +8,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 
 ## Engineering
 
-- [[en/AI/Engineering/index|AI Engineering Wiki]]: Complete AI Engineering architecture — 7 layers: Model/Prompt/Context/Flow/Agent/Harness/Loop
+- [[en/AI/Engineering/index|AI Engineering Wiki]]: Complete AI Engineering architecture — 8 layers: Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph
 
 #### Model Engineering
 - [[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]: Pre-training basics, Chinchilla scaling laws, catastrophic forgetting strategies
@@ -33,6 +33,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]]: Hypothetical document embeddings, Gao 2022
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF comparison
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]]: OWL/Turtle, domain ontology, LLM integration patterns
+- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction|Agentic KG Construction]]: 4-stage agent pipeline (User Intent/File-Suggestion/Schema Proposal), Google ADK + Neo4j (DeepLearning.AI 2026)
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]: Microsoft 2024, Leiden clustering, Local/Global Search
 
 #### Flow Engineering
@@ -73,3 +74,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]: DSPy/MIPROv2, iterative fine-tuning, A/B testing
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]: Semantic Cache, Model Routing, vLLM/SGLang/TensorRT-LLM serving internals
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]: AI gateway, deployment strategies, A/B testing, SRE/chaos, FinOps
+
+#### Graph Engineering
+- [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]: Node/edge types, LangGraph `Send()` dynamic routing, identity/budget/guardrail governance, Graph-of-Agents
+- [[en/AI/Engineering/Graph_Engineering/Loop_Networks_and_Anchors|Loop Networks and Anchors]]: Work Graph vs Improvement Graph, 4 failure modes including Goodhart's Law, Anchors

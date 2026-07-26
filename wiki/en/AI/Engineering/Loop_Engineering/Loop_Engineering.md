@@ -46,4 +46,4 @@ With Loop Engineering:
 Loop Engineering is the **top-level layer that gives AI systems the ability to evolve**. When the data flywheel spins, a network effect occurs where larger user bases drive faster improvement. This becomes the core moat in competition between AI startups and large platforms.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT/LoRA/QLoRA]]
+[[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT/LoRA/QLoRA]] · [[en/AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering (extends to a network of loops)]]

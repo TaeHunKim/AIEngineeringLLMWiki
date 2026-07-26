@@ -202,7 +202,7 @@ SRE(Site Reliability Engineering)의 사고 대응 방식을 멀티 에이전트
 멀티 에이전트 시스템은 단일 에이전트보다 강력하지만, 조정 실패의 새로운 표면을 함께 들여온다. Cemri et al.의 수치(41~86.7% 실패율)가 보여주듯 "에이전트를 여러 개 두면 더 낫다"는 직관은 검증 없이는 위험하다. 실무에서는 조정 패턴을 고를 때 항상 대응하는 실패 모드와 완화책(명시적 역할 계약, 독립 Verifier, Circuit Breaker, 정기 MAST 감사)을 함께 설계해야 한다.
 
 ## 관련 개념
-[[Agent_Architectures]] · [[Anthropic_Workflow_Patterns]] · [[Agent_Frameworks]] · [[A2A]] · [[Agent_Memory]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]]
+[[Agent_Architectures]] · [[Anthropic_Workflow_Patterns]] · [[Agent_Frameworks]] · [[A2A]] · [[Agent_Memory]] · [[Observability_and_Tracing]] · [[Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
 
 ## 출처
 - Cemri et al. (2025) "Why Do Multi-Agent LLM Systems Fail? (MAST)" — [arXiv:2503.13657](https://arxiv.org/abs/2503.13657), NeurIPS 2025

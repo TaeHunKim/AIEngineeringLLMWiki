@@ -5,7 +5,7 @@ order: 0
 # AI Engineering Wiki
 
 LLM 기반 AI 시스템을 설계, 구축, 운영하는 전 과정을 아우르는 지식 체계.  
-Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한 7개 Engineering 레이어를 다룬다.
+Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트/멀티루프 조직 설계까지, 실무에서 필요한 8개 Engineering 레이어를 다룬다.
 
 ---
 
@@ -65,6 +65,7 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph 개요]]
     - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] — Neo4j Cypher vs SPARQL
     - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, 도메인 온톨로지, 추론
+    - [[Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction|Agentic KG Construction]] — 멀티에이전트 KG 자동 구축, Google ADK + Neo4j (DeepLearning.AI, 2026)
 - NL2SQL (정형 DB 자연어 질의)
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
 - SQL RAG (정형+비정형 Hybrid)
@@ -132,6 +133,13 @@ Pre-training에서 배포 후 지속 개선 루프까지, 실무에서 필요한
 - [[Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
 - [[Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — Semantic Cache, RouteLLM (ICLR 2025), Speculative Decoding, vLLM/SGLang/TensorRT-LLM 서빙 내부
 - [[Loop_Engineering/Production_Operations|Production Operations]] — AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps *(2026)*
+
+---
+
+### 8. [[AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering]] — 멀티에이전트/멀티루프 조직 설계 *(2026년 7월)*
+
+- [[Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]] — 노드/엣지 유형, 동적 라우팅(LangGraph `Send()`), 거버넌스(identity/budget/guardrail hook), Graph-of-Agents
+- [[Graph_Engineering/Loop_Networks_and_Anchors|Loop Networks and Anchors]] — Work Graph vs Improvement Graph, 4대 구조적 실패 모드, Anchor
 
 ---
 

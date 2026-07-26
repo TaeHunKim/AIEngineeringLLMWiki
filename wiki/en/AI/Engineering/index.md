@@ -5,7 +5,7 @@ order: 0
 # AI Engineering Wiki
 
 A comprehensive knowledge base covering the entire lifecycle of designing, building, and operating LLM-based AI systems.
-From pre-training to post-deployment continuous improvement loops — covering 7 Engineering layers needed in practice.
+From pre-training to post-deployment continuous improvement loops, and on to multi-agent/multi-loop organizational design — covering 8 Engineering layers needed in practice.
 
 ---
 
@@ -65,6 +65,7 @@ From pre-training to post-deployment continuous improvement loops — covering 7
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph Overview]]
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] — Neo4j Cypher vs SPARQL
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, domain ontology, reasoning
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction|Agentic KG Construction]] — Multi-agent automated KG construction, Google ADK + Neo4j (DeepLearning.AI, 2026)
 - NL2SQL (structured DB natural language query)
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL pipeline, Spider·BIRD benchmarks, DIN-SQL·DAIL-SQL
 - SQL RAG (structured + unstructured Hybrid)
@@ -132,6 +133,13 @@ From pre-training to post-deployment continuous improvement loops — covering 7
 - [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — Semantic Cache, RouteLLM (ICLR 2025), Speculative Decoding, vLLM/SGLang/TensorRT-LLM serving internals
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI gateway, deployment strategies, A/B testing, SRE/chaos engineering, FinOps *(2026)*
+
+---
+
+### 8. [[en/AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering]] — Multi-agent/multi-loop organizational design *(July 2026)*
+
+- [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]] — Node/edge types, dynamic routing (LangGraph `Send()`), governance (identity/budget/guardrail hooks), Graph-of-Agents
+- [[en/AI/Engineering/Graph_Engineering/Loop_Networks_and_Anchors|Loop Networks and Anchors]] — Work Graph vs Improvement Graph, 4 structural failure modes, Anchors
 
 ---
 

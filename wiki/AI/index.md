@@ -8,7 +8,7 @@ order: 0
 
 ## Engineering
 
-- [[AI/Engineering/index|AI Engineering Wiki]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop 7계층
+- [[AI/Engineering/index|AI Engineering Wiki]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph 8계층
 
 #### Model Engineering
 - [[Engineering/Model_Engineering/Pre-training_and_Continual_Learning]]: Pre-training 기초, Chinchilla 스케일링 법칙, 재앙적 망각 대응 전략
@@ -33,6 +33,7 @@ order: 0
 - [[Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE]]: 가상 문서 임베딩, Gao 2022
 - [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF 비교
 - [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology]]: OWL/Turtle, 도메인 온톨로지, LLM 통합 패턴
+- [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction]]: User Intent/File-Suggestion/Schema Proposal 4단계 에이전트 파이프라인, Google ADK + Neo4j (DeepLearning.AI 2026)
 - [[Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG]]: Microsoft 2024, Leiden 클러스터링, Local/Global Search
 
 #### Flow Engineering
@@ -73,6 +74,10 @@ order: 0
 - [[Engineering/Loop_Engineering/Continuous_Optimization]]: DSPy/MIPROv2, 반복적 파인튜닝, A/B 테스트
 - [[Engineering/Loop_Engineering/Runtime_Optimization]]: Semantic Cache, Model Routing, vLLM/SGLang/TensorRT-LLM 서빙 내부
 - [[Engineering/Loop_Engineering/Production_Operations]]: AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스, FinOps
+
+#### Graph Engineering
+- [[Engineering/Graph_Engineering/Multi_Agent_Topology]]: 노드/엣지 유형, LangGraph `Send()` 동적 라우팅, identity/budget/guardrail 거버넌스, Graph-of-Agents
+- [[Engineering/Graph_Engineering/Loop_Networks_and_Anchors]]: Work Graph vs Improvement Graph, Goodhart's Law 등 4대 실패 모드, Anchor
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## 디렉토리 구조
 - `sources/`: 각 원본 문서(PDF, 블로그 포스트 등)별 요약, 핵심 내용, 메타데이터가 담긴 페이지. 원본 문서를 수정하지 않고 이곳에 요약본을 생성합니다.
-- `Engineering/`: LLM 기반 AI 시스템을 설계·구축·운영하는 실무 지식 페이지. Model/Prompt/Context/Flow/Agent/Harness/Loop 7계층 구조로 구성됩니다.
+- `Engineering/`: LLM 기반 AI 시스템을 설계·구축·운영하는 실무 지식 페이지. Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph 8계층 구조로 구성됩니다.
 - `index.md`: 전체 출처와 Engineering 문서에 대한 목록 및 한 줄 요약.
 - `log.md`: 문서 인제스트 및 위키 업데이트에 대한 시간순 로그.
 
