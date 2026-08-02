@@ -36,7 +36,7 @@ Eigent는 그래프를 두 종류로 구분한다:
 
 | 실패 모드 | 설명 |
 |-----------|------|
-| **Goodhart's Law** | 메트릭을 강하게 밀어붙일수록 원래 목표에서 분리(detach)된다 — 예: [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] 루프가 지연시간(latency)만 최적화하면, [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] 루프가 추구하는 품질이 조용히 희생된다 |
+| **Goodhart's Law** | 메트릭을 강하게 밀어붙일수록 원래 목표에서 분리(detach)된다 — 예: [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] 루프가 지연시간(latency)만 최적화하면, [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] 루프가 추구하는 품질이 조용히 희생된다. 원 출처는 경제학자 Goodhart(1975)가 영국 통화정책을 관찰하며 정식화한 명제이며, 오늘날 가장 널리 쓰이는 문구("측정치가 목표가 되는 순간, 좋은 측정치이기를 멈춘다")는 인류학자 Strathern(1997)이 영국 대학 평가 제도를 분석하며 재정식화한 것이다 |
 | **Upward Blindness** | 개별 loop는 자신의 목표(target) 자체가 잘못됐는지 스스로 질문할 수 없다 — 목표 설정은 loop 바깥에서 와야 한다 |
 | **Inter-loop Conflict** | 조정 없이 독립적으로 운영되는 loop들이 서로 충돌한다 — 예: 비용 절감 loop와 품질 개선 loop가 반대 방향으로 시스템을 당긴다 |
 | **Measurement Decay** | 센서(측정 파이프라인)가 시간이 지나며 서서히 오작동하는데도, loop는 계속 낡은 데이터를 근거로 동작한다 — [[AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]]에서 벤치마크가 오염(contamination)되는 문제와 근본적으로 같은 패턴 |
@@ -74,6 +74,8 @@ Anchor가 없는 loop 네트워크는 스스로를 참조하며 표류(self-refe
 [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi_Agent_Topology]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Harness_Engineering/Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Harness_Engineering/Benchmarking]]
 
 ## 출처
+- Goodhart, C. (1975) "Problems of Monetary Management: The UK Experience" — Papers in Monetary Economics, Reserve Bank of Australia
+- Strathern, M. (1997) "'Improving ratings': audit in the British University system" — European Review 5(3):305-321
 - Eigent, ["Graph Engineering for AI Agents"](https://www.eigent.ai/blog/graph-engineering-ai-agents) (2026)
 - LangChain, ["The Art of Loop Engineering"](https://www.langchain.com/blog/the-art-of-loop-engineering) (2026)
 - BDTechTalks, ["Demystifying loop engineering: Get more from AI agents, avoid loopmaxxing"](https://bdtechtalks.com/2026/06/22/ai-loop-engineering/) (2026)

@@ -178,3 +178,13 @@
 - 부수 수정: `Harness_Engineering.md` 챕터 인덱스 표에 기존에 누락되어 있던 `Agent_as_a_Judge` 행을 함께 보충
 - 갱신: KO+EN 동일 구조로 반영, `Engineering/index.md`·`AI/index.md`(KO+EN 4개 파일)에 Mechanistic_Interpretability 링크 및 갱신된 항목 설명 반영
 - 적용 제외: Loop Engineering 전체(뚜렷한 공백 미발견), `Planning_and_Reflection.md`·`Human_Evaluation.md`의 인용 정체(대체할 확실히 주류화된 소재 못 찾음), RL 기반 에이전트 학습·임베디드 에이전트(기존 log.md에 이미 "Model Engineering보다 본질적"이라는 이유로 명시적 제외된 영역)
+
+## [2026-08-02] update | Graph Engineering 챕터 보강
+
+- 배경: 사용자가 원래 요청한 것은 GraphRAG가 아니라 Graph Engineering(8번째 최상위 챕터)이었음을 뒤늦게 확인. 이 챕터(`Graph_Engineering.md`·`Multi_Agent_Topology.md`·`Loop_Networks_and_Anchors.md`, 2026-07-26 신설)는 지난 Agent/Harness/Loop 전수 감사(위 항목) 때도 스코프에서 빠져 한 번도 공백 점검을 받지 못한 상태였음을 확인 후 별도 조사·보강 진행
+- 확인된 공백: 3개 문서의 출처 5개가 전부 2026년 업계 블로그(LangChain/TrueFoundry/Eigent/Carlos E. Perez)뿐이었고, 학술 근거는 `Multi_Agent_Topology.md`의 Graph-of-Agents(2026) 논문 1편이 유일. `Loop_Networks_and_Anchors.md`는 Goodhart's Law를 인용 없이 블로그 프레이밍으로만 서술. `Multi_Agent_Topology.md`의 추상 노드/엣지 모델이 이 위키가 이미 다루는 `Agent_Frameworks.md`(AutoGen/CrewAI/OpenAI Agents SDK/ADK)·`MCP.md`(Gateway/Registry)와 연결되지 않음
+- `Graph_Engineering.md`(챕터 인덱스) — "명명 계보" 섹션에 Horling & Lesser (2005) "A Survey of Multi-agent Organizational Paradigms"(Knowledge Engineering Review 19(4)) 추가. "그래프 엔지니어링이 정말 새로운가"라는 기존 LangChain vs Sydney Runkle 논쟁에, "조직 토폴로지를 1급 설계 대상으로 다루는 문제의식 자체는 이 용어보다 20년 앞선 확립된 MAS 연구 분야"라는 학술적 근거를 추가
+- `Multi_Agent_Topology.md` — 학술적 근거 섹션에 Horling & Lesser(2005) 추가(hierarchy/holarchy/coalition/federation 등 조직 패러다임과의 대응), 신규 섹션 "프레임워크별 토폴로지 구현"(AutoGen 액터 모델/CrewAI Process/OpenAI Agents SDK Handoff/Google ADK를 이 문서의 노드·엣지 모델에 매핑, `Agent_Frameworks.md`로 링크), Tool 노드 한 줄 설명을 MCP Gateway/Registry 신뢰 경계로 확장
+- `Loop_Networks_and_Anchors.md` — "4대 구조적 실패 모드" 표의 Goodhart's Law 항목에 Goodhart(1975)·Strathern(1997) 정식 출처 추가
+- 역링크 보강: `Loop_Engineering/Data_Flywheel.md`·`Loop_Engineering/Continuous_Optimization.md`(KO+EN)의 관련 개념에 `Graph_Engineering/Loop_Networks_and_Anchors` 추가 — 기존에 `Multi_Agent_Topology`는 외부 역링크 4건이 있었으나 `Loop_Networks_and_Anchors`는 0건이었던 비대칭 해소
+- 적용 제외: GoAgent(arXiv:2603.19677)·OFA-MAS(arXiv:2601.12996) 등 2026년 초 극최신 토폴로지 자동생성 논문(아직 인용 축적 없음), `Graph_Engineering.md`에 6번째 블로그 출처 추가(기존 5개와 논조 중복), 신규 하위 문서 신설(기존 2문서 구조로 충분)

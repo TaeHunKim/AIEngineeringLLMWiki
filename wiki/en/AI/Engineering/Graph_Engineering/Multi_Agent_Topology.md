@@ -29,7 +29,7 @@ flowchart TD
 | **Deterministic Function** | Non-agentic computation with fixed input/output rules |
 | **Router** | A branch point deciding the next node |
 | **Join** | Consolidates results from parallel paths |
-| **Tool** | An MCP server or function call (→ [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]) |
+| **Tool** | An MCP server or function call. This node is often actually the boundary where the graph reaches into an MCP server operated outside the organization (or by a different team) — which node may call which MCP server, and what authentication/rate limits apply to that call, is enforced at the Gateway/Registry layer covered in [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]. In other words, a Tool node's "edge" is the point where this document's internal organizational trust relationships hand off to MCP's authentication and audit mechanisms |
 | **Human Checkpoint** | An approval gate — the organizational-graph counterpart of [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] |
 
 Edges encode **delegation, trust, and data flow** between nodes — the direction and attributes of an edge express which node can monitor, own, or veto another.
@@ -52,6 +52,20 @@ builder.add_conditional_edges("orchestrator", route_to_workers)
 ```
 
 In a static graph, transition paths are fixed at design time. With `Send()`-based routing, **the work graph itself takes a different shape on every run** — the number of node instances and the connection structure vary each time based on task count, priority, and retry behavior.
+
+## Topology Implementations Across Frameworks
+
+The node/edge abstraction above isn't unique to LangGraph. The major frameworks covered in this wiki's [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent Frameworks]] each solve the same problem — who hands control to whom — in a different way.
+
+| Framework | Topology implementation | Mapping to this document's node/edge model |
+|-----------|--------------------------|----------------------------------------------|
+| **LangGraph** | Explicit `StateGraph` — nodes and conditional edges declared directly in code, with `Send()` for runtime fan-out | Maps most directly onto this document's node/edge abstraction (see example above) |
+| **AutoGen (Actor Model)** | Asynchronous message-passing actor model, coordinated via conversational GroupChat (e.g., Planner-Executor-Critic) | Edges form implicitly as a communication graph — "who sends a message to whom" — emerging from conversation flow rather than static declaration |
+| **CrewAI** | Role-based `Crew` + `Process` (sequential/hierarchical) — each agent assigned a role and goal | The Process type itself is a topology choice: sequential is a linear chain, hierarchical corresponds to this document's Router/manager node |
+| **OpenAI Agents SDK** | `Handoff` as a first-class primitive — an agent explicitly delegates control and conversation context to another agent | A handoff *is* an edge: "which agent this one can transition to next" is expressed as the list of handoffs declared on each agent |
+| **Google ADK** | Named `Sequential`/`Parallel`/`Loop` workflow agents plus routing agents | Maps nearly 1:1 onto this document's example Router and Join — ADK code examples already appear elsewhere in this wiki, in [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] (SafetyPlugin) and [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] |
+
+The common thread: despite different names and APIs, every framework is making the same underlying design decision — defining node types plus transition rules. This makes it practically useful to redraw any framework's system in terms of this document's node/edge model, whichever one you're actually using.
 
 ## Governance: Giving the Organizational Graph Identity and Budget
 
@@ -86,14 +100,17 @@ Graph-of-Agents (GoA, 2026) is a framework that models multi-LLM collaboration a
 
 On MMLU/MMLU-Pro/GPQA, GoA with only 3 selected agents outperformed baselines using all 6 agents — evidence that topology design (who participates) matters more than simply adding more agents.
 
+Where GoA is a 2026 academic attempt to *automatically discover* graph topology, Horling & Lesser's 2005 survey "A Survey of Multi-agent Organizational Paradigms" (Knowledge Engineering Review 19(4)) already catalogued organizational paradigms — hierarchy, holarchy, coalition, team, congregation, society, federation, market, matrix — twenty years earlier, and showed that organizational structure has a quantitatively significant effect on system performance. The node types and monitor/own/veto edges in this document are, in fact, close variants of the hierarchy and federation paradigms — the name "Graph Engineering" is new, but the design problem it addresses (who reports to whom, who can veto whom) has long been studied in MAS research.
+
 ## Role in AI Engineering
 
 Once a node can contain a full agent, a multi-agent system stops being "a pipeline of LLM calls" and becomes closer to "an organization of autonomous actors." Multi-Agent Topology is the practice of designing and controlling this organization, and should be read alongside the coordination patterns and failure modes in [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] — where coordination patterns describe "how agents interact," topology first defines "what structure that interaction is allowed to take."
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent Frameworks]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## Sources
+- Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316
 - TrueFoundry, ["Graph Engineering for Multi-Agent Systems: Architecture, Governance, and Observability"](https://www.truefoundry.com/blog/graph-engineering-enterprise-guide) (2026)
 - LangChain, ["3 Years of Graph Engineering with LangGraph"](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph) (2026)
 - "Graph-of-Agents: A Graph-based Framework for Multi-Agent LLM Collaboration" (2026) — [arXiv:2604.17148](https://arxiv.org/abs/2604.17148)

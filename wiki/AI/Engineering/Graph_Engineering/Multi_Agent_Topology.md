@@ -29,7 +29,7 @@ flowchart TD
 | **Deterministic Function** | 비-에이전트 연산. 고정된 입출력 규칙 |
 | **Router** | 다음 노드를 결정하는 분기점 |
 | **Join** | 병렬 경로의 결과를 통합 |
-| **Tool** | MCP 서버 또는 함수 호출 (→ [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP\|MCP]]) |
+| **Tool** | MCP 서버 또는 함수 호출. 그래프 상의 이 노드가 실제로는 조직 외부(또는 다른 팀)가 운영하는 MCP 서버로 이어지는 경계인 경우가 많다 — 어떤 노드가 어떤 MCP 서버를 호출할 수 있는지, 그 호출에 어떤 인증·요율 제한이 걸리는지는 [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP\|MCP]]가 다루는 Gateway/Registry 계층에서 강제된다. 즉 Tool 노드의 "엣지"는 이 문서가 다루는 조직 내부 신뢰 관계를 MCP의 인증·감사 메커니즘으로 넘기는 지점이다 |
 | **Human Checkpoint** | 승인 게이트. [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human-in-the-Loop]]의 조직 그래프 버전 |
 
 엣지는 노드 간의 **위임·신뢰·데이터 흐름**을 인코딩한다 — 어떤 노드가 다른 노드를 감시(monitor)하거나, 소유(own)하거나, 거부권(veto)을 행사할 수 있는지가 엣지의 방향과 속성으로 표현된다.
@@ -52,6 +52,20 @@ builder.add_conditional_edges("orchestrator", route_to_workers)
 ```
 
 정적 그래프에서는 전이 경로가 설계 시점에 고정되지만, `Send()` 기반 라우팅에서는 **work graph 자체가 실행마다 다른 모양으로 형성**된다 — task 개수, 우선순위, 실패 재시도 여부에 따라 노드 인스턴스 수와 연결 구조가 매번 달라진다.
+
+## 프레임워크별 토폴로지 구현
+
+위 노드/엣지 추상화는 LangGraph만의 것이 아니다. 이 위키의 [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]]가 다루는 주요 프레임워크들은 각자 다른 방식으로 같은 문제(누가 누구에게 제어를 넘기는가)를 푼다.
+
+| 프레임워크 | 토폴로지 구현 방식 | 이 문서의 노드/엣지 모델과의 대응 |
+|-----------|-------------------|-----------------------------------|
+| **LangGraph** | 명시적 `StateGraph` — 노드·조건부 엣지를 코드로 직접 선언, `Send()`로 런타임 fan-out | 이 문서의 노드/엣지 추상화와 가장 직접적으로 대응 (위 예시 참고) |
+| **AutoGen (액터 모델)** | 비동기 메시지 패싱 기반 액터 모델. Planner-Executor-Critic 같은 대화형 GroupChat으로 조정 | 엣지가 "누가 누구에게 메시지를 보내는가"라는 통신 그래프로 암묵적으로 형성됨 — 정적 선언보다는 대화 흐름에 따라 동적으로 드러남 |
+| **CrewAI** | Role 기반 `Crew` + `Process`(sequential/hierarchical) — 각 에이전트에 역할·목표를 부여 | Process 유형 자체가 토폴로지 선택지: sequential은 선형 체인, hierarchical은 이 문서의 Router/manager 노드에 해당 |
+| **OpenAI Agents SDK** | `Handoff`을 1급 원시 요소로 — 에이전트가 명시적으로 다른 에이전트에게 제어와 대화 맥락을 위임 | Handoff이 곧 엣지: "이 에이전트가 다음에 어떤 에이전트로 전이할 수 있는가"를 각 에이전트 정의에 나열된 handoff 목록으로 표현 |
+| **Google ADK** | 명명된 `Sequential`/`Parallel`/`Loop` 워크플로 에이전트 + 라우팅 에이전트 | 이 문서 예시의 Router·Join과 거의 1:1 대응 — 이미 이 위키의 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]](SafetyPlugin)·[[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]에서 ADK 코드 예시로 등장 |
+
+공통점: 프레임워크마다 이름과 API는 다르지만, 결국 "노드 유형 정의 + 전이 규칙"이라는 동일한 설계 결정을 내리고 있다 — 어떤 프레임워크를 쓰든 이 문서의 노드/엣지 모델로 다시 그려볼 수 있다는 것이 실무적으로 유용하다.
 
 ## 거버넌스: 조직 그래프에 정체성과 예산을 부여하기
 
@@ -86,14 +100,17 @@ Graph-of-Agents(GoA, 2026)는 멀티 LLM 협업을 그래프로 모델링하는 
 
 MMLU/MMLU-Pro/GPQA 등에서 6개 에이전트를 모두 쓰는 기존 방법보다 3개만 선택한 GoA가 더 높은 성능을 보였다 — 토폴로지 설계(누구를 참여시킬지)가 단순히 에이전트 수를 늘리는 것보다 중요하다는 근거다.
 
+GoA가 "그래프 토폴로지를 자동으로 찾아내는" 2026년의 학술적 시도라면, 이보다 20년 앞선 Horling & Lesser(2005)의 "A Survey of Multi-agent Organizational Paradigms"(Knowledge Engineering Review 19(4))는 이미 hierarchy(계층)·holarchy(홀라키)·coalition(연합)·team(팀)·congregation(회중)·society(사회)·federation(연방)·market(시장)·matrix(매트릭스) 등 여러 조직 패러다임을 정리하고, 조직 구조가 시스템 성능에 정량적으로 유의미한 영향을 미친다는 것을 보였다. 이 문서의 Router/Join/Human Checkpoint 같은 노드 유형과 monitor/own/veto 엣지는 사실 이 패러다임들 중 hierarchy·federation의 변형에 가깝다 — "그래프 엔지니어링"이라는 이름 자체는 새롭지만, 다루는 설계 문제(누가 누구에게 보고하고, 누가 누구를 거부할 수 있는가)는 MAS 연구에서 오래전부터 다뤄온 것이다.
+
 ## AI Engineering에서의 역할
 
 노드 안에 완전한 에이전트가 들어갈 수 있게 되면서, 멀티에이전트 시스템은 더 이상 "여러 LLM 호출의 파이프라인"이 아니라 "여러 자율적 행위자로 구성된 조직"에 가까워진다. Multi-Agent Topology는 이 조직을 설계·통제하는 실무 기법이며, [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]이 다루는 조정 패턴·실패 모드와 함께 읽어야 한다 — 조정 패턴이 "에이전트들이 어떻게 상호작용하는가"라면, 토폴로지는 "그 상호작용이 허용되는 구조가 무엇인가"를 먼저 정의한다.
 
 ## 관련 개념
-[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|Flow_Engineering/Graph_Flow/LangGraph]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Harness_Engineering/Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Harness_Engineering/AI_Governance_and_Compliance]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Engineering/Agent_Deployment]]
+[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|Flow_Engineering/Graph_Flow/LangGraph]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Engineering/Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Harness_Engineering/Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Harness_Engineering/AI_Governance_and_Compliance]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Engineering/Agent_Deployment]]
 
 ## 출처
+- Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316
 - TrueFoundry, ["Graph Engineering for Multi-Agent Systems: Architecture, Governance, and Observability"](https://www.truefoundry.com/blog/graph-engineering-enterprise-guide) (2026)
 - LangChain, ["3 Years of Graph Engineering with LangGraph"](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph) (2026)
 - "Graph-of-Agents: A Graph-based Framework for Multi-Agent LLM Collaboration" (2026) — [arXiv:2604.17148](https://arxiv.org/abs/2604.17148)

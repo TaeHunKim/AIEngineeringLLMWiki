@@ -304,7 +304,7 @@ OpenAI o-series 패턴:
 Continuous Optimization은 **AI 시스템을 항상 최신 상태로 유지하는 엔진**이다. DSPy는 프롬프트 최적화를 수작업에서 자동화로 전환하고, RLVR은 검증 가능한 도메인에서 모델 자체의 추론 능력을 향상시킨다. A/B 테스트는 개선사항을 안전하게 검증한다. 2025년 이후로는 Test-Time Compute Scaling이 훈련이 아닌 추론 단계에서의 최적화 루프로 새롭게 자리잡고 있다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]]
+[[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Graph_Engineering/Loop_Networks_and_Anchors|Graph_Engineering/Loop_Networks_and_Anchors]]
 
 ## 출처
 - Khattab et al. (2023) "DSPy: Compiling Declarative Language Model Calls" — [arxiv.org/abs/2310.03714](https://arxiv.org/abs/2310.03714)

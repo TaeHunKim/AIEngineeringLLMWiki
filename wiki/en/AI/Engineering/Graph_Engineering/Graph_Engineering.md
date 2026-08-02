@@ -21,6 +21,8 @@ flowchart LR
 
 Carlos E. Perez (Intuition Machine) frames this as the latest stage in a naming lineage: `prompt engineering → context engineering → harness engineering → loop engineering → graph engineering`. LangChain's Sydney Runkle argues each name is what practitioners called the wall they ran into in production, not marketing-driven jargon. At the same time, LangChain pushes back that "Graph Engineering itself isn't new — LangGraph has been doing this for three years." This wiki synthesizes both positions: **the graph representation (nodes/edges/state) itself isn't new, but a node can now contain a full agent, and the graph itself has started to be treated as the governance unit of a multi-agent "organization" — both are genuinely new.**
 
+This "it's not new" pushback actually goes back further than LangGraph's three years. Horling & Lesser's 2005 survey "A Survey of Multi-agent Organizational Paradigms" (Knowledge Engineering Review 19(4)) already systematically catalogued multi-agent organizational paradigms — hierarchy, holarchy, coalition, team, congregation, society, federation, market, matrix — and concluded that organizational design has a quantitatively significant effect on system performance. Two decades before the name "Graph Engineering" existed, the core problem — treating agent organization as a first-class design concern — was already an established research area. This wiki adds a third synthesis here: **the concept (designing organizational topology) is 20 years old, but what's genuinely new is that each node in that organization can now itself reason and act as an LLM agent — meaning you're no longer designing a fixed org chart, but an organization that reshapes itself at runtime.**
+
 ## Three Perspectives
 
 Three different sources define the same term from different angles:
@@ -56,6 +58,7 @@ Graph Engineering is the top layer that surfaces and manages failures invisible 
 [[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]
 
 ## Sources
+- Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316
 - LangChain, ["3 Years of Graph Engineering with LangGraph"](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph) (2026)
 - LangChain, ["The Art of Loop Engineering"](https://www.langchain.com/blog/the-art-of-loop-engineering) (2026)
 - TrueFoundry, ["Graph Engineering for Multi-Agent Systems: Architecture, Governance, and Observability"](https://www.truefoundry.com/blog/graph-engineering-enterprise-guide) (2026)

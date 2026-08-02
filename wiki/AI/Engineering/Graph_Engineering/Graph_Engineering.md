@@ -21,6 +21,8 @@ flowchart LR
 
 Carlos E. Perez(Intuition Machine)는 이를 `prompt engineering → context engineering → harness engineering → loop engineering → graph engineering`으로 이어지는 명명 계보의 최신 단계로 정리한다. 각 이름은 실무자들이 프로덕션에서 부딪힌 벽에 붙인 이름이지, 마케팅이 만들어낸 신조어가 아니라는 것이 LangChain(Sydney Runkle)의 입장이다. 다만 LangChain은 동시에 "Graph Engineering 자체는 새롭지 않다 — LangGraph가 3년째 해온 일이다"라고 반박한다. 이 위키는 아래처럼 이 두 입장을 종합한다: **그래프 표현(노드/엣지/state) 자체는 새롭지 않지만, 노드 안에 이제 "완전한 에이전트"가 들어갈 수 있다는 점, 그리고 그 그래프를 멀티에이전트 "조직"의 거버넌스 단위로 다루기 시작했다는 점은 실질적으로 새롭다.**
 
+이 "새롭지 않다"는 반박은 사실 LangGraph의 3년보다 더 거슬러 올라간다. Horling & Lesser의 2005년 서베이 "A Survey of Multi-agent Organizational Paradigms"(Knowledge Engineering Review 19(4))는 이미 hierarchy(계층)·holarchy(홀라키)·coalition(연합)·team(팀)·congregation(회중)·society(사회)·federation(연방)·market(시장)·matrix(매트릭스) 등 멀티에이전트 시스템의 조직 패러다임을 체계적으로 정리했고, "조직 설계가 시스템 성능에 정량적으로 유의미한 영향을 미친다"는 것을 핵심 결론으로 제시했다 — Graph Engineering이라는 이름이 붙기 20년 전부터, "에이전트 조직을 1급 설계 대상으로 다뤄야 한다"는 문제의식 자체는 이미 확립된 연구 분야였다는 뜻이다. 이 위키는 이 지점에서 세 번째 종합을 더한다: **개념(조직 토폴로지 설계)은 20년 된 것이지만, 그 조직의 각 노드가 이제 스스로 추론·행동할 수 있는 LLM 에이전트라는 점, 그래서 "설계 시점에 고정된 조직도"가 아니라 "런타임에 스스로 형태를 바꾸는 조직"을 다뤄야 한다는 점이 실질적 변화다.**
+
 ## 세 가지 관점
 
 같은 용어를 서로 다른 3개 소스가 서로 다른 각도에서 정의하고 있다:
@@ -56,6 +58,7 @@ Graph Engineering은 단일 에이전트·단일 루프 수준에서는 보이�
 [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Flow_Engineering/Graph_Flow/Graph_Flow]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Harness_Engineering/AI_Governance_and_Compliance]]
 
 ## 출처
+- Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316
 - LangChain, ["3 Years of Graph Engineering with LangGraph"](https://www.langchain.com/blog/3-years-of-graph-engineering-with-langgraph) (2026)
 - LangChain, ["The Art of Loop Engineering"](https://www.langchain.com/blog/the-art-of-loop-engineering) (2026)
 - TrueFoundry, ["Graph Engineering for Multi-Agent Systems: Architecture, Governance, and Observability"](https://www.truefoundry.com/blog/graph-engineering-enterprise-guide) (2026)
