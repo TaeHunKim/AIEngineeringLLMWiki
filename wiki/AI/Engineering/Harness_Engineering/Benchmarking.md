@@ -76,6 +76,10 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
 - LLM이 실제 코드 버그를 고치는 능력 측정
 - Claude 3.5 Sonnet이 2024년 49% 달성 (업계 최초)
 
+#### SWE-bench Verified (2024)
+- **제작**: OpenAI가 원본 SWE-bench 중 이슈 설명이 불충분하거나 애초에 풀 수 없는 문제를 제거하고, 사람이 직접 검증한 **500개 문제 서브셋**으로 재구성
+- **의의**: 원본 SWE-bench는 "실제로는 풀 수 없는 문제"가 섞여 있어 모델 간 비교가 왜곡된다는 지적이 있었는데, 이를 해소한 버전. 이후 프론티어 모델 발표마다 사실상 표준 지표로 인용되며 SWE-bench 자체를 대체하는 추세
+
 ## 에이전트 전용 벤치마크
 
 | 벤치마크 | 측정 대상 |
@@ -179,6 +183,7 @@ Benchmarking은 **모델 선택, 프롬프트 최적화, 파인튜닝 효과 측
 - Chen et al. (2021) "HumanEval" — [arXiv:2107.03374](https://arxiv.org/abs/2107.03374)
 - IBM "What Are LLM Benchmarks?" — [ibm.com](https://www.ibm.com/think/topics/llm-benchmarks)
 - DataCamp "LLM Benchmarks Explained" — [datacamp.com](https://www.datacamp.com/tutorial/llm-benchmarks)
+- OpenAI (2024) "Introducing SWE-bench Verified" — [openai.com](https://openai.com/index/introducing-swe-bench-verified/)
 - Mialon et al. (Meta/HuggingFace, 2023) "GAIA: A Benchmark for General AI Assistants" — [arXiv:2311.12983](https://arxiv.org/abs/2311.12983)
 - Liu et al. (Tsinghua, 2023) "AgentBench: Evaluating LLMs as Agents" — [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
 - AI Engineering from Scratch, Phase 14 · Lesson 19 (Benchmarks — SWE-bench, GAIA, AgentBench) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

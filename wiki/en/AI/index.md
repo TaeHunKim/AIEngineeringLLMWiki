@@ -66,8 +66,9 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]]: Preference Annotation, IAA (Cohen's Kappa), Chatbot Arena
 - [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]: LangSmith/Langfuse/Arize Phoenix
 - [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]]: HarmBench, PAIR, Many-shot/ASCII Jailbreaking, Garak/PyRIT
-- [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]: Reward Hacking, Sleeper Agents, In-Context Scheming, Alignment Faking, AI Control
-- [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]: RSP/Preparedness/FSF, METR external evaluation, EU AI Act, model cards
+- [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+- [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]]: Sparse Autoencoders, Circuit Tracing, internal circuit analysis
+- [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards
 
 #### Loop Engineering
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]: Agent-in-the-Loop, self-reinforcing data collection cycle

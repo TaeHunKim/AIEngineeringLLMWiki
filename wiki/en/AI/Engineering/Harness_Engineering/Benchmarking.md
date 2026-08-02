@@ -76,6 +76,10 @@ Wrong: "He jumped out of the car." (statistically plausible but contextually wro
 - Measures LLM ability to fix actual code bugs
 - Claude 3.5 Sonnet achieved 49% in 2024 (first in the industry)
 
+#### SWE-bench Verified (2024)
+- **Created by**: OpenAI, which removed issues with insufficient descriptions or that were inherently unsolvable from the original SWE-bench, producing a human-validated **500-problem subset**
+- **Significance**: The original SWE-bench had been criticized for mixing in "actually unsolvable" problems that skewed model comparisons. Since its release, SWE-bench Verified has effectively become the de facto standard metric cited in nearly every frontier model announcement, largely superseding the original SWE-bench
+
 ## Agent-Specific Benchmarks
 
 | Benchmark | Measures |
@@ -177,5 +181,6 @@ Benchmarking provides **objective criteria for model selection, prompt optimizat
 ## Sources
 - Hendrycks et al. (2021) "MMLU" — [arXiv:2009.03300](https://arxiv.org/abs/2009.03300)
 - Chen et al. (2021) "HumanEval" — [arXiv:2107.03374](https://arxiv.org/abs/2107.03374)
+- OpenAI (2024) "Introducing SWE-bench Verified" — [openai.com](https://openai.com/index/introducing-swe-bench-verified/)
 - Mialon et al. (Meta/HuggingFace, 2023) "GAIA: A Benchmark for General AI Assistants" — [arXiv:2311.12983](https://arxiv.org/abs/2311.12983)
 - Liu et al. (Tsinghua, 2023) "AgentBench: Evaluating LLMs as Agents" — [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)

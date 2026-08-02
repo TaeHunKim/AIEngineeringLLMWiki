@@ -168,6 +168,15 @@ Step 2: Critique response against each principle
 Step 3: Revise response reflecting the critique
 ```
 
+### 4. Constitutional Classifiers (Anthropic, 2025)
+
+While Constitutional AI instills safe behavior into the model itself during **training**, Constitutional Classifiers block universal jailbreaks at **runtime** using separate input/output classifiers.
+
+- **Source**: Anthropic (2025-02), "Constitutional Classifiers: Defending Against Universal Jailbreaks" — [arXiv:2501.18837](https://arxiv.org/abs/2501.18837)
+- **How it works**: Real-time classification of inputs and outputs against a "constitution" defining harmful/harmless content categories. Acts as a second line of defense even when Layer 1 (RLHF) has been bypassed
+- **Validation**: Deployed live on Claude and subjected to over 3,000 hours of red teaming; no universal jailbreak (a single attack eliciting detailed answers to all target queries at a level comparable to an unguarded model) was found
+- **Follow-up (Constitutional Classifiers++, 2026)**: Reduced compute cost by roughly 40x while maintaining a 0.05% refusal rate on production traffic — resolving the original version's "over-refusal and high compute cost" tradeoffs to a practically deployable level
+
 ## Guardrail Design Principles
 
 ```
@@ -312,9 +321,10 @@ In practice, which fairness criterion to prioritize must be explicitly chosen ba
 Guardrail Engineering is the **seatbelt of production AI systems**. Even the best-built LLM application can behave unintentionally due to malicious users or unexpected inputs. In agent systems, deep defense must be implemented beyond simple input/output filters using the 3-Layer framework (Policy/Guardrails/Continuous Assurance), SafetyPlugin pattern, and Agent Sandbox. In regulated industries (finance, healthcare, legal), guardrails are not optional but mandatory.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
+[[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]]
 
 ## Sources
+- Anthropic (2025) "Constitutional Classifiers: Defending Against Universal Jailbreaks" — [arXiv:2501.18837](https://arxiv.org/abs/2501.18837)
 - NVIDIA NeMo Guardrails docs — [docs.nvidia.com](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html)
 - Guardrails AI docs — [guardrailsai.com](https://guardrailsai.com/blog/nemoguardrails-integration)
 - Meta LlamaGuard — [ai.meta.com](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/)

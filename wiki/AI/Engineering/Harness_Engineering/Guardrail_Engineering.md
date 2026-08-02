@@ -177,6 +177,15 @@ def validate_output(response: str, context: dict) -> tuple[str, bool]:
 3단계: 비판을 반영하여 응답 수정
 ```
 
+### 4. Constitutional Classifiers (Anthropic, 2025)
+
+Constitutional AI가 **학습 단계**에서 모델 자체에 안전 행동을 내재화하는 방식이라면, Constitutional Classifiers는 **런타임**에 별도의 입력/출력 분류기로 유니버설 잭브레이크를 차단하는 방식이다.
+
+- **출처**: Anthropic (2025-02), "Constitutional Classifiers: Defending Against Universal Jailbreaks" — [arXiv:2501.18837](https://arxiv.org/abs/2501.18837)
+- **작동 방식**: 유해/무해 콘텐츠 카테고리를 정의한 헌법(constitution)을 기준으로 입력·출력을 실시간 분류. Layer 1(RLHF)이 우회당한 경우에도 Layer 2에서 별도로 차단하는 이중 방어선 역할
+- **검증**: Claude에 실전 배포된 상태로 3,000시간 이상의 레드티밍을 거쳤으나 유니버설 잭브레이크(모든 대상 질의에 대해 무방비 모델 수준의 상세 답변을 끌어내는 단일 공격)는 발견되지 않음
+- **후속 연구 (Constitutional Classifiers++, 2026)**: 연산 비용을 기존 대비 약 40배 절감하면서도 프로덕션 트래픽 기준 거부율 0.05%를 유지 — 초기 버전의 "과도한 거부·높은 연산 비용" 문제를 실무 적용 가능한 수준으로 해결
+
 ## 가드레일 설계 원칙
 
 ```
@@ -345,9 +354,10 @@ OpenAI Moderation API, Google Perspective API, Meta Llama Guard 등 범용 유�
 Guardrail Engineering은 **프로덕션 AI 시스템의 안전벨트**다. 아무리 잘 만든 LLM 애플리케이션도 악의적 사용자나 예상치 못한 입력으로 인해 의도치 않은 행동을 할 수 있다. 에이전트 시스템에서는 단순 입출력 필터를 넘어 3-Layer 프레임워크(Policy/Guardrails/Continuous Assurance)와 SafetyPlugin 패턴, Agent Sandbox로 심층 방어를 구현해야 한다. 규제가 있는 산업(금융, 의료, 법률)에서 가드레일은 선택이 아닌 필수다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
+[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic_Interpretability]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
 
 ## 출처
+- Anthropic (2025) "Constitutional Classifiers: Defending Against Universal Jailbreaks" — [arXiv:2501.18837](https://arxiv.org/abs/2501.18837)
 - NVIDIA NeMo Guardrails 문서 — [docs.nvidia.com](https://docs.nvidia.com/nemo/guardrails/latest/about/overview.html)
 - Guardrails AI 문서 — [guardrailsai.com](https://guardrailsai.com/blog/nemoguardrails-integration)
 - Meta LlamaGuard — [ai.meta.com](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/)

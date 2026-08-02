@@ -18,13 +18,15 @@ Harness = Guardrails (안전) + Evaluation (품질) + Observability (관찰)
 | 문서 | 내용 |
 |------|------|
 | [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
-| [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM_as_a_Judge]] | 자동 품질 평가 — MT-Bench, RAGAS |
-| [[AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench, pass@k |
+| [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM_as_a_Judge]] | 자동 품질 평가 — MT-Bench, RAGAS, G-Eval, Prometheus |
+| [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Agent_as_a_Judge]] | 에이전트 실행 궤적 평가, Critic Agent, Agent Simulation |
+| [[AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench(Verified), pass@k |
 | [[AI/Engineering/Harness_Engineering/Human_Evaluation\|Human_Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
 | [[AI/Engineering/Harness_Engineering/Observability_and_Tracing\|Observability_and_Tracing]] | LangSmith/Langfuse/Arize Phoenix |
-| [[AI/Engineering/Harness_Engineering/Red_Teaming\|Red_Teaming]] | HarmBench, PAIR, Jailbreaking 탐지, Garak/PyRIT |
-| [[AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Alignment Faking, AI Control |
-| [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, METR 외부평가, EU AI Act, 모델 카드 |
+| [[AI/Engineering/Harness_Engineering/Red_Teaming\|Red_Teaming]] | HarmBench, PAIR, Jailbreaking 탐지, OWASP LLM Top 10, Garak/PyRIT |
+| [[AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
+| [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic_Interpretability]] | Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 |
+| [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 |
 
 ## 평가 계층 구조
 

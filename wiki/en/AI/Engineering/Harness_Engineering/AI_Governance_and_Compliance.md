@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 10
 ---
 
 # AI Governance and Compliance
@@ -97,6 +97,46 @@ Instead of separate legally binding AI law, existing regulators (ICO, FCA, etc.)
 
 The **AI Basic Act** (enacted 2024, effective 2026) mandates safety for high-impact AI, requires disclosure of AI-generated content (informing users when content is AI-generated), etc. Similar risk-based structure to EU AI Act, with detailed guidelines and notifications continuously being specified.
 
+## Enterprise Practitioner Standards: NIST AI RMF and ISO/IEC 42001
+
+If the frontier lab pledges (RSP/Preparedness/FSF) and regional laws (EU AI Act, etc.) covered above are "voluntary lab norms" and "national mandatory regulation" respectively, these two standards sit between them as the **practical standards by which ordinary enterprises organizationally manage and get audited on AI risk**.
+
+### NIST AI Risk Management Framework (AI RMF 1.0)
+
+```
+A voluntary framework (no legal force) published by the US National Institute
+of Standards and Technology (NIST) in 2023
+
+4 core functions (Govern → Map → Measure → Manage):
+  Govern:  Establish AI risk management culture, policy, and accountability structure
+  Map:     Identify the AI system's context, stakeholders, and potential risks
+  Measure: Quantitatively/qualitatively assess identified risks
+  Manage:  Respond to, mitigate, and monitor assessed risks
+
+2026-04: Published a concept note for a Critical Infrastructure-specific profile
+         — a trend of expanding from a general framework toward sector-specific ones
+```
+
+### ISO/IEC 42001 (2023)
+
+```
+The first certifiable AI management system standard, published by ISO in December 2023
+  → Holds a status similar to ISO 27001 for information security
+    (formal certification obtainable through third-party certification bodies)
+
+Scope: management system covering the full AI system lifecycle
+  - The organization's AI governance structure and accountability
+  - Risk assessment process and mitigation measures
+  - Data quality and governance (substantially overlaps with AI RMF's Map/Measure)
+  - Continuous monitoring and improvement
+
+Practical significance: when selling to enterprise customers or regulated
+  industries (finance, healthcare), lets you present "our AI system operates
+  under a certified management system" as something third-party verified
+```
+
+**Relationship to RSP/Preparedness/FSF and the EU AI Act**: NIST AI RMF and ISO 42001 are **general-purpose management frameworks** not tied to a specific lab or country. Where the OWASP Top 10 for LLM Applications (→ [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]]) defines concrete risk items, these two provide the organizational process skeleton (identify → measure → manage) for handling that risk. In practice, ISO 42001 certification is sometimes used as supporting evidence for meeting legal requirements like the EU AI Act.
+
 ## Model Cards, System Cards, and Dataset Cards
 
 Standard practice for transparently documenting capabilities, limitations, and evaluation results of frontier models. The practical intersection of regulatory compliance and user trust.
@@ -152,6 +192,8 @@ AI Governance and Compliance bridges the gap between technical safety measures (
 [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (per-node governance)]]
 
 ## Sources
+- NIST "AI Risk Management Framework (AI RMF 1.0)" — [nist.gov](https://www.nist.gov/itl/ai-risk-management-framework)
+- ISO/IEC 42001:2023 "Artificial intelligence management system" — [iso.org](https://www.iso.org/standard/81230.html)
 - Anthropic "Responsible Scaling Policy" — [anthropic.com](https://www.anthropic.com/rsp)
 - OpenAI "Preparedness Framework" — [openai.com](https://openai.com/safety/preparedness/)
 - Google DeepMind "Frontier Safety Framework" — [deepmind.google](https://deepmind.google/discover/blog/updating-the-frontier-safety-framework/)

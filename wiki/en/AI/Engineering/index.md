@@ -115,15 +115,16 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - Evaluation
     - [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, bias mitigation
     - [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory evaluation, Critic Agent, Multi-Agent-as-Judge (Zhuge et al., ICML 2025)
-    - [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench, BFCL
+    - [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench(Verified), BFCL
     - [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
 - Observability
     - [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(May 2026)*
 - Red Teaming
-    - [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, Garak/PyRIT
+    - [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
 - Alignment & Governance
-    - [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, In-Context Scheming, Alignment Faking, AI Control
-    - [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, METR external evaluation, EU AI Act, model cards *(2026)*
+    - [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+    - [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, internal circuit analysis *(2026)*
+    - [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards *(2026)*
 
 ---
 

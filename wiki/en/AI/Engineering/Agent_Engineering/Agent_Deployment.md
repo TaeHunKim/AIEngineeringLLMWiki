@@ -274,6 +274,32 @@ flowchart LR
 - **Automated Prompt Suggestion**: Auto-generate system instruction or tool description modifications based on cluster analysis; similar to DSPy/MIPROv2 meta-optimization but agent-specific
 - **Iterative Optimization**: Automate the loop of apply improvement → rerun evaluation → measure performance → re-improve
 
+## Agent Deployment Platforms on Other Clouds
+
+Everything covered above — Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer — is based on Google's Gemini Enterprise Agent Platform. AWS and Azure launched similarly capable managed agent runtimes to general availability around the same period.
+
+### AWS Bedrock AgentCore
+
+- **Timeline**: Preview July 2025 → GA October 13, 2025; Policy and Evaluations previews added December 2025
+- **Characteristics**: Framework- and model-agnostic — hosts agents built with LangChain, LlamaIndex, or custom code as-is, and can call not just Bedrock-hosted models but external API models too. Positions itself more as a "runtime not tied to a specific framework" than Google or Azure
+- **Adoption**: SDK downloads exceeded 2 million within 5 months of preview
+
+### Azure AI Foundry Agent Service
+
+- **Timeline**: GA, with 10,000+ customers already on the platform
+- **Characteristics**: Strongest one-click deployment integration with Microsoft 365 and Teams — low adoption friction for organizations already running the Microsoft ecosystem (Office, Teams, Copilot)
+
+### Three-Way Comparison
+
+| Criterion | Google Gemini Enterprise | AWS Bedrock AgentCore | Azure AI Foundry Agent Service |
+|-----------|---------------------------|-------------------------|-----------------------------------|
+| GA timing | 2026-05 | 2025-10 | GA (late 2025 – early 2026) |
+| Framework lock-in | Centered on Google ADK | Framework/model-agnostic (most open) | Centered on Azure AI ecosystem |
+| Strength | Feature completeness — Memory Bank, Identity, Simulation | Hosts agents built on any framework | One-click Microsoft 365/Teams integration |
+| Best fit | Organizations on Google Cloud, greenfield agent design | Organizations using multiple frameworks/models | Enterprises already on the Microsoft ecosystem |
+
+All three platforms are converging on the same set of problems covered in this document — long-running Agent Runtime (auto-resume), Memory, Gateway, and governance — which makes comparing platforms along these five functional axes (Runtime/Memory/Gateway/Registry-Governance/Observability) more useful in practice than comparing vendor-specific API details.
+
 ## Deployment Checklist
 
 ```
@@ -307,3 +333,5 @@ Agent Deployment is the **layer that elevates agents from prototype to enterpris
 - Google "Prototype to Production" (originally published Nov 2025, updated May 2026)
 - Google Cloud "Optimize your agents" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize)
 - Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform)
+- AWS "Amazon Bedrock AgentCore" official docs — [aws.amazon.com](https://aws.amazon.com/bedrock/agentcore/)
+- Microsoft "Azure AI Foundry Agent Service" official docs — [learn.microsoft.com](https://learn.microsoft.com/azure/ai-foundry/)

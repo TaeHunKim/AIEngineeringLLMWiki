@@ -185,6 +185,22 @@ grading_cot_prompt = """
 """
 ```
 
+## G-Eval과 Prometheus
+
+앞서 DeepEval 예시에 쓰인 `GEval` 메트릭과 오픈소스 판사 모델은 각각 별도로 제창된 기법이다.
+
+### G-Eval (2023)
+
+- **저자**: Liu et al. (Microsoft), "NLG Evaluation using GPT-4 with Better Human Alignment" — [arXiv:2303.16634](https://arxiv.org/abs/2303.16634)
+- **핵심 아이디어**: 판사 LLM에게 평가 기준을 자연어로 주고 **Chain-of-Thought로 평가 단계를 스스로 생성**시킨 뒤, 그 단계를 따라 채점하게 하는 form-filling 패러다임. 위 DeepEval 예시의 `evaluation_steps`가 바로 이 패턴이다.
+- 단일 절대 점수보다 사람의 판단 순서와 더 잘 정렬되는 것으로 보고됨.
+
+### Prometheus / Prometheus 2 (2024)
+
+- **저자**: Kim et al. (KAIST AI 등), "Prometheus: Inducing Fine-grained Evaluation Capability in Language Models" — [arXiv:2310.08491](https://arxiv.org/abs/2310.08491), 후속 "Prometheus 2" — [arXiv:2405.01535](https://arxiv.org/abs/2405.01535)
+- **문제의식**: GPT-4 같은 독점 모델을 판사로 쓰면 비용·API 종속성·재현성 문제가 생긴다.
+- **해결**: 세밀한 평가 기준(rubric)을 따라 채점하도록 명시적으로 학습시킨 **오픈소스 평가 전용 LLM**을 제공, GPT-4 판사와 높은 상관관계를 보이면서도 자체 호스팅이 가능함.
+
 ## Agent-as-a-Judge
 
 에이전트 시스템 평가에 특화된 LLM-as-a-Judge의 확장 패러다임. LLM-as-a-Judge가 최종 텍스트 출력을 평가하는 데 반해, **실행 궤적(execution trajectory) 전체를 평가 대상**으로 삼는 것이 핵심 차이다.
@@ -200,6 +216,8 @@ LLM-as-a-Judge는 **Evaluation Engineering의 핵심 도구**다. 수천 개의 
 
 ## 출처
 - Zheng et al. (2023) "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — [arXiv:2306.05685](https://arxiv.org/pdf/2306.05685)
+- Liu et al. (2023) "G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment" — [arXiv:2303.16634](https://arxiv.org/abs/2303.16634)
+- Kim et al. (2023/2024) "Prometheus" / "Prometheus 2" — [arXiv:2310.08491](https://arxiv.org/abs/2310.08491), [arXiv:2405.01535](https://arxiv.org/abs/2405.01535)
 - Evidently AI "LLM-as-a-judge: a complete guide" — [evidentlyai.com](https://www.evidentlyai.com/llm-guide/llm-as-a-judge)
 - RAGAS 문서 — [docs.ragas.io](https://docs.ragas.io)
 - [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

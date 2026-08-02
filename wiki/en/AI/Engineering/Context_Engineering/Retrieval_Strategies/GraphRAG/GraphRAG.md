@@ -69,6 +69,17 @@ Question: "What are the main themes covered in this report?"
 (MapReduce pattern)
 ```
 
+#### DRIFT Search (Hybrid Search)
+A third mode Microsoft added to compensate for the weaknesses of Local and Global Search — local search misses global context, global search misses fine-grained facts:
+```
+DRIFT = Dynamic Reasoning and Inference with Flexible Traversal
+
+1. Generate an initial answer "seed" from Community Reports (establishes global-level context)
+2. Use the seed to generate follow-up questions, exploring down to specific entities via Local Search
+3. Flexibly traverse the graph as needed to refine the answer
+```
+Reported to outperform vector RAG, DRIFT aims to capture the strengths of both Local and Global search.
+
 ## Implementation Example (Microsoft GraphRAG)
 
 ```python
@@ -106,6 +117,14 @@ Microsoft's evaluation (Podcast transcript, News article):
 
 **Cost**: Heavy LLM API usage during indexing → high cost. Even medium corpora with GPT-4 can cost tens to hundreds of dollars.
 
+## Recent Development: LazyGraphRAG
+
+A low-cost version of GraphRAG released by Microsoft Research in November 2024, directly addressing GraphRAG's biggest weakness — high build cost.
+
+- **Core idea**: Skips LLM-based entity/relationship extraction at indexing time. Instead, graph traversal and summarization are performed lazily, **only as much as needed at query time**.
+- **Cost**: Indexing cost is nearly identical to plain vector RAG — about 0.1% of full GraphRAG's cost. Query cost is over 700x cheaper than GraphRAG Global Search while maintaining comparable answer quality.
+- **Adoption**: Integrated into Microsoft Discovery (an agentic platform for scientific research) and Azure services in 2025.
+
 ## Neo4j GraphRAG
 
 Neo4j also provides LPG-based GraphRAG implementation:
@@ -124,6 +143,14 @@ retriever = VectorCypherRetriever(
 )
 ```
 
+## Alternative Implementation: LightRAG
+
+A widely-used open-source alternative to Microsoft GraphRAG. Guo et al. (2024, EMNLP 2025), [arXiv:2410.05779](https://arxiv.org/abs/2410.05779), [github.com/HKUDS/LightRAG](https://github.com/HKUDS/LightRAG).
+
+- **Core idea**: **Dual-level retrieval** — for each query, generates both a low-level key (specific entities/relationships) and a high-level key (abstract topics), searching both simultaneously rather than splitting into separate Local/Global modes.
+- **Architecture**: A lightweight dual-layer architecture combining graph structure with vector embeddings.
+- **Advantages**: Lower indexing and query cost than Microsoft GraphRAG, with a lighter-weight implementation that has been widely adopted by the open-source community.
+
 ## Graph RAG vs Vector RAG
 
 | Criterion | Vector RAG | Graph RAG |
@@ -131,9 +158,17 @@ retriever = VectorCypherRetriever(
 | **Search method** | Semantic similarity | Graph traversal + similarity |
 | **Multi-hop** | Difficult | Natural |
 | **Global summarization** | Not possible | Possible |
-| **Build cost** | Low | High (LLM entity extraction) |
+| **Build cost** | Low | High (LLM entity extraction)¹ |
 | **Query speed** | Fast | Slow |
 | **Best case** | Specific fact retrieval | Complex analysis, topic discovery |
+
+¹ Recent variants such as LazyGraphRAG and LightRAG substantially mitigate this build-cost problem.
+
+## Practical Considerations and Limitations
+
+- **Entity Resolution**: Entities are matched primarily by name. Failing to resolve name variants or distinguish entities that share a name fragments the graph, and this error compounds as reasoning traverses the graph.
+- **Incremental Indexing**: Early GraphRAG required a full re-index whenever documents were added. Since v0.4.0 (November 2024), the `graphrag update` command extracts entities only from new documents and merges them into the existing graph.
+- **Query Latency and Scalability**: Graph traversal and community-summary generation have been reported to add 2-3x higher end-to-end latency compared to vector RAG. As corpus size grows, the graph index and its summaries grow super-linearly, increasing memory overhead.
 
 ## Role in AI Engineering
 
@@ -159,3 +194,6 @@ Graph RAG's Phase 1 (knowledge graph construction) is an LLM-automated version o
 - Edge et al. (2024) "From Local to Global: A Graph RAG Approach" — [arXiv:2404.16130](https://arxiv.org/abs/2404.16130)
 - Neo4j "The GraphRAG Manifesto" — [neo4j.com](https://neo4j.com/blog/genai/graphrag-manifesto/)
 - GitHub microsoft/graphrag — [github.com](https://github.com/microsoft/graphrag)
+- Microsoft Research "LazyGraphRAG: Setting a new standard for quality and cost" — [microsoft.com](https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/)
+- Guo et al. (2024) "LightRAG: Simple and Fast Retrieval-Augmented Generation" — [arXiv:2410.05779](https://arxiv.org/abs/2410.05779)
+- GitHub HKUDS/LightRAG — [github.com](https://github.com/HKUDS/LightRAG)

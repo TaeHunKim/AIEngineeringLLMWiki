@@ -18,14 +18,15 @@ Harness = Guardrails (safety) + Evaluation (quality) + Observability (observatio
 | Document | Content |
 |----------|---------|
 | [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
-| [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM-as-a-Judge]] | Automated quality evaluation — MT-Bench, RAGAS |
+| [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM-as-a-Judge]] | Automated quality evaluation — MT-Bench, RAGAS, G-Eval, Prometheus |
 | [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Agent-as-a-Judge]] | Execution trajectory evaluation, Critic Agent, DevAI |
-| [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench, pass@k |
+| [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench(Verified), pass@k |
 | [[en/AI/Engineering/Harness_Engineering/Human_Evaluation\|Human Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
 | [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing\|Observability & Tracing]] | LangSmith/Langfuse/Arize Phoenix |
-| [[en/AI/Engineering/Harness_Engineering/Red_Teaming\|Red Teaming]] | HarmBench, PAIR, Jailbreak detection, Garak/PyRIT |
-| [[en/AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment Research]] | Reward Hacking, Sleeper Agents, Alignment Faking, AI Control |
-| [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI Governance & Compliance]] | RSP/Preparedness/FSF, METR external evaluation, EU AI Act, Model Cards |
+| [[en/AI/Engineering/Harness_Engineering/Red_Teaming\|Red Teaming]] | HarmBench, PAIR, Jailbreak detection, OWASP LLM Top 10, Garak/PyRIT |
+| [[en/AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
+| [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic Interpretability]] | Sparse Autoencoders, Circuit Tracing, internal circuit analysis |
+| [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI Governance & Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, Model Cards |
 
 ## Evaluation Hierarchy
 

@@ -69,6 +69,17 @@ flowchart TD
 (MapReduce 패턴)
 ```
 
+#### DRIFT Search (하이브리드 검색)
+Local과 Global 각각의 약점 — 지역 검색은 전역 맥락을 놓치고, 전역 검색은 세부 사실을 놓친다 — 을 보완하기 위해 Microsoft가 추가한 세 번째 모드:
+```
+DRIFT = Dynamic Reasoning and Inference with Flexible Traversal
+
+1. Community Reports로부터 초기 답변을 "시드(seed)"로 생성 (Global 수준 맥락 확보)
+2. 시드를 바탕으로 후속 질문을 생성해 Local Search로 세부 엔티티까지 탐색
+3. 필요에 따라 그래프를 유연하게 넘나들며(traversal) 답변을 정제
+```
+벡터 RAG 대비 우수한 성능을 보인 것으로 보고되었으며, Local/Global 양쪽의 장점을 모두 취하려는 시도다.
+
 ## 구현 예시 (Microsoft GraphRAG)
 
 ```python
@@ -106,6 +117,14 @@ Microsoft의 평가(Podcast transcript, News article):
 
 **비용**: 인덱싱 시 LLM API 대량 사용 → 고비용. GPT-4 사용 시 중형 코퍼스도 수십~수백 달러.
 
+## 최신 발전: LazyGraphRAG
+
+Microsoft Research가 2024년 11월 공개한 GraphRAG의 저비용 버전. 기존 GraphRAG의 가장 큰 약점인 "높은 구축 비용"을 정면으로 해결한다.
+
+- **핵심 아이디어**: 인덱싱 단계에서 LLM으로 엔티티·관계를 미리 추출하지 않는다. 대신 그래프 순회와 요약을 **쿼리 시점에 필요한 만큼만** 지연 실행(lazy evaluation)한다.
+- **비용**: 인덱싱 비용이 일반 벡터 RAG와 거의 동일 — 풀 GraphRAG 대비 약 0.1% 수준. 쿼리 비용도 GraphRAG Global Search 대비 700배 이상 저렴하면서 답변 품질은 유사한 수준을 유지한다.
+- **적용**: 2025년 Microsoft Discovery(과학 연구용 에이전틱 플랫폼)와 Azure 서비스에 통합되었다.
+
 ## Neo4j GraphRAG
 
 Neo4j도 LPG 기반 GraphRAG 구현 제공:
@@ -124,6 +143,14 @@ retriever = VectorCypherRetriever(
 )
 ```
 
+## 대안 구현체: LightRAG
+
+Microsoft GraphRAG 외에 널리 쓰이는 오픈소스 대안. Guo et al. (2024, EMNLP 2025), [arXiv:2410.05779](https://arxiv.org/abs/2410.05779), [github.com/HKUDS/LightRAG](https://github.com/HKUDS/LightRAG).
+
+- **핵심 아이디어**: **dual-level retrieval** — 쿼리마다 low-level 키(구체적 엔티티·관계)와 high-level 키(추상적 주제)를 동시에 생성해 검색한다. Local Search와 Global Search를 굳이 나누지 않고 한 번에 두 층위를 함께 훑는 방식이다.
+- **구조**: 그래프 구조와 벡터 임베딩을 결합한 경량 듀얼 레이어 아키텍처.
+- **장점**: Microsoft GraphRAG 대비 인덱싱·쿼리 비용이 낮고 구현이 가벼워 오픈소스 커뮤니티에서 널리 채택되었다.
+
 ## Graph RAG vs Vector RAG
 
 | 기준 | Vector RAG | Graph RAG |
@@ -131,9 +158,17 @@ retriever = VectorCypherRetriever(
 | **검색 방식** | 의미 유사도 | 그래프 탐색 + 유사도 |
 | **Multi-hop** | 어려움 | 자연스러움 |
 | **글로벌 요약** | 불가 | 가능 |
-| **구축 비용** | 낮음 | 높음 (LLM 엔티티 추출) |
+| **구축 비용** | 낮음 | 높음 (LLM 엔티티 추출)¹ |
 | **쿼리 속도** | 빠름 | 느림 |
 | **적합 케이스** | 구체적 사실 검색 | 복잡한 분석, 주제 파악 |
+
+¹ LazyGraphRAG·LightRAG 등 최신 변형은 이 구축 비용 문제를 상당 부분 완화한다.
+
+## 실무 고려사항과 한계
+
+- **엔티티 해상도(Entity Resolution)**: 엔티티는 기본적으로 이름 기반으로 매칭된다. 동명이인이나 같은 대상의 이명(異名)을 제대로 해소하지 못하면 그래프가 파편화되고, 이 오류가 그래프 순회를 따라 누적되어 잘못된 추론으로 이어진다.
+- **증분 인덱싱**: 초기 GraphRAG는 문서가 추가될 때마다 전체 재인덱싱이 필요했다. v0.4.0(2024년 11월)부터 `graphrag update` 명령으로 신규 문서에서만 엔티티를 추출해 기존 그래프에 병합할 수 있게 되었다.
+- **쿼리 지연시간과 확장성**: 그래프 순회와 커뮤니티 요약 생성 때문에 벡터 RAG 대비 end-to-end 지연시간이 2~3배 높다는 후속 연구 결과가 있다. 코퍼스 크기가 커질수록 그래프 인덱스와 요약이 초선형적으로 증가해 메모리 부담도 커진다.
 
 ## AI Engineering에서의 역할
 
@@ -159,3 +194,6 @@ Graph RAG의 Phase 1(지식 그래프 구축)은 위 Knowledge Graph 개념을 L
 - Edge et al. (2024) "From Local to Global: A Graph RAG Approach" — [arXiv:2404.16130](https://arxiv.org/abs/2404.16130)
 - Neo4j "The GraphRAG Manifesto" — [neo4j.com](https://neo4j.com/blog/genai/graphrag-manifesto/)
 - GitHub microsoft/graphrag — [github.com](https://github.com/microsoft/graphrag)
+- Microsoft Research "LazyGraphRAG: Setting a new standard for quality and cost" — [microsoft.com](https://www.microsoft.com/en-us/research/blog/lazygraphrag-setting-a-new-standard-for-quality-and-cost/)
+- Guo et al. (2024) "LightRAG: Simple and Fast Retrieval-Augmented Generation" — [arXiv:2410.05779](https://arxiv.org/abs/2410.05779)
+- GitHub HKUDS/LightRAG — [github.com](https://github.com/HKUDS/LightRAG)

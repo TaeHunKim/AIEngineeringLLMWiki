@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 10
 ---
 
 # AI Governance and Compliance (AI 거버넌스와 규제 대응)
@@ -95,6 +95,43 @@ General-Purpose AI (GPAI) 모델 별도 규제:
 
 2024년 제정, 2026년 시행된 **AI 기본법**(인공지능 발전과 신뢰 기반 조성 등에 관한 기본법)이 고영향(high-impact) AI에 대한 안전성 확보 의무, 생성형 AI 표시 의무(AI 생성 콘텐츠임을 고지) 등을 규정한다. EU AI Act의 위험 기반 접근과 유사한 구조를 취하되, 세부 고시·가이드라인은 지속적으로 구체화되는 단계다.
 
+## 기업 실무 표준: NIST AI RMF와 ISO/IEC 42001
+
+앞서 다룬 프론티어 랩의 자체 서약(RSP/Preparedness/FSF)과 지역 법(EU AI Act 등)이 각각 "연구소 자율 규범"과 "국가별 강제 규제"라면, 이 둘은 그 사이에서 **일반 기업이 AI 리스크를 조직적으로 관리·감사받는 실무 표준**이다.
+
+### NIST AI Risk Management Framework (AI RMF 1.0)
+
+```
+미국 국립표준기술연구소(NIST)가 2023년 공개한 자율 프레임워크(법적 구속력 없음)
+
+4개 핵심 기능(Govern → Map → Measure → Manage):
+  Govern: AI 리스크 관리 문화·정책·책임 체계 수립
+  Map:    AI 시스템의 맥락·이해관계자·잠재 리스크 식별
+  Measure: 식별된 리스크를 정량·정성적으로 평가
+  Manage: 평가된 리스크에 대한 대응·완화·모니터링
+
+2026-04: 핵심 인프라(Critical Infrastructure) 특화 프로필 컨셉 노트 발표
+         — 범용 프레임워크에서 섹터별 세분화로 확장되는 추세
+```
+
+### ISO/IEC 42001 (2023)
+
+```
+국제표준화기구(ISO)가 2023년 12월 발표한 최초의 인증 가능한 AI 관리 시스템 표준
+  → 정보보안의 ISO 27001과 유사한 위상 (제3자 인증 기관을 통한 정식 인증 획득 가능)
+
+다루는 범위: AI 시스템 생애주기 전반의 관리 체계
+  - 조직의 AI 거버넌스 구조와 책임 소재
+  - 리스크 평가 프로세스와 완화 조치
+  - 데이터 품질·거버넌스 (AI RMF의 Map/Measure와 상당 부분 중첩)
+  - 지속적 모니터링과 개선
+
+실무적 의의: 엔터프라이즈 고객·규제 산업(금융, 의료) 대상 판매 시
+  "우리 AI 시스템은 인증된 관리 체계 하에서 운영된다"는 것을 제3자가 검증한 형태로 제시 가능
+```
+
+**RSP/Preparedness/FSF·EU AI Act와의 관계**: NIST AI RMF와 ISO 42001은 특정 연구소나 특정 국가에 종속되지 않는 **범용 관리 체계**로, OWASP Top 10 for LLM Applications(→ [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]])이 구체적 리스크 항목을 정의한다면 이 둘은 그 리스크를 다루는 조직적 프로세스(식별→측정→관리)의 뼈대를 제공한다. 실무에서는 EU AI Act 같은 법적 요구사항을 충족하는 근거 문서로 ISO 42001 인증이 활용되기도 한다.
+
 ## 모델·시스템·데이터셋 카드
 
 프론티어 모델의 능력·한계·평가 결과를 투명하게 문서화하는 표준 관행. 규제 준수와 사용자 신뢰 확보의 실무적 접점이다.
@@ -150,6 +187,8 @@ AI Governance and Compliance는 기술적 안전 조치([[AI/Engineering/Harness
 [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (노드 단위 거버넌스)]]
 
 ## 출처
+- NIST "AI Risk Management Framework (AI RMF 1.0)" — [nist.gov](https://www.nist.gov/itl/ai-risk-management-framework)
+- ISO/IEC 42001:2023 "Artificial intelligence management system" — [iso.org](https://www.iso.org/standard/81230.html)
 - Anthropic "Responsible Scaling Policy" — [anthropic.com](https://www.anthropic.com/rsp)
 - OpenAI "Preparedness Framework" — [openai.com](https://openai.com/safety/preparedness/)
 - Google DeepMind "Frontier Safety Framework" — [deepmind.google](https://deepmind.google/discover/blog/updating-the-frontier-safety-framework/)

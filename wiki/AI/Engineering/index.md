@@ -115,15 +115,16 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - Evaluation
     - [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, 편향 대응
     - [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory 평가, Critic Agent, Multi-Agent-as-Judge, Agent Simulation *(Zhuge et al., ICML 2025)*
-    - [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench, BFCL
+    - [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench(Verified), BFCL
     - [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
 - Observability
     - [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(2026년 5월)*
 - Red Teaming
-    - [[AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, Garak/PyRIT
+    - [[AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
 - Alignment & Governance
-    - [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, In-Context Scheming, Alignment Faking, AI Control
-    - [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, METR 외부평가, EU AI Act, 모델 카드 *(2026)*
+    - [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+    - [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 *(2026)*
+    - [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 *(2026)*
 
 ---
 

@@ -156,3 +156,25 @@
 - 오른쪽 다이어그램은 동심원+곡선 텍스트(`<textPath>`) 대신 **중첩 사각형(nested frame)** 방식으로 설계 — 로컬 렌더링 테스트(sharp/librsvg)에서 `<textPath>` 텍스트가 전혀 표시되지 않는 신뢰성 문제가 발견됐고(실제 브라우저 재현 확인이 불가능한 환경), 별도 범례도 사용자 피드백상 한눈에 스캔하기 어려워 각 프레임 자체에 라벨을 바로 붙이는 방식으로 최종 확정. 왼쪽 축 라벨도 사용자 피드백 반영해 화살촉 마커 제거, "Macro-/(Macro-scopic)" 2줄 중복을 "Macro-scopic" 1줄로 단순화, 부제목도 "Structured LLM Engineering Hierarchy: " 중복 프리픽스 제거
 - 임베드 방식: `![[...]]` wikilink SVG embed(`<object>` 태그로 변환됨)는 crawl-links의 상대경로 재작성 로직을 타지 않아 페이지 위치에 따라 깨지는 것을 발견(EN 페이지에서 기존 PNG도 사실 계속 깨져 있었음) → 대신 raw `<img src="ai/engineering/assets/...">` / `en/ai/engineering/assets/...` (콘텐츠 루트 기준 전체 경로, crawl-links의 `transformLink` 폴백 로직으로 정확히 상대경로 계산됨을 로컬 빌드로 확인) 사용. `<img>`이므로 사이트 공통 `img{max-width:100%}` CSS도 자동 적용됨
 - 기존 PNG(`structured-llm-engineering-hierarchy.png`, KO assets)는 더 이상 어디서도 참조되지 않아 삭제 (사용자 승인)
+
+## [2026-08-02] update | GraphRAG.md 보강
+
+- 배경: `Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG.md`가 2024년 4월 원 논문(Edge et al.) 시점 내용에 머물러 있어, 그 이후 발전 사항과 실무 한계를 웹 검색으로 사실관계 확인 후 보강
+- 추가 내용: DRIFT Search(Local+Global 하이브리드 쿼리 모드), LazyGraphRAG(2024-11, 인덱싱 비용 벡터RAG 수준·쿼리 비용 700배 절감, Microsoft Discovery/Azure 통합), LightRAG(HKUDS, arXiv:2410.05779, dual-level retrieval 오픈소스 대안), 실무 고려사항(엔티티 해상도, `graphrag update` 증분 인덱싱, 쿼리 지연시간·초선형 확장성)
+- 갱신: KO+EN 동일 구조로 반영, 출처 3건 추가(LazyGraphRAG 블로그, LightRAG 논문, HKUDS/LightRAG 저장소), 단어수 ~650→~1150 (Hybrid_RAG/Agentic_RAG급 분량으로 확장)
+
+## [2026-08-02] update | Agent/Harness Engineering 보강 + Mechanistic Interpretability 신설
+
+- 배경: Agent/Harness/Loop Engineering 세 챕터(총 27개 문서)를 전수 조사한 결과 Loop Engineering은 비교적 최신 상태였으나, Harness Engineering의 `LLM_as_a_Judge`(2023년 원 논문에서 정체)·`Benchmarking`(2023년 이후 벤치마크 없음)·`Alignment_Research`(2024년에서 정체)와 Agent Engineering의 `Agent_Deployment`(Google 단일 벤더 편중)에 뚜렷한 공백 발견. 웹 검색으로 실재·주류화 여부를 검증한 소재만 반영("아직 본격적이지 않은 것"은 배제)
+- Harness Engineering 기존 문서 보강:
+  - `Guardrail_Engineering.md` — Constitutional Classifiers(Anthropic 2025, arXiv:2501.18837) 서브섹션 추가, 기존 Constitutional AI(학습 단계)와 구분
+  - `LLM_as_a_Judge.md` — G-Eval(Liu et al. 2023, arXiv:2303.16634) 정식 인용 추가, Prometheus/Prometheus 2(오픈소스 평가 LLM) 신규 서술
+  - `Benchmarking.md` — SWE-bench Verified(OpenAI 2024, 사람 검증 500문제 서브셋) 추가
+  - `Red_Teaming.md` — OWASP Top 10 for LLM Applications(2024-11)·MITRE ATLAS 표준 프레임워크 섹션 신설
+  - `Alignment_Research.md` — Agentic Misalignment(Anthropic 2025, arXiv:2510.05179, 16개 모델 인사이더 위협 스트레스 테스트) 섹션 추가
+  - `AI_Governance_and_Compliance.md` — NIST AI RMF·ISO/IEC 42001 "기업 실무 표준" 섹션 신설, `order: 9 → 10`으로 조정
+- Harness Engineering 신규 문서: `Mechanistic_Interpretability.md` (order: 9) — Polysemanticity/Superposition 배경, Sparse Autoencoders(Towards/Scaling Monosemanticity), Circuit Tracing(Anthropic 2025-03, Cross-Layer Transcoder, 2025-05 시각화 도구 오픈소스), "Open Problems in Mechanistic Interpretability"(2025-01)·MIT Technology Review 2026 Breakthrough Technology로 분야 인정 서술. Alignment_Research·Guardrail_Engineering과 상호 링크
+- Agent Engineering: `Agent_Deployment.md` — "다른 클라우드의 에이전트 배포 플랫폼" 섹션 추가 (AWS Bedrock AgentCore 2025-10 GA, Azure AI Foundry Agent Service GA, Google Gemini Enterprise 포함 3사 비교표)
+- 부수 수정: `Harness_Engineering.md` 챕터 인덱스 표에 기존에 누락되어 있던 `Agent_as_a_Judge` 행을 함께 보충
+- 갱신: KO+EN 동일 구조로 반영, `Engineering/index.md`·`AI/index.md`(KO+EN 4개 파일)에 Mechanistic_Interpretability 링크 및 갱신된 항목 설명 반영
+- 적용 제외: Loop Engineering 전체(뚜렷한 공백 미발견), `Planning_and_Reflection.md`·`Human_Evaluation.md`의 인용 정체(대체할 확실히 주류화된 소재 못 찾음), RL 기반 에이전트 학습·임베디드 에이전트(기존 log.md에 이미 "Model Engineering보다 본질적"이라는 이유로 명시적 제외된 영역)

@@ -97,6 +97,28 @@ ASCII Art bypass:
 → Tests whether training data was memorized
 ```
 
+## Standard Frameworks: OWASP Top 10 / MITRE ATLAS
+
+Two industry standards systematize the individual attack types classified above so practitioners can use them for scoping and threat modeling.
+
+### OWASP Top 10 for LLM Applications (2024-11)
+
+A standard risk taxonomy for LLM applications (LLM01:2025–LLM10:2025) published by the OWASP GenAI Security Project. It holds the same status as the OWASP Top 10 for web application security, and is widely used by security teams as a threat-modeling checklist for LLM/agent systems.
+
+```
+LLM01: Prompt Injection            LLM06: Sensitive Information Disclosure
+LLM02: Insecure Output Handling    LLM07: Insecure Plugin Design
+LLM03: Training Data Poisoning     LLM08: Excessive Agency
+LLM04: Model Denial of Service     LLM09: Overreliance
+LLM05: Supply Chain Vulnerabilities LLM10: Model Theft
+```
+
+Prompt Injection and Sensitive Information Disclosure map directly onto this document's attack type classification, and **Excessive Agency** (an agent granted more permission/autonomy than necessary) is a risk unique to tool-using agent systems, connecting directly to the permission model and Action Budgets discussed in [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]].
+
+### MITRE ATLAS
+
+The AI counterpart to MITRE ATT&CK (the traditional cybersecurity knowledge base of adversarial tactics and techniques). It catalogs actually observed or demonstrated AI system attacks as a matrix of Tactics and Techniques, focusing on attacks that "actually happened / were reproduced" rather than theoretically possible ones. Where OWASP Top 10 defines "which risk categories to cover" when scoping a Red Team, ATLAS is used alongside it as a reference for "which specific TTPs to reproduce-test within that category."
+
 ## Automated Red Teaming
 
 Automation to overcome manual Red Team limitations (cost, scale).
@@ -244,9 +266,11 @@ def pair_attack(target_llm, goal: str, max_iterations: int = 20):
 Red Teaming is an **essential pre-deployment safety verification step**. Especially in agent systems (AI with tools like web crawling and code execution), vulnerabilities have greater impact, making systematic Red Team even more important. Integrating automated Red Team into CI/CD pipelines prevents safety regressions on every model update.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
+[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
 
 ## Sources
+- OWASP GenAI Security Project "OWASP Top 10 for LLM Applications 2025" — [genai.owasp.org](https://genai.owasp.org/llm-top-10/)
+- MITRE "ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)" — [atlas.mitre.org](https://atlas.mitre.org)
 - Mazeika et al. (2024) "HarmBench" — [arxiv.org/abs/2402.04249](https://arxiv.org/abs/2402.04249)
 - Chao et al. (2023) "PAIR" — [arxiv.org/abs/2310.08419](https://arxiv.org/abs/2310.08419)
 - Anthropic (2024) "Many-shot jailbreaking" — [anthropic.com](https://www.anthropic.com/research/many-shot-jailbreaking)

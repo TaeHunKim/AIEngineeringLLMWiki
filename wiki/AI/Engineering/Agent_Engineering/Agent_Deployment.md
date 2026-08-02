@@ -330,6 +330,32 @@ flowchart TD
 
 ---
 
+## 다른 클라우드의 에이전트 배포 플랫폼
+
+지금까지 다룬 Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer는 모두 Google Gemini Enterprise Agent Platform 기준이다. AWS·Azure도 같은 시기에 유사한 성격의 관리형 에이전트 런타임을 정식 출시(GA)했다.
+
+### AWS Bedrock AgentCore
+
+- **일정**: 2025년 7월 프리뷰 → 2025년 10월 13일 GA, 2025년 12월 Policy·Evaluations 프리뷰 추가
+- **특징**: 프레임워크·모델 애그노스틱 — LangChain, LlamaIndex, 커스텀 에이전트 코드를 그대로 호스팅하고 Bedrock에 등록된 모델뿐 아니라 외부 API 모델도 호출 가능. Google/Azure 대비 "특정 프레임워크에 종속되지 않는 실행 환경" 성격이 강함
+- **채택 규모**: 프리뷰 공개 5개월 만에 SDK 다운로드 200만 회 이상
+
+### Azure AI Foundry Agent Service
+
+- **일정**: GA, 고객 1만 개 이상 사용 중
+- **특징**: Microsoft 365·Teams와의 원클릭 배포 통합이 강점 — 이미 Microsoft 생태계(Office, Teams, Copilot)를 쓰는 기업에서 도입 마찰이 낮음
+
+### 3사 비교
+
+| 기준 | Google Gemini Enterprise | AWS Bedrock AgentCore | Azure AI Foundry Agent Service |
+|------|--------------------------|------------------------|----------------------------------|
+| GA 시점 | 2026-05 | 2025-10 | GA (2025년 하반기~2026년 초) |
+| 프레임워크 종속성 | Google ADK 중심 | 프레임워크/모델 애그노스틱 (가장 개방적) | Azure AI 생태계 중심 |
+| 강점 | Memory Bank·Identity·Simulation 등 기능 완결성 | 어떤 프레임워크로 만든 에이전트든 호스팅 | Microsoft 365/Teams 원클릭 통합 |
+| 적합한 조직 | Google Cloud 기반 조직, 신규 에이전트 설계 | 멀티 프레임워크·멀티 모델을 쓰는 조직 | 이미 Microsoft 생태계를 쓰는 기업 |
+
+세 플랫폼 모두 이 문서에서 다룬 Agent Runtime(장기 실행·auto-resume)·Memory·Gateway·거버넌스라는 동일한 문제를 해결하려 한다는 점에서 접근 방식이 수렴하고 있다 — 특정 벤더의 세부 API보다 이 다섯 가지 기능 축(Runtime/Memory/Gateway/Registry-Governance/Observability)을 기준으로 플랫폼을 비교하는 것이 실무적으로 더 유용하다.
+
 ## 배포 체크리스트
 
 ```
@@ -365,6 +391,8 @@ Agent Deployment는 **에이전트를 프로토타입에서 엔터프라이즈 �
 - Google Cloud "Optimize your agents" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize) [1]
 - Google Cloud "Optimize agent prompts" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/optimize-agent) [2]
 - Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform) [3]
+- AWS "Amazon Bedrock AgentCore" 공식 문서 — [aws.amazon.com](https://aws.amazon.com/bedrock/agentcore/)
+- Microsoft "Azure AI Foundry Agent Service" 공식 문서 — [learn.microsoft.com](https://learn.microsoft.com/azure/ai-foundry/)
 
 ### 참고 문헌
 [1] https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize

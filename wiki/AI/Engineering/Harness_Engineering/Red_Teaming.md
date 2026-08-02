@@ -97,6 +97,28 @@ ASCII Art 우회:
 → 훈련 데이터 암기(memorization) 여부 테스트
 ```
 
+## 표준 프레임워크: OWASP Top 10 / MITRE ATLAS
+
+위에서 분류한 개별 공격 유형들을 실무에서 스코프 정의·위협 모델링에 쓸 수 있도록 체계화한 업계 표준이 두 가지 있다.
+
+### OWASP Top 10 for LLM Applications (2024-11)
+
+OWASP GenAI Security Project가 공개한 LLM 애플리케이션 리스크 표준 분류(LLM01:2025~LLM10:2025). 웹 애플리케이션 보안의 OWASP Top 10과 같은 위상으로, 보안팀이 LLM/에이전트 시스템의 위협 모델링 체크리스트로 널리 사용한다.
+
+```
+LLM01: Prompt Injection            LLM06: Sensitive Information Disclosure
+LLM02: Insecure Output Handling    LLM07: Insecure Plugin Design
+LLM03: Training Data Poisoning     LLM08: Excessive Agency
+LLM04: Model Denial of Service     LLM09: Overreliance
+LLM05: Supply Chain Vulnerabilities LLM10: Model Theft
+```
+
+위 카테고리 중 Prompt Injection·Sensitive Information Disclosure는 이 문서의 공격 유형 분류와 직접 대응하고, **Excessive Agency**(에이전트에게 필요 이상의 권한·자율성이 부여된 상태)는 도구를 가진 에이전트 시스템 특유의 리스크로 [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 권한 모델·Action Budgets 논의와 직접 연결된다.
+
+### MITRE ATLAS
+
+MITRE ATT&CK(전통 사이버 보안의 적대적 전술·기법 지식베이스)의 AI 버전. 실제 관측되거나 시연된 AI 시스템 공격 사례를 전술(Tactic)·기법(Technique) 매트릭스로 정리해, "이론상 가능한 공격"이 아니라 "실제로 일어난/재현된 공격"에 초점을 맞춘다. Red Team 스코프를 짤 때 OWASP Top 10이 "어떤 리스크 카테고리를 다룰지"를 정한다면, ATLAS는 "그 카테고리 안에서 구체적으로 어떤 TTP를 재현 테스트할지"를 참고하는 용도로 함께 쓰인다.
+
 ## 자동화된 Red Teaming
 
 수동 Red Team의 한계(비용, 규모)를 극복하기 위한 자동화.
@@ -302,9 +324,11 @@ PAIR의 개선판. 트리 탐색으로 더 효율적으로 성공적인 공격 �
 Red Teaming은 **배포 전 필수 안전 검증 단계**다. 특히 에이전트 시스템(웹 크롤링, 코드 실행 등 도구를 가진 AI)에서는 취약점의 파급효과가 크므로 체계적인 Red Team이 더욱 중요하다. CI/CD 파이프라인에 자동화 Red Team을 통합하면 모델 업데이트마다 안전 회귀를 방지할 수 있다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]
+[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]
 
 ## 출처
+- OWASP GenAI Security Project "OWASP Top 10 for LLM Applications 2025" — [genai.owasp.org](https://genai.owasp.org/llm-top-10/)
+- MITRE "ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems)" — [atlas.mitre.org](https://atlas.mitre.org)
 - Mazeika et al. (2024) "HarmBench" — [arxiv.org/abs/2402.04249](https://arxiv.org/abs/2402.04249)
 - Chao et al. (2023) "PAIR" — [arxiv.org/abs/2310.08419](https://arxiv.org/abs/2310.08419)
 - Anthropic (2024) "Many-shot jailbreaking" — [anthropic.com](https://www.anthropic.com/research/many-shot-jailbreaking)

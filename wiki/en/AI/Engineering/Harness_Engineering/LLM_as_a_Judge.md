@@ -184,6 +184,22 @@ Then score it from 1-10.
 """
 ```
 
+## G-Eval and Prometheus
+
+The `GEval` metric used in the DeepEval example above, and open-source judge models, were each proposed as separate techniques.
+
+### G-Eval (2023)
+
+- **Authors**: Liu et al. (Microsoft), "NLG Evaluation using GPT-4 with Better Human Alignment" — [arXiv:2303.16634](https://arxiv.org/abs/2303.16634)
+- **Core idea**: A form-filling paradigm where the judge LLM is given evaluation criteria in natural language, generates its own **Chain-of-Thought evaluation steps**, and then grades by following those steps. The `evaluation_steps` in the DeepEval example above is exactly this pattern.
+- Reported to align better with human judgment ordering than a single absolute score.
+
+### Prometheus / Prometheus 2 (2024)
+
+- **Authors**: Kim et al. (KAIST AI et al.), "Prometheus: Inducing Fine-grained Evaluation Capability in Language Models" — [arXiv:2310.08491](https://arxiv.org/abs/2310.08491), follow-up "Prometheus 2" — [arXiv:2405.01535](https://arxiv.org/abs/2405.01535)
+- **Motivation**: Relying on proprietary models like GPT-4 as judges creates cost, API dependency, and reproducibility problems.
+- **Solution**: An **open-source, evaluation-specialized LLM** explicitly trained to grade against fine-grained rubrics, showing high correlation with GPT-4 judges while being self-hostable.
+
 ## Agent-as-a-Judge
 
 Extension of LLM-as-a-Judge specialized for evaluating agent systems. The core difference from LLM-as-a-Judge (which evaluates final text output) is that it **evaluates the entire execution trajectory**.
@@ -199,5 +215,7 @@ LLM-as-a-Judge is the **core tool of Evaluation Engineering**. It rapidly evalua
 
 ## Sources
 - Zheng et al. (2023) "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — [arXiv:2306.05685](https://arxiv.org/pdf/2306.05685)
+- Liu et al. (2023) "G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment" — [arXiv:2303.16634](https://arxiv.org/abs/2303.16634)
+- Kim et al. (2023/2024) "Prometheus" / "Prometheus 2" — [arXiv:2310.08491](https://arxiv.org/abs/2310.08491), [arXiv:2405.01535](https://arxiv.org/abs/2405.01535)
 - Evidently AI "LLM-as-a-judge: a complete guide" — [evidentlyai.com](https://www.evidentlyai.com/llm-guide/llm-as-a-judge)
 - RAGAS docs — [docs.ragas.io](https://docs.ragas.io)
