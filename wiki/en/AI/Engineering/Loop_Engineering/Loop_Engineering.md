@@ -26,6 +26,7 @@ flowchart TD
 | [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | DSPy 3.0 (SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling |
 | [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | Semantic Cache, RouteLLM, Speculative Decoding, vLLM/SGLang serving internals |
 | [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production Operations]] | AI Gateways, deployment strategies, A/B testing, SRE/Chaos Engineering, FinOps |
+| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost Engineering]] | A watcher agent that autonomously judges and executes cost reduction (Agentic FinOps) — model routing, task scriptification, context usage auditing (a specialization of Loop Engineering) |
 
 ## What Goes Wrong Without a Loop
 

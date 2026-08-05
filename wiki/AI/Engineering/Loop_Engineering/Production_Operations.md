@@ -133,7 +133,7 @@ SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프�
 Production Operations는 개별 최적화 기법([[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]])들을 조직 규모에서 안전하고 관측 가능하며 책임 추적 가능한 방식으로 운영하는 계층이다. 하나의 프롬프트 변경이나 모델 업그레이드가 수백만 사용자에게 영향을 미치는 규모에서는, 게이트웨이·점진적 배포·A/B 테스트·카오스 엔지니어링 없이 변경을 내보내는 것 자체가 리스크가 된다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
+[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]]
 
 ## 출처
 - LiteLLM 공식 문서 — [docs.litellm.ai](https://docs.litellm.ai)

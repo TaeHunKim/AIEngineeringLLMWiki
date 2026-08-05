@@ -188,3 +188,14 @@
 - `Loop_Networks_and_Anchors.md` — "4대 구조적 실패 모드" 표의 Goodhart's Law 항목에 Goodhart(1975)·Strathern(1997) 정식 출처 추가
 - 역링크 보강: `Loop_Engineering/Data_Flywheel.md`·`Loop_Engineering/Continuous_Optimization.md`(KO+EN)의 관련 개념에 `Graph_Engineering/Loop_Networks_and_Anchors` 추가 — 기존에 `Multi_Agent_Topology`는 외부 역링크 4건이 있었으나 `Loop_Networks_and_Anchors`는 0건이었던 비대칭 해소
 - 적용 제외: GoAgent(arXiv:2603.19677)·OFA-MAS(arXiv:2601.12996) 등 2026년 초 극최신 토폴로지 자동생성 논문(아직 인용 축적 없음), `Graph_Engineering.md`에 6번째 블로그 출처 추가(기존 5개와 논조 중복), 신규 하위 문서 신설(기존 2문서 구조로 충분)
+
+## [2026-08-06] create | Loop_Engineering/Cost_Engineering 신설
+
+- 배경: 사용자와의 대화에서 "8계층 명명 계보(Model→...→Graph)가 인간 조직 발전 과정과 유사하다"는 관점을 논의하다, "그 다음 단계는 비용 절감을 자동으로 판단·수행하는 AI 에이전트가 아닐까"라는 아이디어로 이어짐. 웹 검색으로 개별 기법(모델 캐스케이드/라우팅, 반복 작업 자동 스크립트화, RAG 컨텍스트 프루닝)과 "그걸 자율적으로 감시·판단·실행하는 에이전트" 상위 개념(**Agentic FinOps**, Finout Agents/Frugal ACE/Mavvrik 등 실제 상용 제품 존재) 둘 다 실재함을 확인. 다만 이는 명명 계보의 9번째 새 계층이 아니라 **Loop Engineering의 특수화**(새 통제 대상 도입이 아니라 기존 루프의 목표 지표를 비용으로 바꾼 것)라는 결론에 사용자와 함께 도달, 하위 문서로 추가하기로 합의
+- 사용자가 제안한 4가지 분류(경량 모델 전환/스크립트화/입출력 최적화/최적화 에이전트 자체 모니터링) 중, 처음 3개는 뒷받침할 연구가 충분해 각각 독립 문서로 분리하고 4번째(자체 모니터링)는 예상 분량이 300~500단어로 얇아 개요 문서의 한 섹션으로 통합(사용자 확인)
+- 신규 챕터: `Loop_Engineering/Cost_Engineering/` (KO+EN, `GraphRAG/Knowledge_Graph/`·`Agent_Skills_and_Protocols/`와 같은 서브폴더 패턴)
+  - `Cost_Engineering.md`(order:0) — "새 계층이 아니라 특수화"라는 위치 정의, Agentic FinOps 현황(Finout Agents 2026-06-07 출시, Frugal ACE/Frugalbot, Mavvrik, Google Cloud FinOps AI Explainability Agent — 완전 자율보다는 diff 승인형 human-in-the-loop가 실무 표준이라는 뉘앙스 포함), 워처 자신의 비용 모니터링 섹션, Runtime/Continuous/Production_Operations와의 관계 구분표
+  - `Complexity_Aware_Model_Routing.md`(order:1) — FrugalGPT cascade(Chen et al. 2023, arXiv:2305.05176), RouteLLM(기존 인용과 교차 참조), UCCI(arXiv:2605.18796), Budget-Aware Agentic Routing(arXiv:2602.21227), SWE-Router(arXiv:2607.00053), 태스크 분해 후 라우팅, Shadow/Canary 검증 기간
+  - `Deterministic_Task_Scriptification.md`(order:2) — Agentic Compilation(arXiv:2604.09718), Tool-Making and Self-Evolving LLM Agents(arXiv:2607.08010), LOOP Skill Engine(arXiv:2605.14237), Voyager/DSPy와의 관계, 스키마 드리프트 시 LLM 폴백, Agent Sandbox 연결
+  - `Context_Usage_Auditing.md`(order:3) — 기존 `Context_Compression.md`와 겹치지 않는 "검색됐지만 안 쓰인 RAG 청크 감사" 관점, AdaGReS(arXiv:2512.25052), retrieval-K 자동 조정, 멀티에이전트 입출력 형식 엄수의 실용성 우선순위
+- 갱신: `Loop_Engineering.md` 하위 문서 표, `Runtime_Optimization.md`·`Continuous_Optimization.md`·`Production_Operations.md`·`Guardrail_Engineering.md`(KO+EN 8파일)에 역링크, `Engineering/index.md`·`AI/index.md`(KO+EN 4파일)에 하위 문서 3개 포함 링크 반영

@@ -76,6 +76,7 @@ order: 0
 - [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Engineering/Loop_Engineering/Continuous_Optimization]]: DSPy/MIPROv2, 반복적 파인튜닝, A/B 테스트
 - [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Engineering/Loop_Engineering/Runtime_Optimization]]: Semantic Cache, Model Routing, vLLM/SGLang/TensorRT-LLM 서빙 내부
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Engineering/Loop_Engineering/Production_Operations]]: AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스, FinOps
+- [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Engineering/Loop_Engineering/Cost_Engineering]]: Agentic FinOps, 모델 라우팅/스크립트화/컨텍스트 감사 자율 워처
 
 #### Graph Engineering
 - [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Engineering/Graph_Engineering/Multi_Agent_Topology]]: 노드/엣지 유형, LangGraph `Send()` 동적 라우팅, identity/budget/guardrail 거버넌스, Graph-of-Agents

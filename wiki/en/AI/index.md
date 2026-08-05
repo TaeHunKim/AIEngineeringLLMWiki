@@ -75,6 +75,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]: DSPy/MIPROv2, iterative fine-tuning, A/B testing
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]: Semantic Cache, Model Routing, vLLM/SGLang/TensorRT-LLM serving internals
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]: AI gateway, deployment strategies, A/B testing, SRE/chaos, FinOps
+- [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]: Agentic FinOps, autonomous watcher for model routing/scriptification/context auditing
 
 #### Graph Engineering
 - [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]: Node/edge types, LangGraph `Send()` dynamic routing, identity/budget/guardrail governance, Graph-of-Agents

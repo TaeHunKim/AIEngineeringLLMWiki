@@ -26,6 +26,7 @@ flowchart TD
 | [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling |
 | [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | Semantic Cache, RouteLLM, Speculative Decoding, vLLM/SGLang 서빙 내부 |
 | [[AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps |
+| [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost_Engineering]] | 비용 절감을 자율 판단·수행하는 워처 에이전트(Agentic FinOps) — 모델 라우팅, 작업 스크립트화, 컨텍스트 사용량 감사 (Loop Engineering의 특수화) |
 
 ## 루프 없이는 무엇이 문제인가
 
