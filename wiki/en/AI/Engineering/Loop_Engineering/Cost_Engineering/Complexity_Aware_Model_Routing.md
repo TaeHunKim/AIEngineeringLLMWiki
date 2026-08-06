@@ -6,7 +6,7 @@ order: 1
 
 ## Overview
 
-**Complexity-Aware Model Routing** automatically detects a request's actual difficulty and switches it to the cheapest model capable of handling it. Unlike the static, rule-based model routing already covered in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]], this document covers an automated variant in which **a watcher agent continuously analyzes production logs and keeps updating the routing policy itself** — much like a company reassigning a role from a full-time employee to a contractor or part-timer, it repeatedly re-asks "can this task actually be handled with lighter resources?"
+**Complexity-Aware Model Routing** automatically detects a request's actual difficulty and switches it to the cheapest model capable of handling it. Unlike the static, rule-based model routing already covered in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]], this document covers an automated variant in which **a watcher agent continuously analyzes production logs and keeps updating the routing policy itself** — repeatedly re-asking "can this request actually be handled with lighter resources?"
 
 ## LLM Cascade: FrugalGPT
 

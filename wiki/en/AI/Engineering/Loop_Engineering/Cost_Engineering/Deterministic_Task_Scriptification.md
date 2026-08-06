@@ -6,7 +6,7 @@ order: 2
 
 ## Overview
 
-A large share of the LLM calls repeated in production are actually **deterministic tasks that apply the same rule to the same input every time**. Handling these with an LLM inference every single time is like a company assigning a skilled full-time employee to a fully standardized, repetitive task over and over — just as it's more rational to write an automation script (macro) and redeploy that person to higher-value work, a watcher agent observes execution traces, detects repeating patterns, compiles them into verified code registered as a tool, and thereafter handles matching requests instantly with that code, with no LLM call at all.
+A large share of the LLM calls repeated in production are actually **deterministic tasks that apply the same rule to the same input every time**. Handling these with an LLM inference every single time means spending expensive computation on an already fully standardized, repetitive task. A watcher agent observes execution traces, detects repeating patterns, compiles them into verified code registered as a tool, and thereafter handles matching requests instantly with that code, with no LLM call at all.
 
 ## Agentic Compilation
 

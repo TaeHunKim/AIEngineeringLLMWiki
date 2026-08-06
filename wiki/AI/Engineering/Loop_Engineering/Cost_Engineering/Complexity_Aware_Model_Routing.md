@@ -6,7 +6,7 @@ order: 1
 
 ## 개요
 
-**Complexity-Aware Model Routing**은 요청의 실제 난이도를 판단해 그에 맞는 가장 저렴한 모델로 자동 전환하는 기법이다. [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]이 이미 다루는 정적 모델 라우팅(사전 정의된 규칙 기반)과 달리, 여기서는 **워처 에이전트가 프로덕션 로그를 상시 분석해 라우팅 정책 자체를 지속적으로 갱신**하는 자동화된 버전을 다룬다 — 마치 회사가 특정 업무를 정규직 대신 계약직·파트타임으로 재배치하듯, "이 일은 실제로 더 가벼운 자원으로 처리 가능한가"를 계속 재판단하는 것이다.
+**Complexity-Aware Model Routing**은 요청의 실제 난이도를 판단해 그에 맞는 가장 저렴한 모델로 자동 전환하는 기법이다. [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]이 이미 다루는 정적 모델 라우팅(사전 정의된 규칙 기반)과 달리, 여기서는 **워처 에이전트가 프로덕션 로그를 상시 분석해 라우팅 정책 자체를 지속적으로 갱신**하는 자동화된 버전을 다룬다 — "이 요청은 실제로 더 가벼운 자원으로 처리 가능한가"를 계속 재판단하는 것이다.
 
 ## LLM Cascade: FrugalGPT
 

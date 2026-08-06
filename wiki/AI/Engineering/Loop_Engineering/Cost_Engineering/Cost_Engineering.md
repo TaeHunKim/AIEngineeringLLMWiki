@@ -6,7 +6,7 @@ order: 0
 
 ## 개요
 
-**Cost Engineering**은 프로덕션 AI 애플리케이션 옆에 별도로 붙어, 그 애플리케이션의 프롬프트·플로우·로그를 상시 분석해 **비용 절감을 자율적으로 판단·수행하는 워처(watcher) 패턴**을 가리킨다. 실제 회사가 다양한 방식으로 비용을 절감하듯(경력직을 파트타임으로 전환, 반복 업무 자동화 후 인력 재배치, 지출 방식 개선), 이 워처 에이전트는 본 애플리케이션에 개입하지 않으면서도 그 옆에서 지속적으로 최적화 기회를 찾아 실행한다.
+**Cost Engineering**은 프로덕션 AI 애플리케이션 옆에 별도로 붙어, 그 애플리케이션의 프롬프트·플로우·로그를 상시 분석해 **비용 절감을 자율적으로 판단·수행하는 워처(watcher) 패턴**을 가리킨다. 이 워처 에이전트는 본 애플리케이션에 개입하지 않으면서도 그 옆에서 지속적으로 최적화 기회를 찾아 실행한다.
 
 **9번째 최상위 계층인가?** 아니다. [[AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering]]이 스스로를 GraphRAG·Graph Flow와 구분했던 것처럼, 이 문서도 스스로의 위치를 명확히 한다 — Model→Prompt→Context→Flow→Agent→Harness→Loop→Graph로 이어지는 명명 계보는 매 계층마다 **새로운 통제 대상(surface)**이 추가될 때 성립한다. 비용은 새로운 통제 대상이 아니라, [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]]이 이미 최적화하려는 목표 지표(품질, 실패 복구 등) 중 하나를 비용으로 바꾼 것뿐이다. 따라서 Cost Engineering은 새 계층이 아니라 **Loop Engineering의 특수화**이며, 이 챕터는 Loop Engineering의 5번째 하위 문서로 위치한다.
 

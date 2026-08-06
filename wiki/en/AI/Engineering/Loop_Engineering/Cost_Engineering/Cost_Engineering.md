@@ -6,7 +6,7 @@ order: 0
 
 ## Overview
 
-**Cost Engineering** refers to a **watcher pattern** attached alongside a production AI application — one that continuously analyzes that application's prompts, flows, and logs to autonomously decide on and carry out cost reductions. Just as a real company cuts costs in various ways (converting a full-time role to part-time, automating repetitive work and redeploying staff, improving how spending is structured), this watcher agent finds and executes optimization opportunities on an ongoing basis alongside the main application, without intervening in it directly.
+**Cost Engineering** refers to a **watcher pattern** attached alongside a production AI application — one that continuously analyzes that application's prompts, flows, and logs to autonomously decide on and carry out cost reductions. This watcher agent finds and executes optimization opportunities on an ongoing basis alongside the main application, without intervening in it directly.
 
 **Is this a 9th top-level layer?** No. Just as [[en/AI/Engineering/Graph_Engineering/Graph_Engineering|Graph Engineering]] explicitly distinguished itself from GraphRAG and Graph Flow, this document does the same — the naming lineage Model→Prompt→Context→Flow→Agent→Harness→Loop→Graph holds together because each layer adds a **new object of control (surface)**. Cost isn't a new surface; it's simply swapping the objective metric that [[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] already optimizes (quality, failure recovery, etc.) for cost. So Cost Engineering isn't a new layer — it's a **specialization of Loop Engineering**, and this chapter sits as Loop Engineering's 5th sub-document.
 
