@@ -55,9 +55,9 @@ order: 0
 
 | 문서 | 초점 | Cost Engineering과의 관계 |
 |------|------|---------------------------|
-| [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] | 요청 단위 기법 라이브러리 (캐시, 라우팅, 배치, 스펙큘레이티브 디코딩) | Cost Engineering이 자동으로 조정하는 대상이 되는 기법들을 정의 |
-| [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] | 품질 중심의 프로덕션 데이터 기반 개선 루프 (DSPy, RLVR) | 같은 "자동 개선 루프" 구조를 목표 지표만 품질→비용으로 바꿔 재사용 |
-| [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] | FinOps 경제성 측정, 안전 배포(Shadow/Canary) | Cost Engineering의 세 메커니즘이 실제 적용될 때 필요한 경제성 지표와 배포 안전장치를 제공 |
+| [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | 요청 단위 기법 라이브러리 (캐시, 라우팅, 배치, 스펙큘레이티브 디코딩) | Cost Engineering이 자동으로 조정하는 대상이 되는 기법들을 정의 |
+| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | 품질 중심의 프로덕션 데이터 기반 개선 루프 (DSPy, RLVR) | 같은 "자동 개선 루프" 구조를 목표 지표만 품질→비용으로 바꿔 재사용 |
+| [[AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | FinOps 경제성 측정, 안전 배포(Shadow/Canary) | Cost Engineering의 세 메커니즘이 실제 적용될 때 필요한 경제성 지표와 배포 안전장치를 제공 |
 | **Cost Engineering** (이 챕터) | 위 세 문서의 패턴을 비용을 목표함수로 삼아 **자율화·오케스트레이션** | 새로운 통제 대상을 도입하지 않고, 기존 Loop Engineering의 실행 사례를 자동화 수준을 끌어올려 특수화한 것 |
 
 ## AI Engineering에서의 역할

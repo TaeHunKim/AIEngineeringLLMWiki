@@ -58,9 +58,9 @@ This is essentially the unit-economics principle from [[en/AI/Engineering/Loop_E
 
 | Document | Focus | Relationship to Cost Engineering |
 |----------|-------|-----------------------------------|
-| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] | Per-request technique library (caching, routing, batching, speculative decoding) | Defines the techniques Cost Engineering automatically tunes |
-| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] | Quality-focused, production-data-driven improvement loop (DSPy, RLVR) | Reuses the same "automated improvement loop" structure, just with the objective metric swapped from quality to cost |
-| [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] | FinOps economics measurement, safe deployment (Shadow/Canary) | Supplies the economics metrics and deployment safeguards needed when Cost Engineering's three mechanisms are actually applied |
+| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | Per-request technique library (caching, routing, batching, speculative decoding) | Defines the techniques Cost Engineering automatically tunes |
+| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | Quality-focused, production-data-driven improvement loop (DSPy, RLVR) | Reuses the same "automated improvement loop" structure, just with the objective metric swapped from quality to cost |
+| [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production Operations]] | FinOps economics measurement, safe deployment (Shadow/Canary) | Supplies the economics metrics and deployment safeguards needed when Cost Engineering's three mechanisms are actually applied |
 | **Cost Engineering** (this chapter) | **Automates and orchestrates** the patterns from the three documents above, with cost as the objective function | Introduces no new object of control — it's the existing Loop Engineering practice specialized by raising its level of automation |
 
 ## Role in AI Engineering

@@ -29,8 +29,8 @@ flowchart TD
 | **Deterministic Function** | Non-agentic computation with fixed input/output rules |
 | **Router** | A branch point deciding the next node |
 | **Join** | Consolidates results from parallel paths |
-| **Tool** | An MCP server or function call. This node is often actually the boundary where the graph reaches into an MCP server operated outside the organization (or by a different team) — which node may call which MCP server, and what authentication/rate limits apply to that call, is enforced at the Gateway/Registry layer covered in [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]. In other words, a Tool node's "edge" is the point where this document's internal organizational trust relationships hand off to MCP's authentication and audit mechanisms |
-| **Human Checkpoint** | An approval gate — the organizational-graph counterpart of [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] |
+| **Tool** | An MCP server or function call. This node is often actually the boundary where the graph reaches into an MCP server operated outside the organization (or by a different team) — which node may call which MCP server, and what authentication/rate limits apply to that call, is enforced at the Gateway/Registry layer covered in [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP\|MCP]]. In other words, a Tool node's "edge" is the point where this document's internal organizational trust relationships hand off to MCP's authentication and audit mechanisms |
+| **Human Checkpoint** | An approval gate — the organizational-graph counterpart of [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human-in-the-Loop]] |
 
 Edges encode **delegation, trust, and data flow** between nodes — the direction and attributes of an edge express which node can monitor, own, or veto another.
 
@@ -63,7 +63,7 @@ The node/edge abstraction above isn't unique to LangGraph. The major frameworks 
 | **AutoGen (Actor Model)** | Asynchronous message-passing actor model, coordinated via conversational GroupChat (e.g., Planner-Executor-Critic) | Edges form implicitly as a communication graph — "who sends a message to whom" — emerging from conversation flow rather than static declaration |
 | **CrewAI** | Role-based `Crew` + `Process` (sequential/hierarchical) — each agent assigned a role and goal | The Process type itself is a topology choice: sequential is a linear chain, hierarchical corresponds to this document's Router/manager node |
 | **OpenAI Agents SDK** | `Handoff` as a first-class primitive — an agent explicitly delegates control and conversation context to another agent | A handoff *is* an edge: "which agent this one can transition to next" is expressed as the list of handoffs declared on each agent |
-| **Google ADK** | Named `Sequential`/`Parallel`/`Loop` workflow agents plus routing agents | Maps nearly 1:1 onto this document's example Router and Join — ADK code examples already appear elsewhere in this wiki, in [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] (SafetyPlugin) and [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] |
+| **Google ADK** | Named `Sequential`/`Parallel`/`Loop` workflow agents plus routing agents | Maps nearly 1:1 onto this document's example Router and Join — ADK code examples already appear elsewhere in this wiki, in [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] (SafetyPlugin) and [[en/AI/Engineering/Agent_Engineering/Agent_Deployment\|Agent Deployment]] |
 
 The common thread: despite different names and APIs, every framework is making the same underlying design decision — defining node types plus transition rules. This makes it practically useful to redraw any framework's system in terms of this document's node/edge model, whichever one you're actually using.
 

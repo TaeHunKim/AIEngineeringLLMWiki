@@ -63,7 +63,7 @@ builder.add_conditional_edges("orchestrator", route_to_workers)
 | **AutoGen (액터 모델)** | 비동기 메시지 패싱 기반 액터 모델. Planner-Executor-Critic 같은 대화형 GroupChat으로 조정 | 엣지가 "누가 누구에게 메시지를 보내는가"라는 통신 그래프로 암묵적으로 형성됨 — 정적 선언보다는 대화 흐름에 따라 동적으로 드러남 |
 | **CrewAI** | Role 기반 `Crew` + `Process`(sequential/hierarchical) — 각 에이전트에 역할·목표를 부여 | Process 유형 자체가 토폴로지 선택지: sequential은 선형 체인, hierarchical은 이 문서의 Router/manager 노드에 해당 |
 | **OpenAI Agents SDK** | `Handoff`을 1급 원시 요소로 — 에이전트가 명시적으로 다른 에이전트에게 제어와 대화 맥락을 위임 | Handoff이 곧 엣지: "이 에이전트가 다음에 어떤 에이전트로 전이할 수 있는가"를 각 에이전트 정의에 나열된 handoff 목록으로 표현 |
-| **Google ADK** | 명명된 `Sequential`/`Parallel`/`Loop` 워크플로 에이전트 + 라우팅 에이전트 | 이 문서 예시의 Router·Join과 거의 1:1 대응 — 이미 이 위키의 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]](SafetyPlugin)·[[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]에서 ADK 코드 예시로 등장 |
+| **Google ADK** | 명명된 `Sequential`/`Parallel`/`Loop` 워크플로 에이전트 + 라우팅 에이전트 | 이 문서 예시의 Router·Join과 거의 1:1 대응 — 이미 이 위키의 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]](SafetyPlugin)·[[AI/Engineering/Agent_Engineering/Agent_Deployment\|Agent_Deployment]]에서 ADK 코드 예시로 등장 |
 
 공통점: 프레임워크마다 이름과 API는 다르지만, 결국 "노드 유형 정의 + 전이 규칙"이라는 동일한 설계 결정을 내리고 있다 — 어떤 프레임워크를 쓰든 이 문서의 노드/엣지 모델로 다시 그려볼 수 있다는 것이 실무적으로 유용하다.
 

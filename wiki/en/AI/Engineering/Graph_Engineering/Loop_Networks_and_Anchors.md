@@ -27,8 +27,8 @@ Eigent distinguishes two kinds of graphs:
 
 | Type | Definition | Example |
 |------|------------|---------|
-| **Work Graph** | **What** the agent executes. Nodes = tools/skills/files/subtasks; edges = which tool produced which artifact and which artifact fed which step | The node/edge topology covered in [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]] |
-| **Improvement Graph** | **How** the agent changes itself over time. Nodes = measurement points, optimization targets (latency/quality/cost), actions; edges = directional relationships encoding trust, authority, and cadence — which loop feeds, owns, monitors, or vetoes which other | Each of the 4 sub-documents in [[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] (Data Flywheel, Continuous Optimization, Runtime Optimization, Production Operations) is a single loop; this document is the layer that wires those 4 into a network |
+| **Work Graph** | **What** the agent executes. Nodes = tools/skills/files/subtasks; edges = which tool produced which artifact and which artifact fed which step | The node/edge topology covered in [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology\|Multi-Agent Topology]] |
+| **Improvement Graph** | **How** the agent changes itself over time. Nodes = measurement points, optimization targets (latency/quality/cost), actions; edges = directional relationships encoding trust, authority, and cadence — which loop feeds, owns, monitors, or vetoes which other | Each of the 4 sub-documents in [[en/AI/Engineering/Loop_Engineering/Loop_Engineering\|Loop Engineering]] (Data Flywheel, Continuous Optimization, Runtime Optimization, Production Operations) is a single loop; this document is the layer that wires those 4 into a network |
 
 ## 4 Structural Failure Modes
 
@@ -36,10 +36,10 @@ When multiple loops become entangled in a network, failures appear that don't sh
 
 | Failure Mode | Description |
 |--------------|-------------|
-| **Goodhart's Law** | The harder a metric is pushed, the more it detaches from the original goal — e.g. if the [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] loop optimizes only for latency, the quality goal pursued by the [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] loop is silently sacrificed. The original formulation traces to economist Goodhart (1975), who observed it while studying UK monetary policy; the phrasing most commonly used today — "when a measure becomes a target, it ceases to be a good measure" — comes from anthropologist Strathern (1997), analyzing the British university audit system |
+| **Goodhart's Law** | The harder a metric is pushed, the more it detaches from the original goal — e.g. if the [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] loop optimizes only for latency, the quality goal pursued by the [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] loop is silently sacrificed. The original formulation traces to economist Goodhart (1975), who observed it while studying UK monetary policy; the phrasing most commonly used today — "when a measure becomes a target, it ceases to be a good measure" — comes from anthropologist Strathern (1997), analyzing the British university audit system |
 | **Upward Blindness** | An individual loop cannot question whether its own target is wrong — target-setting must come from outside the loop |
 | **Inter-loop Conflict** | Loops operating independently, without coordination, fight each other — e.g. a cost-reduction loop and a quality-improvement loop pull the system in opposite directions |
-| **Measurement Decay** | Sensors (measurement pipelines) gradually degrade over time, yet the loop keeps acting on stale data — fundamentally the same pattern as benchmark contamination discussed in [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] |
+| **Measurement Decay** | Sensors (measurement pipelines) gradually degrade over time, yet the loop keeps acting on stale data — fundamentally the same pattern as benchmark contamination discussed in [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] |
 
 ## Anchors: External Fixed Reference Points
 
