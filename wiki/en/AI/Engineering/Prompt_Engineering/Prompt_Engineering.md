@@ -18,6 +18,7 @@ nav_order: 20
 | [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought\|Chain of Thought]] | Inducing step-by-step reasoning — CoT/ToT/Self-Consistency |
 | [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling Controls]] | Controlling output diversity via Temperature/Top-K/Top-P/Min-P |
 | [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured Output]] | Ensuring structured output via JSON/YAML/Pydantic |
+| [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt Caching]] | Placing the static prefix first, cache breakpoints/TTL, how it differs from Semantic Cache |
 
 ## Prompt Design Principles
 
@@ -40,6 +41,10 @@ Practical order:
   2. If insufficient, consider Fine-Tuning
   3. If still insufficient, consider the full Model Engineering stack
 ```
+
+## The Shift in the Reasoning-Model Era
+
+Reasoning models like o1/o3, Claude Extended Thinking, and Gemini Deep Think perform CoT internally, so eliciting phrases like "think step by step" matter less, and the center of gravity is shifting toward API-level controls like thinking budgets. See [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] for details.
 
 ## Role in AI Engineering
 

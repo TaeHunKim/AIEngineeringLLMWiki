@@ -26,6 +26,7 @@ Context Engineering = the art of filling this space most usefully
 | [[en/AI/Engineering/Context_Engineering/Context_Compression\|Context Compression]] | LLM Lingua, Map-Reduce, cost reduction |
 | [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle\|Lost in the Middle]] | LLM performance degradation for middle-of-context info and avoidance strategies |
 | [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format\|Open Knowledge Format (OKF)]] | Open standard for packaging organizational knowledge for AI agents, markdown+YAML frontmatter bundle (Google Cloud, 2026) |
+| [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management\|Agentic Context Management]] | Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation |
 
 > **RAG, GraphRAG, NL2SQL, SQL RAG** documents are in a separate chapter.
 > → See [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies chapter]]
@@ -33,10 +34,11 @@ Context Engineering = the art of filling this space most usefully
 ## Core Challenges
 
 ```
-1. What to include?    → Retrieval Strategies (RAG / GraphRAG / SQL RAG) for relevant info
-2. How to compress?   → Context Compression to save tokens
-3. How to remember?   → Memory & Semantic Cache
-4. In what order?     → Avoid the "Lost in the Middle" problem (→ [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]])
+1. What to include?     → Retrieval Strategies (RAG / GraphRAG / SQL RAG) for relevant info
+2. How to compress?    → Context Compression to save tokens
+3. How to remember?    → Memory & Semantic Cache
+4. In what order?      → Avoid the "Lost in the Middle" problem (→ [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]])
+5. Across the whole loop? → Handling Context Rot in long-running agents (→ [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]])
 ```
 
 ## Role in AI Engineering

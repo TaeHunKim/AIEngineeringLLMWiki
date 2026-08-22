@@ -46,6 +46,12 @@ flowchart TD
 
 **DPO (Direct Preference Optimization)**: Skips Reward Model training from RLHF and optimizes directly from preference data. More stable and simpler.
 
+### The Next Step in the Lineage: GRPO / RLVR
+
+The weight-update lineage running SFT → RLHF (PPO) → DPO continues into **GRPO (Group Relative Policy Optimization)** in 2025. Where PPO trains a separate value model to estimate each response's advantage, GRPO computes advantage from the **relative ranking within a group of responses** generated for the same prompt, eliminating the need for a separate value model — which makes it more memory-efficient and more stable to train. The flagship example is DeepSeek-R1, which combined GRPO with **RLVR (Reinforcement Learning with Verifiable Rewards — RL in domains where correctness can be automatically verified)** to boost math and coding reasoning without a separate Reward Model.
+
+The detailed mechanics of GRPO/RLVR, the DeepSeek-R1 case study, and the relationship to Test-Time Compute Scaling are covered from the iterative-improvement-loop angle in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] — this page only covers the Model Engineering angle: the lineage of weight-update techniques itself.
+
 ## Full FT vs PEFT Comparison
 
 | Criteria | Full Fine-Tuning | PEFT (LoRA, etc.) |
@@ -81,9 +87,10 @@ Full FT memory = params × (weights + gradients + optimizer states)
 Full FT is the most powerful tool in the Model Engineering layer, but in most practical applications it is replaced by LoRA/QLoRA (→ [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]]). RLHF is the core training pipeline for commercial models like GPT-4, Claude, and Gemini.
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]]
+[[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]
 
 ## Sources
 - Ouyang et al. (2022) "Training language models to follow instructions with human feedback" (InstructGPT) — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)
 - Rafailov et al. (2023) "Direct Preference Optimization" — [arXiv:2305.18290](https://arxiv.org/abs/2305.18290)
 - Karpathy, A. "Let's reproduce GPT-2" — [YouTube](https://www.youtube.com/watch?v=l8pRSuU81PU)
+- DeepSeek-AI (2025) "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" — [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)

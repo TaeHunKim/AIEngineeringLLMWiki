@@ -46,6 +46,12 @@ flowchart TD
 
 **DPO (Direct Preference Optimization)**: RLHF의 Reward Model 학습을 생략하고 직접 선호도 데이터로 최적화. 더 안정적이고 단순.
 
+### 계보의 다음 단계: GRPO / RLVR
+
+SFT → RLHF(PPO) → DPO로 이어진 가중치 갱신 기법 계보는 2025년 **GRPO(Group Relative Policy Optimization)**로 이어진다. PPO가 별도의 가치 함수(value model)를 학습해 각 응답의 이득(advantage)을 추정하는 데 반해, GRPO는 같은 프롬프트에 대해 생성한 **응답 그룹 내 상대 순위**로 이득을 계산해 별도 가치 모델 없이 학습한다 — 그만큼 메모리 효율이 높고 학습이 안정적이다. DeepSeek-R1이 GRPO와 **RLVR(Reinforcement Learning with Verifiable Rewards, 정답 검증이 가능한 도메인에서의 강화학습)**을 결합해 별도 Reward Model 없이 수학·코딩 추론 능력을 끌어올린 사례가 대표적이다.
+
+이 위키에서 GRPO·RLVR의 상세 메커니즘, DeepSeek-R1 사례, Test-Time Compute Scaling과의 관계는 반복 개선 루프 관점에서 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]이 다룬다 — 여기서는 "가중치를 갱신하는 기법의 계보"라는 Model Engineering 관점만 짚는다.
+
 ## Full FT vs PEFT 비교
 
 | 기준 | Full Fine-Tuning | PEFT (LoRA 등) |
@@ -81,9 +87,10 @@ Full FT 메모리 = 파라미터 × (가중치 + 그래디언트 + 옵티마이�
 Full FT는 Model Engineering 레이어의 가장 강력한 도구이나, 대부분의 실무 적용에서는 LoRA/QLoRA(→ [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])로 대체된다. RLHF는 GPT-4, Claude, Gemini 등 상용 모델의 핵심 훈련 파이프라인이다.
 
 ## 관련 개념
-[[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]]
+[[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]] · [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]
 
 ## 출처
 - Ouyang et al. (2022) "Training language models to follow instructions with human feedback" (InstructGPT) — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)
 - Rafailov et al. (2023) "Direct Preference Optimization" — [arXiv:2305.18290](https://arxiv.org/abs/2305.18290)
 - Karpathy, A. "Let's reproduce GPT-2" — [YouTube](https://www.youtube.com/watch?v=l8pRSuU81PU)
+- DeepSeek-AI (2025) "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" — [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)

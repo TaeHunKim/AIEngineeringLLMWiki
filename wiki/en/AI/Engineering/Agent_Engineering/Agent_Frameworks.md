@@ -62,6 +62,8 @@ runtime.start()
 - Event-driven architecture scalable to distributed deployment (distributed runtime)
 - Greatly improved code stability and type safety compared to v0.2
 
+**Status as of 2026**: AutoGen has been merged, along with Semantic Kernel, into **Microsoft Agent Framework 1.0** (GA 2026-04-03). AutoGen's multi-agent orchestration patterns and Semantic Kernel's enterprise state management, type safety, filters, and connector ecosystem now live in a single .NET+Python SDK, and both prior frameworks have moved to maintenance mode (bug/security fixes only). New projects should evaluate Microsoft Agent Framework instead of AutoGen directly. → [[en/AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]]
+
 ## CrewAI — Role-Based Crews and Flows
 
 **Role-based** crew composition is the core metaphor. Each agent is given a Role, Goal, and Backstory, then grouped into a "Crew" for sequential or hierarchical execution.
@@ -177,6 +179,7 @@ Agent Frameworks represent the shift from "language of agent design" to "product
 
 ## Sources
 - Microsoft Research "AutoGen v0.4: A New Foundation" — [microsoft.com/research](https://www.microsoft.com/en-us/research/blog/autogen-v0-4-reimagining-the-foundation-agentic-ai-frameworks/)
+- Microsoft "Microsoft Agent Framework" 1.0 GA announcement (2026-04-03) — [microsoft.com](https://www.microsoft.com)
 - CrewAI official documentation — [docs.crewai.com](https://docs.crewai.com)
 - OpenAI "New tools for building agents" — [openai.com](https://openai.com/index/new-tools-for-building-agents/)
 - OpenAI Agents SDK docs — [openai.github.io/openai-agents-python](https://openai.github.io/openai-agents-python/)

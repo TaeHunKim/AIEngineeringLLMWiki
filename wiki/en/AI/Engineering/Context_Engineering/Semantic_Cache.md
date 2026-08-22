@@ -148,7 +148,7 @@ Semantic Cache sits on top of this, optimizing costs for repeated queries.
 Semantic Cache plays a key role in the **Runtime Optimization** layer of Loop Engineering (→ [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]). It dramatically reduces API costs in customer support, internal tools, and education platforms with many repeated questions.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]]
+[[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]]
 
 ## References
 1. GPTCache GitHub — [github.com/zilliztech/GPTCache](https://github.com/zilliztech/GPTCache)

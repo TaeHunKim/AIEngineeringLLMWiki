@@ -62,7 +62,7 @@ class ContextUsageAuditor:
 Context Usage Auditing은 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]이 다루는 세 메커니즘 중 절감 폭은 상대적으로 작지만, 부작용 리스크도 가장 낮다 — 모델을 바꾸거나(라우팅) LLM 호출을 아예 제거하는 것(스크립트화)과 달리, 컨텍스트 구성만 조정하므로 실패 시 영향 범위가 좁다. 다만 실용성을 위해서는 "토큰을 아끼는 것"보다 "멀티에이전트 파이프라인의 입출력 계약을 깨지 않는 것"을 항상 우선순위에 둬야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|RAG/Advanced_Retrieval]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]
+[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|RAG/Advanced_Retrieval]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling]]
 
 ## 출처
 - "AdaGReS: Adaptive Greedy Context Selection via Redundancy-Aware Scoring for Token-Budgeted RAG" (2026) — [arXiv:2512.25052](https://arxiv.org/pdf/2512.25052)

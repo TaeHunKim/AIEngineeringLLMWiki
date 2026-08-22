@@ -126,6 +126,36 @@ query_engine = index.as_query_engine(
 )
 ```
 
+## LlamaIndex Workflows 1.0 (2026-06)
+
+2026년 6월 22일 발표된 **Workflows 1.0** [1]은 LlamaIndex의 오케스트레이션 레이어를 이벤트 기반으로 재편했다. 기존 Query Engine이 "데이터를 찾아 답하기" 파이프라인에 최적화돼 있었다면, Workflows는 임의의 **에이전틱 오케스트레이션**(멀티스텝, 분기, 병렬 실행)을 코드로 직접 표현하는 저수준 프레임워크다.
+
+```python
+from llama_index.core.workflow import Workflow, step, Event, StartEvent, StopEvent
+
+class RetrieveEvent(Event):
+    query: str
+
+class ResearchWorkflow(Workflow):
+    @step
+    async def retrieve(self, ev: StartEvent) -> RetrieveEvent:
+        return RetrieveEvent(query=ev.query)
+
+    @step
+    async def synthesize(self, ev: RetrieveEvent) -> StopEvent:
+        # 검색 결과를 바탕으로 답변 생성
+        return StopEvent(result=f"'{ev.query}'에 대한 답변...")
+
+workflow = ResearchWorkflow(timeout=60)
+result = await workflow.run(query="LlamaIndex Workflows란?")
+```
+
+- **비동기 우선(async-first)**: 모든 스텝이 `async`로 정의되어 I/O 대기 중 다른 스텝을 동시 진행 가능
+- **이벤트 기반**: 스텝 간 데이터 흐름을 타입이 지정된 이벤트로 표현 — LangGraph의 State/Edge와 유사한 목적이나, State 객체 하나가 아니라 **이벤트 스트림**으로 흐름을 모델링한다는 점이 다르다
+- **Python + TypeScript** 양쪽 지원 — LlamaIndex가 Python 전용 생태계에서 벗어나기 시작한 신호
+
+이 발표와 함께 LlamaIndex의 포지셔닝도 이동했다. RAG 프레임워크를 넘어 **데이터 인프라 회사**(LlamaCloud, LlamaParse, LlamaExtract 등 문서 파싱·추출 제품군)로 무게중심이 옮겨가는 추세이며, 순수 에이전트 오케스트레이션 경쟁에서는 LangGraph·Microsoft Agent Framework 쪽이 더 앞서 있다는 것이 업계의 대체적 평가다.
+
 ## LlamaIndex vs LangChain
 
 | 기준 | LlamaIndex | LangChain |
@@ -155,3 +185,4 @@ LlamaIndex는 RAG 파이프라인의 "스위스 군용 칼"이다. 단순한 Vec
 - LlamaIndex 공식 문서 — [docs.llamaindex.ai](https://docs.llamaindex.ai)
 - LlamaIndex GitHub — [github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)
 - Galileo AI "LlamaIndex Complete Guide" — [galileo.ai](https://galileo.ai/blog/llamaindex-complete-guide-rag-data-workflows-llms)
+1. LlamaIndex "Workflows 1.0" 발표 (2026-06-22) — [llamaindex.ai](https://www.llamaindex.ai)

@@ -292,18 +292,60 @@ MCP의 4가지 Primitive 중 **Tools**가 Function Calling과 직접 대응하�
 
 ---
 
+## Code Execution with MCP / Progressive Tool Disclosure
+
+MCP가 도구 통합을 표준화했지만, 새로운 병목이 뒤따랐다: 연결된 MCP 서버가 늘어날수록 **도구 스키마 자체가 컨텍스트를 잠식**한다. 서버 4개, 도구 38개 정도만 돼도 각 도구의 이름·설명·JSON Schema 정의가 매 요청마다 1만 5천 토큰 이상을 차지하며, 이는 그 요청에서 실제로 쓰이는 도구가 하나뿐이어도 예외 없이 전송된다.
+
+```
+기존 방식 — 모든 도구 스키마를 매번 컨텍스트에 주입:
+  [도구1 스키마] + [도구2 스키마] + ... + [도구38 스키마] + [사용자 질문]
+  → 38개 도구 정의가 전부 컨텍스트를 차지, 실제 쓰는 건 1~2개뿐
+```
+
+이를 해소하는 접근이 스펙트럼 위 세 지점으로 수렴하고 있다.
+
+### 1. Code Execution with MCP (Anthropic)
+
+LLM에게 도구를 직접 노출하는 대신, **샌드박스에서 실행되는 코드가 도구를 호출**하게 한다. 모델은 도구 스키마 전체가 아니라 도구 이름 목록만 보고, 필요한 도구를 코드에서 함수처럼 불러 쓴다.
+
+```python
+# 모델이 생성하는 코드 — 도구는 RPC로 호출됨
+from mcp_tools import search_web, read_file, send_email
+
+results = search_web(query="2026 AI 트렌드")
+top_result = results[0]
+send_email(to="team@company.com", body=f"조사 결과: {top_result}")
+# → 실행 결과만 모델에게 반환, 중간 도구 스키마는 컨텍스트에 없음
+```
+
+보고된 절감 폭이 크다 — 도구 호출 흐름을 코드 실행으로 전환한 사례에서 입력 토큰이 최대 78.5% 감소했고, 특정 워크플로에서는 15만 토큰이 2천 토큰으로 줄어든 사례도 보고됐다.
+
+### 2. Code Mode (Cloudflare)
+
+같은 발상을 워커 런타임에 적용한 구현체. MCP 도구를 TypeScript 함수로 변환해 모델이 코드로 호출하게 한다는 점에서 Anthropic 접근과 같은 지점 위에 있다.
+
+### 3. Tool Search / Progressive Disclosure
+
+도구를 코드화하지 않고, 대신 **필요할 때만 도구 설명을 검색해 불러오는** 방식. 처음에는 도구 이름만 노출하고, 모델이 "이 작업엔 이 도구가 필요하다"고 판단하면 그때 해당 도구의 전체 스키마를 검색해 컨텍스트에 추가한다 — [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]]의 Select 전략을 도구 정의 자체에 적용한 것이다.
+
+이 세 접근은 도구 스키마 팽창이라는 같은 문제를 서로 다른 트레이드오프로 푼다: Code Execution은 가장 큰 절감폭을 내지만 샌드박스 인프라가 필요하고, Tool Search는 인프라 부담이 적지만 검색 지연이 추가된다. 비용 관점의 후속 분석은 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Cost_Engineering/Context_Usage_Auditing]] 참고.
+
+---
+
 ## AI Engineering에서의 역할
 
 Function Calling은 LLM을 "텍스트 생성기"에서 "실제 행동 실행자"로 전환시키는 핵심 기술이다. 검색, DB 조회, API 호출, 코드 실행 등 모든 외부 상호작용이 Function Calling을 통해 이루어진다. Structured Output([[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]])의 특수 형태로, 프로덕션 Agent 시스템의 필수 구성 요소다. MCP는 이 Function Calling을 표준 프로토콜로 승화시킨 다음 단계다.
 
 ## 관련 개념
-[[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]
+[[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
 
 ## 출처
 - OpenAI Function Calling 문서 — [platform.openai.com](https://platform.openai.com/docs/guides/function-calling)
 - Anthropic Tool Use 문서 — [docs.anthropic.com](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)
 - Anthropic (2025) "Equipping Agents for the Real World with Agent Skills" — [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+- Anthropic (2026) "Code execution with MCP: Building more efficient agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
+- Cloudflare "Code Mode: the better way to use MCP" — [blog.cloudflare.com](https://blog.cloudflare.com/code-mode/)
 
 ## References
 

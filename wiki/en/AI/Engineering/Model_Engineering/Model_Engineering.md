@@ -16,7 +16,8 @@ flowchart LR
     P["Pre-training<br/>Building the model's base knowledge"] --> F
     F["Fine-Tuning<br/>Full FT / PEFT / LoRA<br/>Specializing for tasks"] --> Q
     Q["Quantization<br/>Model size/speed optimization"] --> D
-    D["Knowledge Distillation<br/>Large model → Small model"]
+    D["Knowledge Distillation<br/>Large model → Small model"] --> A
+    A["Architecture<br/>MoE / Long-context / SLM"]
 ```
 
 ## Sub-documents
@@ -24,10 +25,11 @@ flowchart LR
 | Document | Content |
 |------|------|
 | [[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning\|Pre-training & Continual Learning]] | Large-scale pre-training, Chinchilla law, catastrophic forgetting |
-| [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full Fine-Tuning]] | SFT, RLHF(PPO), DPO — full weight updates |
+| [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full Fine-Tuning]] | SFT, RLHF(PPO), DPO, GRPO/RLVR — full weight updates |
 | [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA\|PEFT / LoRA / QLoRA]] | Parameter-efficient fine-tuning, LoRA/QLoRA math |
 | [[en/AI/Engineering/Model_Engineering/Quantization\|Quantization]] | INT8/INT4 quantization, GPTQ/AWQ/GGUF |
 | [[en/AI/Engineering/Model_Engineering/Model_Distillation\|Knowledge Distillation]] | Teacher-Student, DistilBERT/Phi series |
+| [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE\|Model Architectures & MoE]] | Dense vs. MoE, RoPE/YaRN long-context, SLM-for-Agents |
 
 ## When to Choose Which Technique
 
@@ -41,6 +43,10 @@ flowchart TD
     B{Deployment optimization needed?} -->|"Reduce cloud inference cost"| QT["Quantization (GPTQ/AWQ)"]
     B -->|"Edge/mobile deployment"| GG["GGUF + llama.cpp"]
     B -->|"Replace with smaller model"| KD[Knowledge Distillation]
+
+    C{"Which architecture,<br/>if self-hosting?"} -->|"More knowledge capacity, same per-token cost"| MOE["Dense → MoE"]
+    C -->|"Long documents/sessions"| YARN["Long-context extension (YaRN, etc.)"]
+    C -->|"Many simple repetitive tasks"| SLM["SLM-for-Agents"]
 ```
 
 ## Role in AI Engineering

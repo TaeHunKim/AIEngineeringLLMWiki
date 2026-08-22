@@ -137,7 +137,7 @@ def select_relevant_tools(query: str, all_tools: list) -> list:
 Context Compression은 **비용 최적화**와 **성능 향상** 두 가지를 동시에 달성한다. 불필요한 토큰 제거는 API 비용을 줄이고, 핵심 정보 집중은 모델의 응답 품질을 높인다. 특히 컨텍스트 창이 긴 Agent 시스템에서 누적 컨텍스트 관리의 핵심 기법이다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]
 
 ## 출처
 - Jiang et al. (2023) "LLMLingua: Compressing Prompts for Accelerated Inference" — [arXiv:2310.05736](https://arxiv.org/abs/2310.05736)

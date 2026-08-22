@@ -16,7 +16,8 @@ flowchart LR
     P["Pre-training<br/>모델의 기반 지식 구축"] --> F
     F["Fine-Tuning<br/>Full FT / PEFT / LoRA<br/>특정 태스크에 특화"] --> Q
     Q["Quantization<br/>모델 크기/속도 최적화"] --> D
-    D["Knowledge Distillation<br/>큰 모델 → 작은 모델"]
+    D["Knowledge Distillation<br/>큰 모델 → 작은 모델"] --> A
+    A["Architecture<br/>MoE / 롱컨텍스트 / SLM"]
 ```
 
 ## 하위 문서
@@ -24,10 +25,11 @@ flowchart LR
 | 문서 | 내용 |
 |------|------|
 | [[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning\|Pre-training_and_Continual_Learning]] | 대규모 사전 학습, Chinchilla 법칙, 재앙적 망각 |
-| [[AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]] | SFT, RLHF(PPO), DPO — 전체 가중치 업데이트 |
+| [[AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]] | SFT, RLHF(PPO), DPO, GRPO/RLVR — 전체 가중치 업데이트 |
 | [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA\|PEFT_LoRA_QLoRA]] | 파라미터 효율적 파인튜닝, LoRA/QLoRA 수학 |
 | [[AI/Engineering/Model_Engineering/Quantization\|Quantization]] | INT8/INT4 양자화, GPTQ/AWQ/GGUF |
 | [[AI/Engineering/Model_Engineering/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi 계열 |
+| [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE\|Model_Architectures_and_MoE]] | Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents |
 
 ## 언제 어떤 기술을 선택하는가
 
@@ -41,6 +43,10 @@ flowchart TD
     B{배포 최적화 필요?} -->|"클라우드 추론 비용 절감"| QT["Quantization (GPTQ/AWQ)"]
     B -->|"엣지/모바일 배포"| GG["GGUF + llama.cpp"]
     B -->|"작은 모델로 대체"| KD[Knowledge Distillation]
+
+    C{"자체 호스팅 시<br/>어떤 아키텍처?"} -->|"지식 용량 ↑, 토큰당 비용 유지"| MOE["Dense → MoE 전환"]
+    C -->|"긴 문서/장기 세션"| YARN["YaRN 등 롱컨텍스트 확장"]
+    C -->|"단순 반복 태스크 다수"| SLM["SLM-for-Agents"]
 ```
 
 ## AI Engineering에서의 역할

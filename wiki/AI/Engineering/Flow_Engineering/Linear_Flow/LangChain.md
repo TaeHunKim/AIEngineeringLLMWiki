@@ -107,6 +107,46 @@ rag_chain = (
 | **MapReduceChain** | 긴 문서 처리 |
 | **Router Chain** | 조건 분기 |
 
+## LangChain 1.0 (2026): Core Agent Loop 중심 재편
+
+LangChain은 v1.0에서 체인 중심 API를 유지하면서도, 무게중심을 **에이전트 코어 루프**로 옮겼다 [1]. 핵심 변화 세 가지:
+
+### `create_agent`
+
+LangGraph 런타임 위에 구축된 최단 경로 에이전트 생성 API. 어떤 모델 제공자든 core agent loop(모델 호출 → 도구 호출 → 반복)만으로 즉시 에이전트를 만들 수 있다:
+
+```python
+from langchain.agents import create_agent
+
+agent = create_agent(
+    model="claude-opus-5",
+    tools=[search_tool, calculator_tool],
+)
+result = agent.invoke({"messages": [{"role": "user", "content": "..."}]})
+```
+
+### Middleware
+
+웹 프레임워크의 미들웨어와 같은 역할을 에이전트 루프 내부에서 수행한다. 실행 중 정해진 지점(모델 호출 전/후, 도구 호출 전/후)에 개입해 동작을 가로채거나 수정한다:
+
+```python
+from langchain.agents.middleware import AgentMiddleware
+
+class LoggingMiddleware(AgentMiddleware):
+    def before_model(self, state):
+        print(f"모델 호출 전 상태: {state}")
+
+agent = create_agent(model="claude-opus-5", tools=[...], middleware=[LoggingMiddleware()])
+```
+
+가드레일 삽입, 요청 재시도, 동적 프롬프트 수정, [[AI/Engineering/Context_Engineering/Agentic_Context_Management|컨텍스트 압축(Compaction)]] 같은 횡단 관심사를 체인 구조를 바꾸지 않고 끼워 넣을 수 있다.
+
+### Content Blocks
+
+모델 제공자마다 다른 응답 형식(텍스트, 이미지, thinking block, 인용 등)을 표준화한 `content_blocks` 속성을 메시지 객체에 추가해, 제공자에 구애받지 않는 타입 안전한 접근을 제공한다.
+
+이 세 변화 이후 LangChain은 **2.0까지 breaking change 없음**을 공식화해, 프로덕션 안정성을 명시적으로 약속하고 있다.
+
 ## LangChain vs LangGraph
 
 ```
@@ -135,11 +175,13 @@ os.environ["LANGCHAIN_API_KEY"] = "..."
 
 ## AI Engineering에서의 역할
 
-LangChain은 Linear Flow Engineering의 표준 도구다. 프로토타이핑부터 프로덕션까지 빠르게 LLM 애플리케이션을 구축할 수 있게 해주며, 방대한 생태계(100+ 통합, 커뮤니티)가 장점이다. 다만 추상화가 복잡하고 업그레이드 시 breaking change가 잦아 학습 곡선이 있다.
+LangChain은 Linear Flow Engineering의 표준 도구다. 프로토타이핑부터 프로덕션까지 빠르게 LLM 애플리케이션을 구축할 수 있게 해주며, 방대한 생태계(100+ 통합, 커뮤니티)가 장점이다. v1.0 이후로는 breaking change 없는 안정성을 약속하며 순수 파이프라인 도구에서 **에이전트 구축 도구**로 무게중심이 이동했다 — 프레임워크 선택 전반의 비교는 [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] 참고.
 
 ## 관련 개념
-[[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
 
 ## 출처
+1. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)
 - LangChain 공식 문서 — [python.langchain.com](https://python.langchain.com)
 - LangChain GitHub — [github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
+- LangChain Docs "Agents" — [docs.langchain.com/oss/python/langchain/agents](https://docs.langchain.com/oss/python/langchain/agents)

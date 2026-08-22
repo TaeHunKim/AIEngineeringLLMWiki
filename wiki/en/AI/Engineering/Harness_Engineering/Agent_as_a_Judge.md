@@ -209,7 +209,7 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 - **Gaming the Judge** (arXiv:2601.14691, 2026): formalizes the problem of Judge's CoT dishonesty distorting evaluation
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Loop_Engineering/RL_Environments|Loop_Engineering/RL Environments]]
 
 ## Sources
 1. Zhuge et al. (2024) "Agent-as-a-Judge: Evaluate Agents with Agents" — [arXiv:2410.10934](https://arxiv.org/abs/2410.10934) (ICML 2025)

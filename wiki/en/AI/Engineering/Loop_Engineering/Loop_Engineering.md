@@ -26,7 +26,11 @@ flowchart TD
 | [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | DSPy 3.0 (SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling |
 | [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | Semantic Cache, RouteLLM, Speculative Decoding, vLLM/SGLang serving internals |
 | [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production Operations]] | AI Gateways, deployment strategies, A/B testing, SRE/Chaos Engineering, FinOps |
+| [[en/AI/Engineering/Loop_Engineering/RL_Environments\|RL Environments]] | Verifiable-reward environments for RLVR training — Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifiers, reward design |
 | [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost Engineering]] | A watcher agent that autonomously judges and executes cost reduction (Agentic FinOps) — model routing, task scriptification, context usage auditing (a specialization of Loop Engineering) |
+| &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity-Aware Model Routing]] | FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing |
+| &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification\|Deterministic Task Scriptification]] | Agentic Compilation, Tool-Making, LOOP Skill Engine |
+| &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing\|Context Usage Auditing]] | Auditing RAG context that was retrieved but never used, automatic retrieval-K tuning |
 
 ## What Goes Wrong Without a Loop
 

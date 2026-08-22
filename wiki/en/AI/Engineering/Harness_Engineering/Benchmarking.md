@@ -176,7 +176,7 @@ weekly_benchmark_run = schedule(
 Benchmarking provides **objective criteria for model selection, prompt optimization, and fine-tuning effectiveness measurement**. The dual strategy of comparing models with community-recognized benchmarks while measuring actual production performance with internal domain-specific tests is recommended.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] · [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]
+[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Loop_Engineering/RL_Environments|Loop_Engineering/RL Environments]] · [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]
 
 ## Sources
 - Hendrycks et al. (2021) "MMLU" — [arXiv:2009.03300](https://arxiv.org/abs/2009.03300)

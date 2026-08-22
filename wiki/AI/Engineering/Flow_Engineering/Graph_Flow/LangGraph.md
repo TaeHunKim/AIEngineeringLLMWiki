@@ -150,6 +150,40 @@ supervisor = create_supervisor(
 
 → [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] 참조
 
+## LangGraph 1.0 및 2026 Q2 신규 기능
+
+LangGraph는 LangChain과 함께 v1.0에 도달하며 프로덕션 장기 실행 에이전트를 위한 하위 레벨 런타임으로 자리를 굳혔다 [4]. 2026년 2분기에 추가된 기능들이 특히 "며칠씩 실행되는 에이전트"를 겨냥한다:
+
+### TimeoutPolicy — 노드 단위 타임아웃
+
+```python
+from langgraph.types import TimeoutPolicy
+
+builder.add_node(
+    "tools",
+    tool_node,
+    timeout=TimeoutPolicy(run_timeout=30, idle_timeout=120),
+    # run_timeout: 노드 실행 자체의 최대 시간
+    # idle_timeout: 스트리밍 등에서 응답 없는 상태의 최대 허용 시간
+)
+```
+
+### 노드 단위 에러 핸들러 — Saga/보상 트랜잭션
+
+노드가 실패하면 타입이 지정된 `NodeError`를 받아 복구 노드로 라우팅할 수 있다. 분산 트랜잭션의 Saga 패턴처럼, 일부 단계가 실패했을 때 이미 완료된 단계를 되돌리는 보상(compensation) 로직을 그래프 안에 표현할 수 있다.
+
+### Cooperative Graceful Shutdown
+
+장기 실행 중인 노드에 중단 신호를 보내면, 노드가 현재 작업 단위를 안전하게 마무리한 뒤 종료한다 — 강제 종료로 인한 상태 불일치를 방지한다.
+
+### DeltaChannel — 체크포인트 오버헤드 절감
+
+기존 체크포인팅은 매 스텝마다 State 전체를 저장했다. `DeltaChannel`은 스텝별 **증분(delta)만** 저장해, 수백~수천 스텝짜리 장기 실행 스레드에서 체크포인트 저장 비용을 크게 줄인다.
+
+### v2 Streaming API — 타입화된 `StreamPart`
+
+기존에 문자열 청크 위주였던 스트리밍 출력을 `StreamPart`라는 통일된 타입으로 재구성해, 텍스트·도구 호출·thinking block 등 서로 다른 종류의 스트리밍 이벤트를 하나의 일관된 인터페이스로 소비할 수 있게 했다.
+
 ## LangGraph Platform
 
 클라우드 배포, API 서빙, 디버깅 도구를 제공하는 관리형 서비스:
@@ -171,3 +205,4 @@ LangGraph는 복잡한 Agent 시스템과 Multi-Agent 워크플로우를 프로�
 - LangGraph 공식 문서 — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/)
 - "Building Stateful AI Systems with LangGraph" — [notes.muthu.co](https://notes.muthu.co/2025/10/building-stateful-ai-systems-with-langgraph-and-agentic-workflow-graphs/)
 - "LangGraph Tutorial 2026" — [alicelabs.ai](https://alicelabs.ai/en/insights/langgraph-guide-2026)
+4. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)

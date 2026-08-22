@@ -64,7 +64,7 @@ If usage auditing is the outer loop adjusting "how much to retrieve from which s
 Among the three mechanisms covered by [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]], Context Usage Auditing has a relatively smaller savings potential but also the lowest side-effect risk — unlike swapping models (routing) or eliminating LLM calls entirely (scriptification), it only adjusts context composition, so failures have a narrow blast radius. For practicality, though, priority should always go to "not breaking a multi-agent pipeline's input/output contract" over "saving tokens."
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling]]
 
 ## Sources
 - "AdaGReS: Adaptive Greedy Context Selection via Redundancy-Aware Scoring for Token-Budgeted RAG" (2026) — [arXiv:2512.25052](https://arxiv.org/pdf/2512.25052)

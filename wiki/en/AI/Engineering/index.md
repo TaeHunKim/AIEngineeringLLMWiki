@@ -20,6 +20,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - Compression & Optimization
     - [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
     - [[en/AI/Engineering/Model_Engineering/Model_Distillation|Knowledge Distillation]] — Teacher→Student knowledge distillation
+- [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN long-context, SLM-for-Agents *(2026)*
 
 ---
 
@@ -32,6 +33,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - Output Control
     - [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] — Temperature, Top-K, Top-P, Min-P
     - [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, YAML, Pydantic, Instructor
+- [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — Static prefix design, cache breakpoints/TTL, how it differs from Semantic Cache *(2026)*
 
 ---
 
@@ -45,6 +47,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, cost reduction
     - [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] — Long context middle degradation and avoidance strategies (Liu et al., 2023)
     - [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]] — Open standard for packaging organizational knowledge for AI agents, markdown+YAML frontmatter bundle (Google Cloud, 2026)
+- [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] — Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation *(2026)*
 
 ---
 
@@ -134,6 +137,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — Semantic Cache, RouteLLM (ICLR 2025), Speculative Decoding, vLLM/SGLang/TensorRT-LLM serving internals
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI gateway, deployment strategies, A/B testing, SRE/chaos engineering, FinOps *(2026)*
+- [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier design *(2026)*
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] — Agentic FinOps, autonomous watcher for model routing/scriptification/context auditing (a specialization of Loop Engineering) *(2026)*
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]] — FrugalGPT, RouteLLM, UCCI, Budget-Aware Agentic Routing
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] — Agentic Compilation, Tool-Making, LOOP Skill Engine

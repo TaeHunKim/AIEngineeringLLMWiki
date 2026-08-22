@@ -126,6 +126,36 @@ query_engine = index.as_query_engine(
 )
 ```
 
+## LlamaIndex Workflows 1.0 (2026-06)
+
+**Workflows 1.0**, announced on June 22, 2026 [1], rebuilt LlamaIndex's orchestration layer around events. Where the earlier Query Engine was optimized for a "find data and answer" pipeline, Workflows is a lower-level framework for expressing arbitrary **agentic orchestration** — multi-step, branching, parallel execution — directly in code.
+
+```python
+from llama_index.core.workflow import Workflow, step, Event, StartEvent, StopEvent
+
+class RetrieveEvent(Event):
+    query: str
+
+class ResearchWorkflow(Workflow):
+    @step
+    async def retrieve(self, ev: StartEvent) -> RetrieveEvent:
+        return RetrieveEvent(query=ev.query)
+
+    @step
+    async def synthesize(self, ev: RetrieveEvent) -> StopEvent:
+        # Generate an answer based on retrieval results
+        return StopEvent(result=f"Answer for '{ev.query}'...")
+
+workflow = ResearchWorkflow(timeout=60)
+result = await workflow.run(query="What is LlamaIndex Workflows?")
+```
+
+- **Async-first**: every step is defined as `async`, so other steps can proceed concurrently while one waits on I/O
+- **Event-driven**: data flow between steps is expressed as typed events — serving a similar purpose to LangGraph's State/Edge model, but modeling flow as an **event stream** rather than a single State object
+- **Python + TypeScript** support on both sides — a signal that LlamaIndex is starting to move beyond a Python-only ecosystem
+
+This announcement came with a positioning shift for LlamaIndex as a company. Beyond a RAG framework, it is increasingly moving toward being a **data infrastructure company** (LlamaCloud, LlamaParse, LlamaExtract and its document parsing/extraction product line), and the general industry consensus is that LangGraph and Microsoft Agent Framework are further ahead in the pure agent-orchestration race.
+
 ## LlamaIndex vs LangChain
 
 | Criterion | LlamaIndex | LangChain |
@@ -155,3 +185,4 @@ LlamaIndex is the "Swiss Army knife" of RAG pipelines. It supports complex data-
 - LlamaIndex Official Documentation — [docs.llamaindex.ai](https://docs.llamaindex.ai)
 - LlamaIndex GitHub — [github.com/run-llama/llama_index](https://github.com/run-llama/llama_index)
 - Galileo AI "LlamaIndex Complete Guide" — [galileo.ai](https://galileo.ai/blog/llamaindex-complete-guide-rag-data-workflows-llms)
+1. LlamaIndex "Workflows 1.0" announcement (2026-06-22) — [llamaindex.ai](https://www.llamaindex.ai)

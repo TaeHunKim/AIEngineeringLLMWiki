@@ -148,7 +148,7 @@ Semantic Cache는 이 위에서 반복 쿼리의 비용을 최적화하는 역�
 Semantic Cache는 **Loop Engineering의 Runtime Optimization** 레이어에서 핵심 역할을 한다 (→ [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]]). 반복적인 질문이 많은 고객 지원, 내부 도구, 교육 플랫폼에서 API 비용을 극적으로 절감한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|RAG/Vector_Storage]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Engineering/Agent_Memory]]
+[[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|RAG/Vector_Storage]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Engineering/Agent_Memory]] · [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Engineering/Prompt_Caching]]
 
 ## 참고 문헌
 1. GPTCache GitHub — [github.com/zilliztech/GPTCache](https://github.com/zilliztech/GPTCache)

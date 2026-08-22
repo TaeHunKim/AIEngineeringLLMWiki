@@ -107,6 +107,46 @@ rag_chain = (
 | **MapReduceChain** | Long document processing |
 | **Router Chain** | Conditional branching |
 
+## LangChain 1.0 (2026): Recentered Around the Core Agent Loop
+
+In v1.0, LangChain kept its chain-centric API but shifted its center of gravity to the **core agent loop** [1]. Three key changes:
+
+### `create_agent`
+
+A fast-path agent-creation API built on the LangGraph runtime. It lets you spin up an agent immediately with any model provider, using just the core agent loop (call model → call tools → repeat):
+
+```python
+from langchain.agents import create_agent
+
+agent = create_agent(
+    model="claude-opus-5",
+    tools=[search_tool, calculator_tool],
+)
+result = agent.invoke({"messages": [{"role": "user", "content": "..."}]})
+```
+
+### Middleware
+
+Plays the same role inside the agent loop that middleware plays in web frameworks. It hooks into fixed points during execution (before/after the model call, before/after a tool call) to intercept or modify behavior:
+
+```python
+from langchain.agents.middleware import AgentMiddleware
+
+class LoggingMiddleware(AgentMiddleware):
+    def before_model(self, state):
+        print(f"State before model call: {state}")
+
+agent = create_agent(model="claude-opus-5", tools=[...], middleware=[LoggingMiddleware()])
+```
+
+This lets cross-cutting concerns — guardrail insertion, request retries, dynamic prompt edits, [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|context compaction]] — be slotted in without altering the chain's structure.
+
+### Content Blocks
+
+Adds a standardized `content_blocks` property to message objects that normalizes each provider's differing response formats (text, images, thinking blocks, citations, etc.), giving provider-agnostic, type-safe access.
+
+Following these three changes, LangChain has committed to **no breaking changes until 2.0**, an explicit promise of production stability.
+
 ## LangChain vs LangGraph
 
 ```
@@ -135,11 +175,13 @@ os.environ["LANGCHAIN_API_KEY"] = "..."
 
 ## Role in AI Engineering
 
-LangChain is the standard tool for Linear Flow Engineering. It enables rapid LLM application construction from prototyping to production, with a vast ecosystem (100+ integrations, community) as its advantage. However, the high level of abstraction and frequent breaking changes on upgrades mean there's a learning curve.
+LangChain is the standard tool for Linear Flow Engineering. It enables rapid LLM application construction from prototyping to production, with a vast ecosystem (100+ integrations, community) as its advantage. Since v1.0, it has promised stability with no breaking changes, and its center of gravity has shifted from a pure pipeline tool toward an **agent-building tool** — see [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a broader framework comparison.
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]
+[[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]
 
 ## Sources
+1. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)
 - LangChain Official Documentation — [python.langchain.com](https://python.langchain.com)
 - LangChain GitHub — [github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
+- LangChain Docs "Agents" — [docs.langchain.com/oss/python/langchain/agents](https://docs.langchain.com/oss/python/langchain/agents)

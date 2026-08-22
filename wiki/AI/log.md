@@ -189,6 +189,45 @@
 - 역링크 보강: `Loop_Engineering/Data_Flywheel.md`·`Loop_Engineering/Continuous_Optimization.md`(KO+EN)의 관련 개념에 `Graph_Engineering/Loop_Networks_and_Anchors` 추가 — 기존에 `Multi_Agent_Topology`는 외부 역링크 4건이 있었으나 `Loop_Networks_and_Anchors`는 0건이었던 비대칭 해소
 - 적용 제외: GoAgent(arXiv:2603.19677)·OFA-MAS(arXiv:2601.12996) 등 2026년 초 극최신 토폴로지 자동생성 논문(아직 인용 축적 없음), `Graph_Engineering.md`에 6번째 블로그 출처 추가(기존 5개와 논조 중복), 신규 하위 문서 신설(기존 2문서 구조로 충분)
 
+## [2026-08-22] create+update | Model/Prompt/Flow/Context/Loop Engineering 갭 보강
+
+- 배경: 사용자 요청으로 AI Engineering 전 챕터 유지보수 이력을 감사한 결과, 2026-08-02 감사가 Agent/Harness/Loop 27개 문서만 대상으로 했고 **Model·Prompt·Flow Engineering, RAG/Retrieval Strategies는 2026-06-13 최초 생성 이후 한 번도 내용 감사를 받지 못한 것**을 확인(link/wikilink 일괄 치환 커밋만 존재). 동시에 웹 검색으로 grep 0건인 공백(Context Rot/Compaction/Sub-agent Isolation, LangChain·LangGraph 1.0/LlamaIndex Workflows 1.0, Reasoning model 프롬프팅, MoE/롱컨텍스트 아키텍처, RL 학습 환경)을 확인 후 반영
+- 9번째 최상위 챕터 신설은 기각: 업계의 "Environment Engineering"이 사실상 기존 Harness Engineering과 동의어로 쓰이고 있어 중복으로 판단. RL 학습·평가 환경이라는 별도 의미만 Loop Engineering 하위 단일 문서로 편입
+
+### Context Engineering (1개 신규)
+- `Agentic_Context_Management.md`(order:7) 신설 — Context Rot(Chroma 2025 기술 리포트) vs Lost in the Middle 구분표, Write/Select/Compress/Isolate 4대 전략(Lance Martin/LangChain, Anthropic 2025), Compaction, Sub-agent Context Isolation, Governance Decay(arXiv:2606.22528) 위험
+- 갱신: `Context_Engineering.md`·`Context_Compression.md`·`Lost_in_the_Middle.md`·`LLM_Memory.md`(KO+EN) 및 `Agent_Engineering/Agent_Memory.md`·`Multi_Agent_Coordination.md`·`Graph_Engineering/Multi_Agent_Topology.md`·`Harness_Engineering/Guardrail_Engineering.md`·`Loop_Engineering/Cost_Engineering/Context_Usage_Auditing.md`(KO+EN)에 역링크 추가
+
+### Prompt Engineering (1개 신규 + 1개 확장)
+- `Prompt_Caching.md`(order:6) 신설 — KV Cache 재사용 원리, 정적 프리픽스 우선 배치, Anthropic vs OpenAI Cache Breakpoint/TTL/비용 비교표, Semantic Cache와의 층위 차이, 장기 에이전트 루프에서 Compaction과의 상쇄 관계(arXiv:2601.06007)
+- `Chain_of_Thought.md`(KO+EN) 확장 — Least-to-Most(Zhou 2022)·Self-Ask(Press 2022)·Program-of-Thought(Chen 2022) 추가, "Reasoning 모델 시대의 CoT" 섹션(내장 추론/thinking budget/thinking block 미재사용/적응형 모드, 명시적 CoT가 여전히 유효한 경우) 신설
+- `Prompt_Engineering.md`(KO+EN) 하위 문서 표·실무 순서 서술 갱신
+- 적용 제외: `System_and_Role_Prompting.md`는 2026-07-24에 이미 보강되어 스코프 제외
+
+### Flow Engineering (3개 문서 확장 + 1개 신규 섹션)
+- `LangChain.md`(KO+EN) — v1.0: `create_agent`, Middleware, Content Blocks, "2.0까지 breaking change 없음" 반영
+- `LangGraph.md`(KO+EN) — v1.0 및 2026 Q2: TimeoutPolicy, 노드 단위 에러 핸들러(Saga/보상 트랜잭션), Cooperative Graceful Shutdown, DeltaChannel, v2 Streaming API(`StreamPart`)
+- `LlamaIndex.md`(KO+EN) — Workflows 1.0(2026-06-22): 이벤트 기반 오케스트레이션, Python+TS, 데이터 인프라 회사로의 포지셔닝 이동
+- `Tool_Use_and_Function_Calling.md`(KO+EN) — "Code Execution with MCP / Progressive Tool Disclosure" 섹션 신설: 도구 스키마 팽창 문제, Anthropic Code Execution(최대 78.5% 토큰 절감 사례), Cloudflare Code Mode, Tool Search 3자 비교
+- `Flow_Engineering.md`(KO+EN) — Microsoft Agent Framework 1.0(2026-04-03 GA, Semantic Kernel+AutoGen 통합) 반영
+- `Agent_Frameworks.md`(KO+EN) — AutoGen 섹션에 "2026년 현황: Microsoft Agent Framework로 통합, 유지보수 모드 전환" 추가
+
+### Model Engineering (1개 신규 + 1개 확장)
+- `Model_Architectures_and_MoE.md`(order:6) 신설 — Dense vs MoE(Total/Active Params 분리와 에이전트 서빙 비용), RoPE 외삽 한계→Position Interpolation→NTK-aware→YaRN(2024~2026 표준)→LongRoPE, SLM-for-Agents(Belcak et al. NVIDIA 2025, arXiv:2506.02153), Runtime_Optimization과의 경계(무엇을 서빙 vs 어떻게 서빙)
+- `Full_Fine-Tuning.md`(KO+EN) — "계보의 다음 단계: GRPO/RLVR" 절 추가(상세는 Continuous_Optimization으로 위임, 여기서는 가중치 갱신 기법 계보 관점만)
+- `Model_Engineering.md`(KO+EN) 하위 문서 표·다이어그램·선택 결정 트리 갱신
+
+### Loop Engineering (1개 신규)
+- `RL_Environments.md`(order:5) 신설 — RLVR이 요구하는 "검증 가능한 보상을 어디서 얻는가"를 Continuous_Optimization("어떻게 훈련하는가")과 구분. Gymnasium API 계보, 2025-2026 지형(SWE-Gym/GEM/RAGEN/AgentGym/verifiers/SkyRL/OpenEnv/WebArena/OSWorld/ToolBench), Verifier 3유형(프로그램적/모델 기반/HITL), "보상 시점이 내용보다 중요" 관찰, 자동 환경 생성, Benchmarking/Agent-as-a-Judge/Data_Flywheel과의 경계표(Cost_Engineering.md의 "특수화" 패턴 준용)
+- 갱신: `Loop_Engineering.md` 하위 문서 표에 Cost_Engineering 자식 3개(기존 누락) + RL_Environments 추가, `Continuous_Optimization.md`·`Data_Flywheel.md`·`Benchmarking.md`·`Agent_as_a_Judge.md`(KO+EN)에 역링크
+
+### 인덱스·정합성 갱신
+- `Engineering/index.md`·`AI/index.md`(KO+EN 4파일)에 신규 4개 문서 전체 등록
+- `AI/index.md`(KO+EN)에 기존에 존재했으나 목록 누락 상태였던 페이지 약 20개 추가(Agent_Deployment, Agent_as_a_Judge, LLM_Memory, Semantic_Cache, Lost_in_the_Middle, Open_Knowledge_Format, RAG, Agentic_RAG, Hybrid_RAG, Multimodal_RAG, NL2SQL, SQL_RAG, Knowledge_Graph, MCP/A2A/AG_UI, Cost_Engineering 자식 3개, `sources/Agentic_RAG`)
+- `Retrieval_Strategies.md`(KO+EN) 하위 문서 표에 누락돼 있던 Hybrid_RAG·Multimodal_RAG·Agentic_KG_Construction 행 추가
+- 기존 결함 수정: `wiki/en/AI/Engineering/Agent_Engineering/Agent_Engineering.md`에 `nav_order: 60` 누락 보완(87개 파일 중 유일한 KO/EN 프론트매터 불일치였음), `CLAUDE.md`의 dangling reference `llm-wiki.md` → `llm_wiki.md` 수정, `Harness_Engineering/Agent_as_a_Judge.md`(KO+EN) 관련 개념의 `LLM_as_a_Judge` 중복 링크 제거
+- 적용 제외: 출처 헤딩 표기(`## 출처`/`## References`/`## 참고 문헌`) 통일은 이번에 건드린 파일에 한해서만 맞추고 전수 리팩터는 보류. `wiki/en/AI/`에 `SCHEMA.md`·`log.md`·index.md의 `## Sources` 섹션이 없는 구조적 비대칭은 이번 스코프 밖으로 유지(대규모 EN 구조 변경이라 별도 작업으로 분리)
+
 ## [2026-08-06] create | Loop_Engineering/Cost_Engineering 신설
 
 - 배경: 사용자와의 대화에서 "8계층 명명 계보(Model→...→Graph)가 인간 조직 발전 과정과 유사하다"는 관점을 논의하다, "그 다음 단계는 비용 절감을 자동으로 판단·수행하는 AI 에이전트가 아닐까"라는 아이디어로 이어짐. 웹 검색으로 개별 기법(모델 캐스케이드/라우팅, 반복 작업 자동 스크립트화, RAG 컨텍스트 프루닝)과 "그걸 자율적으로 감시·판단·실행하는 에이전트" 상위 개념(**Agentic FinOps**, Finout Agents/Frugal ACE/Mavvrik 등 실제 상용 제품 존재) 둘 다 실재함을 확인. 다만 이는 명명 계보의 9번째 새 계층이 아니라 **Loop Engineering의 특수화**(새 통제 대상 도입이 아니라 기존 루프의 목표 지표를 비용으로 바꾼 것)라는 결론에 사용자와 함께 도달, 하위 문서로 추가하기로 합의

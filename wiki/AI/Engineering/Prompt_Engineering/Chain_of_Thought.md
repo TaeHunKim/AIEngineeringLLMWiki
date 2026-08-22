@@ -101,21 +101,50 @@ flowchart TD
 - **Algorithm of Thoughts**: 단일 컨텍스트에서 탐색
 - **ReAct**: 외부 도구 호출과 CoT 결합 (→ [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]])
 
-## Thinking Mode (Extended Thinking)
+## 그 밖의 CoT 계열 기법
 
-최신 모델(Claude 3.7 Sonnet, o1/o3 등)은 내부적으로 CoT를 실행하는 "Thinking" 모드 제공:
-- 모델이 응답 전 내부 추론 토큰 생성
-- 사용자에게는 최종 답변만 노출 (또는 thinking 내용도 공개)
+### Least-to-Most Prompting
+Zhou et al. (2022) [4]. 복잡한 문제를 여러 하위 문제로 **분해**한 뒤, 앞선 하위 문제의 답을 다음 하위 문제 풀이에 활용하며 순차적으로 해결한다. Few-shot CoT가 예시를 통해 "어떻게 생각할지"를 보여준다면, Least-to-Most는 "문제를 어떻게 쪼갤지"를 먼저 보여준다는 점이 다르다. 조합적으로 어려운(compositional) 문제에서 Few-shot CoT보다 일반화가 잘 된다.
+
+### Self-Ask
+Press et al. (2022) [5]. 모델이 최종 질문에 답하기 전 스스로 **후속 질문(follow-up question)**을 던지고 답하도록 유도한다. "필요한 후속 질문이 있습니까?"라는 명시적 프롬프트로 검색 도구 등 외부 액션을 후속 질문마다 끼워 넣기 쉬워, ReAct 같은 도구 사용 패턴의 전신에 해당한다.
+
+### Program-of-Thought (PoT)
+Chen et al. (2022) [6]. 추론 과정을 자연어 대신 **실행 가능한 코드**(주로 Python)로 생성하고, 코드 실행 결과를 최종 답으로 사용한다. CoT는 산술 계산 과정 자체를 텍스트로 서술하다 계산 실수를 하는 경우가 있는데, PoT는 "추론(어떤 계산을 할지)"과 "계산(그 계산을 정확히 수행하기)"을 분리해 계산은 인터프리터에 위임한다.
+
+## Thinking Mode와 Reasoning 모델 시대의 CoT
+
+Claude Opus/Sonnet의 Extended Thinking, OpenAI의 o-시리즈·GPT-5 계열, Gemini Deep Think 같은 **reasoning 모델**은 모델 자체가 학습 단계에서 내부적으로 긴 추론 체인을 생성하도록 훈련돼 있다. 이는 위 CoT 기법들이 프롬프트로 "유도"하던 것을 모델이 기본 동작으로 내장했다는 뜻이며, 실무 프롬프팅 방식이 달라진다.
+
+```
+비-reasoning 모델 (GPT-4, Claude 3.5 등):
+  "Let's think step by step"을 프롬프트에 명시 → 추론 유도 필요
+
+Reasoning 모델 (o1/o3, Claude Extended Thinking, Gemini Deep Think 등):
+  모델이 응답 전 자체적으로 내부 추론 토큰을 생성
+  → "단계별로 생각해" 같은 CoT 유도 문구는 대개 불필요
+  → 일부 케이스에서는 오히려 성능을 해칠 수 있음 (모델의 자체 추론 전략을 방해)
+```
+
+**Reasoning 모델 프롬프팅에서 바뀌는 것:**
+- **Thinking budget / effort level 제어**: "얼마나 깊이 생각할지"를 CoT 문구가 아니라 API 파라미터(예: `thinking_budget`, `reasoning_effort`)로 직접 조절한다.
+- **Thinking block을 다음 턴에 되먹이지 않는다**: 모델의 내부 추론 내용을 대화 히스토리에 그대로 포함시켜 재사용하지 않는 것이 표준 관례다 — 이전 추론이 이후 응답의 품질을 오히려 낮출 수 있다.
+- **적응형(adaptive) 모드 우선**: "무조건 깊게 생각하라"고 강제하기보다, 모델이 문제 난이도에 따라 스스로 추론 깊이를 조절하게 두는 편이 비용·품질 균형에 유리한 경우가 많다.
+
+**CoT 프롬프팅이 여전히 유효한 경우**: 이 흐름이 CoT를 완전히 대체한 것은 아니다. reasoning 기능이 없는 비추론 모델(저비용 티어, 경량 모델), 지연시간·비용에 민감해 reasoning 모드를 끄고 쓰는 상황, 그리고 모델의 사고 과정을 사용자에게 그대로 노출하고 싶은 설명 가능성(explainability) 요구가 있는 경우에는 명시적 CoT 프롬프팅이 여전히 유효하다.
 
 ## AI Engineering에서의 역할
 
-CoT는 LLM의 추론 능력을 끌어내는 가장 검증된 기법이다. 수학, 코딩, 법률 분석 등 복잡한 추론이 필요한 LLM 애플리케이션의 기본 프롬프팅 패턴이며, "Think step by step" 한 줄로도 유의미한 성능 향상을 얻을 수 있다.
+CoT는 LLM의 추론 능력을 끌어내는 가장 검증된 기법이다. 수학, 코딩, 법률 분석 등 복잡한 추론이 필요한 LLM 애플리케이션의 기본 프롬프팅 패턴이며, "Think step by step" 한 줄로도 유의미한 성능 향상을 얻을 수 있다. 다만 reasoning 모델이 표준이 되면서, "얼마나 깊이 생각하게 할지"를 프롬프트 문구가 아니라 API 레벨 파라미터로 제어하는 방향으로 실무가 이동하고 있다.
 
 ## 관련 개념
-[[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few_shot_Prompting]] · [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System_and_Role_Prompting]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]]
+[[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few_shot_Prompting]] · [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System_and_Role_Prompting]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]]
 
 ## 출처
 - Wei et al. (2022) "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models" — [arXiv:2201.11903](https://arxiv.org/pdf/2201.11903)
 - Yao et al. (2023) "Tree of Thoughts" — [arXiv:2305.10601](https://arxiv.org/abs/2305.10601)
 - Kojima et al. (2022) "Large Language Models are Zero-Shot Reasoners" — [arXiv:2205.11916](https://arxiv.org/abs/2205.11916)
+- Zhou et al. (2022) "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models" — [arXiv:2205.10625](https://arxiv.org/abs/2205.10625)
+- Press et al. (2022) "Measuring and Narrowing the Compositionality Gap in Language Models" — [arXiv:2210.03350](https://arxiv.org/abs/2210.03350)
+- Chen et al. (2022) "Program of Thoughts Prompting" — [arXiv:2211.12588](https://arxiv.org/abs/2211.12588)
 - learnprompting.org "Chain-of-Thought Prompting" — [learnprompting.org](https://learnprompting.org/docs/intermediate/chain_of_thought)

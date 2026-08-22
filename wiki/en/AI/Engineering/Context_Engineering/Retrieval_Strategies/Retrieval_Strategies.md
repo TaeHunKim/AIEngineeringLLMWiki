@@ -128,10 +128,13 @@ flowchart TD
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced Retrieval]] | Reranking, Multi-Query, RAG Fusion |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE\|HyDE]] | Hypothetical document embedding search improvement |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG\|Agentic RAG]] | Self-RAG, CRAG, Multi-Agent RAG |
-| **GraphRAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft GraphRAG, community clustering |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG\|Hybrid RAG]] | Dense+Sparse, Vector+Graph, multi-store hybrids |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | Retrieval and generation over images and tables |
+| **GraphRAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft GraphRAG, community clustering, LazyGraphRAG/LightRAG |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph\|Knowledge Graph]] | Knowledge graph overview |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF\|LPG & RDF]] | Neo4j Cypher vs SPARQL |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology\|Ontology]] | OWL, domain ontology |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | Agent-driven automatic knowledge graph construction pipeline |
 | **NL2SQL** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL pipeline, benchmarks, latest techniques |
 | **SQL RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | Structured data RAG, Hybrid architecture |
 

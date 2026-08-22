@@ -20,6 +20,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - Compression & Optimization
     - [[AI/Engineering/Model_Engineering/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
     - [[AI/Engineering/Model_Engineering/Model_Distillation|Knowledge Distillation]] — Teacher→Student 지식 증류
+- [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents *(2026)*
 
 ---
 
@@ -32,6 +33,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - Output Control
     - [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] — Temperature, Top-K, Top-P, Min-P
     - [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, YAML, Pydantic, Instructor
+- [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이 *(2026)*
 
 ---
 
@@ -45,6 +47,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, 비용 절감
     - [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] — 긴 컨텍스트 중간 활용도 저하 및 회피 전략 (Liu et al., 2023)
     - [[AI/Engineering/Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]] — AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026)
+- [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] — Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation *(2026)*
 
 ---
 
@@ -134,6 +137,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
 - [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — Semantic Cache, RouteLLM (ICLR 2025), Speculative Decoding, vLLM/SGLang/TensorRT-LLM 서빙 내부
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps *(2026)*
+- [[AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier 설계 *(2026)*
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] — Agentic FinOps, 모델 라우팅/스크립트화/컨텍스트 감사 자율 워처 (Loop Engineering의 특수화) *(2026)*
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]] — FrugalGPT, RouteLLM, UCCI, Budget-Aware Agentic Routing
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] — Agentic Compilation, Tool-Making, LOOP Skill Engine

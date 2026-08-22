@@ -379,7 +379,7 @@ Gemini Enterprise Agent Platform:
 Agent Memory는 에이전트를 "일회용 도구"에서 "지속 학습하는 어시스턴트"로 만드는 핵심 요소다. 사용자와의 장기 관계 구축, 조직의 노하우 축적, 반복 실수 방지 등 개인화된 AI 경험의 기반이다. 프로덕션에서는 Memory ETL 파이프라인으로 기억의 품질을 관리하고, Agent Runtime + Memory Bank로 세션 영속성과 장기 운영을 보장해야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## 출처
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)

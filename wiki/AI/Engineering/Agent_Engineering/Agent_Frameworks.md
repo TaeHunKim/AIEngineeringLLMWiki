@@ -68,6 +68,8 @@ runtime.start()
 - 이벤트 기반 아키텍처로 분산 배포(distributed runtime)까지 확장 가능
 - v0.2 대비 코드 안정성·타입 안전성 대폭 강화
 
+**2026년 현황**: AutoGen은 Semantic Kernel과 함께 **Microsoft Agent Framework 1.0**(2026-04-03 GA)으로 통합됐다. AutoGen의 멀티 에이전트 오케스트레이션 패턴과 Semantic Kernel의 엔터프라이즈 상태 관리·타입 안전성·필터·커넥터 생태계가 하나의 .NET+Python SDK로 합쳐졌으며, 두 프레임워크는 유지보수 모드(버그·보안 패치만)로 전환됐다. 신규 프로젝트는 AutoGen 대신 Microsoft Agent Framework를 검토해야 한다. → [[AI/Engineering/Flow_Engineering/Flow_Engineering|Flow_Engineering]]
+
 ## CrewAI — Role-Based Crews and Flows
 
 **역할(Role) 기반**의 크루 구성이 핵심 은유다. 각 에이전트에 역할(Role)·목표(Goal)·배경 스토리(Backstory)를 부여하고, 이들을 "Crew"로 묶어 순차 또는 계층적으로 실행한다.
@@ -183,6 +185,7 @@ Agent Frameworks는 에이전트 설계의 "언어"에서 "제품"으로의 전�
 
 ## 출처
 - Microsoft Research "AutoGen v0.4: A New Foundation" — [microsoft.com/research](https://www.microsoft.com/en-us/research/blog/autogen-v0-4-reimagining-the-foundation-agentic-ai-frameworks/)
+- Microsoft "Microsoft Agent Framework" 1.0 GA 발표 (2026-04-03) — [microsoft.com](https://www.microsoft.com)
 - CrewAI 공식 문서 — [docs.crewai.com](https://docs.crewai.com)
 - OpenAI "New tools for building agents" — [openai.com](https://openai.com/index/new-tools-for-building-agents/)
 - OpenAI Agents SDK 문서 — [openai.github.io/openai-agents-python](https://openai.github.io/openai-agents-python/)

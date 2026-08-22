@@ -47,7 +47,10 @@ flowchart TD
     T -->|Agent + tool use| LG[LangGraph]
     T -->|Quality validation loop| CF[Cyclic Flows]
     T -->|Human approval needed| HITL[HITL pattern]
+    T -->|.NET/Microsoft ecosystem| MAF[Microsoft Agent Framework]
 ```
+
+**Microsoft Agent Framework 1.0** (GA 2026-04-03) unified the previously separate **Semantic Kernel** (enterprise state management, type safety) and **AutoGen** (multi-agent orchestration) into a single .NET+Python SDK — with native MCP and A2A support from 1.0. AutoGen and Semantic Kernel have both moved to maintenance mode. It's considered a LangGraph alternative for .NET/Azure-centric organizations. See [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a detailed framework comparison.
 
 ## Role in AI Engineering
 

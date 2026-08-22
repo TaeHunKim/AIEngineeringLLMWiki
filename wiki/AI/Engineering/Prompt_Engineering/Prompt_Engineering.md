@@ -18,6 +18,7 @@ nav_order: 20
 | [[AI/Engineering/Prompt_Engineering/Chain_of_Thought\|Chain_of_Thought]] | 단계적 추론 유도 — CoT/ToT/Self-Consistency |
 | [[AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling_Controls]] | Temperature/Top-K/Top-P/Min-P로 출력 다양성 제어 |
 | [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON/YAML/Pydantic으로 구조화된 출력 보장 |
+| [[AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | 정적 프리픽스 우선 배치, Cache Breakpoint/TTL, Semantic Cache와의 차이 |
 
 ## 프롬프트 설계 원칙
 
@@ -40,6 +41,10 @@ Prompt Engineering: 입력 텍스트 변경 (비용 낮음, 즉시 적용)
   2. 부족하면 Fine-Tuning 검토
   3. 그래도 부족하면 Model Engineering 전체 고려
 ```
+
+## Reasoning 모델 시대의 변화
+
+o1/o3, Claude Extended Thinking, Gemini Deep Think 같은 reasoning 모델은 CoT를 내부적으로 수행하므로, "단계별로 생각해" 같은 유도 문구의 역할이 줄어들고 thinking budget 같은 API 파라미터 제어로 무게중심이 옮겨가고 있다. 자세한 내용은 [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain_of_Thought]] 참고.
 
 ## AI Engineering에서의 역할
 

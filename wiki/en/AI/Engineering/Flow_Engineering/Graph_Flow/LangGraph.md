@@ -149,6 +149,40 @@ supervisor = create_supervisor(
 
 → See [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]]
 
+## LangGraph 1.0 and 2026 Q2 Features
+
+LangGraph reached v1.0 alongside LangChain, cementing its role as the lower-level runtime for production long-running agents [4]. The features added in Q2 2026 specifically target "agents that run for days":
+
+### TimeoutPolicy — Per-Node Timeouts
+
+```python
+from langgraph.types import TimeoutPolicy
+
+builder.add_node(
+    "tools",
+    tool_node,
+    timeout=TimeoutPolicy(run_timeout=30, idle_timeout=120),
+    # run_timeout: max time for the node's own execution
+    # idle_timeout: max time allowed with no response (e.g. during streaming)
+)
+```
+
+### Per-Node Error Handlers — Saga/Compensation Transactions
+
+When a node fails, it receives a typed `NodeError` and can route to a recovery node. This lets you express Saga-pattern compensation logic — like in distributed transactions — directly in the graph, rolling back already-completed steps when a later step fails.
+
+### Cooperative Graceful Shutdown
+
+Sending a shutdown signal to a long-running node lets it safely finish its current unit of work before terminating — avoiding the state inconsistency a forced kill would cause.
+
+### DeltaChannel — Reduced Checkpoint Overhead
+
+Prior checkpointing saved the entire State on every step. `DeltaChannel` stores only the **per-step delta**, substantially cutting checkpoint-storage cost on threads that run for hundreds or thousands of steps.
+
+### v2 Streaming API — Typed `StreamPart`
+
+Restructures what used to be mostly string-chunk streaming output into a unified `StreamPart` type, so text, tool calls, thinking blocks, and other distinct kinds of streaming events can all be consumed through one consistent interface.
+
 ## LangGraph Platform
 
 Managed service providing cloud deployment, API serving, and debugging tools:
@@ -170,3 +204,4 @@ LangGraph is the foundation for reliably operating complex Agent systems and Mul
 - LangGraph Official Documentation — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/)
 - "Building Stateful AI Systems with LangGraph" — [notes.muthu.co](https://notes.muthu.co/2025/10/building-stateful-ai-systems-with-langgraph-and-agentic-workflow-graphs/)
 - "LangGraph Tutorial 2026" — [alicelabs.ai](https://alicelabs.ai/en/insights/langgraph-guide-2026)
+4. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)

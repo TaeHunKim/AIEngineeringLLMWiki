@@ -241,7 +241,7 @@ Gemini Enterprise Agent Platform:
 Agent Memory transforms agents from "disposable tools" to "continuously learning assistants." It's the foundation for long-term relationships with users, organizational knowledge accumulation, and preventing repeated mistakes. In production, memory quality must be managed with a Memory ETL pipeline, and session persistence and long-term operations must be guaranteed with Agent Runtime + Memory Bank.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## Sources
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)

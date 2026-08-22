@@ -26,6 +26,7 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 | [[AI/Engineering/Context_Engineering/Context_Compression\|Context_Compression]] | LLM Lingua, Map-Reduce, 비용 절감 |
 | [[AI/Engineering/Context_Engineering/Lost_in_the_Middle\|Lost_in_the_Middle]] | LLM의 긴 컨텍스트 중간 활용도 저하 현상 및 회피 전략 |
 | [[AI/Engineering/Context_Engineering/Open_Knowledge_Format\|Open Knowledge Format (OKF)]] | AI 에이전트용 지식 패키징 오픈 표준, 마크다운+YAML frontmatter 번들 (Google Cloud, 2026) |
+| [[AI/Engineering/Context_Engineering/Agentic_Context_Management\|Agentic_Context_Management]] | Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation |
 
 > **RAG, GraphRAG, NL2SQL, SQL RAG** 문서는 별도 챕터로 분리됐습니다.
 > → [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies 챕터]] 참고
@@ -33,10 +34,11 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 ## 핵심 과제
 
 ```
-1. 무엇을 넣을까?     → Retrieval Strategies (RAG / GraphRAG / SQL RAG)로 관련 정보 검색
-2. 어떻게 압축할까?  → Context Compression으로 토큰 절약
-3. 어떻게 기억할까?  → Memory & Semantic Cache
-4. 어떤 순서로?      → "Lost in the Middle" 문제 회피 (→ [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]])
+1. 무엇을 넣을까?      → Retrieval Strategies (RAG / GraphRAG / SQL RAG)로 관련 정보 검색
+2. 어떻게 압축할까?   → Context Compression으로 토큰 절약
+3. 어떻게 기억할까?   → Memory & Semantic Cache
+4. 어떤 순서로?       → "Lost in the Middle" 문제 회피 (→ [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]])
+5. 루프 전체를 어떻게? → 장기 실행 에이전트의 Context Rot 대응 (→ [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]])
 ```
 
 ## AI Engineering에서의 역할

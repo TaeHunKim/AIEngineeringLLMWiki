@@ -137,7 +137,7 @@ See [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middl
 Context Compression simultaneously achieves both **cost optimization** and **performance improvement**. Removing unnecessary tokens reduces API costs, and concentrating on core information improves model response quality. It is especially the key technique for managing accumulated context in Agent systems with long context windows.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]
 
 ## Sources
 - Jiang et al. (2023) "LLMLingua: Compressing Prompts for Accelerated Inference" — [arXiv:2310.05736](https://arxiv.org/abs/2310.05736)

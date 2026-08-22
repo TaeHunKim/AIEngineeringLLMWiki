@@ -128,10 +128,13 @@ flowchart TD
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced Retrieval]] | Reranking, Multi-Query, RAG Fusion |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE\|HyDE]] | 가상 문서 임베딩 검색 개선 |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG\|Agentic RAG]] | Self-RAG, CRAG, Multi-Agent RAG |
-| **GraphRAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft GraphRAG, 커뮤니티 클러스터링 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG\|Hybrid RAG]] | Dense+Sparse, Vector+Graph, Multi-Store 하이브리드 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | 이미지·표를 포함한 검색·생성 |
+| **GraphRAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft GraphRAG, 커뮤니티 클러스터링, LazyGraphRAG/LightRAG |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph\|Knowledge Graph]] | 지식 그래프 개요 |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF\|LPG & RDF]] | Neo4j Cypher vs SPARQL |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology\|Ontology]] | OWL, 도메인 온톨로지 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | 에이전트 기반 지식 그래프 자동 구축 파이프라인 |
 | **NL2SQL** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL 파이프라인, 벤치마크, 최신 기법 |
 | **SQL RAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | 정형 데이터 RAG, Hybrid 아키텍처 |
 

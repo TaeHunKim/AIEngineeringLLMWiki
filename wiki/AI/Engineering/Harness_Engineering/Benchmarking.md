@@ -176,7 +176,7 @@ weekly_benchmark_run = schedule(
 Benchmarking은 **모델 선택, 프롬프트 최적화, 파인튜닝 효과 측정**의 객관적 기준을 제공한다. 커뮤니티 공인 벤치마크로 모델 간 비교를 하되, 실제 프로덕션 성능은 내부 도메인 특화 테스트로 측정하는 이중 전략이 권장된다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]
+[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Loop_Engineering/RL_Environments|Loop_Engineering/RL_Environments]] · [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]
 
 ## 출처
 - Hendrycks et al. (2021) "MMLU" — [arXiv:2009.03300](https://arxiv.org/abs/2009.03300)
