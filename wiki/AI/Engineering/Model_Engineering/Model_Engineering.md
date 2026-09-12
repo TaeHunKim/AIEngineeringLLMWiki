@@ -30,6 +30,9 @@ flowchart LR
 | [[AI/Engineering/Model_Engineering/Quantization\|Quantization]] | INT8/INT4 양자화, GPTQ/AWQ/GGUF |
 | [[AI/Engineering/Model_Engineering/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi 계열 |
 | [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE\|Model_Architectures_and_MoE]] | Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents |
+| [[AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation\|Synthetic_Data_and_Curation]] | Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse |
+| [[AI/Engineering/Model_Engineering/Multimodal_Models\|Multimodal_Models]] | VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA |
+| [[AI/Engineering/Model_Engineering/Tokenization\|Tokenization]] | BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율 |
 
 ## 언제 어떤 기술을 선택하는가
 

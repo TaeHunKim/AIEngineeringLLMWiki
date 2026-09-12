@@ -176,3 +176,5 @@ The 4 Core Pillars are the **conceptual framework** for agent system design. Whe
 
 ## Sources
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)
+- [[en/AI/sources/22365_19_Agents_v8|22365_19_Agents_v8]] (existing wiki source)
+- [[en/AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (existing wiki source, first published Nov 2025 → updated May 2026)

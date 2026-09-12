@@ -264,3 +264,4 @@ Observability is the **nervous system of production AI systems**. It enables dat
 - MLflow "Top 5 LLM and Agent Observability Tools in 2026" — [mlflow.org](https://mlflow.org/top-5-agent-observability-tools/)
 - Langfuse official docs — [langfuse.com](https://langfuse.com)
 - Arize Phoenix docs — [docs.arize.com/phoenix](https://docs.arize.com/phoenix)
+- [[en/AI/sources/Agent_Quality|Agent_Quality]] (existing wiki source, first published Nov 2025 → updated May 2026)

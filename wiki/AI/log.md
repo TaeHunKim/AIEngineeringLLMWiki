@@ -84,7 +84,7 @@
 - Agent_Skills_and_Protocols.md → overview로 재작성 (Agent Skills + 프로토콜 비교표)
 - Agent_Skills_and_Protocols/MCP.md 신설 — Host-Client-Server 아키텍처, 4 Primitives, 보안 위협 5가지, 2026 현황 (Linux Foundation 기증, 주간 다운로드 2천만+)
 - Agent_Skills_and_Protocols/A2A.md 신설 — Agent Card, 태스크 요청/응답 구조, v1.0 스펙, 150개+ 조직 지지 현황
-- Tool_Use_and_Function_Calling.md — 말미에 MCP 섹션 추가 (FC → MCP 진화 맥락 + [[Agent_Skills_and_Protocols/MCP]] 링크)
+- Tool_Use_and_Function_Calling.md — 말미에 MCP 섹션 추가 (FC → MCP 진화 맥락 + `[[Agent_Skills_and_Protocols/MCP]]` 링크)
 - Engineering/index.md — Agent Skills & Protocols 아래 MCP·A2A 서브항목 추가
 
 ## [2026-07-11] ingest | AI Engineering from Scratch (aiengineeringfromscratch.com, GitHub: rohitg00/ai-engineering-from-scratch)
@@ -238,3 +238,46 @@
   - `Deterministic_Task_Scriptification.md`(order:2) — Agentic Compilation(arXiv:2604.09718), Tool-Making and Self-Evolving LLM Agents(arXiv:2607.08010), LOOP Skill Engine(arXiv:2605.14237), Voyager/DSPy와의 관계, 스키마 드리프트 시 LLM 폴백, Agent Sandbox 연결
   - `Context_Usage_Auditing.md`(order:3) — 기존 `Context_Compression.md`와 겹치지 않는 "검색됐지만 안 쓰인 RAG 청크 감사" 관점, AdaGReS(arXiv:2512.25052), retrieval-K 자동 조정, 멀티에이전트 입출력 형식 엄수의 실용성 우선순위
 - 갱신: `Loop_Engineering.md` 하위 문서 표, `Runtime_Optimization.md`·`Continuous_Optimization.md`·`Production_Operations.md`·`Guardrail_Engineering.md`(KO+EN 8파일)에 역링크, `Engineering/index.md`·`AI/index.md`(KO+EN 4파일)에 하위 문서 3개 포함 링크 반영
+
+## [2026-09-13] create+update | AI Engineering 콘텐츠 공백 7건 + 구조 결함 5건 보강
+
+- 배경: 사용자 요청("새로운 엔지니어링 기법 카테고리든 기존 카테고리의 확장이든 업데이트할 만한 게 있는지 조사")으로 전체 위키(90 KO + 90 EN 파일, 15,539줄) 감사 진행. 방법: (1) 전체 디렉토리 트리·분량(`wc -l`) 감사, (2) 후보 주제별 grep 검증(공백은 0건 확인 후에만 신규 문서화), (3) 2026년 최신 기법 웹 리서치(GEPA/ICLR 2026, Lethal Trifecta/Rule of Two, Matryoshka Embedding, Terminal-Bench 2.0/ARC-AGI-2 등).
+- **9번째 최상위 계층 신설은 재기각**: Serving/Environment/Data/Security Engineering 후보 모두 검토했으나 새 "통제 대상"을 도입하지 않음이 확인됨. Environment Engineering은 `[2026-08-22]` 항목에서 이미 한 차례 기각된 판단(Harness Engineering과 동의어)을 재확인. Serving은 Loop Engineering 하위 서브폴더로, Data는 Model Engineering 하위 문서로, Security는 Harness Engineering 하위 문서로 각각 흡수.
+- **제외한 항목** (이미 충분히 커버됨을 grep으로 확인 후 신규 작성 보류): Reasoning 모델 프롬프팅(`Chain_of_Thought.md`에 이미 20줄 서술 존재), RLVR/GRPO(`Continuous_Optimization.md`+`RL_Environments.md`), 기존 에이전트 벤치마크(GAIA/SWE-bench/OSWorld/WebArena/τ-bench는 `Benchmarking.md`에 이미 존재 — 신규 3종만 추가).
+
+### Harness Engineering (1개 신규 + 2개 확장)
+- `Prompt_Injection_Defense.md`(order:11) 신설 — `lethal trifecta|rule of two|CaMeL|dual-LLM` grep 0건 확인 후 작성. Lethal Trifecta(Willison), Meta Rule of Two, Sandbox/allow-list 단독 방어 실패 사례 2건, CaMeL(capability 기반, arXiv:2503.18813), Dual-LLM 패턴(Willison 2023), Spotlighting, MCP 고유 공격면(Tool Poisoning/Rug Pull)과의 연결. `Red_Teaming.md`(공격 발견)·`Guardrail_Engineering.md`(범용 방어 스택)과의 경계표 포함
+- `Benchmarking.md`(KO+EN) — Terminal-Bench 2.0, ARC-AGI-2, SWE-Bench Pro 3종 추가, τ-bench를 τ²-bench까지 확장
+- `Harness_Engineering.md`(KO+EN) — "명명 충돌: Agent Harness와의 구분" 절 신설. 2026년 업계 일부(LangChain/Anthropic)가 "agent harness"를 실행 스캐폴딩(runtime/context/capability/governance/protocol adapter 5계층) 의미로 쓰기 시작한 것과, 이 위키의 좁은 정의(Guardrails+Evaluation+Observability)가 다름을 `Cost_Engineering.md`의 "특수화" 명시 선례를 따라 명문화
+
+### Model Engineering (3개 신규)
+- `Synthetic_Data_and_Curation.md`(order:7) 신설 — `self-instruct|evol-instruct|model collapse|decontamination` grep 0건 확인 후 작성. Self-Instruct(arXiv:2212.10560)/Evol-Instruct(WizardLM), judge 필터링이 최대 레버라는 관찰, dedup/decontamination/PII 위생, Constitutional AI 데이터, model collapse(Shumailov et al. 2024, Nature) 위험, 라이선스 추적. `Data_Flywheel.md`(운영 피드백)·`Model_Distillation.md`(가중치 증류)와 경계표
+- `Multimodal_Models.md`(order:8) 신설 — VLM 어댑터 결합형(LLaVA 계보) vs 네이티브 멀티모달 사전학습 2계보, 이미지 토큰화·해상도 타일링, 오디오(cascade vs native speech-to-speech), 비디오 프레임 샘플링, MMMU/MathVista/DocVQA. `Multimodal_RAG.md`(검색)·`Computer_Use_and_Voice_Agents.md`(행동공간)와 경계표
+- `Tokenization.md`(order:9) 신설 — `tokeniz|BPE` grep 부수적 1건만 확인 후 작성. BPE/WordPiece/SentencePiece/Unigram, 어휘 크기 트레이드오프, **다국어·한국어 토큰 효율 불이익**(같은 의미에 더 많은 토큰 소비 → 비용·컨텍스트 예산 불이익), 숫자/코드 토큰화가 산술·코딩 성능에 미치는 영향, tokenizer 불일치 실무. `Cost_Engineering/`·`Prompt_Caching.md`와 경계표
+
+### Prompt Engineering (1개 신규)
+- `Automatic_Prompt_Optimization.md`(order:7) 신설 — "프롬프트를 사람이 안 쓴다" 패러다임 전환. APE(arXiv:2211.01910)/OPRO(arXiv:2309.03409)/TextGrad(arXiv:2406.07496), GEPA(ICLR 2026, arXiv:2507.19457 — GRPO 대비 rollout 35배 절감 + 20% 성능 향상) 상세, DSPy 옵티마이저 계보(BootstrapFewShot→COPRO→MIPROv2→GEPA) 선택 가이드. 상세 파이프라인·운영 루프는 `Continuous_Optimization.md`에 위임(`Full_Fine-Tuning.md`가 GRPO/RLVR 상세를 위임한 선례 준용)
+
+### Context Engineering — Retrieval Strategies (2개 신규 + RAG 폴더 재번호)
+- `Embedding_Models.md`(order:5, `Retrieval_Strategies/` 직속) 신설 — 전용 문서 0개, `sources/whitepaper_emebddings_vectorstores_v2.md`(Google, 2025-02) 미증류 확인 후 작성. Bi-encoder/Cross-encoder/Late Interaction(ColBERT/XTR/ColPali) 3분류, Matryoshka Representation Learning(Kusupati 2022, 3072→1024차원 시 저장 1/3·품질 하락 ~2%), MTEB/BEIR와 그 한계, 도메인 파인튜닝(hard negative mining), 한국어 임베딩 고려사항, 리랭커 모델 비교. 미증류 소스를 출처로 연결
+- `RAG/Document_Ingestion.md`(order:1) 신설 — RAG 챕터가 청킹부터 시작해 파싱 단계가 빠져 있던 공백. PDF/표/수식 파싱, OCR 경유 vs OCR-free(ColPali/ColQwen), 도구 지형(Unstructured.io/LlamaParse/Docling/Marker), 메타데이터·구조 보존, 증분 인덱싱. **`RAG/` 폴더 기존 order 1~7을 2~8로 재번호**(Chunking_Strategies·Vector_Storage·Advanced_Retrieval·HyDE·Agentic_RAG·Hybrid_RAG·Multimodal_RAG, KO+EN 14파일 프론트매터만 기계적 수정)
+
+### Loop Engineering — Serving_Engineering 신설 (Runtime_Optimization 분리)
+- `Runtime_Optimization.md`(418줄, 위키 전체 최대 분량)를 `Cost_Engineering/` 선례(인덱스+자식, "특수화" 명시)를 따라 분리. 새 서브폴더 `Loop_Engineering/Serving_Engineering/`(KO+EN 8파일):
+  - `Serving_Engineering.md`(order:0) — "새 계층이 아니라 Runtime_Optimization의 인프라 층위" 위치 정의, Prefill/Decode 2단계 구조, TTFT/TPOT/Goodput 지표, 엔진 선택 결정표(vLLM/SGLang/TensorRT-LLM/llama.cpp/Ollama/TGI)
+  - `Inference_Internals.md`(order:1) — KV Cache 병목, PagedAttention(vLLM), Continuous Batching, Chunked Prefill(SARATHI, arXiv:2308.16369), RadixAttention(SGLang), FlashAttention(arXiv:2205.14135), TensorRT-LLM FP8/NVFP4
+  - `Speculative_Decoding.md`(order:2) — 작동 원리, **수락률(acceptance rate)이 성능을 좌우한다**는 관찰, SpecInfer/Medusa/EAGLE/EAGLE-3(arXiv:2503.01840)/n-gram Prompt Lookup 비교표
+  - `Distributed_Serving.md`(order:3) — Disaggregated Prefill/Decode(NVIDIA Dynamo/llm-d), KV Cache Transfer 비용, **TP/PP/EP 병렬화**(Megatron-LM/GPipe 신규 인용) 신규 서술, Goodput 스케줄링, 콜드 스타트·멀티 리전
+- `Runtime_Optimization.md`(KO+EN) 418→약 150줄로 축소 — Semantic Cache·모델 라우팅 절은 요약+링크로 대체(내용은 삭제 없이 `Semantic_Cache.md`·`Complexity_Aware_Model_Routing.md`로 이관 확인 후 대체), Speculative Decoding·서빙 엔진 내부 절은 전량 `Serving_Engineering/`으로 이관. 배칭/스트리밍/비용 제어 루프는 "애플리케이션 레이어"로 재정의해 유지
+- `RL_Environments.md`(KO+EN) — Agentic Environment Engineering 서베이(arXiv:2606.12191)의 Modeling→Synthesis→Evaluation→Application 라이프사이클 프레이밍 절 추가
+
+### 구조적 결함 수정
+- `quartz.ts` `FOLDER_ORDER` — `graph_engineering`(8번째 최상위 계층)·`cost_engineering`·`serving_engineering`이 누락되어 기본값(99)으로 폴백, 사이드바 최하단에 정렬되던 버그 수정
+- EN `Engineering/` 트리의 `[[AI/sources/...]]` 인용 25건이 EN 대응 문서에서 전부 누락(`en/AI/sources/` 링크 0건)되어 있던 것을 확인 후 13개 파일에 `[[en/AI/sources/...]]` 인용 복원(`LLM_as_a_Judge`·`Observability_and_Tracing`·`Agent_as_a_Judge`·`Guardrail_Engineering`·`Vector_Storage`·`Tool_Use_and_Function_Calling`·`AgentOps`·`Agent_Deployment`·`Agent_Architectures`·`Agent_Core_Pillars`·`Agent_Memory`·`A2A`·`MCP`). `AgentOps.md`(EN)는 인용 복원 과정에서 KO에는 있으나 EN에서 통째로 누락돼 있던 가격·성능 오버헤드 소절과 참고문헌 번호 각주까지 함께 보강
+- EN `Agent_Skills_and_Protocols.md`(162→273줄) — KO(293줄) 대비 누락돼 있던 Claude Code Plugins/Skills, Skill Registry, A2UI 멀티플랫폼 렌더러 표, Gemini Enterprise 통합, MCP UI/AG-UI/A2UI 비교, AP2 Mandate 상세·현황 절 보강
+- KO/EN `## 관련 개념`/`## Related Concepts` 링크 드리프트 25쌍 중 우선순위 6개 파일(`Autonomous_Systems`·`Multi_Agent_Coordination`·`AgentOps`·`Guardrail_Engineering`·`Agent_Memory`·`Agent_Frameworks`) 동기화. 나머지 19쌍은 이번 스코프 밖으로 유지
+- `SCHEMA.md`에 "이중 언어 미러 규칙" 절 신설 — KO/EN 동시 작성, `order:` 동일, `en/` wikilink 접두, 표 안 파이프 이스케이프, 신규 폴더 생성 시 `quartz.ts` `FOLDER_ORDER` 등록 필요성을 명문화(기존에는 `CLAUDE.md`에만 있던 규칙)
+
+### 인덱스 갱신
+- `Engineering/index.md`·`AI/index.md`(KO+EN 4파일)에 신규 문서 10개(Prompt_Injection_Defense, Synthetic_Data_and_Curation, Multimodal_Models, Tokenization, Automatic_Prompt_Optimization, Embedding_Models, Document_Ingestion, Serving_Engineering 자식 3개) 전체 등록, Retrieval_Strategies.md 하위 문서 표 갱신
+- 적용 제외: KO/EN 링크 드리프트 19쌍, EN `SCHEMA.md`/`log.md` 부재라는 구조적 비대칭(기존에도 스코프 밖으로 유지되던 항목) — 이번에도 그대로 보류

@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 ---
 
 # Advanced Retrieval (고급 검색 기법)

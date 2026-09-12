@@ -19,6 +19,7 @@ nav_order: 20
 | [[AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling_Controls]] | Temperature/Top-K/Top-P/Min-P로 출력 다양성 제어 |
 | [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON/YAML/Pydantic으로 구조화된 출력 보장 |
 | [[AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | 정적 프리픽스 우선 배치, Cache Breakpoint/TTL, Semantic Cache와의 차이 |
+| [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic_Prompt_Optimization]] | "프롬프트를 사람이 안 쓴다" 패러다임 — APE/OPRO/TextGrad, GEPA, DSPy 옵티마이저 선택 |
 
 ## 프롬프트 설계 원칙
 

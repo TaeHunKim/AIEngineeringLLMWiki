@@ -17,6 +17,9 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]]: PTQ/GPTQ/AWQ/GGUF, memory calculation by precision
 - [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]]: Hinton 2015 origin, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
 - [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]]: Dense vs MoE (Total/Active Params), RoPE/YaRN/LongRoPE long-context, SLM-for-Agents
+- [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]]: Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse
+- [[en/AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]]: VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA
+- [[en/AI/Engineering/Model_Engineering/Tokenization|Tokenization]]: BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency
 
 #### Prompt Engineering
 - [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System & Role Prompting]]: System Prompt structure, role types, Constitutional AI
@@ -25,6 +28,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]]: Temperature/Top-K/Top-P/Min-P/Beam Search
 - [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]]: JSON Mode, Pydantic, Instructor library
 - [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]]: Static prefix design, cache breakpoints/TTL, how it differs from Semantic Cache
+- [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]]: APE/OPRO/TextGrad, GEPA (ICLR 2026), DSPy optimizer selection guide
 
 #### Context Engineering
 - [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]]: GPTCache, Redis-based semantic cache
@@ -35,6 +39,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format|Open Knowledge Format (OKF)]]: Open standard for packaging organizational knowledge for AI agents (Google Cloud 2026)
 - [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]]: Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG Overview]]: Vector-based RAG basics, standard pipeline, RAGAS evaluation
+- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document Ingestion]]: Document parsing/OCR, OCR-based vs. OCR-free (ColPali), tool landscape (Unstructured/LlamaParse/Docling/Marker)
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]]: 5 chunking strategies, NVIDIA 2024 benchmark
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]]: HNSW/FAISS/ScaNN, 7 DB comparison table
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]]: Cross-Encoder reranking, Multi-Query, RAG Fusion
@@ -42,6 +47,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]]: Naive/Advanced/Agentic taxonomy, Self-RAG, CRAG, Query Routing
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]]: Dense+Sparse, Vector+Graph, Vector+Graph+KV hybrids
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]]: CLIP/ColPali shared embeddings, text+image integrated retrieval
+- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]]: Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka Representation Learning, MTEB/BEIR, reranker models
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]: Knowledge graph overview, comparison with vector DBs
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF comparison
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]]: OWL/Turtle, domain ontology, LLM integration patterns
@@ -88,17 +94,22 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
 - [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]]: Sparse Autoencoders, Circuit Tracing, internal circuit analysis
 - [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards
+- [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM pattern, Spotlighting
 
 #### Loop Engineering
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]: Agent-in-the-Loop, self-reinforcing data collection cycle
 - [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]: DSPy/MIPROv2, iterative fine-tuning, A/B testing
-- [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]: Semantic Cache, Model Routing, vLLM/SGLang/TensorRT-LLM serving internals
+- [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]: API-calling-side optimization — Semantic Cache, Model Routing, batching, streaming
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]: AI gateway, deployment strategies, A/B testing, SRE/chaos, FinOps
 - [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]]: Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier & reward design
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]: Agentic FinOps, autonomous watcher for model routing/scriptification/context auditing
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]]: FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]]: Agentic Compilation, Tool-Making, LOOP Skill Engine
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Context Usage Auditing]]: RAG chunk usage auditing, automatic retrieval-K tuning
+- [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]]: Serving-engine-internal optimization, Prefill/Decode two stages, TTFT/TPOT/Goodput, engine-selection decision table
+- [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]]: KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
+- [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]]: Draft/Target models, acceptance rate, SpecInfer/Medusa/EAGLE-3/n-gram
+- [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]]: Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, Goodput scheduling, cold start
 
 #### Graph Engineering
 - [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]: Node/edge types, LangGraph `Send()` dynamic routing, identity/budget/guardrail governance, Graph-of-Agents

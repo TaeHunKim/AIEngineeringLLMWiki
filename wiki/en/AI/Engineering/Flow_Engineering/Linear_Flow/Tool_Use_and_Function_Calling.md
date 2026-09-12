@@ -343,6 +343,7 @@ Function Calling is the key technology that transforms LLMs from "text generator
 - OpenAI Function Calling docs — [platform.openai.com](https://platform.openai.com/docs/guides/function-calling)
 - Anthropic Tool Use docs — [docs.anthropic.com](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)
+- Mike Styer et al. (Google), "Agent Tools & Interoperability with Model Context Protocol (MCP)" — [kaggle.com](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp) (first published Nov 2025, updated May 2026) · this wiki: [[en/AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]]
 - Anthropic (2025) "Equipping Agents for the Real World with Agent Skills" — [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 - Anthropic (2026) "Code execution with MCP: Building more efficient agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
 - Cloudflare "Code Mode: the better way to use MCP" — [blog.cloudflare.com](https://blog.cloudflare.com/code-mode/)

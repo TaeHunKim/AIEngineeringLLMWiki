@@ -146,3 +146,5 @@ A2A is the **interoperability layer for the agent ecosystem**. As multi-agent ar
 - A2A Protocol official spec — [a2a-protocol.org](https://a2a-protocol.org/latest/specification/)
 - A2A GitHub — [github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
 - Linux Foundation (2026) "A2A Protocol Surpasses 150 Organizations" — [linuxfoundation.org](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year)
+- Wikipedia "Agent2Agent" — [en.wikipedia.org](https://en.wikipedia.org/wiki/Agent2Agent)
+- [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]] (existing wiki source — A2A vs MCP comparison)

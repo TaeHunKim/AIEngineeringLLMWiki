@@ -18,6 +18,9 @@ order: 0
 - [[AI/Engineering/Model_Engineering/Quantization|Engineering/Model_Engineering/Quantization]]: PTQ/GPTQ/AWQ/GGUF, 정밀도별 메모리 계산
 - [[AI/Engineering/Model_Engineering/Model_Distillation|Engineering/Model_Engineering/Model_Distillation]]: Hinton 2015 기원, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
 - [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Engineering/Model_Engineering/Model_Architectures_and_MoE]]: Dense vs MoE(Total/Active Params), RoPE/YaRN/LongRoPE 롱컨텍스트, SLM-for-Agents
+- [[AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Engineering/Model_Engineering/Synthetic_Data_and_Curation]]: Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse
+- [[AI/Engineering/Model_Engineering/Multimodal_Models|Engineering/Model_Engineering/Multimodal_Models]]: VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA
+- [[AI/Engineering/Model_Engineering/Tokenization|Engineering/Model_Engineering/Tokenization]]: BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율
 
 #### Prompt Engineering
 - [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|Engineering/Prompt_Engineering/System_and_Role_Prompting]]: System Prompt 구조, 역할 유형, Constitutional AI
@@ -26,6 +29,7 @@ order: 0
 - [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Engineering/Prompt_Engineering/Sampling_Controls]]: Temperature/Top-K/Top-P/Min-P/Beam Search
 - [[AI/Engineering/Prompt_Engineering/Structured_Output|Engineering/Prompt_Engineering/Structured_Output]]: JSON Mode, Pydantic, Instructor 라이브러리
 - [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Engineering/Prompt_Engineering/Prompt_Caching]]: 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이
+- [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Engineering/Prompt_Engineering/Automatic_Prompt_Optimization]]: APE/OPRO/TextGrad, GEPA(ICLR 2026), DSPy 옵티마이저 선택 가이드
 
 #### Context Engineering
 - [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Engineering/Context_Engineering/Memory_and_Semantic_Cache]]: GPTCache, Redis 기반 시맨틱 캐시
@@ -36,6 +40,7 @@ order: 0
 - [[AI/Engineering/Context_Engineering/Open_Knowledge_Format|Engineering/Context_Engineering/Open_Knowledge_Format]]: AI 에이전트용 지식 패키징 오픈 표준 (Google Cloud 2026)
 - [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Engineering/Context_Engineering/Agentic_Context_Management]]: Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG]]: 벡터 기반 RAG 기초, 표준 파이프라인, RAGAS 평가
+- [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion]]: 문서 파싱·OCR, OCR 경유 vs OCR-free(ColPali), 도구 지형(Unstructured/LlamaParse/Docling/Marker)
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies]]: 5가지 청킹 전략, NVIDIA 2024 벤치마크
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage]]: HNSW/FAISS/ScaNN, 7개 DB 비교표
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval]]: Cross-Encoder 리랭킹, Multi-Query, RAG Fusion
@@ -43,6 +48,7 @@ order: 0
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG]]: Naive/Advanced/Agentic 분류, Self-RAG, CRAG, Query Routing
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG]]: Dense+Sparse, Vector+Graph, Vector+Graph+KV 하이브리드
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG]]: CLIP/ColPali 공유 임베딩, 텍스트+이미지 통합 검색
+- [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models]]: Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka Representation Learning, MTEB/BEIR, 리랭커 모델
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph]]: Knowledge Graph 개요, 벡터 DB와의 비교
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF 비교
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology]]: OWL/Turtle, 도메인 온톨로지, LLM 통합 패턴
@@ -89,17 +95,22 @@ order: 0
 - [[AI/Engineering/Harness_Engineering/Alignment_Research|Engineering/Harness_Engineering/Alignment_Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
 - [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Engineering/Harness_Engineering/Mechanistic_Interpretability]]: Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석
 - [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Engineering/Harness_Engineering/AI_Governance_and_Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드
+- [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Engineering/Harness_Engineering/Prompt_Injection_Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM 패턴, Spotlighting
 
 #### Loop Engineering
 - [[AI/Engineering/Loop_Engineering/Data_Flywheel|Engineering/Loop_Engineering/Data_Flywheel]]: Agent-in-the-Loop, 자기 강화 데이터 수집 사이클
 - [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Engineering/Loop_Engineering/Continuous_Optimization]]: DSPy/MIPROv2, 반복적 파인튜닝, A/B 테스트
-- [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Engineering/Loop_Engineering/Runtime_Optimization]]: Semantic Cache, Model Routing, vLLM/SGLang/TensorRT-LLM 서빙 내부
+- [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Engineering/Loop_Engineering/Runtime_Optimization]]: API 호출 측 최적화 — Semantic Cache, Model Routing, 배칭, 스트리밍
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Engineering/Loop_Engineering/Production_Operations]]: AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스, FinOps
 - [[AI/Engineering/Loop_Engineering/RL_Environments|Engineering/Loop_Engineering/RL_Environments]]: RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier·보상 설계
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Engineering/Loop_Engineering/Cost_Engineering]]: Agentic FinOps, 모델 라우팅/스크립트화/컨텍스트 감사 자율 워처
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing]]: FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification]]: Agentic Compilation, Tool-Making, LOOP Skill Engine
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]: RAG 청크 사용량 감사, retrieval-K 자동 조정
+- [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Engineering/Loop_Engineering/Serving_Engineering]]: 서빙 엔진 내부 최적화, Prefill/Decode 2단계, TTFT/TPOT/Goodput, 엔진 선택 결정표
+- [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals]]: KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
+- [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding]]: Draft/Target 모델, 수락률, SpecInfer/Medusa/EAGLE-3/n-gram
+- [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving]]: Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, Goodput 스케줄링, 콜드 스타트
 
 #### Graph Engineering
 - [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Engineering/Graph_Engineering/Multi_Agent_Topology]]: 노드/엣지 유형, LangGraph `Send()` 동적 라우팅, identity/budget/guardrail 거버넌스, Graph-of-Agents

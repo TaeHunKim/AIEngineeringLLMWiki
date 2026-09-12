@@ -30,6 +30,9 @@ flowchart LR
 | [[en/AI/Engineering/Model_Engineering/Quantization\|Quantization]] | INT8/INT4 quantization, GPTQ/AWQ/GGUF |
 | [[en/AI/Engineering/Model_Engineering/Model_Distillation\|Knowledge Distillation]] | Teacher-Student, DistilBERT/Phi series |
 | [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE\|Model Architectures & MoE]] | Dense vs. MoE, RoPE/YaRN long-context, SLM-for-Agents |
+| [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation\|Synthetic Data & Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |
+| [[en/AI/Engineering/Model_Engineering/Multimodal_Models\|Multimodal Models]] | VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA |
+| [[en/AI/Engineering/Model_Engineering/Tokenization\|Tokenization]] | BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency |
 
 ## When to Choose Which Technique
 

@@ -123,6 +123,7 @@ flowchart TD
 | 챕터 | 문서 | 내용 |
 |------|------|------|
 | **RAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG\|RAG]] | 벡터 기반 RAG 기초 |
+| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion\|Document Ingestion]] | 문서 파싱·OCR, OCR 경유 vs OCR-free |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking Strategies]] | 문서 분할 전략 5가지 |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector Storage]] | 벡터 DB, HNSW, FAISS |
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced Retrieval]] | Reranking, Multi-Query, RAG Fusion |
@@ -137,7 +138,8 @@ flowchart TD
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | 에이전트 기반 지식 그래프 자동 구축 파이프라인 |
 | **NL2SQL** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL 파이프라인, 벤치마크, 최신 기법 |
 | **SQL RAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | 정형 데이터 RAG, Hybrid 아키텍처 |
+| **공통 인프라** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding Models]] | 임베딩·리랭커 모델 자체 — Bi/Cross-encoder/Late Interaction, Matryoshka, MTEB |
 
 ## 관련 개념
 
-[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]]

@@ -21,6 +21,9 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
     - [[en/AI/Engineering/Model_Engineering/Model_Distillation|Knowledge Distillation]] — Teacher→Student knowledge distillation
 - [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN long-context, SLM-for-Agents *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]] — VLM adapter-bridged vs native, image tokenization, audio/video, MMMU/DocVQA *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency *(2026)*
 
 ---
 
@@ -34,6 +37,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] — Temperature, Top-K, Top-P, Min-P
     - [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, YAML, Pydantic, Instructor
 - [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — Static prefix design, cache breakpoints/TTL, how it differs from Semantic Cache *(2026)*
+- [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad, GEPA (ICLR 2026), DSPy optimizer selection guide *(2026)*
 
 ---
 
@@ -55,6 +59,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 - RAG (vector-based unstructured document retrieval)
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG Overview]] — Retrieval-Augmented Generation basics
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document Ingestion]] — Document parsing/OCR, OCR-based vs. OCR-free (ColPali) *(2026)*
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] — Fixed-size, Semantic, Hierarchical
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN search (HNSW, FAISS)
     - Advanced Retrieval
@@ -73,6 +78,8 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL pipeline, Spider·BIRD benchmarks, DIN-SQL·DAIL-SQL
 - SQL RAG (structured + unstructured Hybrid)
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL-based RAG patterns, Hybrid architecture
+- Shared infrastructure
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka, MTEB/BEIR, reranker models *(2026)*
 
 ---
 
@@ -124,6 +131,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(May 2026)*
 - Red Teaming
     - [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
+    - [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]] — Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting *(2026)*
 - Alignment & Governance
     - [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
     - [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, internal circuit analysis *(2026)*
@@ -135,13 +143,17 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] — Agent-in-the-Loop, self-reinforcing data cycle, Self-Evolving Flywheel *(2025)*
 - [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
-- [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — Semantic Cache, RouteLLM (ICLR 2025), Speculative Decoding, vLLM/SGLang/TensorRT-LLM serving internals
+- [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — API-calling-side optimization — Semantic Cache, model routing, batching, streaming
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI gateway, deployment strategies, A/B testing, SRE/chaos engineering, FinOps *(2026)*
-- [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier design *(2026)*
+- [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier design, Modeling→Synthesis→Evaluation→Application lifecycle *(2026)*
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] — Agentic FinOps, autonomous watcher for model routing/scriptification/context auditing (a specialization of Loop Engineering) *(2026)*
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]] — FrugalGPT, RouteLLM, UCCI, Budget-Aware Agentic Routing
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] — Agentic Compilation, Tool-Making, LOOP Skill Engine
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Context Usage Auditing]] — RAG chunk usage auditing, automatic retrieval-K tuning
+- [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] — Serving-engine-internal optimization (Runtime Optimization's infrastructure layer, a specialization of Loop Engineering) *(2026)*
+    - [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] — KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
+    - [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]] — Draft-model-based acceleration, EAGLE-3, Medusa, n-gram/Prompt Lookup
+    - [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]] — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, cold start
 
 ---
 

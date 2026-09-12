@@ -69,6 +69,25 @@ LLM 에이전트용 환경들은 이 골격 위에, "행동"을 도구 호출로
 
 환경을 사람이 일일이 손으로 작성하는 대신, **LLM 코딩 에이전트가 새 환경 코드 자체를 작성**하게 하는 접근이 늘고 있다 — 환경의 다양성을 사람 손으로 확장하는 속도의 한계를 우회하려는 시도다. 이 접근은 아직 검증·안전성 확보가 진행 중인 영역이다.
 
+## 라이프사이클 프레이밍: Modeling → Synthesis → Evaluation → Application
+
+2026년 서베이(arXiv:2606.12191)는 이 분야 전체를 "Agentic Environment Engineering"이라는 이름으로 정리하며, 위에서 다룬 개별 기법들을 하나의 엔지니어링 라이프사이클로 묶는다.
+
+```mermaid
+flowchart LR
+    M["Modeling<br/>태스크를 상태·행동·보상으로<br/>어떻게 형식화할 것인가"] --> S
+    S["Synthesis<br/>환경 자체를 어떻게 생성·확장할 것인가<br/>(자동 환경 생성 포함)"] --> E
+    E["Evaluation<br/>이 환경이 실제로<br/>좋은 훈련 신호를 주는지 검증"] --> A
+    A["Application<br/>훈련된 에이전트를<br/>실제 도메인에 적용"] --> M
+```
+
+- **Modeling**: 위 "Gymnasium API 계보" 절에서 다룬 상태·행동·보상 형식화가 여기 해당한다.
+- **Synthesis**: "2025~2026 지형"의 SWE-Gym/GEM/AgentGym 등 기존 환경 구축과, "자동 환경 생성" 절의 LLM 기반 환경 생성이 여기 해당한다.
+- **Evaluation**: "Verifier" 절에서 다룬 프로그램적/모델 기반/HITL 판정이 이 단계의 핵심이다 — 환경 자체의 품질(보상이 실제로 유의미한 신호인가)을 검증하는 것이지, 에이전트를 검증하는 것이 아니다.
+- **Application**: 훈련된 정책을 다시 실제 도메인(고객 지원, 코드베이스 등)에 배포하는 단계로, [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]]과 맞닿는다.
+
+이 프레이밍의 가치는 "환경을 잘 만드는 것"이 일회성 작업이 아니라 **모델링→생성→검증→적용이 순환하는 독립된 엔지니어링 라이프사이클**이라는 점을 명시적으로 드러낸다는 데 있다 — RLVR 훈련 루프([[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]])가 도는 동안, 환경 자체도 별도의 개선 루프를 필요로 한다.
+
 ## 경계: 이미 있는 개념들과 어떻게 다른가
 
 RL Environments는 새 최상위 계층이 아니라, 이 위키가 이미 다루는 몇 가지 개념과 인접해 있지만 초점이 다르다.
@@ -92,3 +111,4 @@ RL Environments는 RLVR 같은 훈련 기법이 실무에서 성립하기 위한
 - "The Ultimate Guide to RL Environments: Building and Scaling Them in the LLM Era" (2026) — [adithyask-rl-environments-guide.hf.space](https://adithyask-rl-environments-guide.hf.space/)
 - GitHub "awesome-agent-rl-environments" (SWE-Gym, GEM, RAGEN, AgentGym, WebArena, OSWorld, ToolBench 등 정리) — [github.com/v01dmur10c/awesome-agent-rl-environments](https://github.com/v01dmur10c/awesome-agent-rl-environments)
 - Jimenez et al. (2023) "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" — [arXiv:2310.06770](https://arxiv.org/abs/2310.06770)
+- (2026) "Agentic Environment Engineering for Large Language Models: A Survey of Environment Modeling, Synthesis, Evaluation, and Application" — [arXiv:2606.12191](https://arxiv.org/abs/2606.12191)

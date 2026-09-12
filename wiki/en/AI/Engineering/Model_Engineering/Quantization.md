@@ -101,7 +101,7 @@ Memory savings during fine-tuning:
 Quantization is a core tool in the Compression & Optimization layer that **directly determines deployment costs**. It makes serving 70B models on a single server or running on consumer GPUs possible. Given that a significant portion of LLM service costs come from inference GPU costs, proper quantization strategy is directly tied to business competitiveness.
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]
+[[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Loop_Engineering/Serving_Engineering/Inference_Internals]]
 
 ## Sources
 - Lin et al. (2023) "AWQ: Activation-aware Weight Quantization" — [arXiv:2306.00978](https://arxiv.org/pdf/2306.00978)

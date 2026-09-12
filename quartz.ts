@@ -22,13 +22,14 @@ componentRegistry.setOptionOverrides("explorer", {
       agent_engineering: 5,
       harness_engineering: 6,
       loop_engineering: 7,
-      sources: 8,
+      graph_engineering: 8,
+      sources: 9,
       // Flow_Engineering 하위 (flow_engineering.md order:0 이후에 등장)
       linear_flow: 1,
       graph_flow: 2,
       // Context_Engineering 하위 (파일 order:0~5 이후에 등장)
       retrieval_strategies: 6,
-      // Retrieval_Strategies 하위
+      // Retrieval_Strategies 하위 (document_ingestion을 rag의 order:1로 신설하며 재번호)
       rag: 1,
       graphrag: 2,
       nl2sql: 3,
@@ -37,6 +38,9 @@ componentRegistry.setOptionOverrides("explorer", {
       knowledge_graph: 1,
       // Agent_Engineering 하위 (agent_memory order:5 이후, agent_frameworks order:7 이전)
       agent_skills_and_protocols: 6,
+      // Loop_Engineering 하위 (rl_environments order:5 이후에 등장)
+      cost_engineering: 6,
+      serving_engineering: 7,
     }
 
     // 내부 named 함수를 쓰면 esbuild가 __name() 헬퍼를 주입해 브라우저 eval에서 오류 발생

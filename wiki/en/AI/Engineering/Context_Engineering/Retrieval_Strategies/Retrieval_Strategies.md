@@ -123,6 +123,7 @@ flowchart TD
 | Chapter | Document | Content |
 |------|------|------|
 | **RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG\|RAG]] | Vector-based RAG basics |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion\|Document Ingestion]] | Document parsing/OCR, OCR-based vs. OCR-free |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking Strategies]] | 5 document splitting strategies |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector Storage]] | Vector DB, HNSW, FAISS |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced Retrieval]] | Reranking, Multi-Query, RAG Fusion |
@@ -137,7 +138,8 @@ flowchart TD
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | Agent-driven automatic knowledge graph construction pipeline |
 | **NL2SQL** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL pipeline, benchmarks, latest techniques |
 | **SQL RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | Structured data RAG, Hybrid architecture |
+| **Shared infrastructure** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding Models]] | The embedding/reranker models themselves — bi/cross-encoder/late interaction, Matryoshka, MTEB |
 
 ## Related Concepts
 
-[[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]]
+[[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]]

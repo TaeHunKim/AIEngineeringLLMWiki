@@ -329,9 +329,16 @@ Agent Deployment is the **layer that elevates agents from prototype to enterpris
 [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]]
 
 ## Sources
-- Google "Introduction to Agents" (originally published Nov 2025, updated May 2026)
-- Google "Prototype to Production" (originally published Nov 2025, updated May 2026)
-- Google Cloud "Optimize your agents" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize)
-- Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform)
+- [[en/AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (existing wiki source, first published Nov 2025 → updated May 2026)
+- [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]] (existing wiki source, first published Nov 2025 → updated May 2026)
+- [[en/AI/sources/Agent_Quality|Agent_Quality]] (existing wiki source, first published Nov 2025 → updated May 2026)
+- Google Cloud "Optimize your agents" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize) [1]
+- Google Cloud "Optimize agent prompts" — [docs.cloud.google.com](https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/optimize-agent) [2]
+- Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform) [3]
 - AWS "Amazon Bedrock AgentCore" official docs — [aws.amazon.com](https://aws.amazon.com/bedrock/agentcore/)
 - Microsoft "Azure AI Foundry Agent Service" official docs — [learn.microsoft.com](https://learn.microsoft.com/azure/ai-foundry/)
+
+### References
+[1] https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize
+[2] https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize/evaluation/optimize-agent
+[3] https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform

@@ -175,7 +175,7 @@ Framework adoption benefits:
 Agent Frameworks represent the shift from "language of agent design" to "products." Framework selection should be an implementation detail made after architecture and workflow pattern decisions, not the other way around.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic Workflow Patterns]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]
+[[en/AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic Workflow Patterns]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent Skills & Protocols]]
 
 ## Sources
 - Microsoft Research "AutoGen v0.4: A New Foundation" — [microsoft.com/research](https://www.microsoft.com/en-us/research/blog/autogen-v0-4-reimagining-the-foundation-agentic-ai-frameworks/)

@@ -27,6 +27,13 @@ Harness = Guardrails (safety) + Evaluation (quality) + Observability (observatio
 | [[en/AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
 | [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic Interpretability]] | Sparse Autoencoders, Circuit Tracing, internal circuit analysis |
 | [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI Governance & Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, Model Cards |
+| [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense\|Prompt Injection Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
+
+## Naming Collision: Distinguishing from "Agent Harness"
+
+Starting in 2026, part of the industry began using the term "agent harness (engineering)" with a **different meaning** than this chapter — in recent usage from LangChain, Anthropic, and others, it refers to the **execution scaffolding** around an agent (the five layers: execution runtime, context system, capability surface, governance layer, and protocol adapters). In other words, it's closer to the execution infrastructure concept spanning [[en/AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]], [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]], and [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — "all the code and configuration that gives a model state, tool execution, feedback loops, and constraints, turning it into an agent that actually works."
+
+Just as `Cost_Engineering.md` explicitly states that it is "not a new layer, but a specialization of Loop Engineering," this wiki's **Harness Engineering** has been defined from the start in the narrow sense of **safety, evaluation, and observability** (Guardrails + Evaluation + Observability), and retains that definition. If you encounter the phrase "agent harness" elsewhere, it usually refers not to this chapter but to the execution-scaffolding meaning above (mainly a combination of Agent Engineering, Flow Engineering, and Context Engineering) — read it with that distinction in mind.
 
 ## Evaluation Hierarchy
 

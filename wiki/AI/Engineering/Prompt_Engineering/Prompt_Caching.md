@@ -88,7 +88,7 @@ Anthropic과 OpenAI는 구현 방식이 다르다.
 Prompt Caching은 프롬프트를 "이번 한 번의 요청"이 아니라 **반복 호출되는 구조물**로 설계하게 만드는 관점 전환이다. 시스템 프롬프트·도구 정의·참고 문서처럼 변하지 않는 부분을 의도적으로 앞에 고정 배치하는 것 자체가 프롬프트 엔지니어링의 일부가 된다. 비용 관점의 상세 최적화 루프는 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] 챕터를 참고.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic_Cache]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Loop_Engineering/Cost_Engineering]]
+[[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic_Cache]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Loop_Engineering/Serving_Engineering/Inference_Internals]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Loop_Engineering/Cost_Engineering]]
 
 ## 출처
 1. "An Evaluation of Prompt Caching for Long-Horizon Agentic Tasks" (2026) — [arXiv:2601.06007](https://arxiv.org/abs/2601.06007)

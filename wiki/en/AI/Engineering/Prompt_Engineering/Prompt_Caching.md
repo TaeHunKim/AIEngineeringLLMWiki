@@ -88,7 +88,7 @@ In multi-turn agent loops, the entire prior conversation plus tool-call results 
 Prompt Caching is a perspective shift that turns a prompt from "this one request" into **a structure that gets called repeatedly**. Deliberately fixing the unchanging parts — system prompt, tool definitions, reference documents — at the front becomes part of prompt engineering itself. For the detailed cost-optimization loop angle, see the [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] chapter.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Loop_Engineering/Cost_Engineering]]
+[[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Loop_Engineering/Serving_Engineering/Inference_Internals]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Loop_Engineering/Cost_Engineering]]
 
 ## Sources
 1. "An Evaluation of Prompt Caching for Long-Horizon Agentic Tasks" (2026) — [arXiv:2601.06007](https://arxiv.org/abs/2601.06007)

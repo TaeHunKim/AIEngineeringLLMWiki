@@ -43,6 +43,19 @@ Agent Skill composition:
   - Context: required background knowledge
 ```
 
+### Claude Code Plugins/Skills
+
+```json
+// Example SKILL.md structure
+{
+  "name": "create-word-document",
+  "description": "Create and edit Word (.docx) documents",
+  "tools": ["python_exec", "file_write"],
+  "dependencies": ["python-docx"],
+  "prompt": "Use the python-docx library to create Word documents..."
+}
+```
+
 ### Skill Design Principles
 
 ```python
@@ -63,6 +76,22 @@ class DataAnalysisSkill:
         return AnalysisReport(stats=stats, charts=charts, insights=insights)
 ```
 
+### Skill Registry
+
+```python
+class SkillRegistry:
+    def __init__(self):
+        self.skills = {}
+
+    def register(self, skill: AgentSkill):
+        self.skills[skill.name] = skill
+
+    def discover(self, task_description: str) -> list[AgentSkill]:
+        """Semantic search for skills matching the task description"""
+        task_embed = embed(task_description)
+        return sorted_by_similarity(task_embed, self.skills)
+```
+
 ---
 
 ## Protocol Standards
@@ -74,6 +103,7 @@ Key open standards for agents to communicate with the external world:
 | **Target** | LLM ↔ tools/services | Agent ↔ Agent | Agent ↔ user UI | Agent → UI component generation | Agent ↔ payment systems |
 | **Announced** | Anthropic, Nov 2024 | Google, Apr 2025 | CopilotKit, Jun 2025 | Google, 2026 | Google, Sep 2025 |
 | **Governance** | Linux Foundation (Dec 2025~) | Linux Foundation (Jun 2025~) | ag-ui-protocol open source org | Open source (github.com/google/A2UI) | Open protocol (Google + 60+ partners) |
+| **Relationship** | Tool integration standard | Agent-to-agent communication standard | Agent-user interaction standard | Agent→UI generation standard | Agent payments standard |
 
 MCP, A2A, AG-UI, A2UI, AP2 are complementary — use MCP to call tools, A2A to delegate to agents, AG-UI for real-time user interaction, A2UI for dynamic UI components, and AP2 for agent payments.
 
@@ -110,6 +140,18 @@ A2UI is a **JSONL-based declarative protocol**. Instead of Markdown text tokens,
     }
   },
   {
+    "id": "table-1",
+    "type": "DataTable",
+    "props": {
+      "columns": ["Metric", "Value", "Sector Average"],
+      "rows": [
+        ["P/E", "12.3", "15.1"],
+        ["P/B", "1.2", "1.8"],
+        ["ROE", "18.5%", "14.2%"]
+      ]
+    }
+  },
+  {
     "id": "action-1",
     "type": "Button",
     "props": { "label": "Add to Portfolio", "action": "add_to_portfolio" }
@@ -123,11 +165,58 @@ The client app maintains a "catalog" (list of pre-approved components). Agents c
 
 A2UI is a **declarative data format** — not executable code. Agents request rendering of only trusted component types (Card, Button, Chart, etc.) that the client supports, rather than executing arbitrary JavaScript.
 
+```
+Security boundary:
+  Agent → A2UI JSON → [client catalog validation] → render
+
+  If the agent requests a type not in the catalog → the client rejects it
+  The agent cannot directly manipulate the DOM or execute code → attacks like XSS are blocked
+```
+
+### Multiplatform Support
+
+The same A2UI JSON payload is rendered by multiple renderers, each adapted to its platform:
+
+| Renderer | Platform | Release |
+|--------|--------|---------|
+| React | Web | 2026 Q1 |
+| Flutter | iOS/Android | 2026 Q2 |
+| SwiftUI | iOS Native | 2026 Q2 |
+| Jetpack Compose | Android Native | 2026 Q2 |
+
+### Gemini Enterprise App Integration
+
+As of May 2026, the Gemini Enterprise app natively supports A2UI:
+- Custom agents can generate dynamic data visualizations, forms, and interactive widgets directly within a user's workspace
+- Computer use (agent operates UI) ↔ A2UI (agent generates UI) — complementary approaches
+
+### MCP UI / AG-UI / A2UI Comparison
+
+```
+MCP UI:
+  Agent controls existing UI elements as a Tool
+  "Click this button", "enter a value in this field"
+  → Suited for operating existing UI
+
+AG-UI (Agent-User Interaction Protocol, CopilotKit):
+  Synchronizes state between agent and client in real time
+  Event-driven streaming delivers text, tool calls, and state changes
+  → Suited for bidirectional collaboration between agent and user
+  Details → [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|AG-UI]]
+
+A2UI:
+  Agent generates and streams new UI components on the fly
+  Composes situation-optimal UI without predefined templates
+  → Suited for generating tailored interactive interfaces
+```
+
 ---
 
 ## AP2 (Agent Payments Protocol)
 
-**AP2** is an open protocol standardizing how AI agents can safely authorize and execute payments on behalf of users. Announced by Google on September 16, 2025, designed as an extension of A2A and MCP.
+**AP2 (Agent Payments Protocol)** is an open protocol standardizing how AI agents can safely authorize and execute payments on behalf of users. Announced by Google on September 16, 2025, it is designed as an extension of A2A and MCP, adding a payment layer to the existing agent communication stack [5].
+
+The core problem it addresses: there was previously no way to cryptographically prove that a payment triggered by an agent actually reflected the real user's intent. AP2 solves this by introducing the **Mandate** concept — a user-signed Mandate that clearly defines the scope, limit, and validity period of the agent's payment authority, delivered as a W3C Verifiable Credential [6].
 
 ### Core Mechanism: 3-Stage Mandate
 
@@ -147,6 +236,14 @@ AP2 structures the purchase flow as three stages of signed documents:
    Explicitly states "whether human approved or AI approved" for accountability tracking.
 ```
 
+Each Mandate has a JWT-like structure with digital signatures, key binding, and expiration timestamps, ensuring integrity, authenticity, and accountability tracking [6].
+
+### Status (announced September 2025, early adoption stage)
+
+Launch partners include Mastercard, PayPal, Coinbase, American Express, Adyen, Revolut, Salesforce, ServiceNow, UnionPay, and over 60 other organizations [5]. In collaboration with Coinbase and the Ethereum Foundation, an **A2A x402 extension** for stablecoin payments was also released.
+
+As of Q1 2026, over 60 partners are in early production adoption, but AP2 is still in an early stage of rollout. Its distinguishing feature is a payment-agnostic design that treats cards, bank transfers, and stablecoins all as first-class citizens.
+
 ---
 
 ## Role in AI Engineering
@@ -158,5 +255,19 @@ Agent Skills enable **modularization and reusability** of capabilities, while MC
 
 ## Sources
 - Anthropic (2025) "Equipping Agents for the Real World with Agent Skills" — [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
-- Google Developers Blog "Introducing A2UI" — [developers.googleblog.com](https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/)
-- Google Cloud Blog "Announcing Agent Payments Protocol (AP2)" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol)
+- Google Developers Blog "Introducing A2UI: An open project for agent-driven interfaces" — [developers.googleblog.com](https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/) [1]
+- Google Developers Blog "A2UI v0.9: The New Standard for Portable, Framework-Agnostic Generative UI" — [developers.googleblog.com](https://developers.googleblog.com/a2ui-v0-9-generative-ui/) [2]
+- AG2 Docs "A2UIAgent: Rich UI from Your AG2 Agents" — [docs.ag2.ai](https://docs.ag2.ai/latest/docs/blog/2026/03/20/AG2-A2UI/) [3]
+- A2UI GitHub — [github.com/google/A2UI](https://github.com/google/A2UI) [4]
+- Google Cloud Blog "Announcing Agent Payments Protocol (AP2)" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol) [5]
+- Cloud Security Alliance "Secure Use of the Agent Payments Protocol (AP2)" — [cloudsecurityalliance.org](https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions) [6]
+- [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] — MCP detail page
+- [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]] — A2A detail page
+
+### References
+[1] https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/
+[2] https://developers.googleblog.com/a2ui-v0-9-generative-ui/
+[3] https://docs.ag2.ai/latest/docs/blog/2026/03/20/AG2-A2UI/
+[4] https://github.com/google/A2UI
+[5] https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol
+[6] https://cloudsecurityalliance.org/blog/2025/10/06/secure-use-of-the-agent-payments-protocol-ap2-a-framework-for-trustworthy-ai-driven-transactions

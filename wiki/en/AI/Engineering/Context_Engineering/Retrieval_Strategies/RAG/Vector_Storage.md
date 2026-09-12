@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 ---
 
 # Vector Storage
@@ -133,3 +133,4 @@ Vector DBs serve as the **long-term memory** of RAG systems. They make it possib
 ## Sources
 - Johnson et al. (2019) "Billion-scale similarity search with GPUs (FAISS)" — [arXiv:1702.08734](https://arxiv.org/abs/1702.08734)
 - Malkov & Yashunin (2018) "Efficient and robust approximate nearest neighbor search using HNSW" — [arXiv:1603.09320](https://arxiv.org/abs/1603.09320)
+- Vertex AI Vector Search docs — [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)]]

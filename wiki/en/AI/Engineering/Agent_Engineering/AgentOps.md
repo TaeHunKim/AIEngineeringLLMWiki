@@ -8,6 +8,8 @@ order: 12
 
 ## The Ops Evolution Chain
 
+(Source: [[en/AI/sources/Agents_Companion_v2|Agents_Companion_v2]])
+
 ```
 DevOps → MLOps → FMOps → PromptOps → RAGOps → AgentOps
 ```
@@ -20,6 +22,8 @@ AgentOps is a subcategory of **GenAIOps**. Additional management elements compar
 - **Task Decomposition**: Decomposing complex goals into executable subtasks
 
 ## Unique Operational Challenges of Agents
+
+(Source: [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]])
 
 Unlike traditional software, agents have **autonomous, stateful, dynamic paths**. This is why existing MLOps falls short:
 
@@ -39,13 +43,15 @@ Unlike traditional software, agents have **autonomous, stateful, dynamic paths**
 
 ## 3 Pillars of AgentOps
 
+(Source: [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]])
+
 ### Pillar 1: Automated Evaluation
 
 Golden dataset-based quality gate — no version can reach production without passing evaluation.
 
 Why traditional unit tests alone are insufficient: even passing 100 tool unit tests, wrong tool selection or hallucination can still occur. Agents must evaluate the **entire reasoning trajectory**.
 
-3 evaluation components:
+3 evaluation components (Source: [[en/AI/sources/Agents_Companion_v2|Agents_Companion_v2]]):
 1. **Capabilities** — Does the agent have the intended capabilities?
 2. **Trajectory & Tool Use** — Did it select the right tools in the right order?
 3. **Final Response** — Does the final response meet expected quality?
@@ -84,6 +90,8 @@ flowchart TD
 
 ## Observe → Act → Evolve Operating Loop
 
+(Source: [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]])
+
 ```mermaid
 flowchart LR
     O["Observe<br/>Understand the system via logs, traces, metrics"] --> A
@@ -118,7 +126,15 @@ flowchart LR
 - Focused on observability/debugging → separate tooling needed for systematic quality improvement loops
 - ~12% overhead in production (higher than LangSmith)
 
+### Pricing (as of Q1 2026)
+
+- Free tier available
+- Paid startup plan
+- Enterprise plan: up to $10,000+/month (high-volume deployments)
+
 ## Major Tool Comparison (2026)
+
+(Source: Latitude comparative analysis, as of Q1 2026) [1]
 
 | Tool | Agent workflow support | Auto issue detection | Eval generation | Open-source/self-hosted | Specialty |
 |------|----------------------|---------------------|----------------|------------------------|-----------|
@@ -140,7 +156,15 @@ flowchart LR
 - **Production failures → auto eval generation loop** → Latitude
 - **Regulated environment/100% traffic evaluation** → Galileo
 
+### Performance Overhead (2026)
+
+- LangSmith: effectively zero (optimized for performance-critical environments)
+- AgentOps: ~12%
+- Langfuse: ~15%
+
 ## Prototype → Production Transition Checklist
+
+(Source: [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]])
 
 ```
 □ Build golden dataset + automated evaluation harness
@@ -159,9 +183,15 @@ flowchart LR
 AgentOps is the operational backbone that makes the difference between an agent that works in a demo and one that can be trusted in production. The key insight: the Observe→Act→Evolve loop means every production incident should make the next version of the agent stronger. Without this closed loop, teams end up fire-fighting the same failure modes repeatedly.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]]
+[[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## Sources
-- Google "Prototype to Production" (originally published Nov 2025, updated May 2026)
-- Google Kaggle "Agents Companion v2" (2025)
-- [Best AI Agent Observability Tools in 2026](https://latitude.so/blog/best-ai-agent-observability-tools-2026-comparison) — Latitude, March 2026
+
+- [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]] (Google, first published Nov 2025 → updated May 2026)
+- [[en/AI/sources/Agents_Companion_v2|Agents_Companion_v2]] (Google Kaggle, 2025)
+
+## References
+
+1. [Best AI Agent Observability Tools in 2026: A Comparison for Production Teams](https://latitude.so/blog/best-ai-agent-observability-tools-2026-comparison) — Latitude, March 2026
+2. [AgentOps Review 2026](https://aiagentslist.com/agents/agentops) — AI Agents List
+3. [Top 5 LLM and Agent Observability Tools in 2026](https://mlflow.org/top-5-agent-observability-tools/) — MLflow

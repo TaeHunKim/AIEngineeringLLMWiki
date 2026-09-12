@@ -14,7 +14,7 @@ flowchart TD
     A[프로덕션 운영] -->|Observability| B["데이터 수집 & 품질 평가"]
     B -->|"Data Flywheel / Self-Evolving Flywheel"| C["고품질 데이터 축적<br/>실제 + 합성"]
     C -->|Continuous Optimization| D["DSPy(SIMBA/GEPA) / RLVR<br/>Test-Time Compute"]
-    D -->|Runtime Optimization| E["RouteLLM + Speculative Decoding 배포"]
+    D -->|"Runtime + Serving Optimization"| E["RouteLLM 라우팅 + Speculative Decoding 배포"]
     E --> A
 ```
 
@@ -24,13 +24,17 @@ flowchart TD
 |------|------|
 | [[AI/Engineering/Loop_Engineering/Data_Flywheel\|Data_Flywheel]] | 자기 강화 데이터 사이클, Self-Evolving Flywheel, RLVR + 합성 데이터 |
 | [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling |
-| [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | Semantic Cache, RouteLLM, Speculative Decoding, vLLM/SGLang 서빙 내부 |
+| [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | API 호출 측 최적화 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍, 비용 제어 루프 |
 | [[AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps |
 | [[AI/Engineering/Loop_Engineering/RL_Environments\|RL_Environments]] | RLVR 훈련을 위한 검증 가능한 보상 환경 — Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier, 보상 설계 |
 | [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost_Engineering]] | 비용 절감을 자율 판단·수행하는 워처 에이전트(Agentic FinOps) — 모델 라우팅, 작업 스크립트화, 컨텍스트 사용량 감사 (Loop Engineering의 특수화) |
 | &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing |
 | &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification\|Deterministic_Task_Scriptification]] | Agentic Compilation, Tool-Making, LOOP Skill Engine |
 | &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing\|Context_Usage_Auditing]] | 검색됐지만 안 쓰인 RAG 컨텍스트 감사, retrieval-K 자동 조정 |
+| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering\|Serving_Engineering]] | 서빙 엔진 내부 최적화 (Runtime_Optimization의 인프라 층위) — PagedAttention/RadixAttention, Speculative Decoding, 분산 서빙 |
+| &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference_Internals]] | KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
+| &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding\|Speculative_Decoding]] | Draft 모델 기반 가속 — EAGLE-3, Medusa, n-gram/Prompt Lookup |
+| &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving\|Distributed_Serving]] | Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, 콜드 스타트 |
 
 ## 루프 없이는 무엇이 문제인가
 

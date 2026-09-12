@@ -27,6 +27,13 @@ Harness = Guardrails (안전) + Evaluation (품질) + Observability (관찰)
 | [[AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
 | [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic_Interpretability]] | Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 |
 | [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 |
+| [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense\|Prompt_Injection_Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
+
+## 명명 충돌: "Agent Harness"와의 구분
+
+2026년부터 업계 일부에서 "agent harness (engineering)"이라는 용어가 이 챕터와 **다른 의미**로 쓰이기 시작했다 — LangChain·Anthropic 등의 최신 용법에서는 에이전트를 둘러싼 **실행 스캐폴딩**(execution runtime, context system, capability surface, governance layer, protocol adapter의 5계층)을 가리킨다. 즉 "모델에 상태·도구 실행·피드백 루프·제약을 부여해 실제로 작동하는 에이전트로 만드는 코드·설정 전체"라는, [[AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]]·[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]]·[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]을 아우르는 실행 인프라에 가까운 개념이다.
+
+`Cost_Engineering.md`가 "새 계층이 아니라 Loop Engineering의 특수화"임을 스스로 명시했던 것처럼, 이 위키의 **Harness Engineering**은 처음부터 **안전·평가·관찰**(Guardrails + Evaluation + Observability)이라는 좁은 의미로 정의되어 있으며 이 정의를 유지한다. 외부에서 "agent harness"라는 표현을 마주친다면, 그것은 대개 이 챕터가 아니라 위 실행 스캐폴딩 의미(주로 Agent Engineering·Flow Engineering·Context Engineering의 조합)를 가리키는 것임을 구분해서 읽어야 한다.
 
 ## 평가 계층 구조
 

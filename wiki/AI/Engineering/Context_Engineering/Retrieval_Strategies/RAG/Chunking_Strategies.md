@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 ---
 
 # Chunking Strategies (청킹 전략)

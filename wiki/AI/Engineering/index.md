@@ -21,6 +21,9 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Model_Engineering/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
     - [[AI/Engineering/Model_Engineering/Model_Distillation|Knowledge Distillation]] — Teacher→Student 지식 증류
 - [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents *(2026)*
+- [[AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse *(2026)*
+- [[AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]] — VLM 어댑터 결합형 vs 네이티브, 이미지 토큰화, 오디오/비디오, MMMU/DocVQA *(2026)*
+- [[AI/Engineering/Model_Engineering/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율 *(2026)*
 
 ---
 
@@ -34,6 +37,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] — Temperature, Top-K, Top-P, Min-P
     - [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, YAML, Pydantic, Instructor
 - [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이 *(2026)*
+- [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad, GEPA(ICLR 2026), DSPy 옵티마이저 선택 가이드 *(2026)*
 
 ---
 
@@ -55,6 +59,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 - RAG (벡터 기반 비정형 문서 검색)
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG 개요]] — Retrieval-Augmented Generation 기초
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document Ingestion]] — 문서 파싱·OCR, OCR 경유 vs OCR-free(ColPali) *(2026)*
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] — Fixed-size, Semantic, Hierarchical
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN 검색 (HNSW, FAISS)
     - Advanced Retrieval
@@ -73,6 +78,8 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
 - SQL RAG (정형+비정형 Hybrid)
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
+- 공통 인프라
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, MTEB/BEIR, 리랭커 모델 *(2026)*
 
 ---
 
@@ -124,6 +131,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(2026년 5월)*
 - Red Teaming
     - [[AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
+    - [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]] — Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting *(2026)*
 - Alignment & Governance
     - [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
     - [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 *(2026)*
@@ -135,13 +143,17 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 - [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] — Agent-in-the-Loop, 자기 강화 데이터 사이클, Self-Evolving Flywheel *(2025)*
 - [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
-- [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — Semantic Cache, RouteLLM (ICLR 2025), Speculative Decoding, vLLM/SGLang/TensorRT-LLM 서빙 내부
+- [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — API 호출 측 최적화 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps *(2026)*
-- [[AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier 설계 *(2026)*
+- [[AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier 설계, Modeling→Synthesis→Evaluation→Application 라이프사이클 *(2026)*
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] — Agentic FinOps, 모델 라우팅/스크립트화/컨텍스트 감사 자율 워처 (Loop Engineering의 특수화) *(2026)*
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]] — FrugalGPT, RouteLLM, UCCI, Budget-Aware Agentic Routing
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] — Agentic Compilation, Tool-Making, LOOP Skill Engine
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Context Usage Auditing]] — RAG 청크 사용량 감사, retrieval-K 자동 조정
+- [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] — 서빙 엔진 내부 최적화 (Runtime_Optimization의 인프라 층위, Loop Engineering의 특수화) *(2026)*
+    - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] — KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
+    - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]] — Draft 모델 기반 가속, EAGLE-3, Medusa, n-gram/Prompt Lookup
+    - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]] — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, 콜드 스타트
 
 ---
 

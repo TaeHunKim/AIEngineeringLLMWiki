@@ -80,14 +80,19 @@ def has_close_elements(numbers: List[float], threshold: float) -> bool:
 - **제작**: OpenAI가 원본 SWE-bench 중 이슈 설명이 불충분하거나 애초에 풀 수 없는 문제를 제거하고, 사람이 직접 검증한 **500개 문제 서브셋**으로 재구성
 - **의의**: 원본 SWE-bench는 "실제로는 풀 수 없는 문제"가 섞여 있어 모델 간 비교가 왜곡된다는 지적이 있었는데, 이를 해소한 버전. 이후 프론티어 모델 발표마다 사실상 표준 지표로 인용되며 SWE-bench 자체를 대체하는 추세
 
+#### SWE-bench Pro (2026)
+Verified보다 더 어려운 문제 셋 — 여러 파일에 걸친 변경, 더 긴 이슈 설명, 더 엄격한 테스트 스위트를 요구한다. Verified가 프론티어 모델 간 변별력을 잃어가면서(포화, 아래 "벤치마크의 한계" 참고) 그 다음 난이도 단계로 등장했다.
+
 ## 에이전트 전용 벤치마크
 
 | 벤치마크 | 측정 대상 |
 |---------|---------|
 | **BFCL** | Function Calling 정확도 |
-| **τ-bench** | 실제 업무 자동화 태스크 |
+| **τ-bench / τ²-bench** | 실제 업무 자동화 태스크 — 사용자 시뮬레이터와의 멀티턴 상호작용까지 포함해 τ-bench를 확장 |
 | **WebArena** | 웹 브라우저 자동화 |
 | **OSWorld** | 운영체제 수준 태스크 실행 |
+| **Terminal-Bench 2.0** | 터미널 환경에서의 복합 작업 수행 — 파일 조작·빌드·디버깅이 섞인 실무형 셸 태스크 |
+| **ARC-AGI-2** | 순수 패턴 추론 — 사전 학습 데이터 암기로는 풀 수 없도록 설계되어 에이전트 도구 사용 능력과 별도로 "새로운 문제에 대한 추론"만 격리해 측정 |
 | **GAIA** | 범용 어시스턴트 능력 (아래 상세) |
 | **AgentBench** | 다중 환경 에이전트 능력 (아래 상세) |
 
@@ -186,4 +191,6 @@ Benchmarking은 **모델 선택, 프롬프트 최적화, 파인튜닝 효과 측
 - OpenAI (2024) "Introducing SWE-bench Verified" — [openai.com](https://openai.com/index/introducing-swe-bench-verified/)
 - Mialon et al. (Meta/HuggingFace, 2023) "GAIA: A Benchmark for General AI Assistants" — [arXiv:2311.12983](https://arxiv.org/abs/2311.12983)
 - Liu et al. (Tsinghua, 2023) "AgentBench: Evaluating LLMs as Agents" — [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
+- Terminal-Bench 2.0 — [tbench.ai](https://www.tbench.ai)
+- Chollet et al. (2024/2025) "ARC-AGI-2" — [arcprize.org](https://arcprize.org/arc-agi/2/)
 - AI Engineering from Scratch, Phase 14 · Lesson 19 (Benchmarks — SWE-bench, GAIA, AgentBench) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

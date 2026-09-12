@@ -14,7 +14,7 @@ flowchart TD
     A[Production Operations] -->|Observability| B["Data Collection & Quality Evaluation"]
     B -->|"Data Flywheel / Self-Evolving Flywheel"| C["High-Quality Data Accumulation<br/>Real + Synthetic"]
     C -->|Continuous Optimization| D["DSPy(SIMBA/GEPA) / RLVR<br/>Test-Time Compute"]
-    D -->|Runtime Optimization| E["RouteLLM + Speculative Decoding Deployment"]
+    D -->|"Runtime + Serving Optimization"| E["RouteLLM routing + Speculative Decoding deployment"]
     E --> A
 ```
 
@@ -24,13 +24,17 @@ flowchart TD
 |----------|---------|
 | [[en/AI/Engineering/Loop_Engineering/Data_Flywheel\|Data Flywheel]] | Self-reinforcing data cycles, Self-Evolving Flywheel, RLVR + synthetic data |
 | [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | DSPy 3.0 (SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling |
-| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | Semantic Cache, RouteLLM, Speculative Decoding, vLLM/SGLang serving internals |
+| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | API-calling-side optimization — Semantic Cache, model routing, batching, streaming, cost control loop |
 | [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production Operations]] | AI Gateways, deployment strategies, A/B testing, SRE/Chaos Engineering, FinOps |
 | [[en/AI/Engineering/Loop_Engineering/RL_Environments\|RL Environments]] | Verifiable-reward environments for RLVR training — Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifiers, reward design |
 | [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost Engineering]] | A watcher agent that autonomously judges and executes cost reduction (Agentic FinOps) — model routing, task scriptification, context usage auditing (a specialization of Loop Engineering) |
 | &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity-Aware Model Routing]] | FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing |
 | &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification\|Deterministic Task Scriptification]] | Agentic Compilation, Tool-Making, LOOP Skill Engine |
 | &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing\|Context Usage Auditing]] | Auditing RAG context that was retrieved but never used, automatic retrieval-K tuning |
+| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering\|Serving Engineering]] | Serving-engine-internal optimization (Runtime Optimization's infrastructure layer) — PagedAttention/RadixAttention, Speculative Decoding, distributed serving |
+| &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference Internals]] | KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
+| &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding\|Speculative Decoding]] | Draft-model-based acceleration — EAGLE-3, Medusa, n-gram/Prompt Lookup |
+| &nbsp;&nbsp;└ [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving\|Distributed Serving]] | Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, cold start |
 
 ## What Goes Wrong Without a Loop
 

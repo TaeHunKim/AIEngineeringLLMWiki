@@ -80,14 +80,19 @@ Wrong: "He jumped out of the car." (statistically plausible but contextually wro
 - **Created by**: OpenAI, which removed issues with insufficient descriptions or that were inherently unsolvable from the original SWE-bench, producing a human-validated **500-problem subset**
 - **Significance**: The original SWE-bench had been criticized for mixing in "actually unsolvable" problems that skewed model comparisons. Since its release, SWE-bench Verified has effectively become the de facto standard metric cited in nearly every frontier model announcement, largely superseding the original SWE-bench
 
+#### SWE-bench Pro (2026)
+A harder problem set than Verified — requiring changes spanning multiple files, longer issue descriptions, and stricter test suites. It emerged as the next difficulty tier as Verified began losing discriminative power between frontier models (saturation, see "Limits of Benchmarks" below).
+
 ## Agent-Specific Benchmarks
 
 | Benchmark | Measures |
 |-----------|---------|
 | **BFCL** | Function Calling accuracy |
-| **τ-bench** | Real business automation tasks |
+| **τ-bench / τ²-bench** | Real business automation tasks — τ²-bench extends τ-bench to include multi-turn interaction with a user simulator |
 | **WebArena** | Web browser automation |
 | **OSWorld** | OS-level task execution |
+| **Terminal-Bench 2.0** | Complex task execution in a terminal environment — practical shell tasks mixing file manipulation, builds, and debugging |
+| **ARC-AGI-2** | Pure pattern reasoning — designed to resist solving via pretraining-data memorization, isolating "reasoning about novel problems" separately from agentic tool-use ability |
 | **GAIA** | General AI assistant capabilities |
 | **AgentBench** | Multi-environment agent capabilities |
 
@@ -184,3 +189,5 @@ Benchmarking provides **objective criteria for model selection, prompt optimizat
 - OpenAI (2024) "Introducing SWE-bench Verified" — [openai.com](https://openai.com/index/introducing-swe-bench-verified/)
 - Mialon et al. (Meta/HuggingFace, 2023) "GAIA: A Benchmark for General AI Assistants" — [arXiv:2311.12983](https://arxiv.org/abs/2311.12983)
 - Liu et al. (Tsinghua, 2023) "AgentBench: Evaluating LLMs as Agents" — [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
+- Terminal-Bench 2.0 — [tbench.ai](https://www.tbench.ai)
+- Chollet et al. (2024/2025) "ARC-AGI-2" — [arcprize.org](https://arcprize.org/arc-agi/2/)

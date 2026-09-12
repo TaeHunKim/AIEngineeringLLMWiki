@@ -219,3 +219,4 @@ LLM-as-a-Judge is the **core tool of Evaluation Engineering**. It rapidly evalua
 - Kim et al. (2023/2024) "Prometheus" / "Prometheus 2" — [arXiv:2310.08491](https://arxiv.org/abs/2310.08491), [arXiv:2405.01535](https://arxiv.org/abs/2405.01535)
 - Evidently AI "LLM-as-a-judge: a complete guide" — [evidentlyai.com](https://www.evidentlyai.com/llm-guide/llm-as-a-judge)
 - RAGAS docs — [docs.ragas.io](https://docs.ragas.io)
+- [[en/AI/sources/Agent_Quality|Agent_Quality]] (existing wiki source, first published Nov 2025 → updated May 2026)

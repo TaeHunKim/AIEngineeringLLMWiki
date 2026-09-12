@@ -69,6 +69,25 @@ A good RL environment needs not just a reward function but a **verifier** — a 
 
 Rather than authoring environments by hand one at a time, an increasingly common approach has **LLM coding agents write the new environment code itself** — an attempt to get around the pace limit of hand-scaling environment diversity. This approach is still an area where verification and safety assurance are actively catching up.
 
+## Lifecycle Framing: Modeling → Synthesis → Evaluation → Application
+
+A 2026 survey (arXiv:2606.12191) organizes this whole field under the name "Agentic Environment Engineering," tying the individual techniques covered above into a single engineering lifecycle.
+
+```mermaid
+flowchart LR
+    M["Modeling<br/>how to formalize the task as<br/>state, action, and reward"] --> S
+    S["Synthesis<br/>how to generate/scale the<br/>environment itself (incl. automated generation)"] --> E
+    E["Evaluation<br/>verifying whether this environment<br/>actually gives a good training signal"] --> A
+    A["Application<br/>deploying the trained agent<br/>into a real domain"] --> M
+```
+
+- **Modeling**: corresponds to the state/action/reward formalization covered in "The Gymnasium API Lineage" above.
+- **Synthesis**: corresponds to building existing environments like SWE-Gym/GEM/AgentGym in "The 2025–2026 Landscape," and LLM-based environment generation in "Automated Environment Generation."
+- **Evaluation**: the programmatic/model-based/HITL judging covered in "Verifiers" is the core of this stage — it verifies the quality of the environment itself (whether the reward is actually a meaningful signal), not the agent.
+- **Application**: the stage of redeploying the trained policy into a real domain (customer support, a codebase, etc.), which connects to [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]].
+
+The value of this framing is that it explicitly reveals "building a good environment" not as a one-off task but as an **independent engineering lifecycle where modeling → synthesis → evaluation → application cycles** — while the RLVR training loop ([[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]) spins, the environment itself needs its own improvement loop too.
+
 ## Boundary: How This Differs From Concepts Already Covered
 
 RL Environments isn't a new top-level layer; it sits next to a few concepts this wiki already covers, but with a different focus.
@@ -92,3 +111,4 @@ RL Environments are the prerequisite infrastructure that makes training techniqu
 - "The Ultimate Guide to RL Environments: Building and Scaling Them in the LLM Era" (2026) — [adithyask-rl-environments-guide.hf.space](https://adithyask-rl-environments-guide.hf.space/)
 - GitHub "awesome-agent-rl-environments" (catalog of SWE-Gym, GEM, RAGEN, AgentGym, WebArena, OSWorld, ToolBench, etc.) — [github.com/v01dmur10c/awesome-agent-rl-environments](https://github.com/v01dmur10c/awesome-agent-rl-environments)
 - Jimenez et al. (2023) "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" — [arXiv:2310.06770](https://arxiv.org/abs/2310.06770)
+- (2026) "Agentic Environment Engineering for Large Language Models: A Survey of Environment Modeling, Synthesis, Evaluation, and Application" — [arXiv:2606.12191](https://arxiv.org/abs/2606.12191)

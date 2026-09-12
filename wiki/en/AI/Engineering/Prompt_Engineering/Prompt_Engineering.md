@@ -19,6 +19,7 @@ nav_order: 20
 | [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling Controls]] | Controlling output diversity via Temperature/Top-K/Top-P/Min-P |
 | [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured Output]] | Ensuring structured output via JSON/YAML/Pydantic |
 | [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt Caching]] | Placing the static prefix first, cache breakpoints/TTL, how it differs from Semantic Cache |
+| [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic Prompt Optimization]] | The "prompts are no longer hand-written" paradigm — APE/OPRO/TextGrad, GEPA, choosing a DSPy optimizer |
 
 ## Prompt Design Principles
 

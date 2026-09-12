@@ -241,7 +241,7 @@ Gemini Enterprise Agent Platform:
 Agent Memory transforms agents from "disposable tools" to "continuously learning assistants." It's the foundation for long-term relationships with users, organizational knowledge accumulation, and preventing repeated mistakes. In production, memory quality must be managed with a Memory ETL pipeline, and session persistence and long-term operations must be guaranteed with Agent Runtime + Memory Bank.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
 
 ## Sources
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)
@@ -249,3 +249,6 @@ Agent Memory transforms agents from "disposable tools" to "continuously learning
 - Letta (formerly MemGPT) "Sleep-time Compute" — [letta.com/blog](https://www.letta.com/blog/sleep-time-compute)
 - Mem0 "Building Production-Ready AI Agents with Scalable Long-Term Memory" — [arXiv:2504.19413](https://arxiv.org/abs/2504.19413) · [mem0.ai](https://mem0.ai)
 - Wang et al. (2023) "Voyager: An Open-Ended Embodied Agent with Large Language Models" — [arXiv:2305.16291](https://arxiv.org/abs/2305.16291)
+- [[en/AI/sources/Context_Engineering_Sessions_&_Memory|Context Engineering Sessions & Memory]] (existing wiki source, first published Nov 2025 → updated May 2026)
+- LangMem docs — [langchain-ai.github.io/langmem](https://langchain-ai.github.io/langmem/)
+- AI Engineering from Scratch, Phase 14 · Lessons 07-10 (MemGPT, Sleep-time Compute, Mem0, Voyager) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

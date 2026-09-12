@@ -208,3 +208,4 @@ Architecture selection is the **core architectural decision** in AI system desig
 ## Sources
 - Anthropic "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/engineering/building-effective-agents)
 - LangGraph Multi-Agent docs — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)
+- [[en/AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (existing wiki source, first published Nov 2025 → updated May 2026)
