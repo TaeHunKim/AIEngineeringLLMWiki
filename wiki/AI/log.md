@@ -281,3 +281,26 @@
 ### 인덱스 갱신
 - `Engineering/index.md`·`AI/index.md`(KO+EN 4파일)에 신규 문서 10개(Prompt_Injection_Defense, Synthetic_Data_and_Curation, Multimodal_Models, Tokenization, Automatic_Prompt_Optimization, Embedding_Models, Document_Ingestion, Serving_Engineering 자식 3개) 전체 등록, Retrieval_Strategies.md 하위 문서 표 갱신
 - 적용 제외: KO/EN 링크 드리프트 19쌍, EN `SCHEMA.md`/`log.md` 부재라는 구조적 비대칭(기존에도 스코프 밖으로 유지되던 항목) — 이번에도 그대로 보류
+
+## [2026-09-14] fix | 깨진 링크 83건 복구 + 자기참조 서술 정리 + 위키 린터 도입
+
+- 배경: 직전 `[2026-09-13]` 작업 결과를 사용자가 검토하며 두 가지를 지적. (1) "이 위키에는 ~에 대한 내용이 없다" 같은 **자기참조 서술**이 위키를 처음부터 읽는 독자에게 어색하다, (2) 신규 문서에 **문법이 잘려 링크로 인식조차 안 되는** 것들이 있다. 이어서 "문서만 고치지 말고 편집 지침도 고쳐 재발을 막으라"는 요구가 추가됨.
+
+### 깨진 링크 83건 (두 가지 유형)
+
+- **표 셀 파이프 미이스케이프 54건 / 20파일** — 표 행 안 `[[경로|별칭]]`의 파이프가 셀을 끝내버려 링크가 중간에 잘림. 커밋 `d56ac62`가 고쳤던 것과 **동일한 버그의 3번째 재발**. 44건은 `[2026-09-13]` 세션에 유입, 10건(`Model_Architectures_and_MoE`, `RL_Environments` 각 KO+EN)은 `d56ac62`가 놓친 기존 결함
+- **코드 펜스 안 wikilink 29건 / 15파일** — ASCII 다이어그램·체크리스트 블록 안의 `[[...]]`는 렌더링되지 않고 `[[AI/Engineering/...|별칭]]` raw 텍스트로 그대로 노출됨. 4건은 이번 세션 유입, 25건은 그 이전부터 존재. 블록 안에서는 별칭 텍스트만 남기고, 사라진 링크 1건(`Multi_Agent_Coordination` → `Planning_and_Reflection`)은 `## 관련 개념`에 추가해 도달성 유지
+- 검증: 빌드된 519개 HTML 전체에서 리터럴 `[[` **0건** 확인(수정 전에는 raw 노출 다수)
+
+### 자기참조·결핍 서술 정리 (7문서 KO+EN)
+
+`Prompt_Injection_Defense`·`Multimodal_Models`·`Tokenization`·`Automatic_Prompt_Optimization`·`Embedding_Models`·`Serving_Engineering`·`Harness_Engineering`의 개요를 **주제 기반 위치 설정**으로 재작성. "이 위키에는 X가 없었다 / 본 문서가 그 공백을 채운다 / 이 챕터의 앞선 6개 문서는 / 418줄이라 분리했다 / A.md가 스스로 정의했듯"을 제거하고, 첫 문장을 "주제가 무엇이고 왜 중요한가"로 시작하도록 변경. 유지한 것: 특정 형제 문서 상호참조, 출처 표기("이 위키의 기존 소스"), Serving Engineering의 "새 계층이 아니라 인프라 층위" 위치 규정과 Harness Engineering의 용어 범위 선언(둘 다 독자에게 실제로 필요한 정보).
+
+### 재발 방지 — `scripts/lint-wiki.mjs` + `npm run lint:wiki` 신설
+
+L1 표 셀 파이프 이스케이프 / L2 dead link / L3 KO·EN 파일 집합 대응 / L4 `order:` 일치 / L5 EN 문서의 `en/` 접두사 / L6 자기참조 서술 / L7 코드 펜스 안 wikilink. 위반 시 파일·행 번호 출력 후 비-0 종료. 일곱 규칙 모두 위반을 주입해 탐지·종료코드를 자가 검증함. `<!-- lint-ignore: L5,L6 -->` 주석으로 예외 표기 가능.
+
+- `CLAUDE.md` 교정 — 기존 wikilink 예시가 **이스케이프 없는 형태**(`[[...|Display Name]]`)만 제시해 표 안 규칙을 가르치지 않고 있었음. 표 안/밖 두 형태 병기, 코드 펜스 금지, 산문 스타일 규칙, 커밋 전 `npm run lint:wiki` 의무를 추가
+- `SCHEMA.md` 보강 — "문서 작성 스타일" 절 신설(❌/✅ 예시 + 모범 사례 문서 3개 지목), Lint 절을 L1~L7 표 기반으로 재작성
+- **이번 작업의 핵심 교훈**: L1 규칙은 `[2026-09-13]` 세션에 이미 `SCHEMA.md`에 **직접 추가해놓고도 같은 세션에서 54번 위반**했다. `SCHEMA.md`는 에이전트가 찾아 읽어야만 컨텍스트에 들어오는 반면 `CLAUDE.md`는 매 세션 자동 로드된다 — **저작 시점에 필요한 규칙은 자동 로드되는 곳에 두고, 기계적 검증을 붙여야 지켜진다.** 규칙 문장을 늘리는 것만으로는 재발을 막지 못한다.
+- 부수 발견: 직전 세션의 링크 검사 스크립트가 `\|`를 `|`로 정규화한 **뒤** 분리해 이스케이프 여부를 구별하지 못했고, 그래서 54건을 전부 정상으로 오판했다. 링크 검사를 즉석에서 짜지 말고 `npm run lint:wiki`를 쓸 것(이 주의사항도 `SCHEMA.md`에 명시).

@@ -6,7 +6,9 @@ order: 8
 
 ## Overview
 
-The preceding documents in this chapter (from Pre-training through Model Architectures) effectively assume a text-only model. But most production LLMs today are **multimodal models** that handle images, audio, and video alongside text. This wiki already covers multimodality from a retrieval angle ([[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]]) and a behavioral angle ([[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]), but had no document on **the model architecture itself**. This page fills that gap.
+A **multimodal model** processes images, audio, and video alongside text. As of 2026 most frontier models are multimodal, and multimodal support is no longer a special feature — it's the default.
+
+Multimodality splits into three perspectives — where [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] covers **retrieval** and [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] covers the **action space**, this document covers the **model architecture** underneath both: how a vision encoder is attached to an LLM, how an image becomes tokens, and what that choice costs in context and money.
 
 ## Two VLM Architecture Lineages
 
@@ -84,8 +86,8 @@ These benchmarks are generally tracked separately from the text-only benchmarks 
 | Document | Covers |
 |------|-----------|
 | **This document (Multimodal_Models)** | The **architecture itself** of VLM/audio/video models — encoder-bridging approach, tokenization, evaluation |
-| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] | **Retrieval** using multimodal embeddings — CLIP shared embeddings, ColPali OCR-free retrieval |
-| [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] | **Action space** built on multimodal models (screenshot-based manipulation, voice conversation) — agent-level usage |
+| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | **Retrieval** using multimodal embeddings — CLIP shared embeddings, ColPali OCR-free retrieval |
+| [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | **Action space** built on multimodal models (screenshot-based manipulation, voice conversation) — agent-level usage |
 
 ## Role in AI Engineering
 

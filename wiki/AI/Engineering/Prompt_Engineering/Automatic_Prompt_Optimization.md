@@ -6,7 +6,9 @@ order: 7
 
 ## 개요
 
-이 챕터의 앞선 6개 문서(System & Role Prompting부터 Prompt Caching까지)는 모두 **사람이 프롬프트를 직접 설계**한다고 가정한다. 그러나 2024년 말부터 "프롬프트를 사람이 손으로 쓰지 않는다"는 패러다임이 실무에 자리잡기 시작했다 — 목표와 평가 지표만 선언하면 옵티마이저가 프롬프트 문구·Few-shot 예시·지시 구조를 자동으로 탐색한다. 본 문서는 이 패러다임 전환 자체와 **어떤 옵티마이저를 언제 쓰는가**를 다룬다. 실제 컴파일 파이프라인·운영 루프에 대한 상세는 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]]에 위임한다(`Full_Fine-Tuning.md`가 GRPO/RLVR 상세를 `Continuous_Optimization.md`로 위임한 것과 동일한 패턴).
+**Automatic Prompt Optimization**은 프롬프트를 사람이 손으로 쓰지 않고, 목표와 평가 지표만 선언하면 옵티마이저가 프롬프트 문구·Few-shot 예시·지시 구조를 자동으로 탐색하게 하는 접근이다. 2024년 말부터 실무에 자리잡기 시작했으며, 프롬프트를 "작성하는 것"이 아니라 "컴파일하는 것"으로 보는 관점의 전환을 담고 있다.
+
+이 문서는 그 패러다임 전환 자체와 **어떤 옵티마이저를 언제 쓰는가**를 다룬다. 실제 컴파일 파이프라인과 운영 루프 연결은 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]]에서 다룬다.
 
 ## 왜 수작업 프롬프팅에 한계가 있는가
 
@@ -29,7 +31,7 @@ order: 7
 | **OPRO** (Optimization by PROmpting) | LLM 자체를 메타 최적화 알고리즘처럼 사용 — 이전 시도-점수 기록을 프롬프트에 넣고 다음 후보를 생성시킴 | 그래디언트 없이 순수 자연어 피드백 루프만으로 최적화 |
 | **TextGrad** | "텍스트 기반 역전파" — 평가 피드백을 미분 가능한 손실처럼 취급해 파이프라인 각 노드의 프롬프트에 전파 | 멀티스텝 파이프라인 전체를 동시에 최적화 |
 | **벤더 Prompt Improver** | Anthropic/OpenAI 등이 콘솔에 내장한 1회성 프롬프트 개선 도구 | 별도 파이프라인 구축 없이 즉시 사용 가능하나 반복 최적화 루프는 아님 |
-| **DSPy 옵티마이저 계열** | 시그니처·모듈·메트릭을 선언하면 컴파일러가 프롬프트+예시를 탐색 | 아래 절 참고, 상세는 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] |
+| **DSPy 옵티마이저 계열** | 시그니처·모듈·메트릭을 선언하면 컴파일러가 프롬프트+예시를 탐색 | 아래 절 참고, 상세는 [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] |
 
 ## GEPA (ICLR 2026) — 반성 기반 진화 탐색
 
@@ -66,14 +68,14 @@ flowchart LR
 | Instruction 문구 자체가 중요하고 예시는 불필요 | COPRO |
 | 예시·지시문을 함께 탐색해야 하는 일반적인 경우 | MIPROv2 |
 | 연산 예산이 제한적이면서 최고 성능이 필요한 경우 | GEPA |
-| 프롬프트 수준을 넘어 모델 가중치까지 최적화하려는 경우 | GRPO ([[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] 참고) |
+| 프롬프트 수준을 넘어 모델 가중치까지 최적화하려는 경우 | GRPO ([[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] 참고) |
 
 ## 경계 정리
 
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Automatic_Prompt_Optimization)** | "프롬프트를 사람이 안 쓴다"는 **패러다임 전환**과 **옵티마이저 선택 기준** |
-| [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] | DSPy 컴파일 파이프라인의 **구현 상세**(시그니처·모듈·메트릭 코드), A/B 테스트·프롬프트 버전 관리를 포함한 **운영 루프** |
+| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | DSPy 컴파일 파이프라인의 **구현 상세**(시그니처·모듈·메트릭 코드), A/B 테스트·프롬프트 버전 관리를 포함한 **운영 루프** |
 
 ## AI Engineering에서의 역할
 

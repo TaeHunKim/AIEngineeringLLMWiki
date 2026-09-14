@@ -20,7 +20,7 @@ FIPA-ACL (1990년대 후반, Foundation for Intelligent Physical Agents)
 
 현대 표준: A2A (Agent-to-Agent Protocol, Google 2025)
   → 에이전트 간 상태 유지형(stateful) 통신 표준
-  → 자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]]
+  → 자세한 내용 → A2A
 ```
 
 ## 조정 패턴 (Coordination Patterns)
@@ -52,7 +52,7 @@ Minsky의 "Society of Mind" 개념을 차용 — 단일 지능이 아니라 여�
 ```
 Planner:  목표를 실행 가능한 단계로 분해
 Executor: 각 단계를 실제로 실행 (도구 호출)
-Critic:   Executor의 결과를 비평 (Self-Refine/CRITIC과 유사, → [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]])
+Critic:   Executor의 결과를 비평 (Self-Refine/CRITIC과 유사, → Planning_and_Reflection)
 Verifier: 최종 결과가 원래 목표를 충족하는지 독립적으로 검증 (Verifier는 Executor와 다른 정보원 사용 권장)
 ```
 
@@ -202,7 +202,7 @@ SRE(Site Reliability Engineering)의 사고 대응 방식을 멀티 에이전트
 멀티 에이전트 시스템은 단일 에이전트보다 강력하지만, 조정 실패의 새로운 표면을 함께 들여온다. Cemri et al.의 수치(41~86.7% 실패율)가 보여주듯 "에이전트를 여러 개 두면 더 낫다"는 직관은 검증 없이는 위험하다. 실무에서는 조정 패턴을 고를 때 항상 대응하는 실패 모드와 완화책(명시적 역할 계약, 독립 Verifier, Circuit Breaker, 정기 MAST 감사)을 함께 설계해야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
+[[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]
 
 ## 출처
 - Cemri et al. (2025) "Why Do Multi-Agent LLM Systems Fail? (MAST)" — [arXiv:2503.13657](https://arxiv.org/abs/2503.13657), NeurIPS 2025

@@ -6,7 +6,9 @@ order: 9
 
 ## 개요
 
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]]과 [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]] 모두 "토큰 하나의 비용"을 전제로 논의를 시작하지만, 정작 **토큰이 어떻게 만들어지는가**를 다루는 문서는 이 위키에 없었다. 토크나이저는 모델 아키텍처만큼이나 비용·컨텍스트 예산·다국어 성능을 좌우하는데도 프롬프트·비용 최적화 논의에서 당연하게 전제되는 경우가 많다.
+**토크나이저**는 원문 텍스트를 모델이 실제로 처리하는 단위인 토큰으로 쪼개는 구성요소다. 프롬프트를 쓰는 순간부터 API 비용이 청구되는 순간까지 보이지 않게 개입하면서 비용·컨텍스트 예산·다국어 성능을 좌우하지만, 정작 프롬프트·비용 최적화 논의에서는 당연하게 전제되는 경우가 많다.
+
+[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]]과 [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]]이 "토큰 하나의 비용"을 다룬다면, 이 문서는 **그 토큰이 애초에 어떻게 만들어지는가**를 다룬다.
 
 ## 서브워드 토크나이제이션 방식
 
@@ -93,8 +95,8 @@ flowchart LR
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Tokenization)** | 토크나이저 **자체**의 알고리즘, 어휘 크기 트레이드오프, 언어별 효율 |
-| [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] | 토큰 단위 **비용을 최적화**하는 라우팅·캐싱·감사 전략 |
-| [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]] | 토큰 **경계**를 이용해 캐시 브레이크포인트를 설계하는 방법 |
+| [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost_Engineering]] | 토큰 단위 **비용을 최적화**하는 라우팅·캐싱·감사 전략 |
+| [[AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | 토큰 **경계**를 이용해 캐시 브레이크포인트를 설계하는 방법 |
 
 ## AI Engineering에서의 역할
 

@@ -23,9 +23,9 @@ flowchart LR
 | **Self-Instruct** | A handful of seed tasks → LLM generates new instructions/responses on its own | The original method for generating synthetic instruction-tuning data (Wang et al., 2022) |
 | **Evol-Instruct** | An LLM "evolves" existing instructions (increasing complexity, adding constraints, deepening) | WizardLM lineage, artificially widens the difficulty distribution |
 | **Frontier model distillation** | Using responses from a top-tier model (GPT-5/Claude/Gemini) directly as SFT data | The most common path in 2025–2026 practice — better on both quality and cost than human writers |
-| **Function-calling trace generation** | Synthesizing tool-call trajectories as training tasks | The core data source for agent SFT/RLVR, connects to [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] |
+| **Function-calling trace generation** | Synthesizing tool-call trajectories as training tasks | The core data source for agent SFT/RLVR, connects to [[en/AI/Engineering/Loop_Engineering/RL_Environments\|RL Environments]] |
 | **RAG QA pair generation** | Auto-generating (question, evidence passage, answer) triples from a document corpus via LLM | Retrieval-grounded fine-tuning data |
-| **Constitutional AI data** | Using a model's own record of critiquing and revising harmful responses as training data | Generating safety-alignment data, see [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] |
+| **Constitutional AI data** | Using a model's own record of critiquing and revising harmful responses as training data | Generating safety-alignment data, see [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] |
 
 ## Judge Filtering — the Single Biggest Lever
 
@@ -51,7 +51,7 @@ The judge here applies the same techniques covered in [[en/AI/Engineering/Harnes
 2. Decontamination
    If evaluation benchmark problems (MMLU, GSM8K, etc.) leak directly into training
    data, benchmark scores become inflated → removed in advance via n-gram overlap checks
-   (see the contamination section of [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] for benchmark-reliability issues)
+   (see the contamination section of Benchmarking for benchmark-reliability issues)
 
 3. PII/secrets/toxicity hygiene
    Personal information (national ID numbers, emails, phone numbers), API-key/password
@@ -77,8 +77,8 @@ Using a frontier model's outputs to train another model can be restricted by the
 | Document | Covers |
 |------|-----------|
 | **This document (Synthetic_Data_and_Curation)** | **Generating and cleaning the training dataset itself** — Self-Instruct, judge filtering, dedup, decontamination |
-| [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] | The loop that recycles **feedback data generated during production operation** back into training |
-| [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] | Transferring Teacher→Student knowledge at the **weight level**, not the data level |
+| [[en/AI/Engineering/Loop_Engineering/Data_Flywheel\|Data Flywheel]] | The loop that recycles **feedback data generated during production operation** back into training |
+| [[en/AI/Engineering/Model_Engineering/Model_Distillation\|Model Distillation]] | Transferring Teacher→Student knowledge at the **weight level**, not the data level |
 
 ## Role in AI Engineering
 

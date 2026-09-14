@@ -36,7 +36,7 @@ This information ages fast, so only representative examples are noted — useful
 
 | Model | Total Params | Active Params | Note |
 |---|---|---|---|
-| DeepSeek-V3 / R1 line | 671B | 37B | Routing + RLVR combined (see the GRPO discussion in [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]]) |
+| DeepSeek-V3 / R1 line | 671B | 37B | Routing + RLVR combined (see the GRPO discussion in [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]]) |
 | MiniMax M3 (2026-06) | 229.9B | 9.8B | 256 fine-grained experts |
 | NVIDIA Nemotron 3.5 Lightning | 30B | 3B | Low-latency design for long-running agents, built-in speculative decoding |
 | Cohere North Mini Code | 30B | 3B | Specialized for agentic coding |

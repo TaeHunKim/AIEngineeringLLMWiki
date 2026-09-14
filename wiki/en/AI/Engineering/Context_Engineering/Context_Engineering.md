@@ -37,8 +37,8 @@ Context Engineering = the art of filling this space most usefully
 1. What to include?     → Retrieval Strategies (RAG / GraphRAG / SQL RAG) for relevant info
 2. How to compress?    → Context Compression to save tokens
 3. How to remember?    → Memory & Semantic Cache
-4. In what order?      → Avoid the "Lost in the Middle" problem (→ [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]])
-5. Across the whole loop? → Handling Context Rot in long-running agents (→ [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]])
+4. In what order?      → Avoid the "Lost in the Middle" problem (→ Lost in the Middle)
+5. Across the whole loop? → Handling Context Rot in long-running agents (→ Agentic Context Management)
 ```
 
 ## Role in AI Engineering

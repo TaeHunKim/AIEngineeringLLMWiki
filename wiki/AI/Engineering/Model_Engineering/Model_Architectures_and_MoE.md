@@ -36,7 +36,7 @@ MoE 모델 (예: 256개 Expert 중 토큰당 8개 활성화):
 
 | 모델 | Total Params | Active Params | 비고 |
 |------|--------------|----------------|------|
-| DeepSeek-V3 / R1 계열 | 671B | 37B | 라우팅+RLVR 결합 사례 (→ [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]]의 GRPO 서술) |
+| DeepSeek-V3 / R1 계열 | 671B | 37B | 라우팅+RLVR 결합 사례 (→ [[AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]]의 GRPO 서술) |
 | MiniMax M3 (2026-06) | 229.9B | 9.8B | 256 fine-grained Expert |
 | NVIDIA Nemotron 3.5 Lightning | 30B | 3B | 장기 실행 에이전트용 저지연 설계, Speculative Decoding 내장 |
 | Cohere North Mini Code | 30B | 3B | 에이전틱 코딩 특화 |

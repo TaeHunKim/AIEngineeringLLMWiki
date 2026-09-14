@@ -6,7 +6,7 @@ order: 5
 
 ## Overview
 
-Everything RAG, GraphRAG, and semantic search do rests on **embedding models**. Every Retrieval Strategies document in this wiki (Chunking, Vector Storage, Advanced Retrieval, Agentic RAG, etc.) assumes "good embeddings already exist" and designs its retrieval pipeline on top of that assumption. This document addresses the assumption itself — **how to choose an embedding model, why a particular architecture is chosen, and how to divide labor with rerankers.**
+Everything RAG, GraphRAG, and semantic search do rests on **embedding models**. Retrieval pipeline design — chunking, vector storage, reranking — is usually discussed on the assumption that "good embeddings already exist." This document addresses that assumption itself — **how to choose an embedding model, why a particular architecture is chosen, and how to divide labor with rerankers.**
 
 ```
 Embedding = lossy compression that maps heterogeneous data (text/image/audio) into a shared vector space
@@ -104,7 +104,7 @@ Where a reranker sits in the pipeline and how it combines with techniques like R
 
 ## Role in AI Engineering
 
-Every retrieval-related document in this wiki — RAG, GraphRAG, semantic cache, Agentic RAG — ultimately rests on the premise that "good embeddings already exist." If that premise goes unexamined while only the retrieval pipeline is refined, no amount of improvement to reranking, chunking, or query transformation can lift the ceiling set by the embedding model's representational power. Choosing an embedding model is a decision that RAG projects tend to make first and revisit last — often the wrong order.
+RAG, GraphRAG, semantic cache, and Agentic RAG all ultimately rest on the premise that "good embeddings already exist." If that premise goes unexamined while only the retrieval pipeline is refined, no amount of improvement to reranking, chunking, or query transformation can lift the ceiling set by the embedding model's representational power. Choosing an embedding model is a decision that RAG projects tend to make first and revisit last — often the wrong order.
 
 ## Related Concepts
 [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Model_Engineering/Quantization|Model_Engineering/Quantization]]

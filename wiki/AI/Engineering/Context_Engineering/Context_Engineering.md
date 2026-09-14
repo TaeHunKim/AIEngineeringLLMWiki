@@ -37,8 +37,8 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 1. 무엇을 넣을까?      → Retrieval Strategies (RAG / GraphRAG / SQL RAG)로 관련 정보 검색
 2. 어떻게 압축할까?   → Context Compression으로 토큰 절약
 3. 어떻게 기억할까?   → Memory & Semantic Cache
-4. 어떤 순서로?       → "Lost in the Middle" 문제 회피 (→ [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]])
-5. 루프 전체를 어떻게? → 장기 실행 에이전트의 Context Rot 대응 (→ [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]])
+4. 어떤 순서로?       → "Lost in the Middle" 문제 회피 (→ Lost_in_the_Middle)
+5. 루프 전체를 어떻게? → 장기 실행 에이전트의 Context Rot 대응 (→ Agentic_Context_Management)
 ```
 
 ## AI Engineering에서의 역할

@@ -202,7 +202,7 @@ AG-UI (Agent-User Interaction Protocol, CopilotKit):
   Synchronizes state between agent and client in real time
   Event-driven streaming delivers text, tool calls, and state changes
   → Suited for bidirectional collaboration between agent and user
-  Details → [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|AG-UI]]
+  Details → AG-UI
 
 A2UI:
   Agent generates and streams new UI components on the fly

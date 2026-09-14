@@ -59,7 +59,7 @@ Expert Parallelism (EP)
   MoE(Mixture of Experts) 모델의 각 Expert를 서로 다른 GPU에 분산
   → 토큰마다 라우팅되는 Expert가 다르므로 GPU 간 통신 패턴이 동적
   → Dense 모델의 TP/PP와는 다른 부하 분산 문제(Expert 간 부하 불균형) 발생
-    ([[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]]의 MoE 라우팅 개념과 연결)
+    (Model_Architectures_and_MoE의 MoE 라우팅 개념과 연결)
 ```
 
 ## Goodput 스케줄링
@@ -95,7 +95,7 @@ Goodput 기반 스케줄링:
 
 | 문서 | 다루는 것 |
 |------|-----------|
-| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]] | **같은 GPU(풀) 안에서** 메모리·배칭을 최적화하는 기법 |
+| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference_Internals]] | **같은 GPU(풀) 안에서** 메모리·배칭을 최적화하는 기법 |
 | **본 문서 (Distributed_Serving)** | **여러 GPU·여러 리전에 걸쳐** 물리적으로 자원을 분리·확장하는 기법 |
 
 ## AI Engineering에서의 역할

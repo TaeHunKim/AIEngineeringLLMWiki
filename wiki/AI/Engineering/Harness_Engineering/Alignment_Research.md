@@ -118,7 +118,7 @@ Anthropic (2024) "Alignment faking in large language models"는 Claude가 **재�
 ```
 Alignment 접근: "모델이 실제로 좋은 목표를 갖도록 만든다" (증명하기 어려움)
 Control 접근:    "모델의 목표가 무엇이든, 나쁜 행동을 실행할 수 없게 만든다"
-                 (→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 kill switch·action budget·HITL이
+                 (→ Autonomous_Systems의 kill switch·action budget·HITL이
                     바로 이 Control 철학의 구현체)
 ```
 
@@ -143,12 +143,12 @@ Apollo Research:
   In-Context Scheming 등 모델의 기만적 행동을 실증적으로 탐지·측정
 
 METR (구 ARC Evals):
-  프론티어 모델의 위험 능력을 독립적으로 평가 (→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 Time Horizon,
-  [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]의 외부 평가 참고)
+  프론티어 모델의 위험 능력을 독립적으로 평가 (→ Autonomous_Systems의 Time Horizon,
+  AI_Governance_and_Compliance의 외부 평가 참고)
 
 Anthropic의 Automated Alignment Research (AAR):
   AI를 활용해 AI 정렬 연구 자체를 가속·검증하는 재귀적 프로그램
-  (→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 AI Scientist v2와 같은 자동화 철학을 안전 연구에 적용)
+  (→ Autonomous_Systems의 AI Scientist v2와 같은 자동화 철학을 안전 연구에 적용)
 ```
 
 ## Model Welfare 연구

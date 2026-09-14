@@ -220,7 +220,7 @@ AG-UI (Agent-User Interaction Protocol, CopilotKit):
   에이전트-클라이언트 간 상태를 실시간 동기화
   이벤트 기반 스트리밍으로 텍스트·도구 호출·상태 변경을 전달
   → 에이전트와 사용자의 양방향 협력에 적합
-  자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|Agent_Skills_and_Protocols/AG_UI]]
+  자세한 내용 → Agent_Skills_and_Protocols/AG_UI
 
 A2UI:
   에이전트가 새로운 UI 컴포넌트를 즉석 생성·스트리밍

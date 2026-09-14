@@ -94,10 +94,10 @@ RL Environments는 새 최상위 계층이 아니라, 이 위키가 이미 다�
 
 | 문서 | 초점 | RL Environments와의 관계 |
 |------|------|---------------------------|
-| [[AI/Engineering/Harness_Engineering/Benchmarking|Harness_Engineering/Benchmarking]] | SWE-bench 등 **정적** 평가 벤치마크 — 훈련 없이 모델 성능을 측정 | 같은 벤치마크(SWE-bench)가 평가용으로도, RL 훈련용 환경(SWE-Gym)으로도 쓰일 수 있다 — "측정만 하는가, 그 신호로 훈련까지 하는가"가 차이 |
-| [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Harness_Engineering/Agent_as_a_Judge]] | **Agent Simulation**으로 배포 전 에이전트 행동을 사전 검증 | RL Environment의 모델 기반 verifier와 메커니즘이 겹치지만, Agent-as-a-Judge는 배포 전 품질 게이트, RL Environment는 훈련 루프 내 보상 신호라는 용도 차이 |
-| [[AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] | 프로덕션에서 수집된 실제 데이터로 합성 훈련 데이터를 만드는 순환 | RL Environment는 프로덕션 데이터가 아니라 **미리 설계된 시뮬레이션**에서 신호를 얻는다는 점이 다르지만, 두 방식이 결합돼 프로덕션 실패 사례를 RL 환경의 새 태스크로 재주입하는 경우도 있다 |
-| [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] | GRPO/RLVR로 **모델 자체를 훈련** | RL Environment는 그 훈련이 요구하는 "검증 가능한 보상"을 생성하는 상류(upstream) 인프라 |
+| [[AI/Engineering/Harness_Engineering/Benchmarking\|Harness_Engineering/Benchmarking]] | SWE-bench 등 **정적** 평가 벤치마크 — 훈련 없이 모델 성능을 측정 | 같은 벤치마크(SWE-bench)가 평가용으로도, RL 훈련용 환경(SWE-Gym)으로도 쓰일 수 있다 — "측정만 하는가, 그 신호로 훈련까지 하는가"가 차이 |
+| [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Harness_Engineering/Agent_as_a_Judge]] | **Agent Simulation**으로 배포 전 에이전트 행동을 사전 검증 | RL Environment의 모델 기반 verifier와 메커니즘이 겹치지만, Agent-as-a-Judge는 배포 전 품질 게이트, RL Environment는 훈련 루프 내 보상 신호라는 용도 차이 |
+| [[AI/Engineering/Loop_Engineering/Data_Flywheel\|Loop_Engineering/Data_Flywheel]] | 프로덕션에서 수집된 실제 데이터로 합성 훈련 데이터를 만드는 순환 | RL Environment는 프로덕션 데이터가 아니라 **미리 설계된 시뮬레이션**에서 신호를 얻는다는 점이 다르지만, 두 방식이 결합돼 프로덕션 실패 사례를 RL 환경의 새 태스크로 재주입하는 경우도 있다 |
+| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | GRPO/RLVR로 **모델 자체를 훈련** | RL Environment는 그 훈련이 요구하는 "검증 가능한 보상"을 생성하는 상류(upstream) 인프라 |
 
 ## AI Engineering에서의 역할
 

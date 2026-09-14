@@ -79,8 +79,8 @@ Change-detection strategies:
 | Document | Covers |
 |------|-----------|
 | **This document (Document_Ingestion)** | The step of **extracting chunkable text/structure** from source files — parsing, OCR, metadata preservation |
-| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] | The step of **splitting extracted text into semantic units** |
-| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] | The step covering **mixed image/text retrieval**, including the OCR-free route |
+| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking Strategies]] | The step of **splitting extracted text into semantic units** |
+| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | The step covering **mixed image/text retrieval**, including the OCR-free route |
 
 ## Role in AI Engineering
 

@@ -6,7 +6,9 @@ order: 0
 
 ## Overview
 
-Just as [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] defines itself as "not a new layer, but a specialization that swaps Loop Engineering's objective metric for cost," **Serving Engineering is not a new layer either.** The infrastructure layer that [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] used to cover — "how do we process each request most efficiently on the GPU" — grew too large for a single document (418 lines, the largest in the entire wiki), so it was split into its own subfolder. Runtime Optimization focuses on **how the application calls the API less often and more cheaply** (caching, routing, batching), while this chapter covers **how to maximize GPU resource utilization inside the self-hosted serving engine itself.**
+**Serving Engineering** covers the techniques for processing inference by maximizing GPU resource utilization inside a self-hosted serving engine. It is Loop Engineering's **infrastructure tier** — not a separate layer introducing a new object of control, but runtime optimization specialized to an infrastructure perspective.
+
+Both share the goal of reducing cost and latency, but they intervene at different points — where [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] covers **how the application calls the API less often and more cheaply** (caching, routing, batching), this chapter covers **how an already-arrived request is processed as efficiently as possible on the GPU.**
 
 ## The Two-Stage Prefill/Decode Structure
 
@@ -63,18 +65,18 @@ Goodput
 
 | Document | Contents |
 |------|------|
-| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] | Optimization within a single GPU (pool) — KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
-| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]] | Draft-model-based acceleration — EAGLE-3, Medusa, n-gram/Prompt Lookup, acceptance rate |
-| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]] | Multi-GPU/multi-region — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP parallelism, goodput scheduling, cold start |
+| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference Internals]] | Optimization within a single GPU (pool) — KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
+| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding\|Speculative Decoding]] | Draft-model-based acceleration — EAGLE-3, Medusa, n-gram/Prompt Lookup, acceptance rate |
+| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving\|Distributed Serving]] | Multi-GPU/multi-region — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP parallelism, goodput scheduling, cold start |
 
 ## Boundaries
 
 | Document | Covers |
 |------|-----------|
-| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] | Reducing the **number of requests/tokens on the API-calling side** itself — Semantic Cache, model routing, batching, streaming |
+| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | Reducing the **number of requests/tokens on the API-calling side** itself — Semantic Cache, model routing, batching, streaming |
 | **This chapter (Serving_Engineering)** | Processing already-arrived requests **inside the serving engine** as efficiently as possible from a GPU-resource standpoint |
-| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] | A watcher agent that **autonomously monitors and adjusts** the cost metrics of both layers above |
-| [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] | **Organization-level** production operations — gateways, deployment strategy, etc. |
+| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost Engineering]] | A watcher agent that **autonomously monitors and adjusts** the cost metrics of both layers above |
+| [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production Operations]] | **Organization-level** production operations — gateways, deployment strategy, etc. |
 
 ## Role in AI Engineering
 

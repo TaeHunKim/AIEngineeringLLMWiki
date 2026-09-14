@@ -98,15 +98,15 @@ Unlike general web services, LLM load testing must measure not just response "co
 ```
 Secrets management:
   Never hardcode API keys and auth tokens in code/prompts — use Vault, AWS Secrets Manager, etc.
-  MCP Server credentials especially need attention (→ see MCP security threats in [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]])
+  MCP Server credentials especially need attention (→ see MCP security threats in MCP)
 
 PII scrubbing:
   Automatically mask user personal information so it doesn't remain as-is in logs/traces
-  → Apply the same techniques as in [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] Output Validation to the logging pipeline
+  → Apply the same techniques as in Guardrail Engineering Output Validation to the logging pipeline
 
 Audit Logs:
   Preserve immutable records of "who, when, with what prompt, called which tool"
-  → Combined with Agent Identity from [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]], per-agent accountability tracking becomes possible
+  → Combined with Agent Identity from Agent Deployment, per-agent accountability tracking becomes possible
 ```
 
 ## Compliance
@@ -126,7 +126,7 @@ Unit Economics:
 Multi-Tenant Cost Attribution:
   When shared infrastructure (cache, batch processing, fine-tuned models) is used by multiple customers/teams,
   an accounting system that accurately allocates costs in proportion to actual consumption
-  → An organizational-scale extension of the Cost Control Loop in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]
+  → An organizational-scale extension of the Cost Control Loop in Runtime Optimization
 ```
 
 ## Role in AI Engineering

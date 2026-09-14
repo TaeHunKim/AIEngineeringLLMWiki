@@ -79,8 +79,8 @@ flowchart TD
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Document_Ingestion)** | 원본 파일에서 **청킹 가능한 텍스트/구조를 추출**하는 단계 — 파싱, OCR, 메타데이터 보존 |
-| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] | 추출된 텍스트를 **의미 단위로 분할**하는 단계 |
-| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] | OCR-free 경로를 포함해 **이미지·텍스트 혼합 검색**을 다루는 단계 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking_Strategies]] | 추출된 텍스트를 **의미 단위로 분할**하는 단계 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | OCR-free 경로를 포함해 **이미지·텍스트 혼합 검색**을 다루는 단계 |
 
 ## AI Engineering에서의 역할
 

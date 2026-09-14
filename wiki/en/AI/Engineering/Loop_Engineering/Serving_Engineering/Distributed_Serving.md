@@ -62,7 +62,7 @@ Expert Parallelism (EP)
     communication patterns are dynamic
   → creates a different load-balancing problem than Dense-model TP/PP (imbalanced
     load across Experts) (connects to the MoE routing concept in
-    [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]])
+    Model Architectures & MoE)
 ```
 
 ## Goodput Scheduling
@@ -99,7 +99,7 @@ Multi-region deployment:
 
 | Document | Covers |
 |------|-----------|
-| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] | Optimizing memory/batching **within the same GPU (pool)** |
+| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference Internals]] | Optimizing memory/batching **within the same GPU (pool)** |
 | **This document (Distributed_Serving)** | Physically separating and scaling resources **across multiple GPUs and multiple regions** |
 
 ## Role in AI Engineering

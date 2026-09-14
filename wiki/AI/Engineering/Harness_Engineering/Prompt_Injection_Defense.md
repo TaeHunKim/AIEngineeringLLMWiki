@@ -6,7 +6,9 @@ order: 11
 
 ## 개요
 
-Prompt Injection은 2024년부터 OWASP LLM Top 10에서 줄곧 1위를 지키고 있으며, 2026년에도 여전히 "아키텍처적으로 미해결된 문제"로 평가받는다. 이 위키에는 공격 형태([[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] §2)와 신뢰 경계 분리 원칙(PVE, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])이 이미 서술되어 있지만, 2025~2026년에 업계 표준으로 자리잡은 **위험 조건 자체를 정의하는 프레이밍**(Lethal Trifecta, Rule of Two)과 **아키텍처 수준 방어 패턴**(CaMeL, Dual-LLM)은 별도 문서가 필요할 만큼 무겁다. 본 문서는 그 정본 역할을 한다.
+**Prompt Injection**은 공격자가 제어하는 텍스트를 모델이 지시로 오인해 실행하는 공격이다. 2024년부터 OWASP LLM Top 10에서 줄곧 1위를 지키고 있으며, 2026년에도 여전히 "아키텍처적으로 미해결된 문제"로 평가받는다.
+
+[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]]이 인젝션을 **어떻게 찾아내는가**를, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]이 콘텐츠 안전을 포함한 **범용 방어 스택**을 다룬다면, 이 문서는 2025~2026년에 업계 표준으로 자리잡은 **위험 조건 자체를 정의하는 프레이밍**(Lethal Trifecta, Rule of Two)과 **아키텍처 수준 방어 패턴**(CaMeL, Dual-LLM)을 다룬다.
 
 ## Lethal Trifecta — 언제 치명적인가
 
@@ -101,8 +103,8 @@ Quarantined LLM (격리 모델)
 
 | 문서 | 다루는 것 |
 |------|-----------|
-| [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] | 인젝션·탈옥 등 공격을 **발견·자동화**하는 방법론(PAIR, TAP, Garak) |
-| [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] | 콘텐츠 안전·편향·워터마킹을 포함한 **범용 방어 스택** 전반 |
+| [[AI/Engineering/Harness_Engineering/Red_Teaming\|Red_Teaming]] | 인젝션·탈옥 등 공격을 **발견·자동화**하는 방법론(PAIR, TAP, Garak) |
+| [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | 콘텐츠 안전·편향·워터마킹을 포함한 **범용 방어 스택** 전반 |
 | **본 문서 (Prompt_Injection_Defense)** | 프롬프트 인젝션에 **특화된 아키텍처 방어** — 위험 조건의 정의(Trifecta/Rule of Two)와 구조적 대응(CaMeL/Dual-LLM/Spotlighting) |
 
 ## AI Engineering에서의 역할

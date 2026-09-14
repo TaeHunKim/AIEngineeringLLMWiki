@@ -31,8 +31,8 @@ Anthropic의 지침: "단순한 프롬프트로 시작하고, 포괄적 평가�
 
 3. Online Evals (온라인/프로덕션 평가)
      - 세션 리플레이 (Langfuse)
-     - 가드레일 트리거 알람 (→ [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])
-     - 스텝별 비용·지연시간 추적 (OTel 스팬 → [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]])
+     - 가드레일 트리거 알람 (→ Guardrail_Engineering)
+     - 스텝별 비용·지연시간 추적 (OTel 스팬 → Observability_and_Tracing)
 ```
 
 ### Evaluator-Optimizer 타이트 루프

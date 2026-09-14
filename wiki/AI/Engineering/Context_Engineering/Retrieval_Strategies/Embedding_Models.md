@@ -6,7 +6,7 @@ order: 5
 
 ## 개요
 
-RAG·GraphRAG·시맨틱 검색 전체가 딛고 선 기반은 **임베딩 모델**이다. 이 위키의 모든 Retrieval Strategies 문서(Chunking, Vector Storage, Advanced Retrieval, Agentic RAG 등)는 임베딩이 "이미 잘 만들어져 있다"고 가정하고 그 위에서 검색 파이프라인을 설계한다. 이 문서는 그 가정 자체 — **임베딩 모델을 어떻게 고르고, 왜 특정 아키텍처를 선택하며, 리랭커와 어떻게 나눠 쓰는가** — 를 다룬다.
+RAG·GraphRAG·시맨틱 검색 전체가 딛고 선 기반은 **임베딩 모델**이다. 청킹·벡터 저장·리랭킹 같은 검색 파이프라인 설계는 대개 임베딩이 "이미 잘 만들어져 있다"는 전제 위에서 논의된다. 이 문서는 그 전제 자체 — **임베딩 모델을 어떻게 고르고, 왜 특정 아키텍처를 선택하며, 리랭커와 어떻게 나눠 쓰는가** — 를 다룬다.
 
 ```
 임베딩(Embedding) = 이질적 데이터(텍스트·이미지·오디오)를 공유 벡터 공간으로 매핑하는 손실 압축(lossy compression)
@@ -104,7 +104,7 @@ flowchart TD
 
 ## AI Engineering에서의 역할
 
-RAG·GraphRAG·시맨틱 캐시·Agentic RAG 등 이 위키의 모든 검색 관련 문서는 결국 "좋은 임베딩이 이미 있다"는 전제 위에 서 있다. 그 전제를 검증하지 않고 검색 파이프라인만 정교화하면, 리랭킹·청킹·쿼리 변환을 아무리 개선해도 상한선은 임베딩 모델의 표현력에 갇힌다. 임베딩 모델 선택은 RAG 프로젝트에서 가장 먼저 결정하고, 가장 늦게 재검토하는 실수가 잦은 결정이다.
+RAG·GraphRAG·시맨틱 캐시·Agentic RAG는 결국 "좋은 임베딩이 이미 있다"는 전제 위에 서 있다. 그 전제를 검증하지 않고 검색 파이프라인만 정교화하면, 리랭킹·청킹·쿼리 변환을 아무리 개선해도 상한선은 임베딩 모델의 표현력에 갇힌다. 임베딩 모델 선택은 RAG 프로젝트에서 가장 먼저 결정하고, 가장 늦게 재검토하는 실수가 잦은 결정이다.
 
 ## 관련 개념
 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Model_Engineering/Quantization|Model_Engineering/Quantization]]

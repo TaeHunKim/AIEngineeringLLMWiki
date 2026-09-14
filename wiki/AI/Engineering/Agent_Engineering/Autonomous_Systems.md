@@ -143,7 +143,7 @@ class ActionBudget:
 ```
 Kill Switch:      외부에서 즉시 실행을 중단시킬 수 있는 강제 정지 메커니즘
                    (에이전트 자신이 이 신호를 무시하지 못하도록 별도 프로세스에서 감시)
-Circuit Breaker:   오류율이 임계값을 넘으면 자동 차단 (→ [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]의
+Circuit Breaker:   오류율이 임계값을 넘으면 자동 차단 (→ Multi_Agent_Coordination의
                    Retry Storm 방어와 동일 원리)
 Canary Token:      "미끼" 자원(가짜 API 키, 가짜 민감 파일)을 심어두고 접근 시도 발생 시
                    즉시 알람 — 의도치 않은 행동 또는 탈옥을 조기 탐지

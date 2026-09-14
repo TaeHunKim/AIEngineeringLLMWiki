@@ -6,7 +6,9 @@ order: 11
 
 ## Overview
 
-Prompt Injection has held the #1 spot on the OWASP LLM Top 10 since 2024, and as of 2026 it is still considered an "architecturally unsolved problem." This wiki already describes attack forms ([[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] §2) and the trust-boundary-separation principle (PVE, [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]), but the **framing that defines the risk condition itself** (Lethal Trifecta, Rule of Two) and the **architecture-level defense patterns** (CaMeL, Dual-LLM) that became industry-standard in 2025–2026 are substantial enough to warrant their own document. This page serves as that canonical reference.
+**Prompt Injection** is an attack where the model mistakes attacker-controlled text for instructions and acts on it. It has held the #1 spot on the OWASP LLM Top 10 since 2024, and as of 2026 it is still considered an "architecturally unsolved problem."
+
+Where [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] covers **how injections are discovered** and [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] covers the **general-purpose defense stack** including content safety, this document covers the **framing that defines the risk condition itself** (Lethal Trifecta, Rule of Two) and the **architecture-level defense patterns** (CaMeL, Dual-LLM) that became industry-standard in 2025–2026.
 
 ## Lethal Trifecta — When It Becomes Deadly
 
@@ -101,8 +103,8 @@ A technique for explicitly marking content of differing trust levels within a pr
 
 | Document | Covers |
 |------|-----------|
-| [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] | Methodologies for **discovering and automating** attacks such as injection and jailbreaking (PAIR, TAP, Garak) |
-| [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] | The **general-purpose defense stack** covering content safety, bias, watermarking, and more |
+| [[en/AI/Engineering/Harness_Engineering/Red_Teaming\|Red Teaming]] | Methodologies for **discovering and automating** attacks such as injection and jailbreaking (PAIR, TAP, Garak) |
+| [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] | The **general-purpose defense stack** covering content safety, bias, watermarking, and more |
 | **This document (Prompt_Injection_Defense)** | **Architecture defense specific to prompt injection** — defining the risk condition (Trifecta/Rule of Two) and structural countermeasures (CaMeL/Dual-LLM/Spotlighting) |
 
 ## Role in AI Engineering

@@ -23,9 +23,9 @@ flowchart LR
 | **Self-Instruct** | 소수 시드 태스크 → LLM이 스스로 새 instruction·response 생성 | 최초의 합성 instruction tuning 데이터 생성법 (Wang et al., 2022) |
 | **Evol-Instruct** | 기존 instruction을 LLM으로 "진화"(복잡도 증가·제약 추가·심화) | WizardLM 계열, 난이도 분포를 인위적으로 넓힘 |
 | **프론티어 모델 distillation** | GPT-5/Claude/Gemini 같은 최상위 모델의 응답을 그대로 SFT 데이터로 사용 | 2025~2026년 실무에서 가장 흔한 경로 — 사람이 쓰는 것보다 품질·비용 모두 유리 |
-| **Function-calling trace 생성** | 에이전트가 도구를 호출하는 궤적을 합성 태스크로 생성 | 에이전트 SFT/RLVR용 데이터의 핵심 소스, [[AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]와 연결 |
+| **Function-calling trace 생성** | 에이전트가 도구를 호출하는 궤적을 합성 태스크로 생성 | 에이전트 SFT/RLVR용 데이터의 핵심 소스, [[AI/Engineering/Loop_Engineering/RL_Environments\|RL_Environments]]와 연결 |
 | **RAG QA 페어 생성** | 문서 코퍼스에서 (질문, 근거 문단, 답변) 삼중항을 LLM으로 자동 생성 | retrieval-grounded 파인튜닝 데이터 |
-| **Constitutional AI 데이터** | 모델이 스스로 유해 응답을 비판·수정한 기록을 학습 데이터로 사용 | 안전 정렬 데이터 생성, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] 참고 |
+| **Constitutional AI 데이터** | 모델이 스스로 유해 응답을 비판·수정한 기록을 학습 데이터로 사용 | 안전 정렬 데이터 생성, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] 참고 |
 
 ## Judge 필터링 — 가장 큰 레버
 
@@ -51,7 +51,7 @@ Judge는 [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]에
 2. Decontamination (벤치마크 오염 제거)
    학습 데이터에 평가 벤치마크(MMLU, GSM8K 등) 문제가 그대로 섞여 들어가면
    벤치마크 점수가 과장됨 → n-gram overlap 검사로 사전 제거
-   (벤치마크 신뢰성 문제는 [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]의 contamination 절 참고)
+   (벤치마크 신뢰성 문제는 Benchmarking의 contamination 절 참고)
 
 3. PII/시크릿/독성 위생
    개인정보(주민번호·이메일·전화번호), API 키·비밀번호 패턴, 유해 콘텐츠를
@@ -77,8 +77,8 @@ Judge는 [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]에
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Synthetic_Data_and_Curation)** | **학습 데이터셋 자체를 생성·정제**하는 방법 — Self-Instruct, judge 필터링, dedup, decontamination |
-| [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] | **프로덕션 운영 중 발생하는 피드백 데이터**를 다시 학습에 순환시키는 루프 |
-| [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] | 데이터가 아니라 **가중치 수준**에서 Teacher→Student 지식을 옮기는 기법 |
+| [[AI/Engineering/Loop_Engineering/Data_Flywheel\|Data_Flywheel]] | **프로덕션 운영 중 발생하는 피드백 데이터**를 다시 학습에 순환시키는 루프 |
+| [[AI/Engineering/Model_Engineering/Model_Distillation\|Model_Distillation]] | 데이터가 아니라 **가중치 수준**에서 Teacher→Student 지식을 옮기는 기법 |
 
 ## AI Engineering에서의 역할
 

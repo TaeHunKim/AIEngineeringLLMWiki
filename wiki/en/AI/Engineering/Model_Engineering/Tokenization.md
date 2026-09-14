@@ -6,7 +6,9 @@ order: 9
 
 ## Overview
 
-Both [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] and [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] start their discussions from the premise of "the cost of a single token," but this wiki had no document covering **how a token is actually produced**. The tokenizer shapes cost, context budget, and multilingual performance just as much as the model architecture does, yet it's often taken for granted in prompt/cost optimization discussions.
+A **tokenizer** is the component that splits raw text into the tokens a model actually processes. It intervenes invisibly from the moment a prompt is written to the moment API cost is billed, shaping cost, context budget, and multilingual performance — yet it's often taken for granted in prompt and cost optimization discussions.
+
+Where [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] and [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] deal with "the cost of a single token," this document deals with **how that token gets produced in the first place**.
 
 ## Subword Tokenization Methods
 
@@ -98,8 +100,8 @@ Common practical issues:
 | Document | Covers |
 |------|-----------|
 | **This document (Tokenization)** | The algorithm of the tokenizer **itself**, vocabulary-size trade-offs, per-language efficiency |
-| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] | Routing/caching/auditing strategies that **optimize** per-token cost |
-| [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] | How to design cache breakpoints using token **boundaries** |
+| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost Engineering]] | Routing/caching/auditing strategies that **optimize** per-token cost |
+| [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt Caching]] | How to design cache breakpoints using token **boundaries** |
 
 ## Role in AI Engineering
 

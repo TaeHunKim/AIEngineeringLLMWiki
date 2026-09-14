@@ -98,15 +98,15 @@ GenAI-Perf:  NVIDIA의 생성형 AI 특화 벤치마킹 도구, 서빙 엔진 �
 ```
 Secrets 관리:
   API 키·인증 토큰을 코드/프롬프트에 하드코딩 금지 — Vault, AWS Secrets Manager 등 사용
-  MCP Server 인증 정보는 특히 주의 (→ [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] 보안 위협 참고)
+  MCP Server 인증 정보는 특히 주의 (→ Agent_Skills_and_Protocols/MCP 보안 위협 참고)
 
 PII 스크러빙:
   로그·트레이스에 사용자 개인정보가 그대로 남지 않도록 자동 마스킹
-  → [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]의 Output Validation과 같은 기법을 로깅 파이프라인에도 적용
+  → Guardrail_Engineering의 Output Validation과 같은 기법을 로깅 파이프라인에도 적용
 
 감사 로그 (Audit Logs):
   "누가·언제·어떤 프롬프트로·어떤 도구를 호출했는가"를 불변(immutable) 기록으로 보존
-  → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]]의 Agent Identity와 결합하면 에이전트별 책임 추적 가능
+  → Agent_Deployment의 Agent Identity와 결합하면 에이전트별 책임 추적 가능
 ```
 
 ## 컴플라이언스
@@ -125,7 +125,7 @@ SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프�
 멀티테넌트 비용 귀속 (Multi-Tenant Attribution):
   공유 인프라(캐시, 배치 처리, 파인튜닝된 모델)를 여러 고객/팀이 사용할 때
   실제 소비량에 비례해 비용을 정확히 배분하는 회계 체계
-  → [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]의 Cost Control Loop를 조직 전체로 확장한 형태
+  → Runtime_Optimization의 Cost Control Loop를 조직 전체로 확장한 형태
 ```
 
 ## AI Engineering에서의 역할

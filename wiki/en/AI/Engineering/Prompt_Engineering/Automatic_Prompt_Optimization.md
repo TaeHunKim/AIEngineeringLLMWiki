@@ -6,7 +6,9 @@ order: 7
 
 ## Overview
 
-The six preceding documents in this chapter (from System & Role Prompting through Prompt Caching) all assume that **a human designs the prompt directly**. But starting in late 2024, a paradigm of "prompts are no longer hand-written by humans" took hold in practice — declare only a goal and an evaluation metric, and an optimizer automatically searches over prompt wording, few-shot examples, and instruction structure. This document covers that paradigm shift itself and **which optimizer to use when**. Details of the actual compilation pipeline and operating loop are deferred to [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] (the same pattern by which `Full_Fine-Tuning.md` defers GRPO/RLVR detail to `Continuous_Optimization.md`).
+**Automatic Prompt Optimization** is the approach where prompts are not hand-written: you declare only a goal and an evaluation metric, and an optimizer automatically searches over prompt wording, few-shot examples, and instruction structure. It took hold in practice starting in late 2024, and it carries a shift in perspective — a prompt becomes something you *compile* rather than something you *write*.
+
+This document covers that paradigm shift and **which optimizer to use when**. The actual compilation pipeline and its connection to the operating loop are covered in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]].
 
 ## Why Hand-Written Prompting Has Structural Limits
 
@@ -29,7 +31,7 @@ Structural problems with manual prompt engineering:
 | **OPRO** (Optimization by PROmpting) | Uses the LLM itself as a meta-optimization algorithm — feeds the history of prior attempt-score pairs back into the prompt to generate the next candidate | Optimizes purely through a natural-language feedback loop, with no gradients |
 | **TextGrad** | "Text-based backpropagation" — treats evaluation feedback like a differentiable loss and propagates it to the prompt at each node of the pipeline | Optimizes an entire multi-step pipeline simultaneously |
 | **Vendor prompt improvers** | One-shot prompt-improvement tools built into vendor consoles (Anthropic, OpenAI, etc.) | Usable immediately with no separate pipeline, but not an iterative optimization loop |
-| **DSPy optimizer family** | Declare a signature, module, and metric, and the compiler searches for the prompt + examples | See below; details in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] |
+| **DSPy optimizer family** | Declare a signature, module, and metric, and the compiler searches for the prompt + examples | See below; details in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] |
 
 ## GEPA (ICLR 2026) — Reflection-Based Evolutionary Search
 
@@ -66,14 +68,14 @@ flowchart LR
 | Instruction wording itself matters and examples aren't needed | COPRO |
 | The common case — need to search examples and instructions together | MIPROv2 |
 | Limited compute budget but need top performance | GEPA |
-| Optimizing past the prompt level into model weights | GRPO (see [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]) |
+| Optimizing past the prompt level into model weights | GRPO (see [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]]) |
 
 ## Boundaries
 
 | Document | Covers |
 |------|-----------|
 | **This document (Automatic_Prompt_Optimization)** | The **paradigm shift** of "prompts are no longer hand-written" and **optimizer selection criteria** |
-| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] | **Implementation detail** of the DSPy compilation pipeline (signature/module/metric code) and the **operating loop**, including A/B testing and prompt version management |
+| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | **Implementation detail** of the DSPy compilation pipeline (signature/module/metric code) and the **operating loop**, including A/B testing and prompt version management |
 
 ## Role in AI Engineering
 

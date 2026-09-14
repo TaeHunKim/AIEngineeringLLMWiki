@@ -6,7 +6,9 @@ order: 8
 
 ## 개요
 
-이 챕터의 앞선 문서들(Pre-training부터 Model Architectures까지)은 사실상 텍스트 전용 모델을 전제한다. 그러나 프로덕션 LLM 대부분은 이미지·오디오·비디오를 함께 다루는 **멀티모달 모델**이다. 이 위키에는 검색 관점의 멀티모달 다룸([[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]])과 행동 관점의 다룸([[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]])은 있었지만, **모델 자체의 아키텍처**를 다루는 문서가 없었다. 본 문서가 그 공백을 채운다.
+**멀티모달 모델**은 텍스트와 함께 이미지·오디오·비디오를 처리하는 모델이다. 2026년 현재 프론티어 모델 대부분이 여기에 해당하며, 멀티모달 지원은 더 이상 특수 기능이 아니라 기본값이다.
+
+멀티모달을 다루는 관점은 셋으로 나뉜다 — [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]]가 **검색**을, [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]가 **행동공간**을 다룬다면, 이 문서는 그 아래 깔린 **모델 자체의 아키텍처**를 다룬다: 비전 인코더를 어떻게 LLM에 붙이는가, 이미지가 어떻게 토큰이 되는가, 그 선택이 컨텍스트·비용에 어떤 영향을 주는가.
 
 ## VLM 아키텍처 두 계보
 
@@ -84,8 +86,8 @@ flowchart TD
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Multimodal_Models)** | VLM/오디오/비디오 모델의 **아키텍처 자체** — 인코더 결합 방식, 토큰화, 평가 |
-| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] | 멀티모달 임베딩을 이용한 **검색** — CLIP 공유 임베딩, ColPali OCR-free 검색 |
-| [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] | 멀티모달 모델을 이용한 **행동공간**(스크린샷 기반 조작, 음성 대화) — 에이전트 레벨 활용 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | 멀티모달 임베딩을 이용한 **검색** — CLIP 공유 임베딩, ColPali OCR-free 검색 |
+| [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | 멀티모달 모델을 이용한 **행동공간**(스크린샷 기반 조작, 음성 대화) — 에이전트 레벨 활용 |
 
 ## AI Engineering에서의 역할
 

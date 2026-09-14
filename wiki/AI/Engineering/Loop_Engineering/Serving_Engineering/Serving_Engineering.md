@@ -6,7 +6,9 @@ order: 0
 
 ## 개요
 
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]]이 "이 계층은 새 통제 대상이 아니라 Loop Engineering의 목표 지표를 비용으로 바꾼 특수화"라고 스스로를 정의했듯, **Serving Engineering도 새 계층이 아니다.** [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]이 다루던 "각 요청을 GPU에서 어떻게 가장 효율적으로 처리할 것인가"라는 인프라 층위가 하나의 문서 안에서 다루기엔 너무 커져(418줄, 위키 전체 최대 분량) 별도 서브폴더로 분리한 것이다. Runtime_Optimization은 **애플리케이션이 API를 어떻게 더 적게·더 싸게 호출할 것인가**(캐싱·라우팅·배칭)에 집중하고, 본 챕터는 **셀프호스팅 서빙 엔진 내부에서 GPU 자원을 어떻게 최대로 활용할 것인가**를 다룬다.
+**Serving Engineering**은 셀프호스팅 서빙 엔진 내부에서 GPU 자원을 최대로 활용해 추론을 처리하는 기법 전반을 가리킨다. Loop Engineering의 **인프라 층위**에 해당하며, 새로운 통제 대상을 도입하는 별도 계층이 아니라 런타임 최적화를 인프라 관점으로 특수화한 것이다.
+
+같은 "비용·레이턴시를 줄인다"는 목표라도 개입 지점이 다르다 — [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]이 **애플리케이션이 API를 어떻게 더 적게·더 싸게 호출할 것인가**(캐싱·라우팅·배칭)를 다룬다면, 이 챕터는 **이미 도착한 요청을 GPU에서 어떻게 가장 효율적으로 처리할 것인가**를 다룬다.
 
 ## Prefill/Decode 2단계 구조
 
@@ -63,18 +65,18 @@ Goodput
 
 | 문서 | 내용 |
 |------|------|
-| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]] | 단일 GPU(풀) 내부 최적화 — KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
-| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative_Decoding]] | Draft 모델 기반 가속 — EAGLE-3, Medusa, n-gram/Prompt Lookup, 수락률(acceptance rate) |
-| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed_Serving]] | 다중 GPU·다중 리전 — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP 병렬화, Goodput 스케줄링, 콜드 스타트 |
+| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference_Internals]] | 단일 GPU(풀) 내부 최적화 — KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
+| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding\|Speculative_Decoding]] | Draft 모델 기반 가속 — EAGLE-3, Medusa, n-gram/Prompt Lookup, 수락률(acceptance rate) |
+| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving\|Distributed_Serving]] | 다중 GPU·다중 리전 — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP 병렬화, Goodput 스케줄링, 콜드 스타트 |
 
 ## 경계 정리
 
 | 문서 | 다루는 것 |
 |------|-----------|
-| [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] | **API 호출 측**에서 요청 수·토큰 수 자체를 줄이는 방법 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍 |
+| [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | **API 호출 측**에서 요청 수·토큰 수 자체를 줄이는 방법 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍 |
 | **본 챕터 (Serving_Engineering)** | **서빙 엔진 내부**에서 이미 도착한 요청을 GPU 자원 관점에서 가장 효율적으로 처리하는 방법 |
-| [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] | 위 두 계층의 비용 지표를 **자율적으로 감시·조정**하는 워처 에이전트 |
-| [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] | 게이트웨이·배포 전략 등 **조직 차원**의 프로덕션 운영 |
+| [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost_Engineering]] | 위 두 계층의 비용 지표를 **자율적으로 감시·조정**하는 워처 에이전트 |
+| [[AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | 게이트웨이·배포 전략 등 **조직 차원**의 프로덕션 운영 |
 
 ## AI Engineering에서의 역할
 

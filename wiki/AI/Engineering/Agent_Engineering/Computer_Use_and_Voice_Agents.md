@@ -50,10 +50,10 @@ Computer Use는 임의의 클릭·타이핑을 실행하므로 잘못된 판단�
 
 ```
 Computer Use 안전 체크리스트:
-  □ Agent Sandbox / VM 격리 — 핵심 시스템과 분리 (→ [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])
+  □ Agent Sandbox / VM 격리 — 핵심 시스템과 분리 (→ Guardrail_Engineering)
   □ 민감 액션(결제, 삭제, 발송) 전 Human-in-the-Loop 승인 게이트
   □ 허용된 앱·URL 화이트리스트
-  □ 스텝 상한(action budget) — 무한 루프 방지 (→ [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]])
+  □ 스텝 상한(action budget) — 무한 루프 방지 (→ Autonomous_Systems)
   □ 실행 전 계획을 사람이 검토 (propose-then-commit 패턴)
 ```
 

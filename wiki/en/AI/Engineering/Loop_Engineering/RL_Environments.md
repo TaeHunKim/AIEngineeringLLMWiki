@@ -94,10 +94,10 @@ RL Environments isn't a new top-level layer; it sits next to a few concepts this
 
 | Document | Focus | Relationship to RL Environments |
 |---|---|---|
-| [[en/AI/Engineering/Harness_Engineering/Benchmarking|Harness_Engineering/Benchmarking]] | **Static** evaluation benchmarks like SWE-bench — measure model performance without training | The same benchmark (SWE-bench) can serve as an evaluation set or as an RL training environment (SWE-Gym) — the difference is "are you only measuring, or also training on that signal" |
-| [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Harness_Engineering/Agent_as_a_Judge]] | Pre-deployment agent behavior validation via **Agent Simulation** | Mechanically overlaps with an RL Environment's model-based verifier, but Agent-as-a-Judge is a pre-deployment quality gate while RL Environments provide an in-training-loop reward signal — different purposes |
-| [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] | The cycle of turning real production data into synthetic training data | RL Environments draw signal from a **pre-designed simulation**, not production data — though the two are sometimes combined, feeding production failure cases back in as new tasks in an RL environment |
-| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] | **Training the model itself** via GRPO/RLVR | RL Environments are the upstream infrastructure that produces the "verifiable reward" that training depends on |
+| [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Harness_Engineering/Benchmarking]] | **Static** evaluation benchmarks like SWE-bench — measure model performance without training | The same benchmark (SWE-bench) can serve as an evaluation set or as an RL training environment (SWE-Gym) — the difference is "are you only measuring, or also training on that signal" |
+| [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Harness_Engineering/Agent_as_a_Judge]] | Pre-deployment agent behavior validation via **Agent Simulation** | Mechanically overlaps with an RL Environment's model-based verifier, but Agent-as-a-Judge is a pre-deployment quality gate while RL Environments provide an in-training-loop reward signal — different purposes |
+| [[en/AI/Engineering/Loop_Engineering/Data_Flywheel\|Loop_Engineering/Data_Flywheel]] | The cycle of turning real production data into synthetic training data | RL Environments draw signal from a **pre-designed simulation**, not production data — though the two are sometimes combined, feeding production failure cases back in as new tasks in an RL environment |
+| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | **Training the model itself** via GRPO/RLVR | RL Environments are the upstream infrastructure that produces the "verifiable reward" that training depends on |
 
 ## Role in AI Engineering
 
