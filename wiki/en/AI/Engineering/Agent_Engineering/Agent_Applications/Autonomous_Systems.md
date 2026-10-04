@@ -89,7 +89,7 @@ Bounded Self-Improvement:
 
 ### AI Scientist v2 and Automated Alignment Research
 
-**AI Scientist v2** (Sakana AI, 2025) is an agent that automates the entire pipeline — hypothesis generation → experiment design → code writing → execution → paper writing — and has been reported to pass workshop-level conference review. **Anthropic's Automated Alignment Research (AAR)** applies this automation to alignment research itself — a recursive approach in which AI builds the tools that verify AI alignment. See [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] for details.
+**AI Scientist v2** (Sakana AI, 2025) is an agent that automates the entire pipeline — hypothesis generation → experiment design → code writing → execution → paper writing — and has been reported to pass workshop-level conference review. **Anthropic's Automated Alignment Research (AAR)** applies this automation to alignment research itself — a recursive approach in which AI builds the tools that verify AI alignment. See [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] for details.
 
 ## Coding Agent Landscape and Permission Models
 
@@ -110,7 +110,7 @@ Permission modes are the concrete implementation of the "Propose-then-Commit" pa
 
 ## Browser Agents and Indirect Prompt Injection
 
-Autonomous agents that operate a browser (see [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]) can mistake hidden text on visited web pages for instructions. This attack surface is especially dangerous for long-running agents because **the attack surface accumulates across the many pages visited during a long run**. For detailed defenses → [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]
+Autonomous agents that operate a browser (see [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]) can mistake hidden text on visited web pages for instructions. This attack surface is especially dangerous for long-running agents because **the attack surface accumulates across the many pages visited during a long run**. For detailed defenses → [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]
 
 ## Reliability Infrastructure: Durable Execution
 
@@ -162,14 +162,14 @@ Periodically save checkpoints that allow returning to a specific point during lo
 
 ## Connection to Safety Governance
 
-This document covers **safety controls for an individual deployed system** (kill switch, budget, HITL). Organization- and industry-level safety frameworks (Anthropic RSP, OpenAI Preparedness Framework, METR external evaluation, CAIS/CAISI) are covered in [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]].
+This document covers **safety controls for an individual deployed system** (kill switch, budget, HITL). Organization- and industry-level safety frameworks (Anthropic RSP, OpenAI Preparedness Framework, METR external evaluation, CAIS/CAISI) are covered in [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]].
 
 ## Role in AI Engineering
 
 Autonomous Systems is the frontier of agent engineering. As Time Horizon continues to increase, "how long and with how little supervision to let agents run" becomes an increasingly important design question. While self-improvement systems (STaR, AlphaEvolve, Darwin Gödel Machine) push the capability ceiling, the safety controls in this document (budget, kill switch, HITL, checkpoint) provide the minimum safety mechanisms needed to actually trust and deploy those capabilities. Capability and control must always be designed as a pair.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]]
 
 ## Sources
 - METR "Measuring AI Ability to Complete Long Tasks" — [metr.org](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/)

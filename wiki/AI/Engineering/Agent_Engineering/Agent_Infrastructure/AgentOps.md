@@ -184,7 +184,7 @@ AgentOps는 데모에서 동작하는 에이전트와 프로덕션에서 신뢰�
 
 ## 관련 개념
 
-[[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]]
+[[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]]
 
 ## 출처
 

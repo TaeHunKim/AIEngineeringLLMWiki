@@ -1,12 +1,12 @@
 ---
-order: 9
+order: 2
 ---
 
 # Mechanistic Interpretability (기계적 해석가능성)
 
 ## 개요
 
-**Mechanistic Interpretability**는 모델의 입출력 행동만 관찰하는 것이 아니라, 모델 내부의 **연산 메커니즘(회로·특징)을 직접 리버스 엔지니어링**해 "모델이 왜 이런 답을 냈는가"를 설명하려는 연구 분야다. [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]가 모델의 행동을 관찰·테스트해 오정렬 가능성을 추론한다면, Mechanistic Interpretability는 그 행동을 만들어내는 내부 계산 자체를 열어본다.
+**Mechanistic Interpretability**는 모델의 입출력 행동만 관찰하는 것이 아니라, 모델 내부의 **연산 메커니즘(회로·특징)을 직접 리버스 엔지니어링**해 "모델이 왜 이런 답을 냈는가"를 설명하려는 연구 분야다. [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]]가 모델의 행동을 관찰·테스트해 오정렬 가능성을 추론한다면, Mechanistic Interpretability는 그 행동을 만들어내는 내부 계산 자체를 열어본다.
 
 ## 배경: Polysemanticity와 Superposition 문제
 
@@ -61,16 +61,16 @@ MIT Technology Review "2026 Breakthrough Technologies":
 
 ## AI Engineering과의 실무적 연결
 
-- **Activation Steering**: 특정 특징(예: 특정 주제, 톤, 안전 관련 개념)에 대응하는 방향을 찾아 활성화에 직접 더하거나 빼는 방식으로, 파인튜닝 없이 모델 행동을 실시간 조향 — [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]의 런타임 필터와는 다른 축의 개입 지점(출력을 사후 검열하는 대신 생성 과정 자체를 조정)
-- **환각·기만 탐지**: 모델이 "모른다"는 사실을 내부적으로는 알고 있으면서도 그럴듯한 답을 지어내는 경우, 내부 특징 수준에서 이 불일치를 포착할 가능성 — 순수 출력 기반 평가([[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]])로는 원천적으로 놓치는 신호
-- **정렬 검증의 근본적 한계에 대한 보완책**: [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]가 다루는 Sleeper Agents·Alignment Faking처럼 "평가 중에는 정상적으로 행동하고 실제 배포에서만 다르게 행동"하는 기만적 모델은 행동 관찰만으로는 근본적으로 탐지하기 어렵다. 내부 메커니즘을 직접 들여다보는 것은 이런 종류의 기만을 포착할 수 있는 몇 안 되는 잠재적 수단으로 여겨진다
+- **Activation Steering**: 특정 특징(예: 특정 주제, 톤, 안전 관련 개념)에 대응하는 방향을 찾아 활성화에 직접 더하거나 빼는 방식으로, 파인튜닝 없이 모델 행동을 실시간 조향 — [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]의 런타임 필터와는 다른 축의 개입 지점(출력을 사후 검열하는 대신 생성 과정 자체를 조정)
+- **환각·기만 탐지**: 모델이 "모른다"는 사실을 내부적으로는 알고 있으면서도 그럴듯한 답을 지어내는 경우, 내부 특징 수준에서 이 불일치를 포착할 가능성 — 순수 출력 기반 평가([[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]])로는 원천적으로 놓치는 신호
+- **정렬 검증의 근본적 한계에 대한 보완책**: [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]]가 다루는 Sleeper Agents·Alignment Faking처럼 "평가 중에는 정상적으로 행동하고 실제 배포에서만 다르게 행동"하는 기만적 모델은 행동 관찰만으로는 근본적으로 탐지하기 어렵다. 내부 메커니즘을 직접 들여다보는 것은 이런 종류의 기만을 포착할 수 있는 몇 안 되는 잠재적 수단으로 여겨진다
 
 ## AI Engineering에서의 역할
 
 Mechanistic Interpretability는 아직 프로덕션 파이프라인에 일상적으로 통합되는 도구라기보다는 **모델을 신뢰할 수 있는 근본적 방법을 찾는 기초 연구**에 가깝다. 하지만 Circuit Tracing 도구의 오픈소스화와 Activation Steering 같은 실용적 응용이 늘어나면서, 가드레일·평가처럼 행동을 관찰하는 계층만으로는 잡을 수 없는 오정렬을 보완하는 심층 방어의 한 축으로 자리잡고 있다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]
+[[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]]
 
 ## 출처
 - Anthropic (2023) "Towards Monosemanticity: Decomposing Language Models With Dictionary Learning" — [transformer-circuits.pub](https://transformer-circuits.pub/2023/monosemantic-features)

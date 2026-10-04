@@ -63,7 +63,7 @@ The node/edge abstraction above isn't unique to LangGraph. The major frameworks 
 | **AutoGen (Actor Model)** | Asynchronous message-passing actor model, coordinated via conversational GroupChat (e.g., Planner-Executor-Critic) | Edges form implicitly as a communication graph — "who sends a message to whom" — emerging from conversation flow rather than static declaration |
 | **CrewAI** | Role-based `Crew` + `Process` (sequential/hierarchical) — each agent assigned a role and goal | The Process type itself is a topology choice: sequential is a linear chain, hierarchical corresponds to this document's Router/manager node |
 | **OpenAI Agents SDK** | `Handoff` as a first-class primitive — an agent explicitly delegates control and conversation context to another agent | A handoff *is* an edge: "which agent this one can transition to next" is expressed as the list of handoffs declared on each agent |
-| **Google ADK** | Named `Sequential`/`Parallel`/`Loop` workflow agents plus routing agents | Maps nearly 1:1 onto this document's example Router and Join — ADK code examples already appear elsewhere in this wiki, in [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] (SafetyPlugin) and [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent Deployment]] |
+| **Google ADK** | Named `Sequential`/`Parallel`/`Loop` workflow agents plus routing agents | Maps nearly 1:1 onto this document's example Router and Join — ADK code examples already appear elsewhere in this wiki, in [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail Engineering]] (SafetyPlugin) and [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent Deployment]] |
 
 The common thread: despite different names and APIs, every framework is making the same underlying design decision — defining node types plus transition rules. This makes it practically useful to redraw any framework's system in terms of this document's node/edge model, whichever one you're actually using.
 
@@ -73,7 +73,7 @@ As node count grows, tracking "who can access what" and "who consumed what" beco
 
 **Identity & Access**: Each node has a unique identity as an independently governed caller. Virtual-account tokens propagate caller context.
 
-**4 Guardrail Hooks**: `llm_input` (pre-request content screening) · `llm_output` (post-response filtering) · pre-tool-invoke · post-tool-invoke — different policies can apply per node (→ [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]).
+**4 Guardrail Hooks**: `llm_input` (pre-request content screening) · `llm_output` (post-response filtering) · pre-tool-invoke · post-tool-invoke — different policies can apply per node (→ [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]).
 
 **Node-level Correlation**: To attribute budget, cost, and latency at the node level, graph/run/node identifiers must be propagated with every request.
 
@@ -86,7 +86,7 @@ X-Graph-Metadata: {
 }
 ```
 
-When these identifiers let the orchestrator's recorded runtime topology correlate with the gateway's request logs, per-node cost, latency, model, and tool-usage analysis becomes possible (→ [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]).
+When these identifiers let the orchestrator's recorded runtime topology correlate with the gateway's request logs, per-node cost, latency, model, and tool-usage analysis becomes possible (→ [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]).
 
 **Production checklist**: ① resolved identity for each independently governed target ② stable graph/run/node identifiers on gateway requests ③ the orchestrator records the actual runtime work graph ④ correlation between orchestration traces and gateway logs ⑤ budget rules mapped via virtual accounts or metadata ⑥ approval checkpoints on sensitive tool actions ⑦ model routing isolated behind a virtual-model layer.
 
@@ -107,7 +107,7 @@ Where GoA is a 2026 academic attempt to *automatically discover* graph topology,
 Once a node can contain a full agent, a multi-agent system stops being "a pipeline of LLM calls" and becomes closer to "an organization of autonomous actors." Multi-Agent Topology is the practice of designing and controlling this organization, and should be read alongside the coordination patterns and failure modes in [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] — where coordination patterns describe "how agents interact," topology first defines "what structure that interaction is allowed to take."
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
 
 ## Sources
 - Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316

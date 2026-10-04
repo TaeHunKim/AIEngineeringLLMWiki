@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 4
 ---
 
 # Human Evaluation & Annotation
@@ -190,7 +190,7 @@ Step 4: PPO fine-tuning of LLM
 Human Evaluation is the **final quality gate for AI systems**. A cycle of rapid iteration with automated evaluation, regularly validated with human evaluation, is recommended. Human preference data collected through RLHF is the most direct input for model improvement, and the quality of this data determines final model quality.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]]
 
 ## Sources
 - Ouyang et al. (2022) "InstructGPT (RLHF)" — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)

@@ -15,20 +15,37 @@ Harness = Guardrails (safety) + Evaluation (quality) + Observability (observatio
 
 ## Sub-documents
 
+The sub-documents are divided into three areas. **Safety** is a defense layer that prevents harmful or unfounded outputs, **Evaluation & Observability** is a layer that measures quality and tracks production behavior, and **Alignment & Governance** is the domain for researching and institutionally managing model-level risks.
+
+### Safety
+
 | Document | Content |
-|----------|---------|
-| [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
-| [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM-as-a-Judge]] | Automated quality evaluation — MT-Bench, RAGAS, G-Eval, Prometheus |
-| [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Agent-as-a-Judge]] | Execution trajectory evaluation, Critic Agent, DevAI |
-| [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench(Verified), pass@k |
-| [[en/AI/Engineering/Harness_Engineering/Human_Evaluation\|Human Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
-| [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing\|Observability & Tracing]] | LangSmith/Langfuse/Arize Phoenix |
-| [[en/AI/Engineering/Harness_Engineering/Red_Teaming\|Red Teaming]] | HarmBench, PAIR, Jailbreak detection, OWASP LLM Top 10, Garak/PyRIT |
-| [[en/AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
-| [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic Interpretability]] | Sparse Autoencoders, Circuit Tracing, internal circuit analysis |
-| [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI Governance & Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, Model Cards |
-| [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense\|Prompt Injection Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
-| [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding\|Hallucination & Grounding]] | Hallucination detection and grounding, Semantic Entropy, claim-level groundedness, production stack |
+|------|------|
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Harness_Safety\|Harness_Safety]] | Category Overview |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense\|Prompt_Injection_Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming\|Red_Teaming]] | HarmBench, PAIR, Jailbreaking Detection, OWASP LLM Top 10, Garak/PyRIT |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding\|Hallucination_and_Grounding]] | Hallucination Detection/Groundedness Verification, Semantic Entropy, claim-level groundedness, Production Stack |
+
+### Evaluation & Observability
+
+| Document | Content |
+|------|------|
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Harness_Evaluation\|Harness_Evaluation]] | Category Overview |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | Automated Quality Evaluation — MT-Bench, RAGAS, G-Eval, Prometheus |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge\|Agent_as_a_Judge]] | Agent Execution Trajectory Evaluation, Critic Agent, Agent Simulation |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench(Verified), pass@k |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation\|Human_Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing\|Observability_and_Tracing]] | LangSmith/Langfuse/Arize Phoenix |
+
+### Alignment & Governance
+
+| Document | Content |
+|------|------|
+| [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_and_Governance\|Alignment_and_Governance]] | Category Overview |
+| [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
+| [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability\|Mechanistic_Interpretability]] | Sparse Autoencoders, Circuit Tracing, Model Internal Circuit Analysis |
+| [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, Model Card |
 
 ## Naming Collision: Distinguishing from "Agent Harness"
 

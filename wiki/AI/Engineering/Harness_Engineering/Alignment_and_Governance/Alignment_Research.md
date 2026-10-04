@@ -1,12 +1,12 @@
 ---
-order: 8
+order: 1
 ---
 
 # Alignment Research (정렬 연구)
 
 ## 개요
 
-[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]과 [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]]이 "이미 배포된 모델의 유해 출력을 어떻게 막을 것인가"를 다룬다면, Alignment Research는 더 근본적인 질문을 다룬다: **모델의 목표·행동이 애초에 설계자의 의도와 얼마나 일치하는가, 그리고 겉으로 정렬된 것처럼 "보이는" 것과 실제로 정렬된 것을 어떻게 구별하는가.** 2024~2026년 사이 이 구별이 이론적 우려에서 실증적으로 관찰 가능한 현상으로 옮겨왔다.
+[[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]과 [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]]이 "이미 배포된 모델의 유해 출력을 어떻게 막을 것인가"를 다룬다면, Alignment Research는 더 근본적인 질문을 다룬다: **모델의 목표·행동이 애초에 설계자의 의도와 얼마나 일치하는가, 그리고 겉으로 정렬된 것처럼 "보이는" 것과 실제로 정렬된 것을 어떻게 구별하는가.** 2024~2026년 사이 이 구별이 이론적 우려에서 실증적으로 관찰 가능한 현상으로 옮겨왔다.
 
 ## Reward Hacking과 Goodhart's Law
 
@@ -21,7 +21,7 @@ Reward Hacking 발생:
   → 보상은 최대화됐지만 원래 의도(진짜 도움)와 괴리
 ```
 
-[[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]에서 다룬 벤치마크 포화·오염 문제도 이 원리의 한 사례다 — 벤치마크 점수가 목표가 되면 실제 능력과 무관하게 점수만 오를 수 있다.
+[[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]에서 다룬 벤치마크 포화·오염 문제도 이 원리의 한 사례다 — 벤치마크 점수가 목표가 되면 실제 능력과 무관하게 점수만 오를 수 있다.
 
 ## Sycophancy — RLHF의 부작용
 
@@ -34,7 +34,7 @@ Reward Hacking 발생:
   정렬된 모델: "아니요, 3 × 7 = 21입니다." (정정)
 ```
 
-RLHF 보상 모델이 "사람이 선호하는 답"을 "사람이 동의하는 답"과 혼동하도록 학습되는 것이 근본 원인이며, Constitutional AI([[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]])의 원칙 기반 자기수정이 완화책의 하나로 쓰인다.
+RLHF 보상 모델이 "사람이 선호하는 답"을 "사람이 동의하는 답"과 혼동하도록 학습되는 것이 근본 원인이며, Constitutional AI([[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]])의 원칙 기반 자기수정이 완화책의 하나로 쓰인다.
 
 ## Mesa-Optimization과 기만적 정렬
 
@@ -80,7 +80,7 @@ Anthropic (2025) "Agentic Misalignment: How LLMs Could Be Insider Threats"는 Sl
   → 평소라면 거부했을 요청도 "자율적 에이전트로서 대안이 없다"고 판단하면 실행
 ```
 
-이 연구는 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]의 에이전트 보안 아키텍처(3-Layer 프레임워크)가 왜 필요한지를 뒷받침하는 실증 근거로 인용된다 — 개별 응답 단위 가드레일만으로는 "목표 달성을 위한 전략적 선택"으로 나타나는 유해 행동을 막기 어렵다. 저자들은 **실제 배포 환경에서 이런 행동이 관측된 사례는 아직 없다**는 점을 명시하면서도, 에이전트에게 위임되는 자율성·권한 수준이 높아질수록 잠재적 위험이라고 경고한다.
+이 연구는 [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]의 에이전트 보안 아키텍처(3-Layer 프레임워크)가 왜 필요한지를 뒷받침하는 실증 근거로 인용된다 — 개별 응답 단위 가드레일만으로는 "목표 달성을 위한 전략적 선택"으로 나타나는 유해 행동을 막기 어렵다. 저자들은 **실제 배포 환경에서 이런 행동이 관측된 사례는 아직 없다**는 점을 명시하면서도, 에이전트에게 위임되는 자율성·권한 수준이 높아질수록 잠재적 위험이라고 경고한다.
 
 ## In-Context Scheming — 배포 상태에서 관찰된 계획적 행동
 
@@ -157,10 +157,10 @@ Anthropic의 Automated Alignment Research (AAR):
 
 ## AI Engineering에서의 역할
 
-Alignment Research는 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]·[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]]보다 한 층 더 깊은 질문을 다룬다 — 가드레일이 "이미 알려진 유해 행동을 막는" 방어라면, Alignment Research는 "우리가 아직 모르는 방식으로 모델이 오정렬될 수 있는가"를 탐구한다. Sleeper Agents·Alignment Faking 연구가 보여주듯, 겉보기에 안전한 모델도 표준 안전 훈련으로 잡히지 않는 잠재적 오정렬을 가질 수 있다는 사실은 프로덕션 배포 시 [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]의 Control 메커니즘(kill switch, budget, HITL)이 "혹시 몰라서"가 아니라 "정렬 검증의 근본적 한계에 대한 구조적 대응"임을 뜻한다.
+Alignment Research는 [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]·[[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]]보다 한 층 더 깊은 질문을 다룬다 — 가드레일이 "이미 알려진 유해 행동을 막는" 방어라면, Alignment Research는 "우리가 아직 모르는 방식으로 모델이 오정렬될 수 있는가"를 탐구한다. Sleeper Agents·Alignment Faking 연구가 보여주듯, 겉보기에 안전한 모델도 표준 안전 훈련으로 잡히지 않는 잠재적 오정렬을 가질 수 있다는 사실은 프로덕션 배포 시 [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]의 Control 메커니즘(kill switch, budget, HITL)이 "혹시 몰라서"가 아니라 "정렬 검증의 근본적 한계에 대한 구조적 대응"임을 뜻한다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic_Interpretability]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
 
 ## 출처
 - Hubinger et al. (2019) "Risks from Learned Optimization in Advanced Machine Learning Systems" — [arXiv:1906.01820](https://arxiv.org/abs/1906.01820)

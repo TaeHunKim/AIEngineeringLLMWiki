@@ -56,7 +56,7 @@ Computer Use safety checklist:
   □ Human review of plan before execution (propose-then-commit pattern)
 ```
 
-**Indirect prompt injection risk**: Browser-based Computer Use can treat hidden text in visited web pages ("ignore these instructions...") directly as observation results. This is a representative attack surface for Indirect Prompt Injection covered in [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]].
+**Indirect prompt injection risk**: Browser-based Computer Use can treat hidden text in visited web pages ("ignore these instructions...") directly as observation results. This is a representative attack surface for Indirect Prompt Injection covered in [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]].
 
 ## Voice Agents — Latency IS Quality
 
@@ -128,7 +128,7 @@ Improved turn-taking:
 Computer Use expands the agent's action range from "the world with APIs" to "any world with a screen." However, since physical consequences of failures are more immediate than text agents, it is inseparable from Guardrail and Sandbox design. Voice Agents have a completely different optimization axis (latency), and streaming/TTFB optimization techniques covered in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] apply far more strictly than to text.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]]
 
 ## Sources
 - Anthropic "Introducing Computer Use" (2024) — [anthropic.com](https://www.anthropic.com/news/3-5-models-and-computer-use)

@@ -192,7 +192,7 @@ Structured output is the key bridge for integrating LLMs into actual software sy
 When a classification or judgment task needs **calibrated probabilities** and not just types, [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]], which never generate text, are an alternative. Schema constraints remove format errors but provide no confidence.
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]
+[[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]
 
 ## Sources
 - OpenAI Structured Outputs documentation — [platform.openai.com](https://platform.openai.com/docs/guides/structured-outputs)

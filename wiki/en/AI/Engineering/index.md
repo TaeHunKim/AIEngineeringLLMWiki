@@ -122,23 +122,21 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 ### 6. [[en/AI/Engineering/Harness_Engineering/Harness_Engineering|Harness Engineering]] — Safety, evaluation & operational infrastructure
 
-- Guardrails
-    - [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer security, ADK SafetyPlugin, Agent Sandbox
-    - [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]] — Semantic Entropy, claim-level groundedness, mandatory citation, production stack *(2026)*
-- Evaluation
-    - [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, bias mitigation
-    - [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory evaluation, Critic Agent, Multi-Agent-as-Judge (Zhuge et al., ICML 2025)
-    - [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench(Verified), BFCL
-    - [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
-- Observability
-    - [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(May 2026)*
-- Red Teaming
-    - [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
-    - [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]] — Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting *(2026)*
-- Alignment & Governance
-    - [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
-    - [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, internal circuit analysis *(2026)*
-    - [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards *(2026)*
+- Safety — [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Harness_Safety|Harness Safety]]
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer security, ADK SafetyPlugin, Agent Sandbox
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt Injection Defense]] — Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting *(2026)*
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination & Grounding]] — Semantic Entropy, claim-level groundedness, mandatory citation, production stack *(2026)*
+- Evaluation & Observability — [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Harness_Evaluation|Harness Evaluation]]
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, bias mitigation
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory evaluation, Critic Agent, Multi-Agent-as-Judge (Zhuge et al., ICML 2025)
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench(Verified), BFCL
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
+    - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(May 2026)*
+- Alignment & Governance — [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_and_Governance|Alignment and Governance]]
+    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, internal circuit analysis *(2026)*
+    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards *(2026)*
 
 ---
 

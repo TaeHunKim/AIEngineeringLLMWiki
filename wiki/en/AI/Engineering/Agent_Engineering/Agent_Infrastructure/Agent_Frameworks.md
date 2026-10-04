@@ -108,7 +108,7 @@ result = Runner.run_sync(support_agent, "How do I get a refund?")
 
 **Core concepts**:
 - **Handoffs**: One agent transfers full conversation control to another (unlike CrewAI's role division, conversation context transfers intact)
-- **Guardrails**: Parallel check functions on inputs/outputs — stop execution when conditions are violated → [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]
+- **Guardrails**: Parallel check functions on inputs/outputs — stop execution when conditions are violated → [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]
 - **Tracing**: Built-in execution tracing — visualize directly in OpenAI dashboard
 
 ## Claude Agent SDK — Subagents and Session Store

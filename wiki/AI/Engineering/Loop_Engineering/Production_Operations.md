@@ -75,7 +75,7 @@ system_prompt = PROMPT_V1 if variant == "control" else PROMPT_V2
 # 이후 각 그룹의 태스크 완료율·비용을 비교해 승자 결정
 ```
 
-**LLM 특화 고려사항**: 전통적 웹 A/B 테스트와 달리 LLM 응답은 비결정적이라 표본 크기가 더 커야 하고, 품질 지표를 LLM-as-a-Judge([[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]])로 정량화해야 하는 경우가 많다.
+**LLM 특화 고려사항**: 전통적 웹 A/B 테스트와 달리 LLM 응답은 비결정적이라 표본 크기가 더 커야 하고, 품질 지표를 LLM-as-a-Judge([[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]])로 정량화해야 하는 경우가 많다.
 
 ## 부하 테스트 (Load Testing)
 
@@ -111,7 +111,7 @@ PII 스크러빙:
 
 ## 컴플라이언스
 
-SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프로덕션 시스템에 요구하는 기술적 통제(데이터 처리 위치 제한, 로그 보존 기간, 설명가능성 요구사항)를 시스템 설계에 반영해야 한다. 규제 자체의 상세 내용과 조직 거버넌스 관점은 → [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
+SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프로덕션 시스템에 요구하는 기술적 통제(데이터 처리 위치 제한, 로그 보존 기간, 설명가능성 요구사항)를 시스템 설계에 반영해야 한다. 규제 자체의 상세 내용과 조직 거버넌스 관점은 → [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]]
 
 ## FinOps for LLMs
 
@@ -133,7 +133,7 @@ SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프�
 Production Operations는 개별 최적화 기법([[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]])들을 조직 규모에서 안전하고 관측 가능하며 책임 추적 가능한 방식으로 운영하는 계층이다. 하나의 프롬프트 변경이나 모델 업그레이드가 수백만 사용자에게 영향을 미치는 규모에서는, 게이트웨이·점진적 배포·A/B 테스트·카오스 엔지니어링 없이 변경을 내보내는 것 자체가 리스크가 된다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]]
+[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]]
 
 ## 출처
 - LiteLLM 공식 문서 — [docs.litellm.ai](https://docs.litellm.ai)

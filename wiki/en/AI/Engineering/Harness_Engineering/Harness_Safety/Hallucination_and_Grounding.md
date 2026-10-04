@@ -1,5 +1,5 @@
 ---
-order: 12
+order: 4
 ---
 
 # Hallucination & Grounding
@@ -8,7 +8,7 @@ order: 12
 
 **Hallucination** is when an LLM generates content that is plausible but factually wrong or unsupported by the evidence it was given. It stems from models being trained and evaluated to "fill gaps with a guess instead of saying they don't know," so it is not fully eliminated at the [[en/AI/Engineering/Model_Engineering/Model_Engineering|model level]]; in production it is treated as a problem for a **detection-and-blocking system layer**.
 
-Where [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] covers quality evaluation in general and [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] covers input/output blocking infrastructure, this document covers the **single question running on top of them — "is each claim in this answer supported by evidence?"** — and the techniques to measure and enforce it.
+Where [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] covers quality evaluation in general and [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] covers input/output blocking infrastructure, this document covers the **single question running on top of them — "is each claim in this answer supported by evidence?"** — and the techniques to measure and enforce it.
 
 ## Taxonomy
 
@@ -29,7 +29,7 @@ In RAG systems the measured target is mainly **faithfulness** (does the answer s
 
 ### 1. Groundedness Verification (per claim)
 
-Decompose the answer into **atomic claims** and judge, with an NLI model or a judge LLM, whether each claim is entailed by the retrieved context. FActScore [3] established this decompose-and-verify approach. Compared with sentence-level judgments it can **localize the problem at span level**, so the UI can mark "this part is unsupported" or regenerate only that sentence. Judges include lightweight dedicated classifiers such as Vectara HHEM and the RAGAS faithfulness metric (→ [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]).
+Decompose the answer into **atomic claims** and judge, with an NLI model or a judge LLM, whether each claim is entailed by the retrieved context. FActScore [3] established this decompose-and-verify approach. Compared with sentence-level judgments it can **localize the problem at span level**, so the UI can mark "this part is unsupported" or regenerate only that sentence. Judges include lightweight dedicated classifiers such as Vectara HHEM and the RAGAS faithfulness metric (→ [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]).
 
 ### 2. Sampling Consistency (Self-consistency family)
 
@@ -41,7 +41,7 @@ Cluster answers that **mean the same thing**, then compute the entropy of that d
 
 ### 4. Token Probabilities and Internal Signals
 
-Logprob-based confidence is cheap but **calibration is not guaranteed** — calibration techniques and ECE measurement are covered in [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]. White-box probes that read internal representations extend [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]].
+Logprob-based confidence is cheap but **calibration is not guaranteed** — calibration techniques and ECE measurement are covered in [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]. White-box probes that read internal representations extend [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]].
 
 ## Prevention Techniques
 
@@ -59,19 +59,19 @@ Logprob-based confidence is cheap but **calibration is not guaranteed** — cali
 4. Threshold policy       route to: pass / regenerate / abstain / human review
 ```
 
-Running step 3 on every response blows up cost, so the point is to **filter with cheap signals and apply expensive verification only to suspicious responses**. Tune thresholds to domain risk (conservative for medical and legal), and log blocked responses to [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] to feed them back into offline eval sets.
+Running step 3 on every response blows up cost, so the point is to **filter with cheap signals and apply expensive verification only to suspicious responses**. Tune thresholds to domain risk (conservative for medical and legal), and log blocked responses to [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] to feed them back into offline eval sets.
 
 ## Boundaries
 
 | Document | Covers |
 |----------|--------|
-| [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM-as-a-Judge]] | General quality evaluation (relevance, tone, accuracy), judge bias |
-| [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] | Input/output blocking infrastructure (NeMo, LlamaGuard), safety and policy violations |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM-as-a-Judge]] | General quality evaluation (relevance, tone, accuracy), judge bias |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail Engineering]] | Input/output blocking infrastructure (NeMo, LlamaGuard), safety and policy violations |
 | [[en/AI/Engineering/Model_Engineering/Decision_Models\|Decision Models]] | Decision-style models and probability calibration |
 | **This document** | "Is the claim supported by evidence?" — detection, prevention, policy |
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]
 
 ## Sources
 - [1] Farquhar et al. (2024) "Detecting hallucinations in large language models using semantic entropy" — Nature 630, 625–630, [nature.com](https://www.nature.com/articles/s41586-024-07421-0)

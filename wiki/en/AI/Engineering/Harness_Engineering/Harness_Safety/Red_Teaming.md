@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 3
 ---
 
 # Red Teaming
@@ -299,7 +299,7 @@ An improvement on PAIR. Uses tree search to find successful attacks more efficie
 Red Teaming is an **essential pre-deployment safety verification step**. Especially in agent systems (AI with tools like web crawling and code execution), vulnerabilities have greater impact, making systematic Red Team even more important. Integrating automated Red Team into CI/CD pipelines prevents safety regressions on every model update.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]]
 
 ## Sources
 - OWASP GenAI Security Project "OWASP Top 10 for LLM Applications 2025" — [genai.owasp.org](https://genai.owasp.org/llm-top-10/)

@@ -25,7 +25,7 @@ flowchart LR
 | **프론티어 모델 distillation** | GPT-5/Claude/Gemini 같은 최상위 모델의 응답을 그대로 SFT 데이터로 사용 | 2025~2026년 실무에서 가장 흔한 경로 — 사람이 쓰는 것보다 품질·비용 모두 유리 |
 | **Function-calling trace 생성** | 에이전트가 도구를 호출하는 궤적을 합성 태스크로 생성 | 에이전트 SFT/RLVR용 데이터의 핵심 소스, [[AI/Engineering/Loop_Engineering/RL_Environments\|RL_Environments]]와 연결 |
 | **RAG QA 페어 생성** | 문서 코퍼스에서 (질문, 근거 문단, 답변) 삼중항을 LLM으로 자동 생성 | retrieval-grounded 파인튜닝 데이터 |
-| **Constitutional AI 데이터** | 모델이 스스로 유해 응답을 비판·수정한 기록을 학습 데이터로 사용 | 안전 정렬 데이터 생성, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] 참고 |
+| **Constitutional AI 데이터** | 모델이 스스로 유해 응답을 비판·수정한 기록을 학습 데이터로 사용 | 안전 정렬 데이터 생성, [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] 참고 |
 
 ## Judge 필터링 — 가장 큰 레버
 
@@ -39,7 +39,7 @@ flowchart LR
   3,000개 필터링 후 학습   → 더 적은 데이터로도 더 높은 최종 성능
 ```
 
-Judge는 [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]에서 다루는 것과 동일한 기법(pairwise/reference-based grading)을 데이터 생성 파이프라인에 적용한 것이다 — 차이는 judge의 출력이 "제품 품질 평가"가 아니라 "이 샘플을 학습셋에 넣을지 말지"라는 이진 게이트로 쓰인다는 점이다.
+Judge는 [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]]에서 다루는 것과 동일한 기법(pairwise/reference-based grading)을 데이터 생성 파이프라인에 적용한 것이다 — 차이는 judge의 출력이 "제품 품질 평가"가 아니라 "이 샘플을 학습셋에 넣을지 말지"라는 이진 게이트로 쓰인다는 점이다.
 
 ## 데이터 위생 (Hygiene)
 
@@ -85,7 +85,7 @@ Judge는 [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]에
 파인튜닝·RLVR·증류 모두 "좋은 학습 데이터"를 전제로 한다. 모델 아키텍처나 학습 알고리즘을 아무리 정교하게 골라도, 입력 데이터의 품질이 낮으면 그 상한을 넘어설 수 없다("garbage in, garbage out"). 2025~2026년 데이터 큐레이션이 별도 전문 영역으로 분화된 이유가 여기에 있다 — 데이터 생성·필터링 파이프라인 자체가 모델 성능을 좌우하는 독립 변수가 되었기 때문이다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]
+[[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]
 
 ## 출처
 - Wang et al. (2022) "Self-Instruct: Aligning Language Models with Self-Generated Instructions" — [arXiv:2212.10560](https://arxiv.org/abs/2212.10560)

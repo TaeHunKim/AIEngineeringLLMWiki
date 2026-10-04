@@ -114,7 +114,7 @@ result = Runner.run_sync(support_agent, "환불 어떻게 하나요?")
 
 **핵심 개념**:
 - **Handoffs**: 한 에이전트가 대화의 제어권을 통째로 다른 에이전트에 넘김 (CrewAI의 역할 분담과 달리 대화 컨텍스트가 그대로 이전)
-- **Guardrails**: 입출력에 대한 병렬 체크 함수 — 조건 위반 시 실행 중단 → [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
+- **Guardrails**: 입출력에 대한 병렬 체크 함수 — 조건 위반 시 실행 중단 → [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]
 - **Tracing**: 내장 실행 추적 — OpenAI 대시보드에서 바로 시각화
 
 ## Claude Agent SDK — Subagents and Session Store

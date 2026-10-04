@@ -60,7 +60,7 @@ Stateful environments have also emerged — for example, one that maintains 164 
 A good RL environment needs not just a reward function but a **verifier** — a mechanism, programmatic, model-based, or human, that judges whether an agent's actions were actually correct.
 
 - **Programmatic verifiers**: rule-based scripts that grade automatically — does the code compile, do the tests pass, does the DB state match the expected value. Most trustworthy, but only applicable in verifiable domains.
-- **Model-based verifiers**: a separate LLM grades the outcome — reusing the same mechanism as [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]], but as a training-time reward signal instead of an evaluation-time one.
+- **Model-based verifiers**: a separate LLM grades the outcome — reusing the same mechanism as [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]], but as a training-time reward signal instead of an evaluation-time one.
 - **HITL verifiers**: a human grades directly — most expensive, but needed for subjective quality (tone, creativity) that can't be programmatically verified.
 
 **A recent observation in reward design: reward *timing* matters more than reward *content*.** Rewarding only at episode end (outcome reward) trains slowly; rewarding densely at every step risks the agent finding shortcuts to hack the reward. Practice is converging on **hybrid rubrics that combine outcome verification with step-wise scoring**.
@@ -94,8 +94,8 @@ RL Environments isn't a new top-level layer; it sits next to a few concepts this
 
 | Document | Focus | Relationship to RL Environments |
 |---|---|---|
-| [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Harness_Engineering/Benchmarking]] | **Static** evaluation benchmarks like SWE-bench — measure model performance without training | The same benchmark (SWE-bench) can serve as an evaluation set or as an RL training environment (SWE-Gym) — the difference is "are you only measuring, or also training on that signal" |
-| [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Harness_Engineering/Agent_as_a_Judge]] | Pre-deployment agent behavior validation via **Agent Simulation** | Mechanically overlaps with an RL Environment's model-based verifier, but Agent-as-a-Judge is a pre-deployment quality gate while RL Environments provide an in-training-loop reward signal — different purposes |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Harness_Engineering/Harness_Evaluation/Benchmarking]] | **Static** evaluation benchmarks like SWE-bench — measure model performance without training | The same benchmark (SWE-bench) can serve as an evaluation set or as an RL training environment (SWE-Gym) — the difference is "are you only measuring, or also training on that signal" |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge\|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] | Pre-deployment agent behavior validation via **Agent Simulation** | Mechanically overlaps with an RL Environment's model-based verifier, but Agent-as-a-Judge is a pre-deployment quality gate while RL Environments provide an in-training-loop reward signal — different purposes |
 | [[en/AI/Engineering/Loop_Engineering/Data_Flywheel\|Loop_Engineering/Data_Flywheel]] | The cycle of turning real production data into synthetic training data | RL Environments draw signal from a **pre-designed simulation**, not production data — though the two are sometimes combined, feeding production failure cases back in as new tasks in an RL environment |
 | [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | **Training the model itself** via GRPO/RLVR | RL Environments are the upstream infrastructure that produces the "verifiable reward" that training depends on |
 
@@ -104,7 +104,7 @@ RL Environments isn't a new top-level layer; it sits next to a few concepts this
 RL Environments are the prerequisite infrastructure that makes training techniques like RLVR viable in practice. No matter how good the RL algorithm is, it's useless without a trustworthy reward signal — and by 2025–2026 the industry has recognized that producing that signal (task design, domain expertise, building verifiers, reward design, and running all of this at scale) is itself a substantial engineering investment.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Harness_Engineering/Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Harness_Engineering/Agent_as_a_Judge]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Model_Engineering/Full_Fine-Tuning]]
+[[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Harness_Engineering/Harness_Evaluation/Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Model_Engineering/Full_Fine-Tuning]]
 
 ## Sources
 - "A Taxonomy of RL Environments for LLM Agents" (2026) — [leehanchung.github.io](https://leehanchung.github.io/blogs/2026/03/21/rl-environments-for-llm-agents/)

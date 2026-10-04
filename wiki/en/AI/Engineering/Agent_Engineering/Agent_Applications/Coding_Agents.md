@@ -40,7 +40,7 @@ The key is the last step — **test results are objective feedback**, so the age
 
 ### 5. Permissions and Sandboxing
 
-File writes and shell execution can be irreversible, so **permission modes** (read-only → auto-accept edits → fully autonomous) tune autonomy to risk (→ [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]]). Repository contents, issue bodies, and dependency READMEs are **untrusted input**, so any environment where the Lethal Trifecta holds (secret access + untrusted content + external communication) needs a sandbox and approval gates (→ [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]], Agent Sandbox in [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]).
+File writes and shell execution can be irreversible, so **permission modes** (read-only → auto-accept edits → fully autonomous) tune autonomy to risk (→ [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]]). Repository contents, issue bodies, and dependency READMEs are **untrusted input**, so any environment where the Lethal Trifecta holds (secret access + untrusted content + external communication) needs a sandbox and approval gates (→ [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt Injection Defense]], Agent Sandbox in [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]).
 
 ### 6. Agent–Computer Interface (ACI)
 
@@ -53,7 +53,7 @@ SWE-agent [2] showed that a **purpose-built command interface** for agents (file
 | SWE-bench Verified / Pro | Resolving real GitHub issues (judged by tests passing) |
 | Terminal-Bench | Composite shell tasks in a terminal environment |
 
-For details and limitations (contamination, saturation) see [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]. Scores **vary heavily with harness configuration**, so the same model is not comparable across different scaffolding. A regression eval set built on your own codebase is the final basis for judgment.
+For details and limitations (contamination, saturation) see [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]. Scores **vary heavily with harness configuration**, so the same model is not comparable across different scaffolding. A regression eval set built on your own codebase is the final basis for judgment.
 
 ## Boundaries
 
@@ -65,7 +65,7 @@ For details and limitations (contamination, saturation) see [[en/AI/Engineering/
 | **This document** | Integrated view of coding-specific elements (context files, spec, verify loop, worktree) |
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt Injection Defense]]
 
 ## Sources
 - [1] Wang et al. (2024) "OpenHands: An Open Platform for AI Software Developers as Generalist Agents" — [arXiv:2407.16741](https://arxiv.org/abs/2407.16741)

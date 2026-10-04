@@ -39,7 +39,7 @@ When multiple loops become entangled in a network, failures appear that don't sh
 | **Goodhart's Law** | The harder a metric is pushed, the more it detaches from the original goal — e.g. if the [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] loop optimizes only for latency, the quality goal pursued by the [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] loop is silently sacrificed. The original formulation traces to economist Goodhart (1975), who observed it while studying UK monetary policy; the phrasing most commonly used today — "when a measure becomes a target, it ceases to be a good measure" — comes from anthropologist Strathern (1997), analyzing the British university audit system |
 | **Upward Blindness** | An individual loop cannot question whether its own target is wrong — target-setting must come from outside the loop |
 | **Inter-loop Conflict** | Loops operating independently, without coordination, fight each other — e.g. a cost-reduction loop and a quality-improvement loop pull the system in opposite directions |
-| **Measurement Decay** | Sensors (measurement pipelines) gradually degrade over time, yet the loop keeps acting on stale data — fundamentally the same pattern as benchmark contamination discussed in [[en/AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] |
+| **Measurement Decay** | Sensors (measurement pipelines) gradually degrade over time, yet the loop keeps acting on stale data — fundamentally the same pattern as benchmark contamination discussed in [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Benchmarking]] |
 
 ## Anchors: External Fixed Reference Points
 
@@ -71,7 +71,7 @@ Quarterly loop network audit checklist:
 Even a beautifully designed single loop from [[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]]'s 4 sub-documents is exposed to the failure modes covered here if it runs in parallel, disconnected from the others. Loop Networks and Anchors raises the question from "how well is one loop designed?" to "is the network of loops, as a whole, still anchored to reality?"
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
 
 ## Sources
 - Goodhart, C. (1975) "Problems of Monetary Management: The UK Experience" — Papers in Monetary Economics, Reserve Bank of Australia

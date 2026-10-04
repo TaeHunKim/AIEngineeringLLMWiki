@@ -133,17 +133,17 @@ flowchart TD
 |----------|--------|
 | **This document (Decision_Models)** | A model class that **returns calibrated probabilities** without generating text, and its implementation approaches |
 | [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Fitting a generative LLM's output to a schema — types guaranteed, no probabilities |
-| [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM_as_a_Judge]] | A generative LLM evaluating with rationale — slower and costlier but explainable |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | A generative LLM evaluating with rationale — slower and costlier but explainable |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding_Models]] | Pair-scoring models such as cross-encoders — discriminative models specialized for retrieval relevance |
 | [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | Strategies for choosing a model by difficulty — a Decision Model can serve as the router itself |
-| [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | Designing input/output safety controls — a Decision Model is a candidate classifier for them |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | Designing input/output safety controls — a Decision Model is a candidate classifier for them |
 
 ## Role in AI Engineering
 
 A Decision Model is a component that replaces the "short judgment" calls scattered through agent and RAG pipelines (routing, relevance checks, policy checks, evaluation scoring) with **low-latency, low-cost, calibrated probabilities**. However, it cannot replace the reasoning and explanation abilities of a generative LLM, so it must be designed together with a structure that hands uncertain cases outside the threshold to a larger model or a human. Before adoption, it is essential to **measure calibration (ECE) and threshold performance yourself on your own domain data**.
 
 ## Related Concepts
-[[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]]
+[[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]]
 
 ## Sources
 - Deußer, Sparrenberg, Sifa (2026) "Evaluating and Benchmarking the System One Model Jev" — [arXiv:2609.37647](https://arxiv.org/html/2609.37647v1)

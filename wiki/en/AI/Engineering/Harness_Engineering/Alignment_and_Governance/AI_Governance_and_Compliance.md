@@ -1,12 +1,12 @@
 ---
-order: 10
+order: 3
 ---
 
 # AI Governance and Compliance
 
 ## Overview
 
-While [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] addresses the technical question "is the model actually aligned?", this document covers the **frameworks and regulations that compel safe AI development and deployment at the organizational, industry, and national level**. From frontier lab voluntary safety pledges to national laws, this document maps the governance landscape practitioners need to know.
+While [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] addresses the technical question "is the model actually aligned?", this document covers the **frameworks and regulations that compel safe AI development and deployment at the organizational, industry, and national level**. From frontier lab voluntary safety pledges to national laws, this document maps the governance landscape practitioners need to know.
 
 ## Frontier Safety Frameworks
 
@@ -135,7 +135,7 @@ Practical significance: when selling to enterprise customers or regulated
   under a certified management system" as something third-party verified
 ```
 
-**Relationship to RSP/Preparedness/FSF and the EU AI Act**: NIST AI RMF and ISO 42001 are **general-purpose management frameworks** not tied to a specific lab or country. Where the OWASP Top 10 for LLM Applications (→ [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]]) defines concrete risk items, these two provide the organizational process skeleton (identify → measure → manage) for handling that risk. In practice, ISO 42001 certification is sometimes used as supporting evidence for meeting legal requirements like the EU AI Act.
+**Relationship to RSP/Preparedness/FSF and the EU AI Act**: NIST AI RMF and ISO 42001 are **general-purpose management frameworks** not tied to a specific lab or country. Where the OWASP Top 10 for LLM Applications (→ [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]]) defines concrete risk items, these two provide the organizational process skeleton (identify → measure → manage) for handling that risk. In practice, ISO 42001 certification is sometimes used as supporting evidence for meeting legal requirements like the EU AI Act.
 
 ## Model Cards, System Cards, and Dataset Cards
 
@@ -154,7 +154,7 @@ Dataset Card:
 
 ## Data Provenance and Training Data Governance
 
-Tracking and managing training data **provenance** is needed for copyright dispute response, data contamination prevention ([[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]), and regulatory compliance (EU AI Act's data governance requirements). Maintaining provenance metadata from the data collection pipeline stage costs far less than post-hoc auditing.
+Tracking and managing training data **provenance** is needed for copyright dispute response, data contamination prevention ([[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]), and regulatory compliance (EU AI Act's data governance requirements). Maintaining provenance metadata from the data collection pipeline stage costs far less than post-hoc auditing.
 
 ## Dual-Use Risks and WMDP
 
@@ -186,10 +186,10 @@ Governance checks before production deployment:
 
 ## Role in AI Engineering
 
-AI Governance and Compliance bridges the gap between technical safety measures ([[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]], [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]) and organizational and legal accountability. If frontier labs' voluntary pledges (RSP/Preparedness/FSF) establish the principle of "safety measures proportional to capabilities," legal regulations like the EU AI Act enforce this across the industry. For practitioners, both layers are real constraints — one through the policies of the frontier model used, the other through direct regulation of their own applications.
+AI Governance and Compliance bridges the gap between technical safety measures ([[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]], [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]]) and organizational and legal accountability. If frontier labs' voluntary pledges (RSP/Preparedness/FSF) establish the principle of "safety measures proportional to capabilities," legal regulations like the EU AI Act enforce this across the industry. For practitioners, both layers are real constraints — one through the policies of the frontier model used, the other through direct regulation of their own applications.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (per-node governance)]]
+[[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (per-node governance)]]
 
 ## Sources
 - NIST "AI Risk Management Framework (AI RMF 1.0)" — [nist.gov](https://www.nist.gov/itl/ai-risk-management-framework)

@@ -1,5 +1,5 @@
 ---
-order: 12
+order: 4
 ---
 
 # Hallucination & Grounding (환각 탐지와 근거 검증)
@@ -8,7 +8,7 @@ order: 12
 
 **Hallucination**은 LLM이 그럴듯하지만 사실과 다르거나 주어진 근거에 없는 내용을 생성하는 현상이다. 모델이 "모르는 것을 모른다고 말하는 대신 추측으로 채우도록" 학습·평가되는 구조에서 비롯되므로 [[AI/Engineering/Model_Engineering/Model_Engineering|모델 수준]]에서 완전히 제거되지 않고, 프로덕션에서는 **탐지하고 차단하는 시스템 계층**의 문제로 다뤄진다.
 
-[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]가 품질 평가 일반을, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]이 입출력 차단 인프라를 다룬다면, 이 문서는 그 위에서 돌아가는 **"이 답변의 주장이 근거에 의해 뒷받침되는가"라는 단일 질문**과 그 측정·강제 기법을 다룬다.
+[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]]가 품질 평가 일반을, [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]이 입출력 차단 인프라를 다룬다면, 이 문서는 그 위에서 돌아가는 **"이 답변의 주장이 근거에 의해 뒷받침되는가"라는 단일 질문**과 그 측정·강제 기법을 다룬다.
 
 ## 분류
 
@@ -29,7 +29,7 @@ RAG 시스템에서는 주로 **faithfulness**(검색된 컨텍스트에 충실�
 
 ### 1. Groundedness 검증 (claim 단위)
 
-답변을 **원자적 주장(atomic claim)** 으로 분해하고, 각 주장이 검색된 컨텍스트에 의해 entailment되는지 NLI 모델이나 judge LLM으로 판정한다. FActScore [3]가 이 분해-검증 방식을 정립했다. 문장 단위 판정보다 어느 주장이 문제인지 **span 수준으로 위치를 짚을 수 있어** 사용자에게 "이 부분은 근거 없음"이라고 표시하거나 해당 문장만 재생성할 수 있다. 판정 모델로는 Vectara HHEM 같은 전용 경량 분류기와 RAGAS의 faithfulness 지표(→ [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]])가 쓰인다.
+답변을 **원자적 주장(atomic claim)** 으로 분해하고, 각 주장이 검색된 컨텍스트에 의해 entailment되는지 NLI 모델이나 judge LLM으로 판정한다. FActScore [3]가 이 분해-검증 방식을 정립했다. 문장 단위 판정보다 어느 주장이 문제인지 **span 수준으로 위치를 짚을 수 있어** 사용자에게 "이 부분은 근거 없음"이라고 표시하거나 해당 문장만 재생성할 수 있다. 판정 모델로는 Vectara HHEM 같은 전용 경량 분류기와 RAGAS의 faithfulness 지표(→ [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]])가 쓰인다.
 
 ### 2. 샘플링 일관성 (Self-consistency 계열)
 
@@ -41,7 +41,7 @@ RAG 시스템에서는 주로 **faithfulness**(검색된 컨텍스트에 충실�
 
 ### 4. 토큰 확률·내부 신호
 
-logprob 기반 신뢰도는 저렴하지만 **calibration**이 보장되지 않는다 — 확률 보정 기법과 ECE 측정은 [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]가 다룬다. 모델 내부 표현을 읽는 white-box probe는 [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic_Interpretability]]의 연장선이다.
+logprob 기반 신뢰도는 저렴하지만 **calibration**이 보장되지 않는다 — 확률 보정 기법과 ECE 측정은 [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]가 다룬다. 모델 내부 표현을 읽는 white-box probe는 [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]]의 연장선이다.
 
 ## 예방 기법
 
@@ -59,19 +59,19 @@ logprob 기반 신뢰도는 저렴하지만 **calibration**이 보장되지 않�
 4. 임계값 정책     통과 / 재생성 / 기권 / 사람 검토 중 하나로 라우팅
 ```
 
-모든 응답에 3단계를 돌리면 비용이 폭증하므로 **싼 신호로 거르고 비싼 검증은 의심 응답에만** 적용하는 것이 요점이다. 임계값은 도메인 위험도(의료·법률은 보수적)에 맞춰 조정하고, 차단된 응답은 [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]에 기록해 오프라인 평가셋으로 환류한다.
+모든 응답에 3단계를 돌리면 비용이 폭증하므로 **싼 신호로 거르고 비싼 검증은 의심 응답에만** 적용하는 것이 요점이다. 임계값은 도메인 위험도(의료·법률은 보수적)에 맞춰 조정하고, 차단된 응답은 [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]]에 기록해 오프라인 평가셋으로 환류한다.
 
 ## 경계 정리
 
 | 문서 | 다루는 것 |
 |------|-----------|
-| [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM_as_a_Judge]] | 품질 평가 일반(관련성·톤·정확성), judge 편향 |
-| [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | 입출력 차단 인프라(NeMo, LlamaGuard), 안전·정책 위반 |
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | 품질 평가 일반(관련성·톤·정확성), judge 편향 |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | 입출력 차단 인프라(NeMo, LlamaGuard), 안전·정책 위반 |
 | [[AI/Engineering/Model_Engineering/Decision_Models\|Decision_Models]] | 판정형 모델과 확률 calibration |
 | **본 문서** | "주장이 근거에 의해 뒷받침되는가" — 탐지·예방·정책 |
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
+[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]]
 
 ## 출처
 - [1] Farquhar et al. (2024) "Detecting hallucinations in large language models using semantic entropy" — Nature 630, 625–630, [nature.com](https://www.nature.com/articles/s41586-024-07421-0)

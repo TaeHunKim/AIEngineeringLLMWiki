@@ -79,7 +79,7 @@ Sampling strategies:
 | **MathVista** | Solving math problems that include visual elements |
 | **DocVQA** | Question answering over document images (including table/form understanding) |
 
-These benchmarks are generally tracked separately from the text-only benchmarks in [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] (MMLU, GSM8K, etc.) — because text-reasoning ability and visual-understanding ability don't necessarily improve together.
+These benchmarks are generally tracked separately from the text-only benchmarks in [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] (MMLU, GSM8K, etc.) — because text-reasoning ability and visual-understanding ability don't necessarily improve together.
 
 ## Boundaries
 
@@ -94,7 +94,7 @@ These benchmarks are generally tracked separately from the text-only benchmarks 
 Multimodal support is no longer a "special feature" — it's the default for frontier models. The fact that image tokens can consume far more context than text tokens has a direct impact on both Cost Engineering and Context Engineering — an agent design that repeatedly feeds screenshots into context has a much steeper cost curve than a text-only design.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
 
 ## Sources
 - Liu et al. (2023) "Visual Instruction Tuning (LLaVA)" — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485)

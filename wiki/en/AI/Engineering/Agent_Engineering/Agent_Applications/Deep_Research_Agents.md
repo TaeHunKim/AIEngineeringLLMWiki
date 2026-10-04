@@ -40,17 +40,17 @@ Key design choices:
 | **Browser exploration** | Reaches dynamic pages and content behind logins | Slow, expensive, exposed to **indirect prompt injection** |
 | **Internal sources (MCP)** | Includes private documents and DBs | Needs permission and identity management |
 
-Browser and web content are all untrusted input, so defense follows [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]]. For the tool-connection standard see [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]], and for browser control see [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]].
+Browser and web content are all untrusted input, so defense follows [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt Injection Defense]]. For the tool-connection standard see [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]], and for browser control see [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]].
 
 ## Reliability: Sources and Citation Verification
 
-A report's value lies in its **verifiability**. Common failures are (1) citing nonexistent sources, (2) stating content absent from the source in citation form, and (3) adopting only one of several conflicting sources. The countermeasures are span-level entailment checks on citations and presenting conflicting sources side by side; the techniques follow [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]]. Weighting source reliability (primary vs. secondary, SEO sites) is also the synthesis step's responsibility.
+A report's value lies in its **verifiability**. Common failures are (1) citing nonexistent sources, (2) stating content absent from the source in citation form, and (3) adopting only one of several conflicting sources. The countermeasures are span-level entailment checks on citations and presenting conflicting sources side by side; the techniques follow [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination & Grounding]]. Weighting source reliability (primary vs. secondary, SEO sites) is also the synthesis step's responsibility.
 
 ## Evaluation
 
 - **BrowseComp** [2]: web-browsing questions that are hard to find but easy to verify, measuring persistent search ability
 - **DeepResearch Bench** [3]: multi-dimensional evaluation of report quality and citation accuracy
-- Reports have no single correct answer, so combine rubric-based [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] with trajectory evaluation ([[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]]).
+- Reports have no single correct answer, so combine rubric-based [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] with trajectory evaluation ([[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]]).
 
 ## Boundaries
 
@@ -61,7 +61,7 @@ A report's value lies in its **verifiability**. Common failures are (1) citing n
 | **This document** | The full research lifecycle, citation verification, and cost-versus-value judgment |
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination & Grounding]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]
 
 ## Sources
 - [1] Huang et al. (2025) "Deep Research Agents: A Systematic Examination and Roadmap" — [arXiv:2506.18096](https://arxiv.org/abs/2506.18096)

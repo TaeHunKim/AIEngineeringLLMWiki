@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 1
 ---
 
 # LLM-as-a-Judge
@@ -204,16 +204,16 @@ The `GEval` metric used in the DeepEval example above, and open-source judge mod
 
 Extension of LLM-as-a-Judge specialized for evaluating agent systems. The core difference from LLM-as-a-Judge (which evaluates final text output) is that it **evaluates the entire execution trajectory**.
 
-Details (original paper, Critic Agent pattern, Multi-Agent-as-Judge, Agent Simulation, pros/cons) → **[[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]]**
+Details (original paper, Critic Agent pattern, Multi-Agent-as-Judge, Agent Simulation, pros/cons) → **[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]]**
 
 ## Role in AI Engineering
 
-LLM-as-a-Judge is the **core tool of Evaluation Engineering**. It rapidly evaluates thousands of responses without human evaluators, and integrating into CI/CD pipelines enables automatic detection of quality regressions when models change. It forms the foundation of all LLMOps decisions — A/B testing, prompt optimization, model selection. In agent systems, it extends to [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] for execution trajectory-level evaluation and pre-deployment stress testing.
+LLM-as-a-Judge is the **core tool of Evaluation Engineering**. It rapidly evaluates thousands of responses without human evaluators, and integrating into CI/CD pipelines enables automatic detection of quality regressions when models change. It forms the foundation of all LLMOps decisions — A/B testing, prompt optimization, model selection. In agent systems, it extends to [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]] for execution trajectory-level evaluation and pre-deployment stress testing.
 
 When every trace must be judged cheaply, [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]], which return probabilities without rationale, can serve as a first-pass filter, with only a sample sent to an LLM judge for careful evaluation.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] · [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human Evaluation]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination & Grounding]]
 
 ## Sources
 - Zheng et al. (2023) "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — [arXiv:2306.05685](https://arxiv.org/pdf/2306.05685)

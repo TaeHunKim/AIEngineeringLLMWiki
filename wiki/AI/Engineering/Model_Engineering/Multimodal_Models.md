@@ -79,7 +79,7 @@ flowchart TD
 | **MathVista** | 시각적 요소가 포함된 수학 문제 해결 |
 | **DocVQA** | 문서 이미지에 대한 질의응답 (표·양식 이해 포함) |
 
-이 벤치마크들은 [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]의 텍스트 전용 벤치마크(MMLU, GSM8K 등)와 별도 트랙으로 관리되는 것이 일반적이다 — 텍스트 추론 능력과 시각 이해 능력이 반드시 함께 향상되지 않기 때문이다.
+이 벤치마크들은 [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]의 텍스트 전용 벤치마크(MMLU, GSM8K 등)와 별도 트랙으로 관리되는 것이 일반적이다 — 텍스트 추론 능력과 시각 이해 능력이 반드시 함께 향상되지 않기 때문이다.
 
 ## 경계 정리
 
@@ -94,7 +94,7 @@ flowchart TD
 멀티모달 지원 여부는 더 이상 "특수 기능"이 아니라 프론티어 모델의 기본값이 되었다. 이미지 토큰이 텍스트 토큰보다 훨씬 많은 컨텍스트를 소비할 수 있다는 사실은 Cost Engineering·Context Engineering 모두에 직접적인 영향을 준다 — 스크린샷을 반복적으로 컨텍스트에 넣는 에이전트 설계는 텍스트 전용 설계보다 비용 곡선이 훨씬 가파르게 증가한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
 
 ## 출처
 - Liu et al. (2023) "Visual Instruction Tuning (LLaVA)" — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485)

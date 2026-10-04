@@ -300,7 +300,7 @@ MCP 표준화 효과:
 MCP는 **도구 통합의 표준 레이어**다. Function Calling이 "어떻게 함수를 호출하는가"의 문제를 풀었다면, MCP는 "어떤 도구가 어떤 방식으로 노출되는가"를 표준화한다. Agent Engineering 스택에서 외부 세계와의 인터페이스를 담당하며, 에이전트가 커지고 복잡해질수록 MCP의 역할이 중요해진다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
+[[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]
 
 ## 출처
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)

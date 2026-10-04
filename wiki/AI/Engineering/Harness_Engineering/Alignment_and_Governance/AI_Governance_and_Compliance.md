@@ -1,12 +1,12 @@
 ---
-order: 10
+order: 3
 ---
 
 # AI Governance and Compliance (AI 거버넌스와 규제 대응)
 
 ## 개요
 
-[[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]가 "모델이 실제로 정렬되어 있는가"라는 기술적 질문을 다룬다면, 이 문서는 **조직·산업·국가 수준에서 AI를 안전하게 개발·배포하도록 강제하는 프레임워크와 규제**를 다룬다. 프론티어 연구소의 자율적 안전 서약부터 각국의 법적 규제까지, AI Engineering 실무자가 알아야 할 거버넌스 지형을 정리한다.
+[[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]]가 "모델이 실제로 정렬되어 있는가"라는 기술적 질문을 다룬다면, 이 문서는 **조직·산업·국가 수준에서 AI를 안전하게 개발·배포하도록 강제하는 프레임워크와 규제**를 다룬다. 프론티어 연구소의 자율적 안전 서약부터 각국의 법적 규제까지, AI Engineering 실무자가 알아야 할 거버넌스 지형을 정리한다.
 
 ## 프론티어 안전 프레임워크 (Frontier Safety Frameworks)
 
@@ -130,7 +130,7 @@ General-Purpose AI (GPAI) 모델 별도 규제:
   "우리 AI 시스템은 인증된 관리 체계 하에서 운영된다"는 것을 제3자가 검증한 형태로 제시 가능
 ```
 
-**RSP/Preparedness/FSF·EU AI Act와의 관계**: NIST AI RMF와 ISO 42001은 특정 연구소나 특정 국가에 종속되지 않는 **범용 관리 체계**로, OWASP Top 10 for LLM Applications(→ [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]])이 구체적 리스크 항목을 정의한다면 이 둘은 그 리스크를 다루는 조직적 프로세스(식별→측정→관리)의 뼈대를 제공한다. 실무에서는 EU AI Act 같은 법적 요구사항을 충족하는 근거 문서로 ISO 42001 인증이 활용되기도 한다.
+**RSP/Preparedness/FSF·EU AI Act와의 관계**: NIST AI RMF와 ISO 42001은 특정 연구소나 특정 국가에 종속되지 않는 **범용 관리 체계**로, OWASP Top 10 for LLM Applications(→ [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]])이 구체적 리스크 항목을 정의한다면 이 둘은 그 리스크를 다루는 조직적 프로세스(식별→측정→관리)의 뼈대를 제공한다. 실무에서는 EU AI Act 같은 법적 요구사항을 충족하는 근거 문서로 ISO 42001 인증이 활용되기도 한다.
 
 ## 모델·시스템·데이터셋 카드
 
@@ -149,7 +149,7 @@ Dataset Card (데이터셋 카드):
 
 ## 데이터 출처와 학습 데이터 거버넌스
 
-학습 데이터의 **출처(Provenance)**를 추적하고 관리하는 것은 저작권 분쟁 대응, 데이터 오염 방지([[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]), 규제 대응(EU AI Act의 데이터 거버넌스 요구사항)에 모두 필요하다. 데이터 수집 파이프라인 단계에서부터 출처 메타데이터를 유지하는 것이 사후 감사보다 훨씬 저비용이다.
+학습 데이터의 **출처(Provenance)**를 추적하고 관리하는 것은 저작권 분쟁 대응, 데이터 오염 방지([[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]), 규제 대응(EU AI Act의 데이터 거버넌스 요구사항)에 모두 필요하다. 데이터 수집 파이프라인 단계에서부터 출처 메타데이터를 유지하는 것이 사후 감사보다 훨씬 저비용이다.
 
 ## Dual-Use 리스크와 WMDP
 
@@ -181,10 +181,10 @@ RSP·Preparedness Framework의 CBRN 리스크 평가가 실무적으로 이 벤�
 
 ## AI Engineering에서의 역할
 
-AI Governance and Compliance는 기술적 안전 조치([[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]], [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]])를 조직·법적 책임으로 연결하는 다리다. 프론티어 연구소의 자율 서약(RSP/Preparedness/FSF)이 "능력에 비례한 안전조치"라는 원칙을 확립했다면, EU AI Act 같은 법적 규제는 이를 산업 전반에 강제한다. 실무자에게는 두 계층 모두 실질적 제약이다 — 하나는 사용하는 프론티어 모델의 정책을 통해, 다른 하나는 자사 애플리케이션에 대한 직접 규제를 통해 적용된다.
+AI Governance and Compliance는 기술적 안전 조치([[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]], [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]])를 조직·법적 책임으로 연결하는 다리다. 프론티어 연구소의 자율 서약(RSP/Preparedness/FSF)이 "능력에 비례한 안전조치"라는 원칙을 확립했다면, EU AI Act 같은 법적 규제는 이를 산업 전반에 강제한다. 실무자에게는 두 계층 모두 실질적 제약이다 — 하나는 사용하는 프론티어 모델의 정책을 통해, 다른 하나는 자사 애플리케이션에 대한 직접 규제를 통해 적용된다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (노드 단위 거버넌스)]]
+[[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (노드 단위 거버넌스)]]
 
 ## 출처
 - NIST "AI Risk Management Framework (AI RMF 1.0)" — [nist.gov](https://www.nist.gov/itl/ai-risk-management-framework)

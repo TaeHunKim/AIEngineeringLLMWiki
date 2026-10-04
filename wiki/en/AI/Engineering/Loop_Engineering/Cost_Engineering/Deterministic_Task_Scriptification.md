@@ -56,14 +56,14 @@ As the Tool-Making research emphasizes, a tool-maker must keep observing backend
 
 ## Sandboxing
 
-Because an auto-generated script must never perform actions beyond its intended scope (e.g., unintended file deletion, calling the wrong API endpoint), this applies the **Agent Sandbox** pattern from [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] as-is — isolating the script's execution environment from core systems (databases, production services) so that even a malfunctioning script has bounded impact. Scripts auto-generated and auto-registered by a watcher agent carry more unvalidated risk than tools written by humans, making sandboxing not optional but mandatory.
+Because an auto-generated script must never perform actions beyond its intended scope (e.g., unintended file deletion, calling the wrong API endpoint), this applies the **Agent Sandbox** pattern from [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] as-is — isolating the script's execution environment from core systems (databases, production services) so that even a malfunctioning script has bounded impact. Scripts auto-generated and auto-registered by a watcher agent carry more unvalidated risk than tools written by humans, making sandboxing not optional but mandatory.
 
 ## Role in AI Engineering
 
 Unlike [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]], which substitutes a cheaper model, Deterministic Task Scriptification **eliminates the LLM call entirely** where possible — giving it the largest potential savings among the three mechanisms. At the same time, its failure mode when "deterministic" is judged incorrectly is the most dangerous, so it can only be applied in practice with all three safeguards — fallback, re-review, and sandboxing — in place together.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]]
+[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]]
 
 ## Sources
 - "Agentic Compilation: Mitigating the LLM Rerun Crisis for Minimized-Inference-Cost Web Automation" (2026) — [arXiv:2604.09718](https://arxiv.org/html/2604.09718v1)

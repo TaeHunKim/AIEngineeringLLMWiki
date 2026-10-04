@@ -39,7 +39,7 @@ Eigent는 그래프를 두 종류로 구분한다:
 | **Goodhart's Law** | 메트릭을 강하게 밀어붙일수록 원래 목표에서 분리(detach)된다 — 예: [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] 루프가 지연시간(latency)만 최적화하면, [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] 루프가 추구하는 품질이 조용히 희생된다. 원 출처는 경제학자 Goodhart(1975)가 영국 통화정책을 관찰하며 정식화한 명제이며, 오늘날 가장 널리 쓰이는 문구("측정치가 목표가 되는 순간, 좋은 측정치이기를 멈춘다")는 인류학자 Strathern(1997)이 영국 대학 평가 제도를 분석하며 재정식화한 것이다 |
 | **Upward Blindness** | 개별 loop는 자신의 목표(target) 자체가 잘못됐는지 스스로 질문할 수 없다 — 목표 설정은 loop 바깥에서 와야 한다 |
 | **Inter-loop Conflict** | 조정 없이 독립적으로 운영되는 loop들이 서로 충돌한다 — 예: 비용 절감 loop와 품질 개선 loop가 반대 방향으로 시스템을 당긴다 |
-| **Measurement Decay** | 센서(측정 파이프라인)가 시간이 지나며 서서히 오작동하는데도, loop는 계속 낡은 데이터를 근거로 동작한다 — [[AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]]에서 벤치마크가 오염(contamination)되는 문제와 근본적으로 같은 패턴 |
+| **Measurement Decay** | 센서(측정 파이프라인)가 시간이 지나며 서서히 오작동하는데도, loop는 계속 낡은 데이터를 근거로 동작한다 — [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Benchmarking]]에서 벤치마크가 오염(contamination)되는 문제와 근본적으로 같은 패턴 |
 
 ## Anchor: 외부 고정 기준점
 
@@ -71,7 +71,7 @@ Anchor가 없는 loop 네트워크는 스스로를 참조하며 표류(self-refe
 [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]]의 4개 하위 문서는 각각 훌륭하게 설계된 단일 loop라도, 서로 연결되지 않은 채 병렬로 돌아가면 이 문서가 다루는 실패 모드에 노출된다. Loop Networks and Anchors는 "루프 하나를 얼마나 잘 설계했는가"에서 "루프들의 네트워크가 전체적으로 현실에 발이 붙어 있는가(anchored)"로 질문을 한 단계 끌어올린다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi_Agent_Topology]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Harness_Engineering/Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Harness_Engineering/Benchmarking]]
+[[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi_Agent_Topology]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Harness_Engineering/Harness_Safety/Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Harness_Engineering/Harness_Evaluation/Benchmarking]]
 
 ## 출처
 - Goodhart, C. (1975) "Problems of Monetary Management: The UK Experience" — Papers in Monetary Economics, Reserve Bank of Australia

@@ -1,12 +1,12 @@
 ---
-order: 9
+order: 2
 ---
 
 # Mechanistic Interpretability
 
 ## Overview
 
-**Mechanistic Interpretability** is the research field that goes beyond observing a model's input-output behavior to directly **reverse-engineer the model's internal computational mechanisms (circuits, features)**, explaining "why the model produced this particular answer." Where [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] observes and tests behavior to infer the possibility of misalignment, Mechanistic Interpretability opens up the internal computation that produces that behavior.
+**Mechanistic Interpretability** is the research field that goes beyond observing a model's input-output behavior to directly **reverse-engineer the model's internal computational mechanisms (circuits, features)**, explaining "why the model produced this particular answer." Where [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] observes and tests behavior to infer the possibility of misalignment, Mechanistic Interpretability opens up the internal computation that produces that behavior.
 
 ## Background: The Polysemanticity and Superposition Problem
 
@@ -64,16 +64,16 @@ MIT Technology Review "2026 Breakthrough Technologies":
 
 ## Practical Connections to AI Engineering
 
-- **Activation Steering**: Finding the direction corresponding to a specific feature (e.g., a topic, tone, or safety-related concept) and adding or subtracting it directly from activations, steering model behavior in real time without fine-tuning — a different axis of intervention than [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]'s runtime filters (adjusting the generation process itself rather than post-hoc censoring output)
-- **Hallucination and deception detection**: When a model internally "knows" it doesn't know something but confabulates a plausible answer anyway, this inconsistency may be catchable at the level of internal features — a signal fundamentally invisible to purely output-based evaluation ([[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]])
-- **A complement to the fundamental limits of alignment verification**: deceptive models that "behave normally during evaluation and only differ during actual deployment," as covered by [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]'s Sleeper Agents and Alignment Faking, are fundamentally hard to detect through behavioral observation alone. Directly inspecting internal mechanisms is considered one of the few potential means of catching this kind of deception
+- **Activation Steering**: Finding the direction corresponding to a specific feature (e.g., a topic, tone, or safety-related concept) and adding or subtracting it directly from activations, steering model behavior in real time without fine-tuning — a different axis of intervention than [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]'s runtime filters (adjusting the generation process itself rather than post-hoc censoring output)
+- **Hallucination and deception detection**: When a model internally "knows" it doesn't know something but confabulates a plausible answer anyway, this inconsistency may be catchable at the level of internal features — a signal fundamentally invisible to purely output-based evaluation ([[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]])
+- **A complement to the fundamental limits of alignment verification**: deceptive models that "behave normally during evaluation and only differ during actual deployment," as covered by [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]]'s Sleeper Agents and Alignment Faking, are fundamentally hard to detect through behavioral observation alone. Directly inspecting internal mechanisms is considered one of the few potential means of catching this kind of deception
 
 ## Role in AI Engineering
 
 Mechanistic Interpretability is still closer to **foundational research seeking a fundamental way to trust models** than a tool routinely integrated into production pipelines today. But as Circuit Tracing tools are open-sourced and practical applications like Activation Steering grow, it is establishing itself as one pillar of defense-in-depth — complementing behavior-observing layers like guardrails and evaluation, which alone cannot catch certain kinds of misalignment.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]
 
 ## Sources
 - Anthropic (2023) "Towards Monosemanticity: Decomposing Language Models With Dictionary Learning" — [transformer-circuits.pub](https://transformer-circuits.pub/2023/monosemantic-features)

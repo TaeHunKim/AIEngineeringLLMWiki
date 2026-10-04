@@ -42,6 +42,10 @@ componentRegistry.setOptionOverrides("explorer", {
       agent_applications: 5,
       // Agent_Techniques 하위 (agent_memory order:3 이후)
       agent_skills_and_protocols: 6,
+      // Harness_Engineering 하위 (harness_engineering.md order:0 이후)
+      harness_safety: 1,
+      harness_evaluation: 2,
+      alignment_and_governance: 3,
       // Loop_Engineering 하위 (rl_environments order:5 이후에 등장)
       cost_engineering: 6,
       serving_engineering: 7,

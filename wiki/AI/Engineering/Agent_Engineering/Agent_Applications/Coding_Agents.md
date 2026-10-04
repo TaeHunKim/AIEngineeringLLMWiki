@@ -40,7 +40,7 @@ order: 1
 
 ### 5. 권한과 샌드박스
 
-파일 쓰기·셸 실행은 비가역적일 수 있으므로 **권한 모드**(읽기 전용 → 수정 자동 승인 → 완전 자율)로 자율성을 위험도에 맞춰 조절한다(→ [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]). 저장소 내용·이슈 본문·의존성 README는 **비신뢰 입력**이므로 Lethal Trifecta(비밀 접근 + 비신뢰 콘텐츠 + 외부 통신)가 성립하는 환경은 샌드박스와 승인 게이트가 필요하다(→ [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt_Injection_Defense]], [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]의 Agent Sandbox).
+파일 쓰기·셸 실행은 비가역적일 수 있으므로 **권한 모드**(읽기 전용 → 수정 자동 승인 → 완전 자율)로 자율성을 위험도에 맞춰 조절한다(→ [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]). 저장소 내용·이슈 본문·의존성 README는 **비신뢰 입력**이므로 Lethal Trifecta(비밀 접근 + 비신뢰 콘텐츠 + 외부 통신)가 성립하는 환경은 샌드박스와 승인 게이트가 필요하다(→ [[AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt_Injection_Defense]], [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]의 Agent Sandbox).
 
 ### 6. Agent–Computer Interface (ACI)
 
@@ -53,7 +53,7 @@ SWE-agent [2]는 에이전트용으로 설계한 **전용 명령 인터페이스
 | SWE-bench Verified / Pro | 실제 GitHub 이슈 해결(테스트 통과 기준) |
 | Terminal-Bench | 터미널 환경의 복합 셸 작업 |
 
-세부와 한계(데이터 오염, 포화)는 [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]을 참고한다. 벤치마크 점수는 **하네스 구성에 따라 크게 달라지므로** 같은 모델도 스캐폴딩이 다르면 비교 불가하다. 자사 코드베이스 기준의 회귀 평가셋이 최종 판단 근거다.
+세부와 한계(데이터 오염, 포화)는 [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]을 참고한다. 벤치마크 점수는 **하네스 구성에 따라 크게 달라지므로** 같은 모델도 스캐폴딩이 다르면 비교 불가하다. 자사 코드베이스 기준의 회귀 평가셋이 최종 판단 근거다.
 
 ## 경계 정리
 
@@ -65,7 +65,7 @@ SWE-agent [2]는 에이전트용으로 설계한 **전용 명령 인터페이스
 | **본 문서** | 코딩 도메인에 특화된 요소(컨텍스트 파일·spec·verify 루프·worktree)의 통합 관점 |
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt_Injection_Defense]]
+[[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt_Injection_Defense]]
 
 ## 출처
 - [1] Wang et al. (2024) "OpenHands: An Open Platform for AI Software Developers as Generalist Agents" — [arXiv:2407.16741](https://arxiv.org/abs/2407.16741)

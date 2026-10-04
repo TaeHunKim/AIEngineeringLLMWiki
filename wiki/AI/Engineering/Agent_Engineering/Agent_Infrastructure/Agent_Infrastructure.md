@@ -18,4 +18,4 @@ order: 0
 | [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench\|Eval_Driven_Development_and_Agent_Workbench]] | 3단계 평가 레이어, Agent Workbench 7가지 표면 |
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques|Agent Techniques]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
+[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques|Agent Techniques]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]]

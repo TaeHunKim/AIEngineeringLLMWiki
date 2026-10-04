@@ -63,7 +63,7 @@ builder.add_conditional_edges("orchestrator", route_to_workers)
 | **AutoGen (액터 모델)** | 비동기 메시지 패싱 기반 액터 모델. Planner-Executor-Critic 같은 대화형 GroupChat으로 조정 | 엣지가 "누가 누구에게 메시지를 보내는가"라는 통신 그래프로 암묵적으로 형성됨 — 정적 선언보다는 대화 흐름에 따라 동적으로 드러남 |
 | **CrewAI** | Role 기반 `Crew` + `Process`(sequential/hierarchical) — 각 에이전트에 역할·목표를 부여 | Process 유형 자체가 토폴로지 선택지: sequential은 선형 체인, hierarchical은 이 문서의 Router/manager 노드에 해당 |
 | **OpenAI Agents SDK** | `Handoff`을 1급 원시 요소로 — 에이전트가 명시적으로 다른 에이전트에게 제어와 대화 맥락을 위임 | Handoff이 곧 엣지: "이 에이전트가 다음에 어떤 에이전트로 전이할 수 있는가"를 각 에이전트 정의에 나열된 handoff 목록으로 표현 |
-| **Google ADK** | 명명된 `Sequential`/`Parallel`/`Loop` 워크플로 에이전트 + 라우팅 에이전트 | 이 문서 예시의 Router·Join과 거의 1:1 대응 — 이미 이 위키의 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]](SafetyPlugin)·[[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent_Deployment]]에서 ADK 코드 예시로 등장 |
+| **Google ADK** | 명명된 `Sequential`/`Parallel`/`Loop` 워크플로 에이전트 + 라우팅 에이전트 | 이 문서 예시의 Router·Join과 거의 1:1 대응 — 이미 이 위키의 [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]](SafetyPlugin)·[[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent_Deployment]]에서 ADK 코드 예시로 등장 |
 
 공통점: 프레임워크마다 이름과 API는 다르지만, 결국 "노드 유형 정의 + 전이 규칙"이라는 동일한 설계 결정을 내리고 있다 — 어떤 프레임워크를 쓰든 이 문서의 노드/엣지 모델로 다시 그려볼 수 있다는 것이 실무적으로 유용하다.
 
@@ -73,7 +73,7 @@ builder.add_conditional_edges("orchestrator", route_to_workers)
 
 **Identity & Access**: 각 노드는 독립적으로 거버넌스되는 호출자로서 고유한 identity를 가진다. Virtual-account 토큰이 호출자 컨텍스트를 전파한다.
 
-**Guardrail Hook 4종**: `llm_input`(요청 전 콘텐츠 검사) · `llm_output`(응답 후 필터링) · pre-tool-invoke · post-tool-invoke — 노드별로 다른 정책을 적용할 수 있다 (→ [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]).
+**Guardrail Hook 4종**: `llm_input`(요청 전 콘텐츠 검사) · `llm_output`(응답 후 필터링) · pre-tool-invoke · post-tool-invoke — 노드별로 다른 정책을 적용할 수 있다 (→ [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]).
 
 **노드 단위 상관관계 추적**: 예산·비용·지연시간을 노드 단위로 귀속시키려면 요청마다 그래프/실행/노드 식별자를 propagate해야 한다.
 
@@ -86,7 +86,7 @@ X-Graph-Metadata: {
 }
 ```
 
-이 식별자들을 오케스트레이터가 기록한 실제 런타임 토폴로지와 게이트웨이의 요청 로그가 서로 상관관계를 맺을 수 있게 하면, 노드별 비용·지연시간·모델·도구 사용 분석이 가능해진다 (→ [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]).
+이 식별자들을 오케스트레이터가 기록한 실제 런타임 토폴로지와 게이트웨이의 요청 로그가 서로 상관관계를 맺을 수 있게 하면, 노드별 비용·지연시간·모델·도구 사용 분석이 가능해진다 (→ [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]).
 
 **프로덕션 체크리스트**: ① 독립 거버넌스 대상마다 resolved identity ② 게이트웨이 요청에 안정적인 graph/run/node 식별자 ③ 오케스트레이터가 실제 런타임 work graph를 기록 ④ 오케스트레이션 트레이스와 게이트웨이 로그의 상관관계 확보 ⑤ virtual account 또는 메타데이터를 통한 예산 규칙 매핑 ⑥ 민감한 도구 액션에 승인 체크포인트 ⑦ virtual-model 레이어 뒤에 모델 라우팅 격리.
 
@@ -107,7 +107,7 @@ GoA가 "그래프 토폴로지를 자동으로 찾아내는" 2026년의 학술�
 노드 안에 완전한 에이전트가 들어갈 수 있게 되면서, 멀티에이전트 시스템은 더 이상 "여러 LLM 호출의 파이프라인"이 아니라 "여러 자율적 행위자로 구성된 조직"에 가까워진다. Multi-Agent Topology는 이 조직을 설계·통제하는 실무 기법이며, [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]]이 다루는 조정 패턴·실패 모드와 함께 읽어야 한다 — 조정 패턴이 "에이전트들이 어떻게 상호작용하는가"라면, 토폴로지는 "그 상호작용이 허용되는 구조가 무엇인가"를 먼저 정의한다.
 
 ## 관련 개념
-[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|Flow_Engineering/Graph_Flow/LangGraph]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Agent_Engineering/Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Harness_Engineering/Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Harness_Engineering/AI_Governance_and_Compliance]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Engineering/Agent_Deployment]]
+[[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|Flow_Engineering/Graph_Flow/LangGraph]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Agent_Engineering/Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Harness_Engineering/Harness_Evaluation/Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Engineering/Agent_Deployment]]
 
 ## 출처
 - Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316

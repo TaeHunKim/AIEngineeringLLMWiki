@@ -82,7 +82,7 @@ flowchart LR
 자동 프롬프트 최적화는 Prompt Engineering과 Loop Engineering의 경계에 걸쳐 있는 기법이다 — 결과물은 여전히 "프롬프트"(Prompt Engineering의 대상)이지만, 그것을 만드는 과정은 반복적 평가·개선 루프(Loop Engineering의 방법론)를 따른다. 모델이 업그레이드될 때마다 프롬프트를 수작업으로 재튜닝하는 비용이 조직 규모에서 무시할 수 없어지면서, 이 자동화가 "있으면 좋은 것"에서 "프로덕션 필수 인프라"로 옮겨가고 있다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few_shot_Prompting]] · [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System_and_Role_Prompting]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]
+[[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few_shot_Prompting]] · [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System_and_Role_Prompting]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]]
 
 ## 출처
 - Zhou et al. (2022) "Large Language Models Are Human-Level Prompt Engineers (APE)" — [arXiv:2211.01910](https://arxiv.org/abs/2211.01910)

@@ -87,18 +87,18 @@ order: 0
 - [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Engineering/Agent_Engineering/Deep_Research_Agents]]: Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp
 
 #### Harness Engineering
-- [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Engineering/Harness_Engineering/Guardrail_Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE 간접 인젝션 방어, 워터마킹
-- [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|Engineering/Harness_Engineering/LLM_as_a_Judge]]: MT-Bench (Zheng 2023), RAGAS, 4가지 편향
-- [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Engineering/Harness_Engineering/Agent_as_a_Judge]]: Trajectory 평가, DevAI 벤치마크, Critic Agent, Multi-Agent-as-Judge (Zhuge et al. ICML 2025)
-- [[AI/Engineering/Harness_Engineering/Benchmarking|Engineering/Harness_Engineering/Benchmarking]]: MMLU/HumanEval/SWE-bench/BFCL/GAIA/AgentBench, pass@k
-- [[AI/Engineering/Harness_Engineering/Human_Evaluation|Engineering/Harness_Engineering/Human_Evaluation]]: Preference Annotation, IAA(Cohen's Kappa), Chatbot Arena
-- [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Engineering/Harness_Engineering/Observability_and_Tracing]]: LangSmith/Langfuse/Arize Phoenix
-- [[AI/Engineering/Harness_Engineering/Red_Teaming|Engineering/Harness_Engineering/Red_Teaming]]: HarmBench, PAIR, Many-shot/ASCII Jailbreaking, Garak/PyRIT
-- [[AI/Engineering/Harness_Engineering/Alignment_Research|Engineering/Harness_Engineering/Alignment_Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
-- [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Engineering/Harness_Engineering/Mechanistic_Interpretability]]: Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석
-- [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Engineering/Harness_Engineering/AI_Governance_and_Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드
-- [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Engineering/Harness_Engineering/Prompt_Injection_Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM 패턴, Spotlighting
-- [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Engineering/Harness_Engineering/Hallucination_and_Grounding]]: 환각 분류, Semantic Entropy, SelfCheckGPT, claim 단위 groundedness, 프로덕션 스택
+- [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Engineering/Harness_Engineering/Guardrail_Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE 간접 인젝션 방어, 워터마킹
+- [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|Engineering/Harness_Engineering/LLM_as_a_Judge]]: MT-Bench (Zheng 2023), RAGAS, 4가지 편향
+- [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Engineering/Harness_Engineering/Agent_as_a_Judge]]: Trajectory 평가, DevAI 벤치마크, Critic Agent, Multi-Agent-as-Judge (Zhuge et al. ICML 2025)
+- [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Engineering/Harness_Engineering/Benchmarking]]: MMLU/HumanEval/SWE-bench/BFCL/GAIA/AgentBench, pass@k
+- [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Engineering/Harness_Engineering/Human_Evaluation]]: Preference Annotation, IAA(Cohen's Kappa), Chatbot Arena
+- [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Engineering/Harness_Engineering/Observability_and_Tracing]]: LangSmith/Langfuse/Arize Phoenix
+- [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Engineering/Harness_Engineering/Red_Teaming]]: HarmBench, PAIR, Many-shot/ASCII Jailbreaking, Garak/PyRIT
+- [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Engineering/Harness_Engineering/Alignment_Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+- [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Engineering/Harness_Engineering/Mechanistic_Interpretability]]: Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석
+- [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|Engineering/Harness_Engineering/AI_Governance_and_Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드
+- [[AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Engineering/Harness_Engineering/Prompt_Injection_Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM 패턴, Spotlighting
+- [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Engineering/Harness_Engineering/Hallucination_and_Grounding]]: 환각 분류, Semantic Entropy, SelfCheckGPT, claim 단위 groundedness, 프로덕션 스택
 
 #### Loop Engineering
 - [[AI/Engineering/Loop_Engineering/Data_Flywheel|Engineering/Loop_Engineering/Data_Flywheel]]: Agent-in-the-Loop, 자기 강화 데이터 수집 사이클

@@ -4,7 +4,7 @@
 - **Filename**: 22365_13_Solving Domain-Specific problems using LLMs_v7.pdf
 - **Author**: Christopher Semturs, Shekoofeh Azizi, Scott Coull, Umesh Shankar, Wieland Holfelder (Google)
 - **Published**: February 2025
-- **Topic**: A case study of two domain-specific LLMs: cybersecurity (SecLM) and healthcare (MedLM/Med-PaLM) — [[en/AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|Domain-Specific LLMs]], [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]], [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]], [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+- **Topic**: A case study of two domain-specific LLMs: cybersecurity (SecLM) and healthcare (MedLM/Med-PaLM) — [[en/AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|Domain-Specific LLMs]], [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]], [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]], [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]
 - **Source (URL)**: https://www.kaggle.com/whitepaper-solving-domains-specific-problems-using-llms
 
 ## Summary
@@ -117,4 +117,4 @@ While Med-PaLM 2 showed a **9x improvement in precision reasoning** compared to 
 - In both security and healthcare, **"technology alone is not enough"** — collaboration with human expertise is the key to success.
 
 ## Related Concepts
-[[en/AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|Domain-Specific LLMs]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]
+[[en/AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|Domain-Specific LLMs]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]

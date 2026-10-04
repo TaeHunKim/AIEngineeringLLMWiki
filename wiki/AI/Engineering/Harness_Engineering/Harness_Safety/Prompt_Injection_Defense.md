@@ -1,5 +1,5 @@
 ---
-order: 11
+order: 2
 ---
 
 # Prompt Injection Defense (프롬프트 인젝션 방어)
@@ -8,7 +8,7 @@ order: 11
 
 **Prompt Injection**은 공격자가 제어하는 텍스트를 모델이 지시로 오인해 실행하는 공격이다. 2024년부터 OWASP LLM Top 10에서 줄곧 1위를 지키고 있으며, 2026년에도 여전히 "아키텍처적으로 미해결된 문제"로 평가받는다.
 
-[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]]이 인젝션을 **어떻게 찾아내는가**를, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]이 콘텐츠 안전을 포함한 **범용 방어 스택**을 다룬다면, 이 문서는 2025~2026년에 업계 표준으로 자리잡은 **위험 조건 자체를 정의하는 프레이밍**(Lethal Trifecta, Rule of Two)과 **아키텍처 수준 방어 패턴**(CaMeL, Dual-LLM)을 다룬다.
+[[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]]이 인젝션을 **어떻게 찾아내는가**를, [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]이 콘텐츠 안전을 포함한 **범용 방어 스택**을 다룬다면, 이 문서는 2025~2026년에 업계 표준으로 자리잡은 **위험 조건 자체를 정의하는 프레이밍**(Lethal Trifecta, Rule of Two)과 **아키텍처 수준 방어 패턴**(CaMeL, Dual-LLM)을 다룬다.
 
 ## Lethal Trifecta — 언제 치명적인가
 
@@ -103,8 +103,8 @@ Quarantined LLM (격리 모델)
 
 | 문서 | 다루는 것 |
 |------|-----------|
-| [[AI/Engineering/Harness_Engineering/Red_Teaming\|Red_Teaming]] | 인젝션·탈옥 등 공격을 **발견·자동화**하는 방법론(PAIR, TAP, Garak) |
-| [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | 콘텐츠 안전·편향·워터마킹을 포함한 **범용 방어 스택** 전반 |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming\|Red_Teaming]] | 인젝션·탈옥 등 공격을 **발견·자동화**하는 방법론(PAIR, TAP, Garak) |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | 콘텐츠 안전·편향·워터마킹을 포함한 **범용 방어 스택** 전반 |
 | **본 문서 (Prompt_Injection_Defense)** | 프롬프트 인젝션에 **특화된 아키텍처 방어** — 위험 조건의 정의(Trifecta/Rule of Two)와 구조적 대응(CaMeL/Dual-LLM/Spotlighting) |
 
 ## AI Engineering에서의 역할
@@ -112,7 +112,7 @@ Quarantined LLM (격리 모델)
 프롬프트 인젝션은 "모델을 더 안전하게 학습시키면 해결된다"는 접근이 반복적으로 실패해 온 영역이다 — 공격이 자연어 자체를 매개로 하기 때문에, 모델이 지시와 데이터를 완벽히 구분하는 능력에 상한이 있는 한 순수 모델 수준 해결은 어렵다. 그래서 실무의 무게중심은 "모델을 더 안전하게" 가 아니라 "모델이 뚫려도 피해가 나지 않도록 시스템을 설계"하는 쪽으로 이동했다. Lethal Trifecta와 Rule of Two는 이 설계 원칙을 배포 가능한 정책으로 만든 것이고, CaMeL·Dual-LLM은 그 정책을 코드 수준에서 강제하는 구현 패턴이다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]
+[[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]
 
 ## 출처
 - Willison, S. (2025) "The lethal trifecta for AI agents" — [simonwillison.net](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)

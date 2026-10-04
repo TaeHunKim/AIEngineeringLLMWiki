@@ -86,18 +86,18 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]]: Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp
 
 #### Harness Engineering
-- [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE indirect injection defense, watermarking
-- [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]: MT-Bench (Zheng 2023), RAGAS, 4 bias types
-- [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]]: Trajectory evaluation, DevAI benchmark, Critic Agent, Multi-Agent-as-Judge (Zhuge et al. ICML 2025)
-- [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]: MMLU/HumanEval/SWE-bench/BFCL/GAIA/AgentBench, pass@k
-- [[en/AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]]: Preference Annotation, IAA (Cohen's Kappa), Chatbot Arena
-- [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]: LangSmith/Langfuse/Arize Phoenix
-- [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]]: HarmBench, PAIR, Many-shot/ASCII Jailbreaking, Garak/PyRIT
-- [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
-- [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]]: Sparse Autoencoders, Circuit Tracing, internal circuit analysis
-- [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards
-- [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM pattern, Spotlighting
-- [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]]: hallucination taxonomy, Semantic Entropy, SelfCheckGPT, claim-level groundedness, production stack
+- [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE indirect injection defense, watermarking
+- [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]: MT-Bench (Zheng 2023), RAGAS, 4 bias types
+- [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]]: Trajectory evaluation, DevAI benchmark, Critic Agent, Multi-Agent-as-Judge (Zhuge et al. ICML 2025)
+- [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]: MMLU/HumanEval/SWE-bench/BFCL/GAIA/AgentBench, pass@k
+- [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human Evaluation]]: Preference Annotation, IAA (Cohen's Kappa), Chatbot Arena
+- [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]: LangSmith/Langfuse/Arize Phoenix
+- [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]]: HarmBench, PAIR, Many-shot/ASCII Jailbreaking, Garak/PyRIT
+- [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]]: Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+- [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]]: Sparse Autoencoders, Circuit Tracing, internal circuit analysis
+- [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards
+- [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt Injection Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM pattern, Spotlighting
+- [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination & Grounding]]: hallucination taxonomy, Semantic Entropy, SelfCheckGPT, claim-level groundedness, production stack
 
 #### Loop Engineering
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]: Agent-in-the-Loop, self-reinforcing data collection cycle

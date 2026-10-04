@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 2
 ---
 
 # Agent-as-a-Judge
@@ -217,7 +217,7 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 
 ## 관련 개념
 
-[[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Loop_Engineering/RL_Environments|Loop_Engineering/RL_Environments]]
+[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Loop_Engineering/RL_Environments|Loop_Engineering/RL_Environments]]
 
 ## 출처
 

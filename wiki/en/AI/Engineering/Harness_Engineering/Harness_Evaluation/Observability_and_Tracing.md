@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 5
 ---
 
 # Observability & Tracing
@@ -266,7 +266,7 @@ Native observability tooling built into Gemini Enterprise Agent Platform:
 Observability is the **nervous system of production AI systems**. It enables data-driven answers to questions like "why are user complaints increasing?", "which queries are expensive?", "did fine-tuning improve performance?" For agent systems, observing beyond simple LLM tracing to agent quality requires Three Pillars + Dynamic Sampling + dual dashboards. Without it, operations become a black box and improvement becomes impossible.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]
 
 ## Sources
 - MLflow "Top 5 LLM and Agent Observability Tools in 2026" — [mlflow.org](https://mlflow.org/top-5-agent-observability-tools/)

@@ -1,5 +1,5 @@
 ---
-order: 11
+order: 2
 ---
 
 # Prompt Injection Defense
@@ -8,7 +8,7 @@ order: 11
 
 **Prompt Injection** is an attack where the model mistakes attacker-controlled text for instructions and acts on it. It has held the #1 spot on the OWASP LLM Top 10 since 2024, and as of 2026 it is still considered an "architecturally unsolved problem."
 
-Where [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] covers **how injections are discovered** and [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] covers the **general-purpose defense stack** including content safety, this document covers the **framing that defines the risk condition itself** (Lethal Trifecta, Rule of Two) and the **architecture-level defense patterns** (CaMeL, Dual-LLM) that became industry-standard in 2025–2026.
+Where [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] covers **how injections are discovered** and [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] covers the **general-purpose defense stack** including content safety, this document covers the **framing that defines the risk condition itself** (Lethal Trifecta, Rule of Two) and the **architecture-level defense patterns** (CaMeL, Dual-LLM) that became industry-standard in 2025–2026.
 
 ## Lethal Trifecta — When It Becomes Deadly
 
@@ -103,8 +103,8 @@ A technique for explicitly marking content of differing trust levels within a pr
 
 | Document | Covers |
 |------|-----------|
-| [[en/AI/Engineering/Harness_Engineering/Red_Teaming\|Red Teaming]] | Methodologies for **discovering and automating** attacks such as injection and jailbreaking (PAIR, TAP, Garak) |
-| [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] | The **general-purpose defense stack** covering content safety, bias, watermarking, and more |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming\|Red Teaming]] | Methodologies for **discovering and automating** attacks such as injection and jailbreaking (PAIR, TAP, Garak) |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail Engineering]] | The **general-purpose defense stack** covering content safety, bias, watermarking, and more |
 | **This document (Prompt_Injection_Defense)** | **Architecture defense specific to prompt injection** — defining the risk condition (Trifecta/Rule of Two) and structural countermeasures (CaMeL/Dual-LLM/Spotlighting) |
 
 ## Role in AI Engineering
@@ -112,7 +112,7 @@ A technique for explicitly marking content of differing trust levels within a pr
 Prompt injection is an area where "just train the model to be safer" has repeatedly failed — because the attack is mediated through natural language itself, and as long as there's a ceiling on a model's ability to perfectly separate instructions from data, a purely model-level solution remains out of reach. So the center of gravity in practice has shifted from "make the model safer" to "design the system so that even a compromised model doesn't cause harm." The Lethal Trifecta and Rule of Two turn this design principle into a deployable policy, while CaMeL and Dual-LLM are implementation patterns that enforce that policy at the code level.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]
 
 ## Sources
 - Willison, S. (2025) "The lethal trifecta for AI agents" — [simonwillison.net](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)

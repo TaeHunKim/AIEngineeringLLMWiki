@@ -25,7 +25,7 @@ flowchart LR
 | **Frontier model distillation** | Using responses from a top-tier model (GPT-5/Claude/Gemini) directly as SFT data | The most common path in 2025–2026 practice — better on both quality and cost than human writers |
 | **Function-calling trace generation** | Synthesizing tool-call trajectories as training tasks | The core data source for agent SFT/RLVR, connects to [[en/AI/Engineering/Loop_Engineering/RL_Environments\|RL Environments]] |
 | **RAG QA pair generation** | Auto-generating (question, evidence passage, answer) triples from a document corpus via LLM | Retrieval-grounded fine-tuning data |
-| **Constitutional AI data** | Using a model's own record of critiquing and revising harmful responses as training data | Generating safety-alignment data, see [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail Engineering]] |
+| **Constitutional AI data** | Using a model's own record of critiquing and revising harmful responses as training data | Generating safety-alignment data, see [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail Engineering]] |
 
 ## Judge Filtering — the Single Biggest Lever
 
@@ -39,7 +39,7 @@ Pipeline:
   Training on 3,000 filtered samples    → higher final performance despite less data
 ```
 
-The judge here applies the same techniques covered in [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] (pairwise/reference-based grading) to the data-generation pipeline — the difference is that the judge's output isn't "product quality assessment" but a binary gate: does this sample go into the training set or not.
+The judge here applies the same techniques covered in [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] (pairwise/reference-based grading) to the data-generation pipeline — the difference is that the judge's output isn't "product quality assessment" but a binary gate: does this sample go into the training set or not.
 
 ## Data Hygiene
 
@@ -85,7 +85,7 @@ Using a frontier model's outputs to train another model can be restricted by the
 Fine-tuning, RLVR, and distillation all presuppose "good training data." No matter how carefully the model architecture or training algorithm is chosen, quality can't exceed the ceiling set by the input data ("garbage in, garbage out"). This is why data curation split off into its own specialized area in 2025–2026 — the data generation/filtering pipeline itself has become an independent variable that determines model performance.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]]
+[[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]]
 
 ## Sources
 - Wang et al. (2022) "Self-Instruct: Aligning Language Models with Self-Generated Instructions" — [arXiv:2212.10560](https://arxiv.org/abs/2212.10560)

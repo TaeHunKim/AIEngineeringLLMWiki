@@ -75,7 +75,7 @@ system_prompt = PROMPT_V1 if variant == "control" else PROMPT_V2
 # Then compare task completion rate and cost for each group to determine winner
 ```
 
-**LLM-specific considerations**: Unlike traditional web A/B tests, LLM responses are non-deterministic, requiring larger sample sizes, and quality metrics often need to be quantified via [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]].
+**LLM-specific considerations**: Unlike traditional web A/B tests, LLM responses are non-deterministic, requiring larger sample sizes, and quality metrics often need to be quantified via [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]].
 
 ## Load Testing
 
@@ -111,7 +111,7 @@ Audit Logs:
 
 ## Compliance
 
-Regulatory frameworks like SOC 2, HIPAA, GDPR, EU AI Act, and ISO 42001 impose technical controls on LLM production systems (data processing location restrictions, log retention periods, explainability requirements) that must be reflected in system design. For the regulations themselves and organizational governance perspective → [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance and Compliance]]
+Regulatory frameworks like SOC 2, HIPAA, GDPR, EU AI Act, and ISO 42001 impose technical controls on LLM production systems (data processing location restrictions, log retention periods, explainability requirements) that must be reflected in system design. For the regulations themselves and organizational governance perspective → [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance and Compliance]]
 
 ## FinOps for LLMs
 
@@ -134,7 +134,7 @@ Multi-Tenant Cost Attribution:
 Production Operations is the layer that operates individual optimization techniques ([[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]) safely, observably, and with accountability tracking at organizational scale. At the scale where a single prompt change or model upgrade affects millions of users, releasing a change without gateways, progressive deployment, A/B testing, and chaos engineering itself becomes a risk.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance and Compliance]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]
+[[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance and Compliance]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]
 
 ## Sources
 - LiteLLM official docs — [docs.litellm.ai](https://docs.litellm.ai)

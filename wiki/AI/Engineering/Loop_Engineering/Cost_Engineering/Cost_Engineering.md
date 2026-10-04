@@ -65,7 +65,7 @@ order: 0
 Cost Engineering은 Loop Engineering이 이미 확립한 "프로덕션 데이터를 다시 시스템 개선에 활용하는 피드백 루프"라는 원칙을, 비용이라는 구체적이고 측정하기 쉬운 목표 지표에 적용해 완전히 자동화하려는 시도다. 세 메커니즘 각각은 명확한 절감 효과가 있지만 동시에 고유한 실패 모드(라우팅 오판, 스크립트 오적용, 컨텍스트 과소 검색)를 가지므로, 어떤 경우에도 [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]의 안전 배포 패턴 없이 완전 자동 적용해서는 안 된다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Harness_Engineering/Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Graph_Engineering|Graph_Engineering]]
+[[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Harness_Engineering/Harness_Safety/Guardrail_Engineering]] · [[AI/Engineering/Graph_Engineering/Graph_Engineering|Graph_Engineering]]
 
 ## 출처
 - Finout, ["How FinOps Must Evolve for the Agentic Era of AI"](https://www.finout.io/blog/how-finops-must-evolve-for-the-agentic-era-of-ai) (2026)

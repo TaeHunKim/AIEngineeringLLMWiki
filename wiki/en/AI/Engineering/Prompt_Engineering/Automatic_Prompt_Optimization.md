@@ -82,7 +82,7 @@ flowchart LR
 Automatic prompt optimization sits at the boundary between Prompt Engineering and Loop Engineering — its output is still a "prompt" (Prompt Engineering's domain), but the process that produces it follows an iterative evaluate-and-improve loop (Loop Engineering's methodology). As the cost of manually retuning prompts every time a model upgrades becomes non-negligible at organizational scale, this automation is shifting from "nice to have" to "required production infrastructure."
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few-shot Prompting]] · [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System & Role Prompting]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few-shot Prompting]] · [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System & Role Prompting]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]
 
 ## Sources
 - Zhou et al. (2022) "Large Language Models Are Human-Level Prompt Engineers (APE)" — [arXiv:2211.01910](https://arxiv.org/abs/2211.01910)

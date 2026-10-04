@@ -122,23 +122,21 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 ### 6. [[AI/Engineering/Harness_Engineering/Harness_Engineering|Harness Engineering]] — 안전·평가·운영 인프라
 
-- Guardrails
-    - [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer 보안, ADK SafetyPlugin, Agent Sandbox
-    - [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]] — Semantic Entropy, claim 단위 groundedness, 인용 강제, 프로덕션 스택 *(2026)*
-- Evaluation
-    - [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, 편향 대응
-    - [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory 평가, Critic Agent, Multi-Agent-as-Judge, Agent Simulation *(Zhuge et al., ICML 2025)*
-    - [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench(Verified), BFCL
-    - [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
-- Observability
-    - [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(2026년 5월)*
-- Red Teaming
-    - [[AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
-    - [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]] — Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting *(2026)*
-- Alignment & Governance
-    - [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
-    - [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 *(2026)*
-    - [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 *(2026)*
+- Safety — [[AI/Engineering/Harness_Engineering/Harness_Safety/Harness_Safety|Harness Safety]]
+    - [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer 보안, ADK SafetyPlugin, Agent Sandbox
+    - [[AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt Injection Defense]] — Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting *(2026)*
+    - [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] — HarmBench, PAIR, Many-shot Jailbreaking, ASCII Jailbreaks, OWASP LLM Top 10, Garak/PyRIT
+    - [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination & Grounding]] — Semantic Entropy, claim 단위 groundedness, 인용 강제, 프로덕션 스택 *(2026)*
+- Evaluation & Observability — [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Harness_Evaluation|Harness Evaluation]]
+    - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, 편향 대응
+    - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory 평가, Critic Agent, Multi-Agent-as-Judge, Agent Simulation *(Zhuge et al., ICML 2025)*
+    - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] — MMLU, HumanEval, SWE-bench(Verified), BFCL
+    - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
+    - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(2026년 5월)*
+- Alignment & Governance — [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_and_Governance|Alignment and Governance]]
+    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 *(2026)*
+    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 *(2026)*
 
 ---
 

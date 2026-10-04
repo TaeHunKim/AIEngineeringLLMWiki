@@ -93,14 +93,14 @@ Write 전략의 구체적 구현으로, 에이전트가 컨텍스트 대신 **�
 
 ## 위험: Governance Decay
 
-Compaction과 컨텍스트 관리 전략에는 알려진 위험이 있다. **Governance Decay**(arXiv:2606.22528, 2026) [5]는 반복적인 컨텍스트 압축이 안전 제약이나 시스템 지침처럼 "당장 눈에 띄지 않지만 중요한" 정보를 요약 과정에서 조용히 침식시키는 현상을 지적한다. 요약 프롬프트가 recall보다 precision을 우선시하도록 튜닝돼 있으면 특히 취약하다 — 표면적으로는 "불필요한 내용 제거"처럼 보이는 압축이, 실제로는 [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]이 설정한 제약을 몇 차례의 Compaction 사이클을 거치며 소실시킬 수 있다. 따라서 장기 실행 에이전트에서는 안전 관련 지침을 Compaction 대상에서 제외하거나, System Prompt처럼 매 사이클 무조건 재주입되는 고정 영역에 두는 설계가 권장된다.
+Compaction과 컨텍스트 관리 전략에는 알려진 위험이 있다. **Governance Decay**(arXiv:2606.22528, 2026) [5]는 반복적인 컨텍스트 압축이 안전 제약이나 시스템 지침처럼 "당장 눈에 띄지 않지만 중요한" 정보를 요약 과정에서 조용히 침식시키는 현상을 지적한다. 요약 프롬프트가 recall보다 precision을 우선시하도록 튜닝돼 있으면 특히 취약하다 — 표면적으로는 "불필요한 내용 제거"처럼 보이는 압축이, 실제로는 [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]이 설정한 제약을 몇 차례의 Compaction 사이클을 거치며 소실시킬 수 있다. 따라서 장기 실행 에이전트에서는 안전 관련 지침을 Compaction 대상에서 제외하거나, System Prompt처럼 매 사이클 무조건 재주입되는 고정 영역에 두는 설계가 권장된다.
 
 ## AI Engineering에서의 역할
 
 Agentic Context Management는 RAG·Memory·Compression 같은 **개별 컴포넌트 기법을 에이전트의 시간축 위에서 어떻게 조합할 것인가**를 다루는 상위 설계 규율이다. 단발성 질의응답에서는 필요 없던 문제 — 창이 안 찼는데도 성능이 떨어지고(Context Rot), 압축이 안전장치를 갉아먹고(Governance Decay), 서브에이전트 간 정보 경계를 어디에 그을지(Isolation) — 가 모두 여기서 다뤄진다. Loop Engineering 관점에서 컨텍스트를 다루는 비용 절감 기법은 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Context_Usage_Auditing]]을 참고.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Engineering/Agent_Memory]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Harness_Engineering/Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
+[[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Engineering/Agent_Memory]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Harness_Engineering/Harness_Safety/Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
 
 ## 출처
 1. Hong, Troynikov & Huber (Chroma, 2025) "Context Rot: How Increasing Input Tokens Impacts LLM Performance" — [research.trychroma.com/context-rot](https://research.trychroma.com/context-rot)

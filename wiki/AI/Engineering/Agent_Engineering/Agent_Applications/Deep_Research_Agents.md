@@ -40,17 +40,17 @@ Citation verifier      각 주장 ↔ 출처 대조
 | **브라우저 탐색** | 동적 페이지·로그인 뒤 콘텐츠 접근 | 느림, 비쌈, **간접 프롬프트 인젝션** 노출 |
 | **사내 소스(MCP)** | 비공개 문서·DB 포함 | 권한·신원 관리 필요 |
 
-브라우저·웹 콘텐츠는 모두 비신뢰 입력이므로 방어는 [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt_Injection_Defense]]를 따른다. 도구 연결 표준은 [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]], 브라우저 조작은 [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]].
+브라우저·웹 콘텐츠는 모두 비신뢰 입력이므로 방어는 [[AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense|Prompt_Injection_Defense]]를 따른다. 도구 연결 표준은 [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]], 브라우저 조작은 [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]].
 
 ## 신뢰성: 출처와 인용 검증
 
-보고서의 가치는 **검증 가능성**에 있다. 흔한 실패는 (1) 존재하지 않는 출처 인용, (2) 출처에 없는 내용을 인용 형태로 서술, (3) 서로 충돌하는 출처 중 하나만 채택이다. 대응은 인용 span 단위 entailment 검증과 충돌 출처 병기이며, 기법은 [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination_and_Grounding]]을 따른다. 출처 신뢰도(1차 vs 2차, SEO 사이트) 가중도 종합 단계의 책임이다.
+보고서의 가치는 **검증 가능성**에 있다. 흔한 실패는 (1) 존재하지 않는 출처 인용, (2) 출처에 없는 내용을 인용 형태로 서술, (3) 서로 충돌하는 출처 중 하나만 채택이다. 대응은 인용 span 단위 entailment 검증과 충돌 출처 병기이며, 기법은 [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination_and_Grounding]]을 따른다. 출처 신뢰도(1차 vs 2차, SEO 사이트) 가중도 종합 단계의 책임이다.
 
 ## 평가
 
 - **BrowseComp** [2]: 찾기는 어렵지만 정답 검증은 쉬운 웹 탐색 질문으로 끈질긴 탐색 능력을 측정
 - **DeepResearch Bench** [3]: 보고서 품질과 인용 정확도를 다차원으로 평가
-- 보고서는 정답이 하나가 아니므로 rubric 기반 [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]]와 궤적 평가([[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent_as_a_Judge]])를 병행한다.
+- 보고서는 정답이 하나가 아니므로 rubric 기반 [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]]와 궤적 평가([[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Agent_as_a_Judge]])를 병행한다.
 
 ## 경계 정리
 
@@ -61,7 +61,7 @@ Citation verifier      각 주장 ↔ 출처 대조
 | **본 문서** | 리서치 수명주기 전체와 인용 검증, 비용 대비 가치 판단 |
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic_RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination_and_Grounding]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic_RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination_and_Grounding]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]
 
 ## 출처
 - [1] Huang et al. (2025) "Deep Research Agents: A Systematic Examination and Roadmap" — [arXiv:2506.18096](https://arxiv.org/abs/2506.18096)

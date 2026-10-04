@@ -136,7 +136,7 @@
 - 영어 버전: `en/AI/Engineering/Graph_Engineering/` 동일 구조로 생성
 - 위치 선정 이유: 업계에서 Loop Engineering의 다음 단계로 프레이밍되는 상위 개념(멀티에이전트 조직 토폴로지 + 거버넌스, loop-of-loops)이며, 기존 Flow_Engineering/Graph_Flow(구현 메커니즘)나 Context_Engineering/GraphRAG(데이터 그래프)와는 다른 층위라 신규 최상위 챕터로 분리
 - 인덱스 업데이트: `Engineering/index.md`, `AI/index.md` (KO+EN 4개 파일)에 8번째 챕터 등록, `SCHEMA.md`의 "7계층" 표기를 "8계층"으로 갱신
-- 관련 링크 보강: `Loop_Engineering.md`, `Flow_Engineering/Graph_Flow/Graph_Flow.md`, `Agent_Engineering/Multi_Agent_Coordination.md`, `Harness_Engineering/AI_Governance_and_Compliance.md` (KO+EN)에 신규 챕터로의 역링크 추가
+- 관련 링크 보강: `Loop_Engineering.md`, `Flow_Engineering/Graph_Flow/Graph_Flow.md`, `Agent_Engineering/Multi_Agent_Coordination.md`, `Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance.md` (KO+EN)에 신규 챕터로의 역링크 추가
 - 참고: "Andrew Ng이 'From Loop Engineering to Graph Engineering' PDF를 작성했다"는 SNS(X) 발 주장은 1차 출처를 확인할 수 없어 인용하지 않음
 
 ## [2026-07-26] ingest | Agentic Knowledge Graph Construction
@@ -196,7 +196,7 @@
 
 ### Context Engineering (1개 신규)
 - `Agentic_Context_Management.md`(order:7) 신설 — Context Rot(Chroma 2025 기술 리포트) vs Lost in the Middle 구분표, Write/Select/Compress/Isolate 4대 전략(Lance Martin/LangChain, Anthropic 2025), Compaction, Sub-agent Context Isolation, Governance Decay(arXiv:2606.22528) 위험
-- 갱신: `Context_Engineering.md`·`Context_Compression.md`·`Lost_in_the_Middle.md`·`LLM_Memory.md`(KO+EN) 및 `Agent_Engineering/Agent_Memory.md`·`Multi_Agent_Coordination.md`·`Graph_Engineering/Multi_Agent_Topology.md`·`Harness_Engineering/Guardrail_Engineering.md`·`Loop_Engineering/Cost_Engineering/Context_Usage_Auditing.md`(KO+EN)에 역링크 추가
+- 갱신: `Context_Engineering.md`·`Context_Compression.md`·`Lost_in_the_Middle.md`·`LLM_Memory.md`(KO+EN) 및 `Agent_Engineering/Agent_Memory.md`·`Multi_Agent_Coordination.md`·`Graph_Engineering/Multi_Agent_Topology.md`·`Harness_Engineering/Harness_Safety/Guardrail_Engineering.md`·`Loop_Engineering/Cost_Engineering/Context_Usage_Auditing.md`(KO+EN)에 역링크 추가
 
 ### Prompt Engineering (1개 신규 + 1개 확장)
 - `Prompt_Caching.md`(order:6) 신설 — KV Cache 재사용 원리, 정적 프리픽스 우선 배치, Anthropic vs OpenAI Cache Breakpoint/TTL/비용 비교표, Semantic Cache와의 층위 차이, 장기 에이전트 루프에서 Compaction과의 상쇄 관계(arXiv:2601.06007)
@@ -225,7 +225,7 @@
 - `Engineering/index.md`·`AI/index.md`(KO+EN 4파일)에 신규 4개 문서 전체 등록
 - `AI/index.md`(KO+EN)에 기존에 존재했으나 목록 누락 상태였던 페이지 약 20개 추가(Agent_Deployment, Agent_as_a_Judge, LLM_Memory, Semantic_Cache, Lost_in_the_Middle, Open_Knowledge_Format, RAG, Agentic_RAG, Hybrid_RAG, Multimodal_RAG, NL2SQL, SQL_RAG, Knowledge_Graph, MCP/A2A/AG_UI, Cost_Engineering 자식 3개, `sources/Agentic_RAG`)
 - `Retrieval_Strategies.md`(KO+EN) 하위 문서 표에 누락돼 있던 Hybrid_RAG·Multimodal_RAG·Agentic_KG_Construction 행 추가
-- 기존 결함 수정: `wiki/en/AI/Engineering/Agent_Engineering/Agent_Engineering.md`에 `nav_order: 60` 누락 보완(87개 파일 중 유일한 KO/EN 프론트매터 불일치였음), `CLAUDE.md`의 dangling reference `llm-wiki.md` → `llm_wiki.md` 수정, `Harness_Engineering/Agent_as_a_Judge.md`(KO+EN) 관련 개념의 `LLM_as_a_Judge` 중복 링크 제거
+- 기존 결함 수정: `wiki/en/AI/Engineering/Agent_Engineering/Agent_Engineering.md`에 `nav_order: 60` 누락 보완(87개 파일 중 유일한 KO/EN 프론트매터 불일치였음), `CLAUDE.md`의 dangling reference `llm-wiki.md` → `llm_wiki.md` 수정, `Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge.md`(KO+EN) 관련 개념의 `LLM_as_a_Judge` 중복 링크 제거
 - 적용 제외: 출처 헤딩 표기(`## 출처`/`## References`/`## 참고 문헌`) 통일은 이번에 건드린 파일에 한해서만 맞추고 전수 리팩터는 보류. `wiki/en/AI/`에 `SCHEMA.md`·`log.md`·index.md의 `## Sources` 섹션이 없는 구조적 비대칭은 이번 스코프 밖으로 유지(대규모 EN 구조 변경이라 별도 작업으로 분리)
 
 ## [2026-08-06] create | Loop_Engineering/Cost_Engineering 신설
@@ -316,7 +316,7 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 ## [2026-10-04] update | AI Engineering 최신화 감사 — 공백 3건 추가, 노후 4건 갱신, 허브 1건 삭제
 
 - **방법**: 전체 트리 감사 + 후보 주제 grep(`hallucinat`·`deep research`·`spec-driven` 등 0건 확인 후에만 신규 작성) + 2026년 트렌드 웹 확인. 이미 충분히 다뤄진 주제(Tool Search/Code Mode, reasoning 모델 프롬프팅, LangChain `create_agent`, AGENTS.md)는 제외.
-- **신규(KO+EN)**: `Harness_Engineering/Hallucination_and_Grounding`(order 12), `Agent_Engineering/Coding_Agents`(order 14), `Agent_Engineering/Deep_Research_Agents`(order 15). Coding_Agents는 5개 문서에 흩어진 코딩 에이전트 서술을 링크로 묶는 허브이며 일반론은 기존 문서에 위임. Anthropic 멀티에이전트 리서치 수치는 "자사 보고"로 명시.
+- **신규(KO+EN)**: `Harness_Engineering/Harness_Safety/Hallucination_and_Grounding`(order 12), `Agent_Engineering/Coding_Agents`(order 14), `Agent_Engineering/Deep_Research_Agents`(order 15). Coding_Agents는 5개 문서에 흩어진 코딩 에이전트 서술을 링크로 묶는 허브이며 일반론은 기존 문서에 위임. Anthropic 멀티에이전트 리서치 수치는 "자사 보고"로 명시.
 - **갱신**: `LangChain.md` — 1.0 출시 시점 오기 정정(2026 → 2025-10)과 클래스 기반 체인·구 Retriever/Memory의 `langchain-classic` 이관 명시. `Multimodal_RAG.md` — 구세대 모델명(Claude 3.5, Gemini 1.5 등) 나열을 계열 단위 표기로 교체. `Context_Compression.md` — `Lost_in_the_Middle.md`와 중복되던 절을 요약+링크로 축소, Compaction 연결 추가. `Benchmarking.md` — 평가 실행기(lm-evaluation-harness, Inspect AI) 절 추가.
 - **삭제**: `Context_Engineering/Memory_and_Semantic_Cache.md`(KO+EN) — 성격이 다른 두 주제를 묶기만 하던 50줄 허브. 인바운드 링크 14곳을 `LLM_Memory`/`Semantic_Cache`로 직접 연결하거나 제거. 허브의 Memory vs Semantic Cache 비교표는 이관하지 않음(두 하위 문서 각각이 목적·범위를 서술).
 - **연동**: 두 `index.md`·`Harness_Engineering.md`·`Agent_Engineering.md` 등록, 8개 문서에 신규 문서 역링크 추가. 코드 예제의 `gpt-4o` 등 모델 ID는 동작 예시이므로 변경하지 않음.
@@ -333,4 +333,11 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 ## [2026-10-04] lint | KO/EN 구조 parity 검사(L8·L9) 추가
 - **변경**: `scripts/lint-wiki.mjs`에 L8(heading 레벨 시퀀스 KO/EN 일치)·L9(wikilink 대상 집합 KO/EN 일치) 추가. Claude Code Stop hook(`.claude/settings.json`), git pre-commit(`scripts/hooks/`, `npm prepare`로 설치), CI(`deploy.yml`)에서 `lint:wiki` 자동 실행.
 - **정리**: 기존 드리프트 35건 해소 — EN에 누락돼 있던 섹션(Autonomous_Systems 5개, Multi_Agent_Coordination 5개, MCP 3개, AG_UI 3개, Agent_Memory 3개 등)을 KO 기준으로 번역해 추가, KO의 자기 링크 2건 제거, `AgentOps.md` KO에 누락된 역할 섹션 추가, `index.md` EN에 Sources 섹션 추가.
+- **검증**: `npm run lint:wiki` 0건.
+
+## [2026-10-04] restructure | Harness_Engineering 하위 문서를 안전 / 평가·관찰 / 정렬·거버넌스 3개 폴더로 분류
+
+- **분류 기준**: 허브 정의(Guardrails + Evaluation + Observability)를 따라 기능 축으로 분류. 출력 방어는 `Harness_Safety/`(Guardrail_Engineering, Prompt_Injection_Defense, Red_Teaming, Hallucination_and_Grounding), 품질 측정·운영 관찰은 `Harness_Evaluation/`(LLM_as_a_Judge, Agent_as_a_Judge, Benchmarking, Human_Evaluation, Observability_and_Tracing — 관찰을 프로덕션 온라인 평가로 보고 합침), 모델 수준 위험 연구·제도화는 `Alignment_and_Governance/`(Alignment_Research, Mechanistic_Interpretability, AI_Governance_and_Compliance). Agent_Engineering의 기법/적용 사례 축은 Harness 문서에 맞지 않아 채택하지 않음.
+- **변경**: KO+EN `git mv` 이동, 카테고리 hub 3개(order 0) 신설, `Harness_Engineering.md` 하위 문서 표를 3섹션으로 재구성, 폴더 내 `order:` 재번호, `quartz.ts` FOLDER_ORDER에 3개 폴더 추가, `Engineering/index.md`(KO+EN) Harness 절을 3그룹으로 재편. wikilink 115개 파일 경로 치환(`AI/index.md` 표시 alias는 기존 짧은 형태 유지).
+- **영향**: Quartz URL이 바뀌어 기존 deep link는 리다이렉트 없이 깨짐.
 - **검증**: `npm run lint:wiki` 0건.

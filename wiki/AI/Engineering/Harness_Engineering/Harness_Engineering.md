@@ -15,20 +15,37 @@ Harness = Guardrails (안전) + Evaluation (품질) + Observability (관찰)
 
 ## 하위 문서
 
+하위 문서는 세 갈래로 나뉜다. **안전**은 유해하거나 근거 없는 출력을 막는 방어 계층이고, **평가·관찰**은 품질을 측정하고 프로덕션 동작을 추적하는 계층이며, **정렬·거버넌스**는 모델 수준의 위험을 연구하고 제도로 관리하는 영역이다.
+
+### 안전
+
 | 문서 | 내용 |
 |------|------|
-| [[AI/Engineering/Harness_Engineering/Guardrail_Engineering\|Guardrail_Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
-| [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge\|LLM_as_a_Judge]] | 자동 품질 평가 — MT-Bench, RAGAS, G-Eval, Prometheus |
-| [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge\|Agent_as_a_Judge]] | 에이전트 실행 궤적 평가, Critic Agent, Agent Simulation |
-| [[AI/Engineering/Harness_Engineering/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench(Verified), pass@k |
-| [[AI/Engineering/Harness_Engineering/Human_Evaluation\|Human_Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
-| [[AI/Engineering/Harness_Engineering/Observability_and_Tracing\|Observability_and_Tracing]] | LangSmith/Langfuse/Arize Phoenix |
-| [[AI/Engineering/Harness_Engineering/Red_Teaming\|Red_Teaming]] | HarmBench, PAIR, Jailbreaking 탐지, OWASP LLM Top 10, Garak/PyRIT |
-| [[AI/Engineering/Harness_Engineering/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
-| [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic_Interpretability]] | Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 |
-| [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 |
-| [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense\|Prompt_Injection_Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
-| [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding\|Hallucination_and_Grounding]] | 환각 탐지·근거 검증, Semantic Entropy, claim 단위 groundedness, 프로덕션 스택 |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Harness_Safety\|Harness_Safety]] | 카테고리 개요 |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | NeMo Guardrails, Guardrails AI, LlamaGuard |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Prompt_Injection_Defense\|Prompt_Injection_Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming\|Red_Teaming]] | HarmBench, PAIR, Jailbreaking 탐지, OWASP LLM Top 10, Garak/PyRIT |
+| [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding\|Hallucination_and_Grounding]] | 환각 탐지·근거 검증, Semantic Entropy, claim 단위 groundedness, 프로덕션 스택 |
+
+### 평가·관찰
+
+| 문서 | 내용 |
+|------|------|
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Harness_Evaluation\|Harness_Evaluation]] | 카테고리 개요 |
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | 자동 품질 평가 — MT-Bench, RAGAS, G-Eval, Prometheus |
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge\|Agent_as_a_Judge]] | 에이전트 실행 궤적 평가, Critic Agent, Agent Simulation |
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Benchmarking]] | MMLU/HumanEval/SWE-bench(Verified), pass@k |
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation\|Human_Evaluation]] | Preference Annotation, IAA, Chatbot Arena |
+| [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing\|Observability_and_Tracing]] | LangSmith/Langfuse/Arize Phoenix |
+
+### 정렬·거버넌스
+
+| 문서 | 내용 |
+|------|------|
+| [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_and_Governance\|Alignment_and_Governance]] | 카테고리 개요 |
+| [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research\|Alignment_Research]] | Reward Hacking, Sleeper Agents, Agentic Misalignment, Alignment Faking, AI Control |
+| [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability\|Mechanistic_Interpretability]] | Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 |
+| [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 |
 
 ## 명명 충돌: "Agent Harness"와의 구분
 

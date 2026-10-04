@@ -215,7 +215,7 @@ response = client.messages.create(
 ```
 
 ## Related Concepts
-[[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]
 
 ## Sources
 - Holtzman et al. (2020) "The Curious Case of Neural Text Degeneration (Top-P)" — [arXiv:1904.09751](https://arxiv.org/abs/1904.09751)

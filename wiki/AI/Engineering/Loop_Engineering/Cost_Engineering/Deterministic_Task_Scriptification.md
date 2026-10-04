@@ -56,14 +56,14 @@ Tool-Making 연구가 강조하듯 tool-maker는 "live environment"에서 백엔
 
 ## 샌드박싱
 
-자동 생성된 스크립트가 권한 범위를 넘어서는 작업(예: 의도치 않은 파일 삭제, 잘못된 API 엔드포인트 호출)을 수행하면 안 되므로, [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]의 **Agent Sandbox** 패턴을 그대로 적용한다 — 스크립트 실행 환경을 핵심 시스템(DB, 프로덕션 서비스)으로부터 격리해, 스크립트가 오작동해도 영향 범위를 제한한다. 특히 워처 에이전트가 자동으로 생성·등록하는 스크립트는 사람이 작성한 도구보다 검증되지 않은 상태로 배포될 위험이 크므로, 샌드박싱은 선택이 아니라 필수다.
+자동 생성된 스크립트가 권한 범위를 넘어서는 작업(예: 의도치 않은 파일 삭제, 잘못된 API 엔드포인트 호출)을 수행하면 안 되므로, [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]의 **Agent Sandbox** 패턴을 그대로 적용한다 — 스크립트 실행 환경을 핵심 시스템(DB, 프로덕션 서비스)으로부터 격리해, 스크립트가 오작동해도 영향 범위를 제한한다. 특히 워처 에이전트가 자동으로 생성·등록하는 스크립트는 사람이 작성한 도구보다 검증되지 않은 상태로 배포될 위험이 크므로, 샌드박싱은 선택이 아니라 필수다.
 
 ## AI Engineering에서의 역할
 
 Deterministic Task Scriptification은 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]이 "더 저렴한 모델로 대체"하는 것과 달리, 가능한 경우 **LLM 호출 자체를 제거**한다는 점에서 잠재적 절감 폭이 가장 크다. 동시에 "결정론적이라는 판단이 틀렸을 때"의 실패 모드가 가장 위험하므로, 폴백·재검토·샌드박싱이라는 세 안전장치를 모두 갖춰야 실무에 적용할 수 있다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]
+[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]
 
 ## 출처
 - "Agentic Compilation: Mitigating the LLM Rerun Crisis for Minimized-Inference-Cost Web Automation" (2026) — [arXiv:2604.09718](https://arxiv.org/html/2604.09718v1)
