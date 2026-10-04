@@ -21,6 +21,7 @@ order: 0
 - [[AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Engineering/Model_Engineering/Synthetic_Data_and_Curation]]: Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse
 - [[AI/Engineering/Model_Engineering/Multimodal_Models|Engineering/Model_Engineering/Multimodal_Models]]: VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA
 - [[AI/Engineering/Model_Engineering/Tokenization|Engineering/Model_Engineering/Tokenization]]: BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율
+- [[AI/Engineering/Model_Engineering/Decision_Models|Engineering/Model_Engineering/Decision_Models]]: Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE)
 
 #### Prompt Engineering
 - [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|Engineering/Prompt_Engineering/System_and_Role_Prompting]]: System Prompt 구조, 역할 유형, Constitutional AI

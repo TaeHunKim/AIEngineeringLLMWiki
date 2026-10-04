@@ -24,6 +24,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
 - [[en/AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]] — VLM adapter-bridged vs native, image tokenization, audio/video, MMMU/DocVQA *(2026)*
 - [[en/AI/Engineering/Model_Engineering/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] — Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) *(2026)*
 
 ---
 

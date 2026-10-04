@@ -24,6 +24,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - [[AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse *(2026)*
 - [[AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]] — VLM 어댑터 결합형 vs 네이티브, 이미지 토큰화, 오디오/비디오, MMMU/DocVQA *(2026)*
 - [[AI/Engineering/Model_Engineering/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율 *(2026)*
+- [[AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] — Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) *(2026)*
 
 ---
 

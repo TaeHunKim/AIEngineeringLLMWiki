@@ -33,6 +33,7 @@ flowchart LR
 | [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation\|Synthetic Data & Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |
 | [[en/AI/Engineering/Model_Engineering/Multimodal_Models\|Multimodal Models]] | VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA |
 | [[en/AI/Engineering/Model_Engineering/Tokenization\|Tokenization]] | BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency |
+| [[en/AI/Engineering/Model_Engineering/Decision_Models\|Decision_Models]] | Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) |
 
 ## When to Choose Which Technique
 

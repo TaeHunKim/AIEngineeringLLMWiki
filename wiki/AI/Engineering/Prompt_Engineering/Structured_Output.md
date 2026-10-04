@@ -189,8 +189,10 @@ def get_structured_output(prompt: str) -> dict:
 
 구조화 출력은 LLM을 실제 소프트웨어 시스템에 통합하는 핵심 가교다. Information Extraction, NLU 파이프라인, Tool Use, Agent 시스템 모두 구조화 출력에 의존한다. 프로덕션 LLM 애플리케이션에서 구조화 출력 없이는 안정적인 시스템 구축이 거의 불가능하다.
 
+타입뿐 아니라 **보정된 확률**까지 필요한 분류·판정 작업에는 텍스트를 생성하지 않는 [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]이 대안이다. 스키마 제약은 형식 오류를 없애지만 confidence는 제공하지 않는다.
+
 ## 관련 개념
-[[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling_Controls]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling_Controls]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]
 
 ## 출처
 - OpenAI Structured Outputs 문서 — [platform.openai.com](https://platform.openai.com/docs/guides/structured-outputs)

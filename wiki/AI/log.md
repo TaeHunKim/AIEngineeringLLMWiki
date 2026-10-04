@@ -304,3 +304,11 @@ L1 표 셀 파이프 이스케이프 / L2 dead link / L3 KO·EN 파일 집합 �
 - `SCHEMA.md` 보강 — "문서 작성 스타일" 절 신설(❌/✅ 예시 + 모범 사례 문서 3개 지목), Lint 절을 L1~L7 표 기반으로 재작성
 - **이번 작업의 핵심 교훈**: L1 규칙은 `[2026-09-13]` 세션에 이미 `SCHEMA.md`에 **직접 추가해놓고도 같은 세션에서 54번 위반**했다. `SCHEMA.md`는 에이전트가 찾아 읽어야만 컨텍스트에 들어오는 반면 `CLAUDE.md`는 매 세션 자동 로드된다 — **저작 시점에 필요한 규칙은 자동 로드되는 곳에 두고, 기계적 검증을 붙여야 지켜진다.** 규칙 문장을 늘리는 것만으로는 재발을 막지 못한다.
 - 부수 발견: 직전 세션의 링크 검사 스크립트가 `\|`를 `|`로 정규화한 **뒤** 분리해 이스케이프 여부를 구별하지 못했고, 그래서 54건을 전부 정상으로 오판했다. 링크 검사를 즉석에서 짜지 말고 `npm run lint:wiki`를 쓸 것(이 주의사항도 `SCHEMA.md`에 명시).
+
+## [2026-10-04] update | Decision Models (Jev 계열 System One Model)
+
+TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형 / logprob wrapper / 고전 zero-shot 분류기 / structured output 라이브러리)을 `Model_Engineering/Decision_Models` 신규 문서(KO+EN, `order: 10`)로 정리.
+
+- **배치 판단**: 핵심 산출물이 "텍스트를 생성하지 않는 판정형 모델 클래스"이고 wrapper도 "LLM을 discriminative 모델로 쓰는 법"이므로 Model Engineering에 단일 허브로 배치. 사용처(Judge·Guardrail·Routing)와 출력 제어(Structured_Output)는 교차참조로 연결. 하위 폴더 분리는 생태계가 안정될 때까지 보류.
+- **교차참조 추가(KO+EN)**: `Structured_Output`, `LLM_as_a_Judge`, `Complexity_Aware_Model_Routing`, `Guardrail_Engineering`, `Model_Engineering` 개요 표, 두 `index.md`
+- **출처 주의**: 검색 결과 다수가 큐레이션·SEO 성격 사이트라 1차 출처(arXiv:2609.37647, Arize, Glean)만 인용. 벤더 성능 수치는 "자사 보고"로, 오픈 프로젝트 목록은 2026-10 시점 스냅샷으로 명시. 개별 프로젝트 수치는 각 repo 재확인 필요.
