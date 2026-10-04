@@ -175,7 +175,7 @@ agent-workbench-pack/
 Eval-Driven Development와 Agent Workbench는 "모델이 얼마나 똑똑한가"에서 "시스템이 얼마나 신뢰할 수 있는가"로 초점을 옮기는 2026년의 핵심 흐름이다. Terminal Bench·Vercel·Harvey의 사례가 보여주듯, 같은 모델이라도 하네스(워크벤치) 설계만으로 성공률이 극적으로 달라진다. [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|본 문서]]의 7가지 표면은 [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]의 실패 모드(MASFT/MAST)를 예방하는 구체적 엔지니어링 대응책이기도 하다 — 예를 들어 Verification Gate는 "Verification Gap" 실패를, Handoff는 "Coordination Failure"를 구조적으로 줄인다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Frameworks]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Coding_Agents|Coding_Agents]]
 
 ## 출처
 - Anthropic "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/research/building-effective-agents)

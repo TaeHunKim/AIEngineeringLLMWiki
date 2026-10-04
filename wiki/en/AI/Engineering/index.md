@@ -45,7 +45,6 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 ### 3. [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — Context composition strategies
 
 - Memory & Caching
-    - [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] — Overview index
     - [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] — 4 type classification, Conversation strategies, Letta/Mem0/Zep
     - [[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] — GPTCache, Redis, cost reduction
 - Context Optimization
@@ -87,7 +86,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 ### 4. [[en/AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] — Execution flow design
 
 - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow Overview]]
-    - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL pipeline (Harrison Chase, 2022)
+    - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL pipeline, 1.0 create_agent·Middleware (Harrison Chase, 2022)
     - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] — RAG-specialized indexing-query pipeline (Jerry Liu, 2022)
     - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — OpenAI/Anthropic Function Calling
 - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow Overview]]
@@ -116,6 +115,8 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3-stage evaluation layers, Agent Workbench 7 surfaces
 - [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] — Safe Rollout 4 strategies, multi-agent observability, cost & latency optimization
 - [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(May 2026)*
+- [[en/AI/Engineering/Agent_Engineering/Coding_Agents|Coding Agents]] — AGENTS.md, spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI *(2026)*
+- [[en/AI/Engineering/Agent_Engineering/Deep_Research_Agents|Deep Research Agents]] — Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp *(2026)*
 
 ---
 
@@ -123,6 +124,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 - Guardrails
     - [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer security, ADK SafetyPlugin, Agent Sandbox
+    - [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]] — Semantic Entropy, claim-level groundedness, mandatory citation, production stack *(2026)*
 - Evaluation
     - [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, bias mitigation
     - [[en/AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory evaluation, Critic Agent, Multi-Agent-as-Judge (Zhuge et al., ICML 2025)

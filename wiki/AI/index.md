@@ -33,7 +33,6 @@ order: 0
 - [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Engineering/Prompt_Engineering/Automatic_Prompt_Optimization]]: APE/OPRO/TextGrad, GEPA(ICLR 2026), DSPy 옵티마이저 선택 가이드
 
 #### Context Engineering
-- [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Engineering/Context_Engineering/Memory_and_Semantic_Cache]]: GPTCache, Redis 기반 시맨틱 캐시
 - [[AI/Engineering/Context_Engineering/LLM_Memory|Engineering/Context_Engineering/LLM_Memory]]: LLM Memory 4유형(In-Context/External/In-Weights/In-Cache), Letta/Mem0/Zep 구현
 - [[AI/Engineering/Context_Engineering/Semantic_Cache|Engineering/Context_Engineering/Semantic_Cache]]: GPTCache, Redis 구현, 카테고리 인식 캐시, 비용 절감 효과
 - [[AI/Engineering/Context_Engineering/Context_Compression|Engineering/Context_Engineering/Context_Compression]]: LLM Lingua, Map-Reduce, Lost in the Middle
@@ -84,6 +83,8 @@ order: 0
 - [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench]]: 3단계 평가 레이어, Agent Workbench 7 Surfaces
 - [[AI/Engineering/Agent_Engineering/AgentOps|Engineering/Agent_Engineering/AgentOps]]: AgentOps 방법론 3 Pillars + Observe→Act→Evolve, agentops.ai 플랫폼, LangSmith/Langfuse/Braintrust/Latitude 도구 비교
 - [[AI/Engineering/Agent_Engineering/Agent_Deployment|Engineering/Agent_Engineering/Agent_Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry 비교
+- [[AI/Engineering/Agent_Engineering/Coding_Agents|Engineering/Agent_Engineering/Coding_Agents]]: AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI
+- [[AI/Engineering/Agent_Engineering/Deep_Research_Agents|Engineering/Agent_Engineering/Deep_Research_Agents]]: Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp
 
 #### Harness Engineering
 - [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Engineering/Harness_Engineering/Guardrail_Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE 간접 인젝션 방어, 워터마킹
@@ -97,6 +98,7 @@ order: 0
 - [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Engineering/Harness_Engineering/Mechanistic_Interpretability]]: Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석
 - [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Engineering/Harness_Engineering/AI_Governance_and_Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드
 - [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Engineering/Harness_Engineering/Prompt_Injection_Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM 패턴, Spotlighting
+- [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Engineering/Harness_Engineering/Hallucination_and_Grounding]]: 환각 분류, Semantic Entropy, SelfCheckGPT, claim 단위 groundedness, 프로덕션 스택
 
 #### Loop Engineering
 - [[AI/Engineering/Loop_Engineering/Data_Flywheel|Engineering/Loop_Engineering/Data_Flywheel]]: Agent-in-the-Loop, 자기 강화 데이터 수집 사이클

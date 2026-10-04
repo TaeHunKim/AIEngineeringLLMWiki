@@ -29,7 +29,7 @@ flowchart LR
 | 문서 | 내용 |
 |------|------|
 | [[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow\|Linear Flow]] | 순차적 파이프라인 개요 |
-| [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|Linear_Flow/LangChain]] | LCEL 파이프라인 (Harrison Chase, 2022) |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|Linear_Flow/LangChain]] | LCEL 파이프라인, 1.0 `create_agent`·Middleware (Harrison Chase, 2022) |
 | [[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|Linear_Flow/LlamaIndex]] | 인덱싱-질의 파이프라인 (Jerry Liu, 2022) |
 | [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Linear_Flow/Tool_Use_and_Function_Calling]] | OpenAI/Anthropic Function Calling |
 | [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow\|Graph Flow]] | 순환 그래프 플로우 개요 |

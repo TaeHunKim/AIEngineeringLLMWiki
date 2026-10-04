@@ -98,6 +98,8 @@ memory = ConversationSummaryMemory(
 # 대화가 길어지면 자동으로 이전 내용을 요약하여 압축
 ```
 
+에이전트 루프에서는 이 요약을 컨텍스트 한도 근처에서 자동 수행하는 **Compaction**으로 일반화된다 → [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]].
+
 ### 5. Selective Context (선택적 컨텍스트)
 
 모든 도구 설명, Few-shot 예시를 항상 포함하지 않고 필요한 것만 동적으로 선택:
@@ -121,23 +123,14 @@ def select_relevant_tools(query: str, all_tools: list) -> list:
 
 ## Lost in the Middle 문제
 
-컨텍스트 창 중간의 정보는 양 끝의 정보보다 LLM이 덜 활용하는 현상 (Liu et al., 2023):
-```
-컨텍스트: [정보A][정보B][정보C][정보D][정보E]
-활용도:     높음   낮음   낮음   낮음   높음
-
-→ 중요 정보를 컨텍스트 앞/뒤에 배치
-→ 중간의 불필요한 정보 제거로 해소 가능
-```
-
-자세한 내용은 [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]] 문서 참조.
+컨텍스트 창 중간의 정보는 양 끝보다 덜 활용된다(Liu et al., 2023). 압축으로 중간의 불필요한 정보를 제거하면 완화되며, 원인과 배치 전략은 [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost_in_the_Middle]] 문서를 참조한다.
 
 ## AI Engineering에서의 역할
 
 Context Compression은 **비용 최적화**와 **성능 향상** 두 가지를 동시에 달성한다. 불필요한 토큰 제거는 API 비용을 줄이고, 핵심 정보 집중은 모델의 응답 품질을 높인다. 특히 컨텍스트 창이 긴 Agent 시스템에서 누적 컨텍스트 관리의 핵심 기법이다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory_and_Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]
 
 ## 출처
 - Jiang et al. (2023) "LLMLingua: Compressing Prompts for Accelerated Inference" — [arXiv:2310.05736](https://arxiv.org/abs/2310.05736)

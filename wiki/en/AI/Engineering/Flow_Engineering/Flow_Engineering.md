@@ -29,7 +29,7 @@ flowchart LR
 | Document | Content |
 |----------|---------|
 | [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow\|Linear Flow]] | Sequential pipeline overview |
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|LangChain]] | LCEL pipeline (Harrison Chase, 2022) |
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|LangChain]] | LCEL pipeline, 1.0 `create_agent`·Middleware (Harrison Chase, 2022) |
 | [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|LlamaIndex]] | Indexing-query pipeline (Jerry Liu, 2022) |
 | [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Tool Use & Function Calling]] | OpenAI/Anthropic Function Calling |
 | [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow\|Graph Flow]] | Cyclic graph flow overview |

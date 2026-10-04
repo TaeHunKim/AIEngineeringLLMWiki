@@ -20,7 +20,6 @@ Context Engineering = 이 공간을 가장 유용하게 채우는 기술
 
 | 문서 | 내용 |
 |------|------|
-| [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache\|Memory_and_Semantic_Cache]] | Memory & Semantic Cache 개요 (인덱스) |
 | [[AI/Engineering/Context_Engineering/LLM_Memory\|LLM_Memory]] | LLM Memory 4유형, Conversation 전략, Letta/Mem0/Zep 구현 |
 | [[AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic_Cache]] | 의미 유사도 캐싱, GPTCache, 비용 절감 효과 |
 | [[AI/Engineering/Context_Engineering/Context_Compression\|Context_Compression]] | LLM Lingua, Map-Reduce, 비용 절감 |

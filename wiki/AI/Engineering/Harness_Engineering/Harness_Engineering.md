@@ -28,6 +28,7 @@ Harness = Guardrails (안전) + Evaluation (품질) + Observability (관찰)
 | [[AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic_Interpretability]] | Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 |
 | [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI_Governance_and_Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 |
 | [[AI/Engineering/Harness_Engineering/Prompt_Injection_Defense\|Prompt_Injection_Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
+| [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding\|Hallucination_and_Grounding]] | 환각 탐지·근거 검증, Semantic Entropy, claim 단위 groundedness, 프로덕션 스택 |
 
 ## 명명 충돌: "Agent Harness"와의 구분
 

@@ -45,7 +45,6 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 ### 3. [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — 컨텍스트 구성 전략
 
 - Memory & Caching
-    - [[AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] — 개요 인덱스
     - [[AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] — 4유형 분류, Conversation 전략, Letta/Mem0/Zep
     - [[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] — GPTCache, Redis, 비용 절감
 - Context Optimization
@@ -87,7 +86,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 ### 4. [[AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] — 실행 흐름 설계
 
 - [[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow 개요]]
-    - [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL 파이프라인 (Harrison Chase, 2022)
+    - [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL 파이프라인, 1.0 create_agent·Middleware (Harrison Chase, 2022)
     - [[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] — RAG 특화 인덱싱-질의 파이프라인 (Jerry Liu, 2022)
     - [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — OpenAI/Anthropic Function Calling
 - [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow 개요]]
@@ -116,6 +115,8 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3단계 평가 레이어, Agent Workbench 7가지 표면
 - [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] — Safe Rollout 4전략, 멀티에이전트 관찰가능성, 비용·레이턴시 최적화
 - [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(2026년 5월)*
+- [[AI/Engineering/Agent_Engineering/Coding_Agents|Coding Agents]] — AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI *(2026)*
+- [[AI/Engineering/Agent_Engineering/Deep_Research_Agents|Deep Research Agents]] — Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp *(2026)*
 
 ---
 
@@ -123,6 +124,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 - Guardrails
     - [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] — NeMo, LlamaGuard, 3-Layer 보안, ADK SafetyPlugin, Agent Sandbox
+    - [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]] — Semantic Entropy, claim 단위 groundedness, 인용 강제, 프로덕션 스택 *(2026)*
 - Evaluation
     - [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] — MT-Bench, RAGAS, 편향 대응
     - [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent-as-a-Judge]] — Trajectory 평가, Critic Agent, Multi-Agent-as-Judge, Agent Simulation *(Zhuge et al., ICML 2025)*

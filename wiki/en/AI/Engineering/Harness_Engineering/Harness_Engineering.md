@@ -28,6 +28,7 @@ Harness = Guardrails (safety) + Evaluation (quality) + Observability (observatio
 | [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability\|Mechanistic Interpretability]] | Sparse Autoencoders, Circuit Tracing, internal circuit analysis |
 | [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance\|AI Governance & Compliance]] | RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, Model Cards |
 | [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense\|Prompt Injection Defense]] | Lethal Trifecta, Rule of Two, CaMeL, Dual-LLM, Spotlighting |
+| [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding\|Hallucination & Grounding]] | Hallucination detection and grounding, Semantic Entropy, claim-level groundedness, production stack |
 
 ## Naming Collision: Distinguishing from "Agent Harness"
 

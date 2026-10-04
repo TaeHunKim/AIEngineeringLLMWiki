@@ -6,7 +6,7 @@ order: 8
 
 ## 개요
 
-**Multimodal RAG**는 텍스트뿐만 아니라 이미지·표·차트·PDF 페이지 등 시각 정보를 검색 단위로 처리하는 RAG 아키텍처다. 공유 임베딩 공간에 텍스트와 이미지를 함께 인덱싱하고, 멀티모달 LLM(GPT-4o, Gemini, Claude 3.5)이 혼합 컨텍스트에서 답변을 생성한다.
+**Multimodal RAG**는 텍스트뿐만 아니라 이미지·표·차트·PDF 페이지 등 시각 정보를 검색 단위로 처리하는 RAG 아키텍처다. 공유 임베딩 공간에 텍스트와 이미지를 함께 인덱싱하고, 멀티모달 LLM(GPT·Gemini·Claude 계열 등 비전 지원 모델)이 혼합 컨텍스트에서 답변을 생성한다.
 
 2025년 이후 ColPali(ICLR 2025), SV-RAG(ICLR 2025), URaG(AAAI 2026) 등 연구가 생산 수준으로 성숙해 더 이상 실험 단계가 아니다 [1][2].
 
@@ -82,10 +82,10 @@ OCR 실패가 잦은 수식·표·비라틴 문자가 많은 문서에서 텍스
 
 ```
 컨텍스트 = [텍스트 청크 3개] + [이미지 2장] + [표 이미지 1장]
-→ GPT-4o / Gemini 2.0 Flash / Claude 3.5 Sonnet → 답변
+→ 멀티모달 LLM → 답변
 ```
 
-주요 Multimodal LLM: GPT-4o (OpenAI), Gemini 1.5/2.0 Pro·Flash (Google), Claude 3.5/3.7 Sonnet (Anthropic), Qwen3-VL (Alibaba)
+주요 Multimodal LLM: GPT(OpenAI)·Gemini(Google)·Claude(Anthropic) 계열의 비전 지원 모델, Qwen3-VL(Alibaba) 등. 세대 교체가 빠르므로 구체 버전은 각 제공사 문서를 확인한다.
 
 ## 장단점
 
@@ -114,7 +114,7 @@ OCR 실패가 잦은 수식·표·비라틴 문자가 많은 문서에서 텍스
 ```
 임베딩 모델:  ColPali / voyage-multimodal-3 / SigLIP-2 / CLIP
 벡터 DB:      Qdrant / Weaviate / pgvector (이미지 벡터 지원)
-생성 LLM:     Gemini 2.0 Flash / GPT-4o / Claude 3.5 Sonnet
+생성 LLM:     GPT / Gemini / Claude 계열 비전 모델
 프레임워크:   LlamaIndex MultiModal / LangChain + GPT4V
 ```
 

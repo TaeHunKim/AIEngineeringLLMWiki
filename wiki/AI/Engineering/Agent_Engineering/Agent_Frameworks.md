@@ -181,7 +181,7 @@ agent = ClaudeAgent(
 Agent Frameworks는 에이전트 설계의 "언어"에서 "제품"으로의 전환을 대표한다. 프레임워크 선택은 아키텍처([[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]])와 워크플로 패턴([[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]]) 결정 이후에 이뤄져야 하는 구현 세부사항이며, 잘못된 순서로 접근하면(프레임워크부터 고르고 아키텍처를 끼워 맞추면) 불필요한 복잡도로 이어진다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]
+[[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic_Workflow_Patterns]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Coding_Agents|Coding_Agents]]
 
 ## 출처
 - Microsoft Research "AutoGen v0.4: A New Foundation" — [microsoft.com/research](https://www.microsoft.com/en-us/research/blog/autogen-v0-4-reimagining-the-foundation-agentic-ai-frameworks/)

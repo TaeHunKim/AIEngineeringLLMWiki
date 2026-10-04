@@ -107,7 +107,9 @@ rag_chain = (
 | **MapReduceChain** | 긴 문서 처리 |
 | **Router Chain** | 조건 분기 |
 
-## LangChain 1.0 (2026): Core Agent Loop 중심 재편
+> 위 표의 클래스 기반 체인과 구 `Retriever`·`Memory` API는 1.0에서 `langchain-classic` 패키지로 이관된 **레거시**다. 신규 코드는 LCEL 또는 아래 `create_agent`를 사용한다.
+
+## LangChain 1.0 (2025-10): Core Agent Loop 중심 재편
 
 LangChain은 v1.0에서 체인 중심 API를 유지하면서도, 무게중심을 **에이전트 코어 루프**로 옮겼다 [1]. 핵심 변화 세 가지:
 

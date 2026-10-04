@@ -20,7 +20,6 @@ Context Engineering = the art of filling this space most usefully
 
 | Document | Content |
 |------|------|
-| [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache\|Memory & Semantic Cache]] | Memory & Semantic Cache overview (index) |
 | [[en/AI/Engineering/Context_Engineering/LLM_Memory\|LLM Memory]] | LLM Memory 4 types, Conversation strategies, Letta/Mem0/Zep implementations |
 | [[en/AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic Cache]] | Semantic similarity caching, GPTCache, cost reduction effects |
 | [[en/AI/Engineering/Context_Engineering/Context_Compression\|Context Compression]] | LLM Lingua, Map-Reduce, cost reduction |

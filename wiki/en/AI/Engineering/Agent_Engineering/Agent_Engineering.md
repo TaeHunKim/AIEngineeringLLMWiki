@@ -38,6 +38,8 @@ flowchart LR
 | [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination\|Multi-Agent Coordination]] | Coordination patterns, communication protocols, failure modes (MASFT/MAST/Groupthink) |
 | [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | Claude/OpenAI CUA/Gemini computer use, Pipecat/LiveKit voice agents |
 | [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems\|Autonomous Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL |
+| [[en/AI/Engineering/Agent_Engineering/Coding_Agents\|Coding Agents]] | Context files (AGENTS.md), spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI |
+| [[en/AI/Engineering/Agent_Engineering/Deep_Research_Agents\|Deep Research Agents]] | Planner/Researcher/Synthesizer structure, bounded sub-agents, citation verification, BrowseComp |
 | [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench\|Eval-Driven Development & Agent Workbench]] | 3-layer evaluation, Agent Workbench 7 surfaces |
 
 ## When to Use Agents

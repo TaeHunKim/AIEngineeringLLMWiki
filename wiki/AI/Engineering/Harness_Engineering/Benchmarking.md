@@ -153,6 +153,17 @@ MMLU 출시: 2020년 → 일부 문제가 학습 데이터에 포함 가능
 - MMLU: 상위 모델들이 85~90%대로 수렴
 - HellaSwag: 상위 모델들이 95%+ → 변별력 없어짐
 
+## 평가 실행 프레임워크
+
+벤치마크 **데이터셋**과 이를 모델에 돌리는 **실행기**는 별개다. 같은 벤치마크도 프롬프트 형식·few-shot 수·채점 방식이 다르면 점수가 달라지므로, 실행기를 고정해 재현 가능하게 만드는 것이 비교의 전제다.
+
+| 프레임워크 | 특징 |
+|-----------|------|
+| **lm-evaluation-harness** (EleutherAI) | 수십 개 표준 벤치마크를 하나의 인터페이스로 실행. 오픈 모델 비교 리더보드의 기반 |
+| **Inspect AI** (UK AI Security Institute) | Task·Solver·Scorer 구조의 오픈소스 프레임워크. 도구 사용·샌드박스 실행을 포함한 **에이전트 평가**를 지원 |
+
+자체 골든 셋 평가도 같은 구조(데이터셋 + 실행 로직 + 채점)로 작성해 두면 공개 벤치마크와 내부 평가를 한 파이프라인으로 돌릴 수 있다.
+
 ## 실무 벤치마크 선택 전략
 
 ```python
@@ -193,4 +204,6 @@ Benchmarking은 **모델 선택, 프롬프트 최적화, 파인튜닝 효과 측
 - Liu et al. (Tsinghua, 2023) "AgentBench: Evaluating LLMs as Agents" — [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
 - Terminal-Bench 2.0 — [tbench.ai](https://www.tbench.ai)
 - Chollet et al. (2024/2025) "ARC-AGI-2" — [arcprize.org](https://arcprize.org/arc-agi/2/)
+- EleutherAI "lm-evaluation-harness" — [github.com](https://github.com/EleutherAI/lm-evaluation-harness)
+- UK AI Security Institute "Inspect AI" — [inspect.aisi.org.uk](https://inspect.aisi.org.uk)
 - AI Engineering from Scratch, Phase 14 · Lesson 19 (Benchmarks — SWE-bench, GAIA, AgentBench) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

@@ -153,6 +153,17 @@ Latest models nearly saturate existing benchmarks:
 - MMLU: Top models converging in the 85~90% range
 - HellaSwag: Top models 95%+ → no longer discriminating
 
+## Evaluation Runners
+
+The benchmark **dataset** and the **runner** that executes it against a model are separate things. The same benchmark yields different scores under different prompt formats, few-shot counts, and scoring methods, so pinning the runner for reproducibility is a precondition for comparison.
+
+| Framework | Notes |
+|-----------|-------|
+| **lm-evaluation-harness** (EleutherAI) | Runs dozens of standard benchmarks behind one interface; the basis of open-model comparison leaderboards |
+| **Inspect AI** (UK AI Security Institute) | Open-source framework built on Task/Solver/Scorer; supports **agent evaluation** including tool use and sandboxed execution |
+
+Writing your own golden-set evaluation in the same structure (dataset + execution logic + scoring) lets public benchmarks and internal evals run in one pipeline.
+
 ## Practical Benchmark Selection Strategy
 
 ```python
@@ -191,3 +202,5 @@ Benchmarking provides **objective criteria for model selection, prompt optimizat
 - Liu et al. (Tsinghua, 2023) "AgentBench: Evaluating LLMs as Agents" — [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
 - Terminal-Bench 2.0 — [tbench.ai](https://www.tbench.ai)
 - Chollet et al. (2024/2025) "ARC-AGI-2" — [arcprize.org](https://arcprize.org/arc-agi/2/)
+- EleutherAI "lm-evaluation-harness" — [github.com](https://github.com/EleutherAI/lm-evaluation-harness)
+- UK AI Security Institute "Inspect AI" — [inspect.aisi.org.uk](https://inspect.aisi.org.uk)

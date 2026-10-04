@@ -107,7 +107,9 @@ rag_chain = (
 | **MapReduceChain** | Long document processing |
 | **Router Chain** | Conditional branching |
 
-## LangChain 1.0 (2026): Recentered Around the Core Agent Loop
+> The class-based chains above and the old `Retriever`/`Memory` APIs are **legacy**, moved to the `langchain-classic` package in 1.0. New code should use LCEL or `create_agent` below.
+
+## LangChain 1.0 (2025-10): Recentered Around the Core Agent Loop
 
 In v1.0, LangChain kept its chain-centric API but shifted its center of gravity to the **core agent loop** [1]. Three key changes:
 

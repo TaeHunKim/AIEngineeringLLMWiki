@@ -312,3 +312,12 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **배치 판단**: 핵심 산출물이 "텍스트를 생성하지 않는 판정형 모델 클래스"이고 wrapper도 "LLM을 discriminative 모델로 쓰는 법"이므로 Model Engineering에 단일 허브로 배치. 사용처(Judge·Guardrail·Routing)와 출력 제어(Structured_Output)는 교차참조로 연결. 하위 폴더 분리는 생태계가 안정될 때까지 보류.
 - **교차참조 추가(KO+EN)**: `Structured_Output`, `LLM_as_a_Judge`, `Complexity_Aware_Model_Routing`, `Guardrail_Engineering`, `Model_Engineering` 개요 표, 두 `index.md`
 - **출처 주의**: 검색 결과 다수가 큐레이션·SEO 성격 사이트라 1차 출처(arXiv:2609.37647, Arize, Glean)만 인용. 벤더 성능 수치는 "자사 보고"로, 오픈 프로젝트 목록은 2026-10 시점 스냅샷으로 명시. 개별 프로젝트 수치는 각 repo 재확인 필요.
+
+## [2026-10-04] update | AI Engineering 최신화 감사 — 공백 3건 추가, 노후 4건 갱신, 허브 1건 삭제
+
+- **방법**: 전체 트리 감사 + 후보 주제 grep(`hallucinat`·`deep research`·`spec-driven` 등 0건 확인 후에만 신규 작성) + 2026년 트렌드 웹 확인. 이미 충분히 다뤄진 주제(Tool Search/Code Mode, reasoning 모델 프롬프팅, LangChain `create_agent`, AGENTS.md)는 제외.
+- **신규(KO+EN)**: `Harness_Engineering/Hallucination_and_Grounding`(order 12), `Agent_Engineering/Coding_Agents`(order 14), `Agent_Engineering/Deep_Research_Agents`(order 15). Coding_Agents는 5개 문서에 흩어진 코딩 에이전트 서술을 링크로 묶는 허브이며 일반론은 기존 문서에 위임. Anthropic 멀티에이전트 리서치 수치는 "자사 보고"로 명시.
+- **갱신**: `LangChain.md` — 1.0 출시 시점 오기 정정(2026 → 2025-10)과 클래스 기반 체인·구 Retriever/Memory의 `langchain-classic` 이관 명시. `Multimodal_RAG.md` — 구세대 모델명(Claude 3.5, Gemini 1.5 등) 나열을 계열 단위 표기로 교체. `Context_Compression.md` — `Lost_in_the_Middle.md`와 중복되던 절을 요약+링크로 축소, Compaction 연결 추가. `Benchmarking.md` — 평가 실행기(lm-evaluation-harness, Inspect AI) 절 추가.
+- **삭제**: `Context_Engineering/Memory_and_Semantic_Cache.md`(KO+EN) — 성격이 다른 두 주제를 묶기만 하던 50줄 허브. 인바운드 링크 14곳을 `LLM_Memory`/`Semantic_Cache`로 직접 연결하거나 제거. 허브의 Memory vs Semantic Cache 비교표는 이관하지 않음(두 하위 문서 각각이 목적·범위를 서술).
+- **연동**: 두 `index.md`·`Harness_Engineering.md`·`Agent_Engineering.md` 등록, 8개 문서에 신규 문서 역링크 추가. 코드 예제의 `gpt-4o` 등 모델 ID는 동작 예시이므로 변경하지 않음.
+- **검증**: `npm run lint:wiki` 0건. 신규 3개 문서의 KO/EN 링크 수·출처 수 일치 확인.

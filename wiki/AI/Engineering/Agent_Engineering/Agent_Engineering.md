@@ -38,6 +38,8 @@ flowchart LR
 | [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination\|Multi_Agent_Coordination]] | 조정 패턴, 통신 프로토콜, 실패 모드(MASFT/MAST/Groupthink) |
 | [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | Claude/OpenAI CUA/Gemini 컴퓨터 사용, Pipecat/LiveKit 음성 에이전트 |
 | [[AI/Engineering/Agent_Engineering/Autonomous_Systems\|Autonomous_Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL |
+| [[AI/Engineering/Agent_Engineering/Coding_Agents\|Coding_Agents]] | 컨텍스트 파일(AGENTS.md), spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI |
+| [[AI/Engineering/Agent_Engineering/Deep_Research_Agents\|Deep_Research_Agents]] | Planner/Researcher/Synthesizer 구조, bounded sub-agent, 인용 검증, BrowseComp |
 | [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench\|Eval_Driven_Development_and_Agent_Workbench]] | 3단계 평가 레이어, Agent Workbench 7가지 표면 |
 
 ## 에이전트 적용 기준

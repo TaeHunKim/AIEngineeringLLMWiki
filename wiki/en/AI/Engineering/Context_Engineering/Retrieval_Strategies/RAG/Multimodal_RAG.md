@@ -6,7 +6,7 @@ order: 8
 
 ## Overview
 
-**Multimodal RAG** is a RAG architecture that processes not only text but also visual information such as images, tables, charts, and PDF pages as retrieval units. It indexes text and images together in a shared embedding space, and multimodal LLMs (GPT-4o, Gemini, Claude 3.5) generate answers from mixed contexts.
+**Multimodal RAG** is a RAG architecture that processes not only text but also visual information such as images, tables, charts, and PDF pages as retrieval units. It indexes text and images together in a shared embedding space, and multimodal LLMs (GPT, Gemini, Claude families and other vision-capable models) generate answers from mixed contexts.
 
 Research including ColPali (ICLR 2025), SV-RAG (ICLR 2025), and URaG (AAAI 2026) has matured to production level since 2025 and is no longer experimental [1][2].
 
@@ -82,10 +82,10 @@ Pass retrieved context (text chunks + images/pages) directly to a Multimodal LLM
 
 ```
 Context = [3 text chunks] + [2 images] + [1 table image]
-→ GPT-4o / Gemini 2.0 Flash / Claude 3.5 Sonnet → Answer
+→ Multimodal LLM → Answer
 ```
 
-Key Multimodal LLMs: GPT-4o (OpenAI), Gemini 1.5/2.0 Pro·Flash (Google), Claude 3.5/3.7 Sonnet (Anthropic), Qwen3-VL (Alibaba)
+Key Multimodal LLMs: vision-capable models from the GPT (OpenAI), Gemini (Google), and Claude (Anthropic) families, plus Qwen3-VL (Alibaba). Generations turn over quickly, so check each provider for current versions.
 
 ## Pros and Cons
 
@@ -114,7 +114,7 @@ Key Multimodal LLMs: GPT-4o (OpenAI), Gemini 1.5/2.0 Pro·Flash (Google), Claude
 ```
 Embedding models:  ColPali / voyage-multimodal-3 / SigLIP-2 / CLIP
 Vector DB:         Qdrant / Weaviate / pgvector (image vector support)
-Generation LLM:    Gemini 2.0 Flash / GPT-4o / Claude 3.5 Sonnet
+Generation LLM:    GPT / Gemini / Claude vision models
 Frameworks:        LlamaIndex MultiModal / LangChain + GPT4V
 ```
 

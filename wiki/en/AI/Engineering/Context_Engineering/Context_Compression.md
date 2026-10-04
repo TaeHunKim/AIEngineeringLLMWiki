@@ -98,6 +98,8 @@ memory = ConversationSummaryMemory(
 # Automatically summarizes previous content as conversation grows
 ```
 
+In agent loops this generalizes to **Compaction**, which summarizes automatically near the context limit → [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]].
+
 ### 5. Selective Context
 
 Don't always include all tool descriptions and few-shot examples; dynamically select only what's needed:
@@ -121,23 +123,14 @@ def select_relevant_tools(query: str, all_tools: list) -> list:
 
 ## Lost in the Middle Problem
 
-The phenomenon where LLMs use information in the middle of the context window significantly less than information at the ends (Liu et al., 2023):
-```
-Context: [Info A][Info B][Info C][Info D][Info E]
-Utilization: High   Low    Low    Low    High
-
-→ Place important info at the front/back of context
-→ Can be resolved by removing unnecessary info in the middle
-```
-
-See [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] for details.
+Information in the middle of the context window is used less than information at the ends (Liu et al., 2023). Compression eases this by removing unneeded middle content; see [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]] for causes and placement strategies.
 
 ## Role in AI Engineering
 
 Context Compression simultaneously achieves both **cost optimization** and **performance improvement**. Removing unnecessary tokens reduces API costs, and concentrating on core information improves model response quality. It is especially the key technique for managing accumulated context in Agent systems with long context windows.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] · [[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]
 
 ## Sources
 - Jiang et al. (2023) "LLMLingua: Compressing Prompts for Accelerated Inference" — [arXiv:2310.05736](https://arxiv.org/abs/2310.05736)

@@ -32,7 +32,6 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]]: APE/OPRO/TextGrad, GEPA (ICLR 2026), DSPy optimizer selection guide
 
 #### Context Engineering
-- [[en/AI/Engineering/Context_Engineering/Memory_and_Semantic_Cache|Memory & Semantic Cache]]: GPTCache, Redis-based semantic cache
 - [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]]: 4 LLM Memory types (In-Context/External/In-Weights/In-Cache), Letta/Mem0/Zep implementations
 - [[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]]: GPTCache, Redis implementation, category-aware cache, cost savings
 - [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]]: LLM Lingua, Map-Reduce, Lost in the Middle
@@ -83,6 +82,8 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]]: 3-stage evaluation layers, Agent Workbench 7 Surfaces
 - [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]]: AgentOps methodology 3 Pillars + Observe→Act→Evolve, tool comparison
 - [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry comparison
+- [[en/AI/Engineering/Agent_Engineering/Coding_Agents|Coding Agents]]: AGENTS.md, spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI
+- [[en/AI/Engineering/Agent_Engineering/Deep_Research_Agents|Deep Research Agents]]: Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp
 
 #### Harness Engineering
 - [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE indirect injection defense, watermarking
@@ -96,6 +97,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Harness_Engineering/Mechanistic_Interpretability|Mechanistic Interpretability]]: Sparse Autoencoders, Circuit Tracing, internal circuit analysis
 - [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]: RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards
 - [[en/AI/Engineering/Harness_Engineering/Prompt_Injection_Defense|Prompt Injection Defense]]: Lethal Trifecta, Meta Rule of Two, CaMeL, Dual-LLM pattern, Spotlighting
+- [[en/AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination & Grounding]]: hallucination taxonomy, Semantic Entropy, SelfCheckGPT, claim-level groundedness, production stack
 
 #### Loop Engineering
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]: Agent-in-the-Loop, self-reinforcing data collection cycle
