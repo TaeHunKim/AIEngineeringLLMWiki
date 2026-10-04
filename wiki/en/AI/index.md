@@ -68,22 +68,22 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 #### Agent Engineering
 - [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]]: Lilian Weng 2023 — Planning/Memory/Tools 3 pillars
 - [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]]: Single/Orchestrator/Router/Multi-Agent
-- [[en/AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]]: Prompt Chaining/Routing/Parallelization/Orchestrator-Workers/Evaluator-Optimizer (Anthropic 2024)
-- [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]]: Plan-and-Solve, ReWOO, ToT/LATS, Reflexion, Self-Refine/CRITIC
-- [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]]: Short/Long-term Memory, MemGPT, Sleep-time Compute, Mem0, Voyager
-- [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent Skills & Protocols]]: Anthropic Skills, Google A2A Protocol 2025
-- [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]: Host-Client-Server, 4 primitives, Transports/Sampling/OAuth 2.1, Gateway/Registry ecosystem
-- [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]]: Agent Card, task request/response structure, v1.0 spec (Google 2025)
-- [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|AG-UI]]: Real-time bidirectional streaming standard for agent↔user UI (CopilotKit 2025)
-- [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent Frameworks]]: AutoGen v0.4 → Microsoft Agent Framework, CrewAI, OpenAI/Claude Agent SDK, Agno/Mastra
-- [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]]: Coordination patterns, MASFT/MAST failure taxonomy (Cemri et al. NeurIPS 2025)
-- [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]: Claude/OpenAI CUA/Gemini, Pipecat/LiveKit
-- [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]]: METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL
-- [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]]: 3-stage evaluation layers, Agent Workbench 7 Surfaces
-- [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]]: AgentOps methodology 3 Pillars + Observe→Act→Evolve, tool comparison
-- [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry comparison
-- [[en/AI/Engineering/Agent_Engineering/Coding_Agents|Coding Agents]]: AGENTS.md, spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI
-- [[en/AI/Engineering/Agent_Engineering/Deep_Research_Agents|Deep Research Agents]]: Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]]: Prompt Chaining/Routing/Parallelization/Orchestrator-Workers/Evaluator-Optimizer (Anthropic 2024)
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]: Plan-and-Solve, ReWOO, ToT/LATS, Reflexion, Self-Refine/CRITIC
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]]: Short/Long-term Memory, MemGPT, Sleep-time Compute, Mem0, Voyager
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]: Anthropic Skills, Google A2A Protocol 2025
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]: Host-Client-Server, 4 primitives, Transports/Sampling/OAuth 2.1, Gateway/Registry ecosystem
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]]: Agent Card, task request/response structure, v1.0 spec (Google 2025)
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/AG_UI|AG-UI]]: Real-time bidirectional streaming standard for agent↔user UI (CopilotKit 2025)
+- [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]]: AutoGen v0.4 → Microsoft Agent Framework, CrewAI, OpenAI/Claude Agent SDK, Agno/Mastra
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]]: Coordination patterns, MASFT/MAST failure taxonomy (Cemri et al. NeurIPS 2025)
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]: Claude/OpenAI CUA/Gemini, Pipecat/LiveKit
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]]: METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL
+- [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]]: 3-stage evaluation layers, Agent Workbench 7 Surfaces
+- [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]]: AgentOps methodology 3 Pillars + Observe→Act→Evolve, tool comparison
+- [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry comparison
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]]: AGENTS.md, spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]]: Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp
 
 #### Harness Engineering
 - [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE indirect injection defense, watermarking

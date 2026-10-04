@@ -64,7 +64,7 @@ Truncating from 3072→1024 dims cuts vector-DB storage cost to roughly 1/3 whil
 - **MTEB** (Massive Text Embedding Benchmark): a leaderboard combining retrieval with classification, clustering, similarity, and more. Original BERT's BEIR score of ~10.6 has climbed to a top-model average of 55.7 as of 2025
 - **Metrics**: Precision@k (fraction of retrieved items that are relevant), Recall@k (fraction of all relevant items that were retrieved), nDCG (a normalized score that also accounts for ranking order)
 
-**Limits**: MTEB/BEIR are based on public benchmark datasets, so their distribution can differ from a real domain (internal legal documents, medical records, etc.). It's common for the leaderboard's #1 model to underperform a lower-ranked model on a specific domain — **benchmarks are for shortlisting candidates, not for the final decision.** Always re-validate on your own golden set (see [[en/AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] for how to build one).
+**Limits**: MTEB/BEIR are based on public benchmark datasets, so their distribution can differ from a real domain (internal legal documents, medical records, etc.). It's common for the leaderboard's #1 model to underperform a lower-ranked model on a specific domain — **benchmarks are for shortlisting candidates, not for the final decision.** Always re-validate on your own golden set (see [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] for how to build one).
 
 ## Domain Fine-Tuning
 

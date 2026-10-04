@@ -55,7 +55,7 @@ This wiki already covers graph-related content in two places. **Graph Engineerin
 Graph Engineering is the top layer that surfaces and manages failures invisible at the single-agent, single-loop level — loops that conflict with each other (Inter-loop Conflict), or one agent's optimization undermining another agent's goal. If [[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] asked "does this one system improve itself?", Graph Engineering asks "do multiple improvement systems improve together without undermining each other?"
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow]] · [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]
+[[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]]
 
 ## Sources
 - Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316

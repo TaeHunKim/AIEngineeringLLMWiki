@@ -8,7 +8,7 @@ order: 8
 
 A **multimodal model** processes images, audio, and video alongside text. As of 2026 most frontier models are multimodal, and multimodal support is no longer a special feature — it's the default.
 
-Multimodality splits into three perspectives — where [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] covers **retrieval** and [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] covers the **action space**, this document covers the **model architecture** underneath both: how a vision encoder is attached to an LLM, how an image becomes tokens, and what that choice costs in context and money.
+Multimodality splits into three perspectives — where [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] covers **retrieval** and [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] covers the **action space**, this document covers the **model architecture** underneath both: how a vision encoder is attached to an LLM, how an image becomes tokens, and what that choice costs in context and money.
 
 ## Two VLM Architecture Lineages
 
@@ -58,7 +58,7 @@ Generation 2: Native speech-to-speech models
   Advantage: reduced latency, preserved paralinguistic information like tone and interruption
 ```
 
-Voice agent latency and turn-taking design are covered in [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — this section focuses on **how the model processes audio itself**.
+Voice agent latency and turn-taking design are covered in [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — this section focuses on **how the model processes audio itself**.
 
 ## Video: The Frame-Sampling Trade-off
 
@@ -87,14 +87,14 @@ These benchmarks are generally tracked separately from the text-only benchmarks 
 |------|-----------|
 | **This document (Multimodal_Models)** | The **architecture itself** of VLM/audio/video models — encoder-bridging approach, tokenization, evaluation |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | **Retrieval** using multimodal embeddings — CLIP shared embeddings, ColPali OCR-free retrieval |
-| [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | **Action space** built on multimodal models (screenshot-based manipulation, voice conversation) — agent-level usage |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | **Action space** built on multimodal models (screenshot-based manipulation, voice conversation) — agent-level usage |
 
 ## Role in AI Engineering
 
 Multimodal support is no longer a "special feature" — it's the default for frontier models. The fact that image tokens can consume far more context than text tokens has a direct impact on both Cost Engineering and Context Engineering — an agent design that repeatedly feeds screenshots into context has a much steeper cost curve than a text-only design.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
 
 ## Sources
 - Liu et al. (2023) "Visual Instruction Tuning (LLaVA)" — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485)

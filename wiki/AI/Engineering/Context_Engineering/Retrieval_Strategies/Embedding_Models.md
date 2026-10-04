@@ -64,7 +64,7 @@ flowchart TD
 - **MTEB**(Massive Text Embedding Benchmark): 검색뿐 아니라 분류·클러스터링·유사도 등 여러 태스크를 종합한 리더보드. 원조 BERT의 BEIR 점수 ~10.6에서 2025년 기준 상위 모델 평균 55.7까지 상승
 - **평가 지표**: Precision@k(검색된 것 중 관련 비율), Recall@k(전체 관련 중 검색된 비율), nDCG(순서까지 반영한 정규화 점수)
 
-**한계**: MTEB/BEIR는 공개 벤치마크 데이터셋 기준이라 실제 도메인(사내 법률 문서, 의료 기록 등)과 분포가 다를 수 있다. 리더보드 1위 모델이 특정 도메인에서는 하위권 모델보다 못한 경우가 흔하다 — **벤치마크는 후보 압축용이지 최종 선택 기준이 아니다.** 반드시 자체 골든셋으로 재검증한다(골든셋 구축 방법론은 [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] 참고).
+**한계**: MTEB/BEIR는 공개 벤치마크 데이터셋 기준이라 실제 도메인(사내 법률 문서, 의료 기록 등)과 분포가 다를 수 있다. 리더보드 1위 모델이 특정 도메인에서는 하위권 모델보다 못한 경우가 흔하다 — **벤치마크는 후보 압축용이지 최종 선택 기준이 아니다.** 반드시 자체 골든셋으로 재검증한다(골든셋 구축 방법론은 [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] 참고).
 
 ## 도메인 파인튜닝
 

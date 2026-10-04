@@ -113,7 +113,7 @@ LLM04: Model Denial of Service     LLM09: Overreliance
 LLM05: Supply Chain Vulnerabilities LLM10: Model Theft
 ```
 
-위 카테고리 중 Prompt Injection·Sensitive Information Disclosure는 이 문서의 공격 유형 분류와 직접 대응하고, **Excessive Agency**(에이전트에게 필요 이상의 권한·자율성이 부여된 상태)는 도구를 가진 에이전트 시스템 특유의 리스크로 [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]]의 권한 모델·Action Budgets 논의와 직접 연결된다.
+위 카테고리 중 Prompt Injection·Sensitive Information Disclosure는 이 문서의 공격 유형 분류와 직접 대응하고, **Excessive Agency**(에이전트에게 필요 이상의 권한·자율성이 부여된 상태)는 도구를 가진 에이전트 시스템 특유의 리스크로 [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]의 권한 모델·Action Budgets 논의와 직접 연결된다.
 
 ### MITRE ATLAS
 
@@ -162,7 +162,7 @@ print(adversarial_results.security_report)
 
 **Agent Simulation이 기존 자동화 Red Teaming과 다른 점**: 공격 성공(유해 텍스트 출력)이 아니라 **에이전트의 행동 패턴 전체**를 분석하므로, 최종 출력이 안전해 보여도 중간 단계의 정책 위반을 탐지할 수 있다.
 
-자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] (Agent-as-a-Judge 섹션)
+자세한 내용 → [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] (Agent-as-a-Judge 섹션)
 
 ### RL 기반 공격자
 
@@ -324,7 +324,7 @@ PAIR의 개선판. 트리 탐색으로 더 효율적으로 성공적인 공격 �
 Red Teaming은 **배포 전 필수 안전 검증 단계**다. 특히 에이전트 시스템(웹 크롤링, 코드 실행 등 도구를 가진 AI)에서는 취약점의 파급효과가 크므로 체계적인 Red Team이 더욱 중요하다. CI/CD 파이프라인에 자동화 Red Team을 통합하면 모델 업데이트마다 안전 회귀를 방지할 수 있다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]
+[[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_Research|Alignment_Research]]
 
 ## 출처
 - OWASP GenAI Security Project "OWASP Top 10 for LLM Applications 2025" — [genai.owasp.org](https://genai.owasp.org/llm-top-10/)

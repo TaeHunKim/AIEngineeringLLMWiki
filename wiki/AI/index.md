@@ -69,22 +69,22 @@ order: 0
 #### Agent Engineering
 - [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Engineering/Agent_Engineering/Agent_Core_Pillars]]: Lilian Weng 2023 — Planning/Memory/Tools 3기둥
 - [[AI/Engineering/Agent_Engineering/Agent_Architectures|Engineering/Agent_Engineering/Agent_Architectures]]: Single/Orchestrator/Router/Multi-Agent
-- [[AI/Engineering/Agent_Engineering/Anthropic_Workflow_Patterns|Engineering/Agent_Engineering/Anthropic_Workflow_Patterns]]: Prompt Chaining/Routing/Parallelization/Orchestrator-Workers/Evaluator-Optimizer (Anthropic 2024)
-- [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Engineering/Agent_Engineering/Planning_and_Reflection]]: Plan-and-Solve, ReWOO, ToT/LATS, Reflexion, Self-Refine/CRITIC
-- [[AI/Engineering/Agent_Engineering/Agent_Memory|Engineering/Agent_Engineering/Agent_Memory]]: Short/Long-term Memory, MemGPT, Sleep-time Compute, Mem0, Voyager
-- [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Engineering/Agent_Engineering/Agent_Skills_and_Protocols]]: Anthropic Skills, Google A2A Protocol 2025
-- [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP]]: Host-Client-Server, 4 Primitives, Transports/Sampling/OAuth 2.1, Gateway/Registry 생태계
-- [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A]]: Agent Card, 태스크 요청/응답 구조, v1.0 스펙 (Google 2025)
-- [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI]]: 에이전트↔사용자 UI 실시간 양방향 스트리밍 표준 (CopilotKit 2025)
-- [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Engineering/Agent_Engineering/Agent_Frameworks]]: AutoGen v0.4→Microsoft Agent Framework, CrewAI, OpenAI/Claude Agent SDK, Agno/Mastra
-- [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Engineering/Agent_Engineering/Multi_Agent_Coordination]]: 조정 패턴, MASFT/MAST 실패 분류 (Cemri et al. NeurIPS 2025)
-- [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents]]: Claude/OpenAI CUA/Gemini, Pipecat/LiveKit
-- [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Engineering/Agent_Engineering/Autonomous_Systems]]: METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL
-- [[AI/Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench|Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench]]: 3단계 평가 레이어, Agent Workbench 7 Surfaces
-- [[AI/Engineering/Agent_Engineering/AgentOps|Engineering/Agent_Engineering/AgentOps]]: AgentOps 방법론 3 Pillars + Observe→Act→Evolve, agentops.ai 플랫폼, LangSmith/Langfuse/Braintrust/Latitude 도구 비교
-- [[AI/Engineering/Agent_Engineering/Agent_Deployment|Engineering/Agent_Engineering/Agent_Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry 비교
-- [[AI/Engineering/Agent_Engineering/Coding_Agents|Engineering/Agent_Engineering/Coding_Agents]]: AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI
-- [[AI/Engineering/Agent_Engineering/Deep_Research_Agents|Engineering/Agent_Engineering/Deep_Research_Agents]]: Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Engineering/Agent_Engineering/Anthropic_Workflow_Patterns]]: Prompt Chaining/Routing/Parallelization/Orchestrator-Workers/Evaluator-Optimizer (Anthropic 2024)
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Engineering/Agent_Engineering/Planning_and_Reflection]]: Plan-and-Solve, ReWOO, ToT/LATS, Reflexion, Self-Refine/CRITIC
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Engineering/Agent_Engineering/Agent_Memory]]: Short/Long-term Memory, MemGPT, Sleep-time Compute, Mem0, Voyager
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Engineering/Agent_Engineering/Agent_Skills_and_Protocols]]: Anthropic Skills, Google A2A Protocol 2025
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP]]: Host-Client-Server, 4 Primitives, Transports/Sampling/OAuth 2.1, Gateway/Registry 생태계
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A]]: Agent Card, 태스크 요청/응답 구조, v1.0 스펙 (Google 2025)
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/AG_UI|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/AG_UI]]: 에이전트↔사용자 UI 실시간 양방향 스트리밍 표준 (CopilotKit 2025)
+- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Engineering/Agent_Engineering/Agent_Frameworks]]: AutoGen v0.4→Microsoft Agent Framework, CrewAI, OpenAI/Claude Agent SDK, Agno/Mastra
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Engineering/Agent_Engineering/Multi_Agent_Coordination]]: 조정 패턴, MASFT/MAST 실패 분류 (Cemri et al. NeurIPS 2025)
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents]]: Claude/OpenAI CUA/Gemini, Pipecat/LiveKit
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Engineering/Agent_Engineering/Autonomous_Systems]]: METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL
+- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Engineering/Agent_Engineering/Eval_Driven_Development_and_Agent_Workbench]]: 3단계 평가 레이어, Agent Workbench 7 Surfaces
+- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|Engineering/Agent_Engineering/AgentOps]]: AgentOps 방법론 3 Pillars + Observe→Act→Evolve, agentops.ai 플랫폼, LangSmith/Langfuse/Braintrust/Latitude 도구 비교
+- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Engineering/Agent_Engineering/Agent_Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry 비교
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Engineering/Agent_Engineering/Coding_Agents]]: AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Engineering/Agent_Engineering/Deep_Research_Agents]]: Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp
 
 #### Harness Engineering
 - [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Engineering/Harness_Engineering/Guardrail_Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE 간접 인젝션 방어, 워터마킹

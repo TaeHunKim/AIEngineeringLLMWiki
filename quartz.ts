@@ -36,7 +36,11 @@ componentRegistry.setOptionOverrides("explorer", {
       sql_rag: 4,
       // GraphRAG 하위
       knowledge_graph: 1,
-      // Agent_Engineering 하위 (agent_memory order:5 이후, agent_frameworks order:7 이전)
+      // Agent_Engineering 하위 (agent_architectures order:2 이후)
+      agent_techniques: 3,
+      agent_infrastructure: 4,
+      agent_applications: 5,
+      // Agent_Techniques 하위 (agent_memory order:3 이후)
       agent_skills_and_protocols: 6,
       // Loop_Engineering 하위 (rl_environments order:5 이후에 등장)
       cost_engineering: 6,

@@ -13,7 +13,7 @@ order: 3
 - **OpenAI Function Calling** (2023년 6월): 최초 공식 API 지원
 - **Anthropic Tool Use** (2024년 초): Claude에서 공식 지원
 - **Google Function Declarations**: Gemini에서 지원
-- **MCP (Model Context Protocol)**: Anthropic이 제안한 오픈 도구 표준 (2024) → [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
+- **MCP (Model Context Protocol)**: Anthropic이 제안한 오픈 도구 표준 (2024) → [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## 작동 원리
 
@@ -206,7 +206,7 @@ writer_agent = LlmAgent(
 
 **특징**: 복잡한 태스크를 전문 에이전트에게 위임, 재귀적 구성 가능, 에이전트 간 책임 분리.
 
-→ 자세한 내용: [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] (Orchestrator & Sub-Agents 패턴), [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|Agent_Skills_and_Protocols/A2A]]
+→ 자세한 내용: [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] (Orchestrator & Sub-Agents 패턴), [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|Agent_Skills_and_Protocols/A2A]]
 
 ---
 
@@ -218,7 +218,7 @@ writer_agent = LlmAgent(
 
 외부 지식 소스에서 데이터를 가져오는 도구. LLM의 학습 시점 이후 최신 정보나 내부 데이터에 접근한다.
 
-- **예시**: [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]](자연어 → SQL 변환), [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]](벡터 DB 검색), [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] 조회
+- **예시**: [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]](자연어 → SQL 변환), [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]](벡터 DB 검색), [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] 조회
 - **특징**: 읽기 전용, 사이드 이펙트 없음, 캐싱 가능
 
 ### 2. API 연결 (API Integration)
@@ -251,7 +251,7 @@ def ask_for_input(prompt: str) -> str:
 ```
 
 - **사용 시점**: 비가역적 작업(대량 이메일 발송, 파일 삭제), 민감 데이터 접근, 모델 확신도 낮을 때
-- **특징**: 자율성과 안전성의 균형, [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] Sampling primitive와 연계 가능
+- **특징**: 자율성과 안전성의 균형, [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] Sampling primitive와 연계 가능
 
 ---
 
@@ -288,7 +288,7 @@ MCP (표준화):
 
 MCP의 4가지 Primitive 중 **Tools**가 Function Calling과 직접 대응하며, 추가로 **Resources**(데이터 노출), **Prompts**(템플릿), **Sampling**(서버→LLM 요청)을 제공한다.
 
-→ 자세한 내용: [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]
+→ 자세한 내용: [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]
 
 ---
 
@@ -337,7 +337,7 @@ send_email(to="team@company.com", body=f"조사 결과: {top_result}")
 Function Calling은 LLM을 "텍스트 생성기"에서 "실제 행동 실행자"로 전환시키는 핵심 기술이다. 검색, DB 조회, API 호출, 코드 실행 등 모든 외부 상호작용이 Function Calling을 통해 이루어진다. Structured Output([[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]])의 특수 형태로, 프로덕션 Agent 시스템의 필수 구성 요소다. MCP는 이 Function Calling을 표준 프로토콜로 승화시킨 다음 단계다.
 
 ## 관련 개념
-[[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
+[[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct_Pattern]] · [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
 
 ## 출처
 - OpenAI Function Calling 문서 — [platform.openai.com](https://platform.openai.com/docs/guides/function-calling)

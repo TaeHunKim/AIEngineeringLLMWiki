@@ -44,7 +44,7 @@ All three frameworks share a common philosophy: **safety measures strengthen pro
 
 ## METR External Evaluation and Independent Auditing
 
-Self-evaluation by frontier labs alone raises conflict of interest concerns. **METR** (introduced as the Time Horizon benchmark in [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]]) acts as a third-party institution that independently evaluates models from multiple labs before release.
+Self-evaluation by frontier labs alone raises conflict of interest concerns. **METR** (introduced as the Time Horizon benchmark in [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]]) acts as a third-party institution that independently evaluates models from multiple labs before release.
 
 ```
 METR's external evaluation process:
@@ -189,7 +189,7 @@ Governance checks before production deployment:
 AI Governance and Compliance bridges the gap between technical safety measures ([[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]], [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]) and organizational and legal accountability. If frontier labs' voluntary pledges (RSP/Preparedness/FSF) establish the principle of "safety measures proportional to capabilities," legal regulations like the EU AI Act enforce this across the industry. For practitioners, both layers are real constraints — one through the policies of the frontier model used, the other through direct regulation of their own applications.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (per-node governance)]]
+[[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology (per-node governance)]]
 
 ## Sources
 - NIST "AI Risk Management Framework (AI RMF 1.0)" — [nist.gov](https://www.nist.gov/itl/ai-risk-management-framework)

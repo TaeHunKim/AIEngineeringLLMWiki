@@ -177,10 +177,10 @@ os.environ["LANGCHAIN_API_KEY"] = "..."
 
 ## Role in AI Engineering
 
-LangChain is the standard tool for Linear Flow Engineering. It enables rapid LLM application construction from prototyping to production, with a vast ecosystem (100+ integrations, community) as its advantage. Since v1.0, it has promised stability with no breaking changes, and its center of gravity has shifted from a pure pipeline tool toward an **agent-building tool** — see [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a broader framework comparison.
+LangChain is the standard tool for Linear Flow Engineering. It enables rapid LLM application construction from prototyping to production, with a vast ecosystem (100+ integrations, community) as its advantage. Since v1.0, it has promised stability with no breaking changes, and its center of gravity has shifted from a pure pipeline tool toward an **agent-building tool** — see [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a broader framework comparison.
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]
+[[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]]
 
 ## Sources
 1. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)

@@ -4,7 +4,7 @@
 - **File Name**: `Context Engineering_ Sessions & Memory.pdf`
 - **Author**: Kimberly Milam, Antonio Gulli (Google) — Contributors Anant Nawalgaria, Kanchana Patlolla, et al.
 - **Publication Date**: First published November 2025 → **Updated May 2026**
-- **Subject**: [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] for building stateful and personalized LLM Agents — [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] as conversation-level working memory and the [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] layer for cross-session persistence
+- **Subject**: [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] for building stateful and personalized LLM Agents — [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] as conversation-level working memory and the [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] layer for cross-session persistence
 - **Source (URL)**: https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory
 
 ## Summary
@@ -189,4 +189,4 @@ Mitigating race conditions: transactions/optimistic locking, message queues, exp
 - Without Provenance/Lineage, it becomes "garbage in, confident garbage out".
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]]
+[[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]]

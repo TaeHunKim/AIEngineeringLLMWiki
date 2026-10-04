@@ -113,7 +113,7 @@ LLM04: Model Denial of Service     LLM09: Overreliance
 LLM05: Supply Chain Vulnerabilities LLM10: Model Theft
 ```
 
-Prompt Injection and Sensitive Information Disclosure map directly onto this document's attack type classification, and **Excessive Agency** (an agent granted more permission/autonomy than necessary) is a risk unique to tool-using agent systems, connecting directly to the permission model and Action Budgets discussed in [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]].
+Prompt Injection and Sensitive Information Disclosure map directly onto this document's attack type classification, and **Excessive Agency** (an agent granted more permission/autonomy than necessary) is a risk unique to tool-using agent systems, connecting directly to the permission model and Action Budgets discussed in [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]].
 
 ### MITRE ATLAS
 
@@ -266,7 +266,7 @@ def pair_attack(target_llm, goal: str, max_iterations: int = 20):
 Red Teaming is an **essential pre-deployment safety verification step**. Especially in agent systems (AI with tools like web crawling and code execution), vulnerabilities have greater impact, making systematic Red Team even more important. Integrating automated Red Team into CI/CD pipelines prevents safety regressions on every model update.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
+[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
 
 ## Sources
 - OWASP GenAI Security Project "OWASP Top 10 for LLM Applications 2025" — [genai.owasp.org](https://genai.owasp.org/llm-top-10/)

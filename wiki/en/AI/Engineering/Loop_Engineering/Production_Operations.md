@@ -26,7 +26,7 @@ The selection criteria typically fall on three axes: compliance requirements (fi
 
 ## AI Gateways
 
-A **single control point** for traffic passing through multiple LLM Providers, internal teams, and MCP Servers. Overlaps with the MCP Gateway/Registry ecosystem covered in [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]], but AI Gateways are a broader concept covering not just MCP traffic but all LLM API calls.
+A **single control point** for traffic passing through multiple LLM Providers, internal teams, and MCP Servers. Overlaps with the MCP Gateway/Registry ecosystem covered in [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]], but AI Gateways are a broader concept covering not just MCP traffic but all LLM API calls.
 
 | Gateway | Features |
 |---------|---------|
@@ -45,7 +45,7 @@ What the gateway handles centrally:
 
 ## Deployment Strategies: Shadow, Canary, Progressive Deployment
 
-Strategies for safely deploying new model/prompt/agent versions to production. The infrastructure basis for the Safe Rollout 4 strategies (Canary/Blue-Green/A-B/Feature Flags) covered in [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]].
+Strategies for safely deploying new model/prompt/agent versions to production. The infrastructure basis for the Safe Rollout 4 strategies (Canary/Blue-Green/A-B/Feature Flags) covered in [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]].
 
 ```
 Shadow Deployment:
@@ -89,9 +89,9 @@ Unlike general web services, LLM load testing must measure not just response "co
 
 ## SRE for AI and Chaos Engineering
 
-**Multi-agent incident response**: The STRATUS pattern (Detection/Diagnosis/Validation 3-agent trio) covered in [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] is actually an application of SRE's incident response process to agent systems. Traditional SRE practices (on-call, post-mortems, SLOs) are extended with LLM-specific failure modes (hallucination, prompt injection, model vendor outages).
+**Multi-agent incident response**: The STRATUS pattern (Detection/Diagnosis/Validation 3-agent trio) covered in [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] is actually an application of SRE's incident response process to agent systems. Traditional SRE practices (on-call, post-mortems, SLOs) are extended with LLM-specific failure modes (hallucination, prompt injection, model vendor outages).
 
-**Chaos Engineering**: Intentionally inject failures in production-like environments (model API timeouts, MCP Server down, context window overflow) to validate system resilience. A real-world drill to confirm that the Retry Storm and Circuit Breaker defenses from [[en/AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi-Agent Coordination]] actually work before production.
+**Chaos Engineering**: Intentionally inject failures in production-like environments (model API timeouts, MCP Server down, context window overflow) to validate system resilience. A real-world drill to confirm that the Retry Storm and Circuit Breaker defenses from [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] actually work before production.
 
 ## Security Operations: Secrets, PII, Audit Logs
 
@@ -134,7 +134,7 @@ Multi-Tenant Cost Attribution:
 Production Operations is the layer that operates individual optimization techniques ([[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]) safely, observably, and with accountability tracking at organizational scale. At the scale where a single prompt change or model upgrade affects millions of users, releasing a change without gateways, progressive deployment, A/B testing, and chaos engineering itself becomes a risk.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance and Compliance]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]
+[[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance and Compliance]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]
 
 ## Sources
 - LiteLLM official docs — [docs.litellm.ai](https://docs.litellm.ai)

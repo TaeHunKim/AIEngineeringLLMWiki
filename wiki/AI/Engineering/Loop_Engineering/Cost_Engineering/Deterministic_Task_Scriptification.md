@@ -31,7 +31,7 @@ order: 2
 
 이 세 접근은 완전히 새로운 개념이 아니라, 이 위키가 이미 다루는 두 개념의 자연스러운 연장이다.
 
-- [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]]의 **Voyager 스킬 라이브러리**(Wang et al. 2023) — 에이전트가 성공한 행동 시퀀스를 재사용 가능한 코드 스킬로 저장해 라이브러리를 축적하는 패턴과 근본적으로 같은 아이디어다. 차이는 Voyager가 "능력 확장"에 초점을 둔다면, 여기서는 "비용 절감"이 명시적 목표라는 점
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Memory]]의 **Voyager 스킬 라이브러리**(Wang et al. 2023) — 에이전트가 성공한 행동 시퀀스를 재사용 가능한 코드 스킬로 저장해 라이브러리를 축적하는 패턴과 근본적으로 같은 아이디어다. 차이는 Voyager가 "능력 확장"에 초점을 둔다면, 여기서는 "비용 절감"이 명시적 목표라는 점
 - [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]]의 **DSPy 컴파일** 개념 — DSPy가 선언적 LM 호출을 최적화된 프롬프트로 "컴파일"한다면, 여기서는 한 걸음 더 나아가 프롬프트가 아니라 결정론적 코드로까지 컴파일한다. DSPy 컴파일의 결과물은 여전히 LLM 호출이 필요하지만, 스크립트화의 결과물은 LLM 호출 자체를 제거한다
 
 ## 실패 처리: 폴백과 재검토
@@ -63,7 +63,7 @@ Tool-Making 연구가 강조하듯 tool-maker는 "live environment"에서 백엔
 Deterministic Task Scriptification은 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]이 "더 저렴한 모델로 대체"하는 것과 달리, 가능한 경우 **LLM 호출 자체를 제거**한다는 점에서 잠재적 절감 폭이 가장 크다. 동시에 "결정론적이라는 판단이 틀렸을 때"의 실패 모드가 가장 위험하므로, 폴백·재검토·샌드박싱이라는 세 안전장치를 모두 갖춰야 실무에 적용할 수 있다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]
+[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]
 
 ## 출처
 - "Agentic Compilation: Mitigating the LLM Rerun Crisis for Minimized-Inference-Cost Web Automation" (2026) — [arXiv:2604.09718](https://arxiv.org/html/2604.09718v1)

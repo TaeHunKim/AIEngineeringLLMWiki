@@ -177,10 +177,10 @@ os.environ["LANGCHAIN_API_KEY"] = "..."
 
 ## AI Engineering에서의 역할
 
-LangChain은 Linear Flow Engineering의 표준 도구다. 프로토타이핑부터 프로덕션까지 빠르게 LLM 애플리케이션을 구축할 수 있게 해주며, 방대한 생태계(100+ 통합, 커뮤니티)가 장점이다. v1.0 이후로는 breaking change 없는 안정성을 약속하며 순수 파이프라인 도구에서 **에이전트 구축 도구**로 무게중심이 이동했다 — 프레임워크 선택 전반의 비교는 [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] 참고.
+LangChain은 Linear Flow Engineering의 표준 도구다. 프로토타이핑부터 프로덕션까지 빠르게 LLM 애플리케이션을 구축할 수 있게 해주며, 방대한 생태계(100+ 통합, 커뮤니티)가 장점이다. v1.0 이후로는 breaking change 없는 안정성을 약속하며 순수 파이프라인 도구에서 **에이전트 구축 도구**로 무게중심이 이동했다 — 프레임워크 선택 전반의 비교는 [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] 참고.
 
 ## 관련 개념
-[[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]]
 
 ## 출처
 1. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)

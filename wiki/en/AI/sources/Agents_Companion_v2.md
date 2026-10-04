@@ -11,7 +11,7 @@
 A sequel to the Agents whitepaper. Starting with a review of the three components: Model + Tools + Orchestration, it covers multi-agent patterns, AgentOps, Agentic RAG, a new paradigm of "treating agents as contractors", the Google Agentspace product lineup, and concludes with a rich case study applying five patterns to automotive environments.
 
 ## AgentOps Layer
-DevOps → MLOps → FMOps → PromptOps → RAGOps → **AgentOps**. AgentOps is a sub-classification of GenAIOps, adding elements such as tool management, agent brain prompt (goal/persona/instruction), orchestration, [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]], and task decomposition.
+DevOps → MLOps → FMOps → PromptOps → RAGOps → **AgentOps**. AgentOps is a sub-classification of GenAIOps, adding elements such as tool management, agent brain prompt (goal/persona/instruction), orchestration, [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]], and task decomposition.
 
 ## Agent Success Metrics
 - Business north-star (revenue, engagement)
@@ -154,4 +154,4 @@ Definition → Negotiation → Execution. Co-Scientist/AlphaCode-style iteration
 - Trajectory evaluation can be quantified using 6 ground-truth matching metrics.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|Vertex AI]]

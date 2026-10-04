@@ -4,7 +4,7 @@
 - **파일명**: `Agent Tools & Interoperability with Model Context Protocol (MCP).pdf`
 - **저자**: Mike Styer, Kanchana Patlolla, Madhuranjan Mohan, Sal Diaz (Google)
 - **발행 시점**: 2025년 11월 최초 발행 → **2026년 5월 업데이트**
-- **주제**: Foundation 모델이 도구를 어떻게 사용하는가, 그리고 이를 표준화하는 Anthropic의 [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]](MCP) — 아키텍처·primitive·보안 위협·엔터프라이즈 준비도
+- **주제**: Foundation 모델이 도구를 어떻게 사용하는가, 그리고 이를 표준화하는 Anthropic의 [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]](MCP) — 아키텍처·primitive·보안 위협·엔터프라이즈 준비도
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp
 
 ## 요약
@@ -105,4 +105,4 @@ Google ADK (`LlmAgent`, `AgentTool`, `ToolContext`, Artifact Service), Gemini AP
 - 보안 위협은 단순 입력 검증이 아니라 Confused Deputy·Tool Shadowing 같은 시스템적 문제로 다뤄야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]]
+[[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]]

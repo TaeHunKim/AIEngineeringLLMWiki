@@ -8,7 +8,7 @@ order: 8
 
 **멀티모달 모델**은 텍스트와 함께 이미지·오디오·비디오를 처리하는 모델이다. 2026년 현재 프론티어 모델 대부분이 여기에 해당하며, 멀티모달 지원은 더 이상 특수 기능이 아니라 기본값이다.
 
-멀티모달을 다루는 관점은 셋으로 나뉜다 — [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]]가 **검색**을, [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]가 **행동공간**을 다룬다면, 이 문서는 그 아래 깔린 **모델 자체의 아키텍처**를 다룬다: 비전 인코더를 어떻게 LLM에 붙이는가, 이미지가 어떻게 토큰이 되는가, 그 선택이 컨텍스트·비용에 어떤 영향을 주는가.
+멀티모달을 다루는 관점은 셋으로 나뉜다 — [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]]가 **검색**을, [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]가 **행동공간**을 다룬다면, 이 문서는 그 아래 깔린 **모델 자체의 아키텍처**를 다룬다: 비전 인코더를 어떻게 LLM에 붙이는가, 이미지가 어떻게 토큰이 되는가, 그 선택이 컨텍스트·비용에 어떤 영향을 주는가.
 
 ## VLM 아키텍처 두 계보
 
@@ -58,7 +58,7 @@ flowchart TD
   장점: 지연 감소, 억양·끼어들기(interruption) 등 준언어적 정보 보존
 ```
 
-음성 에이전트의 지연시간·턴테이킹 설계는 [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]에서 다룬다 — 본 절은 **모델이 오디오를 처리하는 방식 자체**에 집중한다.
+음성 에이전트의 지연시간·턴테이킹 설계는 [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]에서 다룬다 — 본 절은 **모델이 오디오를 처리하는 방식 자체**에 집중한다.
 
 ## 비디오: 프레임 샘플링의 트레이드오프
 
@@ -87,14 +87,14 @@ flowchart TD
 |------|-----------|
 | **본 문서 (Multimodal_Models)** | VLM/오디오/비디오 모델의 **아키텍처 자체** — 인코더 결합 방식, 토큰화, 평가 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | 멀티모달 임베딩을 이용한 **검색** — CLIP 공유 임베딩, ColPali OCR-free 검색 |
-| [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | 멀티모달 모델을 이용한 **행동공간**(스크린샷 기반 조작, 음성 대화) — 에이전트 레벨 활용 |
+| [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | 멀티모달 모델을 이용한 **행동공간**(스크린샷 기반 조작, 음성 대화) — 에이전트 레벨 활용 |
 
 ## AI Engineering에서의 역할
 
 멀티모달 지원 여부는 더 이상 "특수 기능"이 아니라 프론티어 모델의 기본값이 되었다. 이미지 토큰이 텍스트 토큰보다 훨씬 많은 컨텍스트를 소비할 수 있다는 사실은 Cost Engineering·Context Engineering 모두에 직접적인 영향을 준다 — 스크린샷을 반복적으로 컨텍스트에 넣는 에이전트 설계는 텍스트 전용 설계보다 비용 곡선이 훨씬 가파르게 증가한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]
 
 ## 출처
 - Liu et al. (2023) "Visual Instruction Tuning (LLaVA)" — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485)

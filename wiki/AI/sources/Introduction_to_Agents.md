@@ -17,7 +17,7 @@
 ## Agentic Problem-Solving Process (5단계)
 1. **Get the Mission** — 사용자의 의도/목표 수신
 2. **Scan the Scene** — 사용 가능한 도구·메모리·세션 상태 탐색
-3. **Think It Through** — Plan/Reason ([[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]])
+3. **Think It Through** — Plan/Reason ([[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]])
 4. **Take Action** — Tool 호출 ([[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]])
 5. **Observe and Iterate** — 결과 관찰 후 다시 Plan
    - 예: "Where is my order #12345?" → `find_order("12345")` → `get_shipping_status("ZYX987")` → 최종 답변
@@ -34,7 +34,7 @@
 - **Tools — "손"**: 3가지 — Information Retrieval(RAG·Vector DB·Knowledge Graph·NL2SQL), Action Execution(API wrap, sandbox 코드 실행, `ask_for_confirmation()`/`ask_for_date_input()` 같은 HITL 도구), Function Calling(OpenAPI, MCP, Gemini 네이티브 Google Search).
 - **Orchestration Layer — "신경계"**: Think–Act–Observe 루프. 결정형 워크플로우 ↔ LM 주도 실행 사이의 스펙트럼. Google **ADK(Agent Development Kit)** 같은 코드 우선 프레임워크 vs no-code 빌더.
 - **Deployment — "몸체와 다리"** *(2026년 5월 추가)*: 로컬 빌드에서 벗어나 항상 실행되는 서버로 배포. 세션 히스토리·메모리 영속성·보안·규정 준수 등 서비스가 포함 범위. 새로 출시된 **Gemini Enterprise Agent Platform**을 활용하면 Build·Scale·Govern·Optimize를 단일 플랫폼에서 처리 가능: **Agent Studio**(프롬프트→배포 원활 전환), **Agent Runtime**(sub-second cold start, 멀티데이 워크플로우), **Memory Bank**(세션 간 장기 컨텍스트). Cloud Run/GKE 컨테이너 배포도 지원.
-- **Memory ([[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]])**: 단기 = (Action, Observation) 쌍을 state/artifacts/sessions/threads로 저장. 장기 = vector DB / search 엔진 기반 RAG로 세션 간 지속.
+- **Memory ([[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]])**: 단기 = (Action, Observation) 쌍을 state/artifacts/sessions/threads로 저장. 장기 = vector DB / search 엔진 기반 RAG로 세션 간 지속.
 
 ## Multi-Agent Patterns
 - **Coordinator** (관리자가 서브 태스크 라우팅)
@@ -85,4 +85,4 @@
 - *(2026년 5월 추가)* Deployment는 4번째 핵심 구성요소 — 로컬 에이전트를 항상 실행되는 서비스로 만드는 것이 아키텍처의 완성이다. Gemini Enterprise Agent Platform이 이를 단일 플랫폼으로 제공.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]

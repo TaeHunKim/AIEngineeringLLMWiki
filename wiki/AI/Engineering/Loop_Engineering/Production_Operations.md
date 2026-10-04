@@ -26,7 +26,7 @@ order: 4
 
 ## AI 게이트웨이 (AI Gateways)
 
-여러 LLM Provider·내부 팀·MCP Server를 관통하는 트래픽의 **단일 제어점**. [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]에서 다룬 MCP Gateway/Registry 생태계와 겹치지만, AI 게이트웨이는 MCP 트래픽뿐 아니라 모든 LLM API 호출을 포괄하는 더 넓은 개념이다.
+여러 LLM Provider·내부 팀·MCP Server를 관통하는 트래픽의 **단일 제어점**. [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]에서 다룬 MCP Gateway/Registry 생태계와 겹치지만, AI 게이트웨이는 MCP 트래픽뿐 아니라 모든 LLM API 호출을 포괄하는 더 넓은 개념이다.
 
 | 게이트웨이 | 특징 |
 |-----------|------|
@@ -45,7 +45,7 @@ order: 4
 
 ## 배포 전략: Shadow, Canary, Progressive Deployment
 
-새 모델·프롬프트·에이전트 버전을 안전하게 프로덕션에 내보내는 전략. [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]]에서 다룬 Safe Rollout 4전략(Canary/Blue-Green/A-B/Feature Flags)의 인프라적 기반이다.
+새 모델·프롬프트·에이전트 버전을 안전하게 프로덕션에 내보내는 전략. [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]]에서 다룬 Safe Rollout 4전략(Canary/Blue-Green/A-B/Feature Flags)의 인프라적 기반이다.
 
 ```
 Shadow Deployment (섀도 배포):
@@ -89,9 +89,9 @@ GenAI-Perf:  NVIDIA의 생성형 AI 특화 벤치마킹 도구, 서빙 엔진 �
 
 ## SRE for AI와 카오스 엔지니어링
 
-**멀티 에이전트 인시던트 대응**: [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]에서 다룬 STRATUS 패턴(Detection/Diagnosis/Validation 3인조 에이전트)이 실제로는 SRE의 사고 대응 프로세스를 에이전트 시스템에 적용한 것이다. 전통적 SRE 관행(온콜, 포스트모템, SLO)에 LLM 고유의 실패 모드(환각, 프롬프트 인젝션, 모델 벤더 장애)를 추가한 형태로 확장된다.
+**멀티 에이전트 인시던트 대응**: [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]]에서 다룬 STRATUS 패턴(Detection/Diagnosis/Validation 3인조 에이전트)이 실제로는 SRE의 사고 대응 프로세스를 에이전트 시스템에 적용한 것이다. 전통적 SRE 관행(온콜, 포스트모템, SLO)에 LLM 고유의 실패 모드(환각, 프롬프트 인젝션, 모델 벤더 장애)를 추가한 형태로 확장된다.
 
-**카오스 엔지니어링**: 프로덕션과 유사한 환경에서 의도적으로 장애를 주입해(모델 API 타임아웃, MCP Server 다운, 컨텍스트 창 초과) 시스템의 복원력을 검증한다. [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Multi_Agent_Coordination]]의 Retry Storm·Circuit Breaker 방어가 실제로 작동하는지 사전에 확인하는 실전 훈련이다.
+**카오스 엔지니어링**: 프로덕션과 유사한 환경에서 의도적으로 장애를 주입해(모델 API 타임아웃, MCP Server 다운, 컨텍스트 창 초과) 시스템의 복원력을 검증한다. [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]]의 Retry Storm·Circuit Breaker 방어가 실제로 작동하는지 사전에 확인하는 실전 훈련이다.
 
 ## 보안 운영: Secrets, PII, 감사 로그
 
@@ -133,7 +133,7 @@ SOC 2, HIPAA, GDPR, EU AI Act, ISO 42001 등 규제 프레임워크가 LLM 프�
 Production Operations는 개별 최적화 기법([[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]])들을 조직 규모에서 안전하고 관측 가능하며 책임 추적 가능한 방식으로 운영하는 계층이다. 하나의 프롬프트 변경이나 모델 업그레이드가 수백만 사용자에게 영향을 미치는 규모에서는, 게이트웨이·점진적 배포·A/B 테스트·카오스 엔지니어링 없이 변경을 내보내는 것 자체가 리스크가 된다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Agent_Engineering/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]]
+[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]]
 
 ## 출처
 - LiteLLM 공식 문서 — [docs.litellm.ai](https://docs.litellm.ai)

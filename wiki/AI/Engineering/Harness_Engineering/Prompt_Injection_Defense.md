@@ -97,7 +97,7 @@ Quarantined LLM (격리 모델)
 
 ## MCP 고유의 공격면
 
-[[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]는 도구·리소스 접근을 표준화하면서 동시에 새로운 인젝션 경로를 열었다. MCP 문서의 "보안 위협 5가지"(Tool Poisoning, Rug Pull, Excessive Permissions 등) 중 프롬프트 인젝션과 직접 연결되는 것은 **Tool Poisoning**(악성 서버가 정상 서버로 위장해 도구 설명(description) 자체에 숨겨진 지시를 심음)과 **Rug Pull**(신뢰를 얻은 뒤 서버 동작을 사후 변경)이다. 두 공격 모두 Lethal Trifecta 관점에서 보면 "도구 설명"이라는, 사용자가 검토하지 않는 채널을 통해 Untrusted Content가 주입되는 경로라는 공통점이 있다.
+[[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]는 도구·리소스 접근을 표준화하면서 동시에 새로운 인젝션 경로를 열었다. MCP 문서의 "보안 위협 5가지"(Tool Poisoning, Rug Pull, Excessive Permissions 등) 중 프롬프트 인젝션과 직접 연결되는 것은 **Tool Poisoning**(악성 서버가 정상 서버로 위장해 도구 설명(description) 자체에 숨겨진 지시를 심음)과 **Rug Pull**(신뢰를 얻은 뒤 서버 동작을 사후 변경)이다. 두 공격 모두 Lethal Trifecta 관점에서 보면 "도구 설명"이라는, 사용자가 검토하지 않는 채널을 통해 Untrusted Content가 주입되는 경로라는 공통점이 있다.
 
 ## 경계 정리
 
@@ -112,7 +112,7 @@ Quarantined LLM (격리 모델)
 프롬프트 인젝션은 "모델을 더 안전하게 학습시키면 해결된다"는 접근이 반복적으로 실패해 온 영역이다 — 공격이 자연어 자체를 매개로 하기 때문에, 모델이 지시와 데이터를 완벽히 구분하는 능력에 상한이 있는 한 순수 모델 수준 해결은 어렵다. 그래서 실무의 무게중심은 "모델을 더 안전하게" 가 아니라 "모델이 뚫려도 피해가 나지 않도록 시스템을 설계"하는 쪽으로 이동했다. Lethal Trifecta와 Rule of Two는 이 설계 원칙을 배포 가능한 정책으로 만든 것이고, CaMeL·Dual-LLM은 그 정책을 코드 수준에서 강제하는 구현 패턴이다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]
+[[AI/Engineering/Harness_Engineering/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]]
 
 ## 출처
 - Willison, S. (2025) "The lethal trifecta for AI agents" — [simonwillison.net](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)

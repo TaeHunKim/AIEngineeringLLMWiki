@@ -55,7 +55,7 @@ Carlos E. Perez(Intuition Machine)는 이를 `prompt engineering → context eng
 Graph Engineering은 단일 에이전트·단일 루프 수준에서는 보이지 않던 실패 — 서로 다른 loop가 충돌하거나(Inter-loop Conflict), 한 에이전트의 최적화가 다른 에이전트의 목표를 훼손하는 것 — 를 드러내고 관리하는 최상위 계층이다. [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]]이 "시스템 하나가 스스로 개선되는가"를 다뤘다면, Graph Engineering은 "여러 개선 시스템들이 서로를 방해하지 않고 함께 개선되는가"를 다룬다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Flow_Engineering/Graph_Flow/Graph_Flow]] · [[AI/Engineering/Agent_Engineering/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Harness_Engineering/AI_Governance_and_Compliance]]
+[[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop_Engineering/Loop_Engineering]] · [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Flow_Engineering/Graph_Flow/Graph_Flow]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Agent_Engineering/Multi_Agent_Coordination]] · [[AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|Harness_Engineering/AI_Governance_and_Compliance]]
 
 ## 출처
 - Horling, B. & Lesser, V. (2005) "A Survey of Multi-agent Organizational Paradigms" — Knowledge Engineering Review 19(4):281-316

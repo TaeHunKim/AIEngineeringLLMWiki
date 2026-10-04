@@ -31,7 +31,7 @@ A large share of the LLM calls repeated in production are actually **determinist
 
 These three approaches aren't entirely new — they're a natural extension of two concepts this wiki already covers.
 
-- The **Voyager skill library** (Wang et al. 2023) in [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] — fundamentally the same idea as an agent storing successful action sequences as reusable code skills to build up a library. The difference: Voyager focuses on "expanding capability," while here the explicit goal is "reducing cost"
+- The **Voyager skill library** (Wang et al. 2023) in [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — fundamentally the same idea as an agent storing successful action sequences as reusable code skills to build up a library. The difference: Voyager focuses on "expanding capability," while here the explicit goal is "reducing cost"
 - The **DSPy compilation** concept in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — where DSPy "compiles" declarative LM calls into an optimized prompt, this goes one step further and compiles all the way down to deterministic code instead of a prompt. DSPy compilation's output still requires an LLM call, but scriptification's output eliminates the LLM call entirely
 
 ## Failure Handling: Fallback and Re-review
@@ -63,7 +63,7 @@ Because an auto-generated script must never perform actions beyond its intended 
 Unlike [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]], which substitutes a cheaper model, Deterministic Task Scriptification **eliminates the LLM call entirely** where possible — giving it the largest potential savings among the three mechanisms. At the same time, its failure mode when "deterministic" is judged incorrectly is the most dangerous, so it can only be applied in practice with all three safeguards — fallback, re-review, and sandboxing — in place together.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]]
+[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]]
 
 ## Sources
 - "Agentic Compilation: Mitigating the LLM Rerun Crisis for Minimized-Inference-Cost Web Automation" (2026) — [arXiv:2604.09718](https://arxiv.org/html/2604.09718v1)

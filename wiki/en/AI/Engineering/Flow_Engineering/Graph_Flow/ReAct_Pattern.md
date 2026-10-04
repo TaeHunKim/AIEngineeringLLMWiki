@@ -146,7 +146,7 @@ Question: {question}
 
 ## Relationship with Reflexion
 
-Reflexion (→ [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]]) extends ReAct by adding **verbal self-reflection after failure**:
+Reflexion (→ [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]) extends ReAct by adding **verbal self-reflection after failure**:
 ```
 ReAct:     Think → Act → Observe → repeat
 Reflexion: Fail → Generate reflection → Store in memory → Use in next attempt
@@ -157,7 +157,7 @@ Reflexion: Fail → Generate reflection → Store in memory → Use in next atte
 ReAct is the **fundamental design principle** of modern LLM agent architectures. LangGraph's default agent pattern, OpenAI Assistants, and Anthropic Claude's agent mode are all based on ReAct's ideas. It is the first pattern to apply when implementing "thinking and acting" agents.
 
 ## Related Concepts
-[[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]]
+[[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]
 
 ## Sources
 - Yao et al. (2022) "ReAct: Synergizing Reasoning and Acting in Language Models" — [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)

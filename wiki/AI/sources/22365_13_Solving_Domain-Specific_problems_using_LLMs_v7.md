@@ -117,4 +117,4 @@ Med-PaLM 2는 PaLM 2 기반 대비 **9배의 정밀 추론 향상**을 보였으
 - 보안·의료 모두 **"기술 혼자는 충분하지 않다"** — human expertise와의 협업이 성공의 열쇠
 
 ## 관련 개념
-[[AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|Domain-Specific LLMs]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]]
+[[AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|Domain-Specific LLMs]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]

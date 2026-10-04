@@ -17,7 +17,7 @@ This document traces the evolution of [[en/AI/Engineering/Agent_Engineering/Agen
 ## Agentic Problem-Solving Process (5 Steps)
 1. **Get the Mission** — Receive user intent/goals
 2. **Scan the Scene** — Scan available tools, memory, and session states
-3. **Think It Through** — Plan/Reason ([[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]])
+3. **Think It Through** — Plan/Reason ([[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]])
 4. **Take Action** — Call tools ([[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]])
 5. **Observe and Iterate** — Observe the outcome and plan again
    - Example: "Where is my order #12345?" → `find_order("12345")` → `get_shipping_status("ZYX987")` → final answer
@@ -34,7 +34,7 @@ This document traces the evolution of [[en/AI/Engineering/Agent_Engineering/Agen
 - **Tools — The "Hands"**: 3 types — Information Retrieval (RAG, Vector DB, Knowledge Graph, NL2SQL), Action Execution (API wrapping, sandboxed code execution, HITL tools like `ask_for_confirmation()` or `ask_for_date_input()`), and Function Calling (OpenAPI, MCP, Gemini native Google Search).
 - **Orchestration Layer — The "Nervous System"**: Think–Act–Observe loop. Spectrum between deterministic workflows and LM-driven execution. Code-first frameworks like Google's **ADK (Agent Development Kit)** vs. no-code builders.
 - **Deployment — The "Body and Legs"** *(Added May 2026)*: Moving away from local builds to deployment on always-on servers. The service scope covers session history, memory persistence, security, and compliance. Using the newly released **Gemini Enterprise Agent Platform**, you can handle Build, Scale, Govern, and Optimize on a single platform: **Agent Studio** (seamless transition from prompt to deployment), **Agent Runtime** (sub-second cold start, multi-day workflows), and **Memory Bank** (long-term context across sessions). Container deployment via Cloud Run/GKE is also supported.
-- **Memory ([[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]])**: Short-term = stores (Action, Observation) pairs as states/artifacts/sessions/threads. Long-term = persists across sessions based on vector DB or search engine-based RAG.
+- **Memory ([[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]])**: Short-term = stores (Action, Observation) pairs as states/artifacts/sessions/threads. Long-term = persists across sessions based on vector DB or search engine-based RAG.
 
 ## Multi-Agent Patterns
 - **Coordinator** (Manager routes subtasks)
@@ -85,4 +85,4 @@ This document traces the evolution of [[en/AI/Engineering/Agent_Engineering/Agen
 - *(Added May 2026)* Deployment is the 4th key component — making local agents into always-on services completes the architecture. The Gemini Enterprise Agent Platform delivers this in a unified platform.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]]

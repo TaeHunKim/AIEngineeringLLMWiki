@@ -13,7 +13,7 @@ order: 3
 - **OpenAI Function Calling** (June 2023): First official API support
 - **Anthropic Tool Use** (early 2024): Official Claude support
 - **Google Function Declarations**: Gemini support
-- **MCP (Model Context Protocol)**: Open tool standard proposed by Anthropic (2024) → [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
+- **MCP (Model Context Protocol)**: Open tool standard proposed by Anthropic (2024) → [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## How It Works
 
@@ -206,7 +206,7 @@ writer_agent = LlmAgent(
 
 **Characteristics**: Delegate complex tasks to specialized agents, recursive composition possible, separation of agent responsibilities.
 
-→ See: [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] (Orchestrator & Sub-Agents pattern), [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A|A2A]]
+→ See: [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] (Orchestrator & Sub-Agents pattern), [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]]
 
 ---
 
@@ -218,7 +218,7 @@ Tools are classified into four categories by their role [1][2].
 
 Tools that fetch data from external knowledge sources. Access latest information after LLM training cutoff or internal data.
 
-- **Examples**: [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] (natural language → SQL), [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] (vector DB search), [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] queries
+- **Examples**: [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] (natural language → SQL), [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] (vector DB search), [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] queries
 - **Characteristics**: Read-only, no side effects, cacheable
 
 ### 2. API Integration
@@ -251,7 +251,7 @@ def ask_for_input(prompt: str) -> str:
 ```
 
 - **When to use**: Irreversible operations (mass email sending, file deletion), sensitive data access, low model confidence
-- **Characteristics**: Balance between autonomy and safety, can integrate with [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] Sampling primitive
+- **Characteristics**: Balance between autonomy and safety, can integrate with [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] Sampling primitive
 
 ---
 
@@ -288,7 +288,7 @@ MCP (standardized):
 
 Of MCP's 4 Primitives, **Tools** directly corresponds to Function Calling, additionally providing **Resources** (data exposure), **Prompts** (templates), and **Sampling** (server→LLM requests).
 
-→ See: [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
+→ See: [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ---
 
@@ -337,7 +337,7 @@ These three approaches solve the same tool-schema-bloat problem with different t
 Function Calling is the key technology that transforms LLMs from "text generators" to "real-world action executors." All external interactions — search, DB queries, API calls, code execution — happen through Function Calling. As a special form of Structured Output, it is an essential component of production Agent systems. MCP is the next step, elevating this Function Calling to a standard protocol.
 
 ## Related Concepts
-[[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] · [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
+[[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] · [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
 
 ## Sources
 - OpenAI Function Calling docs — [platform.openai.com](https://platform.openai.com/docs/guides/function-calling)

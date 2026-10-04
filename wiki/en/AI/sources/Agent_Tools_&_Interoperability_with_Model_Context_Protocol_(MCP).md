@@ -4,7 +4,7 @@
 - **Filename**: `Agent Tools & Interoperability with Model Context Protocol (MCP).pdf`
 - **Author**: Mike Styer, Kanchana Patlolla, Madhuranjan Mohan, Sal Diaz (Google)
 - **Publication Date**: First published November 2025 → **Updated May 2026**
-- **Subject**: How foundation models use tools, and Anthropic's [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]](MCP) standardizing this — architecture, primitives, security threats, and enterprise readiness
+- **Subject**: How foundation models use tools, and Anthropic's [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]](MCP) standardizing this — architecture, primitives, security threats, and enterprise readiness
 - **Source (URL)**: https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp
 
 ## Summary
@@ -105,4 +105,4 @@ Google ADK (`LlmAgent`, `AgentTool`, `ToolContext`, Artifact Service), Gemini AP
 - Security threats should be treated as systemic issues like Confused Deputy and Tool Shadowing, rather than simple input validation problems.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]]

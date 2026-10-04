@@ -173,7 +173,7 @@ async def long_running_agent(task: str):
     return final_result
 ```
 
-**Infrastructure requirements**: Long-running Agents are very complex to implement without Agent Runtime (sub-second cold start, up to 7-day operations, auto-resume). Details → [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+**Infrastructure requirements**: Long-running Agents are very complex to implement without Agent Runtime (sub-second cold start, up to 7-day operations, auto-resume). Details → [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
 
 ## Architecture Selection Guide
 
@@ -203,7 +203,7 @@ flowchart TD
 Architecture selection is the **core architectural decision** in AI system design. Best practice is to start simple (Single Agent) and only scale to Multi-Agent when complexity is truly needed. Complex architectures increase capability but also raise debugging difficulty and cost.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent Skills & Protocols]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]
 
 ## Sources
 - Anthropic "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/engineering/building-effective-agents)

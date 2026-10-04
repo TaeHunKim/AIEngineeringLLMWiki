@@ -321,3 +321,11 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **삭제**: `Context_Engineering/Memory_and_Semantic_Cache.md`(KO+EN) — 성격이 다른 두 주제를 묶기만 하던 50줄 허브. 인바운드 링크 14곳을 `LLM_Memory`/`Semantic_Cache`로 직접 연결하거나 제거. 허브의 Memory vs Semantic Cache 비교표는 이관하지 않음(두 하위 문서 각각이 목적·범위를 서술).
 - **연동**: 두 `index.md`·`Harness_Engineering.md`·`Agent_Engineering.md` 등록, 8개 문서에 신규 문서 역링크 추가. 코드 예제의 `gpt-4o` 등 모델 ID는 동작 예시이므로 변경하지 않음.
 - **검증**: `npm run lint:wiki` 0건. 신규 3개 문서의 KO/EN 링크 수·출처 수 일치 확인.
+
+## [2026-10-04] restructure | Agent_Engineering 하위 문서를 기법 / 인프라 / 적용 사례 3개 폴더로 분류
+
+- **분류 기준**: 어떤 에이전트에도 재사용되는 설계 요소는 `Agent_Techniques/`(Anthropic_Workflow_Patterns, Planning_and_Reflection, Agent_Memory, Multi_Agent_Coordination, Agent_Skills_and_Protocols+MCP/A2A/AG_UI), 만들고 배포하고 관측하는 기반은 `Agent_Infrastructure/`(Agent_Frameworks, Agent_Deployment, AgentOps, Eval_Driven_Development_and_Agent_Workbench), 특정 도메인에서 둘이 조합된 시스템 유형은 `Agent_Applications/`(Coding_Agents, Deep_Research_Agents, Computer_Use_and_Voice_Agents, Autonomous_Systems). Core_Pillars·Architectures는 기초로 최상위 유지.
+- **변경**: KO+EN 모두 `git mv`로 이동, 카테고리 hub 3개(`Agent_Techniques.md` 등, order 0) 신설, `Agent_Engineering.md` 표를 4개 섹션으로 재구성, 폴더 내 `order:` 재번호, `quartz.ts` FOLDER_ORDER에 3개 폴더 추가. wikilink 114개 파일 일괄 경로 치환.
+- **부수 정정**: EN `Agent_Engineering.md`에 누락돼 있던 Coding_Agents·Deep_Research_Agents·Eval_Driven 행을 KO와 맞춤.
+- **영향**: Quartz URL이 바뀌어 기존 deep link는 리다이렉트 없이 깨짐.
+- **검증**: `npm run lint:wiki` 0건.

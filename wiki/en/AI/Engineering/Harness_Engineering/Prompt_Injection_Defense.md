@@ -97,7 +97,7 @@ A technique for explicitly marking content of differing trust levels within a pr
 
 ## MCP's Unique Attack Surface
 
-[[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] standardizes tool/resource access while simultaneously opening new injection paths. Among the "5 security threats" listed in the MCP document (Tool Poisoning, Rug Pull, Excessive Permissions, etc.), the ones directly tied to prompt injection are **Tool Poisoning** (a malicious server disguises itself as legitimate and embeds hidden instructions in the tool's own description) and **Rug Pull** (server behavior changes after trust has been established). Both share, from a Lethal Trifecta perspective, the common trait of injecting Untrusted Content through a channel — the tool description — that users typically never review.
+[[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] standardizes tool/resource access while simultaneously opening new injection paths. Among the "5 security threats" listed in the MCP document (Tool Poisoning, Rug Pull, Excessive Permissions, etc.), the ones directly tied to prompt injection are **Tool Poisoning** (a malicious server disguises itself as legitimate and embeds hidden instructions in the tool's own description) and **Rug Pull** (server behavior changes after trust has been established). Both share, from a Lethal Trifecta perspective, the common trait of injecting Untrusted Content through a channel — the tool description — that users typically never review.
 
 ## Boundaries
 
@@ -112,7 +112,7 @@ A technique for explicitly marking content of differing trust levels within a pr
 Prompt injection is an area where "just train the model to be safer" has repeatedly failed — because the attack is mediated through natural language itself, and as long as there's a ceiling on a model's ability to perfectly separate instructions from data, a purely model-level solution remains out of reach. So the center of gravity in practice has shifted from "make the model safer" to "design the system so that even a compromised model doesn't cause harm." The Lethal Trifecta and Rule of Two turn this design principle into a deployable policy, while CaMeL and Dual-LLM are implementation patterns that enforce that policy at the code level.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Agent_Engineering/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]
+[[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]
 
 ## Sources
 - Willison, S. (2025) "The lethal trifecta for AI agents" — [simonwillison.net](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)

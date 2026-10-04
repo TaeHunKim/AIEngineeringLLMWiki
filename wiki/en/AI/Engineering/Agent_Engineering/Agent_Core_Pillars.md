@@ -83,7 +83,7 @@ memories = memory_store.search(
 )
 ```
 
-### Memory Type Classification (details → [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]])
+### Memory Type Classification (details → [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]])
 
 | Type | Example | Storage |
 |------|---------|---------|
@@ -108,7 +108,7 @@ The interface through which agents interact with the external world. Extends LLM
 | **Browser** | Playwright, Selenium | Web automation |
 
 ### MCP (Model Context Protocol)
-Tool integration standard proposed by Anthropic. Details → [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP|MCP]]
+Tool integration standard proposed by Anthropic. Details → [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]
 
 ## Pillar 4: Deployment *(Added May 2026)*
 
@@ -172,7 +172,7 @@ Result: Completed report (enterprise-level security and operations guaranteed)
 The 4 Core Pillars are the **conceptual framework** for agent system design. When an agent isn't working, they serve as the diagnostic criteria: "Is Planning insufficient, is Memory lacking, are there no appropriate Tools, or is the Deployment infrastructure adequate?" Deployment in particular is the key layer that separates local prototypes from enterprise production.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Agent_Engineering/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Agent_Engineering/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Agent_Engineering/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
 
 ## Sources
 - Weng, L. (2023) "LLM Powered Autonomous Agents" — [lilianweng.github.io](https://lilianweng.github.io/posts/2023-06-23-agent/)
