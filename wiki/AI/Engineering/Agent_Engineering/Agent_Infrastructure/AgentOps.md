@@ -178,6 +178,10 @@ flowchart LR
 □ 프로덕션 데이터 → 평가 데이터셋 업데이트 루프 구축
 ```
 
+## AI Engineering에서의 역할
+
+AgentOps는 데모에서 동작하는 에이전트와 프로덕션에서 신뢰할 수 있는 에이전트를 가르는 운영의 중추다. 핵심 통찰은 Observe→Act→Evolve 루프가 모든 프로덕션 장애를 다음 버전 에이전트를 더 강하게 만드는 재료로 바꾼다는 점이다. 이 폐루프가 없으면 팀은 같은 실패 모드를 반복해서 수습하게 된다.
+
 ## 관련 개념
 
 [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]]

@@ -149,6 +149,19 @@ agent-workbench-pack/
 └── bin/install.sh
 ```
 
+### Key Sub-Lessons Summary (14·31~14·41)
+
+| Lesson | Key Content |
+|------|---------|
+| Instructions as Executable Constraints | Express rules as checkable functions, not prose |
+| Repo Memory and Durable State | Repository files, not the conversation, are the system of record |
+| Initialization Scripts | Load state and scope consistently at session start |
+| Scope Contracts and Task Boundaries | Make allowed/forbidden file scope an explicit contract |
+| Runtime Feedback Loops | Capture real command output into the loop (prevents hallucinated success) |
+| Verification Gates | Deterministic verification functions, fail closed by default |
+| Reviewer Agent | Independent second reviewer with different permissions and role than the builder |
+| Multi-Session Handoff | Pass what remains to the next session when a session ends |
+
 ## Relationship Between Eval-Driven Development and Workbench
 
 The two methodologies are complementary: Eval-Driven Development addresses "how to measure what success is," while the Workbench's Verification Gate enforces that measurement inside the actual execution loop. Every workbench surface generates a corresponding eval case — for example, Reflexion (→ [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]) produces an eval case "does the learned reflection actually apply on retry?", and failure modes ([[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]]) produce a case "does the detector tag known failures?"

@@ -115,6 +115,8 @@ MCP, A2A, AG-UI, A2UI, AP2 are complementary — use MCP to call tools, A2A to d
 
 ## A2UI (Agent-to-UI Protocol)
 
+### Overview
+
 **A2UI** is a declarative protocol for agents to dynamically create and stream UI components (forms, charts, buttons, cards, etc.) during conversation. It moves beyond the limitation of chatbots returning only text blocks, allowing agents to compose interactive UIs tailored to the situation.
 
 ### How It Works
@@ -213,6 +215,8 @@ A2UI:
 ---
 
 ## AP2 (Agent Payments Protocol)
+
+### Overview
 
 **AP2 (Agent Payments Protocol)** is an open protocol standardizing how AI agents can safely authorize and execute payments on behalf of users. Announced by Google on September 16, 2025, it is designed as an extension of A2A and MCP, adding a payment layer to the existing agent communication stack [5].
 

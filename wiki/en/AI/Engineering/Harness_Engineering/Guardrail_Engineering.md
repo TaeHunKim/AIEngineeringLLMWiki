@@ -316,6 +316,10 @@ Representative bias types:
 
 In practice, which fairness criterion to prioritize must be explicitly chosen based on domain and legal requirements — a single solution satisfying all three criteria simultaneously often doesn't exist (Kleinberg et al. impossibility theorem, 2016).
 
+## Moderation Systems
+
+The practical standard is to combine general-purpose harmful-content classifiers such as the OpenAI Moderation API, Google Perspective API, and Meta Llama Guard as input/output filters for Layer 2 (Runtime Guardrails). Rather than relying on a single classifier, ensembling the verdicts of several classifiers and applying per-category thresholds reduces over-refusal.
+
 ## Role in AI Engineering
 
 Guardrail Engineering is the **seatbelt of production AI systems**. Even the best-built LLM application can behave unintentionally due to malicious users or unexpected inputs. In agent systems, deep defense must be implemented beyond simple input/output filters using the 3-Layer framework (Policy/Guardrails/Continuous Assurance), SafetyPlugin pattern, and Agent Sandbox. In regulated industries (finance, healthcare, legal), guardrails are not optional but mandatory.

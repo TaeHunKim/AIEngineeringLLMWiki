@@ -195,7 +195,9 @@ class MyAgentClient extends AbstractAgentClient {
 }
 ```
 
-## Backend Implementation: Python SDK
+## Backend Implementation
+
+### Python SDK
 
 ```python
 from ag_ui.core import (
@@ -236,6 +238,59 @@ async def agent_endpoint(input: RunAgentInput):
     return EventSourceResponse(event_generator())
 ```
 
+### LangGraph Integration Example
+
+```python
+from copilotkit.langgraph import copilotkit_emit_state
+
+async def research_node(state: AgentState, config: RunnableConfig):
+    # Share the agent's internal state with the frontend in real time
+    await copilotkit_emit_state(config, {
+        "status": "searching",
+        "current_query": state["query"]
+    })
+    
+    results = await search_tool(state["query"])
+    
+    await copilotkit_emit_state(config, {
+        "status": "complete",
+        "results": results
+    })
+    
+    return {"results": results}
+```
+
+## SDK Support
+
+| SDK | Status | Owner |
+|-----|------|------|
+| TypeScript/JavaScript (`@ag-ui/core`) | Supported | 1st Party |
+| Python (`ag-ui-protocol`) | Supported | 1st Party |
+| Kotlin | Supported | Community |
+| Go | Supported | Community |
+| Java | Supported | Community |
+| Rust | Supported | Community |
+| Dart | Supported | Community |
+| Ruby | Supported | Community |
+| .NET | In development | Community |
+
+### Agent Framework Support
+
+| Framework | Status | Relationship |
+|-----------|------|------------|
+| LangGraph | Supported | Partnership |
+| CrewAI | Supported | Partnership |
+| Google ADK | Supported | 1st Party |
+| Microsoft Agent Framework | Supported | 1st Party |
+| AWS Strands Agents | Supported | 1st Party |
+| AWS Bedrock AgentCore | Supported | 1st Party |
+| Pydantic AI | Supported | 1st Party |
+| LlamaIndex | Supported | 1st Party |
+| AG2 | Supported | 1st Party |
+| Mastra | Supported | 1st Party |
+| Agno | Supported | 1st Party |
+| OpenAI Agent SDK | In development | Community |
+
 ## AG-UI vs MCP vs A2A vs A2UI Comparison
 
 | | **AG-UI** | **MCP** | **A2A** | **A2UI** |
@@ -272,6 +327,34 @@ Scenario: Agent performing stock analysis for a user
     A2UI = Generative UI spec delivered through that channel
 ```
 
+## Limitations and Status
+
+### Status (as of June 2025)
+
+- **GitHub**: 13k stars, 1.2k forks (ag-ui-protocol/ag-ui, April 2026 figures) [4]
+- **Latest release**: April 6, 2026
+- **Governance**: ag-ui-protocol open-source organization (not under the Linux Foundation)
+- **Standardization**: Included in the Oracle Open Agent Specification
+
+### Limitations
+
+```
+1. Still a young protocol (launched June 2025)
+   → v1.0 stable spec not finalized; event types may change
+
+2. The frontend client is CopilotKit-centric
+   → Support for ecosystems beyond React is still maturing
+
+3. Lower governance neutrality than A2A and MCP
+   → Run by the ag-ui-protocol organization, not under the Linux Foundation
+
+4. Immature security model
+   → No strict security boundary defined, unlike MCP's catalog-based security
+
+5. WebSocket support is theoretical; SSE is the mainstream
+   → Limited for games/real-time collaboration scenarios needing low latency
+```
+
 ## Role in AI Engineering
 
 AG-UI is the **presentation layer of the agent ecosystem**. If MCP connects agents to tools and A2A connects agents to agents, AG-UI connects agents to humans. By standardizing the Human-in-the-Loop interface where users can observe and intervene in agent behavior in real-time, it transforms agents from opaque black boxes into partners that collaborate with users.
@@ -280,8 +363,17 @@ AG-UI is the **presentation layer of the agent ecosystem**. If MCP connects agen
 [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]]
 
 ## Sources
-- CopilotKit Blog (2025) "AG-UI Protocol: Bridging Agents to Any Front End" — [copilotkit.ai](https://www.copilotkit.ai/blog/ag-ui-protocol-bridging-agents-to-any-front-end)
-- AG-UI official docs "Introduction" — [docs.ag-ui.com](https://docs.ag-ui.com/introduction)
-- AG-UI official docs "Events" — [docs.ag-ui.com](https://docs.ag-ui.com/concepts/events)
-- AG-UI GitHub — [github.com/ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui)
-- Google Developers Blog "Delight users by combining ADK Agents with AG-UI" — [developers.googleblog.com](https://developers.googleblog.com/delight-users-by-combining-adk-agents-with-fancy-frontends-using-ag-ui/)
+- CopilotKit Blog (2025) "AG-UI Protocol: Bridging Agents to Any Front End" — [copilotkit.ai](https://www.copilotkit.ai/blog/ag-ui-protocol-bridging-agents-to-any-front-end) [1]
+- AG-UI official docs "Introduction" — [docs.ag-ui.com](https://docs.ag-ui.com/introduction) [2]
+- AG-UI official docs "Events" — [docs.ag-ui.com](https://docs.ag-ui.com/concepts/events) [3]
+- AG-UI GitHub — [github.com/ag-ui-protocol/ag-ui](https://github.com/ag-ui-protocol/ag-ui) [4]
+- CopilotKit Blog "Build with Google's new A2UI Spec" — [copilotkit.ai](https://www.copilotkit.ai/blog/build-with-googles-new-a2ui-spec-agent-user-interfaces-with-a2ui-ag-ui) [5]
+- Google Developers Blog "Delight users by combining ADK Agents with AG-UI" — [developers.googleblog.com](https://developers.googleblog.com/delight-users-by-combining-adk-agents-with-fancy-frontends-using-ag-ui/) [6]
+
+### References
+[1] https://www.copilotkit.ai/blog/ag-ui-protocol-bridging-agents-to-any-front-end
+[2] https://docs.ag-ui.com/introduction
+[3] https://docs.ag-ui.com/concepts/events
+[4] https://github.com/ag-ui-protocol/ag-ui
+[5] https://www.copilotkit.ai/blog/build-with-googles-new-a2ui-spec-agent-user-interfaces-with-a2ui-ag-ui
+[6] https://developers.googleblog.com/delight-users-by-combining-adk-agents-with-fancy-frontends-using-ag-ui/

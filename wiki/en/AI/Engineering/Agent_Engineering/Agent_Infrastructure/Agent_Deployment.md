@@ -269,10 +269,35 @@ flowchart LR
     end
 ```
 
-**Key features**:
-- **Auto-cluster Failures**: Automatically collect failure cases from production traces, group similar failures to identify patterns, classify "why it fails" for each cluster
-- **Automated Prompt Suggestion**: Auto-generate system instruction or tool description modifications based on cluster analysis; similar to DSPy/MIPROv2 meta-optimization but agent-specific
-- **Iterative Optimization**: Automate the loop of apply improvement → rerun evaluation → measure performance → re-improve
+### Key Features
+
+**Auto-cluster Failures**:
+- Automatically collect failure cases from production execution traces
+- Group similar failures to identify patterns — replaces manual log analysis
+- Classify the root cause ("why it fails") for each cluster
+
+**Automated Prompt Suggestion**:
+- Auto-generate system instruction or tool description modifications based on cluster analysis
+- Similar to DSPy/MIPROv2-style meta-optimization but agent-specific
+- Suggestions are auto-validated in the evaluation loop, then a human gives final approval
+
+**Iterative Optimization**:
+- Automates the loop of apply improvement → rerun evaluation → measure performance → re-improve
+- Repeats until improvement converges against target metrics (goal completion rate, tool-call accuracy, etc.)
+
+### Position: Connection to Loop Engineering
+
+Agent Optimizer is part of the post-deployment continuous improvement loop:
+
+```mermaid
+flowchart TD
+    OBS["Agent Observability<br/>trace execution, collect metrics"] --> OPT
+    OPT["Agent Optimizer<br/>failure clustering + prompt improvement suggestions"] --> VAL
+    VAL["Evaluation validation<br/>verify improvement with Agent Simulation"] --> DEP
+    DEP["Redeploy<br/>register new version in Agent Registry"] --> OBS
+```
+
+This loop can be seen as an agent-specific implementation of [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]].
 
 ## Agent Deployment Platforms on Other Clouds
 
@@ -326,7 +351,7 @@ Continuous improvement loop:
 Agent Deployment is the **layer that elevates agents from prototype to enterprise system**. No matter how excellent an agent's Planning, Memory, and Tools, long-term operation, security, auditing, and scale expansion are impossible without proper deployment infrastructure. Especially in regulated industries (finance, healthcare, legal), the combination of Agent Identity + Agent Gateway + Agent Registry is becoming a prerequisite for AI automation adoption.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]]
 
 ## Sources
 - [[en/AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (existing wiki source, first published Nov 2025 → updated May 2026)

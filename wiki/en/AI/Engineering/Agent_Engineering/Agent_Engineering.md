@@ -64,7 +64,38 @@ Agent design knowledge splits into four groups. **Techniques & Patterns** are bu
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | Claude/OpenAI CUA/Gemini computer use, Pipecat/LiveKit voice agents |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL |
 
+## When to Use an Agent
+
+```mermaid
+flowchart LR
+    subgraph no["Agent not needed"]
+        N1["Simple Q&A<br/>RAG is enough"]
+        N2["Fixed transformation task<br/>Linear Flow is enough"]
+    end
+    subgraph yes["Agent needed"]
+        Y1["Multiple steps until task completion"]
+        Y2["Dynamically decide when to use tools"]
+        Y3["Revise the plan based on intermediate results"]
+        Y4["Integrate multiple systems<br/>code execution, search, email, etc."]
+    end
+```
+
+## Complexity vs Reliability Trade-off
+
+```mermaid
+flowchart LR
+    subgraph reliability["Higher reliability →"]
+        LF1[Linear Flow] --> SA1[Single Agent] --> MA1[Multi-Agent]
+    end
+    subgraph capability["Stronger capability →"]
+        MA2[Multi-Agent] --> SA2[Single Agent] --> LF2[Linear Flow]
+    end
+    reliability & capability --> RULE["Choose the minimum complexity you need"]
+```
+
+## Role in AI Engineering
+
 Agent Engineering is the **frontier of AI automation**. It builds systems that autonomously handle repetitive knowledge work (research, code writing, data analysis), serving as the "brain" of the AI Engineering stack.
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
+[[en/AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Harness_Engineering/Guardrail_Engineering]] · [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]

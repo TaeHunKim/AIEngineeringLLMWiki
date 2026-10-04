@@ -253,6 +253,14 @@ flowchart LR
     end
 ```
 
+### Agent Observability Suite (Google Cloud)
+
+Native observability tooling built into Gemini Enterprise Agent Platform:
+- **OTel (OpenTelemetry) compliant**: Compatible with existing tools such as LangSmith/Langfuse
+- **Automatic execution trace collection**: Agent Runtime automatically instruments every step
+- **Agent Identity integration**: Audit trail of which agent performed which action
+- The same OTel data can be consumed by third-party tools such as LangSmith/Langfuse
+
 ## Role in AI Engineering
 
 Observability is the **nervous system of production AI systems**. It enables data-driven answers to questions like "why are user complaints increasing?", "which queries are expensive?", "did fine-tuning improve performance?" For agent systems, observing beyond simple LLM tracing to agent quality requires Three Pillars + Dynamic Sampling + dual dashboards. Without it, operations become a black box and improvement becomes impossible.

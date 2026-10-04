@@ -167,6 +167,59 @@ flowchart LR
     end
 ```
 
+### Implementation Pattern (Agent Runtime-based)
+
+```python
+# Long-running HITL pattern — uses Agent Runtime's auto-resume
+from google.adk.runtime import AgentRuntime
+from google.adk.types import HumanApprovalRequired
+
+runtime = AgentRuntime()
+
+async def multi_day_audit_agent(audit_scope: dict):
+    """Multi-day audit agent — includes two human review stages"""
+    
+    session = await runtime.create_session(
+        max_duration_days=5,  # up to 5 days
+        checkpoint_on_interrupt=True  # automatic checkpoint on interrupt
+    )
+    
+    # Phase 1: automated data collection (hours)
+    raw_findings = await session.run(collect_audit_data, audit_scope)
+    
+    # HITL point 1: audit team lead review (waits up to 24 hours)
+    # → the agent pauses and an email is sent
+    team_lead_review = await session.request_human_input(
+        prompt=f"Please review and approve the audit draft:\n{raw_findings.summary}",
+        notify_via="email",
+        timeout_hours=24,
+        on_timeout="escalate_to_manager"  # escalate on timeout
+    )
+    
+    if not team_lead_review["approved"]:
+        return {"status": "rejected", "reason": team_lead_review["comments"]}
+    
+    # Phase 2: deep analysis (hours)
+    detailed_analysis = await session.run(
+        deep_analysis,
+        findings=raw_findings,
+        guidance=team_lead_review.get("guidance", "")
+    )
+    
+    # HITL point 2: final CFO approval (waits up to 48 hours)
+    cfo_approval = await session.request_human_input(
+        prompt=f"Approve the final audit report:\n{detailed_analysis.executive_summary}",
+        notify_via="slack",
+        timeout_hours=48
+    )
+    
+    return {
+        "status": "completed",
+        "report": detailed_analysis,
+        "approved_by": cfo_approval["approver"]
+    }
+```
+
 **Core infrastructure requirements**: Long-running HITL is very complex to implement without Agent Runtime's auto-resume (resuming after days) and Memory Bank (state persistence). More details → [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
 
 ## Role in AI Engineering

@@ -214,7 +214,7 @@ LLM-as-a-Judge는 **Evaluation Engineering의 핵심 도구**다. 수천 개의 
 모든 트레이스를 저비용으로 전수 판정해야 한다면 근거 없이 확률만 반환하는 [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]을 1차 필터로 두고, 일부만 LLM judge로 정밀 평가하는 하이브리드가 가능하다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent_as_a_Judge]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]] · [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination_and_Grounding]]
+[[AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Human_Evaluation|Human_Evaluation]] · [[AI/Engineering/Harness_Engineering/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Agent_as_a_Judge|Agent_as_a_Judge]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]] · [[AI/Engineering/Harness_Engineering/Hallucination_and_Grounding|Hallucination_and_Grounding]]
 
 ## 출처
 - Zheng et al. (2023) "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" — [arXiv:2306.05685](https://arxiv.org/pdf/2306.05685)

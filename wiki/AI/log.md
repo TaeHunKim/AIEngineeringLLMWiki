@@ -329,3 +329,8 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **부수 정정**: EN `Agent_Engineering.md`에 누락돼 있던 Coding_Agents·Deep_Research_Agents·Eval_Driven 행을 KO와 맞춤.
 - **영향**: Quartz URL이 바뀌어 기존 deep link는 리다이렉트 없이 깨짐.
 - **검증**: `npm run lint:wiki` 0건.
+
+## [2026-10-04] lint | KO/EN 구조 parity 검사(L8·L9) 추가
+- **변경**: `scripts/lint-wiki.mjs`에 L8(heading 레벨 시퀀스 KO/EN 일치)·L9(wikilink 대상 집합 KO/EN 일치) 추가. Claude Code Stop hook(`.claude/settings.json`), git pre-commit(`scripts/hooks/`, `npm prepare`로 설치), CI(`deploy.yml`)에서 `lint:wiki` 자동 실행.
+- **정리**: 기존 드리프트 35건 해소 — EN에 누락돼 있던 섹션(Autonomous_Systems 5개, Multi_Agent_Coordination 5개, MCP 3개, AG_UI 3개, Agent_Memory 3개 등)을 KO 기준으로 번역해 추가, KO의 자기 링크 2건 제거, `AgentOps.md` KO에 누락된 역할 섹션 추가, `index.md` EN에 Sources 섹션 추가.
+- **검증**: `npm run lint:wiki` 0건.

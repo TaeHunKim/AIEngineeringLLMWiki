@@ -130,7 +130,7 @@ agent = ClaudeAgent(
 
 **Features**:
 - **Subagents**: Sub-agents delegated with separated context — don't contaminate the main agent's context window
-- **Session Store**: File-based session storage — resume from exact point even if process dies
+- **Session Store**: File-based session storage — resume from exact point even if process dies (→ same concern as durable execution in [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]])
 - Reusable "harness" design validated in Claude Code's real-world usage
 
 ## Agno and Mastra — Production Runtimes

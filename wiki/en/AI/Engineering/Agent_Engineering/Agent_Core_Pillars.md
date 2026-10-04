@@ -140,6 +140,12 @@ flowchart TD
     build --> scale --> govern --> optimize
 ```
 
+### Alternatives: Cloud Run / GKE
+
+For platform-independent deployment:
+- Cloud Run: serverless, suited to simple agents
+- GKE: high-performance multi-agent orchestration
+
 ## 4 Pillars in Interaction
 
 ```

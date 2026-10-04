@@ -117,3 +117,30 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 #### Graph Engineering
 - [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]: Node/edge types, LangGraph `Send()` dynamic routing, identity/budget/guardrail governance, Graph-of-Agents
 - [[en/AI/Engineering/Graph_Engineering/Loop_Networks_and_Anchors|Loop Networks and Anchors]]: Work Graph vs Improvement Graph, 4 failure modes including Goodhart's Law, Anchors
+
+---
+
+## Sources
+
+### AI Engineering from Scratch (course series, 2026)
+- [aiengineeringfromscratch.com](https://aiengineeringfromscratch.com/) · [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch): An open-source curriculum of 20 phases and 435 lessons by Rohit Ghumare et al. This wiki reflects the phases that correspond to language-model and agent engineering: Phase 11 (LLM Engineering), 13 (Tools & Protocols), 14 (Agent Engineering), 15 (Autonomous Systems), 16 (Multi-Agent & Swarms), 17 (Infrastructure & Production), and 18 (Ethics/Safety/Alignment). The low-level phases on building and training models from scratch (0-10, 12) — math foundations, ML basics, computer vision, speech signal processing — are more fundamental than this wiki's Model Engineering and are excluded.
+
+### Agents (Google/Kaggle series)
+- [[en/AI/sources/Introduction_to_Agents|Introduction_to_Agents]]: 5-level Agent taxonomy, 5-step Problem-Solving, A2A/MCP/AP2, Self-Evolution, Co-Scientist
+- [[en/AI/sources/22365_19_Agents_v8|22365_19_Agents_v8]]: Extensions/Functions/Data Stores comparison, ReAct/CoT/ToT, LangChain quickstart, multi-agent
+- [[en/AI/sources/Agent_Quality|Agent_Quality]]: Outside-In framework, 4 Pillars, 6 trajectory dimensions, Agent Quality Flywheel, ROUGE/BLEU/BERTScore
+- [[en/AI/sources/Agents_Companion_v2|Agents_Companion_v2]]: AgentOps layers, BFCL/τ-bench/PlanBench, 6 trajectory metrics, Contractor paradigm
+
+### Tool Integration and Context
+- [[en/AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]]: Host/Client/Server architecture, JSON-RPC 2.0, primitives, 5 security threats
+- [[en/AI/sources/Context_Engineering_Sessions_&_Memory|Context Engineering Sessions & Memory]]: 3 Buckets, Session vs Memory distinction, ETL pipeline, Provenance, Memory-as-a-Tool
+- [[en/AI/sources/Agentic_RAG|Agentic_RAG]]: Summaries of key papers including the Agentic RAG Survey (2025), Self-RAG (NeurIPS 2023), and CRAG
+
+### Embeddings and Foundation Models
+- [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|whitepaper_emebddings_vectorstores_v2]]: Precision@k/nDCG, Word2Vec~ColPali evolution, LSH/HNSW/ScaNN, Vertex Vector Search
+- [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|whitepaper_Foundational_Large_Language_models_&_text_generation_v2]]: Transformer equations, GPT~DeepSeek-R1 evolution, Chinchilla scaling, PEFT/LoRA, FlashAttention/Speculative Decoding
+
+### Domain-Specific and Operations
+- [[en/AI/sources/22365_13_Solving_Domain-Specific_problems_using_LLMs_v7|22365_13_Solving_Domain-Specific_problems_using_LLMs_v7]]: SecLM 3-layer + PET adapters, Med-PaLM 2 USMLE 86.5%, Ensemble Refinement, 3-stage clinical validation
+- [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)]]: LLMOps lifecycle, Prompted Model Component, MLOps vs LLMOps, 8 Vertex AI feature groups, Tool Registry
+- [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]]: 3-pillar AgentOps, 3-phase CI/CD funnel, A2A vs MCP, Observe-Act-Evolve, 3-layer security, Agent Cards

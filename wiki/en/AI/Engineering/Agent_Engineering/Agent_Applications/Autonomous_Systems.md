@@ -87,6 +87,35 @@ Bounded Self-Improvement:
   → Direction adopted in 2026 practice — want capability gains but avoid uncontrollable outcomes
 ```
 
+### AI Scientist v2 and Automated Alignment Research
+
+**AI Scientist v2** (Sakana AI, 2025) is an agent that automates the entire pipeline — hypothesis generation → experiment design → code writing → execution → paper writing — and has been reported to pass workshop-level conference review. **Anthropic's Automated Alignment Research (AAR)** applies this automation to alignment research itself — a recursive approach in which AI builds the tools that verify AI alignment. See [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]] for details.
+
+## Coding Agent Landscape and Permission Models
+
+### The Autonomous Coding Agent Landscape
+
+In the race among autonomous coding agents (Claude Code, Codex, Devin, Cursor Agent, OpenHands, etc.) triggered by SWE-bench and CodeAct-style benchmarks, the key differentiator has shifted from model capability to **harness/workbench design** — see [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]].
+
+### Claude Code Permission Modes
+
+```
+Permission mode spectrum:
+  Read-only:        file reads only; human approval required for every write or execution
+  Accept Edits:     file edits auto-approved; shell command execution requires approval
+  Auto (Bypass):    fully autonomous execution within a defined safety envelope
+```
+
+Permission modes are the concrete implementation of the "Propose-then-Commit" pattern below — they act as a dial that tunes the autonomy level to the risk of the task.
+
+## Browser Agents and Indirect Prompt Injection
+
+Autonomous agents that operate a browser (see [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]]) can mistake hidden text on visited web pages for instructions. This attack surface is especially dangerous for long-running agents because **the attack surface accumulates across the many pages visited during a long run**. For detailed defenses → [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]]
+
+## Reliability Infrastructure: Durable Execution
+
+A run lasting hours may be interrupted by a process crash, a redeploy, or a network drop. **Durable Execution** is an infrastructure pattern that persists state so execution can resume at the exact point of interruption (the same concern as Agent Runtime auto-resume in [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]). It is implemented with workflow engines such as Temporal and Restate, or with a custom checkpoint schema.
+
 ## Safety Controls
 
 ### Action Budgets, Iteration Caps, Cost Governors
@@ -130,6 +159,10 @@ Propose-then-Commit application criteria:
 ### Checkpoints and Rollback
 
 Periodically save checkpoints that allow returning to a specific point during long runs. When an agent is discovered going in the wrong direction, rather than starting from scratch, roll back to the last correct checkpoint and retry.
+
+## Connection to Safety Governance
+
+This document covers **safety controls for an individual deployed system** (kill switch, budget, HITL). Organization- and industry-level safety frameworks (Anthropic RSP, OpenAI Preparedness Framework, METR external evaluation, CAIS/CAISI) are covered in [[en/AI/Engineering/Harness_Engineering/AI_Governance_and_Compliance|AI Governance & Compliance]].
 
 ## Role in AI Engineering
 

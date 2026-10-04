@@ -34,6 +34,32 @@ Now execute the plan one step at a time:
 """
 ```
 
+### LangGraph Plan-and-Execute
+
+```python
+from langgraph_prebuilt import create_react_agent
+
+# Planner: build the full plan
+def planning_node(state):
+    plan = planner_llm.invoke({
+        "messages": [HumanMessage(content=f"Create an execution plan for the following task: {state['task']}")]
+    })
+    return {"plan": parse_plan(plan), "step_index": 0}
+
+# Executor: run the plan step by step
+def execution_node(state):
+    current_step = state["plan"][state["step_index"]]
+    result = executor_agent.invoke({"task": current_step})
+    return {"results": state["results"] + [result], "step_index": state["step_index"] + 1}
+
+# Replanner: revise the plan based on results
+def replanning_node(state):
+    if needs_replan(state):
+        updated_plan = replanner_llm.invoke(state)
+        return {"plan": updated_plan}
+    return {}
+```
+
 ### ReWOO (Reasoning WithOut Observation)
 
 A Plan-and-Execute variant proposed by Xu et al. (2023). Unlike regular ReAct which interleaves "reason → act → observe" at each step with LLM calls, **ReWOO designs all tool calls at once in the planning phase** and has a separate worker handle execution.
@@ -132,6 +158,53 @@ CRITIC:      Validates with external tools → "This sentence in the response co
              → Correct with tool-based evidence
 ```
 
+### General Self-Correction Pattern
+
+Self-verification immediately after generation (the common skeleton of the two frameworks above):
+
+```python
+def generate_with_verification(task: str) -> str:
+    # 1. Initial generation
+    response = llm.invoke(task)
+    
+    # 2. Self-verification
+    verification = llm.invoke(f"""
+    Review the following response:
+    {response}
+    
+    Point out any errors or improvements and provide a corrected version.
+    If there are none, answer "Verified".
+    """)
+    
+    if "Verified" not in verification:
+        # 3. Correction
+        final = llm.invoke(f"Revise the response to reflect this feedback:\n{verification}")
+        return final
+    
+    return response
+```
+
+## Human-Agent Collaboration
+
+Collaborating with humans at the planning stage:
+
+```python
+# Show the plan to a human and ask for revisions
+def collaborative_planning(goal: str):
+    # 1. The agent drafts a plan
+    draft_plan = planner.invoke(goal)
+    
+    # 2. Ask a human to review (HITL)
+    human_feedback = interrupt({
+        "plan": draft_plan,
+        "question": "Please review this plan and tell me what to change"
+    })
+    
+    # 3. Incorporate the feedback
+    final_plan = planner.invoke(f"{goal}\n\nHuman feedback: {human_feedback}")
+    return final_plan
+```
+
 ## Planning vs Reflection Comparison
 
 | | Planning | Reflection |
@@ -158,7 +231,7 @@ CRITIC:      Validates with external tools → "This sentence in the response co
 Planning & Reflection elevates agents from "executors" to "self-improving systems." Especially for repetitive tasks (code debugging, research, content generation), the Reflexion pattern achieves continuously improving quality without human supervision. ReWOO/ToT/LATS form a spectrum of "how broadly to search," while Self-Refine/CRITIC form a spectrum of "what basis to use for self-correction."
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] · [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic Workflow Patterns]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] · [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic Workflow Patterns]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]]
 
 ## Sources
 - Shinn et al. (2023) "Reflexion: Language Agents with Verbal Reinforcement Learning" — [NeurIPS 2023](https://proceedings.neurips.cc/paper_files/paper/2023/file/1b44b878bb782e6954cd888628510e90-Paper-Conference.pdf)

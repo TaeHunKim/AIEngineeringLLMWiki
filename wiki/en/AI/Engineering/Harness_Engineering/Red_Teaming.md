@@ -196,6 +196,11 @@ results = evaluator.run()
 print(f"Overall ASR: {results.attack_success_rate:.1%}")
 ```
 
+#### ALERT (2024)
+- 15,000 Italian-language Red Teaming prompts
+- Bianchi et al. (Bocconi University)
+- Evaluates safety vulnerabilities in non-English languages
+
 ## Open-Source Red Team Tooling
 
 ### Garak (NVIDIA)
@@ -224,7 +229,9 @@ await orchestrator.send_prompts_async(prompt_list=attack_prompts)
 
 **Garak vs PyRIT**: Garak is optimized for "quickly scanning pre-defined vulnerability categories"; PyRIT is closer to a framework for "flexibly orchestrating custom attack scenarios." In practice, combining Garak for initial scan and PyRIT for deeper investigation of discovered vulnerabilities is common.
 
-## PAIR (Prompt Automatic Iterative Refinement)
+## Red Team Methodology
+
+### PAIR (Prompt Automatic Iterative Refinement)
 
 ```
 1. Attacker LLM: Generate initial attack prompt
@@ -252,6 +259,32 @@ def pair_attack(target_llm, goal: str, max_iterations: int = 20):
         })
 ```
 
+### Tree of Attacks with Pruning (TAP)
+
+An improvement on PAIR. Uses tree search to find successful attacks more efficiently.
+
+## Red Team Process (Human)
+
+```
+1. Define scope
+   - Which harm categories will be tested?
+   - Which user types will be imitated?
+
+2. Assign attack personas
+   - Technical attacker (programmer)
+   - Naive user (unintentional harmful use)
+   - Malicious insider (someone who knows the prompt structure)
+
+3. Systematic attack attempts
+   - Try varied variants for each category
+   - Document successes/failures and response patterns
+
+4. Write the report
+   - Classify vulnerabilities and assess severity
+   - Include reproducible attack prompts
+   - Recommendations (guardrails, fine-tuning, etc.)
+```
+
 ## Defense Strategies
 
 | Attack type | Defense method |
@@ -266,7 +299,7 @@ def pair_attack(target_llm, goal: str, max_iterations: int = 20):
 Red Teaming is an **essential pre-deployment safety verification step**. Especially in agent systems (AI with tools like web crawling and code execution), vulnerabilities have greater impact, making systematic Red Team even more important. Integrating automated Red Team into CI/CD pipelines prevents safety regressions on every model update.
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
+[[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Harness_Engineering/Alignment_Research|Alignment Research]]
 
 ## Sources
 - OWASP GenAI Security Project "OWASP Top 10 for LLM Applications 2025" — [genai.owasp.org](https://genai.owasp.org/llm-top-10/)

@@ -8,6 +8,21 @@ order: 4
 
 While [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] addresses architecture choices within a single system, this document dives deeper into **how multiple agents communicate and coordinate, and why they fail**. Research in 2025~2026 revealed that Multi-Agent Systems (MAS) can significantly boost performance on certain tasks, but also show **41~86.7% failure rates in real tasks** (Cemri et al., 2025). In production, knowing failure modes is just as important as knowing coordination patterns.
 
+## Lineage of Communication Protocols
+
+The roots of inter-agent communication standards trace back to 1990s multi-agent systems (MAS) research.
+
+```
+FIPA-ACL (late 1990s, Foundation for Intelligent Physical Agents)
+  → Based on Speech Act theory — tags messages with speech acts such as
+    "inform", "request", "propose" to make intent explicit
+  → Conceptually influenced the message-type design of today's A2A and MCP
+
+Modern standard: A2A (Agent-to-Agent Protocol, Google 2025)
+  → Standard for stateful communication between agents
+  → Details → A2A
+```
+
 ## Coordination Patterns
 
 ### Supervisor / Orchestrator-Worker
@@ -34,6 +49,10 @@ Verifier: Independently verify final results against original goals
 ```
 
 **Core design principle**: Verifier must independently re-verify without "trusting" Executor's output — otherwise directly exposed to the "Verification Gap" failure mode below.
+
+### Parallel Swarm and Group Chat
+
+**Parallel Swarm**: Multiple agents work independently toward the same goal and merge results afterward (→ parallel execution in [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]]). **Group Chat** (AutoGen style): Multiple agents speak in turn in one shared conversation room. Speaker Selection (choosing the next speaker) is the key design point — fixed order, round-robin, LLM-based dynamic selection, etc.
 
 ### Handoffs and Routines
 
@@ -68,8 +87,28 @@ The problem of how to reach a final conclusion when multiple agents disagree. Bo
 
 ### Voting, Self-Consistency, Debate Topology
 
-- **Voting**: N agents (or N samplings of the same agent) each answer, then majority vote — the multi-agent version of Self-Consistency
+- **Voting**: N agents (or N samplings of the same agent) each answer, then majority vote — the multi-agent version of Self-Consistency ([[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]])
 - **Debate Topology**: What graph structure to connect debating agents — all-connected (everyone sees all arguments), chain (sequential relay), tree (hierarchical synthesis)
+
+### Negotiation and Bargaining
+
+Negotiation between agents whose goals only partly align (e.g., a buyer agent vs a seller agent). It borrows negotiation models from game theory, and protocols such as AP2 (Agent Payments Protocol) in [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] address the trust problem at the actual transaction stage.
+
+## Emergent Behavior
+
+### Generative Agents and Emergent Simulation
+
+An experiment proposed by Park et al. (2023, Stanford "Generative Agents") in which dozens of LLM agents live in a simulated town, each with its own memory, plans, and reactions. Social behaviors that no human explicitly designed (such as a party plan spreading) emerged from agent-to-agent interaction.
+
+### Theory of Mind and Emergent Coordination
+
+**Theory of Mind**: The ability of one agent to model another agent's "beliefs, intentions, and knowledge state." Without ToM (as covered under Groupthink failures below), agents repeat information others already know or misjudge others' intentions and fail to coordinate.
+
+## Learning-Based Coordination and Economies
+
+**MARL (Multi-Agent Reinforcement Learning)**: MADDPG, QMIX, MAPPO, and similar RL algorithms train multiple agents to cooperate or compete over rewards. In the LLM agent era this is often replaced by prompt/role design, but it remains valid for simulation and game-style tasks that need large-scale repeated interaction.
+
+**Agent Economies**: An emerging research area in which many autonomous agents interact through token incentives and reputation systems. It touches on attempts to guarantee inter-agent trust at the protocol level (AP2 and Agent Identity in [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]).
 
 ---
 
@@ -135,6 +174,19 @@ Diagnosis Agent:  Infer root cause from symptoms based on MAST categories
 Validation Agent: Confirm that symptoms actually resolved after mitigation is applied
 ```
 SRE (Site Reliability Engineering) incident response applied directly to multi-agent systems.
+
+### Failure Mode Audit Routine
+
+```
+Quarterly MAST audit process:
+  1. Sample ~1000 real execution traces
+  2. Tag each failure with MAST + Groupthink categories
+  3. Compute failure rate per category — which category dominates?
+  4. Prioritize mitigations — which fix removes the most failures?
+  5. Implement 2–3 mitigations → re-audit next quarter
+```
+
+The most dangerous failure is the **silent correctness failure** — returning a plausible but wrong result without any exception. Even though the Verification Gap accounts for only 21.30% of occurrences, its cost per incident is the highest.
 
 ## Role in AI Engineering
 

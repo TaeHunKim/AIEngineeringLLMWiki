@@ -18,11 +18,13 @@
     "docs": "npx quartz build --serve -d docs",
     "check": "tsc --noEmit && npx prettier . --check",
     "lint:wiki": "node scripts/lint-wiki.mjs",
+    "translate:wiki": "node scripts/translate-wiki.mjs",
     "format": "npx prettier . --write",
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx quartz plugin install",
-    "prebuild": "npm run install-plugins"
+    "prebuild": "npm run install-plugins",
+    "prepare": "git config core.hooksPath scripts/hooks || true"
   },
   "engines": {
     "npm": ">=10.9.2",

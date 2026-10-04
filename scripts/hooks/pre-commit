@@ -1,0 +1,9 @@
+#!/bin/sh
+# Blocks a commit that stages wiki/ changes while `npm run lint:wiki` fails.
+# Installed via `npm install` (package.json "prepare" sets core.hooksPath).
+if git diff --cached --name-only | grep -q '^wiki/'; then
+  npm run --silent lint:wiki || {
+    echo "pre-commit: lint:wiki 실패 — 위반을 고친 뒤 다시 커밋하세요." >&2
+    exit 1
+  }
+fi

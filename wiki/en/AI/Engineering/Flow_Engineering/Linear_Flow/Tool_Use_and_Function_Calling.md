@@ -235,7 +235,7 @@ Tools that connect to internal enterprise systems or SaaS services to perform ac
 - **Examples**: Gmail, Google Drive, Calendar, Slack, Jira, Salesforce (Google Connectors, etc.)
 - **Characteristics**: Permanent side effects (email sending, file modification, etc.), fine-grained permission management essential, HITL review recommended
 
-### 4. Human-in-the-Loop (HITL)
+### 4. Human-in-the-Loop (HITL) ([[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]])
 
 Tools that request human approval/input at stages where agents cannot make autonomous judgments [1][2].
 

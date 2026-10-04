@@ -154,7 +154,7 @@ Dataset Card:
 
 ## Data Provenance and Training Data Governance
 
-Tracking and managing training data **provenance** is needed for copyright dispute response, data contamination prevention ([[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]]), and regulatory compliance (EU AI Act's data governance requirements). Maintaining provenance metadata from the data collection pipeline stage costs far less than post-hoc auditing.
+Tracking and managing training data **provenance** is needed for copyright dispute response, data contamination prevention ([[en/AI/Engineering/Harness_Engineering/Benchmarking|Benchmarking]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]), and regulatory compliance (EU AI Act's data governance requirements). Maintaining provenance metadata from the data collection pipeline stage costs far less than post-hoc auditing.
 
 ## Dual-Use Risks and WMDP
 

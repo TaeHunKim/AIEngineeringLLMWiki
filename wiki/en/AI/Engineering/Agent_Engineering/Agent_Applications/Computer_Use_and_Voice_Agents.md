@@ -125,7 +125,7 @@ Improved turn-taking:
 
 ## Role in AI Engineering
 
-Computer Use expands the agent's action range from "the world with APIs" to "any world with a screen." However, since physical consequences of failures are more immediate than text agents, it is inseparable from Guardrail and Sandbox design. Voice Agents have a completely different optimization axis (latency), and streaming/TTFB optimization techniques from Loop Engineering's Runtime Optimization apply far more strictly than to text.
+Computer Use expands the agent's action range from "the world with APIs" to "any world with a screen." However, since physical consequences of failures are more immediate than text agents, it is inseparable from Guardrail and Sandbox design. Voice Agents have a completely different optimization axis (latency), and streaming/TTFB optimization techniques covered in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] apply far more strictly than to text.
 
 ## Related Concepts
 [[en/AI/Engineering/Harness_Engineering/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] · [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]]

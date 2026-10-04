@@ -175,6 +175,8 @@ async def long_running_agent(task: str):
 
 **Infrastructure requirements**: Long-running Agents are very complex to implement without Agent Runtime (sub-second cold start, up to 7-day operations, auto-resume). Details → [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
 
+**Related framework**: LangChain **Deep Agents** (`pip install deepagents`) is an opinionated harness for this pattern, with built-in `write_todos`-based task planning, subagent spawning, and context offloading → [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks#LangChain Deep Agents — Agent Harness|Agent Frameworks]]
+
 ## Architecture Selection Guide
 
 ```mermaid

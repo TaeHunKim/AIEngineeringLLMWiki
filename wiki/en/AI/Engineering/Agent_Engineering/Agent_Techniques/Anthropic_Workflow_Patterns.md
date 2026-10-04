@@ -106,6 +106,10 @@ Anthropic's conclusion is clear: **direct API calls are sufficient for most work
 
 Detailed framework comparison → [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]]
 
+## Relationship with Context Engineering
+
+"Effective context engineering for AI agents" (Anthropic, 2025) formalizes the field adjacent to these workflow patterns: the context window (e.g., 200K tokens) is not a "container" to fill but a "budget" to manage. The question of what to include and when to compress → [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]
+
 ## Role in AI Engineering
 
 Anthropic's 5 workflow patterns are the most frequently cited "vocabulary" in agent design. Before introducing complex multi-agent frameworks, checking whether these 5 patterns alone can solve the problem is becoming the industry standard. While Agent Architectures addresses "who executes," Workflow Patterns addresses "in what order to combine LLM calls."

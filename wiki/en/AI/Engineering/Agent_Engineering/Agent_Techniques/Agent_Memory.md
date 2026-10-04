@@ -69,6 +69,35 @@ memory.save("User Alice prefers Python and likes concise code style")
 relevant_memories = memory.recall("code style preference")
 ```
 
+### User Profile Memory
+Stores user traits and preferences in a structured form:
+
+```python
+from pydantic import BaseModel
+from typing import Optional
+
+class UserProfile(BaseModel):
+    user_id: str
+    name: Optional[str]
+    preferred_language: str = "ko"
+    expertise_level: str = "intermediate"  # beginner/intermediate/expert
+    interests: list[str] = []
+    communication_style: str = "formal"    # formal/casual
+    
+class ProfileMemory:
+    def update_from_conversation(self, profile: UserProfile, message: str):
+        """Automatically update the profile from the conversation"""
+        update_prompt = f"""
+        Current user profile: {profile.dict()}
+        New conversation: {message}
+        
+        Return the fields that need updating as JSON.
+        Return an empty object {{}} if nothing changed.
+        """
+        updates = llm_json_output(update_prompt)
+        return profile.copy(update=updates)
+```
+
 ### Episodic Memory
 Records of past task executions:
 
@@ -141,6 +170,8 @@ Sleep-time Compute:
   → At actual request time, only pre-organized memory is queried (reduced latency)
 ```
 
+**Effect**: Reduces response-time latency and token cost while maintaining memory quality (contradiction resolution, freshness). The philosophy is similar to the caching strategies of Runtime Optimization ([[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]]), but the target is memory state rather than the response itself.
+
 ## Mem0 — Hybrid Memory (Vector + Graph + KV)
 
 Mem0 (2024) addresses the difficulty of capturing relational information (who is in what relationship with whom) using vector search alone, by combining three stores.
@@ -185,6 +216,26 @@ flowchart LR
     VER -->|NO| RETRY["Analyze failure and retry"]
     ADD --> S
 ```
+
+## LangMem / Dedicated Memory Libraries
+
+LangChain's memory management library (2024~):
+```python
+from langmem import MemoryManager
+
+memory_manager = MemoryManager(
+    storage=ChromaStorage(),
+    extraction_llm=llm,
+    auto_extract=True  # automatically extract important information from conversations
+)
+```
+
+## Memory Architecture: 3 Buckets (Anthropic)
+
+Memory classification from the Context Engineering perspective (→ [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]):
+1. **Write**: Store memories (when and what to store)
+2. **Select**: Retrieve memories (which memories are relevant now)
+3. **Compress**: Compress memories (keep old memories efficiently)
 
 ## Memory ETL Pipeline
 

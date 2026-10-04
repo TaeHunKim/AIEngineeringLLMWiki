@@ -181,6 +181,10 @@ Standard pattern for long-running tool calls (minutes to hours). Instead of wait
 
 This naturally interlocks with the long-running agents in [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — even multi-hour MCP tool calls can be handled with the same protocol.
 
+## MCP Apps (UI Extension)
+
+An extension that lets an MCP Server render **interactive UI components** inside the Host, not just text/data. Tool call results can be shown directly as tables, charts, or forms. Its purpose is similar to A2UI in Agent Skills & Protocols ([[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]), but MCP Apps has the narrow scope of "an MCP Server presenting its own tool results," whereas A2UI is a more general protocol in which agents generate arbitrary UI.
+
 ## Security: OAuth 2.1
 
 Early MCP had no authentication standard, so every Server implemented authentication differently. The 2025 spec adopted **OAuth 2.1** as the standard authentication method for remote MCP Servers.
@@ -230,7 +234,7 @@ Managing dozens to hundreds of MCP Servers individually in enterprise environmen
 | **Portkey** | MCP traffic observability, caching, fallback policies |
 | **Kong / Bifrost** | Apply authentication, rate limiting, and logging to MCP requests at API Gateway layer |
 
-These tools solve the same problems (centralized auth, governance, observability) as Google's enterprise Agent Gateway/Registry covered in [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]], but in a platform-independent way.
+These tools solve the same problems (centralized auth, governance, observability) as Google's enterprise Agent Gateway/Registry covered in [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]], but in a platform-independent way. For a production-operations comparison → [[en/AI/Engineering/Loop_Engineering/Production_Operations|Loop_Engineering/Production_Operations]]
 
 ## MCP vs Function Calling vs A2A
 
@@ -243,6 +247,48 @@ These tools solve the same problems (centralized auth, governance, observability
 | **Governance** | Each model vendor | Linux Foundation (formerly Anthropic) | Linux Foundation |
 
 Details → [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]]
+
+## Enterprise MCP Governance *(May 2026)*
+
+There are enterprise requirements that the open MCP standard alone does not solve. Gemini Enterprise Agent Platform addresses them with native layers:
+
+```
+MCP enterprise gap → Platform solution
+
+Identity (ambiguous identity)
+  Problem: unclear which agent an MCP call came from
+  Solution: Agent Identity (SPIFFE-based cryptographic ID)
+            Automatically issues verifiable credentials to each agent
+            Attaches the calling agent's ID to every MCP call
+
+Auth (authentication conflict)
+  Problem: the MCP Server's OAuth conflicts with enterprise IAM
+  Solution: Agent Gateway centralizes authentication
+            All MCP traffic passes through the Gateway, applying consistent auth
+
+Observability (opaque internals)
+  Problem: the inside of an MCP call is a black box
+  Solution: Agent Observability Suite (OTel-compliant)
+            Automatically instruments, traces, and logs every MCP call
+
+Pre-deployment Validation (no pre-deployment checks)
+  Problem: hard to verify the safety of an MCP integration before deployment
+  Solution: Agent Simulation pre-tests with thousands of synthetic scenarios
+
+Tool Governance (no tool governance)
+  Problem: cannot track which MCP Servers are approved
+  Solution: Agent Registry — a central catalog of approved MCP Servers
+            Integrates versioning, per-team access control, and security pre-review
+```
+
+The pure MCP standard focuses on protocol standardization, while enterprise players are converging on adding a central governance layer on top of it.
+
+## Ecosystem Impact
+
+Effects of MCP standardization:
+- Developers build an MCP Server once and reuse it across every MCP-compatible Host, including Claude, Cursor, and VS Code Copilot
+- "Long tail of context providers" — an ecosystem formed by thousands of third-party integrations
+- OpenAI, Google, Microsoft, and AWS have all adopted MCP → a de facto industry standard
 
 ## Role in AI Engineering
 

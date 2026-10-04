@@ -11,8 +11,11 @@
 //   L5  files under wiki/en/ must link with the en/ prefix
 //   L6  body prose must not narrate the wiki's own gaps or edit history
 //   L7  wikilinks must not sit inside a fenced code block (they render as raw text)
+//   L8  KO and EN copies of a page must have the same heading-level sequence
+//   L9  KO and EN copies of a page must link to the same set of targets
 //
 // Suppress a single line with a trailing comment:  <!-- lint-ignore: L5,L6 -->
+// Suppress L8/L9 for a whole page pair with frontmatter on either copy:  lint-ignore: L8,L9
 import { readdir, readFile } from "fs/promises"
 import { join, relative } from "path"
 
@@ -38,7 +41,7 @@ function parseFrontmatter(text) {
   if (!match) return {}
   const out = {}
   for (const line of match[1].split(/\r?\n/)) {
-    const m = line.match(/^(\w+):\s*(.+)/)
+    const m = line.match(/^([\w-]+):\s*(.+)/)
     if (m) out[m[1]] = m[2].trim()
   }
   return out
@@ -94,6 +97,11 @@ files.sort()
 const slugs = new Set(files.map((f) => toPosix(relative(WIKI_DIR, f)).replace(/\.md$/, "")))
 
 const frontmatter = new Map()
+const headings = new Map() // posix path -> [{ level, text }]
+const linkTargets = new Map() // posix path -> Set of normalized targets
+
+const normalizeTarget = (inner) =>
+  inner.replace(/\\\|/g, "|").split("|")[0].split("#")[0].trim()
 
 for (const file of files) {
   const raw = await readFile(file, "utf8")
@@ -118,6 +126,19 @@ for (const file of files) {
 
   frontmatter.set(posix, parseFrontmatter(raw))
 
+  const fileHeadings = []
+  const fileTargets = new Set()
+  codeless.forEach((l) => {
+    const h = l.match(/^(#{1,6}) +(.*)/)
+    if (h) fileHeadings.push({ level: h[1].length, text: h[2].trim() })
+    for (const m of l.matchAll(/\[\[([^\]]+?)\]\]/g)) {
+      const t = normalizeTarget(m[1])
+      if (t) fileTargets.add(t)
+    }
+  })
+  headings.set(posix, fileHeadings)
+  linkTargets.set(posix, fileTargets)
+
   rawLines.forEach((rawLine, idx) => {
     const lineNo = idx + 1
     const skip = ignoredRules(rawLine)
@@ -133,7 +154,7 @@ for (const file of files) {
         report("L1", file, lineNo, "표 셀 안 wikilink의 파이프를 \\| 로 이스케이프해야 합니다", link)
       }
 
-      const target = inner.replace(/\\\|/g, "|").split("|")[0].split("#")[0].trim()
+      const target = normalizeTarget(inner)
       if (!target) continue
 
       // L2 — dangling target
@@ -179,7 +200,7 @@ const enFiles = new Set(
 
 for (const f of koFiles) {
   if (META_FILES.has(f.split("/").pop()) && !f.includes("/")) continue
-  if (!enFiles.has(f)) report("L3", `${KO_ROOT}/${f}`, 0, "대응하는 EN 문서가 없습니다", "")
+  if (!enFiles.has(f)) report("L3", `${KO_ROOT}/${f}`, 0, "대응하는 EN 문서가 없습니다 (npm run translate:wiki -- <KO 파일> 로 생성 가능)", "")
 }
 for (const f of enFiles) {
   if (!koFiles.has(f)) report("L3", `${EN_ROOT}/${f}`, 0, "대응하는 KO 문서가 없습니다", "")
@@ -201,6 +222,50 @@ for (const f of koFiles) {
   }
 }
 
+// L8 / L9 — internal structure of each KO/EN pair
+const fileIgnored = (fm, rule) =>
+  new Set((fm["lint-ignore"] ?? "").split(/[,\s]+/).filter(Boolean)).has(rule)
+
+for (const f of koFiles) {
+  if (!enFiles.has(f)) continue
+  if (META_FILES.has(f.split("/").pop()) && !f.includes("/")) continue
+  const koPath = `${KO_ROOT}/${f}`
+  const enPath = `${EN_ROOT}/${f}`
+  const koFm = frontmatter.get(koPath) ?? {}
+  const enFm = frontmatter.get(enPath) ?? {}
+  const skipPair = (rule) => fileIgnored(koFm, rule) || fileIgnored(enFm, rule)
+
+  if (!skipPair("L8")) {
+    const ko = headings.get(koPath) ?? []
+    const en = headings.get(enPath) ?? []
+    let i = 0
+    while (i < ko.length && i < en.length && ko[i].level === en[i].level) i++
+    if (i < ko.length || i < en.length) {
+      const fmt = (h) => (h ? `${"#".repeat(h.level)} ${h.text}` : "(없음)")
+      report(
+        "L8",
+        koPath,
+        0,
+        `heading 구조가 KO/EN 간 다릅니다 (KO ${ko.length}개 / EN ${en.length}개, ${i + 1}번째 heading부터 갈라짐)`,
+        `KO: ${fmt(ko[i])}  |  EN: ${fmt(en[i])}`,
+      )
+    }
+  }
+
+  if (!skipPair("L9")) {
+    const ko = linkTargets.get(koPath) ?? new Set()
+    const en = new Set([...(linkTargets.get(enPath) ?? [])].map((t) => t.replace(/^en\//, "")))
+    const onlyKo = [...ko].filter((t) => !en.has(t))
+    const onlyEn = [...en].filter((t) => !ko.has(t))
+    if (onlyKo.length || onlyEn.length) {
+      const parts = []
+      if (onlyKo.length) parts.push(`KO에만: ${onlyKo.join(", ")}`)
+      if (onlyEn.length) parts.push(`EN에만: ${onlyEn.join(", ")}`)
+      report("L9", koPath, 0, "wikilink 대상 집합이 KO/EN 간 다릅니다", parts.join("  |  "))
+    }
+  }
+}
+
 const RULE_LABEL = {
   L1: "표 셀 wikilink 파이프 미이스케이프",
   L2: "끊어진 링크",
@@ -209,6 +274,8 @@ const RULE_LABEL = {
   L5: "EN 문서의 en/ 접두사 누락",
   L6: "본문 자기참조·결핍 서술",
   L7: "코드 블록 안 wikilink (렌더링 안 됨)",
+  L8: "KO/EN heading 구조 불일치",
+  L9: "KO/EN wikilink 대상 집합 불일치",
 }
 
 if (findings.length === 0) {
