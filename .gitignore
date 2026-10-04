@@ -15,7 +15,8 @@ quartz/cli/tui/dist/
 .env
 
 # Internal dev tools (not for public repo)
-.claude
+.claude/*
+!.claude/settings.json
 .gemini
 .mcp.json
 .taskmaster
