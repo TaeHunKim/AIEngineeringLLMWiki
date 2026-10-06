@@ -13,6 +13,7 @@ order: 2
 - **Authors**: Zhuge et al. (2024) — Mingchen Zhuge, Changsheng Zhao, Dylan Ashley, et al. (Meta, KAUST, iGent joint)
 - **Paper**: "Agent-as-a-Judge: Evaluate Agents with Agents" — [arXiv:2410.10934](https://arxiv.org/abs/2410.10934)
 - **Conference**: ICML 2025 (42nd International Conference on Machine Learning)
+- **GitHub**: [metauto-ai/agent-as-a-judge](https://github.com/metauto-ai/agent-as-a-judge)
 - **Key contribution**: Empirically demonstrated that Agent Judge dramatically outperforms LLM-as-a-Judge and achieves human evaluation baseline-level performance
 
 ## Why Agent Evaluation Is Different
@@ -217,3 +218,4 @@ calibrate_critic_agent(judge=critic, human_labels=golden_set)
 3. "Multi-Agent-as-Judge" — [arXiv:2507.21028](https://arxiv.org/html/2507.21028v1)
 4. "Gaming the Judge: Unfaithful Chain-of-Thought Can Undermine Agent Evaluation" — [arXiv:2601.14691](https://arxiv.org/pdf/2601.14691)
 5. [[en/AI/sources/Agent_Quality|Agent_Quality]] (this wiki's source document, first published Nov 2025 → updated May 2026)
+- Arize AI (2024) "Agent-as-a-Judge: Evaluate Agents with Agents" — [arize.com/blog](https://arize.com/blog/agent-as-a-judge-evaluate-agents-with-agents/)

@@ -273,3 +273,4 @@ Observability is the **nervous system of production AI systems**. It enables dat
 - Langfuse official docs — [langfuse.com](https://langfuse.com)
 - Arize Phoenix docs — [docs.arize.com/phoenix](https://docs.arize.com/phoenix)
 - [[en/AI/sources/Agent_Quality|Agent_Quality]] (existing wiki source, first published Nov 2025 → updated May 2026)
+- "LLMOps Observability: LangSmith vs Arize vs Langfuse" — [Medium](https://medium.com/@kanerika/llmops-observability-langsmith-vs-arize-vs-langfuse-vs-w-b-f1baeabd1bbf)

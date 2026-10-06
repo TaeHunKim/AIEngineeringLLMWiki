@@ -120,3 +120,4 @@ Anthropic's 5 workflow patterns are the most frequently cited "vocabulary" in ag
 ## Sources
 - Schluntz, E. & Zhang, B. (Anthropic, 2024) "Building Effective Agents" — [anthropic.com](https://www.anthropic.com/research/building-effective-agents)
 - Anthropic "Effective context engineering for AI agents" (2025) — [anthropic.com](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- AI Engineering from Scratch, Phase 14 · Lesson 12 "Anthropic's Workflow Patterns" — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/12-anthropic-workflow-patterns)

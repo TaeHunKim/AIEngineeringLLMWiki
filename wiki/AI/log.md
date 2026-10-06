@@ -341,3 +341,11 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **변경**: KO+EN `git mv` 이동, 카테고리 hub 3개(order 0) 신설, `Harness_Engineering.md` 하위 문서 표를 3섹션으로 재구성, 폴더 내 `order:` 재번호, `quartz.ts` FOLDER_ORDER에 3개 폴더 추가, `Engineering/index.md`(KO+EN) Harness 절을 3그룹으로 재편. wikilink 115개 파일 경로 치환(`AI/index.md` 표시 alias는 기존 짧은 형태 유지).
 - **영향**: Quartz URL이 바뀌어 기존 deep link는 리다이렉트 없이 깨짐.
 - **검증**: `npm run lint:wiki` 0건.
+
+## [2026-10-06] update | Decision_Models에 AnyJev 반영
+- **변경**: 구현 접근 표 Logprob wrapper 행에 AnyJev 추가, Logprob wrapper 한계 단락 뒤에 AnyJev의 L0/L1/L2 요약(cyclic shift·prior correction·temperature·closed-form linear head)과 상용 API 제약 추가, Calibration에 coverage@risk 항목, 출처에 AnyJev repo 추가. 별도 섹션·문서는 만들지 않음.
+
+## [2026-10-06] lint | 외부 링크 검사(L10·L11) 추가
+- **변경**: `scripts/lint-wiki.mjs`에 L10(KO/EN 외부 링크 URL 집합 일치)·L11(markdown 링크 대상 괄호 미닫힘) 추가. 둘 다 코드 블록·inline code를 제외한 사본을 읽어 예시 코드 오탐을 막는다. 계기: 번역 스크립트가 `Jev_(AI_model)` URL의 `)`를 빠뜨렸는데 기존 lint가 못 잡음.
+- **정리**: L10이 찾은 기존 드리프트 17건 해소 — EN 문서 17개에 누락돼 있던 출처 32줄(+ Agent_as_a_Judge 본문 GitHub 링크 1줄)을 KO 기준으로 번역해 추가.
+- **검증**: 깨진 URL·inline code·코드 블록·title 링크·괄호 URL 케이스로 오탐/미탐 확인, `npm run lint:wiki` 0건.

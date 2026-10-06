@@ -202,3 +202,5 @@ AI Governance and Compliance bridges the gap between technical safety measures (
 - European Commission "EU Artificial Intelligence Act" — [artificialintelligenceact.eu](https://artificialintelligenceact.eu)
 - Li et al. (2024) "The WMDP Benchmark" — [arXiv:2403.03218](https://arxiv.org/abs/2403.03218)
 - Mitchell et al. (2019) "Model Cards for Model Reporting" — [arXiv:1810.03993](https://arxiv.org/abs/1810.03993)
+- Ministry of Science and ICT (Republic of Korea), "Framework Act on the Development of Artificial Intelligence and the Establishment of a Foundation for Trust" — [law.go.kr](https://www.law.go.kr)
+- AI Engineering from Scratch, Phase 18 · Lessons 17-18, 24-30 (governance, regulation, cards, dual-use) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment)

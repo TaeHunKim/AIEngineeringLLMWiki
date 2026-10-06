@@ -204,3 +204,6 @@ Benchmarking provides **objective criteria for model selection, prompt optimizat
 - Chollet et al. (2024/2025) "ARC-AGI-2" — [arcprize.org](https://arcprize.org/arc-agi/2/)
 - EleutherAI "lm-evaluation-harness" — [github.com](https://github.com/EleutherAI/lm-evaluation-harness)
 - UK AI Security Institute "Inspect AI" — [inspect.aisi.org.uk](https://inspect.aisi.org.uk)
+- IBM "What Are LLM Benchmarks?" — [ibm.com](https://www.ibm.com/think/topics/llm-benchmarks)
+- DataCamp "LLM Benchmarks Explained" — [datacamp.com](https://www.datacamp.com/tutorial/llm-benchmarks)
+- AI Engineering from Scratch, Phase 14 · Lesson 19 (Benchmarks — SWE-bench, GAIA, AgentBench) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

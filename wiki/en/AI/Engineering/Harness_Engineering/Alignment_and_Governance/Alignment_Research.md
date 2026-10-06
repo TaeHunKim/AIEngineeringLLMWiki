@@ -171,3 +171,5 @@ Alignment Research addresses a deeper layer of questions than [[en/AI/Engineerin
 - Greenblatt et al. (Anthropic/Redwood Research, 2024) "Alignment Faking in Large Language Models" — [anthropic.com](https://www.anthropic.com/research/alignment-faking)
 - Redwood Research "AI Control: Improving Safety Despite Intentional Subversion" — [arXiv:2312.06942](https://arxiv.org/abs/2312.06942)
 - Burns et al. (OpenAI, 2023) "Weak-to-Strong Generalization" — [arXiv:2312.09390](https://arxiv.org/abs/2312.09390)
+- Anthropic "Exploring model welfare" — [anthropic.com](https://www.anthropic.com/research/exploring-model-welfare)
+- AI Engineering from Scratch, Phase 18 · Lessons 01-11, 19, 28 (Alignment Research) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment)

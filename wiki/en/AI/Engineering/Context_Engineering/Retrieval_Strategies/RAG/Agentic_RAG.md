@@ -216,3 +216,4 @@ It is becoming the de facto standard architecture for domains where simple retri
 5. Yan et al. (2024) "CRAG — Corrective Retrieval Augmented Generation" — [arXiv:2401.15884](https://arxiv.org/abs/2401.15884)
 6. Analytics Vidhya "Corrective RAG (CRAG) in Action" (2024) — [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2024/12/corrective-rag/)
 - Weaviate "What Is Agentic RAG?" — [weaviate.io/blog/what-is-agentic-rag](https://weaviate.io/blog/what-is-agentic-rag)
+- Neo4j "What is Agentic RAG?" — [neo4j.com/blog/agentic-ai/what-is-agentic-rag](https://neo4j.com/blog/agentic-ai/what-is-agentic-rag/)

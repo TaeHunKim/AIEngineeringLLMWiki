@@ -339,3 +339,6 @@ When input/output policy judgments must run at low latency, [[en/AI/Engineering/
 - Kleinberg, Mullainathan & Raghavan (2016) "Inherent Trade-Offs in the Fair Determination of Risk Scores" — [arXiv:1609.05807](https://arxiv.org/abs/1609.05807)
 - [[en/AI/sources/Agent_Quality|Agent_Quality]] (existing wiki source, first published Nov 2025 → updated May 2026)
 - [[en/AI/sources/Prototype_to_Production|Prototype_to_Production]] (existing wiki source, first published Nov 2025 → updated May 2026)
+- "Essential Guide to LLM Guardrails" — [Medium](https://medium.com/data-science-collective/essential-guide-to-llm-guardrails-llama-guard-nemo-d16ebb7cbe82)
+- Meta AI "Stable Signature" — [ai.meta.com](https://ai.meta.com/blog/stable-signature-watermarking-generative-ai/)
+- AI Engineering from Scratch, Phase 14 · Lesson 27, Phase 18 (prompt injection defense, watermarking, differential privacy, bias/fairness, moderation) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment)

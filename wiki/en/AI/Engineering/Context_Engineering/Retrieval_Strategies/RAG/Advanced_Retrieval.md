@@ -279,3 +279,4 @@ Advanced Retrieval is the **precision layer** of the RAG pipeline. If basic retr
 7. Top 7 Rerankers for RAG — [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2025/06/top-rerankers-for-rag/)
 8. Houir Alami (2025) "Should You Use LLMs for Reranking?" — [zeroentropy.dev](https://zeroentropy.dev/articles/should-you-use-llms-for-reranking-a-deep-dive-into-pointwise-listwise-and-cross-encoders/)
 9. "A Thorough Comparison of Cross-Encoders and LLMs for Reranking SPLADE" — [arXiv:2403.10407](https://arxiv.org/html/2403.10407v1)
+- LangChain Advanced RAG docs — [python.langchain.com](https://python.langchain.com/docs/how_to/multi_query/)

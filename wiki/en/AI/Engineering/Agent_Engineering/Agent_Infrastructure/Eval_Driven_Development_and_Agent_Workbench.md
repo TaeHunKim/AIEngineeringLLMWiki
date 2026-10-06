@@ -179,3 +179,4 @@ Eval-Driven Development and Agent Workbench represent the 2026 shift from "how s
 - MongoDB "The Agent Harness: Why the LLM Is the Smallest Part of Your Agent System" — [mongodb.com](https://www.mongodb.com/company/blog/technical/agent-harness-why-llm-is-smallest-part-of-your-agent-system)
 - Anthropic "Effective harnesses for long-running agents" — [anthropic.com](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - Martin Fowler / Böckeler, B. "Harness engineering for coding agent users" — [martinfowler.com](https://martinfowler.com/articles/harness-engineering.html)
+- AI Engineering from Scratch, Phase 14 · Lessons 30-42 (Eval-Driven Development, Agent Workbench series) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

@@ -177,3 +177,7 @@ Autonomous Systems is the frontier of agent engineering. As Time Horizon continu
 - Google DeepMind (2025) "AlphaEvolve: A coding agent for scientific and algorithmic discovery" — [deepmind.google](https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/)
 - Zhang et al. (Sakana AI, 2025) "The Darwin Gödel Machine" — [arXiv:2505.22954](https://arxiv.org/abs/2505.22954)
 - Anthropic (2024) "Alignment faking in large language models" — [anthropic.com](https://www.anthropic.com/research/alignment-faking)
+- METR Time Horizons benchmark (Epoch AI) — [epoch.ai/benchmarks/metr-time-horizons](https://epoch.ai/benchmarks/metr-time-horizons)
+- Anthropic "Measuring AI agent autonomy in practice" — [anthropic.com](https://www.anthropic.com/research/measuring-agent-autonomy)
+- Sakana AI "The AI Scientist-v2" — [sakana.ai](https://sakana.ai/ai-scientist-v2/)
+- AI Engineering from Scratch, all of Phase 15 (Autonomous Systems) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems)

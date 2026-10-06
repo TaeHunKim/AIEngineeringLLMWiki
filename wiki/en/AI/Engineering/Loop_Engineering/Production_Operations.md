@@ -145,3 +145,4 @@ Production Operations is the layer that operates individual optimization techniq
 - Ray Project "LLMPerf" — [github.com/ray-project/llmperf](https://github.com/ray-project/llmperf)
 - NVIDIA "GenAI-Perf" — [github.com/triton-inference-server/perf_analyzer](https://github.com/triton-inference-server/perf_analyzer)
 - FinOps Foundation "FinOps for AI" — [finops.org](https://www.finops.org/)
+- AI Engineering from Scratch, all of Phase 17 (Infrastructure & Production) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production)

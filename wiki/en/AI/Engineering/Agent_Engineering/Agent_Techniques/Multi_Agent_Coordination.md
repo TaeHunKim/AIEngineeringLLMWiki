@@ -200,3 +200,5 @@ Multi-agent systems are more powerful than single agents, but bring new attack s
 - "Groupthink failures in multi-agent LLMs" (2025) — [arXiv:2508.05687](https://arxiv.org/abs/2508.05687)
 - Park et al. (2023) "Generative Agents: Interactive Simulacra of Human Behavior" — [arXiv:2304.03442](https://arxiv.org/abs/2304.03442)
 - Anthropic "How we built our multi-agent research system" — [anthropic.com](https://www.anthropic.com/engineering/multi-agent-research-system)
+- Nygard, M. "Release It! — Stability Patterns" (origin of the Circuit Breaker) — [pragprog.com](https://pragprog.com/titles/mnee2/release-it-second-edition/)
+- AI Engineering from Scratch, Phase 14 · Lessons 25-28, all of Phase 16 — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/16-multi-agent-and-swarms)

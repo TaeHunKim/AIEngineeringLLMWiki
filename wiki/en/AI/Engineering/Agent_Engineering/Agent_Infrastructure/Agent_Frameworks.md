@@ -186,3 +186,4 @@ Agent Frameworks represent the shift from "language of agent design" to "product
 - Anthropic "Claude Agent SDK" — [docs.claude.com](https://docs.claude.com/en/api/agent-sdk/overview)
 - Agno official documentation — [docs.agno.com](https://docs.agno.com)
 - Mastra official documentation — [mastra.ai/docs](https://mastra.ai/docs)
+- AI Engineering from Scratch, Phase 14 · Lessons 14-18 (AutoGen, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

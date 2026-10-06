@@ -241,3 +241,5 @@ Planning & Reflection elevates agents from "executors" to "self-improving system
 - Zhou et al. (2023) "Language Agent Tree Search Unifies Reasoning, Acting, and Planning" — [arXiv:2310.04406](https://arxiv.org/abs/2310.04406)
 - Madaan et al. (2023) "Self-Refine: Iterative Refinement with Self-Feedback" — [arXiv:2303.17651](https://arxiv.org/abs/2303.17651)
 - Gou et al. (2023) "CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing" — [arXiv:2305.11738](https://arxiv.org/abs/2305.11738)
+- HuggingFace "#12: How Do Agents Learn from Their Own Mistakes?" — [huggingface.co](https://huggingface.co/blog/Kseniase/reflection)
+- AI Engineering from Scratch, Phase 14 · Lessons 02-05 (ReWOO, Tree of Thoughts/LATS, Self-Refine/CRITIC) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)

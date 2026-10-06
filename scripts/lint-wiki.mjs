@@ -13,9 +13,14 @@
 //   L7  wikilinks must not sit inside a fenced code block (they render as raw text)
 //   L8  KO and EN copies of a page must have the same heading-level sequence
 //   L9  KO and EN copies of a page must link to the same set of targets
+//   L10 KO and EN copies of a page must link to the same set of external URLs
+//   L11 a markdown link destination must close its parentheses
+//
+// L10/L11 read the code-stripped copy, so link-like text inside fenced blocks or
+// inline code (syntax examples, regexes) is never mistaken for a real link.
 //
 // Suppress a single line with a trailing comment:  <!-- lint-ignore: L5,L6 -->
-// Suppress L8/L9 for a whole page pair with frontmatter on either copy:  lint-ignore: L8,L9
+// Suppress L8/L9/L10 for a whole page pair with frontmatter on either copy:  lint-ignore: L8,L9,L10
 import { readdir, readFile } from "fs/promises"
 import { join, relative } from "path"
 
@@ -100,6 +105,35 @@ const frontmatter = new Map()
 const headings = new Map() // posix path -> [{ level, text }]
 const linkTargets = new Map() // posix path -> Set of normalized targets
 
+const externalUrls = new Map() // posix path -> Set of external URLs
+
+// A destination is any run without whitespace whose parentheses nest at most one
+// level, as in https://en.wikipedia.org/wiki/Jev_(AI_model). A destination that
+// loses its closing ")" does not match at all, so it drops out of the URL set and
+// L10 reports it against the intact copy.
+const MD_LINK_RE = /\]\(\s*<?((?:[^()\s<>]|\([^()\s]*\))+)>?(?:\s+(?:"[^"]*"|'[^']*'))?\s*\)/g
+const isExternal = (url) => /^(?:https?:\/\/|mailto:)/i.test(url)
+
+// L11 — walk the destination after "](" and return true when it ends (at whitespace
+// or end of line) with a "(" still open. Whitespace at depth 1 is the normal start
+// of a link title; at depth > 1 the destination itself is unbalanced.
+function hasUnclosedDestination(line, start) {
+  let depth = 1
+  for (let i = start; i < line.length; i++) {
+    const c = line[i]
+    if (c === "(") depth++
+    else if (c === ")") {
+      if (--depth === 0) return false
+    } else if (/\s/.test(c)) {
+      if (depth > 1) return true
+      // a title follows; skip to its closing paren
+      const close = line.indexOf(")", i)
+      return close === -1
+    }
+  }
+  return true
+}
+
 const normalizeTarget = (inner) =>
   inner.replace(/\\\|/g, "|").split("|")[0].split("#")[0].trim()
 
@@ -128,7 +162,9 @@ for (const file of files) {
 
   const fileHeadings = []
   const fileTargets = new Set()
+  const fileUrls = new Set()
   codeless.forEach((l) => {
+    for (const m of l.matchAll(MD_LINK_RE)) if (isExternal(m[1])) fileUrls.add(m[1])
     const h = l.match(/^(#{1,6}) +(.*)/)
     if (h) fileHeadings.push({ level: h[1].length, text: h[2].trim() })
     for (const m of l.matchAll(/\[\[([^\]]+?)\]\]/g)) {
@@ -138,6 +174,7 @@ for (const file of files) {
   })
   headings.set(posix, fileHeadings)
   linkTargets.set(posix, fileTargets)
+  externalUrls.set(posix, fileUrls)
 
   rawLines.forEach((rawLine, idx) => {
     const lineNo = idx + 1
@@ -165,6 +202,17 @@ for (const file of files) {
       // L5 — an EN page linking into the KO tree
       if (isEn && /^AI\//.test(target) && !skip.has("L5")) {
         report("L5", file, lineNo, `EN 문서의 링크에 en/ 접두사가 빠졌습니다: ${target}`, link)
+      }
+    }
+
+    // L11 — a link destination whose "(" is never closed, e.g. a URL with "(...)"
+    // that lost its final ")". It renders as broken text or a truncated link.
+    if (!skip.has("L11")) {
+      for (const m of line.matchAll(/\]\(/g)) {
+        const start = m.index + 2
+        if (hasUnclosedDestination(line, start)) {
+          report("L11", file, lineNo, "링크 대상의 괄호가 닫히지 않았습니다", line.slice(m.index, m.index + 100).trim())
+        }
       }
     }
 
@@ -264,6 +312,19 @@ for (const f of koFiles) {
       report("L9", koPath, 0, "wikilink 대상 집합이 KO/EN 간 다릅니다", parts.join("  |  "))
     }
   }
+
+  if (!skipPair("L10")) {
+    const ko = externalUrls.get(koPath) ?? new Set()
+    const en = externalUrls.get(enPath) ?? new Set()
+    const onlyKo = [...ko].filter((u) => !en.has(u))
+    const onlyEn = [...en].filter((u) => !ko.has(u))
+    if (onlyKo.length || onlyEn.length) {
+      const parts = []
+      if (onlyKo.length) parts.push(`KO에만: ${onlyKo.join(", ")}`)
+      if (onlyEn.length) parts.push(`EN에만: ${onlyEn.join(", ")}`)
+      report("L10", koPath, 0, "외부 링크 URL 집합이 KO/EN 간 다릅니다 (번역 중 URL이 바뀌었거나 깨졌을 수 있음)", parts.join("  |  "))
+    }
+  }
 }
 
 const RULE_LABEL = {
@@ -276,6 +337,8 @@ const RULE_LABEL = {
   L7: "코드 블록 안 wikilink (렌더링 안 됨)",
   L8: "KO/EN heading 구조 불일치",
   L9: "KO/EN wikilink 대상 집합 불일치",
+  L10: "KO/EN 외부 링크 URL 집합 불일치",
+  L11: "링크 대상 괄호 미닫힘",
 }
 
 if (findings.length === 0) {

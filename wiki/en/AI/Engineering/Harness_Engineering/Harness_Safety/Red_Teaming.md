@@ -310,3 +310,6 @@ Red Teaming is an **essential pre-deployment safety verification step**. Especia
 - Jiang et al. (2024) "ArtPrompt: ASCII Art-based Jailbreak Attacks" — [arXiv:2402.11753](https://arxiv.org/abs/2402.11753)
 - NVIDIA "Garak: LLM Vulnerability Scanner" — [github.com/NVIDIA/garak](https://github.com/NVIDIA/garak)
 - Microsoft "PyRIT: Python Risk Identification Tool for GenAI" — [github.com/Azure/PyRIT](https://github.com/Azure/PyRIT)
+- Bianchi et al. (2024) "ALERT" — [arxiv.org/abs/2412.15476](https://arxiv.org/abs/2412.15476)
+- Perez & Ribeiro (2022) "Ignore Previous Prompt" — [arxiv.org/abs/2211.09527](https://arxiv.org/abs/2211.09527)
+- AI Engineering from Scratch, Phase 18 · Lessons 12-16 (Red-Teaming, ASCII Jailbreaks, tooling) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment)

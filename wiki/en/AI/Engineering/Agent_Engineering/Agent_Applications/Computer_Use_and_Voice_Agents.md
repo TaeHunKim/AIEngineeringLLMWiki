@@ -136,3 +136,4 @@ Computer Use expands the agent's action range from "the world with APIs" to "any
 - Google "Gemini 2.5 Computer Use" — [ai.google.dev](https://ai.google.dev/gemini-api/docs/computer-use)
 - Pipecat official docs — [docs.pipecat.ai](https://docs.pipecat.ai)
 - LiveKit Agents docs — [docs.livekit.io/agents](https://docs.livekit.io/agents/)
+- AI Engineering from Scratch, Phase 14 · Lessons 21-22 (Computer Use, Voice Agents) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)
