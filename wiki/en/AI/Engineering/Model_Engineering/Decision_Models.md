@@ -52,7 +52,7 @@ flowchart LR
 | Approach | Method | Examples | Calibration | Notes |
 |----------|--------|----------|-------------|-------|
 | **Trained Decision Model** | Attach a decision head to an encoder/LLM, LoRA-tune it, or train from scratch | Laya (ModernBERT-based), Kev (Qwen3.5 LoRA + pointer head), NanoJev (0.6B scratch), pplx-decider / Clef (27B class) | Some report post-hoc calibration such as temperature scaling | Whether training code and data are released varies by project |
-| **Logprob wrapper** | Model stays frozen. List options in the prompt and softmax the option-token logits | mini-jev (Qwen3-4B), SemIf, openjev-sglang (prefill-only server) | Most **make no calibration claim** | No retraining needed; can be sensitive to option order |
+| **Logprob wrapper** | Model stays frozen. List options in the prompt and softmax the option-token logits | mini-jev (Qwen3-4B), SemIf, openjev-sglang (prefill-only server), AnyJev (Nokia) | Most **make no calibration claim** (AnyJev is an exception — see below) | No retraining needed; can be sensitive to option order |
 | **Classic zero-shot classifier** | An NLI model or label-aware encoder takes labels at runtime | NLI-head models, GLiClass, SetFit (few-shot) | Scores are often not calibrated probabilities | Runs on CPU; suited to short-input classification |
 | **Structured output library** | Constrain any LLM's output to a schema or grammar | Outlines, Instructor, DSPy | Not applicable (no probabilities) | Types are guaranteed, but no calibrated confidence |
 
@@ -87,6 +87,14 @@ def choose(state: str, question: str, options: list[str]) -> dict[str, float]:
 
 This approach has three limitations. ① The **order and label bias** (position bias) of the options in the prompt leaks into the probabilities. ② Softmax only normalizes within the options, so the result is **relative dominance among options, not the probability of being correct**. ③ Without separate calibration it tends toward over-confidence. Order bias can be reduced by shuffling the options and averaging over several runs, and some projects claim to guarantee option-order invariance by design.
 
+**AnyJev** (Apache-2.0) from Nokia Applied Research starts from this wrapper and closes these gaps in stages. Every result carries its level, and `require=` rejects results below a given level.
+
+- **L0 (zero labels)**: rotate the options through K cyclic shifts and combine in log space (removing position bias), then divide out the label prior with batch calibration or contextual calibration. On Qwen3-8B / BANKING77 20-way, the rate at which the answer flips when the options are reversed drops from 0.230 to 0.073.
+- **L1 (100–500 labels)**: temperature scaling on top of L0. The ranking is unchanged; only the confidence is calibrated.
+- **L2 (100–300 labels)**: a per-question **closed-form linear head** (shrunk LDA or ridge) on the hidden state of a block at about 2/3 of the model's depth. No gradients and no weight changes, and the forward pass stops at that block, so it costs 0.68–0.84× a plain forward. It sits between trained Decision Models and wrappers, close to a linear probe.
+
+Labels are "(input, correct answer) pairs for one fixed question", collected from human review, downstream outcomes, or the verdicts of the LLM being replaced. A head is needed per question and per model, but when the wording or option order changes it follows by re-estimating only the feature mean and variance from about 30 unlabelled requests. Zero-label L0 accuracy is below Jev's published figure; only L2 exceeds it. L2 needs hidden states, so it runs only with local transformers or vLLM serving; commercial APIs that expose only logprobs can in principle reach L1 at most (there is currently no backend for commercial APIs).
+
 ## Calibration
 
 The value of a Decision Model lies less in accuracy than in **whether the probabilities can be trusted enough to put a threshold on them**.
@@ -94,6 +102,7 @@ The value of a Decision Model lies less in accuracy than in **whether the probab
 - **ECE** (Expected Calibration Error): the average gap between predicted confidence and actual hit rate per confidence bin. Lower is better calibrated.
 - **Brier score**: squared error between probabilistic predictions and outcomes. Reflects accuracy and calibration together.
 - **Temperature scaling**: learn a single temperature on the logits using a small validation set for post-hoc calibration. Used with both logprob wrappers and trained models; one project reports ECE dropping from 0.466 to 0.081.
+- **Coverage@risk**: when items are handled in order of confidence, the share that can be handled before the error rate exceeds a target (e.g. 5%). It shows the practical value of calibration directly — AnyJev reports 7.7% for raw logits → 52.0% at L1 (Qwen3-8B, BANKING77 20-way).
 - **Pitfall**: the probability is often merely "concentration of the distribution", not "likelihood of being correct". Using the confidence of a wrapper that makes no calibration claim directly as a threshold is risky.
 
 This problem shares a root with the score inconsistency of LLM rerankers ([[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]]) and the uncertainty estimation in cascade routing ([[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]]).
@@ -151,3 +160,4 @@ A Decision Model is a component that replaces the "short judgment" calls scatter
 - Glean, "Jev and the return of the zero-shot classifier" — [glean.com](https://www.glean.com/blog/jev-zero-shot-classifier)
 - "Jev (AI model)" — [Wikipedia](https://en.wikipedia.org/wiki/Jev_(AI_model))
 - systemonemodels.org, "Jev alternatives: open-source reproductions, local models and classifiers" — [systemonemodels.org](https://systemonemodels.org/examples/alternatives/) (community-curated — re-verify per-project figures in each repo)
+- Zhang et al. (2026), AnyJev — [github.com/nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (figures are the authors' own measurements; the gold labels of the typed-decisions benchmark are teacher-LLM outputs)

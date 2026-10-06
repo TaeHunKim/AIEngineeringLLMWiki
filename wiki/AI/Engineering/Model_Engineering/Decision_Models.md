@@ -52,7 +52,7 @@ flowchart LR
 | 접근 | 방식 | 예시 | 보정(calibration) | 비고 |
 |------|------|------|------------------|------|
 | **학습형 Decision Model** | 인코더·LLM에 decision head를 붙이거나 LoRA 튜닝, 혹은 scratch 학습 | Laya(ModernBERT 기반), Kev(Qwen3.5 LoRA + pointer head), NanoJev(0.6B scratch), pplx-decider·Clef(27B급) | 일부는 temperature scaling 등 post-hoc 보정 보고 | 학습 코드·데이터 공개 여부가 프로젝트마다 다름 |
-| **Logprob wrapper** | 모델은 frozen. 프롬프트에 선택지를 나열하고 선택지 토큰의 logit을 softmax | mini-jev(Qwen3-4B), SemIf, openjev-sglang(prefill-only 서버) | 대부분 **보정을 주장하지 않음** | 재학습 불필요, 선택지 순서에 민감할 수 있음 |
+| **Logprob wrapper** | 모델은 frozen. 프롬프트에 선택지를 나열하고 선택지 토큰의 logit을 softmax | mini-jev(Qwen3-4B), SemIf, openjev-sglang(prefill-only 서버), AnyJev(Nokia) | 대부분 **보정을 주장하지 않음** (AnyJev는 예외 — 아래 참고) | 재학습 불필요, 선택지 순서에 민감할 수 있음 |
 | **고전 zero-shot 분류기** | NLI 모델·라벨 인식 인코더가 런타임에 라벨을 받음 | NLI 헤드 모델, GLiClass, SetFit(few-shot) | 점수가 보정된 확률이 아닌 경우가 많음 | CPU 추론 가능, 입력이 짧은 분류에 적합 |
 | **Structured output 라이브러리** | 어떤 LLM이든 스키마·문법에 맞게 출력 제약 | Outlines, Instructor, DSPy | 해당 없음 (확률 미제공) | 타입은 보장되지만 보정된 confidence는 없음 |
 
@@ -87,6 +87,14 @@ def choose(state: str, question: str, options: list[str]) -> dict[str, float]:
 
 이 방식의 한계는 세 가지다. ① 프롬프트의 선택지 **순서·라벨 편향**(position bias)이 확률에 섞인다. ② softmax는 선택지 안에서 정규화될 뿐이라 **정답 확률이 아닌 "선택지 간 상대 우세"**다. ③ 별도 보정 없이는 과신(over-confidence)하는 경향이 있다. 순서 편향은 선택지를 섞어 여러 번 평균하는 방식으로 줄일 수 있고, 일부 프로젝트는 이를 option-order invariance로 설계 단계에서 보장한다고 주장한다.
 
+Nokia Applied Research의 **AnyJev**(Apache-2.0)는 이 wrapper를 출발점으로 위 한계를 단계적으로 메운다. 각 결과에 level이 붙고, `require=`로 낮은 level의 결과를 거부할 수 있다.
+
+- **L0 (라벨 0개)**: 선택지를 K번 cyclic shift해 log-space로 결합(position bias 제거)하고, batch calibration·contextual calibration으로 label prior를 나눠낸다. Qwen3-8B·BANKING77 20-way에서 선택지 역순 시 답이 바뀌는 비율이 0.230 → 0.073으로 줄었다.
+- **L1 (라벨 100–500개)**: L0 위에 temperature scaling. 순위는 그대로, confidence만 보정한다.
+- **L2 (라벨 100–300개)**: 모델 깊이 약 2/3 지점 block의 hidden state에 질문별 **closed-form linear head**(shrunk LDA·ridge)를 붙인다. gradient·가중치 변경이 없고 forward를 그 block에서 멈추므로 비용은 일반 forward의 0.68–0.84배다. 학습형 Decision Model과 wrapper 사이의 linear probe에 가깝다.
+
+라벨은 "고정된 질문 하나에 대한 (입력, 정답) 쌍"이며, 사람 검토·사후 결과·대체하려는 LLM의 판정에서 모은다. head는 질문·모델마다 따로 필요하지만, 문구·선택지 순서가 바뀌면 라벨 없는 요청 약 30개로 feature 평균·분산만 재추정해 따라간다. 라벨 없는 L0 정확도는 Jev가 공개한 수치보다 낮고, L2에서야 이를 넘는다. L2는 hidden state가 필요해 transformers·vLLM 로컬 서빙에서만 동작하며, logprob만 주는 상용 API로는 최대 L1까지만 이론상 가능하다(현재 상용 API용 backend는 없음).
+
 ## Calibration
 
 Decision Model의 가치는 정확도보다 **확률을 믿고 임계값을 걸 수 있느냐**에 있다.
@@ -94,6 +102,7 @@ Decision Model의 가치는 정확도보다 **확률을 믿고 임계값을 걸 
 - **ECE**(Expected Calibration Error): confidence 구간별로 예측 신뢰도와 실제 적중률의 차이를 평균. 낮을수록 보정이 잘 된 것.
 - **Brier score**: 확률 예측과 실제 결과의 제곱오차. 정확도와 보정을 함께 반영.
 - **Temperature scaling**: 소규모 검증 셋으로 logit에 단일 온도를 학습해 사후 보정. logprob wrapper와 학습형 모델 모두에 쓰이며, 한 프로젝트는 ECE가 0.466에서 0.081로 줄었다고 보고한다.
+- **Coverage@risk**: confidence 순으로 자동 처리할 때, 오류율이 목표(예: 5%)를 넘기 전까지 처리 가능한 비율. 보정의 실용적 가치를 직접 보여 준다 — AnyJev 보고 기준 raw logit 7.7% → L1 52.0%(Qwen3-8B, BANKING77 20-way).
 - **함정**: 확률이 "분포의 집중도"일 뿐 "정답일 가능성"이 아닌 경우가 많다. 보정을 주장하지 않는 wrapper의 confidence를 그대로 임계값에 쓰면 위험하다.
 
 이 문제는 LLM reranker의 점수 비일관성([[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]])이나 cascade 라우팅의 불확실성 추정([[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity_Aware_Model_Routing]])과 같은 뿌리를 공유한다.
@@ -151,3 +160,4 @@ Decision Model은 에이전트·RAG 파이프라인 곳곳에 박힌 "짧은 판
 - Glean, "Jev and the return of the zero-shot classifier" — [glean.com](https://www.glean.com/blog/jev-zero-shot-classifier)
 - "Jev (AI model)" — [Wikipedia](https://en.wikipedia.org/wiki/Jev_(AI_model))
 - systemonemodels.org, "Jev alternatives: open-source reproductions, local models and classifiers" — [systemonemodels.org](https://systemonemodels.org/examples/alternatives/) (커뮤니티 큐레이션 — 개별 프로젝트 수치는 각 repo에서 재확인 필요)
+- Zhang et al. (2026), AnyJev — [github.com/nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (수치는 저자 자체 측정, typed-decisions 벤치의 정답은 teacher LLM 출력)
