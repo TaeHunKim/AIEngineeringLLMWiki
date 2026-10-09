@@ -79,7 +79,8 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - SQL RAG (structured + unstructured Hybrid)
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL-based RAG patterns, Hybrid architecture
 - Shared infrastructure
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka, MTEB/BEIR, reranker models *(2026)*
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models *(2026)*
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
 
 ---
 

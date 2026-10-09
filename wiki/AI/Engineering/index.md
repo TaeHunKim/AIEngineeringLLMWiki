@@ -79,7 +79,8 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - SQL RAG (정형+비정형 Hybrid)
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
 - 공통 인프라
-    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, MTEB/BEIR, 리랭커 모델 *(2026)*
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, InfoNCE, LLM 기반 임베더, MTEB/BEIR, 리랭커 모델 *(2026)*
+    - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP 정렬, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
 
 ---
 

@@ -86,6 +86,7 @@ flowchart TD
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Multimodal_Models)** | VLM/오디오/비디오 모델의 **아키텍처 자체** — 인코더 결합 방식, 토큰화, 평가 |
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] | 멀티모달 **임베딩 모델 자체** — 정렬 학습, modality gap, 모델 비교 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | 멀티모달 임베딩을 이용한 **검색** — CLIP 공유 임베딩, ColPali OCR-free 검색 |
 | [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | 멀티모달 모델을 이용한 **행동공간**(스크린샷 기반 조작, 음성 대화) — 에이전트 레벨 활용 |
 
@@ -94,7 +95,7 @@ flowchart TD
 멀티모달 지원 여부는 더 이상 "특수 기능"이 아니라 프론티어 모델의 기본값이 되었다. 이미지 토큰이 텍스트 토큰보다 훨씬 많은 컨텍스트를 소비할 수 있다는 사실은 Cost Engineering·Context Engineering 모두에 직접적인 영향을 준다 — 스크린샷을 반복적으로 컨텍스트에 넣는 에이전트 설계는 텍스트 전용 설계보다 비용 곡선이 훨씬 가파르게 증가한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal_Embeddings]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
 
 ## 출처
 - Liu et al. (2023) "Visual Instruction Tuning (LLaVA)" — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485)

@@ -47,7 +47,8 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]]: Naive/Advanced/Agentic taxonomy, Self-RAG, CRAG, Query Routing
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]]: Dense+Sparse, Vector+Graph, Vector+Graph+KV hybrids
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]]: CLIP/ColPali shared embeddings, text+image integrated retrieval
-- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]]: Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka Representation Learning, MTEB/BEIR, reranker models
+- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]]: Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka Representation Learning, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models
+- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings]]: Multimodal embedding models — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 comparison
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]: Knowledge graph overview, comparison with vector DBs
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF comparison
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]]: OWL/Turtle, domain ontology, LLM integration patterns

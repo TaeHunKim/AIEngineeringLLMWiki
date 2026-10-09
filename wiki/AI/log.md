@@ -349,3 +349,9 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **변경**: `scripts/lint-wiki.mjs`에 L10(KO/EN 외부 링크 URL 집합 일치)·L11(markdown 링크 대상 괄호 미닫힘) 추가. 둘 다 코드 블록·inline code를 제외한 사본을 읽어 예시 코드 오탐을 막는다. 계기: 번역 스크립트가 `Jev_(AI_model)` URL의 `)`를 빠뜨렸는데 기존 lint가 못 잡음.
 - **정리**: L10이 찾은 기존 드리프트 17건 해소 — EN 문서 17개에 누락돼 있던 출처 32줄(+ Agent_as_a_Judge 본문 GitHub 링크 1줄)을 KO 기준으로 번역해 추가.
 - **검증**: 깨진 URL·inline code·코드 블록·title 링크·괄호 URL 케이스로 오탐/미탐 확인, `npm run lint:wiki` 0건.
+
+## [2026-10-09] create | Multimodal_Embeddings 신설 + Embedding_Models 보강
+- **신규**: `Retrieval_Strategies/Multimodal_Embeddings.md`(order 6) — CLIP/SigLIP/ImageBind 정렬 학습, dual-encoder·VLM 기반 단일 임베더·multi-vector 구조 분류, modality gap, 모델 비교(EmbeddingGemma 2, Gemini Embedding 2, Qwen3-VL-Embedding, Voyage Multimodal 3.5, Cohere Embed v4, jina-embeddings-v5-omni 등), MMEB/ViDoRe/MAEB 평가.
+- **보강**: `Embedding_Models.md` — InfoNCE 학습 원리, LLM 기반 임베더와 instruction prefix, BGE-M3·SPLADE 통합 모델, 임베딩 양자화(int8/binary), 대표 모델 표(2026-10 기준), 모델 버전 고정·재임베딩 운영.
+- **링크**: `Retrieval_Strategies.md`, `Multimodal_RAG.md`, `Multimodal_Models.md`, `Engineering/index.md`, `AI/index.md`에 신규 문서 연결.
+- **출처 한계**: 2026년 모델 수치는 벤더 블로그·논문 보고값이고 집계 사이트 순위가 엇갈려 순위는 기재하지 않음.
