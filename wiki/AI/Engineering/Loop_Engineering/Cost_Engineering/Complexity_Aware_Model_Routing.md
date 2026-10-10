@@ -72,10 +72,10 @@ FrugalGPT의 캐스케이드가 "순차 시도 후 조건부 승격"이라면, �
 
 Complexity-Aware Model Routing은 [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]이 다루는 세 메커니즘 중 즉각적인 비용 절감 효과가 가장 크면서도 구현 난이도는 상대적으로 낮은 축에 속한다. 다만 라우팅 판단 오류가 곧바로 사용자 경험 저하로 이어지므로, 정적 라우팅 규칙을 자동으로 갱신하는 워처 에이전트를 도입할 때는 반드시 Shadow/Canary 같은 안전장치와 함께 설계해야 한다.
 
-라우터 자체를 생성형 LLM 호출로 구현하면 라우팅 비용이 절감분을 잠식한다. 입력 prefill 한 번으로 선택지별 확률을 돌려주는 [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]은 저비용 라우터 후보다.
+라우터 자체를 생성형 LLM 호출로 구현하면 라우팅 비용이 절감분을 잠식한다. 입력 prefill 한 번으로 선택지별 확률을 돌려주는 [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision_Models]]은 저비용 라우터 후보다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic_Task_Scriptification]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]
+[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering/Cost_Engineering]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic_Task_Scriptification]] · [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision_Models]]
 
 ## 출처
 - Chen, Zaharia & Zou (2023) "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance" — [arXiv:2305.05176](https://arxiv.org/abs/2305.05176)

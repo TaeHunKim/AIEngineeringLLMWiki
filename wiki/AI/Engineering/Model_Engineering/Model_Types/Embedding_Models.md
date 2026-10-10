@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 3
 ---
 
 # Embedding & Reranker Models (임베딩·리랭커 모델)
@@ -111,9 +111,9 @@ Dense(의미)와 sparse(정확한 용어 일치)를 결합하는 검색 설계�
 
 | 모델 | 공개 | 특징 |
 |------|------|------|
-| **gemini-embedding-001** (Google) | 2025-03 | MTEB Multilingual task mean 68.32 (논문 보고, 당시 1위). 후속 **Gemini Embedding 2**는 멀티모달 → [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] |
+| **gemini-embedding-001** (Google) | 2025-03 | MTEB Multilingual task mean 68.32 (논문 보고, 당시 1위). 후속 **Gemini Embedding 2**는 멀티모달 → [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] |
 | **Qwen3-Embedding** 0.6B/4B/8B (Alibaba) | 2025-06 | 오픈 웨이트, 8B가 출시 시점 MTEB Multilingual 70.58. 같은 계열의 Qwen3-Reranker와 짝 |
-| **EmbeddingGemma** (Google) | 2025 | 308M 온디바이스 텍스트 임베더. 2세대(740M, 멀티모달, 2026-10)는 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] 참고 |
+| **EmbeddingGemma** (Google) | 2025 | 308M 온디바이스 텍스트 임베더. 2세대(740M, 멀티모달, 2026-10)는 [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] 참고 |
 | **harrier-oss-v1** 270M/0.6B/27B (Microsoft) | 2026-03~04 | MIT 라이선스, decoder-only + last-token pooling. Microsoft 보고 기준 27B가 MTEB Multilingual v2 74.3, 0.6B 69.0, 270M 66.5. 쿼리에 instruction 필수 |
 | **BGE-M3** (BAAI) | 2024 | dense+sparse+multi-vector 통합, 다국어 |
 
@@ -169,7 +169,7 @@ Dense(의미)와 sparse(정확한 용어 일치)를 결합하는 검색 설계�
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Embedding_Models)** | 임베딩·리랭커 **모델 자체**의 아키텍처 분류, 벤치마크 해석, 차원 선택, 파인튜닝 |
-| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] | 이미지·오디오·비디오까지 한 공간에 매핑하는 **멀티모달 임베딩 모델** — 정렬 학습, modality gap, EmbeddingGemma 2 등 |
+| [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | 이미지·오디오·비디오까지 한 공간에 매핑하는 **멀티모달 임베딩 모델** — 정렬 학습, modality gap, EmbeddingGemma 2 등 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector_Storage]] | 임베딩을 **저장**하는 인프라 — ANN 인덱스(HNSW/FAISS/ScaNN), 벡터 DB 제품 선택 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced_Retrieval]] | 리랭킹·쿼리 변환을 검색 **파이프라인**에 배치하는 방법 |
 
@@ -178,7 +178,7 @@ Dense(의미)와 sparse(정확한 용어 일치)를 결합하는 검색 설계�
 RAG·GraphRAG·시맨틱 캐시·Agentic RAG는 결국 "좋은 임베딩이 이미 있다"는 전제 위에 서 있다. 그 전제를 검증하지 않고 검색 파이프라인만 정교화하면, 리랭킹·청킹·쿼리 변환을 아무리 개선해도 상한선은 임베딩 모델의 표현력에 갇힌다. 임베딩 모델 선택은 RAG 프로젝트에서 가장 먼저 결정하고, 가장 늦게 재검토하는 실수가 잦은 결정이다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal_Embeddings]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid_RAG]] · [[AI/Engineering/Model_Engineering/Quantization|Model_Engineering/Quantization]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal_Embeddings]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid_RAG]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Model_Engineering/Quantization]]
 
 ## 출처
 - [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] (Google, Nawalgaria/Ren/Sugnet, 2025년 2월 — 이 위키의 기존 소스)

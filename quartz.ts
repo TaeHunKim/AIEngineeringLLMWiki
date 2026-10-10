@@ -24,6 +24,10 @@ componentRegistry.setOptionOverrides("explorer", {
       loop_engineering: 7,
       graph_engineering: 8,
       sources: 9,
+      // Model_Engineering 하위 (model_engineering.md order:0 이후)
+      model_types: 1,
+      training_and_tuning: 2,
+      architecture_and_efficiency: 3,
       // Flow_Engineering 하위 (flow_engineering.md order:0 이후에 등장)
       linear_flow: 1,
       graph_flow: 2,

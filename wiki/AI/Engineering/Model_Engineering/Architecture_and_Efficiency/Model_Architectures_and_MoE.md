@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 2
 ---
 
 # Model Architectures & MoE (모델 아키텍처와 MoE)
@@ -36,7 +36,7 @@ MoE 모델 (예: 256개 Expert 중 토큰당 8개 활성화):
 
 | 모델 | Total Params | Active Params | 비고 |
 |------|--------------|----------------|------|
-| DeepSeek-V3 / R1 계열 | 671B | 37B | 라우팅+RLVR 결합 사례 (→ [[AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]]의 GRPO 서술) |
+| DeepSeek-V3 / R1 계열 | 671B | 37B | 라우팅+RLVR 결합 사례 (→ [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]]의 GRPO 서술) |
 | MiniMax M3 (2026-06) | 229.9B | 9.8B | 256 fine-grained Expert |
 | NVIDIA Nemotron 3.5 Lightning | 30B | 3B | 장기 실행 에이전트용 저지연 설계, Speculative Decoding 내장 |
 | Cohere North Mini Code | 30B | 3B | 에이전틱 코딩 특화 |
@@ -74,7 +74,7 @@ YaRN 등으로 컨텍스트 길이를 1M 토큰까지 늘려도, 모델이 32K �
 모델 아키텍처 선택은 대부분의 애플리케이션 팀에게는 보이지 않는 결정이다 — API로 제공되는 모델을 쓸 뿐 그 내부 구조를 바꾸지 않는다. 하지만 자체 호스팅, 온프레미스 배포, 비용에 극도로 민감한 대규모 에이전트 워크로드를 설계할 때는 이 선택이 직접적인 비용·지연시간 결정 요인이 된다 — Total/Active Params 비율이 곧 메모리 요구량과 토큰당 비용을 가르고, 컨텍스트 길이 아키텍처가 [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] 전체가 다룰 수 있는 상한선을 정한다.
 
 ## 관련 개념
-[[AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Loop_Engineering/Serving_Engineering/Distributed_Serving]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing]]
+[[AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Loop_Engineering/Serving_Engineering/Distributed_Serving]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing]]
 
 ## 출처
 - Turing Post "10 Small Language Models to Know in 2026" — [turingpost.com](https://www.turingpost.com/p/slmslist)

@@ -36,7 +36,7 @@ flowchart TD
 
 **OCR-based**: text is explicitly extracted and then fed as-is into the existing RAG pipeline (chunk → embed → retrieve). Its weakness is that text-extraction errors (broken table structure, mangled formulas) propagate straight downstream.
 
-**OCR-free** (ColPali/ColQwen family): instead of converting the document page to text, it's fed **directly as an image** into a Vision-Language Model for embedding. The advantage is sidestepping OCR error entirely on documents where layout, tables, charts, and images are all mixed together. See [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] and [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] for architecture and embedding details.
+**OCR-free** (ColPali/ColQwen family): instead of converting the document page to text, it's fed **directly as an image** into a Vision-Language Model for embedding. The advantage is sidestepping OCR error entirely on documents where layout, tables, charts, and images are all mixed together. See [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] and [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] for architecture and embedding details.
 
 ## Tool Landscape
 
@@ -87,7 +87,7 @@ Change-detection strategies:
 A large share of RAG pipeline quality degradation is already decided at **this first step**, not at reranking or the embedding model — if a table is chunked already broken, or pages are embedded out of order, every optimization downstream is built on damaged input. When troubleshooting a RAG project, visually inspecting this step's output before suspecting the retrieval algorithm is often the fastest debugging path in practice.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]]
 
 ## Sources
 - Unstructured.io official docs — [docs.unstructured.io](https://docs.unstructured.io)

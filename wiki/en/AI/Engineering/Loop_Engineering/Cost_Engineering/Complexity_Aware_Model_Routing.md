@@ -76,10 +76,10 @@ The length of this verification period should scale with task risk — tasks pro
 
 Complexity-Aware Model Routing is, among the three mechanisms covered by [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]], both the one with the largest immediate cost impact and one of the easier to implement. But because a routing error translates directly into degraded user experience, any watcher agent that automatically updates static routing rules must be designed alongside safeguards like Shadow/Canary from the start.
 
-Implementing the router itself as a generative LLM call lets routing cost eat into the savings. [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]], which return per-option probabilities from a single input prefill, are candidates for a low-cost router.
+Implementing the router itself as a generative LLM call lets routing cost eat into the savings. [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]], which return per-option probabilities from a single input prefill, are candidates for a low-cost router.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]
+[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]]
 
 ## Sources
 - Chen, Zaharia & Zou (2023) "FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance" — [arXiv:2305.05176](https://arxiv.org/abs/2305.05176)

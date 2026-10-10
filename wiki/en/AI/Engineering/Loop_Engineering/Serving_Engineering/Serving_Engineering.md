@@ -83,7 +83,7 @@ Goodput
 For organizations that have reached the scale where self-hosting becomes more cost-effective than API calls (the point where request volume is high enough that self-hosted GPU infrastructure costs less than metered API pricing), optimization at this layer directly shows up in total cost of ownership (TCO). As techniques like PagedAttention and RadixAttention become built into serving engines by default, practitioners implement them less often themselves, but "which engine to choose and why" remains an architectural decision.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]
+[[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]
 
 ## Sources
 - Kwon et al. (2023) "Efficient Memory Management for LLM Serving with PagedAttention" — [arXiv:2309.06180](https://arxiv.org/abs/2309.06180)

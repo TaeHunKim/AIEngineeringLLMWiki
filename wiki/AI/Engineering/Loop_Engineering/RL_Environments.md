@@ -104,7 +104,7 @@ RL Environments는 새 최상위 계층이 아니라, 이 위키가 이미 다�
 RL Environments는 RLVR 같은 훈련 기법이 실무에서 성립하기 위한 전제 인프라다. 아무리 좋은 RL 알고리즘도 신뢰할 수 있는 보상 신호가 없으면 무용하며, 그 신호를 만드는 일 — 태스크 설계, 도메인 전문성, verifier 구축, 보상 설계, 그리고 이를 대규모로 운영하는 것 — 자체가 상당한 엔지니어링 투자를 요구한다는 인식이 2025~2026년 업계에 자리잡았다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Harness_Engineering/Harness_Evaluation/Benchmarking]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Model_Engineering/Full_Fine-Tuning]]
+[[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Harness_Engineering/Harness_Evaluation/Benchmarking]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Loop_Engineering/Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Model_Engineering/Full_Fine-Tuning]]
 
 ## 출처
 - "A Taxonomy of RL Environments for LLM Agents" (2026) — [leehanchung.github.io](https://leehanchung.github.io/blogs/2026/03/21/rl-environments-for-llm-agents/)

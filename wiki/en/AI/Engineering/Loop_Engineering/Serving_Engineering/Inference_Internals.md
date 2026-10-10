@@ -72,14 +72,14 @@ A kernel-optimization technique that restructures the attention computation itse
 
 ## TensorRT-LLM — FP8 / NVFP4
 
-NVIDIA's serving engine, which aggressively leverages the low-precision compute of the latest GPU architectures (Blackwell). The key idea is boosting throughput via FP8/NVFP4 (4-bit floating point) quantization while minimizing accuracy loss — see [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] for production quantization technique details.
+NVIDIA's serving engine, which aggressively leverages the low-precision compute of the latest GPU architectures (Blackwell). The key idea is boosting throughput via FP8/NVFP4 (4-bit floating point) quantization while minimizing accuracy loss — see [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] for production quantization technique details.
 
 ## Role in AI Engineering
 
 PagedAttention, Continuous Batching, and RadixAttention are built into nearly every production serving engine today, so practitioners rarely implement them directly. Understanding these internals still matters, though, because of **matching engine choice to workload characteristics** — knowing that SGLang (with its strong RadixAttention) suits agent workloads with heavy prefix sharing, while vLLM (with mature PagedAttention) suits general-purpose workloads with mixed request lengths, requires understanding what's happening under the hood.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]] · [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] · [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]]
+[[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]] · [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]]
 
 ## Sources
 - Kwon et al. (2023) "Efficient Memory Management for LLM Serving with PagedAttention" — [arXiv:2309.06180](https://arxiv.org/abs/2309.06180)

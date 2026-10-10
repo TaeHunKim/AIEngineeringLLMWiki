@@ -83,7 +83,7 @@ Goodput
 셀프호스팅이 API 호출보다 유리해지는 임계 규모(요청량이 일정 수준을 넘어서면 자체 GPU 인프라 비용이 API 종량제보다 저렴해지는 지점)에 도달한 조직에게 이 계층의 최적화는 총소유비용(TCO)에 직접 반영된다. PagedAttention·RadixAttention 같은 기법이 서빙 엔진에 기본 내장되면서, 실무자가 직접 구현할 일은 줄었지만 "어떤 엔진을 왜 선택하는가"는 여전히 아키텍처 결정이다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]
+[[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]
 
 ## 출처
 - Kwon et al. (2023) "Efficient Memory Management for LLM Serving with PagedAttention" — [arXiv:2309.06180](https://arxiv.org/abs/2309.06180)

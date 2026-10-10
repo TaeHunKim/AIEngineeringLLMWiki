@@ -111,4 +111,4 @@ HNSW, PQ 등 다수 인덱스 지원
 - Embeddings + Vector DB + ANN = 검색·추천·RAG의 인프라 substrate.
 
 ## 관련 개념
-[[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]]
+[[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]

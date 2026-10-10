@@ -1,12 +1,12 @@
 ---
-order: 6
+order: 4
 ---
 
 # Multimodal Embedding Models
 
 ## Overview
 
-**Multimodal embedding models** map inputs of different forms, such as text, images, audio, video, and PDF pages, into **a single shared vector space**. Since "picture of a cat" and "a cat" with the same meaning become close vectors, cross-modal search—finding images with text queries or finding documents with video clips—becomes possible with a single ANN index. The architecture, dimension, and benchmark discussions for text embeddings are covered in [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]], and this document addresses the issues that arise when modalities are increased—**alignment methods, modality gap, model lineage, and evaluation**.
+**Multimodal embedding models** map inputs of different forms, such as text, images, audio, video, and PDF pages, into **a single shared vector space**. Since "picture of a cat" and "a cat" with the same meaning become close vectors, cross-modal search—finding images with text queries or finding documents with video clips—becomes possible with a single ANN index. The architecture, dimension, and benchmark discussions for text embeddings are covered in [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]], and this document addresses the issues that arise when modalities are increased—**alignment methods, modality gap, model lineage, and evaluation**.
 
 ```
 Text embedding: text ──► Encoder ──► Vector
@@ -78,7 +78,7 @@ EmbeddingGemma (2025) was a text-only 308M on-device embedder, and EmbeddingGemm
 | Search preserving layout of scanned PDF pages | ColPali/ColQwen (accepting increased storage) |
 | Research, non-commercial | jina-embeddings-v5-omni |
 
-As the number of modalities increases, the storage required and the encoding cost for the same accuracy also increase, making the modular structure (EmbeddingGemma 2) that allows **loading only the necessary modalities** and MRL pruning (the Matryoshka pruning of [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]]) cost control mechanisms.
+As the number of modalities increases, the storage required and the encoding cost for the same accuracy also increase, making the modular structure (EmbeddingGemma 2) that allows **loading only the necessary modalities** and MRL pruning (the Matryoshka pruning of [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]]) cost control mechanisms.
 
 ## Evaluation
 
@@ -92,16 +92,16 @@ As the number of modalities increases, the storage required and the encoding cos
 | Document | Covers |
 |------|-----------|
 | **This document (Multimodal_Embeddings)** | The multimodal **embedding model itself** — alignment learning, structure, modality gap, model comparison |
-| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding_Models]] | Text embedding/reranker models — architecture classification, MRL, benchmarks, fine-tuning |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | Text embedding/reranker models — architecture classification, MRL, benchmarks, fine-tuning |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | **Search/generation pipelines** that use multimodal embeddings |
-| [[en/AI/Engineering/Model_Engineering/Multimodal_Models\|Multimodal_Models]] | Architecture of multimodal **generation** models (VLM) — vision encoder, projector |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models\|Multimodal_Models]] | Architecture of multimodal **generation** models (VLM) — vision encoder, projector |
 
 ## Role in AI Engineering
 
 The search quality ceiling of multimodal RAG is determined by how well the embedding model aligns the modalities. Model selection considers the modality scope, license, deployment location (cloud vs. on-device), and storage costs, and since embeddings are not compatible across models, the entire corpus must be re-embedded upon replacement.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[en/AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal_Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document_Ingestion]]
+[[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal_Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document_Ingestion]]
 
 ## References
 - Google, "EmbeddingGemma 2 is a best-in-class open model for natively multimodal embeddings" (2026-10-06) — [blog.google](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/)

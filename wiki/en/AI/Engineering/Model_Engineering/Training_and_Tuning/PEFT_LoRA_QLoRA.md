@@ -124,7 +124,7 @@ Don't want to touch model weights → Prompt Tuning
 PEFT is the core tool of practical AI Engineering. It democratizes LLMs by enabling small teams to customize billion-parameter models on a single GPU. LoRA adapters are interchangeable, enabling Multi-LoRA serving patterns where multiple task-specific adapters run on the same base model.
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]
+[[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]
 
 ## Sources
 - Hu et al. (2021) "LoRA: Low-Rank Adaptation of Large Language Models" — [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)

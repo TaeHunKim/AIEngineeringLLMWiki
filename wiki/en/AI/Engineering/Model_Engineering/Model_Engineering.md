@@ -24,16 +24,16 @@ flowchart LR
 
 | Document | Content |
 |------|------|
-| [[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning\|Pre-training & Continual Learning]] | Large-scale pre-training, Chinchilla law, catastrophic forgetting |
-| [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full Fine-Tuning]] | SFT, RLHF(PPO), DPO, GRPO/RLVR — full weight updates |
-| [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA\|PEFT / LoRA / QLoRA]] | Parameter-efficient fine-tuning, LoRA/QLoRA math |
-| [[en/AI/Engineering/Model_Engineering/Quantization\|Quantization]] | INT8/INT4 quantization, GPTQ/AWQ/GGUF |
-| [[en/AI/Engineering/Model_Engineering/Model_Distillation\|Knowledge Distillation]] | Teacher-Student, DistilBERT/Phi series |
-| [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE\|Model Architectures & MoE]] | Dense vs. MoE, RoPE/YaRN long-context, SLM-for-Agents |
-| [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation\|Synthetic Data & Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |
-| [[en/AI/Engineering/Model_Engineering/Multimodal_Models\|Multimodal Models]] | VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA |
-| [[en/AI/Engineering/Model_Engineering/Tokenization\|Tokenization]] | BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency |
-| [[en/AI/Engineering/Model_Engineering/Decision_Models\|Decision_Models]] | Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning\|Pre-training & Continual Learning]] | Large-scale pre-training, Chinchilla law, catastrophic forgetting |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full Fine-Tuning]] | SFT, RLHF(PPO), DPO, GRPO/RLVR — full weight updates |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA\|PEFT / LoRA / QLoRA]] | Parameter-efficient fine-tuning, LoRA/QLoRA math |
+| [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization\|Quantization]] | INT8/INT4 quantization, GPTQ/AWQ/GGUF |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Knowledge Distillation]] | Teacher-Student, DistilBERT/Phi series |
+| [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE\|Model Architectures & MoE]] | Dense vs. MoE, RoPE/YaRN long-context, SLM-for-Agents |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation\|Synthetic Data & Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models\|Multimodal Models]] | VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA |
+| [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization\|Tokenization]] | BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) |
 
 ## When to Choose Which Technique
 

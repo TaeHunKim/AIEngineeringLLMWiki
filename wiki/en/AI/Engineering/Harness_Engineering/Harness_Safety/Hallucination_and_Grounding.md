@@ -41,7 +41,7 @@ Cluster answers that **mean the same thing**, then compute the entropy of that d
 
 ### 4. Token Probabilities and Internal Signals
 
-Logprob-based confidence is cheap but **calibration is not guaranteed** — calibration techniques and ECE measurement are covered in [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]. White-box probes that read internal representations extend [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]].
+Logprob-based confidence is cheap but **calibration is not guaranteed** — calibration techniques and ECE measurement are covered in [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]]. White-box probes that read internal representations extend [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]].
 
 ## Prevention Techniques
 
@@ -67,11 +67,11 @@ Running step 3 on every response blows up cost, so the point is to **filter with
 |----------|--------|
 | [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM-as-a-Judge]] | General quality evaluation (relevance, tone, accuracy), judge bias |
 | [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail Engineering]] | Input/output blocking infrastructure (NeMo, LlamaGuard), safety and policy violations |
-| [[en/AI/Engineering/Model_Engineering/Decision_Models\|Decision Models]] | Decision-style models and probability calibration |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision Models]] | Decision-style models and probability calibration |
 | **This document** | "Is the claim supported by evidence?" — detection, prevention, policy |
 
 ## Related Concepts
-[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]
+[[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]
 
 ## Sources
 - [1] Farquhar et al. (2024) "Detecting hallucinations in large language models using semantic entropy" — Nature 630, 625–630, [nature.com](https://www.nature.com/articles/s41586-024-07421-0)

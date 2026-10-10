@@ -72,14 +72,14 @@ Attention 연산 자체를 GPU 메모리 계층(HBM vs SRAM) 특성에 맞게 �
 
 ## TensorRT-LLM — FP8 / NVFP4
 
-NVIDIA의 서빙 엔진으로, 최신 GPU 아키텍처(Blackwell)의 저정밀도 연산을 적극 활용한다. FP8·NVFP4(4비트 부동소수점) 양자화로 처리량을 늘리면서 정확도 손실을 최소화하는 것이 핵심 — 프로덕션 양자화 기법 상세는 [[AI/Engineering/Model_Engineering/Quantization|Quantization]] 참고.
+NVIDIA의 서빙 엔진으로, 최신 GPU 아키텍처(Blackwell)의 저정밀도 연산을 적극 활용한다. FP8·NVFP4(4비트 부동소수점) 양자화로 처리량을 늘리면서 정확도 손실을 최소화하는 것이 핵심 — 프로덕션 양자화 기법 상세는 [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] 참고.
 
 ## AI Engineering에서의 역할
 
 PagedAttention·Continuous Batching·RadixAttention은 오늘날 거의 모든 프로덕션 서빙 엔진에 기본 내장되어 있어, 실무자가 직접 구현할 일은 드물다. 그럼에도 이 내부 구조를 이해해야 하는 이유는 **엔진 선택과 워크로드 특성 매칭** 때문이다 — prefix 공유가 많은 에이전트 워크로드라면 RadixAttention이 강한 SGLang이, 다양한 길이의 요청이 뒤섞인 범용 워크로드라면 PagedAttention이 성숙한 vLLM이 유리하다는 판단은 내부 동작을 알아야 내릴 수 있다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative_Decoding]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed_Serving]] · [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]] · [[AI/Engineering/Model_Engineering/Quantization|Quantization]]
+[[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative_Decoding]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed_Serving]] · [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]]
 
 ## 출처
 - Kwon et al. (2023) "Efficient Memory Management for LLM Serving with PagedAttention" — [arXiv:2309.06180](https://arxiv.org/abs/2309.06180)

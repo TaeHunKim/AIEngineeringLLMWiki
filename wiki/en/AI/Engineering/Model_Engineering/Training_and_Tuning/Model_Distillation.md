@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 4
 ---
 
 # Model Distillation (Knowledge Distillation)
@@ -91,7 +91,7 @@ Student (small model):
 Distillation satisfies the need to "reduce API costs while maintaining performance." It's a key technology for serving GPT-4-level capable small models on your own infrastructure, or embedding LLM capabilities in edge devices (mobile, IoT).
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]]
+[[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]]
 
 ## Sources
 - Hinton et al. (2015) "Distilling the Knowledge in a Neural Network" — [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)

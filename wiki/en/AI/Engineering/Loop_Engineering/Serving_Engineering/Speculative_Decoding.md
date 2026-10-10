@@ -68,7 +68,7 @@ Less effective:
 ```
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]]
+[[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]]
 
 ## Role in AI Engineering
 

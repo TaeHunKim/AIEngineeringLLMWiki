@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 1
 ---
 
 # Tokenization (토크나이제이션)
@@ -103,7 +103,7 @@ flowchart LR
 토크나이저는 프롬프트를 쓰는 순간부터 API 비용이 청구되는 순간까지 보이지 않게 개입하는 계층이다. 다국어 서비스, 특히 한국어 서비스를 설계할 때 토큰 효율 불이익을 무시하면 영어 기준으로 추정한 비용·컨텍스트 예산이 실제 운영에서 크게 벗어난다. 모델 선택·라우팅 전략을 짤 때 "이 모델의 토크나이저가 우리 서비스 언어에서 얼마나 효율적인가"는 벤치마크 점수 못지않게 실질적인 선택 기준이다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] · [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]]
+[[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost_Engineering]] · [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt_Caching]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model_Architectures_and_MoE]]
 
 ## 출처
 - Sennrich et al. (2016) "Neural Machine Translation of Rare Words with Subword Units (BPE)" — [arXiv:1508.07909](https://arxiv.org/abs/1508.07909)

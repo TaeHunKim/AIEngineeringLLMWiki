@@ -107,7 +107,7 @@ Multi-region deployment:
 Disaggregated Serving and TP/PP/EP are the next tier of optimization that emerges at a scale single-GPU optimization ([[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]]) alone can't handle — extremely large models, extremely high-throughput services. For organizations that reach this tier, the infrastructure configuration itself becomes as important an architectural decision as model performance.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] · [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]
+[[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] · [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]
 
 ## Sources
 - NVIDIA "Dynamo: Disaggregated Serving" — [developer.nvidia.com](https://developer.nvidia.com/blog/introducing-nvidia-dynamo/)

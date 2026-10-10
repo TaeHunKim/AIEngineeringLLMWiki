@@ -1,12 +1,12 @@
 ---
-order: 6
+order: 4
 ---
 
 # Multimodal Embedding Models (멀티모달 임베딩 모델)
 
 ## 개요
 
-**멀티모달 임베딩 모델**은 텍스트·이미지·오디오·비디오·PDF 페이지처럼 형태가 다른 입력을 **하나의 공유 벡터 공간**에 매핑한다. 같은 의미를 가진 "고양이 사진"과 "a cat"이 가까운 벡터가 되므로, 텍스트 쿼리로 이미지를 찾거나 영상 클립으로 문서를 찾는 cross-modal 검색이 단일 ANN 인덱스로 가능해진다. 텍스트 임베딩의 아키텍처·차원·벤치마크 논의는 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]]가 다루고, 이 문서는 모달리티가 늘어날 때 새로 생기는 문제 — **정렬 방식, modality gap, 모델 계보, 평가** — 를 다룬다.
+**멀티모달 임베딩 모델**은 텍스트·이미지·오디오·비디오·PDF 페이지처럼 형태가 다른 입력을 **하나의 공유 벡터 공간**에 매핑한다. 같은 의미를 가진 "고양이 사진"과 "a cat"이 가까운 벡터가 되므로, 텍스트 쿼리로 이미지를 찾거나 영상 클립으로 문서를 찾는 cross-modal 검색이 단일 ANN 인덱스로 가능해진다. 텍스트 임베딩의 아키텍처·차원·벤치마크 논의는 [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]]가 다루고, 이 문서는 모달리티가 늘어날 때 새로 생기는 문제 — **정렬 방식, modality gap, 모델 계보, 평가** — 를 다룬다.
 
 ```
 텍스트 임베딩:   text ──► Encoder ──► 벡터
@@ -78,7 +78,7 @@ EmbeddingGemma(2025)는 텍스트 전용 308M 온디바이스 임베더였고, E
 | 스캔 PDF 페이지의 레이아웃 보존 검색 | ColPali/ColQwen (저장량 증가 감수) |
 | 연구·비상업 | jina-embeddings-v5-omni |
 
-모달리티를 늘릴수록 같은 정확도에 필요한 저장량과 인코딩 비용이 커지므로, **필요한 모달리티만 로딩**할 수 있는 modular 구조(EmbeddingGemma 2)와 MRL 절단([[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]]의 Matryoshka 절)이 비용 통제 수단이 된다.
+모달리티를 늘릴수록 같은 정확도에 필요한 저장량과 인코딩 비용이 커지므로, **필요한 모달리티만 로딩**할 수 있는 modular 구조(EmbeddingGemma 2)와 MRL 절단([[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]]의 Matryoshka 절)이 비용 통제 수단이 된다.
 
 ## 평가
 
@@ -92,16 +92,16 @@ EmbeddingGemma(2025)는 텍스트 전용 308M 온디바이스 임베더였고, E
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Multimodal_Embeddings)** | 멀티모달 **임베딩 모델 자체** — 정렬 학습, 구조, modality gap, 모델 비교 |
-| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding_Models]] | 텍스트 임베딩·리랭커 모델 — 아키텍처 분류, MRL, 벤치마크, 파인튜닝 |
+| [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | 텍스트 임베딩·리랭커 모델 — 아키텍처 분류, MRL, 벤치마크, 파인튜닝 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | 멀티모달 임베딩을 쓰는 **검색·생성 파이프라인** |
-| [[AI/Engineering/Model_Engineering/Multimodal_Models\|Multimodal_Models]] | 멀티모달 **생성** 모델(VLM)의 아키텍처 — vision encoder, projector |
+| [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models\|Multimodal_Models]] | 멀티모달 **생성** 모델(VLM)의 아키텍처 — vision encoder, projector |
 
 ## AI Engineering에서의 역할
 
 멀티모달 RAG의 검색 품질 상한은 임베딩 모델이 모달리티를 얼마나 잘 정렬했는지로 정해진다. 모델 선택은 모달리티 범위, 라이선스, 배포 위치(클라우드 vs 온디바이스), 저장 비용을 함께 놓고 하며, 임베딩이 모델별로 호환되지 않으므로 교체 시 전체 코퍼스를 재임베딩해야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document_Ingestion]]
+[[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document_Ingestion]]
 
 ## 출처
 - Google, "EmbeddingGemma 2 is a best-in-class open model for natively multimodal embeddings" (2026-10-06) — [blog.google](https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/)

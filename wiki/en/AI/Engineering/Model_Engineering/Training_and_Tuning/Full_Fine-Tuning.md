@@ -84,10 +84,10 @@ Full FT memory = params × (weights + gradients + optimizer states)
 
 ## Role in AI Engineering
 
-Full FT is the most powerful tool in the Model Engineering layer, but in most practical applications it is replaced by LoRA/QLoRA (→ [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]]). RLHF is the core training pipeline for commercial models like GPT-4, Claude, and Gemini.
+Full FT is the most powerful tool in the Model Engineering layer, but in most practical applications it is replaced by LoRA/QLoRA (→ [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]]). RLHF is the core training pipeline for commercial models like GPT-4, Claude, and Gemini.
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]
+[[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]
 
 ## Sources
 - Ouyang et al. (2022) "Training language models to follow instructions with human feedback" (InstructGPT) — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)

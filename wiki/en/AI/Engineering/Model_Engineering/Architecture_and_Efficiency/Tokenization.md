@@ -1,5 +1,5 @@
 ---
-order: 9
+order: 1
 ---
 
 # Tokenization
@@ -108,7 +108,7 @@ Common practical issues:
 The tokenizer is a layer that invisibly intervenes from the moment a prompt is written to the moment API cost is billed. When designing a multilingual service — Korean in particular — ignoring the token-efficiency penalty means cost and context-budget estimates made on an English baseline diverge sharply from actual operation. When choosing a model or routing strategy, "how efficient is this model's tokenizer for our service's language" is as practical a selection criterion as any benchmark score.
 
 ## Related Concepts
-[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] · [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]]
+[[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] · [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]]
 
 ## Sources
 - Sennrich et al. (2016) "Neural Machine Translation of Rare Words with Subword Units (BPE)" — [arXiv:1508.07909](https://arxiv.org/abs/1508.07909)

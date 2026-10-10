@@ -11,16 +11,18 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/index|AI Engineering Wiki]]: Complete AI Engineering architecture — 8 layers: Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph
 
 #### Model Engineering
-- [[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]: Pre-training basics, Chinchilla scaling laws, catastrophic forgetting strategies
-- [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]]: SFT, RLHF(PPO), DPO — full weight updates
-- [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]]: LoRA math, QLoRA NF4+double quantization, HuggingFace implementation
-- [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]]: PTQ/GPTQ/AWQ/GGUF, memory calculation by precision
-- [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]]: Hinton 2015 origin, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
-- [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]]: Dense vs MoE (Total/Active Params), RoPE/YaRN/LongRoPE long-context, SLM-for-Agents
-- [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]]: Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse
-- [[en/AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]]: VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA
-- [[en/AI/Engineering/Model_Engineering/Tokenization|Tokenization]]: BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency
-- [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]]: Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE)
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]: Pre-training basics, Chinchilla scaling laws, catastrophic forgetting strategies
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]: SFT, RLHF(PPO), DPO — full weight updates
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]]: LoRA math, QLoRA NF4+double quantization, HuggingFace implementation
+- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]]: PTQ/GPTQ/AWQ/GGUF, memory calculation by precision
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]]: Hinton 2015 origin, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
+- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]]: Dense vs MoE (Total/Active Params), RoPE/YaRN/LongRoPE long-context, SLM-for-Agents
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]]: Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]]: VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA
+- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]]: BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]]: Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE)
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]]: Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka Representation Learning, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]]: Multimodal embedding models — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 comparison
 
 #### Prompt Engineering
 - [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System & Role Prompting]]: System Prompt structure, role types, Constitutional AI
@@ -47,8 +49,6 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]]: Naive/Advanced/Agentic taxonomy, Self-RAG, CRAG, Query Routing
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]]: Dense+Sparse, Vector+Graph, Vector+Graph+KV hybrids
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]]: CLIP/ColPali shared embeddings, text+image integrated retrieval
-- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]]: Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka Representation Learning, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models
-- [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings]]: Multimodal embedding models — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 comparison
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]: Knowledge graph overview, comparison with vector DBs
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF comparison
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]]: OWL/Turtle, domain ontology, LLM integration patterns

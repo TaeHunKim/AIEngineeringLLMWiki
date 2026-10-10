@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 2
 ---
 
 # Model Architectures & MoE
@@ -36,7 +36,7 @@ This information ages fast, so only representative examples are noted — useful
 
 | Model | Total Params | Active Params | Note |
 |---|---|---|---|
-| DeepSeek-V3 / R1 line | 671B | 37B | Routing + RLVR combined (see the GRPO discussion in [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning\|Full_Fine-Tuning]]) |
+| DeepSeek-V3 / R1 line | 671B | 37B | Routing + RLVR combined (see the GRPO discussion in [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]]) |
 | MiniMax M3 (2026-06) | 229.9B | 9.8B | 256 fine-grained experts |
 | NVIDIA Nemotron 3.5 Lightning | 30B | 3B | Low-latency design for long-running agents, built-in speculative decoding |
 | Cohere North Mini Code | 30B | 3B | Specialized for agentic coding |
@@ -74,7 +74,7 @@ This page covers **how a model is architecturally designed**. How that architect
 Model architecture is an invisible decision for most application teams — they consume a model via API without touching its internal structure. But when designing self-hosted, on-premise, or extremely cost-sensitive large-scale agentic workloads, this choice becomes a direct cost and latency determinant — the Total/Active parameter ratio directly sets memory requirements and per-token cost, and context-length architecture sets the ceiling on everything [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] as a whole can work with.
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Loop_Engineering/Serving_Engineering/Distributed_Serving]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing]]
+[[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Loop_Engineering/Serving_Engineering/Distributed_Serving]] · [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing]]
 
 ## Sources
 - Turing Post "10 Small Language Models to Know in 2026" — [turingpost.com](https://www.turingpost.com/p/slmslist)

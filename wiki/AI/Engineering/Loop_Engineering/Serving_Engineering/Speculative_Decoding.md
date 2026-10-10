@@ -67,7 +67,7 @@ Draft 모델의 예측이 Target 모델의 실제 선택과 얼마나 자주 일
 ```
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]]
+[[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model_Distillation]]
 
 ## AI Engineering에서의 역할
 

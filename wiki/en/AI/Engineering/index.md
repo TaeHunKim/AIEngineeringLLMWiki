@@ -13,18 +13,18 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 ### 1. [[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] — Techniques for working with the model itself
 
-- [[en/AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — Initial training + continuous adaptation
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — Initial training + continuous adaptation
 - Fine-Tuning
-    - [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
-    - [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — Parameter-efficient fine-tuning
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — Parameter-efficient fine-tuning
 - Compression & Optimization
-    - [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
-    - [[en/AI/Engineering/Model_Engineering/Model_Distillation|Knowledge Distillation]] — Teacher→Student knowledge distillation
-- [[en/AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN long-context, SLM-for-Agents *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Multimodal_Models|Multimodal Models]] — VLM adapter-bridged vs native, image tokenization, audio/video, MMMU/DocVQA *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Decision_Models|Decision Models]] — Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student knowledge distillation
+- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN long-context, SLM-for-Agents *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM adapter-bridged vs native, image tokenization, audio/video, MMMU/DocVQA *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency *(2026)*
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) *(2026)*
 
 ---
 
@@ -79,8 +79,8 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - SQL RAG (structured + unstructured Hybrid)
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL-based RAG patterns, Hybrid architecture
 - Shared infrastructure
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models *(2026)*
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
 
 ---
 

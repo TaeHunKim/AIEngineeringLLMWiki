@@ -111,4 +111,4 @@ Supports multiple indexes such as HNSW, PQ, etc.
 - Embeddings + Vector DB + ANN = the infrastructure substrate of search, recommendation, and RAG.
 
 ## Related Concepts
-[[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]]
+[[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]

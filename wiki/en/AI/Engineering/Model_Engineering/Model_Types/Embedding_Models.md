@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 3
 ---
 
 # Embedding & Reranker Models
@@ -111,9 +111,9 @@ If the model supports both MRL and quantization training (e.g., Matryoshka Quant
 
 | Model | Release Date | Features |
 |------|------|------|
-| **gemini-embedding-001** (Google) | 2025-03 | MTEB Multilingual task mean 68.32 (Reported in paper, 1st at the time). Subsequent **Gemini Embedding 2** is multimodal → [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] |
+| **gemini-embedding-001** (Google) | 2025-03 | MTEB Multilingual task mean 68.32 (Reported in paper, 1st at the time). Subsequent **Gemini Embedding 2** is multimodal → [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] |
 | **Qwen3-Embedding** 0.6B/4B/8B (Alibaba) | 2025-06 | Open weights, 8B achieved MTEB Multilingual 70.58 at release. Paired with Qwen3-Reranker of the same family |
-| **EmbeddingGemma** (Google) | 2025 | 308M on-device text embedder. Second generation (740M, multimodal, 2026-10) is referenced in [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] |
+| **EmbeddingGemma** (Google) | 2025 | 308M on-device text embedder. Second generation (740M, multimodal, 2026-10) is referenced in [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] |
 | **harrier-oss-v1** 270M/0.6B/27B (Microsoft) | 2026-03~04 | MIT License, decoder-only + last-token pooling. Based on Microsoft reports, 27B achieved MTEB Multilingual v2 74.3, 0.6B 69.0, 270M 66.5. Instruction is required for queries |
 | **BGE-M3** (BAAI) | 2024 | Integrated dense+sparse+multi-vector, multilingual |
 
@@ -169,7 +169,7 @@ Where a reranker sits in the pipeline and how it combines with techniques like R
 | Document | Scope |
 |------|-----------|
 | **This Document (Embedding_Models)** | Architecture classification of embedding/re-ranker **models**, benchmark interpretation, dimension selection, fine-tuning |
-| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal_Embeddings]] | **Multimodal embedding models** that map images, audio, and video into a single space — alignment learning, modality gap, EmbeddingGemma 2, etc. |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | **Multimodal embedding models** that map images, audio, and video into a single space — alignment learning, modality gap, EmbeddingGemma 2, etc. |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector_Storage]] | Infrastructure for **storing** embeddings — ANN indexes (HNSW/FAISS/ScaNN), vector DB product selection |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced_Retrieval]] | How to place re-ranking and query transformation into the search **pipeline** |
 
@@ -178,7 +178,7 @@ Where a reranker sits in the pipeline and how it combines with techniques like R
 RAG, GraphRAG, semantic cache, and Agentic RAG all ultimately rest on the premise that "good embeddings already exist." If that premise goes unexamined while only the retrieval pipeline is refined, no amount of improvement to reranking, chunking, or query transformation can lift the ceiling set by the embedding model's representational power. Choosing an embedding model is a decision that RAG projects tend to make first and revisit last — often the wrong order.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal_Embeddings]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid_RAG]] · [[en/AI/Engineering/Model_Engineering/Quantization|Model_Engineering/Quantization]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector_Storage]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced_Retrieval]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal_Embeddings]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid_RAG]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Model_Engineering/Quantization]]
 
 ## Sources
 - [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] (Google, Nawalgaria/Ren/Sugnet, February 2025 — Existing sources for this wiki)

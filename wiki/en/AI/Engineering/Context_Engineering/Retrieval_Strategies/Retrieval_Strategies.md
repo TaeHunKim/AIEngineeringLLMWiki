@@ -138,9 +138,9 @@ flowchart TD
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | Agent-driven automatic knowledge graph construction pipeline |
 | **NL2SQL** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL pipeline, benchmarks, latest techniques |
 | **SQL RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | Structured data RAG, Hybrid architecture |
-| **Shared infrastructure** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding Models]] | The embedding/reranker models themselves — bi/cross-encoder/late interaction, Matryoshka, MTEB |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal Embeddings]] | Multimodal embedding models — alignment training, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
+| **Shared infrastructure** | [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding Models]] | The embedding/reranker models themselves — bi/cross-encoder/late interaction, Matryoshka, MTEB |
+| | [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal Embeddings]] | Multimodal embedding models — alignment training, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
 
 ## Related Concepts
 
-[[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal Embeddings]]
+[[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]]

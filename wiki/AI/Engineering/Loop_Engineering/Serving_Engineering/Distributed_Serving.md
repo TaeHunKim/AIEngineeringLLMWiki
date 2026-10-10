@@ -103,7 +103,7 @@ Goodput 기반 스케줄링:
 Disaggregated Serving과 TP/PP/EP는 단일 GPU 최적화(Inference_Internals)만으로는 감당할 수 없는 규모 — 초대형 모델, 초고처리량 서비스 — 에서 등장하는 다음 단계의 최적화다. 이 단계에 도달한 조직에게는 인프라 구성 자체가 모델 성능만큼 중요한 아키텍처 결정이 된다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]] · [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]
+[[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model_Architectures_and_MoE]] · [[AI/Engineering/Loop_Engineering/Production_Operations|Production_Operations]]
 
 ## 출처
 - NVIDIA "Dynamo: Disaggregated Serving" — [developer.nvidia.com](https://developer.nvidia.com/blog/introducing-nvidia-dynamo/)

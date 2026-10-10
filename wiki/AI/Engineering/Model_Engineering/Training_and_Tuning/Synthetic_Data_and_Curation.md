@@ -1,12 +1,12 @@
 ---
-order: 7
+order: 5
 ---
 
 # Synthetic Data & Curation (합성 데이터와 데이터 큐레이션)
 
 ## 개요
 
-**Fine-Tuning**([[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full_Fine-Tuning]], [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])이 "어떻게 학습시키는가"를 다루고 [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]]이 "어떻게 가중치를 압축하는가"를 다룬다면, 본 문서는 그 이전 단계 — **학습에 쓸 데이터셋을 어떻게 만들고 정제하는가**를 다룬다. 2025~2026년 SFT 데이터의 대세는 사람이 직접 쓰는 것이 아니라 **프론티어 모델이 생성하고, 별도 judge가 걸러낸** 합성 데이터다.
+**Fine-Tuning**([[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full_Fine-Tuning]], [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])이 "어떻게 학습시키는가"를 다루고 [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model_Distillation]]이 "어떻게 가중치를 압축하는가"를 다룬다면, 본 문서는 그 이전 단계 — **학습에 쓸 데이터셋을 어떻게 만들고 정제하는가**를 다룬다. 2025~2026년 SFT 데이터의 대세는 사람이 직접 쓰는 것이 아니라 **프론티어 모델이 생성하고, 별도 judge가 걸러낸** 합성 데이터다.
 
 ## 합성 데이터 생성 기법
 
@@ -78,14 +78,14 @@ Judge는 [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|
 |------|-----------|
 | **본 문서 (Synthetic_Data_and_Curation)** | **학습 데이터셋 자체를 생성·정제**하는 방법 — Self-Instruct, judge 필터링, dedup, decontamination |
 | [[AI/Engineering/Loop_Engineering/Data_Flywheel\|Data_Flywheel]] | **프로덕션 운영 중 발생하는 피드백 데이터**를 다시 학습에 순환시키는 루프 |
-| [[AI/Engineering/Model_Engineering/Model_Distillation\|Model_Distillation]] | 데이터가 아니라 **가중치 수준**에서 Teacher→Student 지식을 옮기는 기법 |
+| [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Model_Distillation]] | 데이터가 아니라 **가중치 수준**에서 Teacher→Student 지식을 옮기는 기법 |
 
 ## AI Engineering에서의 역할
 
 파인튜닝·RLVR·증류 모두 "좋은 학습 데이터"를 전제로 한다. 모델 아키텍처나 학습 알고리즘을 아무리 정교하게 골라도, 입력 데이터의 품질이 낮으면 그 상한을 넘어설 수 없다("garbage in, garbage out"). 2025~2026년 데이터 큐레이션이 별도 전문 영역으로 분화된 이유가 여기에 있다 — 데이터 생성·필터링 파이프라인 자체가 모델 성능을 좌우하는 독립 변수가 되었기 때문이다.
 
 ## 관련 개념
-[[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]
+[[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]
 
 ## 출처
 - Wang et al. (2022) "Self-Instruct: Aligning Language Models with Self-Generated Instructions" — [arXiv:2212.10560](https://arxiv.org/abs/2212.10560)

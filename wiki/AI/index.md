@@ -12,16 +12,18 @@ order: 0
 - [[AI/Engineering/index|AI Engineering Wiki]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph 8계층
 
 #### Model Engineering
-- [[AI/Engineering/Model_Engineering/Pre-training_and_Continual_Learning|Engineering/Model_Engineering/Pre-training_and_Continual_Learning]]: Pre-training 기초, Chinchilla 스케일링 법칙, 재앙적 망각 대응 전략
-- [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Engineering/Model_Engineering/Full_Fine-Tuning]]: SFT, RLHF(PPO), DPO — 전체 가중치 업데이트
-- [[AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|Engineering/Model_Engineering/PEFT_LoRA_QLoRA]]: LoRA 수학, QLoRA NF4+이중 양자화, HuggingFace 구현
-- [[AI/Engineering/Model_Engineering/Quantization|Engineering/Model_Engineering/Quantization]]: PTQ/GPTQ/AWQ/GGUF, 정밀도별 메모리 계산
-- [[AI/Engineering/Model_Engineering/Model_Distillation|Engineering/Model_Engineering/Model_Distillation]]: Hinton 2015 기원, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
-- [[AI/Engineering/Model_Engineering/Model_Architectures_and_MoE|Engineering/Model_Engineering/Model_Architectures_and_MoE]]: Dense vs MoE(Total/Active Params), RoPE/YaRN/LongRoPE 롱컨텍스트, SLM-for-Agents
-- [[AI/Engineering/Model_Engineering/Synthetic_Data_and_Curation|Engineering/Model_Engineering/Synthetic_Data_and_Curation]]: Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse
-- [[AI/Engineering/Model_Engineering/Multimodal_Models|Engineering/Model_Engineering/Multimodal_Models]]: VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA
-- [[AI/Engineering/Model_Engineering/Tokenization|Engineering/Model_Engineering/Tokenization]]: BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율
-- [[AI/Engineering/Model_Engineering/Decision_Models|Engineering/Model_Engineering/Decision_Models]]: Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE)
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Engineering/Model_Engineering/Pre-training_and_Continual_Learning]]: Pre-training 기초, Chinchilla 스케일링 법칙, 재앙적 망각 대응 전략
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Engineering/Model_Engineering/Full_Fine-Tuning]]: SFT, RLHF(PPO), DPO — 전체 가중치 업데이트
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|Engineering/Model_Engineering/PEFT_LoRA_QLoRA]]: LoRA 수학, QLoRA NF4+이중 양자화, HuggingFace 구현
+- [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Engineering/Model_Engineering/Quantization]]: PTQ/GPTQ/AWQ/GGUF, 정밀도별 메모리 계산
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Engineering/Model_Engineering/Model_Distillation]]: Hinton 2015 기원, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
+- [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Engineering/Model_Engineering/Model_Architectures_and_MoE]]: Dense vs MoE(Total/Active Params), RoPE/YaRN/LongRoPE 롱컨텍스트, SLM-for-Agents
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Engineering/Model_Engineering/Synthetic_Data_and_Curation]]: Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse
+- [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Engineering/Model_Engineering/Multimodal_Models]]: VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA
+- [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Engineering/Model_Engineering/Tokenization]]: BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율
+- [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Engineering/Model_Engineering/Decision_Models]]: Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE)
+- [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Engineering/Model_Engineering/Embedding_Models]]: Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka Representation Learning, InfoNCE, LLM 기반 임베더, MTEB/BEIR, 리랭커 모델
+- [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Engineering/Model_Engineering/Multimodal_Embeddings]]: 멀티모달 임베딩 모델 — CLIP/SigLIP 정렬, modality gap, EmbeddingGemma 2·Gemini Embedding 2 비교
 
 #### Prompt Engineering
 - [[AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|Engineering/Prompt_Engineering/System_and_Role_Prompting]]: System Prompt 구조, 역할 유형, Constitutional AI
@@ -48,8 +50,6 @@ order: 0
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG]]: Naive/Advanced/Agentic 분류, Self-RAG, CRAG, Query Routing
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG]]: Dense+Sparse, Vector+Graph, Vector+Graph+KV 하이브리드
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG]]: CLIP/ColPali 공유 임베딩, 텍스트+이미지 통합 검색
-- [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models]]: Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka Representation Learning, InfoNCE, LLM 기반 임베더, MTEB/BEIR, 리랭커 모델
-- [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings]]: 멀티모달 임베딩 모델 — CLIP/SigLIP 정렬, modality gap, EmbeddingGemma 2·Gemini Embedding 2 비교
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph]]: Knowledge Graph 개요, 벡터 DB와의 비교
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF]]: Neo4j Cypher vs SPARQL, LPG/RDF 비교
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology]]: OWL/Turtle, 도메인 온톨로지, LLM 통합 패턴

@@ -58,7 +58,7 @@ KO 문서만 직접 작성하고 EN 문서는 `npm run translate:wiki -- --chang
 - 출처 표기 — "(이 위키의 기존 소스, 2025년 11월 최초 발행)"
 - `log.md`·`SCHEMA.md` 전체 — 두 파일은 위키 메타 기술이 존재 목적이므로 예외
 
-모범 사례로 참고할 문서: `Model_Engineering/Synthetic_Data_and_Curation`,
+모범 사례로 참고할 문서: `Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation`,
 `Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion`,
 `Loop_Engineering/Serving_Engineering/Speculative_Decoding` — 세 문서 모두 형제 문서를
 주제 기준으로만 참조하고 위키 자신을 언급하지 않는다.

@@ -8,7 +8,7 @@
 - **출처 (URL)**: https://www.kaggle.com/whitepaper-foundational-llm-and-text-generation
 
 ## 요약
-[[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]]은 prefix가 주어졌을 때 다음 토큰의 확률을 매기는 모델. 이전엔 RNN(LSTM/GRU)이 표준이었지만 sequential·vanishing gradient 문제로 한계가 있었고, **Transformer (Vaswani 2017)**가 self-attention과 병렬화로 이를 깨뜨렸다. 본 백서는 [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]]가 어떻게 [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]]을 수행하는지, 그리고 SFT·RLHF·PEFT·LoRA 같은 [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] 기법과 추론 가속 기술까지 망라한다.
+[[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]]은 prefix가 주어졌을 때 다음 토큰의 확률을 매기는 모델. 이전엔 RNN(LSTM/GRU)이 표준이었지만 sequential·vanishing gradient 문제로 한계가 있었고, **Transformer (Vaswani 2017)**가 self-attention과 병렬화로 이를 깨뜨렸다. 본 백서는 [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]]가 어떻게 [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]]을 수행하는지, 그리고 SFT·RLHF·PEFT·LoRA 같은 [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] 기법과 추론 가속 기술까지 망라한다.
 
 ## Transformer 아키텍처
 - Encoder + Decoder. Self-attention으로 병렬화. Output size는 입력에 선형.
@@ -140,4 +140,4 @@ Decode = memory-bound (배칭 적합), Prefill = compute-bound. Sequence/Pipelin
 - 샘플링 파라미터(T·top-K·top-P)는 태스크에 따라 튜닝.
 
 ## 관련 개념
-[[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]]
+[[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]]

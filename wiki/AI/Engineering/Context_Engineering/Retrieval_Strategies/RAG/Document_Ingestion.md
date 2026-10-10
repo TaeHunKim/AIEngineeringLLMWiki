@@ -36,7 +36,7 @@ flowchart TD
 
 **OCR 경유**: 텍스트를 명시적으로 추출한 뒤 기존 RAG 파이프라인(청킹→임베딩→검색)에 그대로 태운다. 텍스트 추출 오류(표 구조 붕괴, 수식 깨짐)가 그대로 하류로 전파되는 것이 약점이다.
 
-**OCR-free**(ColPali/ColQwen 계열): 문서 페이지를 텍스트로 변환하지 않고 **이미지 그대로** Vision-Language Model에 넣어 임베딩한다. 레이아웃·표·차트·이미지가 뒤섞인 문서에서 OCR 오류 자체를 우회한다는 장점이 있다. 상세 아키텍처와 임베딩 방식은 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]]와 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]] 참고.
+**OCR-free**(ColPali/ColQwen 계열): 문서 페이지를 텍스트로 변환하지 않고 **이미지 그대로** Vision-Language Model에 넣어 임베딩한다. 레이아웃·표·차트·이미지가 뒤섞인 문서에서 OCR 오류 자체를 우회한다는 장점이 있다. 상세 아키텍처와 임베딩 방식은 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]]와 [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]] 참고.
 
 ## 도구 지형
 
@@ -87,7 +87,7 @@ flowchart TD
 RAG 파이프라인 품질 저하의 상당수는 리랭킹이나 임베딩 모델이 아니라 **이 첫 단계**에서 이미 결정된다 — 표가 깨진 채로 청킹되거나, 페이지 순서가 뒤섞인 채로 임베딩되면 그 뒤의 모든 최적화는 손상된 입력 위에서 이루어진다. RAG 프로젝트 트러블슈팅 시 검색 알고리즘을 의심하기 전에 이 단계의 출력을 먼저 육안으로 검사하는 것이 실무에서 가장 빠른 디버깅 경로인 경우가 많다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking_Strategies]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal_RAG]] · [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]]
 
 ## 출처
 - Unstructured.io 공식 문서 — [docs.unstructured.io](https://docs.unstructured.io)

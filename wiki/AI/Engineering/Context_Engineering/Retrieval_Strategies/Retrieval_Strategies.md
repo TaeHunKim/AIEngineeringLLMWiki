@@ -138,9 +138,9 @@ flowchart TD
 | | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | 에이전트 기반 지식 그래프 자동 구축 파이프라인 |
 | **NL2SQL** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL 파이프라인, 벤치마크, 최신 기법 |
 | **SQL RAG** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | 정형 데이터 RAG, Hybrid 아키텍처 |
-| **공통 인프라** | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models\|Embedding Models]] | 임베딩·리랭커 모델 자체 — Bi/Cross-encoder/Late Interaction, Matryoshka, MTEB |
-| | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings\|Multimodal Embeddings]] | 멀티모달 임베딩 모델 — 정렬 학습, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
+| **공통 인프라** | [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding Models]] | 임베딩·리랭커 모델 자체 — Bi/Cross-encoder/Late Interaction, Matryoshka, MTEB |
+| | [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal Embeddings]] | 멀티모달 임베딩 모델 — 정렬 학습, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
 
 ## 관련 개념
 
-[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Embedding_Models|Embedding Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/Multimodal_Embeddings|Multimodal Embeddings]]
+[[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] · [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]]

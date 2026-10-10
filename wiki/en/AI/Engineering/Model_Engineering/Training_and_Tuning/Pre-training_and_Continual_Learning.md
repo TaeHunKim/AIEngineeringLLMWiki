@@ -64,7 +64,7 @@ Constrain changes to important parameters:
 #### 3. Architecture-Based
 Separate parameters for new tasks:
 - **Add Adapter layers**: Freeze existing parameters, train only small adapters
-- **LoRA**: Train separate parameters via low-rank decomposition (→ [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])
+- **LoRA**: Train separate parameters via low-rank decomposition (→ [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])
 
 #### 4. Learning Rate Strategies
 - **LR Re-warming + Re-decay + Replay** combination: Can approach full retraining performance (2024 research)
@@ -83,7 +83,7 @@ Separate parameters for new tasks:
 Pre-training sits at the very bottom of the AI Engineering pyramid. Most teams don't perform this stage directly and instead use Foundation Models from OpenAI, Anthropic, Meta, etc. However, **Continual Pre-training** becomes a core competitive advantage in domain-specialized services (financial AI, medical AI, etc.).
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Model_Engineering/Quantization|Quantization]]
+[[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]]
 
 ## Sources
 - Hoffmann et al. (2022) "Training Compute-Optimal Large Language Models" (Chinchilla) — [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)

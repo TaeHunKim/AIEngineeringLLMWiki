@@ -41,7 +41,7 @@ RAG 시스템에서는 주로 **faithfulness**(검색된 컨텍스트에 충실�
 
 ### 4. 토큰 확률·내부 신호
 
-logprob 기반 신뢰도는 저렴하지만 **calibration**이 보장되지 않는다 — 확률 보정 기법과 ECE 측정은 [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]]가 다룬다. 모델 내부 표현을 읽는 white-box probe는 [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]]의 연장선이다.
+logprob 기반 신뢰도는 저렴하지만 **calibration**이 보장되지 않는다 — 확률 보정 기법과 ECE 측정은 [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision_Models]]가 다룬다. 모델 내부 표현을 읽는 white-box probe는 [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]]의 연장선이다.
 
 ## 예방 기법
 
@@ -67,11 +67,11 @@ logprob 기반 신뢰도는 저렴하지만 **calibration**이 보장되지 않�
 |------|-----------|
 | [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | 품질 평가 일반(관련성·톤·정확성), judge 편향 |
 | [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | 입출력 차단 인프라(NeMo, LlamaGuard), 안전·정책 위반 |
-| [[AI/Engineering/Model_Engineering/Decision_Models\|Decision_Models]] | 판정형 모델과 확률 calibration |
+| [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | 판정형 모델과 확률 calibration |
 | **본 문서** | "주장이 근거에 의해 뒷받침되는가" — 탐지·예방·정책 |
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Decision_Models|Decision_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]]
+[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision_Models]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]]
 
 ## 출처
 - [1] Farquhar et al. (2024) "Detecting hallucinations in large language models using semantic entropy" — Nature 630, 625–630, [nature.com](https://www.nature.com/articles/s41586-024-07421-0)
