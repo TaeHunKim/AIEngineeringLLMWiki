@@ -15,6 +15,7 @@
 //   L9  KO and EN copies of a page must link to the same set of targets
 //   L10 KO and EN copies of a page must link to the same set of external URLs
 //   L11 a markdown link destination must close its parentheses
+//   L12 a ```mermaid fenced block must parse as valid Mermaid syntax
 //
 // L10/L11 read the code-stripped copy, so link-like text inside fenced blocks or
 // inline code (syntax examples, regexes) is never mistaken for a real link.
@@ -23,6 +24,20 @@
 // Suppress L8/L9/L10 for a whole page pair with frontmatter on either copy:  lint-ignore: L8,L9,L10
 import { readdir, readFile } from "fs/promises"
 import { join, relative } from "path"
+import { JSDOM } from "jsdom"
+
+// L12 needs browser-shaped globals before `mermaid` is imported: it reads
+// `document`/`window` at module load time, not just when parsing. Mermaid never
+// renders here (only `mermaid.parse()` runs), so no canvas/layout engine is needed —
+// these four globals are enough for the parser path.
+const dom = new JSDOM("<!doctype html><html><body></body></html>", { url: "http://localhost/" })
+globalThis.window = dom.window
+globalThis.document = dom.window.document
+globalThis.HTMLElement = dom.window.HTMLElement
+globalThis.SVGElement = dom.window.SVGElement
+globalThis.Node = dom.window.Node
+const { default: mermaid } = await import("mermaid")
+mermaid.initialize({ startOnLoad: false })
 
 const WIKI_DIR = "wiki"
 const KO_ROOT = "wiki/AI"
@@ -175,6 +190,38 @@ for (const file of files) {
   headings.set(posix, fileHeadings)
   linkTargets.set(posix, fileTargets)
   externalUrls.set(posix, fileUrls)
+
+  // L12 — collect ```mermaid fenced blocks (opening fence line + raw body) to
+  // validate below. Suppress a single block with <!-- lint-ignore: L12 --> on its
+  // opening ```mermaid line.
+  const mermaidBlocks = []
+  {
+    let collecting = false
+    let openLine = 0
+    let body = []
+    let skipThis = false
+    rawLines.forEach((l, idx) => {
+      const trimmed = l.trimStart()
+      if (!collecting && trimmed.startsWith("```mermaid")) {
+        collecting = true
+        openLine = idx + 1
+        body = []
+        skipThis = ignoredRules(l).has("L12")
+      } else if (collecting && trimmed.startsWith("```")) {
+        collecting = false
+        if (!skipThis) mermaidBlocks.push({ line: openLine, code: body.join("\n") })
+      } else if (collecting) {
+        body.push(l)
+      }
+    })
+  }
+  for (const block of mermaidBlocks) {
+    try {
+      await mermaid.parse(block.code)
+    } catch (e) {
+      report("L12", file, block.line, "mermaid 다이어그램 문법 오류", e.message.split("\n")[0])
+    }
+  }
 
   rawLines.forEach((rawLine, idx) => {
     const lineNo = idx + 1
@@ -339,6 +386,7 @@ const RULE_LABEL = {
   L9: "KO/EN wikilink 대상 집합 불일치",
   L10: "KO/EN 외부 링크 URL 집합 불일치",
   L11: "링크 대상 괄호 미닫힘",
+  L12: "mermaid 다이어그램 문법 오류",
 }
 
 if (findings.length === 0) {

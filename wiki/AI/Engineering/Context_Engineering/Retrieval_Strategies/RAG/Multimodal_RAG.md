@@ -29,14 +29,14 @@ Multimodal RAG는 이러한 시각 정보를 OCR 없이 직접 임베딩해 검�
 
 ```mermaid
 flowchart TD
-    subgraph 인덱싱
+    subgraph indexing["인덱싱"]
         D["문서 (PDF/슬라이드)"]
         D --> TE["텍스트 청크<br/>Text Encoder"]
         D --> IE["이미지/페이지<br/>Image Encoder<br/>(CLIP / SigLIP-2)"]
         TE --> VI["Unified Vector Index"]
         IE --> VI
     end
-    subgraph 검색·생성
+    subgraph retrieval["검색·생성"]
         Q["사용자 쿼리"] --> QE["쿼리 인코더"]
         QE --> VI
         VI -->|"Top-K (텍스트+이미지 혼합)"| MM["Multimodal LLM<br/>(GPT-4o / Gemini / Claude)"]
