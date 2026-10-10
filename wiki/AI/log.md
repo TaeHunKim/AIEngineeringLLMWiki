@@ -363,3 +363,9 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **신규**: `Model_Types/Large_Language_Models.md` — decoder-only Transformer 개관, base/instruct/reasoning 단계 구분, open-weight vs closed API. `Multimodal_Models.md`·`Decision_Models.md` 경계 정리 표에 대칭 행 추가.
 - **영향**: Quartz URL이 바뀌어 기존 deep link는 리다이렉트 없이 깨짐.
 - **검증**: `npm run lint:wiki` 0건.
+
+## [2026-10-10] update | Decision_Models에 OpenAI Decisions API · Microsoft-Decision-1 반영
+- **신규 섹션**: `Decision_Models.md`에 "프런티어 랩의 진입" — Jev / OpenAI Decisions API(`gpt-6-luna`, 2026-10-06 public beta) / Microsoft-Decision-1(Qwen3.5-9B post-training, 2026-10-09 Foundry) 비교 표, 각 API 특징(`confidence` 산출 미공개, `refusal`, 이미지 입력, 가격), BANKING77 독립 비교(ECE는 Decisions, Brier는 Jev 우위).
+- **보강**: 구현 접근 표 학습형 행에 Microsoft-Decision-1, 사용 패턴 라우팅 항목에 에이전트 통제·음성 연동, 출처 5건.
+- **요약 줄**: `Model_Types.md`, `Model_Engineering.md`, `Engineering/index.md` 설명 갱신.
+- **출처 한계**: 속도·비용 수치는 벤더 자사 측정, BANKING77 비교는 단일 샘플·beta 기준.

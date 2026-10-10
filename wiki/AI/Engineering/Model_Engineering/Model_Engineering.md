@@ -42,7 +42,7 @@ flowchart LR
 | [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models\|Multimodal_Models]] | VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA |
 | [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | 임베딩·리랭커 모델 자체 — Bi/Cross-encoder/Late Interaction, Matryoshka, MTEB |
 | [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | 멀티모달 임베딩 모델 — 정렬 학습, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
-| [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) |
+| [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | Jev · OpenAI Decisions · Microsoft-Decision-1 등 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) |
 
 ### 학습·조정
 

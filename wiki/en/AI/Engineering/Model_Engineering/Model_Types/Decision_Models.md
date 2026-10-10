@@ -8,7 +8,7 @@ order: 5
 
 A **Decision Model** is a discriminative model that does not generate text. Given user-specified options, scales, or statements, it returns only **typed values together with probabilities and confidence scores**. Its purpose is to strip the long output, high latency, and unstable formatting of generative LLMs out of tasks where the job is to look at a short input and quickly pick one answer: classification, routing, scoring, and filtering.
 
-When TypeSafe AI released **Jev** in September 2026, the category began to be called "System One Models" (a name borrowed from Kahneman's fast, intuitive thinking). Open-weight projects then rapidly produced reproductions in three forms: (a) newly trained models, (b) existing LLMs tuned with a head or LoRA, and (c) wrappers that simply read an existing LLM's next-token **logprobs**. None of the ideas is new on its own (NLI-based zero-shot classification, scoring options from logits). What is new is delivering **zero-shot flexibility, calibrated probabilities, and a type-safe API** as one package.
+When TypeSafe AI released **Jev** in September 2026, the category began to be called "System One Models" (a name borrowed from Kahneman's fast, intuitive thinking). Open-weight projects then rapidly produced reproductions in three forms: (a) newly trained models, (b) existing LLMs tuned with a head or LoRA, and (c) wrappers that simply read an existing LLM's next-token **logprobs**. From late September, frontier labs such as OpenAI and Microsoft also began offering their own Decision Models as APIs. None of the ideas is new on its own (NLI-based zero-shot classification, scoring options from logits). What is new is delivering **zero-shot flexibility, calibrated probabilities, and a type-safe API** as one package.
 
 Where [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]] is about fitting generated text to a schema, this document covers **a model class that never generates text in the first place**.
 
@@ -37,6 +37,49 @@ Multiple questions can be sent in parallel in one request, and responses are sch
 
 TypeSafe's self-reported figures are 70–500ms responses, $0.042 per million input tokens (output free), and 40–400x cheaper and 40–200x faster than frontier LLMs. These numbers come from **the vendor's own benchmarks** and should be read as near-best-case results.
 
+## Frontier Labs Enter
+
+Within two weeks of Jev's release, OpenAI and Microsoft shipped APIs of the same shape. The question primitives of all three products have converged on essentially the same three kinds (true/false · choice · scale).
+
+| Aspect | Jev (TypeSafe AI) | OpenAI Decisions API | Microsoft-Decision-1 |
+|------|-------------------|----------------------|----------------------|
+| Release | 2026-09-15 early access | 2026-09-30 limited preview → 2026-10-06 public beta | 2026-10-09 Microsoft Foundry |
+| Model | Undisclosed | `gpt-6-luna` only | Qwen3.5-9B post-training |
+| Primitives | Noul / Choice / Score | `predicate` / `choice` / `score` | Yes/no / multiple choice / scoring |
+| Returns | Probability per option | Per-option `probabilities` + separate `confidence`; `refusal` possible | Probability per option |
+| Input | Text | Text + images (up to 128) | Text |
+| Price (1M input) | $0.042, output free | $0.10, output free | $0.042, output free |
+| Weights | Closed (hosted API) | Closed | Closed (API only) |
+
+### OpenAI Decisions API
+
+Sam Altman announced it at DevDay (2026-09-30), saying that "by focusing the model on that choice, we can make it extremely fast", and it opened as a public beta for all developers on October 6 (no GA date yet). A single `POST /v1/decisions` request can carry several independent questions; questions that depend on each other must go in separate requests. `score` returns the probability-weighted average of the level indices.
+
+**How `confidence` is computed and how the per-option distribution is produced have not been disclosed.** Speed is backed only by vendor figures — "about 10x faster than the Responses API" and 150ms (a DevDay slide) — while p50/p95, rate limits, and the maximum number of options are unpublished. Any question can come back as a `refusal`, a behavior Jev does not have, so automated pipelines must treat refusals as a separate branch. Besides text it accepts image input, and a guide for calling Decisions from GPT-Live voice sessions was released alongside it.
+
+### Microsoft-Decision-1
+
+Microsoft post-trains the open-weight Qwen3.5-9B and offers it only as an API on Microsoft Foundry. It is a large-cloud product built on the "trained Decision Model" approach in the implementation table below (layering decision training onto an existing LLM). It is priced the same as Jev at $0.042 per 1M input tokens, and Microsoft has announced future versions based on MAI and OpenAI models. The headline uses are task classification, prioritization, verification, and agent workflow control.
+
+As in-house case studies, Microsoft reports classifying 10,000+ pieces of Xbox feedback by topic at quality similar to GPT-6 Sol for about 1/200 of the cost and more than 14x faster, and running Copilot response-quality evaluation about 100x faster. All of these are **internal measurements**; there are no public benchmark scores.
+
+### Early Comparison and Implications
+
+One developer compared OpenAI Decisions (beta) and Jev (v1.13.0) under identical conditions on BANKING77 77-way intent classification (770 items).
+
+| API | Guidance | Accuracy | ECE ↓ | Brier ↓ | Mean latency |
+|-----|------|--------|-------|---------|-----------|
+| Decisions | Label definitions only | 78.96% | 4.35% | 0.3163 | 144ms |
+| Jev | Label definitions only | 81.17% | 9.33% | 0.3078 | 298ms |
+| Decisions | Definitions + 2 examples per label | 84.16% | 4.63% | 0.2472 | 194ms |
+| Jev | Definitions + 2 examples per label | 85.32% | 6.50% | 0.2206 | 520ms |
+
+- **The calibration metrics disagree**: Decisions is better on ECE, Jev on Brier score. This is why a vendor's "calibrated" claim should not be judged on a single metric.
+- **With labels, trained classifiers still lead**: a MiniLM classifier fine-tuned on the same data reached 89.87%, beating both APIs.
+- **Limitations**: a single sample, a beta service, and measurements taken on different dates, so the latency comparison is not controlled. Decisions' refusals (2–7 items) were counted as wrong.
+
+As the primitives converge, an interface that is swappable across vendors is taking shape, but **how probabilities are produced and what `confidence` means differ by vendor.** When switching vendors or upgrading versions, do not carry thresholds over as-is — re-measure calibration on your own data.
+
 ## Lineage
 
 ```mermaid
@@ -51,7 +94,7 @@ flowchart LR
 
 | Approach | Method | Examples | Calibration | Notes |
 |----------|--------|----------|-------------|-------|
-| **Trained Decision Model** | Attach a decision head to an encoder/LLM, LoRA-tune it, or train from scratch | Laya (ModernBERT-based), Kev (Qwen3.5 LoRA + pointer head), NanoJev (0.6B scratch), pplx-decider / Clef (27B class) | Some report post-hoc calibration such as temperature scaling | Whether training code and data are released varies by project |
+| **Trained Decision Model** | Attach a decision head to an encoder/LLM, LoRA-tune it, or train from scratch | Laya (ModernBERT-based), Kev (Qwen3.5 LoRA + pointer head), NanoJev (0.6B scratch), pplx-decider / Clef (27B class), Microsoft-Decision-1 (Qwen3.5-9B post-training, API only) | Some report post-hoc calibration such as temperature scaling | Whether training code and data are released varies by project |
 | **Logprob wrapper** | Model stays frozen. List options in the prompt and softmax the option-token logits | mini-jev (Qwen3-4B), SemIf, openjev-sglang (prefill-only server), AnyJev (Nokia) | Most **make no calibration claim** (AnyJev is an exception — see below) | No retraining needed; can be sensitive to option order |
 | **Classic zero-shot classifier** | An NLI model or label-aware encoder takes labels at runtime | NLI-head models, GLiClass, SetFit (few-shot) | Scores are often not calibrated probabilities | Runs on CPU; suited to short-input classification |
 | **Structured output library** | Constrain any LLM's output to a schema or grammar | Outlines, Instructor, DSPy | Not applicable (no probabilities) | Types are guaranteed, but no calibrated confidence |
@@ -131,7 +174,7 @@ flowchart TD
     DM -->|"uncertain band"| ESC["Larger model / LLM judge / human<br/>(selective prediction)"]
 ```
 
-- **Routing and intent classification**: decide which tool, model, or workflow to send a request to at the front of an agent. Escalate to a larger model when probability is low.
+- **Routing and intent classification**: decide which tool, model, or workflow to send a request to at the front of an agent. Escalate to a larger model when probability is low. Microsoft-Decision-1 and OpenAI Decisions both present agent action selection and workflow control as headline uses, and OpenAI also documents a setup where a voice agent calls Decisions mid-conversation.
 - **Moderation and guardrails**: judge whether input/output violates policy using Noul.
 - **Exhaustive eval + sampled deep review**: run the cheap judgment on every trace and send only a sample to an LLM judge for careful review. Arize notes that Jev cannot fully replace an LLM judge (no rationale, accuracy slightly behind frontier models) and recommends this kind of hybrid.
 - **Selective prediction**: use calibrated probabilities to split "bands to handle automatically" from "bands to hand to a human" via thresholds.
@@ -160,5 +203,10 @@ A Decision Model is a component that replaces the "short judgment" calls scatter
 - Arize, "TypeSafe Jev: Can Decision Models Replace LLM Judges?" — [arize.com](https://arize.com/blog/typesafe-jev-llm-judge/)
 - Glean, "Jev and the return of the zero-shot classifier" — [glean.com](https://www.glean.com/blog/jev-zero-shot-classifier)
 - "Jev (AI model)" — [Wikipedia](https://en.wikipedia.org/wiki/Jev_(AI_model))
+- TechCrunch, "OpenAI's Jev clone could help the frontier lab stop its swarming agents" (2026-09-30) — [techcrunch.com](https://techcrunch.com/2026/09/30/openais-jev-clone-could-help-the-frontier-lab-stop-its-swarming-agents/)
+- Evalgent, "OpenAI Decisions API vs Jev: Pricing, Probabilities, Voice" (summary of OpenAI's official guides as of 2026-10-07) — [evalgent.com](https://www.evalgent.com/blog/openai-decisions-api-vs-jev-voice-agents)
+- "OpenAI Decisions API: How Does Jev's Big-Lab Competitor Fare?" (2026-10-08, BANKING77 comparison — single sample, beta) — [stacktoheap.com](https://stacktoheap.com/blog/2026/10/08/jev-the-decisions-strike-back/)
+- Microsoft, "Introducing Microsoft-Decision-1 in Microsoft Foundry for decision and classification workloads" — [techcommunity.microsoft.com](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-microsoft-decision-1-in-microsoft-foundry-for-decision-and-classific/4562742)
+- Digital Today, "Microsoft joins decision-focused AI model race with Microsoft-Decision-1" (2026-10-09; performance figures are Microsoft's internal measurements) — [digitaltoday.co.kr](https://www.digitaltoday.co.kr/en/view/112711/microsoft-joins-decision-focused-ai-model-race-unveils-microsoft-decision-1)
 - systemonemodels.org, "Jev alternatives: open-source reproductions, local models and classifiers" — [systemonemodels.org](https://systemonemodels.org/examples/alternatives/) (community-curated — re-verify per-project figures in each repo)
 - Zhang et al. (2026), AnyJev — [github.com/nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (figures are the authors' own measurements; the gold labels of the typed-decisions benchmark are teacher-LLM outputs)

@@ -42,7 +42,7 @@ It is divided into three subcategories. **Model Types** covers model classificat
 | [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models\|Multimodal_Models]] | VLM Architectures (Adapter-based vs Native), Image Tokenization, Audio/Video, MMMU/DocVQA |
 | [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | The embedding/reranker models themselves — Bi/Cross-encoder/Late Interaction, Matryoshka, MTEB |
 | [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | Multimodal Embedding Models — Alignment Learning, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
-| [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | Jev Series System One Model, Choice/Score/Noul Primitives, logprob wrapper vs Learned, calibration(ECE) |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | System One Models such as Jev · OpenAI Decisions · Microsoft-Decision-1, Choice/Score/Noul Primitives, logprob wrapper vs Learned, calibration(ECE) |
 
 ### Training and Tuning
 

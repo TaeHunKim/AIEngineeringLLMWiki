@@ -8,7 +8,7 @@ order: 5
 
 **Decision Model**은 텍스트를 생성하지 않고, 사용자가 지정한 선택지·척도·명제에 대해 **타입이 보장된 값과 확률(probability)·confidence**만 반환하는 판정형(discriminative) 모델이다. 분류, 라우팅, 점수화, 필터링처럼 "짧은 입력을 보고 빠르게 하나를 고르는" 작업에서 생성형 LLM의 긴 출력·높은 지연·불안정한 포맷을 걷어내는 것이 목적이다.
 
-2026년 9월 TypeSafe AI가 **Jev**를 공개하면서 이 범주가 "System One Model"(Kahneman의 빠른 직관 사고에서 차용한 이름)로 불리기 시작했다. 이후 오픈웨이트 진영에서 (a) 새로 학습한 모델, (b) 기존 LLM에 헤드·LoRA를 붙여 튜닝한 모델, (c) 기존 LLM의 next-token **logprob**만 읽는 wrapper 형태의 재현이 활발히 나왔다. 아이디어 자체는 새롭지 않다(NLI 기반 zero-shot 분류, logit으로 선택지 점수화). 새로운 점은 **zero-shot 유연성 + 보정된 확률 + 타입 보장 API**를 한 묶음으로 제공한다는 것이다.
+2026년 9월 TypeSafe AI가 **Jev**를 공개하면서 이 범주가 "System One Model"(Kahneman의 빠른 직관 사고에서 차용한 이름)로 불리기 시작했다. 이후 오픈웨이트 진영에서 (a) 새로 학습한 모델, (b) 기존 LLM에 헤드·LoRA를 붙여 튜닝한 모델, (c) 기존 LLM의 next-token **logprob**만 읽는 wrapper 형태의 재현이 활발히 나왔고, 9월 말부터는 OpenAI·Microsoft 등 프런티어 랩도 자체 Decision Model을 API로 내놓았다. 아이디어 자체는 새롭지 않다(NLI 기반 zero-shot 분류, logit으로 선택지 점수화). 새로운 점은 **zero-shot 유연성 + 보정된 확률 + 타입 보장 API**를 한 묶음으로 제공한다는 것이다.
 
 [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]]이 "생성된 텍스트를 스키마에 맞추는" 방법이라면, 이 문서는 **애초에 텍스트를 생성하지 않는 모델 클래스**를 다룬다.
 
@@ -37,6 +37,49 @@ TypeSafe AI의 Jev(2026-09-15 early access 공개)는 **세 가지 질문 프리
 
 TypeSafe 자체 보고 수치는 응답 70–500ms, 입력 토큰 100만 개당 $0.042(출력 무료), 프런티어 LLM 대비 40–400배 저렴·40–200배 빠름이다. 이 수치는 **자사 벤치마크 기반**이며 상한에 가까운 사례로 해석해야 한다.
 
+## 프런티어 랩의 진입
+
+Jev 공개 2주 만에 OpenAI와 Microsoft가 같은 형태의 API를 내놓았다. 세 제품의 질문 프리미티브는 사실상 동일한 세 가지(참/거짓 · 선택 · 척도)로 수렴했다.
+
+| 항목 | Jev (TypeSafe AI) | OpenAI Decisions API | Microsoft-Decision-1 |
+|------|-------------------|----------------------|----------------------|
+| 공개 | 2026-09-15 early access | 2026-09-30 limited preview → 2026-10-06 public beta | 2026-10-09 Microsoft Foundry |
+| 모델 | 비공개 | `gpt-6-luna` 단일 | Qwen3.5-9B post-training |
+| 프리미티브 | Noul / Choice / Score | `predicate` / `choice` / `score` | 예·아니오 / 다지선다 / 점수화 |
+| 반환 | 선택지별 확률 | 선택지별 `probabilities` + 별도 `confidence`, `refusal` 가능 | 선택지별 확률 |
+| 입력 | 텍스트 | 텍스트 + 이미지(최대 128장) | 텍스트 |
+| 가격 (1M input) | $0.042, 출력 무료 | $0.10, 출력 무료 | $0.042, 출력 무료 |
+| 가중치 | 비공개 (hosted API) | 비공개 | 비공개 (API 전용) |
+
+### OpenAI Decisions API
+
+Sam Altman이 DevDay(2026-09-30)에서 "모델을 선택 하나에 집중시키면 극도로 빠르게 만들 수 있다"며 공개했고, 10월 6일 전체 개발자 대상 public beta로 열렸다(GA 일정 미정). `POST /v1/decisions` 한 요청에 독립된 질문 여러 개를 실을 수 있으며, 서로 의존하는 질문은 별도 요청으로 나눠야 한다. `score`는 level 인덱스의 확률 가중 평균을 반환한다.
+
+확률 정의 중 **`confidence`가 어떻게 산출되는지, 선택지 분포를 어떻게 만드는지는 공개되지 않았다.** 속도는 "Responses API 대비 약 10배", 150ms(DevDay 슬라이드)라는 자사 수치만 있고 p50/p95·rate limit·최대 선택지 수는 미공개다. 질문 단위로 `refusal`이 나올 수 있다는 점은 Jev에 없는 동작이므로, 자동 처리 파이프라인에서는 refusal을 별도 분기로 다뤄야 한다. 텍스트 외에 이미지 입력을 받고, GPT-Live 음성 세션에서 Decisions를 호출하는 연동 가이드도 함께 나왔다.
+
+### Microsoft-Decision-1
+
+Microsoft는 오픈웨이트 Qwen3.5-9B를 post-training해 Microsoft Foundry에서 API로만 제공한다. 아래 구현 접근 표의 "학습형 Decision Model"(기존 LLM에 decision 학습을 얹는 방식)이 대형 클라우드 상품으로 나온 사례다. 가격은 Jev와 같은 입력 1M 토큰당 $0.042이며, 향후 MAI·OpenAI 모델 기반 버전도 예고했다. 주 용도로는 작업 분류·우선순위 결정·검증·에이전트 워크플로 통제를 내세운다.
+
+자사 사례로 Xbox 피드백 1만여 건 토픽 분류에서 GPT-6 Sol과 비슷한 품질을 약 1/200 비용·14배 이상 빠른 속도로, Copilot 응답 품질 평가에서 약 100배 빠른 속도로 처리했다고 밝혔다. 모두 **내부 측정**이며 공개 벤치마크 점수는 없다.
+
+### 초기 비교와 시사점
+
+한 개발자가 BANKING77 77-way 의도 분류(770건)로 OpenAI Decisions(beta)와 Jev(v1.13.0)를 같은 조건에서 비교했다.
+
+| API | 지침 | 정확도 | ECE ↓ | Brier ↓ | 평균 지연 |
+|-----|------|--------|-------|---------|-----------|
+| Decisions | 라벨 정의만 | 78.96% | 4.35% | 0.3163 | 144ms |
+| Jev | 라벨 정의만 | 81.17% | 9.33% | 0.3078 | 298ms |
+| Decisions | 정의 + 라벨당 예시 2개 | 84.16% | 4.63% | 0.2472 | 194ms |
+| Jev | 정의 + 라벨당 예시 2개 | 85.32% | 6.50% | 0.2206 | 520ms |
+
+- **보정 지표가 엇갈린다**: ECE는 Decisions가, Brier score는 Jev가 낫다. "calibrated"라는 벤더 주장을 지표 하나로 판단하면 안 되는 이유다.
+- **레이블이 있으면 학습형 분류기가 여전히 앞선다**: 같은 데이터에서 fine-tuning한 MiniLM 분류기가 89.87%로 두 API를 모두 넘었다.
+- **한계**: 단일 샘플, beta 서비스, 측정 날짜가 달라 지연 비교는 통제되지 않았다. Decisions의 refusal(2–7건)은 오답으로 처리됐다.
+
+프리미티브가 같은 형태로 수렴하면서 벤더 간 교체 가능한 인터페이스가 생기고 있지만, **확률을 만드는 방식과 `confidence`의 정의는 벤더마다 다르다.** 벤더를 바꾸거나 버전이 올라가면 임계값을 그대로 옮기지 말고 자기 데이터로 보정을 다시 측정해야 한다.
+
 ## 계보
 
 ```mermaid
@@ -51,7 +94,7 @@ flowchart LR
 
 | 접근 | 방식 | 예시 | 보정(calibration) | 비고 |
 |------|------|------|------------------|------|
-| **학습형 Decision Model** | 인코더·LLM에 decision head를 붙이거나 LoRA 튜닝, 혹은 scratch 학습 | Laya(ModernBERT 기반), Kev(Qwen3.5 LoRA + pointer head), NanoJev(0.6B scratch), pplx-decider·Clef(27B급) | 일부는 temperature scaling 등 post-hoc 보정 보고 | 학습 코드·데이터 공개 여부가 프로젝트마다 다름 |
+| **학습형 Decision Model** | 인코더·LLM에 decision head를 붙이거나 LoRA 튜닝, 혹은 scratch 학습 | Laya(ModernBERT 기반), Kev(Qwen3.5 LoRA + pointer head), NanoJev(0.6B scratch), pplx-decider·Clef(27B급), Microsoft-Decision-1(Qwen3.5-9B post-training, API 전용) | 일부는 temperature scaling 등 post-hoc 보정 보고 | 학습 코드·데이터 공개 여부가 프로젝트마다 다름 |
 | **Logprob wrapper** | 모델은 frozen. 프롬프트에 선택지를 나열하고 선택지 토큰의 logit을 softmax | mini-jev(Qwen3-4B), SemIf, openjev-sglang(prefill-only 서버), AnyJev(Nokia) | 대부분 **보정을 주장하지 않음** (AnyJev는 예외 — 아래 참고) | 재학습 불필요, 선택지 순서에 민감할 수 있음 |
 | **고전 zero-shot 분류기** | NLI 모델·라벨 인식 인코더가 런타임에 라벨을 받음 | NLI 헤드 모델, GLiClass, SetFit(few-shot) | 점수가 보정된 확률이 아닌 경우가 많음 | CPU 추론 가능, 입력이 짧은 분류에 적합 |
 | **Structured output 라이브러리** | 어떤 LLM이든 스키마·문법에 맞게 출력 제약 | Outlines, Instructor, DSPy | 해당 없음 (확률 미제공) | 타입은 보장되지만 보정된 confidence는 없음 |
@@ -131,7 +174,7 @@ flowchart TD
     DM -->|"불확실 구간"| ESC["상위 모델 / LLM judge / 사람<br/>(selective prediction)"]
 ```
 
-- **라우팅·의도 분류**: 에이전트 앞단에서 어떤 도구·모델·워크플로우로 보낼지 결정. 확률이 낮으면 더 큰 모델로 escalate.
+- **라우팅·의도 분류**: 에이전트 앞단에서 어떤 도구·모델·워크플로우로 보낼지 결정. 확률이 낮으면 더 큰 모델로 escalate. Microsoft-Decision-1과 OpenAI Decisions 모두 에이전트 행동 선택·워크플로 통제를 대표 용도로 제시하며, OpenAI는 음성 에이전트가 대화 중 Decisions를 호출하는 구성도 안내한다.
 - **Moderation·Guardrail**: 입력/출력의 정책 위반 여부를 Noul로 판정.
 - **전수 eval + 샘플 심층 평가**: 모든 트레이스에 저비용 판정을 돌리고, 일부만 LLM judge로 정밀 검토. Arize는 Jev가 LLM judge를 완전 대체하지는 못하며(근거 설명 없음, 정확도가 프런티어 모델에 소폭 뒤처짐) 이런 하이브리드를 권한다.
 - **Selective prediction**: 보정된 확률로 "자동 처리할 구간"과 "사람에게 넘길 구간"을 임계값으로 나눈다.
@@ -160,5 +203,10 @@ Decision Model은 에이전트·RAG 파이프라인 곳곳에 박힌 "짧은 판
 - Arize, "TypeSafe Jev: Can Decision Models Replace LLM Judges?" — [arize.com](https://arize.com/blog/typesafe-jev-llm-judge/)
 - Glean, "Jev and the return of the zero-shot classifier" — [glean.com](https://www.glean.com/blog/jev-zero-shot-classifier)
 - "Jev (AI model)" — [Wikipedia](https://en.wikipedia.org/wiki/Jev_(AI_model))
+- TechCrunch, "OpenAI's Jev clone could help the frontier lab stop its swarming agents" (2026-09-30) — [techcrunch.com](https://techcrunch.com/2026/09/30/openais-jev-clone-could-help-the-frontier-lab-stop-its-swarming-agents/)
+- Evalgent, "OpenAI Decisions API vs Jev: Pricing, Probabilities, Voice" (2026-10-07 기준 OpenAI 공식 가이드 정리) — [evalgent.com](https://www.evalgent.com/blog/openai-decisions-api-vs-jev-voice-agents)
+- "OpenAI Decisions API: How Does Jev's Big-Lab Competitor Fare?" (2026-10-08, BANKING77 비교 — 단일 샘플·beta 기준) — [stacktoheap.com](https://stacktoheap.com/blog/2026/10/08/jev-the-decisions-strike-back/)
+- Microsoft, "Introducing Microsoft-Decision-1 in Microsoft Foundry for decision and classification workloads" — [techcommunity.microsoft.com](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/introducing-microsoft-decision-1-in-microsoft-foundry-for-decision-and-classific/4562742)
+- Digital Today, "Microsoft joins decision-focused AI model race with Microsoft-Decision-1" (2026-10-09, 성능 수치는 Microsoft 내부 측정) — [digitaltoday.co.kr](https://www.digitaltoday.co.kr/en/view/112711/microsoft-joins-decision-focused-ai-model-race-unveils-microsoft-decision-1)
 - systemonemodels.org, "Jev alternatives: open-source reproductions, local models and classifiers" — [systemonemodels.org](https://systemonemodels.org/examples/alternatives/) (커뮤니티 큐레이션 — 개별 프로젝트 수치는 각 repo에서 재확인 필요)
 - Zhang et al. (2026), AnyJev — [github.com/nokia-applied-research/AnyJev](https://github.com/nokia-applied-research/AnyJev) (수치는 저자 자체 측정, typed-decisions 벤치의 정답은 teacher LLM 출력)

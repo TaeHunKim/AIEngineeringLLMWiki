@@ -18,7 +18,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM Adapter Fusion vs Native, Image Tokenization, Audio/Video, MMMU/DocVQA *(2026)*
     - [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, InfoNCE, LLM-based Embedder, MTEB/BEIR, Reranker Model *(2026)*
     - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP Alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
-    - [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev series System One Model, Choice/Score/Noul Primitives, logprob wrapper vs trainable, calibration(ECE) *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — System One Models such as Jev · OpenAI Decisions · Microsoft-Decision-1, Choice/Score/Noul Primitives, logprob wrapper vs trainable, calibration(ECE) *(2026)*
 - Training & Tuning — [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning|Training and Tuning]]
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — Initial Training + Continuous Adaptation
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO

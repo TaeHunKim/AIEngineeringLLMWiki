@@ -18,7 +18,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM 어댑터 결합형 vs 네이티브, 이미지 토큰화, 오디오/비디오, MMMU/DocVQA *(2026)*
     - [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, InfoNCE, LLM 기반 임베더, MTEB/BEIR, 리랭커 모델 *(2026)*
     - [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP 정렬, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
-    - [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) *(2026)*
+    - [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev · OpenAI Decisions · Microsoft-Decision-1 등 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) *(2026)*
 - 학습·조정 — [[AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning|Training and Tuning]]
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — 초기 학습 + 지속 적응
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
