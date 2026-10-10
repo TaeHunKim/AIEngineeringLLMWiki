@@ -81,14 +81,15 @@ Sampling strategies:
 
 These benchmarks are generally tracked separately from the text-only benchmarks in [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] (MMLU, GSM8K, etc.) — because text-reasoning ability and visual-understanding ability don't necessarily improve together.
 
-## Boundaries
+## Boundary Definitions
 
-| Document | Covers |
+| Document | Scope |
 |------|-----------|
-| **This document (Multimodal_Models)** | The **architecture itself** of VLM/audio/video models — encoder-bridging approach, tokenization, evaluation |
-| [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal Embeddings]] | The **multimodal embedding models themselves** — alignment training, modality gap, model comparison |
-| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | **Retrieval** using multimodal embeddings — CLIP shared embeddings, ColPali OCR-free retrieval |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | **Action space** built on multimodal models (screenshot-based manipulation, voice conversation) — agent-level usage |
+| **This Document (Multimodal_Models)** | The **architecture itself** of VLM/Audio/Video models — encoder fusion methods, tokenization, evaluation |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models\|Large_Language_Models]] | Text-only model types themselves — overview of decoder-only, distinction between base/instruct/reasoning |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | The multimodal **embedding models themselves** — alignment learning, modality gap, model comparison |
+| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | **Retrieval** using multimodal embeddings — CLIP shared embeddings, ColPali OCR-free retrieval |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | **Action space** (screenshot-based manipulation, voice conversation) using multimodal models — agent-level utilization |
 
 ## Role in AI Engineering
 

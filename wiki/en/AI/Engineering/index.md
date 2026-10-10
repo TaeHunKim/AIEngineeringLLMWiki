@@ -11,20 +11,24 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 ## Table of Contents
 
-### 1. [[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] — Techniques for working with the model itself
+### 1. [[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] — Techniques for Handling the Model Itself
 
-- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — Initial training + continuous adaptation
-- Fine-Tuning
+- Model Types — [[en/AI/Engineering/Model_Engineering/Model_Types/Model_Types|Model Types]]
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models|Large Language Models]] — decoder-only Transformer, base/instruct/reasoning, open-weight vs closed API *(New)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM Adapter Fusion vs Native, Image Tokenization, Audio/Video, MMMU/DocVQA *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, InfoNCE, LLM-based Embedder, MTEB/BEIR, Reranker Model *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP Alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev series System One Model, Choice/Score/Noul Primitives, logprob wrapper vs trainable, calibration(ECE) *(2026)*
+- Training & Tuning — [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning|Training and Tuning]]
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — Initial Training + Continuous Adaptation
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
-    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — Parameter-efficient fine-tuning
-- Compression & Optimization
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — Parameter-Efficient Fine-tuning
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student Knowledge Distillation
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
+- Architecture & Efficiency — [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Architecture_and_Efficiency|Architecture and Efficiency]]
+    - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, vocabulary size trade-off, multilingual/Korean token efficiency *(2026)*
+    - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN Long Context, SLM-for-Agents *(2026)*
     - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
-    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student knowledge distillation
-- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN long-context, SLM-for-Agents *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM adapter-bridged vs native, image tokenization, audio/video, MMMU/DocVQA *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency *(2026)*
-- [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE) *(2026)*
 
 ---
 
@@ -55,32 +59,29 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 
 ---
 
-### 3-1. [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] — Search strategies
+### 3-1. [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] — Search Strategies
 
-- RAG (vector-based unstructured document retrieval)
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG Overview]] — Retrieval-Augmented Generation basics
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document Ingestion]] — Document parsing/OCR, OCR-based vs. OCR-free (ColPali) *(2026)*
+- RAG (Vector-based Unstructured Document Retrieval)
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG (Retrieval-Augmented Generation)]] — Retrieval-Augmented Generation Fundamentals
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion|Document Ingestion]] — Document Parsing/OCR, OCR-mediated vs OCR-free (ColPali) *(2026)*
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] — Fixed-size, Semantic, Hierarchical
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN search (HNSW, FAISS)
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] — Vector DB, ANN Search (HNSW, FAISS)
     - Advanced Retrieval
         - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval|Advanced Retrieval]] — Reranking, Multi-Query, RAG Fusion
         - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]] — Hypothetical Document Embeddings
         - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG|Agentic RAG]] — Self-RAG, CRAG, Multi-Agent RAG, Query Routing
-        - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — ① Dense+Sparse(BM25), ② Vector+Graph, ③ Vector+Graph+Key-Value (StructRAG/RAGU)
-        - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] — CLIP/ColPali shared embedding, text+image integrated retrieval
-- GraphRAG (structural relationships & global analysis)
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden clustering
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph Overview]]
+        - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG|Hybrid RAG]] — ① Dense+Sparse (BM25), ② Vector+Graph, ③ Vector+Graph+Key-Value (StructRAG/RAGU)
+        - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG|Multimodal RAG]] — CLIP/ColPali Shared Embedding, Text+Image Integrated Search
+- GraphRAG (Structural Relationship & Global Analysis)
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] — Microsoft 2024, Leiden Clustering
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]]
     - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF|LPG & RDF]] — Neo4j Cypher vs SPARQL
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, domain ontology, reasoning
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction|Agentic KG Construction]] — Multi-agent automated KG construction, Google ADK + Neo4j (DeepLearning.AI, 2026)
-- NL2SQL (structured DB natural language query)
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL pipeline, Spider·BIRD benchmarks, DIN-SQL·DAIL-SQL
-- SQL RAG (structured + unstructured Hybrid)
-    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL-based RAG patterns, Hybrid architecture
-- Shared infrastructure
-    - [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction (ColBERT), Matryoshka, InfoNCE, LLM-based embedders, MTEB/BEIR, reranker models *(2026)*
-    - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP alignment, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology|Ontology]] — OWL, Domain Ontology, Inference
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction|Agentic KG Construction]] — Multi-Agent KG Automatic Construction, Google ADK + Neo4j (DeepLearning.AI, 2026)
+- NL2SQL (Natural Language Query for Structured DB)
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL Pipeline, Spider·BIRD Benchmarks, DIN-SQL·DAIL-SQL
+- SQL RAG (Structured+Unstructured Hybrid)
+    - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL-based RAG Patterns, Hybrid Architecture
 
 ---
 

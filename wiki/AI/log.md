@@ -355,3 +355,11 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **보강**: `Embedding_Models.md` — InfoNCE 학습 원리, LLM 기반 임베더와 instruction prefix, BGE-M3·SPLADE 통합 모델, 임베딩 양자화(int8/binary), 대표 모델 표(2026-10 기준), 모델 버전 고정·재임베딩 운영.
 - **링크**: `Retrieval_Strategies.md`, `Multimodal_RAG.md`, `Multimodal_Models.md`, `Engineering/index.md`, `AI/index.md`에 신규 문서 연결.
 - **출처 한계**: 2026년 모델 수치는 벤더 블로그·논문 보고값이고 집계 사이트 순위가 엇갈려 순위는 기재하지 않음.
+
+## [2026-10-10] restructure | Model_Engineering 하위 문서를 모델 유형 / 학습·조정 / 아키텍처·효율 3개 폴더로 분류 + Embedding 문서 이관 + Large_Language_Models 신설
+
+- **분류 기준**: 출력 형태(토큰/벡터/판정)로 모델을 구분하는 축을 `Model_Types/`(Large_Language_Models, Multimodal_Models, Embedding_Models, Multimodal_Embeddings, Decision_Models), 가중치를 만들고 바꾸는 방법 축을 `Training_and_Tuning/`(Pre-training_and_Continual_Learning, Full_Fine-Tuning, PEFT_LoRA_QLoRA, Model_Distillation, Synthetic_Data_and_Curation), 구조·효율 선택 축을 `Architecture_and_Efficiency/`(Tokenization, Model_Architectures_and_MoE, Quantization)로 분류. `Embedding_Models`·`Multimodal_Embeddings`는 "임베딩 모델 자체의 아키텍처"를 다루며 Retrieval_Strategies의 다른 문서(파이프라인 활용)와 성격이 달라 Model_Types로 이관.
+- **변경**: KO+EN `git mv`로 13개 문서 이동, 카테고리 hub 3개(order 0) 신설, `Model_Engineering.md` 하위 문서 표·mermaid를 3섹션으로 재구성, 폴더 내 `order:` 재번호, `quartz.ts` FOLDER_ORDER에 3개 폴더 추가, `Retrieval_Strategies.md`의 "공통 인프라" 표 행 제거(산문 포인터로 대체), `Engineering/index.md`·`AI/index.md`(KO+EN) Model Engineering 절을 3그룹으로 재편. 영향받는 위키링크 전체 경로 치환.
+- **신규**: `Model_Types/Large_Language_Models.md` — decoder-only Transformer 개관, base/instruct/reasoning 단계 구분, open-weight vs closed API. `Multimodal_Models.md`·`Decision_Models.md` 경계 정리 표에 대칭 행 추가.
+- **영향**: Quartz URL이 바뀌어 기존 deep link는 리다이렉트 없이 깨짐.
+- **검증**: `npm run lint:wiki` 0건.

@@ -86,6 +86,7 @@ flowchart TD
 | 문서 | 다루는 것 |
 |------|-----------|
 | **본 문서 (Multimodal_Models)** | VLM/오디오/비디오 모델의 **아키텍처 자체** — 인코더 결합 방식, 토큰화, 평가 |
+| [[AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models\|Large_Language_Models]] | 텍스트 전용 모델 종류 자체 — decoder-only 개관, base/instruct/reasoning 구분 |
 | [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | 멀티모달 **임베딩 모델 자체** — 정렬 학습, modality gap, 모델 비교 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal_RAG]] | 멀티모달 임베딩을 이용한 **검색** — CLIP 공유 임베딩, ColPali OCR-free 검색 |
 | [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | 멀티모달 모델을 이용한 **행동공간**(스크린샷 기반 조작, 음성 대화) — 에이전트 레벨 활용 |

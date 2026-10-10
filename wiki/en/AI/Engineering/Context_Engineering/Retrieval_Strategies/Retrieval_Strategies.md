@@ -122,24 +122,24 @@ flowchart TD
 
 | Chapter | Document | Content |
 |------|------|------|
-| **RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG\|RAG]] | Vector-based RAG basics |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion\|Document Ingestion]] | Document parsing/OCR, OCR-based vs. OCR-free |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking Strategies]] | 5 document splitting strategies |
+| **RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG\|RAG]] | Basics of Vector-based RAG |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion\|Document Ingestion]] | Document Parsing/OCR, OCR-mediated vs OCR-free |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking Strategies]] | 5 Document Splitting Strategies |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector Storage]] | Vector DB, HNSW, FAISS |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced Retrieval]] | Reranking, Multi-Query, RAG Fusion |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE\|HyDE]] | Hypothetical document embedding search improvement |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE\|HyDE]] | Improving Virtual Document Embedding Search |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Agentic_RAG\|Agentic RAG]] | Self-RAG, CRAG, Multi-Agent RAG |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG\|Hybrid RAG]] | Dense+Sparse, Vector+Graph, multi-store hybrids |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | Retrieval and generation over images and tables |
-| **GraphRAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft GraphRAG, community clustering, LazyGraphRAG/LightRAG |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph\|Knowledge Graph]] | Knowledge graph overview |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Hybrid_RAG\|Hybrid RAG]] | Dense+Sparse, Vector+Graph, Multi-Store Hybrid |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Multimodal_RAG\|Multimodal RAG]] | Search and Generation Including Images and Tables |
+| **GraphRAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG\|GraphRAG]] | Microsoft GraphRAG, Community Clustering, LazyGraphRAG/LightRAG |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph\|Knowledge Graph]] | Knowledge Graph Overview |
 | | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/LPG_and_RDF\|LPG & RDF]] | Neo4j Cypher vs SPARQL |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology\|Ontology]] | OWL, domain ontology |
-| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | Agent-driven automatic knowledge graph construction pipeline |
-| **NL2SQL** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL pipeline, benchmarks, latest techniques |
-| **SQL RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | Structured data RAG, Hybrid architecture |
-| **Shared infrastructure** | [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding Models]] | The embedding/reranker models themselves — bi/cross-encoder/late interaction, Matryoshka, MTEB |
-| | [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal Embeddings]] | Multimodal embedding models — alignment training, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Ontology\|Ontology]] | OWL, Domain Ontology |
+| | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Agentic_KG_Construction\|Agentic KG Construction]] | Agent-based Knowledge Graph Automatic Construction Pipeline |
+| **NL2SQL** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL\|NL2SQL]] | Text-to-SQL Pipeline, Benchmarks, State-of-the-Art Techniques |
+| **SQL RAG** | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG\|SQL RAG]] | Structured Data RAG, Hybrid Architecture |
+
+All four strategies share the premise that retrieval quality is capped by the expressiveness of the embedding model. The architecture and selection criteria of the embedding and reranker models themselves are covered in [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding_Models]] and [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal_Embeddings]].
 
 ## Related Concepts
 

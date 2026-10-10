@@ -136,16 +136,17 @@ flowchart TD
 - **Exhaustive eval + sampled deep review**: run the cheap judgment on every trace and send only a sample to an LLM judge for careful review. Arize notes that Jev cannot fully replace an LLM judge (no rationale, accuracy slightly behind frontier models) and recommends this kind of hybrid.
 - **Selective prediction**: use calibrated probabilities to split "bands to handle automatically" from "bands to hand to a human" via thresholds.
 
-## Boundary Summary
+## Boundary Definitions
 
-| Document | Covers |
-|----------|--------|
-| **This document (Decision_Models)** | A model class that **returns calibrated probabilities** without generating text, and its implementation approaches |
-| [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Fitting a generative LLM's output to a schema — types guaranteed, no probabilities |
-| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | A generative LLM evaluating with rationale — slower and costlier but explainable |
-| [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | Pair-scoring models such as cross-encoders — discriminative models specialized for retrieval relevance |
-| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | Strategies for choosing a model by difficulty — a Decision Model can serve as the router itself |
-| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | Designing input/output safety controls — a Decision Model is a candidate classifier for them |
+| Document | What it covers |
+|------|-----------|
+| **This document (Decision_Models)** | Model classes and implementation methods that **return calibrated probabilities** without generating text |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models\|Large_Language_Models]] | Defining the types of generative LLMs themselves (base/instruct/reasoning) — Decision Models are an alternative that does not use that generation path |
+| [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Techniques for conforming generative LLM outputs to a schema — Guarantees type but not probability |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | Evaluating generative LLMs with evidence — Slow and expensive, but explainable |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | Pair scoring models like Cross-encoder — Discriminative models specialized in search relevance |
+| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | Model selection strategies based on difficulty — Decision Models can be used as the router itself |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | Designing input/output safety mechanisms — Decision Models are candidates for that judge |
 
 ## Role in AI Engineering
 

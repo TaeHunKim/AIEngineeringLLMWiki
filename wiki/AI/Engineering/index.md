@@ -13,18 +13,22 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 ### 1. [[AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] — 모델 자체를 다루는 기법
 
-- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — 초기 학습 + 지속 적응
-- Fine-Tuning
+- 모델 유형 — [[AI/Engineering/Model_Engineering/Model_Types/Model_Types|Model Types]]
+    - [[AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models|Large Language Models]] — decoder-only Transformer, base/instruct/reasoning, open-weight vs closed API *(신규)*
+    - [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM 어댑터 결합형 vs 네이티브, 이미지 토큰화, 오디오/비디오, MMMU/DocVQA *(2026)*
+    - [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, InfoNCE, LLM 기반 임베더, MTEB/BEIR, 리랭커 모델 *(2026)*
+    - [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP 정렬, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
+    - [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) *(2026)*
+- 학습·조정 — [[AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning|Training and Tuning]]
+    - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — 초기 학습 + 지속 적응
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — 파라미터 효율적 미세조정
-- Compression & Optimization
-    - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student 지식 증류
-- [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents *(2026)*
-- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse *(2026)*
-- [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]] — VLM 어댑터 결합형 vs 네이티브, 이미지 토큰화, 오디오/비디오, MMMU/DocVQA *(2026)*
-- [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율 *(2026)*
-- [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) *(2026)*
+    - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse *(2026)*
+- 아키텍처·효율 — [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Architecture_and_Efficiency|Architecture and Efficiency]]
+    - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율 *(2026)*
+    - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents *(2026)*
+    - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] — INT8/INT4, GPTQ, AWQ, GGUF
 
 ---
 
@@ -78,9 +82,6 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] — Text-to-SQL 파이프라인, Spider·BIRD 벤치마크, DIN-SQL·DAIL-SQL
 - SQL RAG (정형+비정형 Hybrid)
     - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] — SQL 기반 RAG 패턴, Hybrid 아키텍처
-- 공통 인프라
-    - [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] — Bi/Cross-encoder/Late Interaction(ColBERT), Matryoshka, InfoNCE, LLM 기반 임베더, MTEB/BEIR, 리랭커 모델 *(2026)*
-    - [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings|Multimodal Embeddings]] — CLIP/SigLIP 정렬, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 *(2026)*
 
 ---
 
