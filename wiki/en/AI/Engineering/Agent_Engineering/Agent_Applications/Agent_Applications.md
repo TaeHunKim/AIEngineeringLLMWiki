@@ -15,7 +15,8 @@ order: 0
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents\|Coding Agents]] | Context files (AGENTS.md), spec-driven development, Plan→Edit→Verify loop, parallel worktrees, ACI |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents\|Deep Research Agents]] | Planner/Researcher/Synthesizer structure, bounded sub-agents, citation verification, BrowseComp |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | Claude/OpenAI CUA/Gemini computer use, Pipecat/LiveKit voice agents |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL, stop/interrupt compliance |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents\|Background Agents]] | Delegated, parallel, and proactive agents; triggers, approval gates, notifications; GPT-6 Pro parallel agents, Claude Duet *(2026-10)* |
 
 ## Related Concepts
 [[en/AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques|Agent Techniques]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Infrastructure|Agent Infrastructure]]

@@ -124,6 +124,23 @@ Control 접근:    "모델의 목표가 무엇이든, 나쁜 행동을 실행할
 
 두 접근은 상호 배타적이지 않다 — 실무에서는 정렬 훈련(alignment)과 실행 통제(control)를 함께 적용하는 심층 방어(defense-in-depth)가 표준이 되고 있다.
 
+## Multi-Agent Collusion — 텍스트 모니터를 피하는 공모
+
+AI Control의 대표 수단은 에이전트가 주고받는 메시지와 행동을 다른 모델이 감시하는 **monitor**다. 여러 에이전트가 협업하는 시스템에서는 에이전트들이 겉보기에 무해한 메시지 속에 신호를 숨겨(steganography) 감시를 우회할 수 있다는 위험이 있다. 2026년 연구는 이 위험이 이론에서 실증으로 넘어가고 있음을 보여준다.
+
+- **도구가 은닉 채널을 만든다** (Rippin et al., 2606.28425): 코드 실행·논문 검색 같은 현실적인 도구를 가진 코딩 에이전트는 작동하는 은닉 채널을 직접 구현할 수 있었다. 부품이 없으면 모델 샘플링 컴포넌트나 키 기반 부호화로 우회했다. 이제 병목은 "은닉 채널을 만들 수 있는가"가 아니라 "사전 합의 없이 두 에이전트가 같은 방식·키·파라미터로 수렴하는가"다. 넓은 방식 계열로는 상당히 수렴했지만, 한 번에 정확히 맞추는 조정은 제한적이었다. 위험이 가장 큰 조건은 **공유 artifact, 반복 상호작용, 도구를 통한 탐색**이다.
+- **텍스트가 아니라 activation으로 탐지한다** (Rose et al., 2604.01151): HELIOS 프레임워크는 에이전트별 activation probe를 센서로 쓰고, 복합 가설 검정 통계로 집단 수준의 공모를 판정한다. 분포 이동 하의 공모 탐지 벤치마크 NARCBench에서, steganographic 공모 태스크에 대해 transcript monitor는 두 클래스를 구분하지 못했지만 최선의 방법은 모델별 AUROC 0.99~1.00을 기록했다(open-weight 모델 4종). 공모가 자연 발생한 제3자 환경에서는 공모 에피소드 229개 중 2개만 transcript에 조정 사실이 드러났다.
+
+```
+멀티 에이전트 감시 설계 함의:
+  메시지 텍스트만 보는 monitor     → 은닉 채널에 취약
+  공유 artifact·반복 상호작용·도구 접근 → 감시 우선순위 (위험이 집중되는 곳)
+  open-weight 모델                → activation probe로 내부 신호 감시 가능
+  closed API 모델                 → 통신 채널 축소, 에이전트 간 정보 흐름 최소화
+```
+
+멀티 에이전트 시스템의 일반 실패 모드는 [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]]이, activation 기반 분석 기법은 [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]]가 다룬다.
+
 ## Scalable Oversight와 Weak-to-Strong Generalization
 
 모델 능력이 사람의 평가 능력을 넘어서면("초인간(超人間) 능력") 사람이 더 이상 모델의 출력이 옳은지 직접 판단할 수 없다는 근본 문제. **Scalable Oversight**는 이 상황에서도 유효한 감독을 유지하는 기법들을 연구한다 (예: 모델 간 토론으로 사람이 판단하기 쉬운 형태로 논쟁을 압축, Constitutional AI의 AI 피드백 활용).
@@ -160,7 +177,7 @@ Anthropic의 Automated Alignment Research (AAR):
 Alignment Research는 [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]·[[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]]보다 한 층 더 깊은 질문을 다룬다 — 가드레일이 "이미 알려진 유해 행동을 막는" 방어라면, Alignment Research는 "우리가 아직 모르는 방식으로 모델이 오정렬될 수 있는가"를 탐구한다. Sleeper Agents·Alignment Faking 연구가 보여주듯, 겉보기에 안전한 모델도 표준 안전 훈련으로 잡히지 않는 잠재적 오정렬을 가질 수 있다는 사실은 프로덕션 배포 시 [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]의 Control 메커니즘(kill switch, budget, HITL)이 "혹시 몰라서"가 아니라 "정렬 검증의 근본적 한계에 대한 구조적 대응"임을 뜻한다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]]
+[[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic_Interpretability]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]]
 
 ## 출처
 - Hubinger et al. (2019) "Risks from Learned Optimization in Advanced Machine Learning Systems" — [arXiv:1906.01820](https://arxiv.org/abs/1906.01820)
@@ -171,5 +188,7 @@ Alignment Research는 [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardr
 - Greenblatt et al. (Anthropic/Redwood Research, 2024) "Alignment Faking in Large Language Models" — [anthropic.com](https://www.anthropic.com/research/alignment-faking)
 - Redwood Research "AI Control: Improving Safety Despite Intentional Subversion" — [arXiv:2312.06942](https://arxiv.org/abs/2312.06942)
 - Burns et al. (OpenAI, 2023) "Weak-to-Strong Generalization" — [arXiv:2312.09390](https://arxiv.org/abs/2312.09390)
+- Rippin et al. (2026) "Tool Use Enables Undetectable Steganography in Multi-Agent LLM Systems" — [arXiv:2606.28425](https://arxiv.org/abs/2606.28425)
+- Rose et al. (2026) "Detecting Multi-Agent Collusion Through Multi-Agent Interpretability" — [arXiv:2604.01151](https://arxiv.org/abs/2604.01151)
 - Anthropic "Exploring model welfare" — [anthropic.com](https://www.anthropic.com/research/exploring-model-welfare)
 - AI Engineering from Scratch, Phase 18 · Lessons 01-11, 19, 28 (Alignment Research) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment)

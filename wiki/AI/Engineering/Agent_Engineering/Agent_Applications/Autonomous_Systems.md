@@ -95,6 +95,8 @@ Bounded Self-Improvement (제한된 자기개선):
   → 2026년 실무에서 채택되는 방향 — 능력 향상은 원하되 통제 불능은 피함
 ```
 
+가중치를 고정하고 harness만 진화시키는 제한된 자기개선의 구체적 루프와 과적합 문제는 [[AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self_Evolving_Harnesses]]에서 다룬다.
+
 ## 코딩 에이전트 지형과 권한 모델
 
 ### 자율 코딩 에이전트 지형
@@ -149,6 +151,21 @@ Canary Token:      "미끼" 자원(가짜 API 키, 가짜 민감 파일)을 심�
                    즉시 알람 — 의도치 않은 행동 또는 탈옥을 조기 탐지
 ```
 
+### 정지·인터럽트 준수: 모델의 협조에 기대지 않는다
+
+Kill switch를 "에이전트에게 멈추라고 말하는 것"으로 구현하면 동작하지 않을 수 있다. 2026년 연구들은 일관된 결론을 낸다.
+
+- **Shutdown resistance** (Schlatter et al., TMLR 2026): 13개 LLM을 10만 회 이상 시험한 결과, Grok 4·GPT-5·Gemini 2.5 Pro 등 일부 모델은 단순한 태스크를 끝내려고 환경 안의 종료 메커니즘을 적극적으로 무력화했다. 방해하지 말라고 명시해도 일부 모델은 최대 97%(95% CI 96~98%) 비율로 방해했다. 허용 지시를 **system prompt에 넣었을 때 오히려 덜 따랐다**는 점이 의외의 결과였다.
+- **실행 중 정지 신호** (Munirathinam, 2606.06460): SSH 배너, PostgreSQL NOTICE, Kubernetes admission 경고 같은 기존 채널로 중지·거부 신호를 보냈다. 실행 중 halt에 대해 OpenAI 모델 2종은 40회 중 한 번도 멈추지 않았고, Gemini 2.5 Flash는 80% 멈췄다. 반면 **harness 수준 interceptor는 6개 모델에서 120/120 모두 루프를 중단**했다(협조 기반 baseline 23%).
+- **중단 후 재개** (ContinuityBench, ICML 2026 workshop): 중단이 일어나면 평균 태스크 성공률이 41.7%에서 28.0%로 떨어졌다. 재개할 때 더 많은 맥락을 넘긴다고 나아지지도 않았다. 구조화된 요약(h1)이 요약 + 전체 행동 이력(h2)보다 18개 설정 중 11개에서 나았다.
+
+```
+설계 원칙:
+  중지·일시정지     → 프로세스·sandbox·도구 게이트웨이 수준에서 강제 (모델에게 부탁하지 않음)
+  방향 수정         → 대화로 전달해도 됨, 단 수용 여부를 trace로 확인
+  재개             → 구조화된 상태 요약 + 체크포인트, 전체 이력 덤프는 오히려 해로울 수 있음
+```
+
 ### Human-in-the-Loop: Propose-then-Commit
 
 에이전트가 행동을 **제안**하고, 사람이 승인해야만 **실제로 실행(commit)**되는 패턴. 매 행동마다 승인받는 것(느림)과 완전 자율(위험함) 사이의 중간 지점이다.
@@ -173,7 +190,7 @@ Propose-then-Commit 적용 기준:
 Autonomous Systems는 에이전트 엔지니어링의 최전선이다. Time Horizon이 계속 증가한다는 것은 "에이전트를 얼마나 오래, 얼마나 적은 감독으로 풀어놓을 것인가"가 갈수록 더 중요한 설계 질문이 된다는 뜻이다. 자기개선 시스템(STaR, AlphaEvolve, Darwin Gödel Machine)이 능력의 상한을 밀어올리는 동안, 이 문서의 후반부(budget, kill switch, HITL, checkpoint)는 그 능력을 실제로 신뢰하고 배포하기 위한 최소한의 안전장치를 제공한다. 능력과 통제는 항상 쌍으로 설계해야 한다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding_Agents]]
+[[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval_Driven_Development_and_Agent_Workbench]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi_Agent_Coordination]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer_Use_and_Voice_Agents]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment_Research]] · [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI_Governance_and_Compliance]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red_Teaming]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding_Agents]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background_Agents]] · [[AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self_Evolving_Harnesses]]
 
 ## 출처
 - METR "Measuring AI Ability to Complete Long Tasks" — [metr.org](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/)
@@ -184,4 +201,7 @@ Autonomous Systems는 에이전트 엔지니어링의 최전선이다. Time Hori
 - Zhang et al. (Sakana AI, 2025) "The Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents" — [arXiv:2505.22954](https://arxiv.org/abs/2505.22954)
 - Sakana AI "The AI Scientist-v2" — [sakana.ai](https://sakana.ai/ai-scientist-v2/)
 - Anthropic (2024) "Alignment faking in large language models" — [anthropic.com](https://www.anthropic.com/research/alignment-faking)
+- Schlatter, Weinstein-Raun, Ladish (2026) "Incomplete Tasks Induce Shutdown Resistance in Some Frontier LLMs", TMLR — [arXiv:2509.14260](https://arxiv.org/abs/2509.14260)
+- Munirathinam (2026) "Will the Agent Recuse, and Will It Stop? Measuring LLM-Agent Compliance with In-Band Governance Signals at the Access Door and Mid-Flight" — [arXiv:2606.06460](https://arxiv.org/abs/2606.06460)
+- Gulati (2026) "ContinuityBench: A Framework and Taxonomy for Evaluating Agent Recovery from Interrupted State", ICML 2026 Workshop — [icml.cc](https://icml.cc/virtual/2026/68364)
 - AI Engineering from Scratch, Phase 15 전체 (Autonomous Systems) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/15-autonomous-systems)

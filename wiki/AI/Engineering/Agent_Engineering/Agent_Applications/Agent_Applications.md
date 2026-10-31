@@ -15,7 +15,8 @@ order: 0
 | [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents\|Coding_Agents]] | 컨텍스트 파일(AGENTS.md), spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI |
 | [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents\|Deep_Research_Agents]] | Planner/Researcher/Synthesizer 구조, bounded sub-agent, 인용 검증, BrowseComp |
 | [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer_Use_and_Voice_Agents]] | Claude/OpenAI CUA/Gemini 컴퓨터 사용, Pipecat/LiveKit 음성 에이전트 |
-| [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous_Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL |
+| [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous_Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL, 정지·인터럽트 준수 |
+| [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents\|Background_Agents]] | 위임형·병렬형·선제형, 트리거·승인 게이트·알림, GPT-6 Pro parallel agents·Claude Duet *(2026-10)* |
 
 ## 관련 개념
 [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques|Agent Techniques]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Infrastructure|Agent Infrastructure]]

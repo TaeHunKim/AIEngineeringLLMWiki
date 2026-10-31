@@ -269,6 +269,10 @@ flowchart TD
     SB -."Isolated — no impact".-> EXT["Outside Sandbox<br/>DB, core services"]
 ```
 
+Isolation effect: even if the agent runs malicious code or issues unintended system commands, nothing outside the sandbox (DB, core services) is affected.
+
+In the Gemini Enterprise Agent Platform, the Agent Sandbox is integrated into the Agent Runtime, automatically isolating code execution tasks without separate configuration. The isolation technology spectrum (container · gVisor · microVM), egress control, and credential injection patterns are covered in [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent_Sandboxes]].
+
 ## Indirect Prompt Injection Defense: PVE
 
 **Indirect Prompt Injection** (→ [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]]) is an attack where agents misinterpret hidden instructions in external content observed via tools, documents, or web pages as execution commands. **PVE (Prompt Vaccination / Verification-based Defense)** class defenses structurally separate trust levels.

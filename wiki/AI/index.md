@@ -86,6 +86,8 @@ order: 0
 - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Engineering/Agent_Engineering/Agent_Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry 비교
 - [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Engineering/Agent_Engineering/Coding_Agents]]: AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI
 - [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Engineering/Agent_Engineering/Deep_Research_Agents]]: Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Engineering/Agent_Engineering/Background_Agents]]: 위임형·병렬형·선제형 에이전트, 트리거·승인 게이트·알림 설계
+- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Engineering/Agent_Engineering/Agent_Sandboxes]]: container/gVisor/microVM 격리, egress 통제, 자격 증명 주입 proxy
 
 #### Harness Engineering
 - [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Engineering/Harness_Engineering/Guardrail_Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE 간접 인젝션 방어, 워터마킹
@@ -107,6 +109,7 @@ order: 0
 - [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Engineering/Loop_Engineering/Runtime_Optimization]]: API 호출 측 최적화 — Semantic Cache, Model Routing, 배칭, 스트리밍
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Engineering/Loop_Engineering/Production_Operations]]: AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스, FinOps
 - [[AI/Engineering/Loop_Engineering/RL_Environments|Engineering/Loop_Engineering/RL_Environments]]: RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier·보상 설계
+- [[AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Engineering/Loop_Engineering/Self_Evolving_Harnesses]]: 가중치 고정 harness 진화 루프, AHE/HarnessEvolve/RRSI/MOSS, held-out 검증
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Engineering/Loop_Engineering/Cost_Engineering]]: Agentic FinOps, 모델 라우팅/스크립트화/컨텍스트 감사 자율 워처
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing]]: FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification]]: Agentic Compilation, Tool-Making, LOOP Skill Engine

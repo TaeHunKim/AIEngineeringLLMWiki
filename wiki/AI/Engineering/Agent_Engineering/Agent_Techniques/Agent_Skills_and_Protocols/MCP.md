@@ -27,7 +27,29 @@ flowchart LR
 - **2024년 11월**: Anthropic이 오픈소스로 공개
 - **2025년 11월**: 1주년 기념 Spec 업데이트
 - **2025년 12월**: Linux Foundation 산하 Agentic AI Foundation에 기증 — OpenAI, Google, Microsoft, AWS, Block 등 공동 참여
-- **2026년 기준**: Python/JS SDK 주간 다운로드 2,000만 회 이상, 수천 개 서드파티 MCP Server 생태계 형성
+- **2026년 5월 21일**: 2026-07-28 spec Release Candidate 고정
+- **2026년 7월 28일**: 2026-07-28 spec 정식 출시 — 출시 이후 가장 큰 개정(stateless core, 공식 extensions 체계, 인가 강화, deprecation 정책). 아래 절 참고
+- **2026년 기준**: Tier 1 SDK(TypeScript, Python, Go, C#) 합산 월 약 5억 다운로드, TypeScript·Python SDK는 각각 누적 10억 다운로드 돌파. 수천 개 서드파티 MCP Server 생태계 형성
+
+## 2026-07-28 Spec: Stateless Core와 Extensions
+
+2026-07-28 spec은 breaking change를 포함한다. 핵심은 **프로토콜 수준의 연결 상태를 없애 일반 HTTP 인프라에서 수평 확장되게 한 것**이다.
+
+| 변경 | 내용 | 이전 |
+|------|------|------|
+| Handshake 제거 (SEP-2575) | 매 요청의 `_meta`에 protocol version·client 정보·capability를 담는다. 필요하면 `server/discover`로 capability를 미리 조회 | `initialize`/`initialized` 교환 |
+| Session 제거 (SEP-2567) | `Mcp-Session-Id` 헤더와 프로토콜 세션을 없애 round-robin 로드밸런서 뒤 어느 인스턴스든 요청을 처리. 상태가 필요하면 tool이 명시적 handle(예: `basket_id`)을 발급하고 모델이 인자로 되돌려 준다 | sticky routing, 공유 세션 저장소 |
+| Multi Round-Trip Requests (SEP-2322) | Server가 `resultType: "input_required"`와 `requestState`를 반환하면 Client가 `inputResponses`를 붙여 재호출. 재호출은 어느 인스턴스든 받을 수 있다 | 열린 SSE 스트림 위의 Server 발신 `elicitation/create`·`sampling/createMessage`·`roots/list` |
+| 라우팅 헤더 (SEP-2243) | Streamable HTTP 요청에 `Mcp-Method`·`Mcp-Name` 필수. gateway가 본문을 파싱하지 않고 라우팅·rate limit | 본문 파싱 필요 |
+| 캐시 가능한 목록 (SEP-2549) | `tools/list` 등과 `resources/read` 결과에 `ttlMs`·`cacheScope`, 목록 순서 결정적 | 매번 재조회 |
+| Trace context (SEP-414) | `_meta`의 `traceparent`·`tracestate`·`baggage` 키를 W3C Trace Context로 고정 | 비공식 |
+| Tool schema (SEP-2106) | `inputSchema`·`outputSchema`가 JSON Schema 2020-12 전체를 지원(`oneOf`, `$ref` 등). 외부 `$ref` 자동 역참조 금지 | 제한된 부분집합 |
+
+**Extensions 체계 (SEP-2133)**: extension은 reverse-DNS ID로 식별하고 capability의 `extensions` 맵으로 협상하며, spec과 별개로 버전이 매겨진다. Tasks, MCP Apps, Enterprise Managed Authorization이 공식 extension이다.
+
+**Deprecation 정책 (SEP-2577)**: Active → Deprecated → Removed 단계를 두고, deprecation부터 제거까지 최소 12개월을 보장한다. 이번 개정에서 **Roots**(→ tool 파라미터·resource URI·서버 설정), **Sampling**(→ LLM provider API 직접 연동), **Logging**(→ stdio는 `stderr`, 구조화 관측은 OpenTelemetry)이 deprecated됐고, 레거시 HTTP+SSE transport도 1년 유예와 함께 공식 deprecated됐다.
+
+마이그레이션 시 주의할 점: `initialize` 호출 제거, 세션 의존 제거, 라우팅 헤더 추가, SSE 기반 Server→Client 질의를 MRTR로 전환, 실험적 Tasks 코드를 새 extension 수명 주기로 이전, 인가 응답의 `iss` 검증, 리소스 없음 오류 코드를 `-32002`에서 `-32602`로 변경.
 
 ## 핵심 아키텍처: Host-Client-Server
 
@@ -127,7 +149,7 @@ MCP Client와 Server가 실제로 메시지를 주고받는 물리적 통로. �
 | **HTTP + SSE** (레거시) | HTTP 요청 + Server-Sent Events로 스트리밍 응답 | 초기 원격 Server 지원 |
 | **Streamable HTTP** (2025년 3월~ 표준) | 단일 HTTP 엔드포인트, 필요시 SSE로 업그레이드 | 원격 Server, 로드밸런서 뒤 배포, 재연결 복원력 |
 
-Streamable HTTP는 기존 HTTP+SSE의 "연결이 끊기면 세션 전체 유실" 문제를 해결하며, 2025년 이후 원격 MCP Server의 표준 전송 방식이 됐다.
+Streamable HTTP는 기존 HTTP+SSE의 "연결이 끊기면 세션 전체 유실" 문제를 해결하며, 2025년 이후 원격 MCP Server의 표준 전송 방식이 됐다. 2026-07-28 spec에서 레거시 HTTP+SSE는 1년 유예와 함께 공식 deprecated됐고, Streamable HTTP는 `Mcp-Method`·`Mcp-Name` 헤더가 필수가 됐다.
 
 ## Resources, Prompts, Sampling 심화
 
@@ -163,11 +185,15 @@ async def summarize_via_host(large_document: str):
     return result.content
 ```
 
+2026-07-28 spec에서 Sampling은 deprecated됐다. 대안은 Server가 LLM provider API와 직접 연동하는 것이다. 최소 12개월은 계속 동작한다.
+
 ## Roots와 Elicitation
 
 **Roots**: Client가 Server에게 "작업 가능한 파일시스템/URI 경계"를 명시적으로 알려주는 메커니즘. Server가 프로젝트 루트 바깥을 함부로 건드리지 않도록 하는 최소 권한 원칙의 구현체다.
 
 **Elicitation**(2025년 6월 스펙 추가): Server가 작업 중 **사용자에게 추가 정보를 요청**할 수 있는 표준 방법. 예를 들어 배포 도구 Server가 "어느 환경에 배포할까요? (staging/production)"처럼 실행 중간에 사용자 입력을 되물을 수 있다 — 기존에는 이런 상호작용이 Server마다 제각각이었다.
+
+2026-07-28 spec에서 Roots는 deprecated됐고(tool 파라미터·resource URI로 대체), Elicitation은 열린 스트림 대신 Multi Round-Trip Requests(`input_required` 반환 후 Client 재호출) 방식으로 바뀌었다.
 
 ## Async Tasks (비동기 작업)
 
@@ -182,9 +208,11 @@ async def summarize_via_host(large_document: str):
 
 [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous_Systems]]의 장기 실행 에이전트와 자연스럽게 맞물리는 패턴이다 — 몇 시간짜리 MCP 도구 호출도 동일한 프로토콜로 다룰 수 있다.
 
+2026-07-28 spec에서 Tasks는 실험적 core 기능에서 `io.modelcontextprotocol/tasks` extension으로 옮겨졌다. Server가 `tools/call`에 task handle로 응답하면 Client는 `tasks/get`(폴링)·`tasks/update`·`tasks/cancel`로 관리한다. 세션 없이는 범위를 안전하게 한정할 수 없어 `tasks/list`는 제거됐고, 변경 알림은 Client가 알림 유형별로 구독하는 `subscriptions/listen` 스트림으로 받는다. 2025-11-25 실험 API 사용자는 마이그레이션이 필요하다. 사용자 세션 밖에서 오래 도는 에이전트에서의 활용은 [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background_Agents]] 참고.
+
 ## MCP Apps (UI 확장)
 
-MCP Server가 텍스트/데이터뿐 아니라 **인터랙티브 UI 컴포넌트**를 Host 안에 렌더링할 수 있게 하는 확장. 도구 호출 결과를 표·차트·폼 형태로 직접 보여줄 수 있다. Agent Skills & Protocols의 A2UI([[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]])와 목적은 비슷하지만, MCP Apps는 "MCP Server가 자신의 도구 결과를 표현하는" 좁은 범위인 반면 A2UI는 에이전트가 임의 UI를 생성하는 더 일반적인 프로토콜이다.
+MCP Server가 텍스트/데이터뿐 아니라 **인터랙티브 UI 컴포넌트**를 Host 안에 렌더링할 수 있게 하는 확장(2026-07-28 spec의 공식 extension, SEP-1865). Server가 보낸 HTML을 Host가 sandboxed iframe에서 렌더링하고, tool이 UI 템플릿을 미리 선언해 Host가 prefetch·캐시·검토할 수 있다. UI에서 시작된 행동도 직접 tool 호출과 같은 JSON-RPC 감사·동의 경로를 거친다. 도구 호출 결과를 표·차트·폼 형태로 직접 보여줄 수 있다. Agent Skills & Protocols의 A2UI([[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]])와 목적은 비슷하지만, MCP Apps는 "MCP Server가 자신의 도구 결과를 표현하는" 좁은 범위인 반면 A2UI는 에이전트가 임의 UI를 생성하는 더 일반적인 프로토콜이다.
 
 ## MCP 보안 심화: OAuth 2.1
 
@@ -203,6 +231,8 @@ MCP 특화 요구사항:
   - Dynamic Client Registration(DCR) — Client가 사전 등록 없이 자동 등록 가능
   - Resource Indicator — 토큰이 특정 MCP Server에만 유효하도록 범위 제한 (토큰 재사용 공격 방지)
 ```
+
+2026-07-28 spec의 인가 강화: Client는 인가 응답의 `iss` 파라미터를 RFC 9207에 따라 검증해야 하고(SEP-2468), 등록된 자격 증명을 발급한 인가 서버의 issuer에 묶는다(SEP-2352). 데스크톱·CLI Client는 DCR에서 OpenID Connect `application_type`을 선언해 localhost redirect 거부를 피한다(SEP-837). DCR 자체는 Client ID Metadata Documents(CIMD)로 대체될 예정이라 deprecated됐다.
 
 ## MCP Gateway와 Registry 생태계
 
@@ -300,12 +330,14 @@ MCP 표준화 효과:
 MCP는 **도구 통합의 표준 레이어**다. Function Calling이 "어떻게 함수를 호출하는가"의 문제를 풀었다면, MCP는 "어떤 도구가 어떤 방식으로 노출되는가"를 표준화한다. Agent Engineering 스택에서 외부 세계와의 인터페이스를 담당하며, 에이전트가 커지고 복잡해질수록 MCP의 역할이 중요해진다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]]
+[[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background_Agents]]
 
 ## 출처
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)
 - MCP 공식 문서 — [modelcontextprotocol.io](https://modelcontextprotocol.io)
 - MCP Blog "One Year of MCP: November 2025 Spec Release" — [blog.modelcontextprotocol.io](https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/)
+- MCP Blog "The 2026-07-28 MCP Specification Release Candidate" (2026-05-21) — [blog.modelcontextprotocol.io](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
+- MCP Blog "The 2026-07-28 Specification" (2026-07-28) — [blog.modelcontextprotocol.io](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
 - Wikipedia "Model Context Protocol" — [en.wikipedia.org](https://en.wikipedia.org/wiki/Model_Context_Protocol)
 - MCP 공식 스펙 "Transports" · "Authorization" — [modelcontextprotocol.io/specification](https://modelcontextprotocol.io/specification)
 - LiteLLM 문서 (MCP Gateway) — [docs.litellm.ai](https://docs.litellm.ai)

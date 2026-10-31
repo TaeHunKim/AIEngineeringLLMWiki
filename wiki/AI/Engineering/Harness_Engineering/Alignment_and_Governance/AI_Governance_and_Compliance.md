@@ -83,6 +83,22 @@ General-Purpose AI (GPAI) 모델 별도 규제:
   (투명성 문서화, 모델 평가, 사고 보고 등)
 ```
 
+#### 시행 일정과 Digital Omnibus (2026)
+
+AI Act는 2024년 8월 발효 후 단계적으로 적용된다. 2026년에는 **Digital Omnibus on AI**(Regulation (EU) 2026/1744)가 고위험 의무 적용일을 늦췄다. 2026-05 잠정 합의 후 유럽의회(06-16)와 이사회(06-29) 승인을 거쳐 07-24 관보에 게재됐고, 07-27 발효됐다.
+
+| 의무 | 적용일 | 비고 |
+|------|--------|------|
+| 금지 관행(Art. 5), AI literacy(Art. 4) | 2025-02-02 | Omnibus가 literacy를 "특정 수준 보장"에서 "지원" 의무로 완화 |
+| GPAI 모델 의무 | 2025-08-02 | 변동 없음. AI Office의 집행 권한 명확화 |
+| 투명성 의무(Art. 50, AI와 상호작용 중임을 고지 등) | 2026-08-02 | 연기되지 않음. 2026-08-02 이전 출시 시스템의 기계 판독 가능 표시(watermarking, Art. 50(2))만 2026-12-02까지 유예 |
+| 신규 금지: 비동의 성적 이미지·CSAM 생성 AI | 2026-12-02 | Omnibus로 Art. 5에 추가. 기술적 안전장치 유예 기한 |
+| 고위험 — 단독 시스템(Annex III: 채용, 신용평가, 교육 등) | **2027-12-02** | 2026-08-02에서 연기 |
+| 회원국 regulatory sandbox 설치 | 2027-08-02 | 2026-08-02에서 연기 |
+| 고위험 — 규제 제품 내장(Annex I: 의료기기, 기계, 차량 등) | **2028-08-02** | 2027-08-02에서 연기 |
+
+실무 함의: 고위험 의무는 미뤄졌지만 **취소된 것이 아니다**. 챗봇·생성형 기능을 EU에 제공한다면 Art. 50 투명성 의무는 이미 적용 중이다.
+
 ### 미국
 
 연방 차원의 포괄적 AI 법안은 부재하나, 행정명령(Executive Order)과 주(state) 단위 법률(캘리포니아 SB 1047 계열 등)이 프론티어 모델 안전성·투명성을 부분적으로 규율한다. 섹터별 규제(의료의 FDA, 금융의 기존 규제기관)가 AI 애플리케이션에도 확장 적용되는 경우가 많다.
@@ -195,6 +211,8 @@ AI Governance and Compliance는 기술적 안전 조치([[AI/Engineering/Harness
 - METR "About" — [metr.org](https://metr.org/about)
 - Center for AI Safety "Statement on AI Risk" — [safe.ai](https://safe.ai/work/statement-on-ai-risk)
 - European Commission "EU Artificial Intelligence Act" — [artificialintelligenceact.eu](https://artificialintelligenceact.eu)
+- Gibson Dunn "EU AI Act Omnibus Agreement — Postponed High-Risk Deadlines and Other Key Changes" (2026-05) — [gibsondunn.com](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/)
+- Cloud Security Alliance "EU AI Act's High-Risk Deadline: Deferred, Not Cancelled" (2026-08) — [labs.cloudsecurityalliance.org](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-high-risk-deadline-omnibus-20260/)
 - 대한민국 과학기술정보통신부 "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법" — [law.go.kr](https://www.law.go.kr)
 - Li et al. (2024) "The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning" — [arXiv:2403.03218](https://arxiv.org/abs/2403.03218)
 - Mitchell et al. (2019) "Model Cards for Model Reporting" — [arXiv:1810.03993](https://arxiv.org/abs/1810.03993)

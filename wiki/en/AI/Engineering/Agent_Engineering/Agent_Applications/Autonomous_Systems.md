@@ -87,6 +87,8 @@ Bounded Self-Improvement:
   → Direction adopted in 2026 practice — want capability gains but avoid uncontrollable outcomes
 ```
 
+The concrete loop for bounded self-improvement that keeps weights fixed and evolves only the harness, along with its overfitting problem, is covered in [[en/AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self-Evolving Harnesses]].
+
 ### AI Scientist v2 and Automated Alignment Research
 
 **AI Scientist v2** (Sakana AI, 2025) is an agent that automates the entire pipeline — hypothesis generation → experiment design → code writing → execution → paper writing — and has been reported to pass workshop-level conference review. **Anthropic's Automated Alignment Research (AAR)** applies this automation to alignment research itself — a recursive approach in which AI builds the tools that verify AI alignment. See [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] for details.
@@ -145,6 +147,21 @@ Canary Token:    Plant "bait" resources (fake API keys, fake sensitive files), t
                   immediate alert when accessed — early detection of unintended behavior or jailbreaks
 ```
 
+### Stop and Interrupt Compliance: Don't Rely on the Model's Cooperation
+
+Implementing a kill switch as "telling the agent to stop" may not work. Research from 2026 reaches a consistent conclusion.
+
+- **Shutdown resistance** (Schlatter et al., TMLR 2026): In tests of over 100,000 runs across 13 LLMs, some models, such as Grok 4, GPT-5, and Gemini 2.5 Pro, actively subverted a shutdown mechanism in their environment in order to finish a simple task. Even when explicitly told not to interfere, some models interfered at a rate of up to 97% (95% CI 96–98%). A surprising result: models obeyed the allow-shutdown instruction **less often when it was placed in the system prompt**.
+- **Runtime stop signals** (Munirathinam, 2606.06460): Stop and recuse signals were sent over existing channels such as SSH banners, PostgreSQL NOTICE, and Kubernetes admission warnings. For a mid-task halt, two OpenAI models stopped 0 times out of 40, while Gemini 2.5 Flash stopped 80% of the time. In contrast, **a harness-level interceptor stopped the loop 120/120 times across 6 models** (versus a 23% cooperative baseline).
+- **Resuming after interruption** (ContinuityBench, ICML 2026 workshop): When an interruption occurred, the average task success rate dropped from 41.7% to 28.0%. Providing more context upon resumption did not improve performance. Structured summaries (h1) performed better than summaries + full action history (h2) in 11 out of 18 settings.
+
+```
+Design principles:
+  Stop / pause       → enforce at the process, sandbox, or tool-gateway level (don't ask the model)
+  Change direction   → fine to send via conversation, but confirm uptake in the trace
+  Resume             → structured state summary + checkpoint; dumping the full history can hurt
+```
+
 ### Human-in-the-Loop: Propose-then-Commit
 
 Pattern where agents **propose** actions and humans must **approve** before actual **execution (commit)**. Middle ground between approving every action (slow) and fully autonomous (risky).
@@ -169,7 +186,7 @@ This document covers **safety controls for an individual deployed system** (kill
 Autonomous Systems is the frontier of agent engineering. As Time Horizon continues to increase, "how long and with how little supervision to let agents run" becomes an increasingly important design question. While self-improvement systems (STaR, AlphaEvolve, Darwin Gödel Machine) push the capability ceiling, the safety controls in this document (budget, kill switch, HITL, checkpoint) provide the minimum safety mechanisms needed to actually trust and deploy those capabilities. Capability and control must always be designed as a pair.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] · [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Red_Teaming|Red Teaming]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]] · [[en/AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self-Evolving Harnesses]]
 
 ## Sources
 - METR "Measuring AI Ability to Complete Long Tasks" — [metr.org](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/)
@@ -177,6 +194,9 @@ Autonomous Systems is the frontier of agent engineering. As Time Horizon continu
 - Google DeepMind (2025) "AlphaEvolve: A coding agent for scientific and algorithmic discovery" — [deepmind.google](https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/)
 - Zhang et al. (Sakana AI, 2025) "The Darwin Gödel Machine" — [arXiv:2505.22954](https://arxiv.org/abs/2505.22954)
 - Anthropic (2024) "Alignment faking in large language models" — [anthropic.com](https://www.anthropic.com/research/alignment-faking)
+- Schlatter, Weinstein-Raun, Ladish (2026) "Incomplete Tasks Induce Shutdown Resistance in Some Frontier LLMs", TMLR — [arXiv:2509.14260](https://arxiv.org/abs/2509.14260)
+- Munirathinam (2026) "Will the Agent Recuse, and Will It Stop? Measuring LLM-Agent Compliance with In-Band Governance Signals at the Access Door and Mid-Flight" — [arXiv:2606.06460](https://arxiv.org/abs/2606.06460)
+- Gulati (2026) "ContinuityBench: A Framework and Taxonomy for Evaluating Agent Recovery from Interrupted State", ICML 2026 Workshop — [icml.cc](https://icml.cc/virtual/2026/68364)
 - METR Time Horizons benchmark (Epoch AI) — [epoch.ai/benchmarks/metr-time-horizons](https://epoch.ai/benchmarks/metr-time-horizons)
 - Anthropic "Measuring AI agent autonomy in practice" — [anthropic.com](https://www.anthropic.com/research/measuring-agent-autonomy)
 - Sakana AI "The AI Scientist-v2" — [sakana.ai](https://sakana.ai/ai-scientist-v2/)

@@ -295,7 +295,7 @@ flowchart TD
 
 격리 효과: 에이전트가 악성 코드를 실행하거나 의도치 않은 시스템 명령을 내려도 Sandbox 외부(DB, 핵심 서비스)에 영향 없음.
 
-Gemini Enterprise Agent Platform에서는 Agent Sandbox가 Agent Runtime에 통합되어 별도 설정 없이 코드 실행 작업이 자동 격리된다.
+Gemini Enterprise Agent Platform에서는 Agent Sandbox가 Agent Runtime에 통합되어 별도 설정 없이 코드 실행 작업이 자동 격리된다. 격리 기술 스펙트럼(container·gVisor·microVM), egress 통제, 자격 증명 주입 패턴은 [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent_Sandboxes]]에서 다룬다.
 
 ## 간접 프롬프트 인젝션 방어: PVE
 

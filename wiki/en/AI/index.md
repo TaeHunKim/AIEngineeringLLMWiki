@@ -85,6 +85,8 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]: Agent Runtime/Memory Bank/Gateway/Registry/Identity/Simulation/Optimizer, AWS Bedrock AgentCore·Azure AI Foundry comparison
 - [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]]: AGENTS.md, spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI
 - [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]]: Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]]: Delegated, parallel, and proactive agents; trigger, approval-gate, and notification design
+- [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent Sandboxes]]: container/gVisor/microVM isolation, egress control, credential-injection proxy
 
 #### Harness Engineering
 - [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]: NeMo Guardrails, Guardrails AI, LlamaGuard, PVE indirect injection defense, watermarking
@@ -106,6 +108,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]: API-calling-side optimization — Semantic Cache, Model Routing, batching, streaming
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]: AI gateway, deployment strategies, A/B testing, SRE/chaos, FinOps
 - [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]]: Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier & reward design
+- [[en/AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self-Evolving Harnesses]]: Harness evolution loops with frozen weights, AHE/HarnessEvolve/RRSI/MOSS, held-out validation
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]]: Agentic FinOps, autonomous watcher for model routing/scriptification/context auditing
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]]: FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]]: Agentic Compilation, Tool-Making, LOOP Skill Engine

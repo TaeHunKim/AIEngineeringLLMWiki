@@ -107,18 +107,20 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] — Plan-and-Solve, ReWOO, Tree of Thoughts/LATS, Reflexion, Self-Refine/CRITIC
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — Short-term / Long-term / MemGPT / Sleep-time Compute / Mem0 / Voyager Skill Library
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] — Anthropic Skills + 프로토콜 개요
-    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — LLM↔도구 통합 오픈 표준, Transports/Sampling/OAuth 2.1/Gateway (Anthropic, 2024)
+    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — LLM↔도구 통합 오픈 표준, 2026-07-28 stateless spec·Extensions, Transports/OAuth 2.1/Gateway (Anthropic, 2024)
     - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — 에이전트 간 통신 오픈 표준 (Google, 2025)
     - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/AG_UI|AG-UI (Agent-User Interaction Protocol)]] — 에이전트↔사용자 UI 실시간 양방향 스트리밍 표준 (CopilotKit, 2025)
 - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] — AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] — 조정 패턴, 통신 프로토콜, 실패 모드 (MASFT/MAST, NeurIPS 2025)
 - [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — Claude/OpenAI CUA/Gemini 컴퓨터 사용, Pipecat/LiveKit 음성 에이전트
-- [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL *(2026)*
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL, 정지·인터럽트 준수 *(2026)*
 - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3단계 평가 레이어, Agent Workbench 7가지 표면
 - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] — Safe Rollout 4전략, 멀티에이전트 관찰가능성, 비용·레이턴시 최적화
 - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(2026년 5월)*
 - [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]] — AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI *(2026)*
 - [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]] — Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp *(2026)*
+- [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]] — 위임형·병렬형·선제형, 트리거·승인 게이트·알림, GPT-6 Pro parallel agents·Claude Duet *(2026-10)*
+- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent Sandboxes]] — container/gVisor/microVM 격리, E2B·Kubernetes agent-sandbox, egress 통제, 자격 증명 주입 proxy *(2026-10)*
 
 ---
 
@@ -136,9 +138,9 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
     - [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(2026년 5월)*
 - Alignment & Governance — [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_and_Governance|Alignment and Governance]]
-    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control, Multi-Agent Collusion
     - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, 모델 내부 회로 분석 *(2026)*
-    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, 모델 카드 *(2026)*
+    - [[AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act(Digital Omnibus 일정), 모델 카드 *(2026)*
 
 ---
 
@@ -149,6 +151,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — API 호출 측 최적화 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps *(2026)*
 - [[AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier 설계, Modeling→Synthesis→Evaluation→Application 라이프사이클 *(2026)*
+- [[AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self-Evolving Harnesses]] — 가중치 고정 harness 진화 루프, AHE/HarnessEvolve/RRSI/MOSS, 과적합과 held-out 검증 *(2026-10)*
 - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] — Agentic FinOps, 모델 라우팅/스크립트화/컨텍스트 감사 자율 워처 (Loop Engineering의 특수화) *(2026)*
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]] — FrugalGPT, RouteLLM, UCCI, Budget-Aware Agentic Routing
     - [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] — Agentic Compilation, Tool-Making, LOOP Skill Engine

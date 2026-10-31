@@ -27,7 +27,29 @@ flowchart LR
 - **November 2024**: Anthropic open-sourced it
 - **November 2025**: 1-year anniversary spec update
 - **December 2025**: Donated to Linux Foundation's Agentic AI Foundation — OpenAI, Google, Microsoft, AWS, Block, and others join as co-participants
-- **2026**: Python/JS SDK 20M+ weekly downloads, ecosystem of thousands of third-party MCP Servers
+- **May 21, 2026**: 2026-07-28 spec Release Candidate locked
+- **July 28, 2026**: 2026-07-28 spec released — the largest revision since launch (stateless core, formal extensions framework, hardened authorization, deprecation policy). See the section below
+- **2026**: Tier 1 SDKs (TypeScript, Python, Go, C#) together see close to 500M downloads a month; the TypeScript and Python SDKs have each passed 1B total downloads. Ecosystem of thousands of third-party MCP Servers
+
+## 2026-07-28 Spec: Stateless Core and Extensions
+
+The 2026-07-28 spec includes breaking changes. Its core is **removing protocol-level connection state so servers scale horizontally on ordinary HTTP infrastructure**.
+
+| Change | Details | Previous |
+|------|------|------|
+| Handshake Removal (SEP-2575) | Each request contains protocol version, client information, and capabilities in `_meta`. Capabilities can be pre-fetched via `server/discover` if necessary. | `initialize`/`initialized` exchange |
+| Session Removal (SEP-2567) | Eliminates `Mcp-Session-Id` headers and protocol sessions, allowing requests to be processed by any instance behind a round-robin load balancer. If state is needed, the tool issues an explicit handle (e.g., `basket_id`), and the model passes it back as an argument. | sticky routing, shared session store |
+| Multi Round-Trip Requests (SEP-2322) | If the Server returns `resultType: "input_required"` and `requestState`, the Client re-calls with `inputResponses` appended. Any instance can handle the retry. | Server-sent `elicitation/create`·`sampling/createMessage`·`roots/list` over an open SSE stream |
+| Routing Header (SEP-2243) | `Mcp-Method` and `Mcp-Name` are mandatory for Streamable HTTP requests. Gateways can route and rate-limit without parsing the body. | Body parsing required |
+| Cacheable Lists (SEP-2549) | `ttlMs`·`cacheScope` for `tools/list`, etc., and `resources/read` results, with deterministic list ordering. | Re-query every time |
+| Trace context (SEP-414) | Pins the `_meta` keys `traceparent`·`tracestate`·`baggage` to W3C Trace Context. | Informal |
+| Tool schema (SEP-2106) | `inputSchema`·`outputSchema` support the full JSON Schema 2020-12 (e.g., `oneOf`, `$ref`). External `$ref` URIs must not be auto-dereferenced. | Limited subset |
+
+**Extensions Framework (SEP-2133)**: Extensions are identified by reverse-DNS IDs, negotiated via the capability `extensions` map, and are versioned separately from the spec. Tasks, MCP Apps, and Enterprise Managed Authorization are official extensions.
+
+**Deprecation Policy (SEP-2577)**: Features move through Active → Deprecated → Removed, with at least 12 months from deprecation to removal. In this revision, **Roots** (→ tool parameters, resource URIs, server settings), **Sampling** (→ direct LLM provider API integration), and **Logging** (→ `stderr` for stdio, OpenTelemetry for structured observability) have been deprecated, and the legacy HTTP+SSE transport has been officially deprecated with a one-year grace period.
+
+Migration checklist: remove `initialize` calls, drop session dependencies, add the routing headers, move SSE-based Server→Client prompts to MRTR, migrate experimental Tasks code to the new extension lifecycle, validate `iss` on authorization responses, and change the resource-not-found error code from `-32002` to `-32602`.
 
 ## Core Architecture: Host-Client-Server
 
@@ -127,7 +149,7 @@ Physical channels for MCP Client and Server to exchange messages. Three are supp
 | **HTTP + SSE** (legacy) | HTTP requests + Server-Sent Events for streaming responses | Early remote Server support |
 | **Streamable HTTP** (standard since March 2025) | Single HTTP endpoint, upgrades to SSE when needed | Remote Servers, load-balancer deployments, reconnection resilience |
 
-Streamable HTTP solves the HTTP+SSE problem of "entire session lost when connection drops" — it became the standard transport for remote MCP Servers post-2025.
+Streamable HTTP solves the HTTP+SSE problem of "entire session lost when connection drops" — it became the standard transport for remote MCP Servers post-2025. In the 2026-07-28 spec, legacy HTTP+SSE is formally deprecated with a one-year offramp, and Streamable HTTP now requires the `Mcp-Method` and `Mcp-Name` headers.
 
 ## Resources, Prompts, Sampling In Depth
 
@@ -162,11 +184,15 @@ async def summarize_via_host(large_document: str):
     return result.content
 ```
 
+Sampling is deprecated in the 2026-07-28 spec; the replacement is for the Server to integrate directly with an LLM provider API. It keeps working for at least 12 months.
+
 ## Roots and Elicitation
 
 **Roots**: Mechanism for Client to explicitly tell Server "the filesystem/URI boundary you can work within." An implementation of the least-privilege principle so the Server doesn't touch outside the project root.
 
 **Elicitation** (added to spec June 2025): Standard way for Server to **request additional information from the user** during a task. For example, a deployment tool Server can ask "Which environment should I deploy to? (staging/production)" mid-execution — previously these kinds of interactions were implemented differently by every Server.
+
+In the 2026-07-28 spec, Roots is deprecated (replaced by tool parameters and resource URIs), and Elicitation moves from an open stream to Multi Round-Trip Requests (the Server returns `input_required` and the Client retries the call).
 
 ## Async Tasks
 
@@ -181,9 +207,11 @@ Standard pattern for long-running tool calls (minutes to hours). Instead of wait
 
 This naturally interlocks with the long-running agents in [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — even multi-hour MCP tool calls can be handled with the same protocol.
 
+In the 2026-07-28 spec, Tasks moved out of the experimental core into the `io.modelcontextprotocol/tasks` extension. When a Server answers `tools/call` with a task handle, the Client manages it with `tasks/get` (polling), `tasks/update`, and `tasks/cancel`. `tasks/list` was removed because it cannot be scoped safely without sessions, and change notifications arrive on a `subscriptions/listen` stream the Client opts into per notification type. Users of the experimental 2025-11-25 API must migrate. For use in agents that run outside the user's session, see [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]].
+
 ## MCP Apps (UI Extension)
 
-An extension that lets an MCP Server render **interactive UI components** inside the Host, not just text/data. Tool call results can be shown directly as tables, charts, or forms. Its purpose is similar to A2UI in Agent Skills & Protocols ([[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]), but MCP Apps has the narrow scope of "an MCP Server presenting its own tool results," whereas A2UI is a more general protocol in which agents generate arbitrary UI.
+An extension that lets an MCP Server render **interactive UI components** inside the Host, not just text/data (an official extension in the 2026-07-28 spec, SEP-1865). The Host renders Server-supplied HTML in a sandboxed iframe, and tools declare UI templates ahead of time so the Host can prefetch, cache, and review them. Actions started from the UI go through the same JSON-RPC audit and consent path as direct tool calls. Tool call results can be shown directly as tables, charts, or forms. Its purpose is similar to A2UI in Agent Skills & Protocols ([[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]), but MCP Apps has the narrow scope of "an MCP Server presenting its own tool results," whereas A2UI is a more general protocol in which agents generate arbitrary UI.
 
 ## Security: OAuth 2.1
 
@@ -202,6 +230,8 @@ MCP-specific requirements:
   - Dynamic Client Registration (DCR) — Client can auto-register without prior registration
   - Resource Indicator — restricts token validity to specific MCP Server only (prevents token reuse attacks)
 ```
+
+Authorization hardening in the 2026-07-28 spec: Clients must validate the `iss` parameter on authorization responses per RFC 9207 (SEP-2468) and bind registered credentials to the issuing authorization server's issuer (SEP-2352). Desktop and CLI Clients declare an OpenID Connect `application_type` during DCR to avoid rejected localhost redirects (SEP-837). DCR itself is deprecated in favor of Client ID Metadata Documents (CIMD).
 
 ## 5 Security Threats
 
@@ -295,12 +325,14 @@ Effects of MCP standardization:
 MCP is the **standard layer for tool integration**. If Function Calling solved "how to call a function," MCP standardizes "what tools are exposed and in what format." It handles the interface to the external world in the Agent Engineering stack, and as agents grow larger and more complex, MCP's role becomes more important.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]]
 
 ## Sources
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)
 - MCP official docs — [modelcontextprotocol.io](https://modelcontextprotocol.io)
 - MCP Blog "One Year of MCP: November 2025 Spec Release" — [blog.modelcontextprotocol.io](https://blog.modelcontextprotocol.io/posts/2025-11-25-first-mcp-anniversary/)
+- MCP Blog "The 2026-07-28 MCP Specification Release Candidate" (2026-05-21) — [blog.modelcontextprotocol.io](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
+- MCP Blog "The 2026-07-28 Specification" (2026-07-28) — [blog.modelcontextprotocol.io](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
 - Wikipedia "Model Context Protocol" — [en.wikipedia.org](https://en.wikipedia.org/wiki/Model_Context_Protocol)
 - MCP official spec "Transports" · "Authorization" — [modelcontextprotocol.io/specification](https://modelcontextprotocol.io/specification)
 - LiteLLM docs (MCP Gateway) — [docs.litellm.ai](https://docs.litellm.ai)

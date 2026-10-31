@@ -203,6 +203,26 @@ Agent Identity (SPIFFE-based):
     Used for compliance audits
 ```
 
+### From Identity to Authorization
+
+Giving an agent an identity is just the starting point. The focus of agent security discussions in 2026 has shifted to **what an agent that has passed authentication is allowed to do**, which is authorization. This is because the fact that authentication has passed can easily be used as a justification for excessive permissions.
+
+```
+Authorization design principles:
+  Explicit delegation: record the agent's own identity + on whose behalf it acts (on-behalf-of)
+                      → no actions beyond the user's permissions; audits trace both the human and the agent
+  Zero Standing Privileges / Just-in-Time:
+                      no standing permissions; issue short-lived credentials scoped to the task's needs and duration at task start
+  Intent-based scope: restrict which tools may be called, and with which scopes, to match the task's intent
+                      (managed as a layer separate from execution isolation)
+  Context-aware policy: decide allow / deny / request approval dynamically from runtime context (data sensitivity, cost, time of day)
+  Revocability:       procedures to issue, renew, and revoke credentials, and immediate per-agent cutoff
+```
+
+In terms of standardization, NIST NCCoE released the concept paper "Accelerating the Adoption of Software and AI Agent Identity and Authorization" on 2026-02-05 (feedback deadline 04-02). The goal is to demonstrate **applying existing ID standards such as OAuth, OpenID Connect, SCIM, and SPIFFE to agents**, rather than creating a new framework. The premise is that agents should be treated as identifiable entities within enterprise ID systems, not as anonymous automation running on shared credentials. Credential lifecycle, real-time context-based authorization, auditing/non-repudiation, and prompt injection mitigation controls were presented as open questions.
+
+The OAuth 2.1 section of [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] addresses authorization for MCP server access, and [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent_Sandboxes]] covers execution isolation to contain damage when authorization is breached.
+
 ## Agent Simulation
 
 Pre-deployment stress testing tool that validates agents with synthetic traffic before release.
@@ -351,7 +371,7 @@ Continuous improvement loop:
 Agent Deployment is the **layer that elevates agents from prototype to enterprise system**. No matter how excellent an agent's Planning, Memory, and Tools, long-term operation, security, auditing, and scale expansion are impossible without proper deployment infrastructure. Especially in regulated industries (finance, healthcare, legal), the combination of Agent Identity + Agent Gateway + Agent Registry is becoming a prerequisite for AI automation adoption.
 
 ## Related Concepts
-[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]]
+[[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent Sandboxes]]
 
 ## Sources
 - [[en/AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (existing wiki source, first published Nov 2025 → updated May 2026)
@@ -362,6 +382,7 @@ Agent Deployment is the **layer that elevates agents from prototype to enterpris
 - Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform) [3]
 - AWS "Amazon Bedrock AgentCore" official docs — [aws.amazon.com](https://aws.amazon.com/bedrock/agentcore/)
 - Microsoft "Azure AI Foundry Agent Service" official docs — [learn.microsoft.com](https://learn.microsoft.com/azure/ai-foundry/)
+- NIST NCCoE "Accelerating the Adoption of Software and AI Agent Identity and Authorization" (concept paper, 2026-02-05) — [nccoe.nist.gov](https://www.nccoe.nist.gov/sites/default/files/2026-02/accelerating-the-adoption-of-software-and-ai-agent-identity-and-authorization-concept-paper.pdf)
 
 ### References
 [1] https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize

@@ -107,18 +107,20 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] — Plan-and-Solve, ReWOO, Tree of Thoughts/LATS, Reflexion, Self-Refine/CRITIC
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — Short-term / Long-term / MemGPT / Sleep-time Compute / Mem0 / Voyager Skill Library
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] — Anthropic Skills + protocol overview
-    - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — Open standard for LLM↔tool integration, Transports/Sampling/OAuth 2.1/Gateway (Anthropic, 2024)
+    - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — Open standard for LLM↔tool integration, 2026-07-28 stateless spec & extensions, Transports/OAuth 2.1/Gateway (Anthropic, 2024)
     - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — Open standard for inter-agent communication (Google, 2025)
     - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/AG_UI|AG-UI (Agent-User Interaction Protocol)]] — Real-time bidirectional streaming standard for agent↔user UI (CopilotKit, 2025)
 - [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] — AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] — Coordination patterns, communication protocols, failure modes (MASFT/MAST, NeurIPS 2025)
 - [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — Claude/OpenAI CUA/Gemini computer use, Pipecat/LiveKit voice agents
-- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL *(2026)*
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL, stop/interrupt compliance *(2026)*
 - [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3-stage evaluation layers, Agent Workbench 7 surfaces
 - [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] — Safe Rollout 4 strategies, multi-agent observability, cost & latency optimization
 - [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(May 2026)*
 - [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]] — AGENTS.md, spec-driven development, Plan→Edit→Verify loop, worktree parallelism, ACI *(2026)*
 - [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]] — Planner/Researcher/Synthesizer, bounded sub-agents, citation verification, BrowseComp *(2026)*
+- [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]] — Delegated, parallel, and proactive agents; triggers, approval gates, notifications; GPT-6 Pro parallel agents, Claude Duet *(2026-10)*
+- [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent Sandboxes]] — container/gVisor/microVM isolation, E2B and Kubernetes agent-sandbox, egress control, credential-injection proxy *(2026-10)*
 
 ---
 
@@ -136,9 +138,9 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Human_Evaluation|Human Evaluation]] — Preference Annotation, IAA, Chatbot Arena
     - [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]] — LangSmith, Langfuse, Arize Phoenix, Agent Observability suite *(May 2026)*
 - Alignment & Governance — [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_and_Governance|Alignment and Governance]]
-    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control
+    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Alignment_Research|Alignment Research]] — Reward Hacking, Sleeper Agents, Agentic Misalignment, In-Context Scheming, Alignment Faking, AI Control, Multi-Agent Collusion
     - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/Mechanistic_Interpretability|Mechanistic Interpretability]] — Sparse Autoencoders, Circuit Tracing, internal circuit analysis *(2026)*
-    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act, model cards *(2026)*
+    - [[en/AI/Engineering/Harness_Engineering/Alignment_and_Governance/AI_Governance_and_Compliance|AI Governance & Compliance]] — RSP/Preparedness/FSF, NIST AI RMF, ISO 42001, EU AI Act (Digital Omnibus timeline), model cards *(2026)*
 
 ---
 
@@ -149,6 +151,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — API-calling-side optimization — Semantic Cache, model routing, batching, streaming
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI gateway, deployment strategies, A/B testing, SRE/chaos engineering, FinOps *(2026)*
 - [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier design, Modeling→Synthesis→Evaluation→Application lifecycle *(2026)*
+- [[en/AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self-Evolving Harnesses]] — Harness evolution loops with frozen weights, AHE/HarnessEvolve/RRSI/MOSS, overfitting and held-out validation *(2026-10)*
 - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering|Cost Engineering]] — Agentic FinOps, autonomous watcher for model routing/scriptification/context auditing (a specialization of Loop Engineering) *(2026)*
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing|Complexity-Aware Model Routing]] — FrugalGPT, RouteLLM, UCCI, Budget-Aware Agentic Routing
     - [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification|Deterministic Task Scriptification]] — Agentic Compilation, Tool-Making, LOOP Skill Engine

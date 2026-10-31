@@ -27,6 +27,7 @@ flowchart TD
 | [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | API 호출 측 최적화 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍, 비용 제어 루프 |
 | [[AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps |
 | [[AI/Engineering/Loop_Engineering/RL_Environments\|RL_Environments]] | RLVR 훈련을 위한 검증 가능한 보상 환경 — Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier, 보상 설계 |
+| [[AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses\|Self_Evolving_Harnesses]] | 가중치 고정 harness 진화 루프 — AHE, HarnessEvolve, RRSI, MOSS, 과적합·held-out 검증 *(2026-10)* |
 | [[AI/Engineering/Loop_Engineering/Cost_Engineering/Cost_Engineering\|Cost_Engineering]] | 비용 절감을 자율 판단·수행하는 워처 에이전트(Agentic FinOps) — 모델 라우팅, 작업 스크립트화, 컨텍스트 사용량 감사 (Loop Engineering의 특수화) |
 | &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | FrugalGPT cascade, RouteLLM, UCCI, Budget-Aware Agentic Routing |
 | &nbsp;&nbsp;└ [[AI/Engineering/Loop_Engineering/Cost_Engineering/Deterministic_Task_Scriptification\|Deterministic_Task_Scriptification]] | Agentic Compilation, Tool-Making, LOOP Skill Engine |

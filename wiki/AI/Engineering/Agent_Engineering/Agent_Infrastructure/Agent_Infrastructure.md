@@ -13,9 +13,10 @@ order: 0
 | 문서 | 내용 |
 |------|------|
 | [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks\|Agent_Frameworks]] | AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra |
-| [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent_Deployment]] | Agent Runtime, Memory Bank, Gateway, Registry, Identity, Simulation *(2026년 5월)* |
+| [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent_Deployment]] | Agent Runtime, Memory Bank, Gateway, Registry, Identity·인가(JIT, NIST NCCoE), Simulation *(2026년 5월)* |
 | [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps\|AgentOps]] | AgentOps 방법론 3 Pillars, agentops.ai 플랫폼, 도구 비교 (LangSmith/Langfuse/Braintrust 등) |
 | [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench\|Eval_Driven_Development_and_Agent_Workbench]] | 3단계 평가 레이어, Agent Workbench 7가지 표면 |
+| [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes\|Agent_Sandboxes]] | 격리 스펙트럼(container/gVisor/microVM), E2B·Kubernetes agent-sandbox, egress 통제, 자격 증명 주입 proxy *(2026-10)* |
 
 ## 관련 개념
 [[AI/Engineering/Agent_Engineering/Agent_Engineering|Agent Engineering]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques|Agent Techniques]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]]

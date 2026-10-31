@@ -85,6 +85,22 @@ General-Purpose AI (GPAI) model separate regulation:
   (transparency documentation, model evaluation, incident reporting, etc.)
 ```
 
+#### Implementation Schedule and Digital Omnibus (2026)
+
+The AI Act is phased in after its entry into force in August 2024. In 2026, the **Digital Omnibus on AI** (Regulation (EU) 2026/1744) postponed the application date for high-risk obligations. After a provisional agreement in May 2026, it was approved by the European Parliament (06-16) and the Council (06-29), published in the Official Journal on 07-24, and entered into force on 07-27.
+
+| Obligation | Application Date | Notes |
+|------|--------|------|
+| Prohibited practices (Art. 5), AI literacy (Art. 4) | 2025-02-02 | Omnibus eases literacy from "guaranteeing a certain level" to a "support" obligation |
+| GPAI model obligations | 2025-08-02 | No change. Clarification of enforcement authority for the AI Office |
+| Transparency obligations (Art. 50, notifying interaction with AI, etc.) | 2026-08-02 | Not postponed. Only the requirement for machine-readable labeling (watermarking, Art. 50(2)) for systems launched before 2026-08-02 is deferred until 2026-12-02 |
+| New prohibitions: AI generating non-consensual sexual images/CSAM | 2026-12-02 | Added to Art. 5 by the Omnibus. Deferral period for technical safeguards |
+| High-risk — Standalone systems (Annex III: recruitment, credit scoring, education, etc.) | **2027-12-02** | Postponed from 2026-08-02 |
+| Member-state AI regulatory sandboxes established | 2027-08-02 | Postponed from 2026-08-02 |
+| High-risk — Embedded in regulated products (Annex I: medical devices, machinery, vehicles, etc.) | **2028-08-02** | Postponed from 2027-08-02 |
+
+Practical implications: Although high-risk obligations have been delayed, they have **not been cancelled**. If you provide chatbots or generative functions to the EU, the transparency obligation under Art. 50 is already in effect.
+
 ### United States
 
 No comprehensive federal AI law, but Executive Orders and state legislation (California SB 1047 series, etc.) partially regulate frontier model safety and transparency. Sector-specific regulations (FDA for healthcare, existing financial regulators) increasingly extend to AI applications.
@@ -200,6 +216,8 @@ AI Governance and Compliance bridges the gap between technical safety measures (
 - METR "About" — [metr.org](https://metr.org/about)
 - Center for AI Safety "Statement on AI Risk" — [safe.ai](https://safe.ai/work/statement-on-ai-risk)
 - European Commission "EU Artificial Intelligence Act" — [artificialintelligenceact.eu](https://artificialintelligenceact.eu)
+- Gibson Dunn "EU AI Act Omnibus Agreement — Postponed High-Risk Deadlines and Other Key Changes" (2026-05) — [gibsondunn.com](https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/)
+- Cloud Security Alliance "EU AI Act's High-Risk Deadline: Deferred, Not Cancelled" (2026-08) — [labs.cloudsecurityalliance.org](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-high-risk-deadline-omnibus-20260/)
 - Li et al. (2024) "The WMDP Benchmark" — [arXiv:2403.03218](https://arxiv.org/abs/2403.03218)
 - Mitchell et al. (2019) "Model Cards for Model Reporting" — [arXiv:1810.03993](https://arxiv.org/abs/1810.03993)
 - Ministry of Science and ICT (Republic of Korea), "Framework Act on the Development of Artificial Intelligence and the Establishment of a Foundation for Trust" — [law.go.kr](https://www.law.go.kr)

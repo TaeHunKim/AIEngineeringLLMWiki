@@ -50,9 +50,10 @@ Agent design knowledge splits into four groups. **Techniques & Patterns** are bu
 |------|------|
 | [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Infrastructure\|Agent_Infrastructure]] | Category overview |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks\|Agent Frameworks]] | AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent Deployment]] | Agent Runtime, Memory Bank, Gateway, Registry, Identity, Simulation *(May 2026)* |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment\|Agent Deployment]] | Agent Runtime, Memory Bank, Gateway, Registry, Identity & authorization (JIT, NIST NCCoE), Simulation *(May 2026)* |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps\|AgentOps]] | 3 Pillars methodology, agentops.ai platform, tool comparison (LangSmith/Langfuse/Braintrust, etc.) |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench\|Eval-Driven Development & Agent Workbench]] | 3-stage evaluation layers, 7 Agent Workbench surfaces |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes\|Agent Sandboxes]] | Isolation spectrum (container/gVisor/microVM), E2B and Kubernetes agent-sandbox, egress control, credential-injection proxy *(2026-10)* |
 
 ### Applications
 
@@ -62,7 +63,8 @@ Agent design knowledge splits into four groups. **Techniques & Patterns** are bu
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents\|Coding Agents]] | Context files (AGENTS.md), spec-driven development, Plan→Edit→Verify loop, parallel worktrees, ACI |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents\|Deep Research Agents]] | Planner/Researcher/Synthesizer structure, bounded sub-agents, citation verification, BrowseComp |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents\|Computer Use & Voice Agents]] | Claude/OpenAI CUA/Gemini computer use, Pipecat/LiveKit voice agents |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems\|Autonomous Systems]] | METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, kill switch/HITL, stop/interrupt compliance |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents\|Background Agents]] | Delegated, parallel, and proactive agents; triggers, approval gates, notifications; GPT-6 Pro parallel agents, Claude Duet *(2026-10)* |
 
 ## When to Use an Agent
 

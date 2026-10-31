@@ -40,6 +40,30 @@ Prefill 풀에서 계산된 KV Cache를 Decode 풀로 옮기는 과정 자체가
   - 분산 KV Cache 풀(distributed KV pool) — 여러 Decode 인스턴스가 공유 캐시 계층에서 조회
 ```
 
+## 실무 적용: KV 커넥터와 분리 판단 기준
+
+**전송량 감각**: Llama-3.1-70B(BF16)의 KV Cache는 토큰당 약 320 KiB다. 10k 토큰 프롬프트면 Prefill에서 Decode로 약 3 GB를 넘겨야 하고, 400 Gb/s 회선에서도 오버헤드 전에 약 65 ms가 걸린다. 이 시간은 전부 TTFT에 더해진다. GPU 간 P2P가 없는 환경(L40S 2장, NVLink 없음)에서는 Qwen2.5-7B의 8k 토큰 KV(약 470 MB)가 Decode에 도착하는 데 약 1.3초가 걸렸다.
+
+**KV 커넥터**: vLLM은 NIXL, LMCache, Mooncake, FlexKV, AMD MoRI-IO 등 10여 개 KV 커넥터와 이를 연결하는 `MultiConnector`를 제공한다. NIXL은 KV Cache 메모리를 직접 등록해 RDMA로 GPU 간 전송한다. 대화·에이전트 루프처럼 컨텍스트가 계속 자라는 워크로드에는 LMCache·Mooncake 같은 **KV offload·공유 KV 캐시**를 함께 쓰고, 후속 턴을 이미 이력을 가진 워커로 보내는 **cache-aware routing**을 붙이는 것이 권장된다. 예제 proxy는 개발용이고, 프로덕션 라우팅은 llm-d나 Dynamo가 맡는다.
+
+```
+분리가 이득인 경우:
+  - 프로덕션 부하에서 ITL p99가 SLO를 넘는다
+  - 긴 프롬프트 + 높은 동시성, 그리고 KV 전송이 충분히 빠르다
+분리가 손해인 경우:
+  - TTFT가 핵심 제약이다 (전송 시간이 모든 첫 토큰에 더해짐)
+  - 트래픽이 낮거나 들쭉날쭉하다 → 통합 서빙 + Chunked Prefill 유지
+사전 점검:
+  - prefill·decode GPU 간 P2P 가능 여부, decode 측 평균 KV 전송 시간
+```
+
+보고된 수치(2026-09 vLLM 블로그 기준, 모두 특정 하드웨어·워크로드 조건)는 다음과 같다.
+- L40S 2장, 8k 프롬프트: 통합 서빙은 0.4 req/s에서 p99 ITL이 23 → 169 ms로 뛰었고, P/D 분리는 25~52 ms를 유지했다. 대신 P/D의 median TTFT는 2.2초로 통합(0.7초)보다 나빴다.
+- AMD MoRI-IO(Qwen3-235B-A22B-FP8, MI300X 8장, 8 req/s): TTFT 1초·ITL 50 ms를 모두 만족한 요청이 100개 중 73개로, 통합(30개) 대비 goodput 약 2.4배.
+- llm-d(gpt-oss-120b, H200 16장): 같은 GPU의 통합 replica 대비 평균 end-to-end 지연 약 59%, P95 약 67% 감소.
+
+**운영 함정**: 렌더링(템플릿·토큰화)을 CPU 노드로 분리할 때는 render·derender·엔진이 모델·토크나이저·chat template·parser 설정을 모두 공유해야 한다. 어긋나면 content·reasoning·tool_calls 분할이 경고 없이 바뀐다. 이전 턴의 thinking trace를 버리는 chat template은 decode 측 캐시 블록과 불일치를 일으켜 잘못된 출력을 낼 수 있다.
+
 ## TP / PP / EP — 모델 자체를 나누는 병렬화
 
 Disaggregation이 "단계(Prefill vs Decode)"를 나눈다면, 아래 세 가지는 "모델 자체"를 여러 GPU에 나누는 병렬화 기법이다. 대형 모델이 GPU 한 대 메모리에 올라가지 않을 때 필수적이다.
@@ -108,6 +132,8 @@ Disaggregated Serving과 TP/PP/EP는 단일 GPU 최적화(Inference_Internals)�
 ## 출처
 - NVIDIA "Dynamo: Disaggregated Serving" — [developer.nvidia.com](https://developer.nvidia.com/blog/introducing-nvidia-dynamo/)
 - llm-d 프로젝트 — [llm-d.ai](https://llm-d.ai)
+- vLLM Blog "Taking vLLM Apart: A Practical Guide to Disaggregated Serving" (2026-09-29) — [vllm.ai](https://vllm.ai/blog/2026-09-29-disaggregated-serving-guide)
+- llm-d "Disaggregated Serving" 문서 — [llm-d.ai](https://llm-d.ai/docs/architecture/advanced/disaggregation)
 - Shoeybi et al. (2019) "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism (Tensor Parallelism)" — [arXiv:1909.08053](https://arxiv.org/abs/1909.08053)
 - Huang et al. (2019) "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism" — [arXiv:1811.06965](https://arxiv.org/abs/1811.06965)
 - AI Engineering from Scratch, Phase 17 · Lessons 04-18 (서빙 엔진 내부, Disaggregated Serving, 셀프호스팅) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production)

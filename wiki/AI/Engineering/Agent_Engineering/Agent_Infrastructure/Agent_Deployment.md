@@ -226,6 +226,26 @@ audit_logs = await identity_service.query_audit_logs(
 # → 해당 에이전트의 모든 작업 이력 조회 가능
 ```
 
+### 신원(Identity)에서 인가(Authorization)로
+
+에이전트에 신원을 주는 것은 출발점일 뿐이다. 2026년 에이전트 보안 논의의 중심은 **인증을 통과한 에이전트가 무엇을 해도 되는가**, 즉 인가로 옮겨갔다. 인증이 통과됐다는 사실이 오히려 과도한 권한을 정당화하는 근거로 쓰이기 쉽기 때문이다.
+
+```
+인가 설계 원칙:
+  위임 명시:          에이전트 단독 신원 + "누구를 대신해" 행동하는지(on-behalf-of)를 함께 기록
+                      → 사용자 권한을 넘어서는 행동 불가, 감사 시 사람·에이전트 모두 추적
+  Zero Standing Privileges / Just-in-Time:
+                      상시 권한 없이, 태스크 시작 시 필요한 범위·기간만큼 짧은 수명의 자격 증명 발급
+  Intent 기반 scope:  "어떤 도구를, 어떤 scope로" 호출할 수 있는지를 태스크 의도에 맞춰 제한
+                      (실행 격리와는 별도 계층으로 관리)
+  맥락 기반 정책:      실행 중 맥락(대상 데이터 민감도, 비용, 시간대)에 따라 허용·거부·승인 요청을 동적으로 결정
+  폐기 가능성:        자격 증명 발급·갱신·폐기 절차와 에이전트 단위 즉시 차단
+```
+
+표준화 측면에서는 NIST NCCoE가 2026-02-05 concept paper "Accelerating the Adoption of Software and AI Agent Identity and Authorization"을 공개했다(의견 수렴 04-02 마감). 새 프레임워크를 만들기보다 OAuth, OpenID Connect, SCIM, SPIFFE 같은 **기존 ID 표준을 에이전트에 적용하는 방법**을 실증하는 것이 목표다. 에이전트를 공유 자격 증명으로 도는 익명 자동화가 아니라 기업 ID 시스템 안의 식별 가능한 주체로 다뤄야 한다는 전제에서 출발한다. 자격 증명 수명 주기, 실시간 맥락 기반 인가, 감사·부인 방지, 프롬프트 인젝션 완화 통제가 열린 질문으로 제시됐다.
+
+MCP 서버 접근 인가는 [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]의 OAuth 2.1 절이, 인가가 뚫렸을 때 피해를 가두는 실행 격리는 [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent_Sandboxes]]가 다룬다.
+
 ## Agent Simulation
 
 배포 전 에이전트를 합성 트래픽으로 사전 검증하는 스트레스 테스트 도구.
@@ -382,7 +402,7 @@ flowchart TD
 Agent Deployment는 **에이전트를 프로토타입에서 엔터프라이즈 시스템으로 격상시키는 레이어**다. 아무리 뛰어난 Planning·Memory·Tools를 갖춘 에이전트도 적절한 Deployment 인프라 없이는 장기 운영·보안·감사·규모 확장이 불가능하다. 특히 규제 산업(금융, 의료, 법률)에서 Agent Identity + Agent Gateway + Agent Registry의 조합은 AI 자동화 도입의 전제 조건이 되고 있다.
 
 ## 관련 개념
-[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]]
+[[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent_Architectures]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent_Memory]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability_and_Tracing]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent_Sandboxes]]
 
 ## 출처
 - [[AI/sources/Introduction_to_Agents|Introduction_to_Agents]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
@@ -393,6 +413,7 @@ Agent Deployment는 **에이전트를 프로토타입에서 엔터프라이즈 �
 - Google Cloud Blog "Introducing Gemini Enterprise Agent Platform" — [cloud.google.com](https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform) [3]
 - AWS "Amazon Bedrock AgentCore" 공식 문서 — [aws.amazon.com](https://aws.amazon.com/bedrock/agentcore/)
 - Microsoft "Azure AI Foundry Agent Service" 공식 문서 — [learn.microsoft.com](https://learn.microsoft.com/azure/ai-foundry/)
+- NIST NCCoE "Accelerating the Adoption of Software and AI Agent Identity and Authorization" (concept paper, 2026-02-05) — [nccoe.nist.gov](https://www.nccoe.nist.gov/sites/default/files/2026-02/accelerating-the-adoption-of-software-and-ai-agent-identity-and-authorization-concept-paper.pdf)
 
 ### 참고 문헌
 [1] https://docs.cloud.google.com/gemini-enterprise-agent-platform/optimize

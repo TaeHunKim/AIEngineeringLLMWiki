@@ -369,3 +369,11 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **보강**: 구현 접근 표 학습형 행에 Microsoft-Decision-1, 사용 패턴 라우팅 항목에 에이전트 통제·음성 연동, 출처 5건.
 - **요약 줄**: `Model_Types.md`, `Model_Engineering.md`, `Engineering/index.md` 설명 갱신.
 - **출처 한계**: 속도·비용 수치는 벤더 자사 측정, BANKING77 비교는 단일 샘플·beta 기준.
+
+## [2026-10-31] update | AI Engineering 최신화 — 신규 3건, 갱신 6건
+
+- **방법**: 전체 트리 키워드 커버리지 grep + 2026-10 뉴스·arXiv 검색. 집계·digest 사이트는 후보 발굴에만 쓰고, 기재 내용은 1차 출처(공식 블로그·release notes·arXiv abstract·로펌/CSA 해설)로 재확인한 것만 넣음.
+- **신규(KO+EN)**: `Agent_Infrastructure/Agent_Sandboxes`(order 5) — 격리 스펙트럼, 관리형 sandbox·Kubernetes agent-sandbox, egress·자격 증명 주입. `Agent_Applications/Background_Agents`(order 5) — 위임형/병렬형/선제형, Claude Duet 설계 선택, GPT-6 Pro parallel agents. `Loop_Engineering/Self_Evolving_Harnesses`(order 6) — AHE·HarnessEvolve·RRSI·MOSS와 비판적 결과(2605.30621, SEAGym, EvoHarnessBench).
+- **갱신**: `MCP` — 2026-07-28 spec(stateless core, MRTR, extensions, deprecation 정책, 인가 강화)을 새 절로 추가하고 Transports·Sampling·Roots·Tasks·MCP Apps·OAuth 절 보정. `AI_Governance_and_Compliance` — EU AI Act 시행 일정 + Digital Omnibus(Regulation (EU) 2026/1744). `Agent_Deployment` — 신원→인가 소절(JIT/ZSP, NIST NCCoE concept paper). `Autonomous_Systems` — 정지·인터럽트 준수 연구. `Alignment_Research` — Multi-Agent Collusion 절. `Distributed_Serving` — KV 커넥터·분리 판단 기준·vLLM 2026-09 실측.
+- **연동**: 허브 3개·`Agent_Engineering.md`·두 `index.md` 등록, Guardrail_Engineering·Coding_Agents·Continuous_Optimization·Automatic_Prompt_Optimization·Harness_Engineering·MCP·Multi_Agent_Coordination 역링크.
+- **보류/제외**: AP2/ACP 상태 변화(FIDO 이관 등)는 2차 출처끼리 상충해 보류. 프런티어 모델 스냅샷(GPT-6.x, Gemini 4, Claude 5.x, DeepSeek V4)은 집계 사이트끼리 이름·날짜가 엇갈려 제외. "모델당 GPU 8장 미만이면 분리 불필요" 경험칙은 1차 출처(vLLM 블로그)에 없어 제외.
