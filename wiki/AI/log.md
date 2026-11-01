@@ -377,3 +377,12 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **갱신**: `MCP` — 2026-07-28 spec(stateless core, MRTR, extensions, deprecation 정책, 인가 강화)을 새 절로 추가하고 Transports·Sampling·Roots·Tasks·MCP Apps·OAuth 절 보정. `AI_Governance_and_Compliance` — EU AI Act 시행 일정 + Digital Omnibus(Regulation (EU) 2026/1744). `Agent_Deployment` — 신원→인가 소절(JIT/ZSP, NIST NCCoE concept paper). `Autonomous_Systems` — 정지·인터럽트 준수 연구. `Alignment_Research` — Multi-Agent Collusion 절. `Distributed_Serving` — KV 커넥터·분리 판단 기준·vLLM 2026-09 실측.
 - **연동**: 허브 3개·`Agent_Engineering.md`·두 `index.md` 등록, Guardrail_Engineering·Coding_Agents·Continuous_Optimization·Automatic_Prompt_Optimization·Harness_Engineering·MCP·Multi_Agent_Coordination 역링크.
 - **보류/제외**: AP2/ACP 상태 변화(FIDO 이관 등)는 2차 출처끼리 상충해 보류. 프런티어 모델 스냅샷(GPT-6.x, Gemini 4, Claude 5.x, DeepSeek V4)은 집계 사이트끼리 이름·날짜가 엇갈려 제외. "모델당 GPU 8장 미만이면 분리 불필요" 경험칙은 1차 출처(vLLM 블로그)에 없어 제외.
+
+## [2026-11-01] update | 핵심 9개 문서의 실무 참고서 품질 정비
+
+- **범위(KO+EN)**: LangChain, LangGraph, Tool_Use_and_Function_Calling, Structured_Output, LLM_Memory, Agent_Memory, Full_Fine-Tuning, Continuous_Optimization, Automatic_Prompt_Optimization. 상위 hub·index와 Cost_Engineering·Decision_Models·RL_Environments의 요약 및 경계 설명도 동기화.
+- **내용**: LangChain v1/legacy 경계와 실행 가능한 LCEL·StateGraph 예제, Responses tool loop와 권한·idempotency 계약, JSON/schema/의미 검증의 분리, Memory 분류와 lifecycle, GRPO의 기원·reward 정규화, prompt 최적화와 학습·운영 루프의 역할을 정리. 근거 없는 일반화·성능 수치를 줄이고 공식 문서·논문의 적용 조건을 명시.
+- **예제 검증**: Python 3.12, langchain 1.4.7, langgraph 1.2.19, openai 2.54.0, pydantic 2.14.2, scipy 1.18.1, dspy 3.4.1에서 KO·EN 각각 19개 검증 통과. A/B 평균 비교·동률·표본 부족·NaN·분산 0 회귀 케이스, 로컬 예제 실행, SDK request/response mock, tool 오류·반복 상한, DSPy 설정 검증 포함. 실제 유료 provider 호출·optimizer 학습은 실행하지 않았으며 문서에도 구분해 표시.
+- **번역**: 로컬 LLM으로 변경 섹션을 번역한 뒤 의미·용어·코드를 검토. placeholder/줄 수 검증 실패로 파일 저장이 중단된 부분은 변경 섹션만 수동 보완. 번역에서 누락된 코드·docstring·Mermaid node를 수정. 번역 도구 자체는 변경하지 않음.
+- **검토·검증**: 독립 리뷰에서 출처 연도와 학습 objective/algorithm/reward 요약 표현을 보정. `npm run lint:wiki`, 저장소 테스트 109건, Quartz build 및 브라우저의 표·코드·Mermaid 렌더링 확인.
+- **후속 범위**: 나머지 Engineering 문서의 출처·예제는 별도 감사 대상으로 유지. Agent_Memory의 기존 Voyager SkillLibrary는 저장 구조를 설명하는 pseudocode로서, 영속 storage 구현 검증까지 포함하지 않음.

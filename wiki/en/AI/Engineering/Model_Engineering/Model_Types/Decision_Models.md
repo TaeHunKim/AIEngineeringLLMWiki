@@ -181,15 +181,15 @@ flowchart TD
 
 ## Boundary Definitions
 
-| Document | What it covers |
+| Document | Scope |
 |------|-----------|
-| **This document (Decision_Models)** | Model classes and implementation methods that **return calibrated probabilities** without generating text |
-| [[en/AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models\|Large_Language_Models]] | Defining the types of generative LLMs themselves (base/instruct/reasoning) — Decision Models are an alternative that does not use that generation path |
-| [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Techniques for conforming generative LLM outputs to a schema — Guarantees type but not probability |
+| **This Document (Decision_Models)** | Model classes and implementation methods that **return calibrated probabilities** without generating text |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models\|Large_Language_Models]] | Defining the types of generative LLMs themselves (base/instruct/reasoning) — Decision Model is an alternative that does not use that generation path |
+| [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Distinguishing between JSON/Schema/semantic validation, provider contracts, and failure handling |
 | [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | Evaluating generative LLMs with evidence — Slow and expensive, but explainable |
-| [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | Pair scoring models like Cross-encoder — Discriminative models specialized in search relevance |
-| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | Model selection strategies based on difficulty — Decision Models can be used as the router itself |
-| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | Designing input/output safety mechanisms — Decision Models are candidates for that judge |
+| [[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | Pair scoring models like Cross-encoder — Discriminative models specialized in retrieval relevance |
+| [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | Model selection strategies based on difficulty — Decision Model can be used as such a router itself |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering\|Guardrail_Engineering]] | Designing input/output safety mechanisms — Decision Model is a candidate for that adjudicator |
 
 ## Role in AI Engineering
 

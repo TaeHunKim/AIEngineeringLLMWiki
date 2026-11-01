@@ -33,16 +33,16 @@ Agent design knowledge splits into four groups. **Techniques & Patterns** are bu
 | [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars\|Agent Core Pillars]] | Planning/Memory/Tools/**Deployment** 4 pillars (Weng 2023 + May 2026) |
 | [[en/AI/Engineering/Agent_Engineering/Agent_Architectures\|Agent Architectures]] | Single/Orchestrator/Router/Multi-Agent/**Long-running** |
 
-### Techniques & Patterns
+### Techniques/Patterns
 
 | Document | Content |
 |------|------|
-| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques\|Agent_Techniques]] | Category overview |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns\|Anthropic Workflow Patterns]] | 5 workflow patterns (chaining/routing/parallelization/orchestrator-workers/evaluator-optimizer) |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection\|Planning & Reflection]] | Plan-and-Solve, Reflexion (NeurIPS 2023) |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory\|Agent Memory]] | Short/Long-term Memory, Memory ETL, Agent Runtime/Memory Bank |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination\|Multi-Agent Coordination]] | Coordination patterns, communication protocols, failure modes (MASFT/MAST/Groupthink) |
-| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols\|Agent Skills & Protocols]] | Anthropic Skills, MCP, Google A2A Protocol, AG-UI |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques\|Agent_Techniques]] | Category Overview |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns\|Anthropic_Workflow_Patterns]] | 5 Workflow Patterns (chaining/routing/parallelization/orchestrator-workers/evaluator-optimizer) |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection\|Planning_and_Reflection]] | Plan-and-Solve, Reflexion (NeurIPS 2023) |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory\|Agent_Memory]] | Memory Extraction/Update/Conflict/Deletion lifecycle, provenance and user isolation |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination\|Multi_Agent_Coordination]] | Coordination Patterns, Communication Protocols, Failure Modes (MASFT/MAST/Groupthink) |
+| [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols\|Agent_Skills_and_Protocols]] | Anthropic Skills, MCP, Google A2A Protocol, AG-UI |
 
 ### Infrastructure & Operations
 

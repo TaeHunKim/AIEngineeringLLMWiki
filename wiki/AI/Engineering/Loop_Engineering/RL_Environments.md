@@ -6,10 +6,10 @@ order: 5
 
 ## 개요
 
-**RL Environments**는 에이전트가 강화학습으로 훈련되거나 평가될 때 상호작용하는 **시뮬레이션된 태스크 공간**을 가리킨다. [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] 문서가 GRPO·RLVR로 "모델을 어떻게 강화학습으로 훈련하는가"를 다룬다면, 이 문서는 그 학습이 성립하기 위한 전제조건 — **검증 가능한 보상 신호를 어디서, 어떻게 얻는가**를 다룬다.
+**RL Environments**는 에이전트가 강화학습으로 훈련되거나 평가될 때 상호작용하는 **시뮬레이션된 태스크 공간**을 가리킨다. [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] 문서가 후보의 평가·배포·rollback 운영 루프를 다룬다면, 이 문서는 그 학습이 성립하기 위한 전제조건 — **검증 가능한 보상 신호를 어디서, 어떻게 얻는가**를 다룬다.
 
 ```
-RLVR 훈련 루프 (Continuous_Optimization.md가 다루는 부분):
+RLVR 훈련 루프:
   모델이 응답 생성 → [보상 신호] → GRPO로 정책 업데이트
 
 이 문서가 다루는 부분:
@@ -86,7 +86,7 @@ flowchart LR
 - **Evaluation**: "Verifier" 절에서 다룬 프로그램적/모델 기반/HITL 판정이 이 단계의 핵심이다 — 환경 자체의 품질(보상이 실제로 유의미한 신호인가)을 검증하는 것이지, 에이전트를 검증하는 것이 아니다.
 - **Application**: 훈련된 정책을 다시 실제 도메인(고객 지원, 코드베이스 등)에 배포하는 단계로, [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]]과 맞닿는다.
 
-이 프레이밍의 가치는 "환경을 잘 만드는 것"이 일회성 작업이 아니라 **모델링→생성→검증→적용이 순환하는 독립된 엔지니어링 라이프사이클**이라는 점을 명시적으로 드러낸다는 데 있다 — RLVR 훈련 루프([[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]])가 도는 동안, 환경 자체도 별도의 개선 루프를 필요로 한다.
+이 프레이밍의 가치는 "환경을 잘 만드는 것"이 일회성 작업이 아니라 **모델링→생성→검증→적용이 순환하는 독립된 엔지니어링 라이프사이클**이라는 점을 명시적으로 드러낸다는 데 있다 — [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]]의 평가·배포 루프와 함께, 환경 자체도 별도의 개선 루프를 필요로 한다.
 
 ## 경계: 이미 있는 개념들과 어떻게 다른가
 
@@ -97,7 +97,7 @@ RL Environments는 새 최상위 계층이 아니라, 이 위키가 이미 다�
 | [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Harness_Engineering/Harness_Evaluation/Benchmarking]] | SWE-bench 등 **정적** 평가 벤치마크 — 훈련 없이 모델 성능을 측정 | 같은 벤치마크(SWE-bench)가 평가용으로도, RL 훈련용 환경(SWE-Gym)으로도 쓰일 수 있다 — "측정만 하는가, 그 신호로 훈련까지 하는가"가 차이 |
 | [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge\|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] | **Agent Simulation**으로 배포 전 에이전트 행동을 사전 검증 | RL Environment의 모델 기반 verifier와 메커니즘이 겹치지만, Agent-as-a-Judge는 배포 전 품질 게이트, RL Environment는 훈련 루프 내 보상 신호라는 용도 차이 |
 | [[AI/Engineering/Loop_Engineering/Data_Flywheel\|Loop_Engineering/Data_Flywheel]] | 프로덕션에서 수집된 실제 데이터로 합성 훈련 데이터를 만드는 순환 | RL Environment는 프로덕션 데이터가 아니라 **미리 설계된 시뮬레이션**에서 신호를 얻는다는 점이 다르지만, 두 방식이 결합돼 프로덕션 실패 사례를 RL 환경의 새 태스크로 재주입하는 경우도 있다 |
-| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | GRPO/RLVR로 **모델 자체를 훈련** | RL Environment는 그 훈련이 요구하는 "검증 가능한 보상"을 생성하는 상류(upstream) 인프라 |
+| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | 실패 수집·held-out 평가·A/B·배포·rollback 운영 루프 | RL Environment는 학습용 보상 신호를 제공하며, 학습 후 후보는 별도의 평가·배포 루프를 거침 |
 
 ## AI Engineering에서의 역할
 

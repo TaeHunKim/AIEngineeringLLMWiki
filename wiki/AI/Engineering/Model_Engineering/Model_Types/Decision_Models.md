@@ -185,7 +185,7 @@ flowchart TD
 |------|-----------|
 | **본 문서 (Decision_Models)** | 텍스트를 생성하지 않고 **보정된 확률을 반환**하는 모델 클래스와 구현 방식 |
 | [[AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models\|Large_Language_Models]] | 생성형 LLM 자체의 모델 종류 규정(base/instruct/reasoning) — Decision Model은 그 생성 경로를 쓰지 않는 대안 |
-| [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | 생성형 LLM의 출력을 스키마에 맞추는 기법 — 타입은 보장하지만 확률은 없음 |
+| [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON·Schema·의미 검증 구분, provider 계약과 실패 처리 |
 | [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge\|LLM_as_a_Judge]] | 생성형 LLM이 근거와 함께 평가 — 느리고 비싸지만 설명 가능 |
 | [[AI/Engineering/Model_Engineering/Model_Types/Embedding_Models\|Embedding_Models]] | Cross-encoder 등 쌍(pair) 점수화 모델 — 검색 관련도에 특화된 판정형 모델 |
 | [[AI/Engineering/Loop_Engineering/Cost_Engineering/Complexity_Aware_Model_Routing\|Complexity_Aware_Model_Routing]] | 난이도에 따른 모델 선택 전략 — Decision Model은 그 라우터 자체로 쓸 수 있음 |

@@ -27,30 +27,31 @@ flowchart LR
 ## Sub-documents
 
 | Document | Content |
-|----------|---------|
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow\|Linear Flow]] | Sequential pipeline overview |
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|LangChain]] | LCEL pipeline, 1.0 `create_agent`·Middleware (Harrison Chase, 2022) |
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|LlamaIndex]] | Indexing-query pipeline (Jerry Liu, 2022) |
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Tool Use & Function Calling]] | OpenAI/Anthropic Function Calling |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow\|Graph Flow]] | Cyclic graph flow overview |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|LangGraph]] | StateGraph agents (LangChain AI, 2024) |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows\|Cyclic Flows]] | Evaluate-and-Retry, Self-Correction |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern\|ReAct Pattern]] | Thought-Action-Observation (Yao, 2022) |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human-in-the-Loop]] | Human intervention points — Breakpoints, Time Travel |
+|------|------|
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow\|Linear Flow]] | Sequential Pipeline Overview |
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|Linear_Flow/LangChain]] | LCEL, v1 create_agent·Middleware, legacy API Distinction |
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|Linear_Flow/LlamaIndex]] | Indexing-Query Pipeline (Jerry Liu, 2022) |
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Linear_Flow/Tool_Use_and_Function_Calling]] | Tool Calling·Result Contract, Authorization Verification, Retry·Idempotency |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow\|Graph Flow]] | Cyclic Graph Flow Overview |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|Graph_Flow/LangGraph]] | StateGraph, Conditional Termination, Checkpoint·Resumption, and Side Effects |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows\|Graph_Flow/Cyclic_Flows]] | Evaluate-and-Retry, Self-Correction |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern\|Graph_Flow/ReAct_Pattern]] | Thought-Action-Observation (Yao, 2022) |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Graph_Flow/Human_in_the_Loop]] | Human Intervention Points — Breakpoints, Time Travel |
 
-## Technology Selection Criteria
+## Technical Selection Criteria
 
 ```mermaid
 flowchart TD
-    T{Task type} -->|Simple RAG QA| LC[LangChain LCEL chain]
-    T -->|Document indexing pipeline| LI[LlamaIndex]
-    T -->|Agent + tool use| LG[LangGraph]
-    T -->|Quality validation loop| CF[Cyclic Flows]
-    T -->|Human approval needed| HITL[HITL pattern]
-    T -->|.NET/Microsoft ecosystem| MAF[Microsoft Agent Framework]
+    T{Task Type} -->|Simple RAG QA| LC[LangChain LCEL Chain]
+    T -->|Document Indexing Pipeline| LI[LlamaIndex]
+    T -->|General Agent + Tool Use| CA[LangChain create_agent]
+    T -->|Explicit state transition/recovery| LG[LangGraph]
+    T -->|Quality Verification Loop| CF[Cyclic Flows]
+    T -->|Human approval required| HITL[HITL pattern]
+    T -->|.NET/MS ecosystem integration| MAF[Microsoft Agent Framework]
 ```
 
-**Microsoft Agent Framework 1.0** (GA 2026-04-03) unified the previously separate **Semantic Kernel** (enterprise state management, type safety) and **AutoGen** (multi-agent orchestration) into a single .NET+Python SDK — with native MCP and A2A support from 1.0. AutoGen and Semantic Kernel have both moved to maintenance mode. It's considered a LangGraph alternative for .NET/Azure-centric organizations. See [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a detailed framework comparison.
+**Microsoft Agent Framework 1.0** (2026-04-03 GA) integrates **Semantic Kernel** (enterprise state management · type safety) and **AutoGen** (multi-agent orchestration), which were previously separate, into a single .NET+Python SDK — natively supporting MCP and A2A from 1.0. AutoGen and Semantic Kernel have been moved to maintenance mode. It is considered an alternative to LangGraph for .NET/Azure-centric organizations. See [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a detailed comparison of the frameworks.
 
 ## Role in AI Engineering
 

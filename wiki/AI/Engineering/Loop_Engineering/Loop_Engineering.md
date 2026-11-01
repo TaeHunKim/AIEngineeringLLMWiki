@@ -23,7 +23,7 @@ flowchart TD
 | 문서 | 내용 |
 |------|------|
 | [[AI/Engineering/Loop_Engineering/Data_Flywheel\|Data_Flywheel]] | 자기 강화 데이터 사이클, Self-Evolving Flywheel, RLVR + 합성 데이터 |
-| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling |
+| [[AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | 실패 수집·held-out 평가·A/B·배포·rollback 운영 루프 |
 | [[AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | API 호출 측 최적화 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍, 비용 제어 루프 |
 | [[AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps |
 | [[AI/Engineering/Loop_Engineering/RL_Environments\|RL_Environments]] | RLVR 훈련을 위한 검증 가능한 보상 환경 — Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier, 보상 설계 |

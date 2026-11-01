@@ -6,7 +6,7 @@ order: 2
 
 ## Overview
 
-**Full Fine-Tuning** is a technique that retrains **all parameters** of a pre-trained model on task- or domain-specific data. The most powerful but most expensive form of fine-tuning.
+**Full Fine-Tuning** is a technique that retrains **all parameters** of a pre-trained model using task-specific or domain-specific data. It is a term that defines the scope of parameters to be updated, not the learning objective. SFT, DPO, and RL can be applied to both Full FT and PEFT. Performance and cost vary depending on the data, model, and training setup.
 
 ## How It Works
 
@@ -32,65 +32,71 @@ The most common form of Full FT. Supervised learning with input→output pairs:
 
 ### RLHF (Reinforcement Learning from Human Feedback)
 
-The technique used in OpenAI's InstructGPT and ChatGPT:
+Technique used in OpenAI's InstructGPT and ChatGPT:
 
-1. **SFT stage**: Train base model on high-quality demonstration data
-2. **Reward Model training**: Human evaluators compare response pairs → preference labels → Reward Model training
-3. **PPO optimization**: Fine-tune LLM via RL (PPO algorithm) to maximize reward
+1. **SFT Stage**: Training the base model with high-quality demonstration data
+2. **Reward Model Training**: Human evaluators compare response pairs → Preference labels → Training the Reward Model
+3. **PPO Optimization**: Fine-tuning the LLM using RL (PPO algorithm) to maximize the Reward
 
 ```mermaid
 flowchart TD
-    H["Human: selects preference A > B"] --> RM["Reward Model: learns r(x,y)"]
-    RM --> PPO["PPO: trains LLM to generate<br/>high-reward responses"]
+    H["Person: Select response A > B preference"] --> RM["Reward Model: r(x,y) learning"]
+    RM --> PPO["PPO: Train LLM to generate responses with high Reward"]
 ```
 
-**DPO (Direct Preference Optimization)**: Skips Reward Model training from RLHF and optimizes directly from preference data. More stable and simpler.
+**DPO (Direct Preference Optimization)**: Optimizes directly using preference data, skipping the training of the Reward Model in RLHF. It is a direct preference optimization method that does not involve a separate reward model or PPO loop, and its stability and performance depend on the data and settings.
 
-### The Next Step in the Lineage: GRPO / RLVR
+### Next Steps in Lineage: GRPO / RLVR
 
-The weight-update lineage running SFT → RLHF (PPO) → DPO continues into **GRPO (Group Relative Policy Optimization)** in 2025. Where PPO trains a separate value model to estimate each response's advantage, GRPO computes advantage from the **relative ranking within a group of responses** generated for the same prompt, eliminating the need for a separate value model — which makes it more memory-efficient and more stable to train. The flagship example is DeepSeek-R1, which combined GRPO with **RLVR (Reinforcement Learning with Verifiable Rewards — RL in domains where correctness can be automatically verified)** to boost math and coding reasoning without a separate Reward Model.
+**GRPO (Group Relative Policy Optimization)** is a PPO-family algorithm proposed in DeepSeekMath (2024). It estimates the advantage using the mean and standard deviation of rewards for responses generated from the same prompt, thus eliminating the need for a separate value model. It is not a simple rank-based update, and the absence of a critic does not always guarantee learning stability.
 
-The detailed mechanics of GRPO/RLVR, the DeepSeek-R1 case study, and the relationship to Test-Time Compute Scaling are covered from the iterative-improvement-loop angle in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]] — this page only covers the Model Engineering angle: the lineage of weight-update techniques itself.
+**RLVR (Reinforcement Learning with Verifiable Rewards)** is a training setup where rewards are calculated using answer validators and execution tests. GRPO and RLVR are on different axes, representing different algorithmic and reward construction methods, respectively. DeepSeek-R1 (2025) is an example of applying this approach to reasoning learning. The potential for verifier omissions/workarounds and reward hacking must be evaluated.
+
+The process of creating candidates from operational data and subsequently verifying and deploying them is covered in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]], while the design of the verifier and environment is discussed in [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]].
 
 ## Full FT vs PEFT Comparison
 
-| Criteria | Full Fine-Tuning | PEFT (LoRA, etc.) |
+| Criterion | Full Fine-Tuning | PEFT (LoRA, etc.) |
 |------|-----------------|---------------|
-| **Trainable params** | 100% (billions) | 0.01~1% |
-| **GPU memory** | Very high (tens of GB × multiple GPUs) | Low |
-| **Performance** | Maximum | Close to Full FT |
-| **Training time** | Long | Fast |
-| **Catastrophic Forgetting** | High risk | Low risk |
-| **Best for** | Complete behavior change | Rapid domain adaptation |
+| **Training Parameters** | All parameters | Some adapters, etc.; ratio depends on rank and target module |
+| **GPU Memory** | Requires full gradient and optimizer state | Training state is reduced, but base model and activation memory are required |
+| **Performance** | Allows for broader parameter changes; not always superior | Needs comparison with Full FT depending on data, rank, and task |
+| **Training Time** | Depends on model, parallelization, and sequence length | Optimizer burden is small, but forward/backward costs remain |
+| **Catastrophic Forgetting** | Possible; requires regression evaluation of previously acquired capabilities | Possible even with PEFT; requires separate evaluation |
+| **Suitable Cases** | Tasks where the benefit of full update justifies the cost | Tasks where the adapter effect is validated under limited training resources |
 
-## When to Use
+## Appropriate Scenarios
 
-- When the model's fundamental behavior patterns must change (safety, policy compliance)
-- When sufficient compute resources are available
-- When millions+ of high-quality training samples exist
-- When special output formats or languages must be deeply internalized
+- When the fundamental behavior patterns of the model need to be changed (safety, policy compliance)
+- When sufficient computing resources are available
+- When representative, high-quality training data and independent evaluation data have been secured; a fixed minimum data count is not applied
+- When specific output formats or languages need to be deeply internalized by the model
 
 ## Cost Optimization
 
 ```
-Full FT memory = params × (weights + gradients + optimizer states)
-  = 7B params × (2 + 2 + 8 bytes) = ~84 GB (FP32 Adam)
+Full FT memory = parameter × (weight + gradient + optimizer state)
+  = 7B parameters × (2 + 2 + 8 bytes) = ~84 GB (weights·gradient BF16, Adam moments FP32)
 
-→ Reduce via BF16 training + Gradient Checkpointing + ZeRO-3 distributed training
+If separate FP32 master weights are maintained, it adds about 28 GB (7B × 4 bytes)
+Activation·Temporary buffer·Communication·allocator overhead is separate
+→ Actual peak memory is measured including implementation and sequence length
 ```
 
-- **Gradient Checkpointing**: Discard intermediate activations and recompute during backprop → memory savings
-- **DeepSpeed ZeRO**: Distribute optimizer states, gradients, and parameters across multiple GPUs
+- **Gradient Checkpointing**: Discarding intermediate activations and recalculating them during backpropagation → memory saving
+- **DeepSpeed ZeRO**: Distributing optimizer states, gradients, and parameters across multiple GPUs
 
-## Role in AI Engineering
+## Roles in AI Engineering
 
-Full FT is the most powerful tool in the Model Engineering layer, but in most practical applications it is replaced by LoRA/QLoRA (→ [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]]). RLHF is the core training pipeline for commercial models like GPT-4, Claude, and Gemini.
+Compare and select between Full FT and LoRA/QLoRA (→ [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]]) under identical data and evaluation conditions. Full FT is a candidate when it is difficult to achieve the goal with only adapters and when the entire update cost can be managed.
 
 ## Related Concepts
 [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]
 
-## Sources
+## References
 - Ouyang et al. (2022) "Training language models to follow instructions with human feedback" (InstructGPT) — [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)
 - Rafailov et al. (2023) "Direct Preference Optimization" — [arXiv:2305.18290](https://arxiv.org/abs/2305.18290)
 - Karpathy, A. "Let's reproduce GPT-2" — [YouTube](https://www.youtube.com/watch?v=l8pRSuU81PU)
 - DeepSeek-AI (2025) "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" — [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
+
+- Shao et al. (2024), [DeepSeekMath](https://arxiv.org/abs/2402.03300) — Proposed GRPO

@@ -13,7 +13,7 @@ order: 0
 
 #### Model Engineering
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Engineering/Model_Engineering/Pre-training_and_Continual_Learning]]: Pre-training 기초, Chinchilla 스케일링 법칙, 재앙적 망각 대응 전략
-- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Engineering/Model_Engineering/Full_Fine-Tuning]]: SFT, RLHF(PPO), DPO — 전체 가중치 업데이트
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Engineering/Model_Engineering/Full_Fine-Tuning]]: 전체 파라미터 업데이트와 학습 objective·algorithm·reward 설계(SFT·DPO·GRPO·RLVR)의 구분
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|Engineering/Model_Engineering/PEFT_LoRA_QLoRA]]: LoRA 수학, QLoRA NF4+이중 양자화, HuggingFace 구현
 - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Engineering/Model_Engineering/Quantization]]: PTQ/GPTQ/AWQ/GGUF, 정밀도별 메모리 계산
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Engineering/Model_Engineering/Model_Distillation]]: Hinton 2015 기원, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
@@ -30,12 +30,12 @@ order: 0
 - [[AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Engineering/Prompt_Engineering/Few_shot_Prompting]]: GPT-3 (Brown 2020) Zero/One/Few-shot 기원
 - [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Engineering/Prompt_Engineering/Chain_of_Thought]]: Wei 2022 CoT, Yao 2023 ToT, Self-Consistency
 - [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Engineering/Prompt_Engineering/Sampling_Controls]]: Temperature/Top-K/Top-P/Min-P/Beam Search
-- [[AI/Engineering/Prompt_Engineering/Structured_Output|Engineering/Prompt_Engineering/Structured_Output]]: JSON Mode, Pydantic, Instructor 라이브러리
+- [[AI/Engineering/Prompt_Engineering/Structured_Output|Engineering/Prompt_Engineering/Structured_Output]]: JSON·Schema·의미 검증 구분, provider 계약과 실패 처리
 - [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Engineering/Prompt_Engineering/Prompt_Caching]]: 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이
-- [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Engineering/Prompt_Engineering/Automatic_Prompt_Optimization]]: APE/OPRO/TextGrad, GEPA(ICLR 2026), DSPy 옵티마이저 선택 가이드
+- [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Engineering/Prompt_Engineering/Automatic_Prompt_Optimization]]: APE/OPRO/TextGrad·GEPA, DSPy 선택·컴파일·독립 평가
 
 #### Context Engineering
-- [[AI/Engineering/Context_Engineering/LLM_Memory|Engineering/Context_Engineering/LLM_Memory]]: LLM Memory 4유형(In-Context/External/In-Weights/In-Cache), Letta/Mem0/Zep 구현
+- [[AI/Engineering/Context_Engineering/LLM_Memory|Engineering/Context_Engineering/LLM_Memory]]: 저장 위치·scope·지속성, context 선택, Memory와 RAG의 관계
 - [[AI/Engineering/Context_Engineering/Semantic_Cache|Engineering/Context_Engineering/Semantic_Cache]]: GPTCache, Redis 구현, 카테고리 인식 캐시, 비용 절감 효과
 - [[AI/Engineering/Context_Engineering/Context_Compression|Engineering/Context_Engineering/Context_Compression]]: LLM Lingua, Map-Reduce, Lost in the Middle
 - [[AI/Engineering/Context_Engineering/Lost_in_the_Middle|Engineering/Context_Engineering/Lost_in_the_Middle]]: Liu et al. 2023, 긴 컨텍스트 중간 활용도 저하, Query-Aware Contextualization
@@ -59,10 +59,10 @@ order: 0
 - [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG]]: 정형 데이터 RAG, Vector+SQL Hybrid 아키텍처
 
 #### Flow Engineering
-- [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|Engineering/Flow_Engineering/Linear_Flow/LangChain]]: LCEL 파이프라인, Memory, LangSmith
+- [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|Engineering/Flow_Engineering/Linear_Flow/LangChain]]: LCEL, v1 create_agent·Middleware, legacy API 구분
 - [[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|Engineering/Flow_Engineering/Linear_Flow/LlamaIndex]]: 5단계 파이프라인, AutoMergingRetriever
-- [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling]]: OpenAI/Anthropic Function Calling
-- [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|Engineering/Flow_Engineering/Graph_Flow/LangGraph]]: StateGraph, ReAct Agent, Checkpointing
+- [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling]]: Tool 호출·결과 계약, 권한 검증, retry·idempotency
+- [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|Engineering/Flow_Engineering/Graph_Flow/LangGraph]]: StateGraph, 조건부 종료, checkpoint·재개와 side effect
 - [[AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows]]: Evaluate-and-Retry, Self-Correction 패턴
 - [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern]]: Yao 2022, Thought-Action-Observation 루프
 - [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop]]: Breakpoints, Edit & Continue, Time Travel
@@ -72,7 +72,7 @@ order: 0
 - [[AI/Engineering/Agent_Engineering/Agent_Architectures|Engineering/Agent_Engineering/Agent_Architectures]]: Single/Orchestrator/Router/Multi-Agent
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Engineering/Agent_Engineering/Anthropic_Workflow_Patterns]]: Prompt Chaining/Routing/Parallelization/Orchestrator-Workers/Evaluator-Optimizer (Anthropic 2024)
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Engineering/Agent_Engineering/Planning_and_Reflection]]: Plan-and-Solve, ReWOO, ToT/LATS, Reflexion, Self-Refine/CRITIC
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Engineering/Agent_Engineering/Agent_Memory]]: Short/Long-term Memory, MemGPT, Sleep-time Compute, Mem0, Voyager
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Engineering/Agent_Engineering/Agent_Memory]]: 기억 추출·갱신·충돌·삭제 lifecycle, provenance와 사용자 격리
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Engineering/Agent_Engineering/Agent_Skills_and_Protocols]]: Anthropic Skills, Google A2A Protocol 2025
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/MCP]]: Host-Client-Server, 4 Primitives, Transports/Sampling/OAuth 2.1, Gateway/Registry 생태계
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|Engineering/Agent_Engineering/Agent_Skills_and_Protocols/A2A]]: Agent Card, 태스크 요청/응답 구조, v1.0 스펙 (Google 2025)
@@ -105,7 +105,7 @@ order: 0
 
 #### Loop Engineering
 - [[AI/Engineering/Loop_Engineering/Data_Flywheel|Engineering/Loop_Engineering/Data_Flywheel]]: Agent-in-the-Loop, 자기 강화 데이터 수집 사이클
-- [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Engineering/Loop_Engineering/Continuous_Optimization]]: DSPy/MIPROv2, 반복적 파인튜닝, A/B 테스트
+- [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Engineering/Loop_Engineering/Continuous_Optimization]]: 실패 수집·held-out 평가·A/B·배포·rollback 운영 루프
 - [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Engineering/Loop_Engineering/Runtime_Optimization]]: API 호출 측 최적화 — Semantic Cache, Model Routing, 배칭, 스트리밍
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Engineering/Loop_Engineering/Production_Operations]]: AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스, FinOps
 - [[AI/Engineering/Loop_Engineering/RL_Environments|Engineering/Loop_Engineering/RL_Environments]]: RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier·보상 설계

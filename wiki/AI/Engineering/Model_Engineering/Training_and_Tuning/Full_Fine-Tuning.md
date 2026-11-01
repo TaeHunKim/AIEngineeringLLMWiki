@@ -6,7 +6,7 @@ order: 2
 
 ## 개요
 
-**Full Fine-Tuning**은 사전 학습된 모델의 **모든 파라미터**를 태스크·도메인 특화 데이터로 재학습하는 기법이다. 가장 강력하지만 가장 비용이 높은 미세조정 방식.
+**Full Fine-Tuning**은 사전 학습된 모델의 **모든 파라미터**를 태스크·도메인 특화 데이터로 재학습하는 기법이다. 업데이트할 파라미터 범위를 정의하는 용어이며, 학습 objective를 정의하는 용어는 아니다. SFT·DPO·RL은 Full FT와 PEFT 양쪽에 적용할 수 있다. 성능과 비용은 데이터·모델·훈련 설정에 따라 달라진다.
 
 ## 작동 원리
 
@@ -44,39 +44,43 @@ flowchart TD
     RM --> PPO["PPO: LLM이 높은 Reward<br/>응답 생성하도록 학습"]
 ```
 
-**DPO (Direct Preference Optimization)**: RLHF의 Reward Model 학습을 생략하고 직접 선호도 데이터로 최적화. 더 안정적이고 단순.
+**DPO (Direct Preference Optimization)**: RLHF의 Reward Model 학습을 생략하고 직접 선호도 데이터로 최적화. 별도 reward model·PPO loop를 두지 않는 직접 선호 최적화 방식이며, 안정성과 성능은 데이터·설정에 따라 달라진다.
 
 ### 계보의 다음 단계: GRPO / RLVR
 
-SFT → RLHF(PPO) → DPO로 이어진 가중치 갱신 기법 계보는 2025년 **GRPO(Group Relative Policy Optimization)**로 이어진다. PPO가 별도의 가치 함수(value model)를 학습해 각 응답의 이득(advantage)을 추정하는 데 반해, GRPO는 같은 프롬프트에 대해 생성한 **응답 그룹 내 상대 순위**로 이득을 계산해 별도 가치 모델 없이 학습한다 — 그만큼 메모리 효율이 높고 학습이 안정적이다. DeepSeek-R1이 GRPO와 **RLVR(Reinforcement Learning with Verifiable Rewards, 정답 검증이 가능한 도메인에서의 강화학습)**을 결합해 별도 Reward Model 없이 수학·코딩 추론 능력을 끌어올린 사례가 대표적이다.
+**GRPO(Group Relative Policy Optimization)**는 DeepSeekMath(2024)에서 제안된 PPO 계열 알고리즘이다. 같은 prompt에서 생성한 응답 그룹의 reward 평균과 표준편차를 이용해 advantage를 추정하므로 별도의 value model을 두지 않는다. 단순한 순위 기반 업데이트가 아니며, critic을 없앴다고 학습 안정성이 항상 보장되는 것도 아니다.
 
-이 위키에서 GRPO·RLVR의 상세 메커니즘, DeepSeek-R1 사례, Test-Time Compute Scaling과의 관계는 반복 개선 루프 관점에서 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]이 다룬다 — 여기서는 "가중치를 갱신하는 기법의 계보"라는 Model Engineering 관점만 짚는다.
+**RLVR(Reinforcement Learning with Verifiable Rewards)**은 정답 검증기·실행 테스트 등으로 reward를 계산하는 학습 설정이다. GRPO와 RLVR은 각각 알고리즘과 reward 구성 방식으로 서로 다른 축이다. DeepSeek-R1(2025)은 이러한 접근을 reasoning 학습에 활용한 사례다. Verifier의 누락·편법과 reward hacking을 평가해야 한다.
+
+운영 데이터로 후보를 만들고 검증·배포하는 과정은 [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]], verifier와 환경 설계는 [[AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]에서 다룬다.
 
 ## Full FT vs PEFT 비교
 
 | 기준 | Full Fine-Tuning | PEFT (LoRA 등) |
 |------|-----------------|---------------|
-| **학습 파라미터** | 100% (수십억) | 0.01~1% |
-| **GPU 메모리** | 매우 높음 (수십 GB×여러 GPU) | 낮음 |
-| **성능** | 최대 | Full FT에 근접 |
-| **학습 시간** | 길다 | 빠르다 |
-| **Catastrophic Forgetting** | 높은 위험 | 낮은 위험 |
-| **적합 케이스** | 완전한 행동 변화 | 빠른 도메인 적응 |
+| **학습 파라미터** | 전체 파라미터 | 일부 adapter 등; 비율은 rank·target module에 의존 |
+| **GPU 메모리** | 전체 gradient·optimizer 상태 필요 | 학습 상태는 줄지만 base model·activation 메모리는 필요 |
+| **성능** | 더 넓은 파라미터 변경 가능; 항상 우수하지는 않음 | 데이터·rank·태스크에 따라 Full FT와 비교 필요 |
+| **학습 시간** | 모델·병렬화·sequence length에 의존 | optimizer 부담은 작지만 forward/backward 비용은 남음 |
+| **Catastrophic Forgetting** | 발생 가능; 원래 능력 회귀 평가 필요 | PEFT에서도 발생 가능; 별도 평가 필요 |
+| **적합 케이스** | 전체 업데이트의 이득이 비용을 정당화하는 task | 제한된 학습 자원에서 adapter 효과를 검증할 task |
 
 ## 적합한 상황
 
 - 모델의 근본적인 행동 패턴을 변경해야 할 때 (안전성, 정책 준수)
 - 충분한 컴퓨팅 리소스가 있을 때
-- 수백만 개 이상의 고품질 학습 데이터가 있을 때
+- 대표성 있는 고품질 학습 데이터와 독립 평가 데이터를 확보했을 때; 고정된 최소 데이터 수가 적용되는 것은 아니다
 - 특수한 출력 형식이나 언어를 모델에 깊이 내재화할 때
 
 ## 비용 최적화
 
 ```
 Full FT 메모리 = 파라미터 × (가중치 + 그래디언트 + 옵티마이저 상태)
-  = 7B 파라미터 × (2 + 2 + 8 bytes) = ~84 GB (FP32 Adam)
+  = 7B 파라미터 × (2 + 2 + 8 bytes) = ~84 GB (가중치·gradient BF16, Adam moments FP32)
 
-→ BF16 학습 + Gradient Checkpointing + ZeRO-3 분산 학습으로 감소
+별도 FP32 master weights를 유지하면 약 28 GB 추가 (7B × 4 bytes)
+Activation·임시 buffer·통신·allocator overhead는 별도
+→ 실제 peak memory는 구현과 sequence length를 포함해 측정
 ```
 
 - **Gradient Checkpointing**: 중간 활성화 값을 버렸다가 역전파 시 재계산 → 메모리 절감
@@ -84,7 +88,7 @@ Full FT 메모리 = 파라미터 × (가중치 + 그래디언트 + 옵티마이�
 
 ## AI Engineering에서의 역할
 
-Full FT는 Model Engineering 레이어의 가장 강력한 도구이나, 대부분의 실무 적용에서는 LoRA/QLoRA(→ [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])로 대체된다. RLHF는 GPT-4, Claude, Gemini 등 상용 모델의 핵심 훈련 파이프라인이다.
+Full FT와 LoRA/QLoRA(→ [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]])를 동일 데이터·평가 조건에서 비교해 선택한다. Full FT는 adapter만으로 목표를 달성하기 어렵고 전체 업데이트 비용을 감당할 수 있을 때 후보가 된다.
 
 ## 관련 개념
 [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT_LoRA_QLoRA]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model_Distillation]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]
@@ -94,3 +98,5 @@ Full FT는 Model Engineering 레이어의 가장 강력한 도구이나, 대부�
 - Rafailov et al. (2023) "Direct Preference Optimization" — [arXiv:2305.18290](https://arxiv.org/abs/2305.18290)
 - Karpathy, A. "Let's reproduce GPT-2" — [YouTube](https://www.youtube.com/watch?v=l8pRSuU81PU)
 - DeepSeek-AI (2025) "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" — [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
+
+- Shao et al. (2024), [DeepSeekMath](https://arxiv.org/abs/2402.03300) — GRPO 제안

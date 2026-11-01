@@ -6,9 +6,9 @@ order: 7
 
 ## Overview
 
-**Automatic Prompt Optimization** is the approach where prompts are not hand-written: you declare only a goal and an evaluation metric, and an optimizer automatically searches over prompt wording, few-shot examples, and instruction structure. It took hold in practice starting in late 2024, and it carries a shift in perspective — a prompt becomes something you *compile* rather than something you *write*.
+**Automatic Prompt Optimization** is an approach where, instead of manually writing prompts, an optimizer automatically searches for prompt wording, few-shot examples, and instruction structure based only on the goal and evaluation metrics. It has begun to take root in practice since late 2024, embodying a shift in perspective from "writing" prompts to "compiling" them.
 
-This document covers that paradigm shift and **which optimizer to use when**. The actual compilation pipeline and its connection to the operating loop are covered in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]].
+This document covers the paradigm shift itself and **when and which optimizer to use**. It also explains the minimum configuration of DSPy compilation, while independent evaluation, deployment, and rollback operational loops are discussed in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]].
 
 ## Why Hand-Written Prompting Has Structural Limits
 
@@ -23,70 +23,115 @@ Structural problems with manual prompt engineering:
     other, making it hard for a human to intuit the globally optimal combination
 ```
 
-## Landscape of Automatic Optimization Techniques
+## Automatic Optimization Techniques Landscape
 
-| Technique | Method | Notes |
+| Technique | Method | Characteristics |
 |------|------|------|
-| **APE** (Automatic Prompt Engineer) | Has an LLM reverse-generate candidate instructions from demonstration examples, then scores them | The first-generation "an LLM writes LLM prompts" approach (Zhou et al., 2022) |
-| **OPRO** (Optimization by PROmpting) | Uses the LLM itself as a meta-optimization algorithm — feeds the history of prior attempt-score pairs back into the prompt to generate the next candidate | Optimizes purely through a natural-language feedback loop, with no gradients |
-| **TextGrad** | "Text-based backpropagation" — treats evaluation feedback like a differentiable loss and propagates it to the prompt at each node of the pipeline | Optimizes an entire multi-step pipeline simultaneously |
-| **Vendor prompt improvers** | One-shot prompt-improvement tools built into vendor consoles (Anthropic, OpenAI, etc.) | Usable immediately with no separate pipeline, but not an iterative optimization loop |
-| **DSPy optimizer family** | Declare a signature, module, and metric, and the compiler searches for the prompt + examples | See below; details in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] |
+| **APE** (Automatic Prompt Engineer) | Reverse-generates candidate instructions from demonstration examples for the LLM and scores them | The initial generation of the "LLM writing LLM prompts" approach (Zhou et al., 2022) |
+| **OPRO** (Optimization by PROmpting) | Uses the LLM itself as a meta-optimization algorithm — feeds previous attempts and scores into the prompt to generate the next candidate | Optimizes using only a pure natural language feedback loop without gradients |
+| **TextGrad** | "Text-based Backpropagation" — treats evaluation feedback as a differentiable loss and propagates it to the prompts of each node in the pipeline | Optimizes the entire multi-step pipeline simultaneously |
+| **Vendor Prompt Improver** | One-time prompt improvement tools built into consoles by Anthropic/OpenAI | Instantly usable without building a separate pipeline, but not a repetitive optimization loop |
+| **DSPy Optimizer Series** | Compiler explores prompts + examples upon declaring signatures, modules, and metrics | Refer to the selection guide and compilation examples below |
 
-## GEPA (ICLR 2026) — Reflection-Based Evolutionary Search
+## GEPA (ICLR 2026) — Reflection-based Evolutionary Search
 
-**GEPA** (Genetic-Pareto) is the newest optimizer included in DSPy 3.0, presented at ICLR 2026. The key contrast is with prior RL-based optimization (GRPO).
+**GEPA**(Genetic-Pareto) is an optimizer included in DSPy 3.0, presented at ICLR 2026. The core difference lies in its distinction from existing RL-based optimization (GRPO).
 
 ```
-GRPO (RL-based) approach:
-  Incrementally updates the policy using only a numeric reward signal
-  → requires a large number of rollouts (thousands to tens of thousands)
+GRPO (RL-based) method:
+  Gradually update the policy using only the reward signal
+  → Large-scale rollout (thousands to tens of thousands of times) is required
 
-GEPA (reflection-based evolutionary) approach:
-  Each iteration runs a minibatch → generates a natural-language reflection on the execution trajectory
-  → analyzes in text "why this response was wrong" and directly revises the prompt
-  → keeps and selects revised candidates via a Pareto frontier (considering multiple metrics at once)
+GEPA (Reflection-based Evolution) method:
+  Execute mini-batch for each iteration → Generate natural language reflection on the execution trajectory
+  → Analyze "Why is this response wrong?" as text and directly modify the prompt
+  → Maintain and select the revised candidates by Pareto frontier (considering the complementarity of performance for each case)
 ```
 
-GEPA reports **+20% performance** with **about 35x fewer rollouts** than GRPO — because it diagnoses failure reasons directly in natural language and feeds that diagnosis straight into the prompt revision, instead of guessing direction from a numeric reward alone, its search is far more sample-efficient.
+The GEPA paper v2 (2026-02-14) reports an average improvement of 6% and a maximum improvement of 20% over GRPO across **6 tasks**, with up to 35 times fewer rollouts. These results are obtained from the model, task, and budget settings of the paper and do not guarantee improvement across all workloads. Rollout count is not total cost; include the reflection model’s cost when making comparisons.
 
 ## DSPy Optimizer Selection Guide
 
-DSPy is the flagship framework for the "compile the prompt" approach. The optimizer lineage and each one's trade-offs:
+DSPy is a representative framework for the approach of "prompt compilation." Optimizer lineage and their respective trade-offs:
 
 ```mermaid
 flowchart LR
-    A["BootstrapFewShot<br/>bootstraps only few-shot examples"] --> B
-    B["COPRO<br/>coordinate-descent search over instructions only"] --> C
-    C["MIPROv2<br/>joint search over instructions + few-shot<br/>(Bayesian Optimization)"] --> D
-    D["GEPA<br/>reflection-based evolutionary search<br/>+ Pareto frontier"]
+    A["BootstrapFewShot<br/>Bootstrap only with few-shot examples"] --> B
+    B["COPRO<br/>Instruction only coordinate descent search"] --> C
+    C["MIPROv2<br/>Instruction + Few-shot combined search<br/>(Bayesian Optimization)"] --> D
+    D["GEPA<br/>Reflection-based evolutionary search<br/>+ Pareto frontier"]
 ```
 
-| Situation | Recommended optimizer |
+| Scenario | Recommended Optimizer |
 |------|-----------------|
-| A simple task where picking a few good examples is enough | BootstrapFewShot |
-| Instruction wording itself matters and examples aren't needed | COPRO |
-| The common case — need to search examples and instructions together | MIPROv2 |
-| Limited compute budget but need top performance | GEPA |
-| Optimizing past the prompt level into model weights | GRPO (see [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]]) |
+| Simple tasks where selecting a few good examples is sufficient | BootstrapFewShot |
+| When the instruction prompt itself is important and examples are unnecessary | COPRO |
+| General cases where examples and instructions need to be explored together | MIPROv2 |
+| When useful natural language feedback can be obtained from the execution trajectory | GEPA |
+| When the model weights themselves need to be changed | Review the training pipeline separately from the prompt optimizer; refer to [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]] for GRPO, etc. |
 
-## Boundaries
+## DSPy Compilation Configuration
+
+This is a **descriptive API example** based on DSPy 3.4.1 and Python 3.12. We have verified the SDK import and object configuration, but we have not executed the paid LM calls or optimizer training. `DSPY_MODEL` is the LiteLLM provider/model identifier, and provider authentication and available models are required. The toy dataset below is for demonstrating API connectivity and is not a basis for quality claims.
+
+```python
+import os
+import dspy
+
+dspy.configure(lm=dspy.LM(os.environ["DSPY_MODEL"]))
+
+class Classify(dspy.Signature):
+    """Classify sentiment as positive or negative."""
+    text: str = dspy.InputField()
+    label: str = dspy.OutputField()
+
+program = dspy.Predict(Classify)
+train = [
+    dspy.Example(text="Useful and reliable.", label="positive").with_inputs("text"),
+    dspy.Example(text="It fails repeatedly.", label="negative").with_inputs("text"),
+]
+validation = [
+    dspy.Example(text="I would use this again.", label="positive").with_inputs("text"),
+    dspy.Example(text="I regret buying this.", label="negative").with_inputs("text"),
+]
+
+def metric(example, prediction, trace=None):
+    return prediction.label.strip().lower() == example.label
+
+optimizer = dspy.MIPROv2(metric=metric, auto="light")
+optimized = optimizer.compile(program, trainset=train, valset=validation)
+optimized.save("sentiment-program.json")
+```
+
+For practical application, sufficient representative examples and a separate held-out test are required. `trainset` and `valset` are used by the optimizer for candidate exploration, so the final quality is measured in a test independent of both. The original program and compiled artifact are compared using the same model and metric, and call count and token cost are also recorded.
+
+## Application Conditions and Failure Modes
+
+- If there are no metrics and representative data to distinguish errors, the optimizer will optimize for the wrong objective. First, check for Judge bias, answer leakage, and length bias.
+- MIPROv2 explores combinations of instructions and few-shot examples. GEPA is reviewed when reflection on the trajectory is useful. Do not judge superiority based solely on the algorithm name.
+- Re-evaluate the artifact if the model, tool schema, or retrieval distribution changes. Do not deploy based solely on an increase in validation scores.
+- Improving only easy problems can lead to the deterioration of critical minority tasks. Compare performance, failure rates, and cost/latency for each error type.
+
+## Boundary Definition
 
 | Document | Covers |
 |------|-----------|
-| **This document (Automatic_Prompt_Optimization)** | The **paradigm shift** of "prompts are no longer hand-written" and **optimizer selection criteria** |
-| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | **Implementation detail** of the DSPy compilation pipeline (signature/module/metric code) and the **operating loop**, including A/B testing and prompt version management |
+| **This Document (Automatic_Prompt_Optimization)** | Prompt candidate search · optimizer selection · DSPy compilation configuration |
+| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | **Operational loop** including failure collection · independent evaluation · A/B · version management · rollback |
 
 ## Role in AI Engineering
 
-Automatic prompt optimization sits at the boundary between Prompt Engineering and Loop Engineering — its output is still a "prompt" (Prompt Engineering's domain), but the process that produces it follows an iterative evaluate-and-improve loop (Loop Engineering's methodology). As the cost of manually retuning prompts every time a model upgrades becomes non-negligible at organizational scale, this automation is shifting from "nice to have" to "required production infrastructure."
+Automatic prompt optimization is a technique that bridges Prompt Engineering and Loop Engineering — the output is still a "prompt" (the subject of Prompt Engineering), but the process of creating it follows an iterative evaluation and improvement loop (the methodology of Loop Engineering). As the cost of manually re-tuning prompts becomes non-negligible in large organizations whenever the model is upgraded, it is useful in pipelines that are reused enough to recoup the cost of automated exploration. Simple tasks are first compared against a manual baseline.
 
 ## Related Concepts
 [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] · [[en/AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few-shot Prompting]] · [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting|System & Role Prompting]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]] · [[en/AI/Engineering/Loop_Engineering/Self_Evolving_Harnesses|Self-Evolving Harnesses]]
 
-## Sources
+## References
 - Zhou et al. (2022) "Large Language Models Are Human-Level Prompt Engineers (APE)" — [arXiv:2211.01910](https://arxiv.org/abs/2211.01910)
 - Yang et al. (2023) "Large Language Models as Optimizers (OPRO)" — [arXiv:2309.03409](https://arxiv.org/abs/2309.03409)
 - Yuksekgonul et al. (2024) "TextGrad: Automatic Differentiation via Text" — [arXiv:2406.07496](https://arxiv.org/abs/2406.07496)
 - Khattab et al. (2023) "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines" — [arXiv:2310.03714](https://arxiv.org/abs/2310.03714)
 - Agrawal et al. (2026) "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning" (ICLR 2026) — [arXiv:2507.19457](https://arxiv.org/abs/2507.19457)
+
+- DSPy, [MIPROv2 API](https://dspy.ai/api/optimizers/MIPROv2/)
+- DSPy, [Optimizers](https://dspy.ai/learn/optimization/optimizers/)

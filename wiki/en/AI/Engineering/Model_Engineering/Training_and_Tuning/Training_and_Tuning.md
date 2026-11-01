@@ -13,7 +13,7 @@ order: 0
 | Document | Content |
 |------|------|
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning\|Pre-training_and_Continual_Learning]] | Large-scale pre-training, Chinchilla scaling law, catastrophic forgetting |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]] | SFT, RLHF(PPO), DPO, GRPO/RLVR — Full weight update |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]] | Full parameter updates versus training objectives, algorithms, and reward design (SFT, DPO, GRPO, RLVR) |
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA\|PEFT_LoRA_QLoRA]] | Parameter-efficient fine-tuning, LoRA/QLoRA mathematics |
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi series |
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation\|Synthetic_Data_and_Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |

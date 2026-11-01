@@ -29,11 +29,11 @@ flowchart LR
 | 문서 | 내용 |
 |------|------|
 | [[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow\|Linear Flow]] | 순차적 파이프라인 개요 |
-| [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|Linear_Flow/LangChain]] | LCEL 파이프라인, 1.0 `create_agent`·Middleware (Harrison Chase, 2022) |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|Linear_Flow/LangChain]] | LCEL, v1 create_agent·Middleware, legacy API 구분 |
 | [[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|Linear_Flow/LlamaIndex]] | 인덱싱-질의 파이프라인 (Jerry Liu, 2022) |
-| [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Linear_Flow/Tool_Use_and_Function_Calling]] | OpenAI/Anthropic Function Calling |
+| [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Linear_Flow/Tool_Use_and_Function_Calling]] | Tool 호출·결과 계약, 권한 검증, retry·idempotency |
 | [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow\|Graph Flow]] | 순환 그래프 플로우 개요 |
-| [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|Graph_Flow/LangGraph]] | StateGraph 에이전트 (LangChain AI, 2024) |
+| [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|Graph_Flow/LangGraph]] | StateGraph, 조건부 종료, checkpoint·재개와 side effect |
 | [[AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows\|Graph_Flow/Cyclic_Flows]] | Evaluate-and-Retry, Self-Correction |
 | [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern\|Graph_Flow/ReAct_Pattern]] | Thought-Action-Observation (Yao, 2022) |
 | [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Graph_Flow/Human_in_the_Loop]] | 인간 개입 포인트 — Breakpoints, Time Travel |
@@ -44,7 +44,8 @@ flowchart LR
 flowchart TD
     T{태스크 유형} -->|단순 RAG QA| LC[LangChain LCEL 체인]
     T -->|문서 인덱싱 파이프라인| LI[LlamaIndex]
-    T -->|에이전트 + 도구 사용| LG[LangGraph]
+    T -->|일반 Agent + 도구 사용| CA[LangChain create_agent]
+    T -->|명시적 상태 전이·복구| LG[LangGraph]
     T -->|품질 검증 루프| CF[Cyclic Flows]
     T -->|인간 승인 필요| HITL[HITL 패턴]
     T -->|.NET/MS 생태계 통합| MAF[Microsoft Agent Framework]

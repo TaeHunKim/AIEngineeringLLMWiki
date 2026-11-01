@@ -16,10 +16,10 @@ flowchart TD
 ## Sub-documents
 
 | Document | Content |
-|----------|---------|
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|LangChain]] | Chain assembly with LCEL `\|` operator (Harrison Chase, 2022) |
+|------|------|
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain\|LangChain]] | LCEL, v1 create_agent·Middleware, legacy API distinction |
 | [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex\|LlamaIndex]] | 5-stage indexing-query pipeline (Jerry Liu, 2022) |
-| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Tool Use & Function Calling]] | Single round-trip where LLM calls external functions |
+| [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling\|Tool_Use_and_Function_Calling]] | Tool calling·result contract, authorization verification, retry·idempotency |
 
 ## Linear vs Graph Flow
 

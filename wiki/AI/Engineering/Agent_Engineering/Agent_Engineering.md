@@ -40,7 +40,7 @@ flowchart LR
 | [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques\|Agent_Techniques]] | 카테고리 개요 |
 | [[AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns\|Anthropic_Workflow_Patterns]] | 5가지 워크플로 패턴(chaining/routing/parallelization/orchestrator-workers/evaluator-optimizer) |
 | [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection\|Planning_and_Reflection]] | Plan-and-Solve, Reflexion (NeurIPS 2023) |
-| [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory\|Agent_Memory]] | Short/Long-term Memory, Memory ETL, Agent Runtime/Memory Bank |
+| [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory\|Agent_Memory]] | 기억 추출·갱신·충돌·삭제 lifecycle, provenance와 사용자 격리 |
 | [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination\|Multi_Agent_Coordination]] | 조정 패턴, 통신 프로토콜, 실패 모드(MASFT/MAST/Groupthink) |
 | [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols\|Agent_Skills_and_Protocols]] | Anthropic Skills, MCP, Google A2A Protocol, AG-UI |
 

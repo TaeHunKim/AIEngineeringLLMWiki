@@ -13,13 +13,13 @@ nav_order: 20
 
 | Document | Content |
 |------|------|
-| [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting\|System & Role Prompting]] | System prompt structure design, role assignment, Constitutional AI |
-| [[en/AI/Engineering/Prompt_Engineering/Few_shot_Prompting\|Few-shot Prompting]] | Teaching with examples — Zero/One/Few-shot (Brown 2020) |
-| [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought\|Chain of Thought]] | Inducing step-by-step reasoning — CoT/ToT/Self-Consistency |
-| [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling Controls]] | Controlling output diversity via Temperature/Top-K/Top-P/Min-P |
-| [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured Output]] | Ensuring structured output via JSON/YAML/Pydantic |
-| [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt Caching]] | Placing the static prefix first, cache breakpoints/TTL, how it differs from Semantic Cache |
-| [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic Prompt Optimization]] | The "prompts are no longer hand-written" paradigm — APE/OPRO/TextGrad, GEPA, choosing a DSPy optimizer |
+| [[en/AI/Engineering/Prompt_Engineering/System_and_Role_Prompting\|System_and_Role_Prompting]] | System Prompt structure design, role assignment, Constitutional AI |
+| [[en/AI/Engineering/Prompt_Engineering/Few_shot_Prompting\|Few_shot_Prompting]] | Learning by example — Zero/One/Few-shot (Brown 2020) |
+| [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought\|Chain_of_Thought]] | Inducing step-by-step reasoning — CoT/ToT/Self-Consistency |
+| [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling_Controls]] | Controlling output diversity with Temperature/Top-K/Top-P/Min-P |
+| [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Distinguishing JSON·Schema·semantic validation, provider contracts and failure handling |
+| [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | Prioritizing static prefixes, Cache Breakpoint/TTL, differences with Semantic Cache |
+| [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic_Prompt_Optimization]] | APE/OPRO/TextGrad·GEPA, DSPy selection·compilation·independent evaluation |
 
 ## Prompt Design Principles
 
@@ -49,7 +49,7 @@ Reasoning models like o1/o3, Claude Extended Thinking, and Gemini Deep Think per
 
 ## Role in AI Engineering
 
-Prompt Engineering is the **most cost-effective means of controlling model behavior**. Industry consensus is that 80% of model improvements can be addressed at the prompt level. It is the first optimization point for every AI system.
+Prompt Engineering is a means to adjust behavior without changing weights. The improvement effect varies depending on the task and the cause of failure, and it is evaluated separately from retrieval, tool, and training data issues.
 
 ## Related Concepts
 [[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]

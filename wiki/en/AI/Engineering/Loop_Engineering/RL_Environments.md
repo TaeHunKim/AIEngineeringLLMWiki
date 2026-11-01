@@ -6,15 +6,15 @@ order: 5
 
 ## Overview
 
-**RL Environments** refers to the **simulated task space** an agent interacts with when it's trained or evaluated via reinforcement learning. Where [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] covers "how a model is trained via RL" using GRPO/RLVR, this page covers the precondition that training depends on: **where and how do you get a verifiable reward signal in the first place**?
+**RL Environments** refers to the **simulated task space** that an agent interacts with when being trained or evaluated using reinforcement learning. While [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] covers the evaluation, deployment, and rollback operational loop for candidates, this document addresses the prerequisite for that learning—**where and how to obtain verifiable reward signals**.
 
 ```
-The RLVR training loop (covered by Continuous_Optimization.md):
-  model generates a response → [reward signal] → policy updated via GRPO
+RLVR training loop:
+  Model generates response → [Reward signal] → Policy update with GRPO
 
-What this page covers:
-  where does that [reward signal] come from?
-  → the environment that runs the task, the verifier that judges correctness, the infrastructure that manages state
+Part covered by this document:
+  Where does the reward signal come from?
+  → environment to execute the task, verifier to judge correctness, infrastructure to manage the state
 ```
 
 ## Why Environments Became Their Own Engineering Discipline
@@ -71,33 +71,33 @@ Rather than authoring environments by hand one at a time, an increasingly common
 
 ## Lifecycle Framing: Modeling → Synthesis → Evaluation → Application
 
-A 2026 survey (arXiv:2606.12191) organizes this whole field under the name "Agentic Environment Engineering," tying the individual techniques covered above into a single engineering lifecycle.
+The 2026 survey (arXiv:2606.12191) organizes the entire field under the name "Agentic Environment Engineering," grouping the individual techniques discussed above into a single engineering lifecycle.
 
 ```mermaid
 flowchart LR
-    M["Modeling<br/>how to formalize the task as<br/>state, action, and reward"] --> S
-    S["Synthesis<br/>how to generate/scale the<br/>environment itself (incl. automated generation)"] --> E
-    E["Evaluation<br/>verifying whether this environment<br/>actually gives a good training signal"] --> A
-    A["Application<br/>deploying the trained agent<br/>into a real domain"] --> M
+    M["How to formalize the Modeling task into state, action, and reward"] --> S
+    S["How to generate/expand the environment itself<br/>(including automatic environment generation)"] --> E
+    E["Evaluation<br/>Verify whether this environment gives good training signals"] --> A
+    A["Application<br/>Apply trained agent to<br/>real domain"] --> M
 ```
 
-- **Modeling**: corresponds to the state/action/reward formalization covered in "The Gymnasium API Lineage" above.
-- **Synthesis**: corresponds to building existing environments like SWE-Gym/GEM/AgentGym in "The 2025–2026 Landscape," and LLM-based environment generation in "Automated Environment Generation."
-- **Evaluation**: the programmatic/model-based/HITL judging covered in "Verifiers" is the core of this stage — it verifies the quality of the environment itself (whether the reward is actually a meaningful signal), not the agent.
-- **Application**: the stage of redeploying the trained policy into a real domain (customer support, a codebase, etc.), which connects to [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]].
+- **Modeling**: The formalization of state, action, and reward discussed in the "Gymnasium API Genealogy" section applies here.
+- **Synthesis**: This includes building existing environments such as SWE-Gym/GEM/AgentGym from the "2025~2026 Landscape" and generating environments based on LLMs from the "Automatic Environment Generation" section.
+- **Evaluation**: The core of this stage is the programmatic/model-based/HITL judgment discussed in the "Verifier" section—it verifies the quality of the environment itself (whether the reward is a truly meaningful signal), not the agent.
+- **Application**: This is the stage of deploying the trained policy back into the actual domain (customer support, codebase, etc.), which aligns with [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]].
 
-The value of this framing is that it explicitly reveals "building a good environment" not as a one-off task but as an **independent engineering lifecycle where modeling → synthesis → evaluation → application cycles** — while the RLVR training loop ([[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]) spins, the environment itself needs its own improvement loop too.
+The value of this framing lies in explicitly demonstrating that "building good environments" is not a one-time task but an independent engineering lifecycle that **cycles through Modeling → Generation → Verification → Application**—along with the evaluation and deployment loop in [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]], the environment itself requires its own improvement loop.
 
-## Boundary: How This Differs From Concepts Already Covered
+## Boundary: How are they different from existing concepts?
 
-RL Environments isn't a new top-level layer; it sits next to a few concepts this wiki already covers, but with a different focus.
+RL Environments are not a new top-level layer, but rather concepts adjacent to some concepts already covered in this wiki, with a different focus.
 
-| Document | Focus | Relationship to RL Environments |
+| Document | Focus | Relationship with RL Environments |
 |---|---|---|
-| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Harness_Engineering/Harness_Evaluation/Benchmarking]] | **Static** evaluation benchmarks like SWE-bench — measure model performance without training | The same benchmark (SWE-bench) can serve as an evaluation set or as an RL training environment (SWE-Gym) — the difference is "are you only measuring, or also training on that signal" |
-| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge\|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] | Pre-deployment agent behavior validation via **Agent Simulation** | Mechanically overlaps with an RL Environment's model-based verifier, but Agent-as-a-Judge is a pre-deployment quality gate while RL Environments provide an in-training-loop reward signal — different purposes |
-| [[en/AI/Engineering/Loop_Engineering/Data_Flywheel\|Loop_Engineering/Data_Flywheel]] | The cycle of turning real production data into synthetic training data | RL Environments draw signal from a **pre-designed simulation**, not production data — though the two are sometimes combined, feeding production failure cases back in as new tasks in an RL environment |
-| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | **Training the model itself** via GRPO/RLVR | RL Environments are the upstream infrastructure that produces the "verifiable reward" that training depends on |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking\|Harness_Engineering/Harness_Evaluation/Benchmarking]] | **Static** evaluation benchmarks like SWE-bench — measuring model performance without training | The same benchmark (SWE-bench) can be used for evaluation and as an RL training environment (SWE-Gym) — the difference is whether it's "just measuring, or using that signal for training" |
+| [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge\|Harness_Engineering/Harness_Evaluation/Agent_as_a_Judge]] | Pre-validating agent behavior using **Agent Simulation** before deployment | The mechanism overlaps with the model-based verifier of RL Environments, but Agent-as-a-Judge is a pre-deployment quality gate, whereas RL Environments provide a reward signal within the training loop. |
+| [[en/AI/Engineering/Loop_Engineering/Data_Flywheel\|Loop_Engineering/Data_Flywheel]] | Creating synthetic training data from real data collected in production (loop) | RL Environments differ in that they obtain signals from **pre-designed simulations** rather than production data, but there are cases where the two methods are combined to re-inject production failure cases as new tasks for the RL environment. |
+| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Loop_Engineering/Continuous_Optimization]] | Failure collection · held-out evaluation · A/B · deployment · rollback operational loop | RL Environments provide a reward signal for training, and candidates undergo separate evaluation and deployment loops after training. |
 
 ## Role in AI Engineering
 

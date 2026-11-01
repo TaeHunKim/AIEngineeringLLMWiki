@@ -6,202 +6,75 @@ order: 1
 
 ## Overview
 
-**LangGraph** is a framework for modeling LLM applications as a **stateful graph**. Unlike LangChain's linear chains, it supports **cycles**, allowing agents to repeatedly execute until goals are achieved.
+**LangGraph** is an Agent orchestration runtime that explicitly configures state transitions, branching, cycles, and resumption after interruption. LangChain's `create_agent` also operates on this runtime. The reason for using LangGraph directly is not the possibility of cycles, but **how much you want to directly control the state and execution flow**.
 
-## Origin
+## State, Node, Edge
 
-- **Developer**: LangChain AI (Harrison Chase team)
-- **Release**: January 2024
-- **Position**: Agent layer of the LangChain ecosystem. Complementary to LangChain.
+- **State**: Data passed between nodes. Reducers for each key determine the merge method of updates.
+- **Node**: A function that reads the state and returns the value of the key to be changed. It is not necessary to return the entire state every time.
+- **Edge**: A path to select the next node. Conditional edges also define termination conditions.
 
-## Core Concepts
+## Minimal Working Example
 
-### State
-
-Shared memory object flowing through the graph:
+Python 3.12, `langgraph==1.2.19`. Runs without external models or API keys. The input `{"count": 0}` is incremented from count 3, and the output is `3`. The number increment example verifies only graph control and does not guarantee the success of the LLM or tool.
 
 ```python
-from typing import TypedDict, Annotated
-from langgraph.graph.message import add_messages
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.memory import InMemorySaver
 
-class AgentState(TypedDict):
-    messages: Annotated[list, add_messages]  # conversation history
-    current_task: str
-    tool_results: list
-    iterations: int
+class CounterState(TypedDict):
+    count: int
+
+def increment(state: CounterState):
+    return {"count": state["count"] + 1}
+
+def route(state: CounterState):
+    return END if state["count"] >= 3 else "increment"
+
+builder = StateGraph(CounterState)
+builder.add_node("increment", increment)
+builder.add_edge(START, "increment")
+builder.add_conditional_edges("increment", route)
+graph = builder.compile(checkpointer=InMemorySaver())
+config = {"configurable": {"thread_id": "counter-demo"}, "recursion_limit": 10}
+result = graph.invoke({"count": 0}, config=config)
+print(result["count"])
+assert graph.get_state(config).values["count"] == 3
 ```
 
-All nodes receive State and return updated State.
+## Messages and Tool Loop
 
-### Nodes
+The conversation state can use the `MessagesState` or `add_messages` reducer. The common structure is to bind the tool schema to the model, and then `ToolNode` executes the tool call and returns the corresponding tool result. The correspondence between the tool call ID and the result is maintained, and the process terminates if the model does not request a tool.
 
-Python functions = one processing step:
+A general Agent starts from [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]]'s `create_agent`. When migrating from the old `langgraph.prebuilt.create_react_agent` examples, do not just change the import; check the official migration guide for changes to the prompt, middleware, state, and streaming.
 
-```python
-from langchain_openai import ChatOpenAI
-from langchain_core.messages import SystemMessage
+## Checkpoint and Resume
 
-llm = ChatOpenAI(model="gpt-4o")
+A checkpoint saves the execution state of a thread. It is necessary to distinguish between reading the previous state of the same thread and resuming a stopped node. The pattern for human approval uses `interrupt()` and `Command(resume=...)`, and details are discussed in [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human_in_the_Loop]].
 
-def agent_node(state: AgentState):
-    """LLM reasoning node"""
-    messages = state["messages"]
-    response = llm.invoke(messages)
-    return {"messages": [response]}
+- `InMemorySaver` is for single-process development. A persistent checkpointer is needed for recovery after process restart.
+- Even with a checkpoint, exactly-once execution for external payments and email sending is not guaranteed. Design resubmittable nodes and use idempotency keys and result logging for side effects.
+- It validates thread access rights per user. It does not simply retrieve the `thread_id` input from other users.
+- It includes normal termination conditions along with step, time, and cost limits. `recursion_limit` alone cannot control external request timeouts.
 
-def tool_node(state: AgentState):
-    """Tool execution node"""
-    last_message = state["messages"][-1]
-    results = execute_tools(last_message.tool_calls)
-    return {"messages": results, "tool_results": results}
-```
+## Selection Criteria and Failure Cases
 
-### Edges
-
-Define flow between nodes. Conditional branching possible:
-
-```python
-from langgraph.graph import StateGraph, END
-
-builder = StateGraph(AgentState)
-
-# Add nodes
-builder.add_node("agent", agent_node)
-builder.add_node("tools", tool_node)
-
-# Entry point
-builder.set_entry_point("agent")
-
-# Conditional edges (key!)
-def should_continue(state: AgentState) -> str:
-    last_message = state["messages"][-1]
-    if hasattr(last_message, "tool_calls") and last_message.tool_calls:
-        return "tools"  # tool call needed → go to tools node
-    return END          # complete → terminate
-
-builder.add_conditional_edges("agent", should_continue)
-builder.add_edge("tools", "agent")  # tools → agent cycle!
-
-graph = builder.compile()
-```
-
-### Checkpointing
-
-Resume after interruption, track history:
-
-```python
-from langgraph.checkpoint.memory import MemorySaver
-
-checkpointer = MemorySaver()
-graph = builder.compile(checkpointer=checkpointer)
-
-# Distinguish conversation sessions by thread_id
-config = {"configurable": {"thread_id": "user_123"}}
-result = graph.invoke({"messages": [user_message]}, config=config)
-
-# Calling with same thread_id restores previous state
-result2 = graph.invoke({"messages": [follow_up]}, config=config)
-```
-
-## ReAct Agent Implementation Example
-
-```python
-from langgraph.prebuilt import create_react_agent
-from langchain_community.tools import TavilySearchResults
-
-# Tool definition
-tools = [TavilySearchResults(max_results=3)]
-
-# Create pre-built ReAct agent
-agent = create_react_agent(
-    model=ChatOpenAI(model="gpt-4o"),
-    tools=tools,
-    checkpointer=MemorySaver()
-)
-
-# Execute
-result = agent.invoke(
-    {"messages": [{"role": "user", "content": "Find the latest AI news"}]},
-    config={"configurable": {"thread_id": "session_1"}}
-)
-```
-
-## Key LangGraph Features
-
-### 1. Cyclic Flow Support
-```mermaid
-flowchart LR
-    AG[agent] -->|tool call| TL[tools]
-    TL -->|return result| AG
-    AG -->|goal achieved| DONE[END]
-```
-
-### 2. Multi-Agent Orchestration
-```python
-# Supervisor coordinates multiple Sub-Agents
-supervisor = create_supervisor(
-    agents={"researcher": research_agent, "writer": writer_agent},
-    model=llm
-)
-```
-
-### 3. Human-in-the-Loop
-
-→ See [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]]
-
-## LangGraph 1.0 and 2026 Q2 Features
-
-LangGraph reached v1.0 alongside LangChain, cementing its role as the lower-level runtime for production long-running agents [4]. The features added in Q2 2026 specifically target "agents that run for days":
-
-### TimeoutPolicy — Per-Node Timeouts
-
-```python
-from langgraph.types import TimeoutPolicy
-
-builder.add_node(
-    "tools",
-    tool_node,
-    timeout=TimeoutPolicy(run_timeout=30, idle_timeout=120),
-    # run_timeout: max time for the node's own execution
-    # idle_timeout: max time allowed with no response (e.g. during streaming)
-)
-```
-
-### Per-Node Error Handlers — Saga/Compensation Transactions
-
-When a node fails, it receives a typed `NodeError` and can route to a recovery node. This lets you express Saga-pattern compensation logic — like in distributed transactions — directly in the graph, rolling back already-completed steps when a later step fails.
-
-### Cooperative Graceful Shutdown
-
-Sending a shutdown signal to a long-running node lets it safely finish its current unit of work before terminating — avoiding the state inconsistency a forced kill would cause.
-
-### DeltaChannel — Reduced Checkpoint Overhead
-
-Prior checkpointing saved the entire State on every step. `DeltaChannel` stores only the **per-step delta**, substantially cutting checkpoint-storage cost on threads that run for hundreds or thousands of steps.
-
-### v2 Streaming API — Typed `StreamPart`
-
-Restructures what used to be mostly string-chunk streaming output into a unified `StreamPart` type, so text, tool calls, thinking blocks, and other distinct kinds of streaming events can all be consumed through one consistent interface.
-
-## LangGraph Platform
-
-Managed service providing cloud deployment, API serving, and debugging tools:
-```python
-# LangGraph Platform deployment
-langgraph deploy --config langgraph.json
-# → Serve agent via REST API
-# → Automatic tracking with LangSmith
-```
+| Need | Application | Caution |
+|---|---|---|
+| Conditional execution/looping | Conditional edge | Infinite loop due to missing termination condition |
+| Continue execution after human approval | Interrupt + checkpoint | Possible re-execution of some nodes upon resumption |
+| Intermediate state checking/recovery | State snapshot | Retention of sensitive data and access control |
+| Simple fixed pipeline | LCEL comparison | Unnecessary complexity of state/checkpoint |
 
 ## Role in AI Engineering
 
-LangGraph is the foundation for reliably operating complex Agent systems and Multi-Agent workflows in production. With built-in state management, checkpointing, Human-in-the-Loop, and conditional branching, it has established itself as the de facto standard framework for agent engineering.
+LangGraph is a state-based execution mechanism for Flow Engineering. It solves problems different from organizational-level Agent authority/budget design or knowledge graphs for retrieval.
 
 ## Related Concepts
 [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic Flows]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] · [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]]
 
 ## Sources
-- LangGraph Official Documentation — [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/)
-- "Building Stateful AI Systems with LangGraph" — [notes.muthu.co](https://notes.muthu.co/2025/10/building-stateful-ai-systems-with-langgraph-and-agentic-workflow-graphs/)
-- "LangGraph Tutorial 2026" — [alicelabs.ai](https://alicelabs.ai/en/insights/langgraph-guide-2026)
-4. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)
+- LangGraph, [Quickstart](https://docs.langchain.com/oss/python/langgraph/quickstart)
+- LangChain, [v1 migration guide](https://docs.langchain.com/oss/python/migrate/langchain-v1) (checked 2026-11-01)
+- LangGraph, [Interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts)

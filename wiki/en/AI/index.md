@@ -12,7 +12,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 
 #### Model Engineering
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]: Pre-training basics, Chinchilla scaling laws, catastrophic forgetting strategies
-- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]: SFT, RLHF(PPO), DPO — full weight updates
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]: Full parameter updates versus training objectives, algorithms, and reward design (SFT, DPO, GRPO, RLVR)
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]]: LoRA math, QLoRA NF4+double quantization, HuggingFace implementation
 - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]]: PTQ/GPTQ/AWQ/GGUF, memory calculation by precision
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]]: Hinton 2015 origin, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
@@ -29,12 +29,12 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Prompt_Engineering/Few_shot_Prompting|Few-shot Prompting]]: GPT-3 (Brown 2020) Zero/One/Few-shot origins
 - [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]]: Wei 2022 CoT, Yao 2023 ToT, Self-Consistency
 - [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]]: Temperature/Top-K/Top-P/Min-P/Beam Search
-- [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]]: JSON Mode, Pydantic, Instructor library
+- [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]]: JSON, schema, and semantic validation; provider contracts and failure handling
 - [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]]: Static prefix design, cache breakpoints/TTL, how it differs from Semantic Cache
-- [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]]: APE/OPRO/TextGrad, GEPA (ICLR 2026), DSPy optimizer selection guide
+- [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]]: APE/OPRO/TextGrad and GEPA; DSPy selection, compilation, and independent evaluation
 
 #### Context Engineering
-- [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]]: 4 LLM Memory types (In-Context/External/In-Weights/In-Cache), Letta/Mem0/Zep implementations
+- [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]]: Storage location, scope, persistence, context selection, and the relationship between memory and RAG
 - [[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]]: GPTCache, Redis implementation, category-aware cache, cost savings
 - [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]]: LLM Lingua, Map-Reduce, Lost in the Middle
 - [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle|Lost in the Middle]]: Liu et al. 2023, long-context middle degradation, Query-Aware Contextualization
@@ -58,10 +58,10 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]]: Structured-data RAG, Vector+SQL hybrid architecture
 
 #### Flow Engineering
-- [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]]: LCEL pipeline, Memory, LangSmith
+- [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]]: LCEL, v1 create_agent and middleware, and legacy API distinctions
 - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]]: 5-stage pipeline, AutoMergingRetriever
-- [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]]: OpenAI/Anthropic Function Calling
-- [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]]: StateGraph, ReAct Agent, Checkpointing
+- [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]]: Tool-call and result contracts, authorization checks, retry, and idempotency
+- [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]]: StateGraph, conditional termination, checkpoints, resumption, and side effects
 - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic Flows]]: Evaluate-and-Retry, Self-Correction patterns
 - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]]: Yao 2022, Thought-Action-Observation loop
 - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]]: Breakpoints, Edit & Continue, Time Travel
@@ -71,7 +71,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]]: Single/Orchestrator/Router/Multi-Agent
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]]: Prompt Chaining/Routing/Parallelization/Orchestrator-Workers/Evaluator-Optimizer (Anthropic 2024)
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]]: Plan-and-Solve, ReWOO, ToT/LATS, Reflexion, Self-Refine/CRITIC
-- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]]: Short/Long-term Memory, MemGPT, Sleep-time Compute, Mem0, Voyager
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]]: Memory extraction, updates, conflicts, and deletion lifecycle; provenance and user isolation
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]]: Anthropic Skills, Google A2A Protocol 2025
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]: Host-Client-Server, 4 primitives, Transports/Sampling/OAuth 2.1, Gateway/Registry ecosystem
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A]]: Agent Card, task request/response structure, v1.0 spec (Google 2025)
@@ -104,7 +104,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 
 #### Loop Engineering
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]]: Agent-in-the-Loop, self-reinforcing data collection cycle
-- [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]: DSPy/MIPROv2, iterative fine-tuning, A/B testing
+- [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]]: Operational loop of failure collection, held-out evaluation, A/B testing, deployment, and rollback
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]]: API-calling-side optimization — Semantic Cache, Model Routing, batching, streaming
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]: AI gateway, deployment strategies, A/B testing, SRE/chaos, FinOps
 - [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]]: Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier & reward design

@@ -44,16 +44,16 @@ It is divided into three subcategories. **Model Types** covers model classificat
 | [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Embeddings\|Multimodal_Embeddings]] | Multimodal Embedding Models — Alignment Learning, modality gap, EmbeddingGemma 2 · Gemini Embedding 2 |
 | [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models\|Decision_Models]] | System One Models such as Jev · OpenAI Decisions · Microsoft-Decision-1, Choice/Score/Noul Primitives, logprob wrapper vs Learned, calibration(ECE) |
 
-### Training and Tuning
+### Training and Fine-tuning
 
 | Document | Content |
 |------|------|
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning\|Training_and_Tuning]] | Category Overview |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning\|Pre-training_and_Continual_Learning]] | Large-scale Pre-training, Chinchilla Law, Catastrophic Forgetting |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]] | SFT, RLHF(PPO), DPO, GRPO/RLVR — Full Weight Update |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA\|PEFT_LoRA_QLoRA]] | Parameter-Efficient Fine-tuning, LoRA/QLoRA Math |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi Series |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation\|Synthetic_Data_and_Curation]] | Self-Instruct/Evol-Instruct, Judge Filtering, Dedup/Decontamination, Model Collapse |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning\|Pre-training_and_Continual_Learning]] | Large-scale pre-training, Chinchilla scaling law, catastrophic forgetting |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]] | Full parameter updates versus training objectives, algorithms, and reward design (SFT, DPO, GRPO, RLVR) |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA\|PEFT_LoRA_QLoRA]] | Parameter-efficient fine-tuning, LoRA/QLoRA mathematics |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi series |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation\|Synthetic_Data_and_Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |
 
 ### Architecture and Efficiency
 

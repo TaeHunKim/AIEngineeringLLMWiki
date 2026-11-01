@@ -20,15 +20,15 @@ Context Engineering = the art of filling this space most usefully
 
 | Document | Content |
 |------|------|
-| [[en/AI/Engineering/Context_Engineering/LLM_Memory\|LLM Memory]] | LLM Memory 4 types, Conversation strategies, Letta/Mem0/Zep implementations |
-| [[en/AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic Cache]] | Semantic similarity caching, GPTCache, cost reduction effects |
-| [[en/AI/Engineering/Context_Engineering/Context_Compression\|Context Compression]] | LLM Lingua, Map-Reduce, cost reduction |
-| [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle\|Lost in the Middle]] | LLM performance degradation for middle-of-context info and avoidance strategies |
-| [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format\|Open Knowledge Format (OKF)]] | Open standard for packaging organizational knowledge for AI agents, markdown+YAML frontmatter bundle (Google Cloud, 2026) |
-| [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management\|Agentic Context Management]] | Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation |
+| [[en/AI/Engineering/Context_Engineering/LLM_Memory\|LLM_Memory]] | Storage location, scope, persistence, context selection, relationship between Memory and RAG |
+| [[en/AI/Engineering/Context_Engineering/Semantic_Cache\|Semantic_Cache]] | Semantic similarity caching, GPTCache, cost reduction effect |
+| [[en/AI/Engineering/Context_Engineering/Context_Compression\|Context_Compression]] | LLM Lingua, Map-Reduce, cost reduction |
+| [[en/AI/Engineering/Context_Engineering/Lost_in_the_Middle\|Lost_in_the_Middle]] | Degradation of utilization of long context in LLMs and avoidance strategies |
+| [[en/AI/Engineering/Context_Engineering/Open_Knowledge_Format\|Open Knowledge Format (OKF)]] | Open standard for knowledge packaging for AI agents, Markdown+YAML frontmatter bundle (Google Cloud, 2026) |
+| [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management\|Agentic_Context_Management]] | Context Rot, Write/Select/Compress/Isolate, Compaction, Sub-agent Context Isolation |
 
-> **RAG, GraphRAG, NL2SQL, SQL RAG** documents are in a separate chapter.
-> → See [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies chapter]]
+> **RAG, GraphRAG, NL2SQL, SQL RAG** documents have been separated into dedicated chapters.
+> → See [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]]
 
 ## Core Challenges
 

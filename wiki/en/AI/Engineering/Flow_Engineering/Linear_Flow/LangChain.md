@@ -6,184 +6,108 @@ order: 1
 
 ## Overview
 
-**LangChain** is an open-source Python/JavaScript framework for building complex AI applications centered on LLMs. It provides prompt templates, memory, chains, agents, and tools as modules for easily composing LLM-based pipelines.
+**LangChain** is a framework that connects models, tools, and messages via a common interface and constructs Agents. While LCEL allows for sequential pipelines, LangChain v1's `create_agent` also creates Agents that run iteratively on LangGraph. Therefore, one should not simply distinguish between LangChain and LangGraph as "linear vs. cyclical."
 
-## Origin
+## API Standards and Legacy Distinction
 
-- **Creator**: Harrison Chase
-- **Release**: October 2022 (GitHub public)
-- **Characteristics**: Rapid growth (GitHub 50K+ stars in 6 months), de facto standard in LLM framework market
+The API standards for this document are `langchain==1.4.7`, `langgraph==1.2.19`, and Python 3.12 (confirmed as of 2026-11-01). The service connection examples are for illustration and require model access permissions, API keys, and the provider package. Specific model names should be configured after verifying support in the deployment environment.
 
-## Core Components
+| Purpose | Current Configuration | To Check in Legacy Code |
+|---|---|---|
+| Agent Creation | `langchain.agents.create_agent` | Migration from `langgraph.prebuilt.create_react_agent` |
+| Prompt · Message · Runnable | `langchain_core` | Old `LLMChain`, etc., are in the `langchain-classic` area |
+| Conversation State | Agent state + checkpointer | Do not use the `ConversationBufferMemory` series as the default for the new design |
+| Document Loader · Splitter | `langchain_community.document_loaders`, `langchain_text_splitters` | Old `langchain.document_loaders`·`langchain.text_splitter` imports |
+| Provider Integration | `langchain_openai` and other separate packages | Fix model and package versions together |
 
-### LCEL (LangChain Expression Language)
+## LCEL: Sequential Pipelines
 
-A declarative way to compose pipelines. Build chains with Python's `|` operator:
+This minimal example runs without external APIs. With Python 3.12 and `langchain-core==1.7.3`, it turns `{"topic": "RAG"}` into a prompt and receives a string from a fake model. The expected output is `Retrieval supplies context.` It does not evaluate a real model's quality.
 
 ```python
-from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.language_models.fake_chat_models import FakeListChatModel
 from langchain_core.output_parsers import StrOutputParser
 
-# LCEL pipeline
-prompt = ChatPromptTemplate.from_template("Explain the following topic: {topic}")
-model = ChatOpenAI(model="gpt-4o")
-output_parser = StrOutputParser()
-
-chain = prompt | model | output_parser
-
-# Execute
-result = chain.invoke({"topic": "RAG"})
+prompt = ChatPromptTemplate.from_template("Explain {topic} in one sentence.")
+model = FakeListChatModel(responses=["Retrieval supplies context."])
+chain = prompt | model | StrOutputParser()
+print(chain.invoke({"topic": "RAG"}))
 ```
 
-### Prompt Templates
+In RAG, convert the retriever's `Document` list to text and align the prompt variables with the input mapping. The following illustrative fragment assumes that `retriever` and `model` have already been configured.
 
-Dynamic prompt generation:
 ```python
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
 
-prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are an expert in {role}."),
-    MessagesPlaceholder(variable_name="chat_history"),
-    ("human", "{user_input}")
-])
-```
-
-### Memory
-
-Multi-turn conversation state management:
-```python
-from langchain.memory import ConversationBufferWindowMemory
-
-memory = ConversationBufferWindowMemory(
-    k=5,  # keep only last 5 turns
-    return_messages=True
+rag_prompt = ChatPromptTemplate.from_template(
+    "Answer using the context. If unsupported, say you do not know.\n"
+    "Context: {context}\nQuestion: {question}"
 )
-```
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
 
-### Document Loaders & Text Splitters
-
-Load documents from various sources:
-```python
-from langchain.document_loaders import PyPDFLoader, WebBaseLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
-# Load PDF
-loader = PyPDFLoader("document.pdf")
-docs = loader.load()
-
-# Chunk
-splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=50)
-chunks = splitter.split_documents(docs)
-```
-
-### Retrievers & Vector Stores
-
-RAG pipeline construction:
-```python
-from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
-
-vectorstore = Chroma.from_documents(chunks, OpenAIEmbeddings())
-retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
-
-# RAG chain
 rag_chain = (
-    {"context": retriever, "question": RunnablePassthrough()}
-    | prompt
-    | model
-    | StrOutputParser()
+    {"context": retriever | format_docs, "question": RunnablePassthrough()}
+    | rag_prompt | model | StrOutputParser()
 )
 ```
 
-## Chain Types
+## Agent and Middleware
 
-| Chain type | Purpose |
-|-----------|---------|
-| **LLMChain** | Basic LLM call |
-| **RetrievalQA** | RAG Q&A |
-| **ConversationalRetrievalChain** | Conversational RAG |
-| **SequentialChain** | Sequential chain |
-| **MapReduceChain** | Long document processing |
-| **Router Chain** | Conditional branching |
+This is an example API for explanation. `LANGCHAIN_MODEL` is specified in the `provider:model` format, and the corresponding provider integration and authentication must be prepared separately. `InMemorySaver` is a development storage that disappears when the process terminates.
 
-> The class-based chains above and the old `Retriever`/`Memory` APIs are **legacy**, moved to the `langchain-classic` package in 1.0. New code should use LCEL or `create_agent` below.
-
-## LangChain 1.0 (2025-10): Recentered Around the Core Agent Loop
-
-In v1.0, LangChain kept its chain-centric API but shifted its center of gravity to the **core agent loop** [1]. Three key changes:
-
-### `create_agent`
-
-A fast-path agent-creation API built on the LangGraph runtime. It lets you spin up an agent immediately with any model provider, using just the core agent loop (call model → call tools → repeat):
-
-```python
-from langchain.agents import create_agent
-
-agent = create_agent(
-    model="claude-opus-5",
-    tools=[search_tool, calculator_tool],
-)
-result = agent.invoke({"messages": [{"role": "user", "content": "..."}]})
-```
-
-### Middleware
-
-Plays the same role inside the agent loop that middleware plays in web frameworks. It hooks into fixed points during execution (before/after the model call, before/after a tool call) to intercept or modify behavior:
-
-```python
-from langchain.agents.middleware import AgentMiddleware
-
-class LoggingMiddleware(AgentMiddleware):
-    def before_model(self, state):
-        print(f"State before model call: {state}")
-
-agent = create_agent(model="claude-opus-5", tools=[...], middleware=[LoggingMiddleware()])
-```
-
-This lets cross-cutting concerns — guardrail insertion, request retries, dynamic prompt edits, [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|context compaction]] — be slotted in without altering the chain's structure.
-
-### Content Blocks
-
-Adds a standardized `content_blocks` property to message objects that normalizes each provider's differing response formats (text, images, thinking blocks, citations, etc.), giving provider-agnostic, type-safe access.
-
-Following these three changes, LangChain has committed to **no breaking changes until 2.0**, an explicit promise of production stability.
-
-## LangChain vs LangGraph
-
-```
-LangChain (Linear Flow):
-  Input → [Step1] → [Step2] → [Step3] → Output
-  Unidirectional, fixed-order pipeline
-
-LangGraph (Graph Flow):
-  → Supports cycles
-  → Conditional branches (Conditional Edges)
-  → State management
-  → Human-in-the-Loop
-```
-
-LangChain is best for simple pipelines; LangGraph is better for complex agent workflows.
-
-## LangSmith (Observability)
-
-LLM observability platform provided with LangChain:
 ```python
 import os
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = "..."
-# All subsequent LangChain executions are automatically traced
+from langchain.agents import create_agent
+from langchain.agents.middleware import AgentMiddleware
+from langchain.tools import tool
+from langgraph.checkpoint.memory import InMemorySaver
+
+@tool
+def lookup_policy(topic: str) -> str:
+    """Return a small demo policy entry."""
+    return {"returns": "Returns are accepted within 30 days."}.get(topic, "Unknown topic.")
+
+class StepCounter(AgentMiddleware):
+    def before_model(self, state, runtime):
+        # Observe aggregate values instead of raw messages or personal information
+        print({"message_count": len(state["messages"])})
+        return None
+
+agent = create_agent(
+    model=os.environ["LANGCHAIN_MODEL"],
+    tools=[lookup_policy],
+    middleware=[StepCounter()],
+    checkpointer=InMemorySaver(),
+)
+result = agent.invoke(
+    {"messages": [{"role": "user", "content": "What is the returns policy?"}]},
+    config={"configurable": {"thread_id": "demo-thread"}},
+)
 ```
+
+`thread_id` is a key that distinguishes the state, not an authentication method. The application must verify the ownership of the user and thread. Long-term user memory and thread-level checkpoints are designed separately.
+
+## Choosing between LangChain and LangGraph
+
+| Scenario | Starting Point | Failure Conditions to Check |
+|---|---|---|
+| Fixed flow like Input → Search → Generation | LCEL | Input key mismatch, missing search results |
+| General Agent where the model selects tools | `create_agent` | Tool failure, exceeding iteration count/cost |
+| Explicitly controlling approval, branching, and recovery | LangGraph `StateGraph` | Duplicate side effects during replay, checkpoint loss |
+
+Switching frameworks does not automatically solve search quality or authorization verification. Middleware is the point connecting [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] and guardrails, and tracing requires sensitive information redaction and sampling policies.
 
 ## Role in AI Engineering
 
-LangChain is the standard tool for Linear Flow Engineering. It enables rapid LLM application construction from prototyping to production, with a vast ecosystem (100+ integrations, community) as its advantage. Since v1.0, it has promised stability with no breaking changes, and its center of gravity has shifted from a pure pipeline tool toward an **agent-building tool** — see [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] for a broader framework comparison.
+LangChain provides a common interface for model integration and Agent construction. When designing more granular execution order and state transitions, LangGraph is used directly. Observability tools like LangSmith are optional, and tracking setup and data transmission scope are reviewed separately.
 
 ## Related Concepts
 [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] · [[en/AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent_Engineering/Agent_Frameworks]] · [[en/AI/Engineering/Harness_Engineering/Harness_Evaluation/Observability_and_Tracing|Observability & Tracing]]
 
 ## Sources
-1. LangChain "LangChain and LangGraph Agent Frameworks Reach v1.0 Milestones" (2026) — [langchain.com/blog/langchain-langgraph-1dot0](https://www.langchain.com/blog/langchain-langgraph-1dot0)
-- LangChain Official Documentation — [python.langchain.com](https://python.langchain.com)
-- LangChain GitHub — [github.com/langchain-ai/langchain](https://github.com/langchain-ai/langchain)
-- LangChain Docs "Agents" — [docs.langchain.com/oss/python/langchain/agents](https://docs.langchain.com/oss/python/langchain/agents)
+- LangChain, [v1 migration guide](https://docs.langchain.com/oss/python/migrate/langchain-v1) (Checked 2026-11-01)
+- LangChain, [Short-term memory](https://docs.langchain.com/oss/python/langchain/short-term-memory)

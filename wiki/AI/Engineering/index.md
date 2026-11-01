@@ -21,7 +21,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — Jev · OpenAI Decisions · Microsoft-Decision-1 등 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE) *(2026)*
 - 학습·조정 — [[AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning|Training and Tuning]]
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — 초기 학습 + 지속 적응
-    - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
+    - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — 전체 파라미터 업데이트와 학습 objective·algorithm·reward 설계(SFT·DPO·GRPO·RLVR)의 구분
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — 파라미터 효율적 미세조정
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student 지식 증류
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse *(2026)*
@@ -40,16 +40,16 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] — CoT / Tree of Thought / Self-Consistency
 - Output Control
     - [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] — Temperature, Top-K, Top-P, Min-P
-    - [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, YAML, Pydantic, Instructor
+    - [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON·Schema·의미 검증 구분, provider 계약과 실패 처리
 - [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이 *(2026)*
-- [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad, GEPA(ICLR 2026), DSPy 옵티마이저 선택 가이드 *(2026)*
+- [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad·GEPA, DSPy 선택·컴파일·독립 평가
 
 ---
 
 ### 3. [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — 컨텍스트 구성 전략
 
 - Memory & Caching
-    - [[AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] — 4유형 분류, Conversation 전략, Letta/Mem0/Zep
+    - [[AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] — 저장 위치·scope·지속성, context 선택, Memory와 RAG의 관계
     - [[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] — GPTCache, Redis, 비용 절감
 - Context Optimization
     - [[AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, 비용 절감
@@ -88,11 +88,11 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 ### 4. [[AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] — 실행 흐름 설계
 
 - [[AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow 개요]]
-    - [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL 파이프라인, 1.0 create_agent·Middleware (Harrison Chase, 2022)
+    - [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL, v1 create_agent·Middleware, legacy API 구분
     - [[AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] — RAG 특화 인덱싱-질의 파이프라인 (Jerry Liu, 2022)
-    - [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — OpenAI/Anthropic Function Calling
+    - [[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — Tool 호출·결과 계약, 권한 검증, retry·idempotency
 - [[AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow 개요]]
-    - [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] — StateGraph, ReAct Agent (LangChain AI, 2024)
+    - [[AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] — StateGraph, 조건부 종료, checkpoint·재개와 side effect
     - [[AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic Flows]] — Evaluate-and-Retry, Self-Correction
     - [[AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] — Thought-Action-Observation (Yao, 2022)
     - [[AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] — Breakpoints, Edit & Continue, Time Travel
@@ -105,7 +105,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 - [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] — Single / Orchestrator / Router / Multi-Agent / Long-running
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]] — Prompt Chaining / Routing / Parallelization / Orchestrator-Workers / Evaluator-Optimizer (Anthropic, 2024)
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] — Plan-and-Solve, ReWOO, Tree of Thoughts/LATS, Reflexion, Self-Refine/CRITIC
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — Short-term / Long-term / MemGPT / Sleep-time Compute / Mem0 / Voyager Skill Library
+- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — 기억 추출·갱신·충돌·삭제 lifecycle, provenance와 사용자 격리
 - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] — Anthropic Skills + 프로토콜 개요
     - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — LLM↔도구 통합 오픈 표준, 2026-07-28 stateless spec·Extensions, Transports/OAuth 2.1/Gateway (Anthropic, 2024)
     - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — 에이전트 간 통신 오픈 표준 (Google, 2025)
@@ -147,7 +147,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 ### 7. [[AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] — 지속 개선 루프
 
 - [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] — Agent-in-the-Loop, 자기 강화 데이터 사이클, Self-Evolving Flywheel *(2025)*
-- [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
+- [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — 실패 수집·held-out 평가·A/B·배포·rollback 운영 루프
 - [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — API 호출 측 최적화 — Semantic Cache, 모델 라우팅, 배칭, 스트리밍
 - [[AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI 게이트웨이, 배포 전략, A/B 테스트, SRE/카오스 엔지니어링, FinOps *(2026)*
 - [[AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — RLVR 훈련용 검증 가능 보상 환경, Gymnasium 계보, SWE-Gym/GEM/AgentGym, Verifier 설계, Modeling→Synthesis→Evaluation→Application 라이프사이클 *(2026)*

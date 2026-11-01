@@ -21,7 +21,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] — System One Models such as Jev · OpenAI Decisions · Microsoft-Decision-1, Choice/Score/Noul Primitives, logprob wrapper vs trainable, calibration(ECE) *(2026)*
 - Training & Tuning — [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Training_and_Tuning|Training and Tuning]]
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] — Initial Training + Continuous Adaptation
-    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — SFT, RLHF(PPO), DPO
+    - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] — Full parameter updates versus training objectives, algorithms, and reward design (SFT, DPO, GRPO, RLVR)
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — Parameter-Efficient Fine-tuning
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student Knowledge Distillation
     - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse *(2026)*
@@ -40,16 +40,16 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
     - [[en/AI/Engineering/Prompt_Engineering/Chain_of_Thought|Chain of Thought]] — CoT / Tree of Thought / Self-Consistency
 - Output Control
     - [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] — Temperature, Top-K, Top-P, Min-P
-    - [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, YAML, Pydantic, Instructor
+    - [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON, schema, and semantic validation; provider contracts and failure handling
 - [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — Static prefix design, cache breakpoints/TTL, how it differs from Semantic Cache *(2026)*
-- [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad, GEPA (ICLR 2026), DSPy optimizer selection guide *(2026)*
+- [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad and GEPA; DSPy selection, compilation, and independent evaluation
 
 ---
 
 ### 3. [[en/AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] — Context composition strategies
 
 - Memory & Caching
-    - [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] — 4 type classification, Conversation strategies, Letta/Mem0/Zep
+    - [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]] — Storage location, scope, persistence, context selection, and the relationship between memory and RAG
     - [[en/AI/Engineering/Context_Engineering/Semantic_Cache|Semantic Cache]] — GPTCache, Redis, cost reduction
 - Context Optimization
     - [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]] — LLM Lingua, Map-Reduce, cost reduction
@@ -88,11 +88,11 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 ### 4. [[en/AI/Engineering/Flow_Engineering/Flow_Engineering|Flow Engineering]] — Execution flow design
 
 - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Linear_Flow|Linear Flow Overview]]
-    - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL pipeline, 1.0 create_agent·Middleware (Harrison Chase, 2022)
+    - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] — LCEL, v1 create_agent and middleware, and legacy API distinctions
     - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LlamaIndex|LlamaIndex]] — RAG-specialized indexing-query pipeline (Jerry Liu, 2022)
-    - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — OpenAI/Anthropic Function Calling
+    - [[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] — Tool-call and result contracts, authorization checks, retry, and idempotency
 - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Graph_Flow|Graph Flow Overview]]
-    - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] — StateGraph, ReAct Agent (LangChain AI, 2024)
+    - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph|LangGraph]] — StateGraph, conditional termination, checkpoints, resumption, and side effects
     - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows|Cyclic Flows]] — Evaluate-and-Retry, Self-Correction
     - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] — Thought-Action-Observation (Yao, 2022)
     - [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop|Human-in-the-Loop]] — Breakpoints, Edit & Continue, Time Travel
@@ -105,7 +105,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 - [[en/AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] — Single / Orchestrator / Router / Multi-Agent / Long-running
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]] — Prompt Chaining / Routing / Parallelization / Orchestrator-Workers / Evaluator-Optimizer (Anthropic, 2024)
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] — Plan-and-Solve, ReWOO, Tree of Thoughts/LATS, Reflexion, Self-Refine/CRITIC
-- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — Short-term / Long-term / MemGPT / Sleep-time Compute / Mem0 / Voyager Skill Library
+- [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — Memory extraction, updates, conflicts, and deletion lifecycle; provenance and user isolation
 - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] — Anthropic Skills + protocol overview
     - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — Open standard for LLM↔tool integration, 2026-07-28 stateless spec & extensions, Transports/OAuth 2.1/Gateway (Anthropic, 2024)
     - [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — Open standard for inter-agent communication (Google, 2025)
@@ -147,7 +147,7 @@ From pre-training to post-deployment continuous improvement loops, and on to mul
 ### 7. [[en/AI/Engineering/Loop_Engineering/Loop_Engineering|Loop Engineering]] — Continuous improvement loops
 
 - [[en/AI/Engineering/Loop_Engineering/Data_Flywheel|Data Flywheel]] — Agent-in-the-Loop, self-reinforcing data cycle, Self-Evolving Flywheel *(2025)*
-- [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — DSPy 3.0(SIMBA/GEPA/GRPO), RLVR, Test-Time Compute Scaling *(2025)*
+- [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous Optimization]] — Operational loop of failure collection, held-out evaluation, A/B testing, deployment, and rollback
 - [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] — API-calling-side optimization — Semantic Cache, model routing, batching, streaming
 - [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]] — AI gateway, deployment strategies, A/B testing, SRE/chaos engineering, FinOps *(2026)*
 - [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL Environments]] — Verifiable-reward environments for RLVR training, Gymnasium lineage, SWE-Gym/GEM/AgentGym, verifier design, Modeling→Synthesis→Evaluation→Application lifecycle *(2026)*

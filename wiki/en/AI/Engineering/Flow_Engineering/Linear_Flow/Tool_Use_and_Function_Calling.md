@@ -8,9 +8,11 @@ order: 3
 
 **Tool Use** (or Function Calling) is the ability of LLMs to call external functions, APIs, and tools to go beyond their knowledge limitations. When the LLM outputs "what tool to call with what arguments" in a structured form, the application handles actual execution and provides the results back to the LLM.
 
+The additional framework and MCP snippets below are pseudocode showing component relationships. The application supplies any storage, tool, and authentication objects not shown.
+
 ## Origin and History
 
-- **OpenAI Function Calling** (June 2023): First official API support
+- **OpenAI Function Calling** (June 2023): Function Calling API announcement
 - **Anthropic Tool Use** (early 2024): Official Claude support
 - **Google Function Declarations**: Gemini support
 - **MCP (Model Context Protocol)**: Open tool standard proposed by Anthropic (2024) → [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]
@@ -34,93 +36,85 @@ sequenceDiagram
 
 ## API Implementation Examples
 
-### OpenAI Function Calling
+This **illustrative Responses API example** uses Python 3.12 and OpenAI Python SDK 2.54.0. It requires `OPENAI_API_KEY` and an `OPENAI_MODEL` that supports Function Calling. Do not mix the nested `function` object in Chat Completions with the flat tool definition in Responses. No live API call was made; SDK request shape and tool-result delivery were verified with mocks.
 
 ```python
-import openai
 import json
+import os
+from openai import OpenAI
 
-# Tool definition
-tools = [
-    {
-        "type": "function",
-        "function": {
-            "name": "get_weather",
-            "description": "Get current weather for a specified city",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {
-                        "type": "string",
-                        "description": "City name (e.g., Seoul)"
-                    },
-                    "unit": {
-                        "type": "string",
-                        "enum": ["celsius", "fahrenheit"]
-                    }
-                },
-                "required": ["city"]
-            }
-        }
-    }
-]
+client = OpenAI()
+tools = [{
+    "type": "function",
+    "name": "get_weather",
+    "description": "Return demo weather data for Seoul in Celsius.",
+    "strict": True,
+    "parameters": {
+        "type": "object",
+        "properties": {"city": {"type": "string", "enum": ["Seoul"]}},
+        "required": ["city"],
+        "additionalProperties": False,
+    },
+}]
 
-# Provide tools to LLM
-response = openai.chat.completions.create(
-    model="gpt-4o",
-    messages=[{"role": "user", "content": "What's the weather in Seoul?"}],
-    tools=tools,
-    tool_choice="auto"
-)
+def execute_call(call):
+    if call.name != "get_weather":
+        return {"error": "unknown_tool"}
+    try:
+        args = json.loads(call.arguments)
+    except (json.JSONDecodeError, TypeError):
+        return {"error": "invalid_arguments"}
+    if not isinstance(args, dict) or args != {"city": "Seoul"}:
+        return {"error": "invalid_arguments"}
+    # Fixed fixture, not a response from an external weather API
+    return {"city": "Seoul", "temperature_c": 20, "source": "demo_fixture"}
 
-# Check for tool calls
-if response.choices[0].finish_reason == "tool_calls":
-    tool_call = response.choices[0].message.tool_calls[0]
-    args = json.loads(tool_call.function.arguments)
-    # Actual function call
-    result = get_weather(args["city"])
+history = [{"role": "user", "content": "Use the demo tool for Seoul weather."}]
+for step in range(3):
+    response = client.responses.create(
+        model=os.environ["OPENAI_MODEL"], input=history, tools=tools,
+    )
+    if response.status != "completed":
+        raise RuntimeError("Incomplete model turn")
+    # Preserve all output items, including reasoning items, in the next input
+    history.extend(response.output)
+    calls = [item for item in response.output if item.type == "function_call"]
+    if not calls:
+        if not response.output_text:
+            raise RuntimeError("No text output; inspect refusal or other output items")
+        print(response.output_text)
+        break
+    for call in calls:
+        history.append({
+            "type": "function_call_output",
+            "call_id": call.call_id,
+            "output": json.dumps(execute_call(call)),
+        })
+else:
+    raise RuntimeError("Tool loop budget exhausted")
 ```
 
-### Anthropic Tool Use
+`strict=True` enforces the argument schema. Specify `additionalProperties: false` and required fields for each object. Select executable function names from an allow-list; never execute model strings with `eval`. The example provides only a read-only fixture and does not verify live weather accuracy.
 
-```python
-import anthropic
+Anthropic Messages tool definitions use `name`, `description`, and `input_schema`. Process every `tool_use` block in the response content and return its corresponding ID as `tool_result.tool_use_id`. This differs from OpenAI's `call_id`; build adapters against the official documentation for each SDK and endpoint.
 
-client = anthropic.Anthropic()
+## Execution Contracts and Failure Handling
 
-tools = [
-    {
-        "name": "search_web",
-        "description": "Search the web for information",
-        "input_schema": {
-            "type": "object",
-            "properties": {
-                "query": {"type": "string", "description": "Search query"},
-                "num_results": {"type": "integer", "default": 5}
-            },
-            "required": ["query"]
-        }
-    }
-]
+| Stage | Contract to verify | Failure handling |
+|---|---|---|
+| Tool selection | allow-list, supported tool version | Do not execute unknown tools |
+| Argument validation | schema + business invariants | Distinguish format errors from business rejection |
+| Authorization and approval | authenticated principal, resource ACL, required approval | Do not trust model-generated user IDs or approval text |
+| Execution | timeout, retry budget, idempotency | Do not immediately repeat writes with uncertain outcomes |
+| Result delivery | match every call ID to a result, size limits | Return structured errors; strip sensitive internal exceptions |
 
-response = client.messages.create(
-    model="claude-sonnet-4-6",
-    max_tokens=1024,
-    tools=tools,
-    messages=[{"role": "user", "content": "Find 2024 AI trends"}]
-)
+For writes, persist an application-generated operation ID, argument hash, processing status, and result. Reject reuse of an operation ID with different arguments. If the external service supports idempotency keys, reuse the same key when retrying the same business operation. Otherwise, verify the result through queries and reconciliation after a timeout; do not promise exactly-once execution without deduplication.
 
-# Handle tool calls
-if response.stop_reason == "tool_use":
-    tool_use = next(b for b in response.content if b.type == "tool_use")
-    result = search_web(tool_use.input["query"])
-    # Pass result back to Claude
-    ...
-```
+A model's tool call ID connects a request to its result within a conversation. A subsequent model call can generate a new ID, so it cannot replace a business-level idempotency key. Reassess approval scope when approved arguments change. Set an overall deadline and cost cap in addition to an iteration limit.
 
 ## Parallel Tool Calling
 
-Latest models call multiple tools in parallel:
+Some models can request multiple tool calls in one turn. The application decides whether to execute them concurrently. Execute dependent operations or conflicting writes sequentially, and apply concurrency and timeout limits even to independent reads:
 ```python
 # LLM decides to call multiple tools simultaneously
 tool_calls = [
@@ -219,7 +213,7 @@ Tools are classified into four categories by their role [1][2].
 Tools that fetch data from external knowledge sources. Access latest information after LLM training cutoff or internal data.
 
 - **Examples**: [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] Toolbox, [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/NL2SQL/NL2SQL|NL2SQL]] (natural language → SQL), [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] (vector DB search), [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/Knowledge_Graph/Knowledge_Graph|Knowledge Graph]] queries
-- **Characteristics**: Read-only, no side effects, cacheable
+- **Characteristics**: Usually read-oriented, but query logs, costs, and data exposure remain possible; cache with authorization and freshness in mind
 
 ### 2. API Integration
 
@@ -269,32 +263,32 @@ ReAct agent loop:
 Thought → Action (tool call) → Observation (result) → repeat
 ```
 
-## MCP: Standardization Layer for Function Calling
+## MCP: A Standardization Layer for Function Calling
 
-Function Calling has limitations: different API formats for each model (OpenAI, Anthropic, Google), and custom integration code needed for each tool. Anthropic announced an open standard in November 2024 to solve this.
+Function Calling APIs differ across model providers such as OpenAI, Anthropic, and Google, and tools can require custom integrations. Anthropic introduced an open protocol to address tool integration in November 2024.
 
-**MCP (Model Context Protocol)** is a protocol where "any LLM communicates with external tools and services in a standardized way":
+**MCP (Model Context Protocol)** provides a standardized way for applications using LLMs to communicate with external tools and services:
 
 ```
-Function Calling (different per model):
-  OpenAI: tools=[{"type": "function", "function": {...}}]
-  Anthropic: tools=[{"name": ..., "input_schema": {...}}]
-  → Same tool must be implemented twice
+Function Calling (provider-specific):
+  OpenAI format: tools=[{"type": "function", "function": {...}}]
+  Anthropic format: tools=[{"name": ..., "input_schema": {...}}]
+  → A provider-specific request/response adapter may be needed
 
 MCP (standardized):
-  Implement MCP Server once → usable by Claude, GPT-4, Gemini
-  → As of 2026, 20 million weekly downloads, de facto industry standard
+  Implement an MCP Server once → integrate with hosts using Claude, GPT-4, or Gemini
+  → The host connects model-specific call formats to MCP requests
 ```
 
-Of MCP's 4 Primitives, **Tools** directly corresponds to Function Calling, additionally providing **Resources** (data exposure), **Prompts** (templates), and **Sampling** (server→LLM requests).
+Among the four MCP primitives discussed here, **Tools** map directly to Function Calling. **Resources** expose data, **Prompts** provide templates, and **Sampling** supports server-to-LLM requests.
 
-→ See: [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]]
+→ Details: [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|Agent_Skills_and_Protocols/MCP]]
 
 ---
 
 ## Code Execution with MCP / Progressive Tool Disclosure
 
-MCP standardized tool integration, but it brought a new bottleneck with it: as more MCP servers get connected, **the tool schemas themselves start crowding out the context**. With just 4 servers and around 38 tools, each tool's name, description, and JSON Schema definition can consume 15,000+ tokens on every single request — sent in full even when only one of those tools is actually used.
+MCP standardized tool integration, but it brought a new bottleneck with it: as more MCP servers get connected, **the tool schemas themselves start crowding out the context**. When every schema is injected up front, unused tools also occupy context. Actual token counts depend on schema length, selection, and caching policies.
 
 ```
 Conventional approach — inject every tool schema into context on every call:
@@ -318,7 +312,7 @@ send_email(to="team@company.com", body=f"Findings: {top_result}")
 # → only the execution result is returned to the model; intermediate tool schemas never enter context
 ```
 
-The reported savings are large — one case that converted a tool-calling workflow to code execution cut input tokens by up to 78.5%, and another workflow reportedly went from 150,000 tokens down to 2,000.
+Savings depend on the size of the schemas and intermediate results previously exposed. Measure input tokens, code execution cost, and latency while checking that task success is maintained.
 
 ### 2. Code Mode (Cloudflare)
 
@@ -328,13 +322,13 @@ The same idea applied to a Workers runtime. It converts MCP tools into TypeScrip
 
 Rather than turning tools into code, this **retrieves tool descriptions on demand**. Initially only tool names are exposed; once the model decides a task needs a particular tool, that tool's full schema is retrieved and added to context at that point — applying the [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/Retrieval_Strategies|Retrieval Strategies]] Select strategy to tool definitions themselves.
 
-These three approaches solve the same tool-schema-bloat problem with different tradeoffs: Code Execution yields the largest savings but requires sandbox infrastructure, while Tool Search has a lighter infrastructure footprint but adds retrieval latency. For the cost-analysis angle, see [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Cost_Engineering/Context_Usage_Auditing]].
+These three approaches solve the same tool-schema-bloat problem with different tradeoffs: Code Execution can move intermediate data processing outside the model but requires sandbox infrastructure, while Tool Search has a lighter infrastructure footprint but adds retrieval latency. For the cost-analysis angle, see [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Cost_Engineering/Context_Usage_Auditing]].
 
 ---
 
 ## Role in AI Engineering
 
-Function Calling is the key technology that transforms LLMs from "text generators" to "real-world action executors." All external interactions — search, DB queries, API calls, code execution — happen through Function Calling. As a special form of Structured Output, it is an essential component of production Agent systems. MCP is the next step, elevating this Function Calling to a standard protocol.
+Function Calling is a key technology for turning LLMs from text generators into systems that perform real-world actions. It connects many external interactions, including search, DB queries, API calls, and code execution, through structured requests and results. It shares schema constraints with Structured Output ([[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured_Output]]), while execution permissions and side effects require separate contracts. MCP standardizes tool discovery and communication; it does not replace provider-specific API adapters.
 
 ## Related Concepts
 [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] · [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern|ReAct Pattern]] · [[en/AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] · [[en/AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]] · [[en/AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP]] · [[en/AI/Engineering/Loop_Engineering/Cost_Engineering/Context_Usage_Auditing|Loop_Engineering/Cost_Engineering/Context_Usage_Auditing]]
@@ -345,7 +339,7 @@ Function Calling is the key technology that transforms LLMs from "text generator
 - Anthropic (2024) "Introducing the Model Context Protocol" — [anthropic.com](https://www.anthropic.com/news/model-context-protocol)
 - Mike Styer et al. (Google), "Agent Tools & Interoperability with Model Context Protocol (MCP)" — [kaggle.com](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp) (first published Nov 2025, updated May 2026) · this wiki: [[en/AI/sources/Agent_Tools_&_Interoperability_with_Model_Context_Protocol_(MCP)|Agent Tools & MCP]]
 - Anthropic (2025) "Equipping Agents for the Real World with Agent Skills" — [anthropic.com](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
-- Anthropic (2026) "Code execution with MCP: Building more efficient agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
+- Anthropic "Code execution with MCP: Building more efficient agents" — [anthropic.com/engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
 - Cloudflare "Code Mode: the better way to use MCP" — [blog.cloudflare.com](https://blog.cloudflare.com/code-mode/)
 
 ## References
@@ -353,3 +347,5 @@ Function Calling is the key technology that transforms LLMs from "text generator
 [1] Mike Styer et al. (Google), "Agent Tools & Interoperability with Model Context Protocol (MCP)" — [kaggle.com](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp)
 
 [2] Kaggle 5-Day Gen AI Course (May 2026), "Agent Tools" (Day 2)
+
+- OpenAI, [Function calling](https://developers.openai.com/api/docs/guides/function-calling) (accessed 2026-11-01)

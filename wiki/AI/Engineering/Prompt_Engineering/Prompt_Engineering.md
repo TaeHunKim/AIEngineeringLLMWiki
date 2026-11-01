@@ -17,9 +17,9 @@ nav_order: 20
 | [[AI/Engineering/Prompt_Engineering/Few_shot_Prompting\|Few_shot_Prompting]] | 예시로 가르치기 — Zero/One/Few-shot (Brown 2020) |
 | [[AI/Engineering/Prompt_Engineering/Chain_of_Thought\|Chain_of_Thought]] | 단계적 추론 유도 — CoT/ToT/Self-Consistency |
 | [[AI/Engineering/Prompt_Engineering/Sampling_Controls\|Sampling_Controls]] | Temperature/Top-K/Top-P/Min-P로 출력 다양성 제어 |
-| [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON/YAML/Pydantic으로 구조화된 출력 보장 |
+| [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON·Schema·의미 검증 구분, provider 계약과 실패 처리 |
 | [[AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | 정적 프리픽스 우선 배치, Cache Breakpoint/TTL, Semantic Cache와의 차이 |
-| [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic_Prompt_Optimization]] | "프롬프트를 사람이 안 쓴다" 패러다임 — APE/OPRO/TextGrad, GEPA, DSPy 옵티마이저 선택 |
+| [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic_Prompt_Optimization]] | APE/OPRO/TextGrad·GEPA, DSPy 선택·컴파일·독립 평가 |
 
 ## 프롬프트 설계 원칙
 
@@ -49,7 +49,7 @@ o1/o3, Claude Extended Thinking, Gemini Deep Think 같은 reasoning 모델은 Co
 
 ## AI Engineering에서의 역할
 
-Prompt Engineering은 **가장 비용 효율적인 모델 동작 제어 수단**이다. 모델 개선의 80%는 프롬프트 수준에서 해결 가능하다는 것이 현장의 통념이다. 모든 AI 시스템의 첫 번째 최적화 포인트.
+Prompt Engineering은 가중치 변경 없이 동작을 조정하는 수단이다. 개선 효과는 task와 실패 원인에 따라 다르며, retrieval·tool·학습 데이터 문제와 구분해 평가한다.
 
 ## 관련 개념
 [[AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Loop_Engineering/Continuous_Optimization|Loop_Engineering/Continuous_Optimization]]

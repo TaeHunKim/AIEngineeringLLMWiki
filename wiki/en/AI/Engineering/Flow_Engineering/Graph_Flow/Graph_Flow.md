@@ -21,11 +21,11 @@ flowchart TD
 ## Sub-documents
 
 | Document | Content |
-|----------|---------|
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|LangGraph]] | Implement agent workflows with StateGraph (LangChain AI, 2024) |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows\|Cyclic Flows]] | Loop patterns — Evaluate-and-Retry, Self-Correction |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern\|ReAct Pattern]] | Thought-Action-Observation loop (Yao et al. 2022) |
-| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human-in-the-Loop]] | Human approval/intervention points — Breakpoints, Time Travel |
+|------|------|
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/LangGraph\|LangGraph]] | StateGraph, Conditional Termination, Checkpoint/Resume, and Side Effects |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Cyclic_Flows\|Cyclic_Flows]] | Loop Patterns — Evaluate-and-Retry, Self-Correction |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/ReAct_Pattern\|ReAct_Pattern]] | Thought-Action-Observation Loop (Yao et al. 2022) |
+| [[en/AI/Engineering/Flow_Engineering/Graph_Flow/Human_in_the_Loop\|Human_in_the_Loop]] | Human Approval/Intervention Points — Breakpoints, Time Travel |
 
 ## Why Graph Flow Is Needed
 

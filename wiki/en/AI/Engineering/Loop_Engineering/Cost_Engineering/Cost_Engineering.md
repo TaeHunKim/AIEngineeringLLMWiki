@@ -54,14 +54,14 @@ Design considerations:
 
 This is essentially the unit-economics principle from [[en/AI/Engineering/Loop_Engineering/Production_Operations|Production Operations]]'s **FinOps for LLMs** section, applied recursively to the watcher agent itself.
 
-## Where This Sits in Loop Engineering: A Specialization, Not a New Layer
+## Position within Loop Engineering: Specialization over New Hierarchy
 
-| Document | Focus | Relationship to Cost Engineering |
-|----------|-------|-----------------------------------|
-| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime Optimization]] | Per-request technique library (caching, routing, batching, speculative decoding) | Defines the techniques Cost Engineering automatically tunes |
-| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous Optimization]] | Quality-focused, production-data-driven improvement loop (DSPy, RLVR) | Reuses the same "automated improvement loop" structure, just with the objective metric swapped from quality to cost |
-| [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production Operations]] | FinOps economics measurement, safe deployment (Shadow/Canary) | Supplies the economics metrics and deployment safeguards needed when Cost Engineering's three mechanisms are actually applied |
-| **Cost Engineering** (this chapter) | **Automates and orchestrates** the patterns from the three documents above, with cost as the objective function | Introduces no new object of control — it's the existing Loop Engineering practice specialized by raising its level of automation |
+| Document | Focus | Relationship with Cost Engineering |
+|------|------|---------------------------|
+| [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization\|Runtime_Optimization]] | Request Unit Techniques Library (Cache, Routing, Batch, Speculative Decoding) | Defines techniques that are automatically adjusted by Cost Engineering |
+| [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization\|Continuous_Optimization]] | Failure Collection · Held-out Evaluation · A/B · Deployment · Rollback Operational Loops | Evaluates quality, cost, and latency together, and verifies cost optimization candidates through the same deployment gate |
+| [[en/AI/Engineering/Loop_Engineering/Production_Operations\|Production_Operations]] | FinOps Economic Measurement, Safe Deployment (Shadow/Canary) | Provides the economic metrics and deployment safeguards needed when the three mechanisms of Cost Engineering are actually applied |
+| **Cost Engineering** (This Chapter) | **Automation and Orchestration** of the patterns from the three documents above, with cost as the objective function | Specialization that elevates the level of automation of existing Loop Engineering execution cases without introducing new control targets |
 
 ## Role in AI Engineering
 

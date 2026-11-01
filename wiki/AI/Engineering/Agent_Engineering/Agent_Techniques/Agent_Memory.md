@@ -6,7 +6,9 @@ order: 3
 
 ## 개요
 
-에이전트 메모리는 에이전트가 정보를 저장하고 추후 검색하여 활용하는 모든 메커니즘이다. 인간의 기억 유형처럼 **Short-term**(단기), **Long-term**(장기)으로 구분된다. 좋은 메모리 시스템은 에이전트가 이전 경험을 바탕으로 더 나은 결정을 내리게 한다.
+**Agent Memory**는 실행 중 얻은 정보를 추출·검증·저장·갱신·삭제하고 다음 행동에 사용하는 lifecycle이다. 저장 위치·scope의 개념은 [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]]에서 다루며, 이 문서는 운영 정책과 실패 처리에 집중한다.
+
+아래 SDK 조각은 설명용이며 단독 실행 프로그램이 아니다. Provider·저장소 설정과 인증이 필요한 부분은 애플리케이션에서 준비한다. 장기 기억을 저장한다고 모델 가중치가 학습되는 것은 아니다.
 
 ## Short-term Memory (단기 기억)
 
@@ -28,6 +30,8 @@ messages = [
 ### In-Context Working Memory
 복잡한 태스크 실행 중 중간 결과 저장:
 ```python
+from typing import TypedDict
+
 class AgentState(TypedDict):
     task: str
     plan: list[str]
@@ -38,18 +42,10 @@ class AgentState(TypedDict):
 
 ### 단기 기억의 한계
 - 컨텍스트 창 초과 시 오래된 내용 삭제 필요
-- 세션 종료 시 완전 소실
+- 영속 checkpoint가 없다면 프로세스 종료 후 복구 불가
 - 해결책: 대화 요약 + Long-term으로 이관
 
-```python
-from langchain.memory import ConversationSummaryBufferMemory
-
-memory = ConversationSummaryBufferMemory(
-    llm=llm,
-    max_token_limit=2000,  # 2000 토큰 초과 시 자동 요약
-    return_messages=True
-)
-```
+LangChain v1에서는 Agent state·checkpointer로 thread를 유지하고 trim 또는 summarization middleware로 context를 관리한다. 요약도 모델 호출 비용이 들며 원문 누락을 평가해야 한다. 실행 구성은 [[AI/Engineering/Flow_Engineering/Linear_Flow/LangChain|LangChain]]을 참조한다.
 
 ## Long-term Memory (장기 기억)
 
@@ -58,65 +54,37 @@ memory = ConversationSummaryBufferMemory(
 ### Vector-based Memory (벡터 메모리)
 의미 검색으로 관련 기억 검색:
 
-```python
-from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
-from datetime import datetime
-
-class VectorMemory:
-    def __init__(self):
-        self.store = Chroma(embedding_function=OpenAIEmbeddings())
-    
-    def save(self, content: str, metadata: dict = {}):
-        """기억 저장"""
-        self.store.add_texts(
-            texts=[content],
-            metadatas=[{**metadata, "timestamp": datetime.now().isoformat()}]
-        )
-    
-    def recall(self, query: str, k: int = 5) -> list:
-        """관련 기억 검색"""
-        return self.store.similarity_search(query, k=k)
-    
-    def forget(self, memory_id: str):
-        """기억 삭제"""
-        self.store.delete([memory_id])
-
-# 사용 예시
-memory = VectorMemory()
-memory.save("사용자 홍길동은 Python을 선호하며 간결한 코드 스타일을 좋아함")
-
-# 다음 세션에서
-relevant_memories = memory.recall("코드 스타일 선호도")
-```
+검색 구현은 Vector DB별 client로 구성한다. 저장할 때 memory ID를 반환받고, 읽기·수정·삭제 모두 인증된 `(tenant_id, user_id)` 범위로 제한한다. 모델이 생성한 user ID를 접근 권한으로 사용하지 않는다. DB 저장 성공 후 embedding index 갱신이 실패하면 재처리 가능한 event를 남긴다.
 
 ### User Profile Memory (사용자 프로필)
 사용자 특성·선호도를 구조화된 형태로 저장:
 
 ```python
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class UserProfile(BaseModel):
     user_id: str
-    name: Optional[str]
+    name: Optional[str] = None
     preferred_language: str = "ko"
     expertise_level: str = "intermediate"  # beginner/intermediate/expert
-    interests: list[str] = []
+    interests: list[str] = Field(default_factory=list)
     communication_style: str = "formal"    # formal/casual
     
 class ProfileMemory:
     def update_from_conversation(self, profile: UserProfile, message: str):
         """대화에서 프로필 자동 업데이트"""
         update_prompt = f"""
-        현재 사용자 프로필: {profile.dict()}
+        현재 사용자 프로필: {profile.model_dump()}
         새 대화 내용: {message}
         
         프로필 업데이트가 필요한 항목을 JSON으로 반환하세요.
         변경 없으면 빈 객체 {{}} 반환.
         """
         updates = llm_json_output(update_prompt)
-        return profile.copy(update=updates)
+        allowed = {"preferred_language", "interests", "communication_style"}
+        safe_updates = {k: v for k, v in updates.items() if k in allowed}
+        return UserProfile.model_validate({**profile.model_dump(), **safe_updates})
 ```
 
 ### Episodic Memory (에피소딕 메모리)
@@ -143,6 +111,7 @@ similar_cases = episodic_memory.search("배열 인덱스 오류")
 
 ```python
 from langchain.tools import tool
+from langchain.agents import create_agent
 
 @tool
 def remember(content: str) -> str:
@@ -157,7 +126,7 @@ def recall(query: str) -> str:
     return "\n".join([m.page_content for m in memories])
 
 # 에이전트가 스스로 기억 저장/검색 결정
-agent = create_react_agent(llm, tools=[remember, recall, ...])
+agent = create_agent(model=llm, tools=[remember, recall])
 ```
 
 ## MemGPT / Virtual Context Management
@@ -218,38 +187,11 @@ Sleep-time Compute:
 
 **효과**: 응답 시점의 지연시간과 토큰 비용을 줄이면서도 메모리 품질(모순 해소, 최신성)을 유지. Runtime Optimization의 캐싱 전략([[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]])과 철학이 비슷하지만, 대상이 응답 자체가 아니라 메모리 상태라는 점이 다르다.
 
-## Mem0 — Hybrid Memory (Vector + Graph + KV)
+## Mem0 — 사실 추출과 갱신
 
-Mem0(2024)는 벡터 검색만으로는 관계형 정보(누가 누구와 어떤 관계인가)를 포착하기 어렵다는 문제를 세 가지 저장소를 결합해 해결한다.
+Mem0 논문(2025)은 대화에서 관련 사실을 추출하고 기존 기억과 비교해 저장·갱신하는 구조를 설명한다. Graph 확장은 관계 표현을 보강하는 선택지이며, 모든 기본 설치가 Vector·Graph·KV를 동시에 사용하는 것으로 가정하지 않는다.
 
-```mermaid
-flowchart TD
-    IN[새 대화/이벤트] --> EX["추출 LLM<br/>기억할 사실 식별"]
-    EX --> V["Vector Store<br/>의미 유사도 검색"]
-    EX --> G["Graph Store<br/>엔티티 간 관계<br/>(사람-회사-프로젝트 등)"]
-    EX --> K["Key-Value Store<br/>구조화된 속성<br/>(user_id, 선호 언어 등)"]
-    V & G & K --> Q["질의 시 3개 저장소 통합 검색"]
-```
-
-```python
-from mem0 import Memory
-
-m = Memory()
-
-m.add(
-    "홍길동은 삼성전자에서 근무하며 김철수와 같은 팀이다. 파이썬을 선호한다.",
-    user_id="hong"
-)
-# 내부적으로:
-#   Vector: "파이썬 선호" 임베딩 저장
-#   Graph: (홍길동)-[근무]->(삼성전자), (홍길동)-[동료]->(김철수)
-#   KV: {"user_id": "hong", "preferred_language": "python"}
-
-# 그래프 관계 기반 질의도 가능
-related = m.search("홍길동의 동료는 누구인가?", user_id="hong")
-```
-
-**Mem0 vs 순수 Vector Memory**: 벡터 검색은 "파이썬을 좋아하는 사람"류 의미 질의에 강하지만 "홍길동의 동료가 다니는 회사"처럼 다단계 관계 추론에는 약하다. Mem0는 Graph Store로 이를 보완하며, 벤치마크(LOCOMO)에서 순수 벡터 방식 대비 관계 추론 정확도가 높게 보고된다.
+평가 결과는 dataset, judge, baseline, retrieval budget에 의존한다. 특정 벤치마크 점수를 일반적인 개인화 정확도로 해석하지 말고 자신의 데이터에서 재현한다. 사용자별 ID를 전달하는 기능과 서버 측 접근 통제는 별개의 책임이다.
 
 ## Skill Libraries and Lifelong Learning — Voyager
 
@@ -288,25 +230,13 @@ class SkillLibrary:
 
 **AI Engineering 관점에서의 의의**: 기존 Memory가 "사실을 기억"하는 데 초점을 둔다면, Skill Library는 "능력을 기억"한다 — 에이전트가 시간이 지날수록 더 유능해지는 평생 학습(lifelong learning)의 실용적 구현체다. [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]]의 Agent Skills와 개념적으로 연결되지만, Voyager의 스킬은 사람이 아니라 **에이전트 스스로 생성·검증·축적**한다는 점이 다르다.
 
-## LangMem / Memory 전문 라이브러리
+## LangMem과 처리 시점
 
-LangChain의 Memory 관리 라이브러리 (2024~):
-```python
-from langmem import MemoryManager
+LangMem은 memory 추출·통합과 관리·검색 tool을 제공한다. 공식 API에는 `create_manage_memory_tool`, `create_search_memory_tool` 등이 있으며 store와 namespace를 구성해 사용한다. API 조각을 적용하기 전 설치 버전과 공식 reference를 대조한다.
 
-memory_manager = MemoryManager(
-    storage=ChromaStorage(),
-    extraction_llm=llm,
-    auto_extract=True  # 대화에서 자동으로 중요 정보 추출
-)
-```
-
-## 기억 아키텍처 3-Buckets (Anthropic)
-
-Context Engineering 관점에서의 메모리 분류 (→ [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]]):
-1. **Write**: 기억 저장 (언제, 무엇을 저장할지)
-2. **Select**: 기억 검색 (어떤 기억이 현재 관련 있는지)
-3. **Compress**: 기억 압축 (오래된 기억을 효율적으로 유지)
+- **Hot path:** 현재 응답에 꼭 필요한 갱신을 동기 처리한다. latency 증가와 저장 실패 처리가 필요하다.
+- **Background:** 대화 이후 추출·통합한다. 비용을 응답 경로 밖으로 옮길 수 있지만, 새 사실이 보이기까지의 지연과 중복 event를 처리해야 한다.
+- Write·Select·Compress는 구현을 설명하는 관점이며, 특정 연구자의 "표준 3-Buckets"로 귀속하지 않는다.
 
 ## Memory ETL 파이프라인
 
@@ -347,36 +277,28 @@ class MemoryWithProvenance:
 
 Provenance가 없으면 기억의 신선도를 알 수 없어 오래된 정보로 잘못된 결정을 내릴 수 있다.
 
-## Agent Runtime + Memory Bank (프로덕션) *(2026년 5월)*
+## 충돌·삭제·격리 정책
 
-엔터프라이즈 프로덕션에서의 메모리 인프라:
+| 단계 | 운영 정책 | 검증할 실패 사례 |
+|---|---|---|
+| 추출 | 사용자 발언·tool 결과의 source ID와 시각 기록 | 모델의 추정을 사용자 사실로 저장 |
+| 갱신 | 관찰 시각과 사실의 유효 시각 구분; 명시적 정정을 반영 | 늦게 도착한 과거 event가 최신 값을 덮어씀 |
+| 통합 | 동일 event 중복 처리 방지; 충돌은 provenance 유지 | 서로 다른 사람의 사실을 한 profile로 병합 |
+| 조회 | tenant·user·ACL 및 유효 기간 필터 | 유사도 검색 후 권한 검증을 누락 |
+| 삭제 | 원본·index·summary·cache까지 삭제 전파 추적 | 삭제한 사실이 summary나 background job에서 재생성 |
+| 재처리 | version 또는 tombstone을 확인한 뒤 쓰기 | 오래된 retry가 삭제를 되돌림 |
 
-```
-기존 방식 (직접 구축):
-  에이전트 → Vector DB → 수동 세션 관리
-  단점: 세션 복원 복잡, cold start 느림, 장기 운영 어려움
+TTL 만료와 사용자 삭제 요청은 구분한다. Backup 보존 정책도 함께 정의하고, 삭제 완료를 선언할 범위를 명확히 한다. Profile 갱신 시 허용 필드만 반영하고 검증을 통과시킨다. `model_copy(update=...)`만으로 신뢰할 수 없는 갱신값의 validation을 대체하지 않는다.
 
-Gemini Enterprise Agent Platform:
+## 평가와 선택 기준
 
-  Agent Runtime:
-    - sub-second cold start: 새 인스턴스 시작이 거의 즉각
-    - 최대 7일 멀티-데이 운영: 장기 태스크 컨텍스트 유실 없음
-    - auto-resume: 웹훅·휴먼 승인 후 정확히 이전 상태에서 재개
-    
-  Memory Bank:
-    - 세션 경계를 넘는 영속적 컨텍스트 저장소
-    - Agent Runtime과 네이티브 통합 (별도 Vector DB 불필요)
-    - Agent Identity와 연동하여 메모리 접근 감사 추적
+Memory가 필요한 task와 필요 없는 task를 나눠 baseline을 만든다. 저장 정확도, 관련 기억 recall, 정정 후 응답, 삭제 후 재노출, 사용자 간 누출, 추출·검색 비용과 p95 latency를 함께 측정한다. 근거가 모순되면 최신 timestamp 하나로 확정하지 말고 source와 유효 시점을 확인하거나 사용자에게 확인한다.
 
-적합한 경우:
-  - 다중 세션에 걸친 장기 프로젝트 에이전트
-  - 사용자 선호도를 장기간 기억해야 하는 어시스턴트
-  - 중단 후 재개가 빈번한 비동기 태스크 에이전트
-```
+Managed Memory Bank를 쓰더라도 retention·access control·consistency 조건을 확인한다. Runtime의 중단 후 재개와 사용자 장기 기억은 다른 기능이며, 인프라 선택은 [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent_Deployment]]에서 다룬다.
 
 ## AI Engineering에서의 역할
 
-Agent Memory는 에이전트를 "일회용 도구"에서 "지속 학습하는 어시스턴트"로 만드는 핵심 요소다. 사용자와의 장기 관계 구축, 조직의 노하우 축적, 반복 실수 방지 등 개인화된 AI 경험의 기반이다. 프로덕션에서는 Memory ETL 파이프라인으로 기억의 품질을 관리하고, Agent Runtime + Memory Bank로 세션 영속성과 장기 운영을 보장해야 한다.
+Agent Memory는 에이전트를 "일회용 도구"에서 "지속 학습하는 어시스턴트"로 만드는 핵심 요소다. 사용자와의 장기 관계 구축, 조직의 노하우 축적, 반복 실수 방지 등 개인화된 AI 경험의 기반이다. 프로덕션에서는 Memory ETL 파이프라인으로 기억의 품질을 관리하고, 영속 저장소·접근 정책·삭제 전파 검증으로 세션 복구와 장기 운영을 지원한다.
 
 ## 관련 개념
 [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent_Core_Pillars]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Engineering|Context Engineering]] · [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning_and_Reflection]] · [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent_Skills_and_Protocols]] · [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]]
@@ -390,3 +312,6 @@ Agent Memory는 에이전트를 "일회용 도구"에서 "지속 학습하는 �
 - [[AI/sources/Context_Engineering_Sessions_&_Memory|Context Engineering Sessions & Memory]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)
 - LangMem 문서 — [langchain-ai.github.io/langmem](https://langchain-ai.github.io/langmem/)
 - AI Engineering from Scratch, Phase 14 · Lessons 07-10 (MemGPT, Sleep-time Compute, Mem0, Voyager) — [GitHub](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering)
+
+- LangChain, [Short-term memory](https://docs.langchain.com/oss/python/langchain/short-term-memory)
+- Pydantic, [Models](https://docs.pydantic.dev/latest/concepts/models/)
