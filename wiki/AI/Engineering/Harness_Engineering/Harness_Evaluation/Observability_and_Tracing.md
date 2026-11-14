@@ -118,8 +118,8 @@ with langfuse.trace(name="rag_pipeline") as trace:
 
 **특징 (2026 기준)**:
 - Clickhouse에 인수됨 (2026년 1월)
-- 셀프호스팅 무료
-- 비용 분석, 프롬프트 관리 강점
+- OpenTelemetry 네이티브 SDK (v3) 기반으로 분산 트레이싱과 호환
+- 셀프호스팅 무료, 비용 분석·프롬프트 관리 강점
 
 ### Arize Phoenix (오픈소스)
 
@@ -164,6 +164,11 @@ flowchart TD
 ```
 
 **OpenTelemetry**: 표준 분산 추적 프레임워크. 모든 LLM 옵저버빌리티 도구가 지원.
+
+### OpenTelemetry GenAI Semantic Conventions & OpenInference
+특정 플랫폼 SDK(LangSmith/Langfuse 전용 데코레이터)에 종속되지 않으려면 **벤더 중립적 OpenTelemetry 표준 속성 규격**으로 계측한다:
+- **OTel GenAI Semantic Conventions (`gen_ai.*`)**: OpenTelemetry 공식 워킹 그룹이 정의한 표준 속성 네임스페이스. `gen_ai.system`, `gen_ai.request.model`, `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`, `gen_ai.operation.name`(chat, execute_tool, invoke_agent) 등을 표준화한다.
+- **OpenInference (Arize)**: RAG·에이전트 워크플로(Retriever 문서 목록, Tool 스키마, Reranker 점수 등)까지 세밀하게 표현하기 위해 OTel 위에서 확장한 오픈 스펙으로, Phoenix·Langfuse·Traceloop 등 다수 도구가 수집 포맷으로 지원한다.
 
 ## 알람 및 모니터링
 
@@ -275,11 +280,12 @@ Gemini Enterprise Agent Platform에 내장된 네이티브 관찰 도구:
 Observability는 **프로덕션 AI 시스템의 신경계**다. "왜 사용자 불만이 늘었나", "어떤 쿼리가 비용을 많이 쓰나", "파인튜닝 후 성능이 개선됐나" 같은 질문에 데이터 기반으로 답할 수 있게 한다. 에이전트 시스템에서는 Three Pillars + Dynamic Sampling + 이중 대시보드로 단순 LLM 추적을 넘어 에이전트 품질까지 관찰해야 한다. 없으면 블랙박스 운영이 되어 개선이 불가능하다.
 
 ## 관련 개념
-[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM-as-a-Judge]]
+[[AI/Engineering/Harness_Engineering/Harness_Evaluation/LLM_as_a_Judge|LLM_as_a_Judge]] · [[AI/Engineering/Harness_Engineering/Harness_Evaluation/Benchmarking|Benchmarking]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Loop_Engineering/Data_Flywheel|Data_Flywheel]]
 
 ## 출처
 - MLflow "Top 5 LLM and Agent Observability Tools in 2026" — [mlflow.org](https://mlflow.org/top-5-agent-observability-tools/)
 - Langfuse 공식 문서 — [langfuse.com](https://langfuse.com)
 - Arize Phoenix 문서 — [docs.arize.com/phoenix](https://docs.arize.com/phoenix)
+- OpenTelemetry "Semantic Conventions for Generative AI" — [opentelemetry.io](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
 - "LLMOps Observability: LangSmith vs Arize vs Langfuse" — [Medium](https://medium.com/@kanerika/llmops-observability-langsmith-vs-arize-vs-langfuse-vs-w-b-f1baeabd1bbf)
 - [[AI/sources/Agent_Quality|Agent_Quality]] (이 위키의 기존 소스, 2025년 11월 최초 발행 → 2026년 5월 업데이트)

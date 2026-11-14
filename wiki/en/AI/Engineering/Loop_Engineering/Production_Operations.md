@@ -85,7 +85,7 @@ LLMPerf:     LLM serving-specialized — simultaneously measures TTFT, inter-tok
 GenAI-Perf:  NVIDIA's generative AI-specialized benchmarking tool, optimized for serving engine comparison
 ```
 
-Unlike general web services, LLM load testing must measure not just response "completion time" but also streaming-specific metrics like TTFT (Time-to-First-Token) and TPOT (Time-per-Output-Token) covered in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime Optimization]] to reflect actual perceived user speed.
+Unlike general web services, LLM load testing must measure not just response "completion time" but also streaming-specific metrics like TTFT (Time-to-First-Token) and TPOT (Time-per-Output-Token) covered in [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving Engineering]] to reflect actual perceived user speed.
 
 ## SRE for AI and Chaos Engineering
 

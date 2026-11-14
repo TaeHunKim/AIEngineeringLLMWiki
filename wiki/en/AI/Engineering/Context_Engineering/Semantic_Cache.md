@@ -59,8 +59,8 @@ cache.init(
 )
 
 # OpenAI API calls are automatically cached afterward
-response = openai.ChatCompletion.create(
-    model="gpt-4",
+response = openai.chat.completions.create(
+    model="gpt-4o-mini",
     messages=[{"role": "user", "content": "How to sort a Python list"}]
 )
 ```
@@ -75,26 +75,31 @@ from openai import OpenAI
 import numpy as np
 
 class SemanticCache:
-    def __init__(self, threshold=0.9):
+    def __init__(self, threshold: float = 0.9):
         self.redis = redis.Redis()
         self.client = OpenAI()
         self.threshold = threshold
-    
-    def embed(self, text: str) -> list:
-        return self.client.embeddings.create(
+        self.entries: list[tuple[np.ndarray, str]] = []
+
+    def embed(self, text: str) -> np.ndarray:
+        vec = self.client.embeddings.create(
             input=text, model="text-embedding-3-small"
         ).data[0].embedding
-    
-    def get(self, query: str):
-        query_embed = self.embed(query)
-        # Search for similar query via Redis Vector Search
-        # Return cached response if above threshold
-        ...
-    
-    def set(self, query: str, response: str):
-        embed = self.embed(query)
-        # Store embedding + response in Redis
-        ...
+        return np.array(vec, dtype=np.float32)
+
+    def get(self, query: str) -> str | None:
+        q = self.embed(query)
+        q_norm = np.linalg.norm(q)
+        best_sim, best_resp = -1.0, None
+        for vec, resp in self.entries:
+            sim = float(np.dot(q, vec) / (q_norm * np.linalg.norm(vec)))
+            if sim > best_sim:
+                best_sim, best_resp = sim, resp
+        return best_resp if best_sim >= self.threshold else None
+
+    def set(self, query: str, response: str) -> None:
+        self.entries.append((self.embed(query), response))
+        self.redis.set(f"sc:{hash(query)}", response)
 ```
 
 ---
@@ -127,19 +132,16 @@ thresholds = {
 
 ---
 
-## Integration with Enterprise Knowledge Base
+## Practical Precautions: False Positives and Cache Isolation
 
-A system storing an organization's internal data in a structured form for LLM use.
+Semantic caching improves speed and cost, but misconfigured similarity thresholds or cache keys can return wrong answers.
 
-```mermaid
-flowchart TD
-    D["Enterprise internal data<br/>Internal wiki/docs · Slack/Teams<br/>Confluence/Notion · Emails/contracts<br/>Databases/spreadsheets"] --> P[Preprocessing pipeline]
-    P --> V["Vector embeddings + chunking + metadata"]
-    V --> KB[Enterprise Knowledge Base]
-    KB --> R["LLM utilization via RAG"]
-```
-
-Semantic Cache sits on top of this, optimizing costs for repeated queries.
+| Risk | Cause | Mitigation |
+| :--- | :--- | :--- |
+| **False Positive** | Different intent with similar wording ("How to cancel order" vs "How to track order") | Raise threshold ($\ge 0.92$) + verify key entities/intent |
+| **Cross-Tenant Leakage** | Sharing cache across users/permissions | Partition cache keys by `tenant_id` / `role` |
+| **Stale Answers** | Underlying docs or DB updated while cached response persists | Set TTL + invalidate cache on document re-indexing |
+| **Time-Sensitive Queries** | Queries like "today's weather" or "current stock price" | Bypass cache via classifier or regex before lookup |
 
 ---
 
@@ -153,4 +155,3 @@ Semantic Cache plays a key role in the **Runtime Optimization** layer of Loop En
 ## References
 1. GPTCache GitHub — [github.com/zilliztech/GPTCache](https://github.com/zilliztech/GPTCache)
 2. "GPT Semantic Cache: Reducing LLM Costs and Latency via Semantic Embedding Caching" (2024) — [arXiv:2411.05276](https://arxiv.org/abs/2411.05276)
-3. Anthropic "Contextual Retrieval" — [anthropic.com](https://www.anthropic.com/news/contextual-retrieval)

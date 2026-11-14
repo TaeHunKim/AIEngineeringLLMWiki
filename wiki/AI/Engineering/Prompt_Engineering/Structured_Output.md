@@ -116,7 +116,7 @@ Tool Use는 **실행 요청**이고 Structured Output은 **출력 계약**이다
 구조화 출력은 모델 결과와 소프트웨어 사이의 인터페이스를 명확하게 한다. Schema validation, 의미 검증, 실패 상태 처리를 함께 설계해야 신뢰할 수 있는 데이터 흐름이 된다.
 
 ## 관련 개념
-[[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling_Controls]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision_Models]]
+[[AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool_Use_and_Function_Calling]] · [[AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling_Controls]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail_Engineering]] · [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision_Models]] · [[AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding|Constrained_Decoding]]
 
 ## 출처
 - OpenAI, [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)

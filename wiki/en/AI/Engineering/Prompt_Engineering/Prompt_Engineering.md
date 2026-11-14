@@ -20,6 +20,7 @@ nav_order: 20
 | [[en/AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | Distinguishing JSON·Schema·semantic validation, provider contracts and failure handling |
 | [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | Prioritizing static prefixes, Cache Breakpoint/TTL, differences with Semantic Cache |
 | [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic_Prompt_Optimization]] | APE/OPRO/TextGrad·GEPA, DSPy selection·compilation·independent evaluation |
+| [[en/AI/Engineering/Prompt_Engineering/Test_Time_Compute_Scaling\|Test_Time_Compute_Scaling]] | Parallel/Sequential/Search scaling, ORM vs PRM, Budget Forcing, compute-optimal allocation |
 
 ## Prompt Design Principles
 

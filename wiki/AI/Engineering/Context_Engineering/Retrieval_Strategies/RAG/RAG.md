@@ -44,6 +44,7 @@ flowchart TD
 
 | 문서 | 내용 |
 |------|------|
+| [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion\|Document_Ingestion]] | 문서 파싱·OCR·구조 보존, OCR 경유 vs OCR-free(ColPali) |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking_Strategies]] | 문서를 어떻게 조각낼 것인가 — 5가지 전략 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector_Storage]] | 임베딩을 어떻게 저장하고 검색할 것인가 |
 | [[AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced_Retrieval]] | 더 정확한 검색 — 리랭킹, Multi-Query, HyDE |
@@ -66,7 +67,7 @@ Context Recall:    필요한 문서가 검색됐는가?
 RAG는 **지식 집약적 AI 서비스의 기반 아키텍처**다. 엔터프라이즈 QA, 법률 리서치, 의료 정보 제공, 코드 문서 검색 등 "정확한 정보가 중요한" 모든 도메인에서 기본값으로 채택된다.
 
 ## 관련 개념
-[[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Compression|../../Context_Engineering/Context_Compression]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination_and_Grounding]]
+[[AI/Engineering/Context_Engineering/Retrieval_Strategies/GraphRAG/GraphRAG|GraphRAG]] · [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL RAG]] · [[AI/Engineering/Context_Engineering/LLM_Memory|LLM_Memory]] · [[AI/Engineering/Context_Engineering/Semantic_Cache|Semantic_Cache]] · [[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] · [[AI/Engineering/Harness_Engineering/Harness_Safety/Hallucination_and_Grounding|Hallucination_and_Grounding]]
 
 ## 출처
 - Lewis et al. (2020) "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" — [arxiv.org/abs/2005.11401](https://arxiv.org/abs/2005.11401)

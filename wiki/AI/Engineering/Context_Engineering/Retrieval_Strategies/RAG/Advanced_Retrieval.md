@@ -190,12 +190,17 @@ ZeroEntropy가 17개 벤치마크(MTEB, BEIR, MS MARCO 등)에서 측정한 결�
 ### Query Rewriting (쿼리 재작성)
 원본 쿼리를 검색에 더 효과적인 형태로 변환:
 ```python
-rewrite_prompt = """
-다음 사용자 질문을 문서 검색에 최적화된 키워드 중심 쿼리로 변환하세요.
-원본: {query}
-검색 쿼리:
-"""
-optimized_query = llm.generate(rewrite_prompt.format(query=user_query))
+from openai import OpenAI
+
+client = OpenAI()
+
+def rewrite_query(user_query: str) -> str:
+    resp = client.responses.create(
+        model="gpt-4o-mini",
+        instructions="사용자 질문을 문서 검색에 최적화된 키워드 중심 검색 쿼리로 변환하라.",
+        input=user_query,
+    )
+    return resp.output_text.strip()
 ```
 
 ### Step-Back Prompting
@@ -209,18 +214,18 @@ Step-back: "강화학습으로 LLM을 학습하는 방법은?"
 ### Multi-Query Retrieval
 단일 쿼리를 여러 관점의 쿼리로 확장:
 ```python
-multi_query_prompt = """
-다음 질문을 다양한 관점에서 5가지 버전으로 재작성하세요:
-질문: {question}
+from pydantic import BaseModel
 
-1.
-2.
-3.
-4.
-5.
-"""
-queries = llm.generate(multi_query_prompt)
-# 5개 쿼리 각각 검색 → 결과 합집합 → 중복 제거
+class ExpandedQueries(BaseModel):
+    queries: list[str]
+
+def generate_multi_queries(question: str) -> list[str]:
+    resp = client.responses.parse(
+        model="gpt-4o-mini",
+        input=f"다음 질문을 다양한 검색 관점에서 5가지 쿼리로 재작성하라: {question}",
+        text_format=ExpandedQueries,
+    )
+    return resp.output_parsed.queries
 ```
 
 ### Decomposition (질문 분해)
@@ -252,18 +257,7 @@ flowchart TD
 
 ## Contextual Compression (컨텍스트 압축)
 
-검색된 청크에서 실제 관련 부분만 추출:
-```python
-from langchain.retrievers.document_compressors import LLMChainExtractor
-from langchain.retrievers import ContextualCompressionRetriever
-
-compressor = LLMChainExtractor.from_llm(llm)
-compression_retriever = ContextualCompressionRetriever(
-    base_compressor=compressor,
-    base_retriever=base_retriever
-)
-# 전체 청크 대신 관련 문장만 반환
-```
+검색된 청크 전체를 LLM에 넣지 않고 실제 관련 문장만 추출하거나 토큰 중요도 기반으로 압축해 전달한다. 구체적인 구현 패턴(Extractive Filtering, LLMLingua-2, Map-Reduce)은 [[AI/Engineering/Context_Engineering/Context_Compression|Context_Compression]] 참고.
 
 ## 평가 지표
 

@@ -38,26 +38,27 @@ flowchart TD
 ## 구현 예시
 
 ```python
-from langchain.chains import HypotheticalDocumentEmbedder
-from langchain_openai import OpenAI, OpenAIEmbeddings
+from openai import OpenAI
 
-# 가상 문서 생성 LLM
-llm = OpenAI()
+client = OpenAI()
 
-# HyDE 임베딩
-embeddings = OpenAIEmbeddings()
-hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(
-    llm=llm,
-    embeddings=embeddings,
-    prompt_key="web_search"  # 태스크별 프롬프트
-)
+def hyde_embed(query: str) -> list[float]:
+    # 1. 가상 답변 문서 생성
+    hypothetical_doc = client.responses.create(
+        model="gpt-4o-mini",
+        instructions="질문에 대한 백과사전식 설명 단락을 작성하라.",
+        input=query,
+    ).output_text
 
-# 검색 시 자동으로 가상 문서 생성 후 임베딩
-query = "파이썬 리스트 정렬 방법"
-results = vectorstore.similarity_search_by_vector(
-    hyde_embeddings.embed_query(query),
-    k=5
-)
+    # 2. 가상 문서를 임베딩해 벡터 DB 검색에 사용
+    return (
+        client.embeddings.create(input=hypothetical_doc, model="text-embedding-3-small")
+        .data[0]
+        .embedding
+    )
+
+query_vec = hyde_embed("파이썬 리스트 정렬 방법")
+# results = vectorstore.similarity_search_by_vector(query_vec, k=5)
 ```
 
 ## HyDE가 효과적인 이유
@@ -104,12 +105,25 @@ flowchart LR
 
 여러 가상 문서를 생성하고 임베딩을 평균:
 ```python
-# 3개 가상 문서 생성
-hypothetical_docs = [llm.generate(query) for _ in range(3)]
-# 임베딩 평균
-avg_embedding = np.mean([embeddings.embed(doc) for doc in hypothetical_docs], axis=0)
-# 평균 임베딩으로 검색
-results = vectorstore.similarity_search_by_vector(avg_embedding)
+import numpy as np
+
+# 3개 가상 문서 생성 후 평균 임베딩 계산
+hypothetical_docs = [
+    client.responses.create(
+        model="gpt-4o-mini",
+        instructions="질문에 대한 간결한 설명 문서를 작성하라.",
+        input=query,
+    ).output_text
+    for _ in range(3)
+]
+embeds = [
+    e.embedding
+    for e in client.embeddings.create(
+        input=hypothetical_docs, model="text-embedding-3-small"
+    ).data
+]
+avg_embedding = np.mean(embeds, axis=0).tolist()
+# results = vectorstore.similarity_search_by_vector(avg_embedding, k=5)
 ```
 
 ## AI Engineering에서의 역할

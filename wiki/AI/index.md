@@ -12,6 +12,7 @@ order: 0
 - [[AI/Engineering/index|AI Engineering Wiki]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph 8계층
 
 #### Model Engineering
+- [[AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models|Engineering/Model_Engineering/Large_Language_Models]]: decoder-only Transformer, base/instruct/reasoning 단계 구분, open-weight vs closed API
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Engineering/Model_Engineering/Pre-training_and_Continual_Learning]]: Pre-training 기초, Chinchilla 스케일링 법칙, 재앙적 망각 대응 전략
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Engineering/Model_Engineering/Full_Fine-Tuning]]: 전체 파라미터 업데이트와 학습 objective·algorithm·reward 설계(SFT·DPO·GRPO·RLVR)의 구분
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|Engineering/Model_Engineering/PEFT_LoRA_QLoRA]]: LoRA 수학, QLoRA NF4+이중 양자화, HuggingFace 구현
@@ -19,6 +20,7 @@ order: 0
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Engineering/Model_Engineering/Model_Distillation]]: Hinton 2015 기원, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
 - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Engineering/Model_Engineering/Model_Architectures_and_MoE]]: Dense vs MoE(Total/Active Params), RoPE/YaRN/LongRoPE 롱컨텍스트, SLM-for-Agents
 - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Engineering/Model_Engineering/Synthetic_Data_and_Curation]]: Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse
+- [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Merging|Engineering/Model_Engineering/Model_Merging]]: Task Arithmetic/TIES/DARE/SLERP, MergeKit 기반 Zero-Training 모델 병합
 - [[AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Engineering/Model_Engineering/Multimodal_Models]]: VLM 아키텍처(어댑터 결합형 vs 네이티브), 이미지 토큰화, 오디오/비디오, MMMU/DocVQA
 - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Engineering/Model_Engineering/Tokenization]]: BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율
 - [[AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Engineering/Model_Engineering/Decision_Models]]: Jev 계열 System One Model, Choice/Score/Noul 프리미티브, logprob wrapper vs 학습형, calibration(ECE)
@@ -33,6 +35,7 @@ order: 0
 - [[AI/Engineering/Prompt_Engineering/Structured_Output|Engineering/Prompt_Engineering/Structured_Output]]: JSON·Schema·의미 검증 구분, provider 계약과 실패 처리
 - [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Engineering/Prompt_Engineering/Prompt_Caching]]: 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이
 - [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Engineering/Prompt_Engineering/Automatic_Prompt_Optimization]]: APE/OPRO/TextGrad·GEPA, DSPy 선택·컴파일·독립 평가
+- [[AI/Engineering/Prompt_Engineering/Test_Time_Compute_Scaling|Engineering/Prompt_Engineering/Test_Time_Compute_Scaling]]: Parallel/Sequential/Search 스케일링, ORM vs PRM, Budget Forcing, Compute-Optimal 배분
 
 #### Context Engineering
 - [[AI/Engineering/Context_Engineering/LLM_Memory|Engineering/Context_Engineering/LLM_Memory]]: 저장 위치·scope·지속성, context 선택, Memory와 RAG의 관계
@@ -118,6 +121,7 @@ order: 0
 - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals]]: KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
 - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding]]: Draft/Target 모델, 수락률, SpecInfer/Medusa/EAGLE-3/n-gram
 - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving]]: Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, Goodput 스케줄링, 콜드 스타트
+- [[AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding|Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding]]: FSM/PDA 로짓 마스킹, Jump-Forward, XGrammar·Outlines·llguidance
 
 #### Graph Engineering
 - [[AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Engineering/Graph_Engineering/Multi_Agent_Topology]]: 노드/엣지 유형, LangGraph `Send()` 동적 라우팅, identity/budget/guardrail 거버넌스, Graph-of-Agents

@@ -41,12 +41,13 @@ Llama 3 70B 파라미터 기준:
 - GPU 추론 최적화 (NVIDIA GPU에서 3~4.5× 속도 향상)
 
 ```python
-# GPTQ 사용 (AutoGPTQ)
-from auto_gptq import AutoGPTQForCausalLM
-model = AutoGPTQForCausalLM.from_quantized(
-    "model-name-gptq",
-    device="cuda:0"
-)
+# GPTQ / AWQ 양자화 (vLLM llm-compressor 또는 GPTQModel)
+from compressed_tensors.quantization import QuantizationArgs
+from llmcompressor import oneshot
+from llmcompressor.modifiers.quantization import GPTQModifier
+
+recipe = GPTQModifier(targets="Linear", scheme="W4A16", ignore=["lm_head"])
+oneshot(model="Qwen/Qwen2.5-7B-Instruct", dataset="open_platypus", recipe=recipe, output_dir="./qwen-w4a16-gptq")
 ```
 
 ### AWQ (Activation-aware Weight Quantization)
@@ -71,14 +72,29 @@ AWQ:
 - Q4_K_M, Q5_K_M 등 다양한 양자화 레벨 제공
 - Apple Silicon (M1/M2/M3) 등에서 효율적
 
+### FP8 / FP4 하드웨어 네이티브 양자화
+- **FP8 (E4M3 / E5M2)**: NVIDIA Hopper(H100/H200) 이상 GPU의 Tensor Core가 네이티브 가속. INT8 대비 동적 범위가 넓어 품질 손실이 거의 없으면서(1% 미만) 메모리 50% 절감 및 처리량 1.5~2× 향상을 달성해 현대 프로덕션 서빙의 기본값으로 자리잡았다.
+- **FP4 (MXFP4 / NVFP4)**: Blackwell(B200) 아키텍처부터 하드웨어 가속을 지원하는 4-bit 부동소수점 포맷. 블록 단위 스케일링(microscaling)을 결합해 INT4보다 아웃라이어 보존력이 높다.
+
+### KV Cache 양자화
+가중치 양자화와 별개로, 긴 컨텍스트·고동시성 서빙에서는 **KV Cache 메모리**가 GPU VRAM의 주 병목이 된다.
+- **FP8 KV Cache**: Key/Value 텐서를 FP8(E4M3/E5M2)로 저장하면 KV Cache 메모리 점유량을 절반으로 줄여 동일 GPU에서 처리 가능한 동시 배치 크기(concurrency)와 최대 컨텍스트 길이를 2배 가까이 늘릴 수 있다(vLLM, SGLang, TensorRT-LLM 기본 지원 → [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]]).
+
+### BitNet b1.58 (1.58-bit 3진 양자화 학습)
+- **저자**: Ma et al., Microsoft Research (2024) — [arXiv:2402.17764](https://arxiv.org/abs/2402.17764)
+- **원리**: 학습 단계부터 가중치를 $\{-1, 0, +1\}$ 3진 값($\log_2 3 \approx 1.58\text{ bits}$)으로 제약(QAT)하여 행렬 곱셈을 부동소수점 곱셈 대신 정수 덧셈·뺄셈만으로 대체, 에너지·메모리 소모를 극적으로 절감한다.
+
 ## 양자화 레벨별 정밀도-속도 트레이드오프
 
 | 포맷 | 비트 | 메모리 절감 | 품질 손실 | 추천 용도 |
 |------|------|-----------|---------|---------|
 | FP16/BF16 | 16 | 기준 | 없음 | 학습, 고품질 추론 |
-| INT8 | 8 | 50% | 미미 | 배포 기본값 |
-| INT4 (GPTQ) | 4 | 75% | 적음 | 리소스 제한 배포 |
+| **FP8 (E4M3)** | 8 | 50% | 극히 미미 | **H100+ 프로덕션 서빙 기본값** |
+| INT8 | 8 | 50% | 미미 | 범용 서버 추론 |
+| **NVFP4 / MXFP4** | 4 | 75% | 매우 적음 | Blackwell(B200)+ 고밀도 서빙 |
 | INT4 (AWQ) | 4 | 75% | 매우 적음 | 리소스 제한 + 품질 |
+| INT4 (GPTQ) | 4 | 75% | 적음 | 리소스 제한 배포 |
+| BitNet b1.58 | 1.58 | ~90% | 모델 규모별 상이 | QAT 기반 초저전력·에지 추론 |
 | INT2~3 | 2~3 | 85%+ | 큼 | 극단적 압축 (실험적) |
 
 ## 실무 선택 가이드

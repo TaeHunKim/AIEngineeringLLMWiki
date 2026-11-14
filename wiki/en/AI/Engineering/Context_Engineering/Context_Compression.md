@@ -51,25 +51,20 @@ print(compressed["compressed_prompt"])  # Prompt with unnecessary tokens removed
 
 **How it works**: A small language model calculates an importance score for each token; low-score tokens are removed.
 
-### 2. Contextual Compression Retriever (LangChain)
+### 2. Extractive Filtering (Chunk-Level Relevance Extraction)
 
-Extract only relevant parts from RAG chunks, not the whole chunk:
+Extract only sentences relevant to the query from retrieved RAG chunks rather than passing whole chunks:
 
 ```python
-from langchain.retrievers.document_compressors import LLMChainExtractor
-from langchain.retrievers import ContextualCompressionRetriever
+from langchain_openai import ChatOpenAI
 
-# Compressor: extract only sentences relevant to query
-compressor = LLMChainExtractor.from_llm(llm)
-
-# Combine base retriever + compression
-compression_retriever = ContextualCompressionRetriever(
-    base_compressor=compressor,
-    base_retriever=vectorstore.as_retriever()
-)
-
-# Return only relevant sentences instead of entire chunks
-relevant_docs = compression_retriever.get_relevant_documents(query)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+compressed_docs = [
+    llm.invoke(
+        f"Extract only the sentences relevant to the query.\nQuery: {query}\nDocument: {doc.page_content}"
+    ).content
+    for doc in vectorstore.as_retriever().invoke(query)
+]
 ```
 
 ### 3. Map-Reduce Summarization (Long Documents)
@@ -84,18 +79,22 @@ flowchart TD
     S1 & S2 & S3 -->|combine summaries| FIN[LLM final summary]
 ```
 
-### 4. Conversation History Summarization
+### 4. Conversation History Trimming & Summarization
 
-Save tokens in multi-turn conversations by summarizing previous dialogue:
+Save tokens in multi-turn conversations by trimming old turns with `trim_messages` or summarizing previous dialogue:
 
 ```python
-from langchain.memory import ConversationSummaryMemory
+from langchain_core.messages import trim_messages
+from langchain_openai import ChatOpenAI
 
-memory = ConversationSummaryMemory(
-    llm=llm,
-    max_token_limit=500  # summarize when over 500 tokens
+llm = ChatOpenAI(model="gpt-4o-mini")
+trimmed_messages = trim_messages(
+    messages,
+    max_tokens=500,
+    strategy="last",
+    token_counter=llm,
+    include_system=True,
 )
-# Automatically summarizes previous content as conversation grows
 ```
 
 In agent loops this generalizes to **Compaction**, which summarizes automatically near the context limit → [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic Context Management]].

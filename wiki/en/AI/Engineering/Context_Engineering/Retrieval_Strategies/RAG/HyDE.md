@@ -38,26 +38,18 @@ flowchart TD
 ## Implementation Example
 
 ```python
-from langchain.chains import HypotheticalDocumentEmbedder
-from langchain_openai import OpenAI, OpenAIEmbeddings
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
-# LLM for generating hypothetical documents
-llm = OpenAI()
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
-# HyDE embeddings
-embeddings = OpenAIEmbeddings()
-hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(
-    llm=llm,
-    embeddings=embeddings,
-    prompt_key="web_search"  # per-task prompts
-)
-
-# Automatically generates hypothetical document then embeds during search
 query = "How to sort a Python list"
-results = vectorstore.similarity_search_by_vector(
-    hyde_embeddings.embed_query(query),
-    k=5
-)
+hypothetical_doc = llm.invoke(
+    f"Write a short technical passage answering the question: {query}"
+).content
+query_vector = embeddings.embed_query(hypothetical_doc)
+
+results = vectorstore.similarity_search_by_vector(query_vector, k=5)
 ```
 
 ## Why HyDE Is Effective
@@ -105,11 +97,14 @@ Low effectiveness:
 Generate multiple hypothetical documents and average their embeddings:
 ```python
 # Generate 3 hypothetical documents
-hypothetical_docs = [llm.generate(query) for _ in range(3)]
+hypothetical_docs = [
+    llm.invoke(f"Write a short technical passage answering: {query}").content
+    for _ in range(3)
+]
 # Average embeddings
-avg_embedding = np.mean([embeddings.embed(doc) for doc in hypothetical_docs], axis=0)
+avg_embedding = np.mean([embeddings.embed_query(doc) for doc in hypothetical_docs], axis=0)
 # Search with averaged embedding
-results = vectorstore.similarity_search_by_vector(avg_embedding)
+results = vectorstore.similarity_search_by_vector(avg_embedding.tolist())
 ```
 
 ## Role in AI Engineering

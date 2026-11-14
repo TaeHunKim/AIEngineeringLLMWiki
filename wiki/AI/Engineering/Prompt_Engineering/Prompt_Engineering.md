@@ -20,6 +20,7 @@ nav_order: 20
 | [[AI/Engineering/Prompt_Engineering/Structured_Output\|Structured_Output]] | JSON·Schema·의미 검증 구분, provider 계약과 실패 처리 |
 | [[AI/Engineering/Prompt_Engineering/Prompt_Caching\|Prompt_Caching]] | 정적 프리픽스 우선 배치, Cache Breakpoint/TTL, Semantic Cache와의 차이 |
 | [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization\|Automatic_Prompt_Optimization]] | APE/OPRO/TextGrad·GEPA, DSPy 선택·컴파일·독립 평가 |
+| [[AI/Engineering/Prompt_Engineering/Test_Time_Compute_Scaling\|Test_Time_Compute_Scaling]] | Parallel/Sequential/Search 스케일링, ORM vs PRM, Budget Forcing, Compute-Optimal 배분 |
 
 ## 프롬프트 설계 원칙
 

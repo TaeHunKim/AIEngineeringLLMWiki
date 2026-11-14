@@ -16,6 +16,7 @@
 //   L10 KO and EN copies of a page must link to the same set of external URLs
 //   L11 a markdown link destination must close its parentheses
 //   L12 a ```mermaid fenced block must parse as valid Mermaid syntax
+//   L13 no self-wikilinks, duplicate links in Related Concepts, or ../ in link aliases
 //
 // L10/L11 read the code-stripped copy, so link-like text inside fenced blocks or
 // inline code (syntax examples, regexes) is never mistaken for a real link.
@@ -173,6 +174,31 @@ for (const file of files) {
   const isMeta = META_FILES.has(base)
   const isEn = posix.startsWith("wiki/en/")
 
+  // L13 — duplicate targets inside ## 관련 개념 / ## Related Concepts
+  {
+    let inRelated = false
+    const seenRelated = new Set()
+    rawLines.forEach((rawLine, idx) => {
+      const h = rawLine.match(/^(#{1,6})\s+(.*)/)
+      if (h) {
+        inRelated = /^(?:관련 개념|Related Concepts)\s*$/i.test(h[2].trim())
+        return
+      }
+      if (!inRelated) return
+      const line = codeless[idx] ?? ""
+      const skip = ignoredRules(rawLine)
+      if (skip.has("L13")) return
+      for (const m of line.matchAll(/\[\[([^\]]+?)\]\]/g)) {
+        const t = normalizeTarget(m[1])
+        if (!t) continue
+        if (seenRelated.has(t)) {
+          report("L13", file, idx + 1, `관련 개념 섹션에 중복 링크가 있습니다: ${t}`, m[0])
+        }
+        seenRelated.add(t)
+      }
+    })
+  }
+
   frontmatter.set(posix, parseFrontmatter(raw))
 
   const fileHeadings = []
@@ -249,6 +275,16 @@ for (const file of files) {
       // L5 — an EN page linking into the KO tree
       if (isEn && /^AI\//.test(target) && !skip.has("L5")) {
         report("L5", file, lineNo, `EN 문서의 링크에 en/ 접두사가 빠졌습니다: ${target}`, link)
+      }
+
+      // L13 — self-wikilink or ../ left inside display alias
+      const selfSlug = toPosix(relative(WIKI_DIR, file)).replace(/\.md$/, "")
+      if (target === selfSlug && !skip.has("L13")) {
+        report("L13", file, lineNo, `문서가 자기 자신을 링크했습니다: ${target}`, link)
+      }
+      const pipeIdx = inner.indexOf("|")
+      if (pipeIdx !== -1 && inner.slice(pipeIdx + 1).includes("../") && !skip.has("L13")) {
+        report("L13", file, lineNo, "wikilink 표시 별칭에 상대경로(../)가 남아 있습니다", link)
       }
     }
 
@@ -387,6 +423,7 @@ const RULE_LABEL = {
   L10: "KO/EN 외부 링크 URL 집합 불일치",
   L11: "링크 대상 괄호 미닫힘",
   L12: "mermaid 다이어그램 문법 오류",
+  L13: "자기 링크·관련 개념 중복·상대경로 별칭",
 }
 
 if (findings.length === 0) {

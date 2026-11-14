@@ -61,13 +61,20 @@ At extreme extensions (32×+), the **LongRoPE** family outperforms YaRN, at the 
 
 Even after extending context length to 1M tokens via YaRN or similar, a model doesn't handle 1M tokens with the same precision it handles 32K tokens with — no RoPE extension technique fully closes this gap. In other words, "how long a context the model supports" (an architecture question) and "how well it actually uses that long context" (an operational question — Context Rot) are two different things. The latter is covered in [[en/AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]].
 
+## Hybrid SSM / Linear Attention Architectures
+
+Standard Softmax Attention incurs $O(N^2)$ compute and $O(N)$ KV Cache memory growth with sequence length $N$, creating memory-bandwidth bottlenecks in long-horizon agent sessions spanning hundreds of thousands of tokens. To mitigate this, **hybrid architectures that interleave State Space Model (SSM) / Linear Attention layers with a small number of Full Attention layers** are gaining adoption.
+
+- **Mamba-2 (State Space Duality)**: Operates in $O(N)$ time with **fixed-size $O(1)$ state memory** over sequence length while providing a block structure optimized for matrix multiplication (Tensor Cores) (Dao & Gu, ICML 2024).
+- **Why Hybrid Placement**: Pure SSM/Linear Attention lags behind Full Attention in exact string and key-value in-context recall over long contexts. Keeping 10–25% of layers as Full Attention and replacing the rest with Mamba-2 or linear attention such as Gated DeltaNet **preserves recall accuracy while shrinking KV Cache size by several to tens of times** (e.g., AI21 **Jamba**, NVIDIA **Nemotron-H**, **Qwen3-Next**).
+
 ## SLM-for-Agents
 
 A recurring industry observation: most real agentic tasks (call one tool, route according to a fixed format, edit a short snippet of code) don't require a frontier model's general-purpose reasoning capability — NVIDIA researchers argue that for many of these tasks, a **small language model (SLM) is the architecturally more appropriate choice**: lower latency, easier to run many parallel instances of, easier to fine-tune to a narrow task. As of 2026, many of these SLMs are actually miniaturized versions of the MoE structure discussed above (e.g., ~30B total, ~3B active) — closer to "a model with small Active Params" than to "a small model" in the naive sense.
 
-## Boundary: Serving Optimization Belongs to Runtime_Optimization
+## Boundary: Serving Optimization Belongs to Serving_Engineering
 
-This page covers **how a model is architecturally designed**. How that architecture actually gets served fast in production — speculative decoding, vLLM's PagedAttention, SGLang's RadixAttention, disaggregated prefill/decode, and other inference-infrastructure optimizations — is already covered in detail by this wiki's [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]]. The two pages are complementary: this one answers "what gets served," Runtime_Optimization answers "how it gets served."
+This page covers **how a model is architecturally designed**. How that architecture actually gets served fast in production — Speculative Decoding, vLLM's PagedAttention, SGLang's RadixAttention, Disaggregated Prefill/Decode, and other inference-infrastructure optimizations — is covered in [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]], while application-side API call optimization is covered in [[en/AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]. The two layers are complementary: this page answers "what gets served," and Serving Engineering answers "how it gets served."
 
 ## Role in AI Engineering
 
@@ -79,6 +86,7 @@ Model architecture is an invisible decision for most application teams — they 
 ## Sources
 - Turing Post "10 Small Language Models to Know in 2026" — [turingpost.com](https://www.turingpost.com/p/slmslist)
 - Belcak et al. (NVIDIA, 2025) "Small Language Models are the Future of Agentic AI" — [arXiv:2506.02153](https://arxiv.org/abs/2506.02153)
+- Dao & Gu (2024) "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2)" — [arXiv:2405.21060](https://arxiv.org/abs/2405.21060)
 - Peng et al. (2023) "YaRN: Efficient Context Window Extension of Large Language Models" — [arXiv:2309.00071](https://arxiv.org/abs/2309.00071)
 - Ding et al. (2024) "LongRoPE: Extending LLM Context Window Beyond 2 Million Tokens" — [arXiv:2402.13753](https://arxiv.org/abs/2402.13753)
 - Local AI Master "RoPE, YaRN, NTK: Long-Context LLM Techniques Explained" (2026) — [localaimaster.com](https://localaimaster.com/blog/rope-yarn-long-context-guide)

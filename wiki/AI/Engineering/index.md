@@ -25,6 +25,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]] — 파라미터 효율적 미세조정
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Knowledge Distillation]] — Teacher→Student 지식 증류
     - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]] — Self-Instruct/Evol-Instruct, judge 필터링, dedup/decontamination, model collapse *(2026)*
+    - [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Merging|Model Merging]] — Task Arithmetic, TIES, DARE, SLERP, MergeKit 기반 Zero-Training 모델 병합 *(신규)*
 - 아키텍처·효율 — [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Architecture_and_Efficiency|Architecture and Efficiency]]
     - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]] — BPE/WordPiece/SentencePiece, 어휘 크기 트레이드오프, 다국어·한국어 토큰 효율 *(2026)*
     - [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]] — Dense vs MoE, RoPE/YaRN 롱컨텍스트, SLM-for-Agents *(2026)*
@@ -43,6 +44,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]] — JSON·Schema·의미 검증 구분, provider 계약과 실패 처리
 - [[AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]] — 정적 프리픽스 설계, Cache Breakpoint/TTL, Semantic Cache와의 차이 *(2026)*
 - [[AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]] — APE/OPRO/TextGrad·GEPA, DSPy 선택·컴파일·독립 평가
+- [[AI/Engineering/Prompt_Engineering/Test_Time_Compute_Scaling|Test-Time Compute Scaling]] — Parallel/Sequential/Search 스케일링, ORM vs PRM, Budget Forcing, Compute-Optimal 배분 *(신규)*
 
 ---
 
@@ -103,24 +105,27 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
 
 - [[AI/Engineering/Agent_Engineering/Agent_Core_Pillars|Agent Core Pillars]] — Planning, Memory, Tools, **Deployment** (Weng, 2023 + 2026년 5월)
 - [[AI/Engineering/Agent_Engineering/Agent_Architectures|Agent Architectures]] — Single / Orchestrator / Router / Multi-Agent / Long-running
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]] — Prompt Chaining / Routing / Parallelization / Orchestrator-Workers / Evaluator-Optimizer (Anthropic, 2024)
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] — Plan-and-Solve, ReWOO, Tree of Thoughts/LATS, Reflexion, Self-Refine/CRITIC
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — 기억 추출·갱신·충돌·삭제 lifecycle, provenance와 사용자 격리
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] — Anthropic Skills + 프로토콜 개요
-    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — LLM↔도구 통합 오픈 표준, 2026-07-28 stateless spec·Extensions, Transports/OAuth 2.1/Gateway (Anthropic, 2024)
-    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — 에이전트 간 통신 오픈 표준 (Google, 2025)
-    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/AG_UI|AG-UI (Agent-User Interaction Protocol)]] — 에이전트↔사용자 UI 실시간 양방향 스트리밍 표준 (CopilotKit, 2025)
-- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] — AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra
-- [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] — 조정 패턴, 통신 프로토콜, 실패 모드 (MASFT/MAST, NeurIPS 2025)
-- [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — Claude/OpenAI CUA/Gemini 컴퓨터 사용, Pipecat/LiveKit 음성 에이전트
-- [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL, 정지·인터럽트 준수 *(2026)*
-- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3단계 평가 레이어, Agent Workbench 7가지 표면
-- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] — Safe Rollout 4전략, 멀티에이전트 관찰가능성, 비용·레이턴시 최적화
-- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(2026년 5월)*
-- [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]] — AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI *(2026)*
-- [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]] — Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp *(2026)*
-- [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]] — 위임형·병렬형·선제형, 트리거·승인 게이트·알림, GPT-6 Pro parallel agents·Claude Duet *(2026-10)*
-- [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent Sandboxes]] — container/gVisor/microVM 격리, E2B·Kubernetes agent-sandbox, egress 통제, 자격 증명 주입 proxy *(2026-10)*
+- 기법 — [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Techniques|Agent Techniques]]
+    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Anthropic_Workflow_Patterns|Anthropic's Workflow Patterns]] — Prompt Chaining / Routing / Parallelization / Orchestrator-Workers / Evaluator-Optimizer (Anthropic, 2024)
+    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Planning_and_Reflection|Planning & Reflection]] — Plan-and-Solve, ReWOO, Tree of Thoughts/LATS, Reflexion, Self-Refine/CRITIC
+    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Memory|Agent Memory]] — 기억 추출·갱신·충돌·삭제 lifecycle, provenance와 사용자 격리
+    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Multi_Agent_Coordination|Multi-Agent Coordination]] — 조정 패턴, 통신 프로토콜, 실패 모드 (MASFT/MAST, NeurIPS 2025)
+    - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols|Agent Skills & Protocols]] — Anthropic Skills + 프로토콜 개요
+        - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/MCP|MCP (Model Context Protocol)]] — LLM↔도구 통합 오픈 표준, 2026-07-28 stateless spec·Extensions, Transports/OAuth 2.1/Gateway (Anthropic, 2024)
+        - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/A2A|A2A (Agent-to-Agent Protocol)]] — 에이전트 간 통신 오픈 표준 (Google, 2025)
+        - [[AI/Engineering/Agent_Engineering/Agent_Techniques/Agent_Skills_and_Protocols/AG_UI|AG-UI (Agent-User Interaction Protocol)]] — 에이전트↔사용자 UI 실시간 양방향 스트리밍 표준 (CopilotKit, 2025)
+- 인프라 — [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Infrastructure|Agent Infrastructure]]
+    - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Frameworks|Agent Frameworks]] — AutoGen v0.4, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Agno/Mastra
+    - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Deployment|Agent Deployment]] — Agent Runtime, Memory Bank, Gateway, Registry, Identity, **Agent Optimizer** *(2026년 5월)*
+    - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/AgentOps|AgentOps]] — Safe Rollout 4전략, 멀티에이전트 관찰가능성, 비용·레이턴시 최적화
+    - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Eval_Driven_Development_and_Agent_Workbench|Eval-Driven Development & Agent Workbench]] — 3단계 평가 레이어, Agent Workbench 7가지 표면
+    - [[AI/Engineering/Agent_Engineering/Agent_Infrastructure/Agent_Sandboxes|Agent Sandboxes]] — container/gVisor/microVM 격리, E2B·Kubernetes agent-sandbox, egress 통제, 자격 증명 주입 proxy *(2026-10)*
+- 적용 사례 — [[AI/Engineering/Agent_Engineering/Agent_Applications/Agent_Applications|Agent Applications]]
+    - [[AI/Engineering/Agent_Engineering/Agent_Applications/Coding_Agents|Coding Agents]] — AGENTS.md, spec-driven 개발, Plan→Edit→Verify 루프, worktree 병렬, ACI *(2026)*
+    - [[AI/Engineering/Agent_Engineering/Agent_Applications/Deep_Research_Agents|Deep Research Agents]] — Planner/Researcher/Synthesizer, bounded sub-agent, 인용 검증, BrowseComp *(2026)*
+    - [[AI/Engineering/Agent_Engineering/Agent_Applications/Computer_Use_and_Voice_Agents|Computer Use & Voice Agents]] — Claude/OpenAI CUA/Gemini 컴퓨터 사용, Pipecat/LiveKit 음성 에이전트
+    - [[AI/Engineering/Agent_Engineering/Agent_Applications/Autonomous_Systems|Autonomous Systems]] — METR Time Horizon, STaR/AlphaEvolve/Darwin Gödel Machine, Kill Switch/HITL, 정지·인터럽트 준수 *(2026)*
+    - [[AI/Engineering/Agent_Engineering/Agent_Applications/Background_Agents|Background Agents]] — 위임형·병렬형·선제형, 트리거·승인 게이트·알림, GPT-6 Pro parallel agents·Claude Duet *(2026-10)*
 
 ---
 
@@ -160,6 +165,7 @@ Pre-training에서 배포 후 지속 개선 루프, 그리고 멀티에이전트
     - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]] — KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
     - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]] — Draft 모델 기반 가속, EAGLE-3, Medusa, n-gram/Prompt Lookup
     - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]] — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, 콜드 스타트
+    - [[AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding|Constrained Decoding]] — FSM/PDA 로짓 마스킹, Jump-Forward, XGrammar·Outlines·llguidance *(신규)*
 
 ---
 

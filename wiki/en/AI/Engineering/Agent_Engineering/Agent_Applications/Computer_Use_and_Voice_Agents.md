@@ -114,6 +114,20 @@ Improved turn-taking:
   - Dedicated endpointing model training (e.g., LiveKit's turn detection model)
 ```
 
+### Cascaded Pipeline vs Native Speech-to-Speech (S2S)
+
+Voice agent architectures split into **Cascaded (ASR → LLM → TTS)** pipelines via text and **Native Speech-to-Speech (S2S)** models (OpenAI Realtime API WebRTC, Gemini Live API, Kyutai Moshi) that ingest and output audio directly.
+
+| Criterion | Cascaded (ASR → LLM → TTS) | Native Speech-to-Speech (S2S) |
+|---|---|---|
+| **Latency (TTFB)** | ~300–600ms (with parallel streaming) | **~200–350ms** (single end-to-end model) |
+| **Prosody, Emotion & Barge-in** | Tone/emotion lost during text transcription | Preserves vocal nuances, emotion, natural barge-in |
+| **Tool Calling & Instruction Following** | **High** (reliable text-based reasoning/validation) | Can be comparatively unstable |
+| **Guardrails & Audit** | Immediate input/output guardrails & logging on intermediate text | Direct audio output requires post-hoc transcription |
+| **Cost** | Optimizable per component | Relatively expensive due to audio token pricing |
+
+In practice, teams choose **Cascaded (Pipecat/LiveKit)** when high tool-calling accuracy and regulatory auditing (finance/healthcare) are required, **Native S2S** when ultra-low latency and natural conversational prosody (customer support, tutoring) are paramount, or combine both in a hybrid setup.
+
 ## Computer Use vs Voice Agents Comparison
 
 | | Computer Use | Voice Agents |

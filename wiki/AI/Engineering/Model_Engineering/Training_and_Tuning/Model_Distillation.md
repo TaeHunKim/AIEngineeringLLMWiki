@@ -46,9 +46,15 @@ loss = CrossEntropy(student_output, labels)
 ```
 
 ### Black-box Distillation
-Teacher의 출력(텍스트)만 사용. 상용 API (GPT-4, Claude) 활용 가능:
-- **Alpaca**: GPT-3.5로 생성한 52K 인스트럭션 데이터 → LLaMA 파인튜닝
-- **Vicuna**: ChatGPT 대화 데이터 70K → LLaMA 파인튜닝
+Teacher의 출력(텍스트)만 사용. 단, 대부분의 상용 API(OpenAI, Anthropic 등)는 출력으로 경쟁 모델을 학습하는 것을 서비스 약관(ToS)으로 금지하므로, 실무에서는 **오픈웨이트 Teacher**(예: DeepSeek-R1, Qwen, Llama 대형 모델) 또는 자체 보유 Teacher를 사용하는 것이 표준이다:
+- **Alpaca / Vicuna (초기 사례)**: GPT-3.5/ChatGPT 대화 데이터를 활용한 초기 연구 계보
+- **오픈웨이트 Teacher 증류**: DeepSeek-R1(671B)의 추론 체인을 Qwen/Llama 소형 모델(1.5B~70B)로 증류
+
+### On-Policy Distillation (GKD)
+오프라인 SFT 기반 증류는 Teacher가 생성한 고정 데이터셋으로만 학습하므로, 추론 시 Student가 한 번 틀린 토큰을 생성하면 이후 분포가 어긋나는 **노출 편향(exposure bias)** 에 취약하다. **On-Policy Distillation(Generalized Knowledge Distillation, GKD)**(Agarwal et al., ICLR 2024)은 학습 중 **Student가 직접 생성한 시퀀스 위에서 Teacher의 로짓 분포(역 KL 등)로 피드백**을 받아 정렬한다. Gemma 2/3 및 최신 오픈웨이트 소형 모델 학습에서 표준 기법으로 채택됐다.
+
+### Context / Prompt Distillation
+매 요청마다 수천 토큰의 긴 시스템 프롬프트·Few-shot 예시·가이드라인을 입력하는 대신, **긴 컨텍스트가 주어진 Teacher의 응답 분포를 컨텍스트가 제거된 Student에 증류**해 프롬프트 비용과 TTFT를 영구적으로 절감한다.
 
 ### Chain-of-Thought 증류
 Teacher의 추론 과정(CoT)까지 Student에게 전달:
@@ -96,4 +102,5 @@ Student (소형 모델):
 ## 출처
 - Hinton et al. (2015) "Distilling the Knowledge in a Neural Network" — [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
 - Sanh et al. (2019) "DistilBERT" — [arXiv:1910.01108](https://arxiv.org/abs/1910.01108)
+- Agarwal et al. (ICLR 2024) "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes (GKD)" — [arXiv:2306.13649](https://arxiv.org/abs/2306.13649)
 - MIT TACL Survey (2024) "A Survey on Model Compression for Large Language Models" — [MIT Press](https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00704/125482/A-Survey-on-Model-Compression-for-Large-Language)

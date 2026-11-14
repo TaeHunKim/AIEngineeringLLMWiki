@@ -39,6 +39,20 @@ Exact nearest neighbor search (Exact NN) is O(N×d) operations — too slow for 
 - Asymmetric Hashing + Anisotropic Quantization
 - Best performance at large scale (billions) of vectors
 
+### DiskANN / Vamana (Disk-Based Large-Scale ANN)
+- **Principle**: Stores the Vamana graph index on NVMe SSDs while keeping only compressed vectors (PQ) in RAM, enabling billion-scale search on a single node [3].
+- **Strengths**: 10x lower memory cost than HNSW; supported natively by Qdrant, Milvus, and Azure Cosmos DB.
+
+### Vector Quantization and Object-Storage-Native DBs
+
+As vector counts grow, **Quantization** (reducing memory footprint) and **Object-Storage-Native** architectures (e.g., S3-backed LanceDB, Turbopuffer) have become standard for production cost optimization:
+
+| Method | Memory Reduction | Accuracy Retention | Use Case |
+| :--- | :--- | :--- | :--- |
+| **Scalar Quantization (SQ8)** | 4x (FP32 → INT8) | ~99% | Default production compression |
+| **Product Quantization (PQ)** | 8–32x | 90–95% | Billion-scale memory-constrained |
+| **Binary Quantization (BQ)** | 32x (FP32 → 1-bit) | 92–96% (with rescoring) | High-dim embeddings (1536d+) + Top-K rescoring |
+
 ## Key Vector DB Comparison
 
 | DB | Hosting | Features | Suitable for |
@@ -93,8 +107,8 @@ Final score = α × dense_score + (1-α) × sparse_score
 
 ```python
 # Typical indexing pipeline
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
 
 # 1. Initialize embedding model
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
@@ -134,3 +148,4 @@ Vector DBs serve as the **long-term memory** of RAG systems. They make it possib
 - Johnson et al. (2019) "Billion-scale similarity search with GPUs (FAISS)" — [arXiv:1702.08734](https://arxiv.org/abs/1702.08734)
 - Malkov & Yashunin (2018) "Efficient and robust approximate nearest neighbor search using HNSW" — [arXiv:1603.09320](https://arxiv.org/abs/1603.09320)
 - Vertex AI Vector Search docs — [[en/AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)]]
+- Subramanya et al. (2019) "DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node" — [NeurIPS 2019](https://papers.nips.cc/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html)

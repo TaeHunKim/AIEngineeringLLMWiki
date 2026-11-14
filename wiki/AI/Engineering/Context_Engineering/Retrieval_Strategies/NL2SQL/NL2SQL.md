@@ -121,6 +121,14 @@ Synthesizing NL2SQL Data (2024):
   - 약한 LLM + 강한 LLM 조합으로 학습 데이터 합성 [6]
 ```
 
+### 5. Semantic Layer / Text-to-Metric 연동 (엔터프라이즈 표준)
+
+원시 DB 테이블(수백 개 DDL)을 직접 LLM에 노출하면 테이블 조인 오류와 지표 정의 불일치("활성 사용자", "순매출" 계산 방식이 쿼리마다 달라짐)가 반복된다. 실무에서는 **Semantic Layer**(예: **dbt Semantic Layer / MetricFlow**, **Cube**, **LookML**, **Snowflake Semantic Views**)를 중간 계층으로 두어 문제를 구조적으로 해결한다.
+
+- **Text-to-Metric**: LLM이 복잡한 `JOIN`/`GROUP BY` SQL을 직접 작성하는 대신, Semantic Layer에 사전 정의된 메트릭·디멘션·필터 스키마(YAML/JSON)를 선택하는 **도구 호출(Tool Use)** 로 변환한다.
+- **결정론적 SQL 컴파일**: 선택된 메트릭 조합은 Semantic Layer 엔진이 검증된 SQL로 컴파일하므로, 동일 지표에 대해 항상 일관된 수치와 조인 경로가 보장된다.
+- **역할 분리**: `NL2SQL`이 자연어→쿼리 변환 정확도와 Schema Linking·Semantic Layer 매핑을 다룬다면, 이를 비정형 벡터 검색과 라우팅·하이브리드로 결합해 프로덕션 시스템으로 통합하는 아키텍처는 [[AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL_RAG]]에서 다룬다.
+
 ## 벤치마크
 
 ### Spider

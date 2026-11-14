@@ -40,7 +40,7 @@ flowchart TD
 
 ```python
 from gptcache import cache
-from gptcache.adapter import openai
+from gptcache.adapter.openai import OpenAI as CachedOpenAI
 from gptcache.embedding import Onnx
 from gptcache.manager import CacheBase, VectorBase, get_data_manager
 from gptcache.similarity_evaluation import SearchDistanceEvaluation
@@ -59,9 +59,9 @@ cache.init(
 )
 
 # 이후 OpenAI API 호출이 자동으로 캐싱됨
-response = openai.ChatCompletion.create(
-    model="gpt-4",
-    messages=[{"role": "user", "content": "파이썬 리스트 정렬 방법"}]
+response = CachedOpenAI.chat_completions_create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "파이썬 리스트 정렬 방법"}],
 )
 ```
 
@@ -69,32 +69,40 @@ response = openai.ChatCompletion.create(
 
 ## Redis 기반 Semantic Cache 구현
 
+프로덕션 환경에서는 Redis(또는 Qdrant 등 벡터 DB)를 백엔드로 직접 캐시 레이어를 구현할 수 있다:
+
 ```python
-import redis
-from openai import OpenAI
 import numpy as np
+from openai import OpenAI
+
 
 class SemanticCache:
-    def __init__(self, threshold=0.9):
-        self.redis = redis.Redis()
+    def __init__(self, threshold: float = 0.9):
         self.client = OpenAI()
         self.threshold = threshold
-    
-    def embed(self, text: str) -> list:
-        return self.client.embeddings.create(
-            input=text, model="text-embedding-3-small"
-        ).data[0].embedding
-    
-    def get(self, query: str):
-        query_embed = self.embed(query)
-        # Redis Vector Search로 유사 쿼리 검색
-        # 임계값 이상이면 캐시된 응답 반환
-        ...
-    
-    def set(self, query: str, response: str):
-        embed = self.embed(query)
-        # Redis에 임베딩 + 응답 저장
-        ...
+        self._store: list[tuple[np.ndarray, str]] = []  # 실무에서는 Redis Vector Search 인덱스 사용
+
+    def embed(self, text: str) -> np.ndarray:
+        vec = (
+            self.client.embeddings.create(input=text, model="text-embedding-3-small")
+            .data[0]
+            .embedding
+        )
+        arr = np.asarray(vec, dtype=np.float32)
+        return arr / (np.linalg.norm(arr) + 1e-12)
+
+    def get(self, query: str) -> str | None:
+        if not self._store:
+            return None
+        q_vec = self.embed(query)
+        best_score, best_resp = max(
+            ((float(np.dot(q_vec, k_vec)), resp) for k_vec, resp in self._store),
+            key=lambda x: x[0],
+        )
+        return best_resp if best_score >= self.threshold else None
+
+    def set(self, query: str, response: str) -> None:
+        self._store.append((self.embed(query), response))
 ```
 
 ---
@@ -127,19 +135,13 @@ thresholds = {
 
 ---
 
-## Enterprise Knowledge Base와의 연계
+## 실무 주의사항: False Positive와 캐시 격리
 
-조직 내부 데이터를 LLM이 활용할 수 있는 구조화된 형태로 저장한 시스템.
+Semantic Cache는 의미 유사도가 높더라도 **결론이 정반대이거나 컨텍스트가 다른 쿼리**에서 오답을 반환(False Positive)할 위험이 있다.
 
-```mermaid
-flowchart TD
-    D["기업 내부 데이터<br/>내부 위키/문서 · Slack/Teams<br/>Confluence/Notion · 이메일·계약서<br/>데이터베이스·스프레드시트"] --> P[전처리 파이프라인]
-    P --> V["벡터 임베딩 + 청킹 + 메타데이터"]
-    V --> KB[Enterprise Knowledge Base]
-    KB --> R["RAG를 통한 LLM 활용"]
-```
-
-Semantic Cache는 이 위에서 반복 쿼리의 비용을 최적화하는 역할을 한다.
+- **부정어·수치 민감성**: `"환불 가능한가요?"`와 `"환불 불가능한가요?"`, `"2025년 매출"`과 `"2026년 매출"`은 임베딩 유사도가 매우 높지만 응답이 달라야 한다. 숫자·날짜·고유명사가 핵심인 쿼리는 임계값을 높게 잡거나(예: 0.95+) 키워드/엔티티 검증을 병행한다.
+- **멀티테넌트 및 권한 격리**: 사용자별·테넌트별 접근 권한이 다른 RAG·에이전트 응답을 전역 캐시에 저장하면 데이터 유출(Cache Poisoning)이 발생한다. 캐시 키와 메타데이터 필터에 반드시 `tenant_id` / `user_role` / `prompt_version` / `ttl`을 포함시켜 스코프를 격리해야 한다.
+- **멀티턴 대화 문맥**: `"그거 다시 설명해줘"`처럼 직전 턴에 의존하는 발화는 단일 문장 임베딩만으로 캐싱할 수 없으므로, 독립 질의(single-turn)나 재작성(query rewriting)된 완결 질의에만 적용한다.
 
 ---
 
@@ -153,4 +155,3 @@ Semantic Cache는 **Loop Engineering의 Runtime Optimization** 레이어에서 �
 ## 참고 문헌
 1. GPTCache GitHub — [github.com/zilliztech/GPTCache](https://github.com/zilliztech/GPTCache)
 2. "GPT Semantic Cache: Reducing LLM Costs and Latency via Semantic Embedding Caching" (2024) — [arXiv:2411.05276](https://arxiv.org/abs/2411.05276)
-3. Anthropic "Contextual Retrieval" — [anthropic.com](https://www.anthropic.com/news/contextual-retrieval)

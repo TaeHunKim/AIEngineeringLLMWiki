@@ -157,6 +157,12 @@ flowchart TD
 
 **OpenTelemetry**: Standard distributed tracing framework. All LLM observability tools support it.
 
+### OpenTelemetry GenAI Semantic Conventions & OpenInference
+
+To avoid lock-in to a specific platform SDK (LangSmith/Langfuse decorators), instrument traces with **vendor-neutral OpenTelemetry standard attributes**:
+- **OTel GenAI Semantic Conventions (`gen_ai.*`)**: Standard attribute namespace defined by the OpenTelemetry GenAI working group (`gen_ai.system`, `gen_ai.request.model`, `gen_ai.usage.input_tokens`, `gen_ai.usage.output_tokens`, `gen_ai.operation.name` such as `chat`, `execute_tool`, `invoke_agent`).
+- **OpenInference (Arize)**: An open specification extending OTel to capture RAG and agent workflow details (retrieved documents, tool schemas, reranker scores), supported as an ingestion format by Phoenix, Langfuse, Traceloop, and others.
+
 ## Alerts and Monitoring
 
 ```python
@@ -272,5 +278,6 @@ Observability is the **nervous system of production AI systems**. It enables dat
 - MLflow "Top 5 LLM and Agent Observability Tools in 2026" — [mlflow.org](https://mlflow.org/top-5-agent-observability-tools/)
 - Langfuse official docs — [langfuse.com](https://langfuse.com)
 - Arize Phoenix docs — [docs.arize.com/phoenix](https://docs.arize.com/phoenix)
+- OpenTelemetry "Semantic Conventions for Generative AI" — [opentelemetry.io](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
 - [[en/AI/sources/Agent_Quality|Agent_Quality]] (existing wiki source, first published Nov 2025 → updated May 2026)
 - "LLMOps Observability: LangSmith vs Arize vs Langfuse" — [Medium](https://medium.com/@kanerika/llmops-observability-langsmith-vs-arize-vs-langfuse-vs-w-b-f1baeabd1bbf)

@@ -115,6 +115,20 @@ pipeline = Pipeline([
   - Endpointing 모델 전용 학습 (예: LiveKit의 턴 감지 모델)
 ```
 
+### Cascaded 파이프라인 vs Native Speech-to-Speech (S2S)
+
+음성 에이전트 아키텍처는 텍스트를 거치는 **Cascaded(ASR → LLM → TTS)** 방식과 음성을 직접 입출력하는 **Native Speech-to-Speech(S2S)** 방식(OpenAI Realtime API WebRTC, Gemini Live API, Kyutai Moshi 등)으로 나뉜다.
+
+| 기준 | Cascaded (ASR → LLM → TTS) | Native Speech-to-Speech (S2S) |
+|---|---|---|
+| **지연시간 (TTFB)** | ~300~600ms (파이프라인 병렬 스트리밍 시) | **~200~350ms** (단일 엔드투엔드 모델) |
+| **운율·감정·끼어들기** | 텍스트 변환 시 어조·감정 손실 | 음성 특징·감정·자연스러운 끼어들기(barge-in) 보존 |
+| **도구 호출·지시 준수** | **높음** (텍스트 기반 추론·검증 안정적) | 상대적으로 불안정할 수 있음 |
+| **가드레일·감사(Audit)** | 중간 텍스트에 입출력 가드레일·로깅 즉시 적용 | 오디오 직접 출력으로 사후 전사(transcript) 필요 |
+| **비용** | 컴포넌트별 조합으로 최적화 가능 | 오디오 토큰 단가로 인해 상대적으로 고가 |
+
+실무에서는 **높은 도구 호출 정확도·규제 감사(금융/의료)가 필요하면 Cascaded(Pipecat/LiveKit)**를, **초저지연·자연스러운 구어체 상호작용(고객 응대, 튜터링)이 최우선이면 Native S2S**를 선택하거나 두 방식을 하이브리드로 결합한다.
+
 ## Computer Use vs Voice Agents 비교
 
 | | Computer Use | Voice Agents |

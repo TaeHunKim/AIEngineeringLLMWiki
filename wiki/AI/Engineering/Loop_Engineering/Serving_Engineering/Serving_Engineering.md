@@ -68,6 +68,7 @@ Goodput
 | [[AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference_Internals]] | 단일 GPU(풀) 내부 최적화 — KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
 | [[AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding\|Speculative_Decoding]] | Draft 모델 기반 가속 — EAGLE-3, Medusa, n-gram/Prompt Lookup, 수락률(acceptance rate) |
 | [[AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving\|Distributed_Serving]] | 다중 GPU·다중 리전 — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP 병렬화, Goodput 스케줄링, 콜드 스타트 |
+| [[AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding\|Constrained_Decoding]] | FSM/PDA 로짓 마스킹, 어휘 인덱싱, Jump-Forward, XGrammar·Outlines·llguidance |
 
 ## 경계 정리
 

@@ -4,7 +4,7 @@
 - **File Name**: `whitepaper_emebddings_vectorstores_v2.pdf`
 - **Authors**: Anant Nawalgaria, Xiaoqi Ren, Charles Sugnet (Google)
 - **Publication Date**: February 2025
-- **Topic**: [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] (text/image/multimodal/structured/graph), vector search algorithms (LSH, HNSW, ScaNN), [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]], and [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] utilization combined with LLMs
+- **Topic**: Embeddings (text/image/multimodal/structured/graph), vector search algorithms (LSH, HNSW, ScaNN), Vector Stores, and [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] utilization combined with LLMs
 - **Source (URL)**: https://www.kaggle.com/whitepaper-embeddings-and-vector-stores
 
 ## Summary
@@ -111,4 +111,4 @@ Supports multiple indexes such as HNSW, PQ, etc.
 - Embeddings + Vector DB + ANN = the infrastructure substrate of search, recommendation, and RAG.
 
 ## Related Concepts
-[[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/sources/whitepaper_emebddings_vectorstores_v2|Embeddings & Vector Stores]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]
+[[en/AI/Engineering/Model_Engineering/Model_Types/Embedding_Models|Embedding Models]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/RAG|RAG]] · [[en/AI/sources/whitepaper_Foundational_Large_Language_models_&_text_generation_v2|Foundational LLMs]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]

@@ -44,6 +44,7 @@ flowchart TD
 
 | Document | Content |
 |------|------|
+| [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion\|Document Ingestion]] | Document parsing, OCR, structure preservation; OCR vs OCR-free (ColPali) |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies\|Chunking Strategies]] | How to split documents — 5 strategies |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage\|Vector Storage]] | How to store and retrieve embeddings |
 | [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Advanced_Retrieval\|Advanced Retrieval]] | More accurate retrieval — reranking, Multi-Query, HyDE |

@@ -27,10 +27,10 @@ order: 2
 가장 단순한 방식. 문자 수 또는 토큰 수로 일정하게 분할:
 
 ```python
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 splitter = RecursiveCharacterTextSplitter(
-    chunk_size=512,      # 청크 크기 (토큰)
+    chunk_size=512,      # 청크 크기 (토큰/문자)
     chunk_overlap=50,    # 청크 간 겹침 (컨텍스트 연속성)
 )
 chunks = splitter.split_text(document)
@@ -80,7 +80,7 @@ flowchart TD
 
 ```python
 # LlamaIndex의 Hierarchical Node Parser
-from llama_index.node_parser import HierarchicalNodeParser
+from llama_index.core.node_parser import HierarchicalNodeParser
 
 parser = HierarchicalNodeParser.from_defaults(
     chunk_sizes=[2048, 512, 128]  # 3단계 계층
@@ -114,6 +114,25 @@ chunks = [Document(page_content=full_document, metadata={"source": url})]
 ```
 Anthropic의 Contextual Retrieval(2024)에서 제안. Recall ↑49%, Full RAG errors ↓67%.
 
+### 6. Late Chunking (후기 청킹)
+
+기존 파이프라인은 문서를 먼저 청크로 자른 뒤 각 청크를 독립적으로 임베딩하기 때문에, `"그 회사는 2024년에..."`처럼 앞선 문맥을 참조하는 대명사나 주어가 끊어지면 검색 품질이 떨어진다. **Late Chunking**(Günther et al. / Jina AI, 2024)은 순서를 뒤집는다 [4].
+
+```mermaid
+flowchart LR
+    D["전체 문서<br/>(최대 8K+ 토큰)"] --> E["긴 컨텍스트 임베딩 모델<br/>(토큰별 벡터 생성)"]
+    E --> P["청크 경계 기준으로<br/>토큰 벡터들을 Mean Pooling"]
+    P --> V["문맥이 반영된<br/>청크 임베딩들"]
+```
+
+- **장점**: 각 청크 임베딩이 문서 전체의 어텐션 문맥을 자연스럽게 보존하면서도, 청크마다 LLM을 호출해 요약 프리픽스를 붙이는 Contextual Retrieval과 달리 **추가 LLM 추론 비용이 0**이다.
+- **제약**: 문서 전체가 임베딩 모델의 최대 컨텍스트 길이(예: 8,192 토큰) 안에 들어와야 하며, 임베딩 모델의 마지막 레이어 토큰 출력을 직접 풀링할 수 있어야 한다.
+
+| 문맥 보존 전략 | 추가 LLM 비용 | 인덱스 크기 | 적용 조건 |
+|---|---|---|---|
+| **Contextual Retrieval** | 높음 (청크마다 LLM 요약) | 텍스트 증가 | 모든 임베딩 모델에 적용 가능 |
+| **Late Chunking** | **없음** (임베딩 1패스) | 동일 | 긴 컨텍스트 지원 오픈 임베딩 모델 필요 |
+
 ## 청크 크기 선택 가이드
 
 | 문서 유형 | 추천 청크 크기 | 전략 |
@@ -144,4 +163,4 @@ Anthropic의 Contextual Retrieval(2024)에서 제안. Recall ↑49%, Full RAG er
 - Atlan "Chunking Strategies for RAG: Methods, Trade-offs & Best Practices" — [atlan.com](https://atlan.com/know/chunking-strategies-rag/)
 - Firecrawl "Best Chunking Strategies for RAG (and LLMs) in 2026" — [firecrawl.dev](https://www.firecrawl.dev/blog/best-chunking-strategies-rag)
 - Anthropic "Contextual Retrieval" (2024) — [anthropic.com](https://www.anthropic.com/news/contextual-retrieval)
-- Mix-of-Granularity Paper (2024) — [arXiv:2406.00456](https://arxiv.org/pdf/2406.00456)
+- [4] Günther et al. (2024) "Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models" — [arXiv:2409.04701](https://arxiv.org/abs/2409.04701)

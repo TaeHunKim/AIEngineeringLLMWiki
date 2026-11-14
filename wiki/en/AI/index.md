@@ -11,6 +11,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/index|AI Engineering Wiki]]: Complete AI Engineering architecture — 8 layers: Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph
 
 #### Model Engineering
+- [[en/AI/Engineering/Model_Engineering/Model_Types/Large_Language_Models|Large Language Models]]: Decoder-only Transformer overview, base/instruct/reasoning stages, open-weight vs closed API
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]: Pre-training basics, Chinchilla scaling laws, catastrophic forgetting strategies
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]]: Full parameter updates versus training objectives, algorithms, and reward design (SFT, DPO, GRPO, RLVR)
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA|PEFT / LoRA / QLoRA]]: LoRA math, QLoRA NF4+double quantization, HuggingFace implementation
@@ -18,6 +19,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation|Model Distillation]]: Hinton 2015 origin, Teacher-Student, DistilBERT/Phi/DeepSeek-R1
 - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Model_Architectures_and_MoE|Model Architectures & MoE]]: Dense vs MoE (Total/Active Params), RoPE/YaRN/LongRoPE long-context, SLM-for-Agents
 - [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation|Synthetic Data & Curation]]: Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse
+- [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Merging|Model Merging]]: Task Arithmetic, TIES, DARE, SLERP, zero-training merging with MergeKit
 - [[en/AI/Engineering/Model_Engineering/Model_Types/Multimodal_Models|Multimodal Models]]: VLM architecture (adapter-bridged vs. native), image tokenization, audio/video, MMMU/DocVQA
 - [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Tokenization|Tokenization]]: BPE/WordPiece/SentencePiece, vocabulary-size trade-offs, multilingual/Korean token efficiency
 - [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]]: Jev-style System One Models, Choice/Score/Noul primitives, logprob wrappers vs trained models, calibration (ECE)
@@ -32,6 +34,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Prompt_Engineering/Structured_Output|Structured Output]]: JSON, schema, and semantic validation; provider contracts and failure handling
 - [[en/AI/Engineering/Prompt_Engineering/Prompt_Caching|Prompt Caching]]: Static prefix design, cache breakpoints/TTL, how it differs from Semantic Cache
 - [[en/AI/Engineering/Prompt_Engineering/Automatic_Prompt_Optimization|Automatic Prompt Optimization]]: APE/OPRO/TextGrad and GEPA; DSPy selection, compilation, and independent evaluation
+- [[en/AI/Engineering/Prompt_Engineering/Test_Time_Compute_Scaling|Test-Time Compute Scaling]]: Parallel/Sequential/Search scaling, ORM vs PRM, Budget Forcing, compute-optimal allocation
 
 #### Context Engineering
 - [[en/AI/Engineering/Context_Engineering/LLM_Memory|LLM Memory]]: Storage location, scope, persistence, context selection, and the relationship between memory and RAG
@@ -117,6 +120,7 @@ This wiki organizes Engineering knowledge for designing, building, and operating
 - [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference Internals]]: KV Cache, PagedAttention, Continuous/Chunked Batching, RadixAttention, FlashAttention
 - [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding|Speculative Decoding]]: Draft/Target models, acceptance rate, SpecInfer/Medusa/EAGLE-3/n-gram
 - [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving|Distributed Serving]]: Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP, Goodput scheduling, cold start
+- [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding|Constrained Decoding]]: FSM/PDA logit masking, vocabulary indexing, Jump-Forward, XGrammar/Outlines/llguidance
 
 #### Graph Engineering
 - [[en/AI/Engineering/Graph_Engineering/Multi_Agent_Topology|Multi-Agent Topology]]: Node/edge types, LangGraph `Send()` dynamic routing, identity/budget/guardrail governance, Graph-of-Agents

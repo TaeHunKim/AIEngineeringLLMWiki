@@ -121,6 +121,14 @@ Synthesizing NL2SQL Data (2024):
   - Synthesize training data with weak LLM + strong LLM combination [6]
 ```
 
+### 5. Semantic Layer / Text-to-Metric Integration (Enterprise Standard)
+
+Exposing raw DB tables (hundreds of DDLs) directly to an LLM repeatedly causes table join errors and inconsistent metric definitions ("active users" or "net revenue" calculated differently per query). In production, teams introduce a **Semantic Layer** (e.g., **dbt Semantic Layer / MetricFlow**, **Cube**, **LookML**, **Snowflake Semantic Views**) as an intermediate layer to solve this structurally.
+
+- **Text-to-Metric**: Instead of having the LLM write complex `JOIN`/`GROUP BY` SQL directly, the task becomes a **Tool Use** call selecting from predefined metric, dimension, and filter schemas (YAML/JSON) in the Semantic Layer.
+- **Deterministic SQL Compilation**: The Semantic Layer engine compiles the selected metric combination into verified SQL, guaranteeing consistent numbers and join paths for the same metric.
+- **Separation of Roles**: While `NL2SQL` focuses on natural-language-to-query accuracy, Schema Linking, and Semantic Layer mapping, the production system architecture combining it with unstructured vector search and routing/hybrid retrieval is covered in [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/SQL_RAG/SQL_RAG|SQL_RAG]].
+
 ## Benchmarks
 
 ### Spider

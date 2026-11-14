@@ -85,7 +85,7 @@ LLMPerf:     LLM 서빙 특화 — TTFT, 토큰당 지연시간(ITL), 처리량�
 GenAI-Perf:  NVIDIA의 생성형 AI 특화 벤치마킹 도구, 서빙 엔진 비교에 최적화
 ```
 
-일반 웹 서비스와 달리 LLM 부하 테스트는 응답 "완료 시간"뿐 아니라 [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]에서 다룬 TTFT(Time-to-First-Token)·TPOT(Time-per-Output-Token) 같은 스트리밍 특화 지표를 함께 측정해야 실제 사용자 체감 속도를 반영할 수 있다.
+일반 웹 서비스와 달리 LLM 부하 테스트는 응답 "완료 시간"뿐 아니라 [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]]에서 다룬 TTFT(Time-to-First-Token)·TPOT(Time-per-Output-Token) 같은 스트리밍 특화 지표를 함께 측정해야 실제 사용자 체감 속도를 반영할 수 있다.
 
 ## SRE for AI와 카오스 엔지니어링
 

@@ -39,6 +39,22 @@ Vector DB: cos_sim(embed("강아지 먹이"), embed("개 사료")) ≈ 0.92 → 
 - Asymmetric Hashing + Anisotropic Quantization
 - 대규모 (수십억) 벡터에서 최고 성능
 
+### DiskANN / Vamana (디스크 기반 대규모 ANN)
+- Microsoft Research가 개발한 **SSD 기반 그래프 ANN** 알고리즘(Subramanya et al., NeurIPS 2019).
+- HNSW가 전체 그래프와 벡터를 RAM에 상주시켜야 해 수억~수십억 벡터에서 비용이 폭증하는 한계를 극복하기 위해, **압축 벡터(PQ)만 RAM에 두고 원본 벡터·그래프 인접 리스트는 NVMe SSD에서 읽는다**.
+- Qdrant, Milvus, Azure AI Search, LanceDB 등 현대 벡터 DB들이 메모리 비용 절감을 위해 DiskANN 또는 유사한 디스크 기반 아키텍처를 채택하고 있다.
+
+### 벡터 양자화 (Vector Quantization) 및 Object Storage 네이티브 DB
+고차원 임베딩(예: 1536~3072차원 FP32)을 그대로 메모리에 올리면 스토리지·RAM 비용이 급격히 커진다. 실무에서는 두 단계로 압축·최적화한다:
+
+| 양자화 방식 | 비트 수 | 메모리 절감 | 정밀도 복구 기법 |
+|---|---|---|---|
+| **Scalar Quantization (SQ8)** | 8-bit | 4× | Top-K 이후 원본 FP32/FP16 벡터로 재점수화(rescoring) |
+| **Product Quantization (PQ)** | 가변 | 8~32× | 서브벡터 클러스터 중심 코드북 근사 |
+| **Binary Quantization (BQ)** | 1-bit | **32×** | 2~4배 Oversampling 후 원본 벡터로 Rescoring |
+
+또한 RAM 상주형 클러스터 비용을 줄이기 위해 **S3/GCS 같은 Object Storage에 컬럼형(Lance/Parquet) 인덱스를 직접 저장**하고 캐시 노드로 서빙하는 **Object Storage 네이티브 벡터 DB**(예: **LanceDB**, **Turbopuffer**)가 대규모 RAG·에이전트 메모리 백엔드로 확산되고 있다.
+
 ## 주요 벡터 DB 비교
 
 | DB | 호스팅 | 특징 | 적합 케이스 |
@@ -93,8 +109,8 @@ Dense (벡터) + Sparse (키워드, BM25) 검색을 결합:
 
 ```python
 # 전형적인 인덱싱 파이프라인
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
 
 # 1. 임베딩 모델 초기화
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
@@ -134,3 +150,4 @@ MMR 점수 = λ × sim(query, doc) - (1-λ) × max_sim(doc, already_selected)
 - Vertex AI Vector Search 문서 — [[AI/sources/22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)|22365_14_Operationalizing_Generative_AI_on_Vertex_AI_v7_(1)]]
 - Johnson et al. (2019) "Billion-scale similarity search with GPUs (FAISS)" — [arXiv:1702.08734](https://arxiv.org/abs/1702.08734)
 - Malkov & Yashunin (2018) "Efficient and robust approximate nearest neighbor search using HNSW" — [arXiv:1603.09320](https://arxiv.org/abs/1603.09320)
+- Subramanya et al. (2019) "DiskANN: Fast Accurate Billion-point Nearest Neighbor Search on a Single Node" — [NeurIPS 2019](https://papers.nips.cc/paper/2019/hash/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Abstract.html)

@@ -15,8 +15,9 @@ order: 0
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning\|Pre-training_and_Continual_Learning]] | Large-scale pre-training, Chinchilla scaling law, catastrophic forgetting |
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning\|Full_Fine-Tuning]] | Full parameter updates versus training objectives, algorithms, and reward design (SFT, DPO, GRPO, RLVR) |
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/PEFT_LoRA_QLoRA\|PEFT_LoRA_QLoRA]] | Parameter-efficient fine-tuning, LoRA/QLoRA mathematics |
-| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi series |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Distillation\|Model_Distillation]] | Teacher-Student, DistilBERT/Phi series, On-Policy (GKD) |
 | [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation\|Synthetic_Data_and_Curation]] | Self-Instruct/Evol-Instruct, judge filtering, dedup/decontamination, model collapse |
+| [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Merging\|Model_Merging]] | Task Arithmetic, TIES, DARE, SLERP, zero-training merging with MergeKit |
 
 ## Related Concepts
 [[en/AI/Engineering/Model_Engineering/Model_Engineering|Model Engineering]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Model_Types|Model Types]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Architecture_and_Efficiency|Architecture and Efficiency]] · [[en/AI/Engineering/Loop_Engineering/Continuous_Optimization|Continuous_Optimization]] · [[en/AI/Engineering/Loop_Engineering/RL_Environments|RL_Environments]]

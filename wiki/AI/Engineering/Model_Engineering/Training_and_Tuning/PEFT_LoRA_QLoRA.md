@@ -42,13 +42,11 @@ merged_weight = original_weight + lora_B @ lora_A
 ```
 
 ### 적용 위치
-Transformer의 Attention 레이어 (Q, K, V, O 프로젝션)에 주로 적용:
+초기 LoRA는 Attention의 `q_proj`, `v_proj`에만 적용했으나, 이후 실험에서 **MLP(FFN) 레이어를 포함한 모든 선형 레이어(`all-linear`)에 적용할 때 Full Fine-Tuning과의 성능 격차가 가장 크게 줄어든다**는 것이 확인되었다 [3]:
 ```
-Multi-Head Attention:
-  Q_proj: W_Q + ΔW_Q (LoRA 적용)
-  K_proj: W_K + ΔW_K (LoRA 적용)
-  V_proj: W_V + ΔW_V (LoRA 적용)
-  O_proj: W_O (동결 또는 LoRA 적용)
+Transformer Block:
+  Attention: Q_proj, K_proj, V_proj, O_proj  (LoRA 적용)
+  MLP/FFN:   gate_proj, up_proj, down_proj   (LoRA 적용 → target_modules="all-linear")
 ```
 
 ## QLoRA (Quantized LoRA)
@@ -74,7 +72,9 @@ QLoRA 메모리 사용:
 
 ```python
 # QLoRA 사용 예시 (HuggingFace)
-from transformers import BitsAndBytesConfig
+import torch
+from peft import LoraConfig, get_peft_model
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
 
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -83,14 +83,26 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_use_double_quant=True,
 )
 model = AutoModelForCausalLM.from_pretrained(
-    "meta-llama/Llama-2-70b",
+    "Qwen/Qwen2.5-32B-Instruct",
     quantization_config=bnb_config,
 )
-# LoRA 어댑터 추가
-from peft import get_peft_model, LoraConfig
-lora_config = LoraConfig(r=64, lora_alpha=16, target_modules=["q_proj","v_proj"])
+# 모든 선형 레이어에 LoRA 어댑터 추가 (Attention + MLP)
+lora_config = LoraConfig(r=32, lora_alpha=64, target_modules="all-linear")
 model = get_peft_model(model, lora_config)
 ```
+
+## LoRA 계보 확장 (DoRA · rsLoRA · GaLore)
+
+| 기법 | 핵심 개선 | 언제 쓰는가 |
+|---|---|---|
+| **DoRA** (Weight-Decomposed LoRA, ICML 2024) | 가중치를 크기(magnitude)와 방향(direction)으로 분해해 방향만 저랭크 업데이트 | LoRA 대비 Full FT에 더 가까운 수렴 품질이 필요할 때 |
+| **rsLoRA** (Rank-Stabilized LoRA) | 스케일링 계수를 $\alpha/r$ 대신 $\alpha/\sqrt{r}$로 변경 | $r \ge 64$ 이상의 고랭크 LoRA 학습이 불안정할 때 |
+| **GaLore** (Gradient Low-Rank Projection, ICML 2024) | 가중치가 아니라 **옵티마이저 그래디언트**를 저랭크 공간으로 투영 | 어댑터 없이 Full-parameter 수준의 메모리 절감 학습 시 |
+
+## Multi-LoRA 서빙 (S-LoRA · Punica · vLLM)
+
+LoRA 어댑터는 수십 MB 수준으로 작아, **단일 Base Model 가중치를 GPU 메모리에 한 번만 올리고 요청마다 서로 다른 LoRA 어댑터를 동적으로 적용**할 수 있다.
+- **S-LoRA / Punica / vLLM Multi-LoRA**: 서로 다른 테넌트·태스크용 어댑터 요청을 하나의 배치로 묶어 커널 수준에서 병렬 연산(`B @ A @ x`)을 수행한다. 테넌트마다 별도 70B 모델을 띄우지 않고도 수백 개의 파인튜닝 모델을 단일 클러스터에서 서빙할 수 있다.
 
 ## 기타 PEFT 기법
 
@@ -124,10 +136,12 @@ GPU 메모리 >80GB    → Full FT (또는 LoRA for 속도)
 PEFT는 실무 AI Engineering의 핵심 도구다. 수십억 파라미터 모델을 소규모 팀이 단일 GPU로 커스터마이즈할 수 있게 만들어, LLM 민주화의 핵심 기술이 되었다. LoRA 어댑터는 교환 가능하여 동일 Base Model에 여러 태스크별 어댑터를 운용하는 Multi-LoRA 서빙 패턴도 가능하다.
 
 ## 관련 개념
-[[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full_Fine-Tuning]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]]
+[[AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full_Fine-Tuning]] · [[AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training_and_Continual_Learning]] · [[AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Merging|Model_Merging]]
 
 ## 출처
 - Hu et al. (2021) "LoRA: Low-Rank Adaptation of Large Language Models" — [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
 - Dettmers et al. (2023) "QLoRA: Efficient Finetuning of Quantized LLMs" — [arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
-- Lightning AI "Finetuning LLMs with LoRA and QLoRA: Insights from Hundreds of Experiments" — [lightning.ai](https://lightning.ai/pages/community/lora-insights/)
+- [3] Lightning AI "Finetuning LLMs with LoRA and QLoRA: Insights from Hundreds of Experiments" — [lightning.ai](https://lightning.ai/pages/community/lora-insights/)
 - "LoRA vs Full Fine-tuning: An Illusion of Equivalence" (2024) — [arXiv:2410.21228](https://arxiv.org/html/2410.21228v2)
+- Liu et al. (2024) "DoRA: Weight-Decomposed Low-Rank Adaptation" — [arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
+- Sheng et al. (2023) "S-LoRA: Serving Thousands of Concurrent LoRA Adapters" — [arXiv:2311.03285](https://arxiv.org/abs/2311.03285)

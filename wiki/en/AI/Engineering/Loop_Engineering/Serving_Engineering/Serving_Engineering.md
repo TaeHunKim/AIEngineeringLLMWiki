@@ -68,6 +68,7 @@ Goodput
 | [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals\|Inference Internals]] | Optimization within a single GPU (pool) — KV Cache, PagedAttention, Continuous Batching, Chunked Prefill, RadixAttention, FlashAttention |
 | [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Speculative_Decoding\|Speculative Decoding]] | Draft-model-based acceleration — EAGLE-3, Medusa, n-gram/Prompt Lookup, acceptance rate |
 | [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Distributed_Serving\|Distributed Serving]] | Multi-GPU/multi-region — Disaggregated Prefill/Decode, KV Cache Transfer, TP/PP/EP parallelism, goodput scheduling, cold start |
+| [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding\|Constrained Decoding]] | FSM/PDA logit masking, vocabulary indexing, Jump-Forward, XGrammar·Outlines·llguidance |
 
 ## Boundaries
 

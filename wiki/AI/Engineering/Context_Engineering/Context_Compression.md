@@ -51,25 +51,22 @@ print(compressed["compressed_prompt"])  # 불필요한 토큰 제거된 프롬�
 
 **작동 원리**: 소형 언어 모델로 각 토큰의 중요도 점수를 계산, 낮은 점수 토큰 제거.
 
-### 2. Contextual Compression Retriever (LangChain)
+### 2. 검색 문맥 선별 압축 (Extractive Filtering)
 
-RAG에서 청크 전체가 아닌 관련 부분만 추출:
+RAG에서 검색된 청크 전체를 그대로 넣지 않고 쿼리와 직접 관련된 문장만 추려낸다:
 
 ```python
-from langchain.retrievers.document_compressors import LLMChainExtractor
-from langchain.retrievers import ContextualCompressionRetriever
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_openai import ChatOpenAI
 
-# 압축기: 쿼리와 관련된 문장만 추출
-compressor = LLMChainExtractor.from_llm(llm)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
-# 기본 검색기 + 압축 결합
-compression_retriever = ContextualCompressionRetriever(
-    base_compressor=compressor,
-    base_retriever=vectorstore.as_retriever()
-)
-
-# 청크 전체 대신 관련 문장만 반환
-relevant_docs = compression_retriever.get_relevant_documents(query)
+def extract_relevant_sentences(query: str, chunk: str) -> str:
+    response = llm.invoke([
+        SystemMessage(content="주어진 문서에서 질문에 답하는 데 필요한 문장만 원문 그대로 발췌하라. 없으면 빈 문자열을 반환하라."),
+        HumanMessage(content=f"질문: {query}\n\n문서:\n{chunk}"),
+    ])
+    return response.content
 ```
 
 ### 3. Map-Reduce 요약 (긴 문서)
@@ -84,21 +81,25 @@ flowchart TD
     S1 & S2 & S3 -->|요약들 결합| FIN[LLM 최종 요약]
 ```
 
-### 4. 대화 히스토리 요약
+### 4. 대화 히스토리 트리밍 및 요약
 
-멀티턴 대화에서 이전 대화를 요약하여 토큰 절약:
+멀티턴 대화에서 토큰 예산에 맞춰 최근 메시지를 자르거나(`trim_messages`), 오래된 턴을 요약 노드로 압축한다:
 
 ```python
-from langchain.memory import ConversationSummaryMemory
+from langchain_core.messages import trim_messages
+from langchain_openai import ChatOpenAI
 
-memory = ConversationSummaryMemory(
-    llm=llm,
-    max_token_limit=500  # 500토큰 초과 시 요약
+# 최근 500 토큰 이내의 대화만 유지 (시스템 메시지는 보존)
+trimmed = trim_messages(
+    messages,
+    max_tokens=500,
+    strategy="last",
+    token_counter=ChatOpenAI(model="gpt-4o-mini"),
+    include_system=True,
 )
-# 대화가 길어지면 자동으로 이전 내용을 요약하여 압축
 ```
 
-에이전트 루프에서는 이 요약을 컨텍스트 한도 근처에서 자동 수행하는 **Compaction**으로 일반화된다 → [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]].
+에이전트 루프에서는 단순 트리밍을 넘어 컨텍스트 한도 근처에서 핵심 상태·결정 사항을 구조화해 요약하는 **Compaction**으로 일반화된다 → [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Agentic_Context_Management]].
 
 ### 5. Selective Context (선택적 컨텍스트)
 

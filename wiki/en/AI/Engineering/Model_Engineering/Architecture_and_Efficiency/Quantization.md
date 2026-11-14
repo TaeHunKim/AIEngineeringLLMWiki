@@ -41,11 +41,14 @@ Include quantization simulation during training. Higher precision but increased 
 - GPU inference optimization (3~4.5× speedup on NVIDIA GPUs)
 
 ```python
-# GPTQ usage (AutoGPTQ)
-from auto_gptq import AutoGPTQForCausalLM
-model = AutoGPTQForCausalLM.from_quantized(
-    "model-name-gptq",
-    device="cuda:0"
+# GPTQ usage (transformers + GPTQModel / Optimum)
+from transformers import AutoModelForCausalLM, GPTQConfig
+
+gptq_config = GPTQConfig(bits=4, dataset="c4", tokenizer=tokenizer)
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-3.1-8B-Instruct",
+    quantization_config=gptq_config,
+    device_map="auto"
 )
 ```
 
@@ -71,12 +74,26 @@ AWQ:
 - Provides various quantization levels: Q4_K_M, Q5_K_M, etc.
 - Efficient on Apple Silicon (M1/M2/M3), etc.
 
+### FP8 / FP4 Hardware-Native Quantization
+- **FP8 (E4M3 / E5M2)**: Natively accelerated by Tensor Cores on NVIDIA Hopper (H100/H200) and newer GPUs. Wider dynamic range than INT8 preserves near-zero quality loss (<1%) while cutting memory by 50% and boosting throughput 1.5–2×, making it the default for modern production serving.
+- **FP4 (MXFP4 / NVFP4)**: 4-bit floating-point formats hardware-accelerated starting with Blackwell (B200). Block-wise microscaling preserves outliers better than uniform INT4.
+
+### KV Cache Quantization
+Independent of weight quantization, **KV Cache memory** is the primary GPU VRAM bottleneck in long-context, high-concurrency serving:
+- **FP8 KV Cache**: Storing Key/Value tensors in FP8 (E4M3/E5M2) halves KV Cache footprint, nearly doubling concurrency and max context length on a single GPU (natively supported in vLLM, SGLang, TensorRT-LLM → [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Inference_Internals|Inference_Internals]]).
+
+### BitNet b1.58 (1.58-bit Ternary Quantization Training)
+- **Authors**: Ma et al., Microsoft Research (2024) — [arXiv:2402.17764](https://arxiv.org/abs/2402.17764)
+- **Principle**: Constrains weights during training (QAT) to ternary values $\{-1, 0, +1\}$ ($\log_2 3 \approx 1.58\text{ bits}$), replacing floating-point matrix multiplications with integer additions/subtractions for dramatic energy and memory savings.
+
 ## Precision-Speed Trade-offs by Quantization Level
 
 | Format | Bits | Memory savings | Quality loss | Recommended use |
 |------|------|-----------|---------|---------|
 | FP16/BF16 | 16 | Baseline | None | Training, high-quality inference |
-| INT8 | 8 | 50% | Negligible | Default deployment |
+| FP8 (W8A8) | 8 | 50% | Negligible | H100/H200/Blackwell standard serving |
+| INT8 | 8 | 50% | Negligible | Default deployment (A100/L4) |
+| NVFP4 / MXFP4 | 4 | 75% | Very low | Blackwell high-throughput serving |
 | INT4 (GPTQ) | 4 | 75% | Low | Resource-constrained deployment |
 | INT4 (AWQ) | 4 | 75% | Very low | Resource-constrained + quality |
 | INT2~3 | 2~3 | 85%+ | High | Extreme compression (experimental) |

@@ -226,14 +226,10 @@ SQL RAG is the **key bridge connecting enterprise data layers with LLMs**. It is
 
 ## References
 
-[1] Databricks Instructed Retrieval: Beyond the Vector — Enterprise RAG Accuracy (2026) — [markets.financialcontent.com](https://markets.financialcontent.com/observerreporter/article/tokenring-2026-1-8-beyond-the-vector-databricks-unveils-instructed-retrieval-to-solve-the-enterprise-rag-accuracy-crisis)
+[1] Databricks Documentation, "Mosaic AI Vector Search & Instructed Retrieval" — [docs.databricks.com](https://docs.databricks.com/aws/en/generative-ai/vector-search)
 
-[2] How SQL Server 2025 Enables Retrieval-Augmented Generation Workflows — [c-sharpcorner.com](https://www.c-sharpcorner.com/article/how-sql-server-enables-retrieval-augmented-generation-rag-workflows-embedding/)
+[2] Microsoft Learn, "Vector search and vector index in SQL Server 2025" — [learn.microsoft.com](https://learn.microsoft.com/en-us/sql/sql-server/ai/vectors)
 
-[3] Hybrid Retrieval-Augmented Generation (RAG) Systems with Embedding Vector Databases — [researchgate.net](https://www.researchgate.net/publication/390326215_Hybrid_Retrieval-Augmented_Generation_RAG_Systems_with_Embedding_Vector_Databases)
+[3] LlamaIndex Documentation, "SQLAutoVectorQueryEngine" — [docs.llamaindex.ai](https://docs.llamaindex.ai/en/stable/examples/query_engine/SQLAutoVectorQueryEngine/)
 
-[4] Enterprise RAG Architecture: A Practitioner's Guide — [applied-ai.com](https://www.applied-ai.com/briefings/enterprise-rag-architecture/)
-
-[5] RAG in 2025: The enterprise guide to RAG, Graph RAG and agentic AI — [datanucleus.dev](https://datanucleus.dev/rag-and-agentic-ai/what-is-rag-enterprise-guide-2025)
-
-[6] Enterprise RAG Guide 2026: Modular, GraphRAG & Agentic Patterns — [synvestable.com](https://www.synvestable.com/enterprise-rag.html)
+[4] dbt Labs, "dbt Semantic Layer & MetricFlow" — [docs.getdbt.com](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-semantic-layer)

@@ -116,7 +116,7 @@ Tool Use is a **request for execution**, and Structured Output is an **output co
 Structured output clarifies the interface between model results and software. A reliable data flow requires designing schema validation, semantic validation, and failure state handling together.
 
 ## Related Concepts
-[[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]]
+[[en/AI/Engineering/Flow_Engineering/Linear_Flow/Tool_Use_and_Function_Calling|Tool Use & Function Calling]] · [[en/AI/Engineering/Prompt_Engineering/Sampling_Controls|Sampling Controls]] · [[en/AI/Engineering/Harness_Engineering/Harness_Safety/Guardrail_Engineering|Guardrail Engineering]] · [[en/AI/Engineering/Model_Engineering/Model_Types/Decision_Models|Decision Models]] · [[en/AI/Engineering/Loop_Engineering/Serving_Engineering/Constrained_Decoding|Constrained Decoding]]
 
 ## Sources
 - OpenAI, [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)

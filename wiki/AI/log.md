@@ -386,3 +386,20 @@ TypeSafe AI의 Jev(2026-09-15 공개)와 오픈웨이트 재현 흐름(학습형
 - **번역**: 로컬 LLM으로 변경 섹션을 번역한 뒤 의미·용어·코드를 검토. placeholder/줄 수 검증 실패로 파일 저장이 중단된 부분은 변경 섹션만 수동 보완. 번역에서 누락된 코드·docstring·Mermaid node를 수정. 번역 도구 자체는 변경하지 않음.
 - **검토·검증**: 독립 리뷰에서 출처 연도와 학습 objective/algorithm/reward 요약 표현을 보정. `npm run lint:wiki`, 저장소 테스트 109건, Quartz build 및 브라우저의 표·코드·Mermaid 렌더링 확인.
 - **후속 범위**: 나머지 Engineering 문서의 출처·예제는 별도 감사 대상으로 유지. Agent_Memory의 기존 Voyager SkillLibrary는 저장 구조를 설명하는 pseudocode로서, 영속 storage 구현 검증까지 포함하지 않음.
+
+## [2026-11-15] update | 전체 위키 감사 — 구버전/결함 정리, 기존 10개 문서 최신화, 신규 3개 문서 추가
+
+- **Track 1 (구버전 코드·무관 섹션 삭제 및 구조/링크 정합성)**:
+  - `Semantic_Cache.md` — 분리 잔재(`Enterprise Knowledge Base와의 연계`)·미인용 출처 삭제, OpenAI SDK v0.x→v1+ 교체, Cache Poisoning/권한 격리 주의사항 추가.
+  - `Context_Compression.md`, `Chunking_Strategies.md`, `Vector_Storage.md`, `HyDE.md`, `Advanced_Retrieval.md`, `SQL_RAG.md` — `langchain.chains`/`langchain.memory`/`langchain.vectorstores`/`auto_gptq`/`llm.generate()` 등 레거시·의사코드 스니펫을 최신 SDK(`langchain_text_splitters`, `langchain_chroma`, `langchain_community`, OpenAI Responses API, `llmcompressor`)로 교체하고 잘못된 arXiv ID(`2406.00456`)·저품질 SEO 출처 제거.
+  - `RAG.md` 누락 자식(`Document_Ingestion`)·상대경로 별칭(`../../Context_Engineering/...`) 수정, `AI/index.md` 누락(`Large_Language_Models`) 등록, `Engineering/index.md` Agent Engineering 3서브폴더 그룹화, `Model_Architectures_and_MoE.md`·`Production_Operations.md`의 `Runtime_Optimization`→`Serving_Engineering` 링크 오기 정정, `sources/` 8개 문서 및 `Observability_and_Tracing.md`·`AgentOps.md` 자기 링크·중복 링크 제거.
+  - `scripts/lint-wiki.mjs`에 **L13** 규칙(자기 링크, `관련 개념` 내 중복 링크, 별칭 내 `../` 잔재 검출) 추가.
+- **Track 2 (기존 10개 문서 2025~2026 최신화)**:
+  - Model: `Quantization.md`(FP8/MXFP4/NVFP4, KV Cache 양자화, BitNet b1.58), `PEFT_LoRA_QLoRA.md`(`all-linear`, DoRA/rsLoRA/GaLore, Multi-LoRA 서빙), `Model_Distillation.md`(On-Policy GKD, Context Distillation, ToS 제약), `Model_Architectures_and_MoE.md`(Hybrid SSM/Mamba-2·Linear Attention).
+  - Context: `Chunking_Strategies.md`(Late Chunking), `Vector_Storage.md`(DiskANN/Vamana, SQ8/PQ/BQ 양자화, LanceDB/Turbopuffer), `NL2SQL.md`·`SQL_RAG.md`(Semantic Layer/Text-to-Metric 연동).
+  - Harness·Agent: `Observability_and_Tracing.md`(OTel `gen_ai.*` Semantic Conventions, OpenInference, Langfuse v3), `Computer_Use_and_Voice_Agents.md`(Cascaded vs Native Speech-to-Speech 비교).
+- **Track 3 (신규 3개 문서)**:
+  - `Prompt_Engineering/Test_Time_Compute_Scaling.md` (order 8) — Parallel/Sequential/Search 스케일링, ORM vs PRM, Budget Forcing, Compute-Optimal 배분.
+  - `Model_Engineering/Training_and_Tuning/Model_Merging.md` (order 6) — Model Soups/SLERP/Task Arithmetic/TIES/DARE/Evolutionary Merge, MergeKit.
+  - `Loop_Engineering/Serving_Engineering/Constrained_Decoding.md` (order 4) — FSM/PDA 로짓 마스킹, 어휘 인덱싱, Jump-Forward, Outlines/XGrammar/llguidance.
+- **검증**: `npm run translate:wiki -- --changed` + EN 리뷰, `npm run lint:wiki` (L1~L13 위반 0건), `npm run build` 통과.

@@ -61,13 +61,20 @@ MoE 모델 (예: 256개 Expert 중 토큰당 8개 활성화):
 
 YaRN 등으로 컨텍스트 길이를 1M 토큰까지 늘려도, 모델이 32K 토큰을 다루던 만큼의 정밀도로 1M 토큰을 다루지는 못한다 — RoPE 확장 기법 어느 것도 이 격차를 완전히 없애지 못한다. 즉 "얼마나 긴 컨텍스트를 지원하는가"(아키텍처 문제)와 "그 긴 컨텍스트를 얼마나 잘 활용하는가"(운영 문제, Context Rot)는 별개다. 후자는 [[AI/Engineering/Context_Engineering/Agentic_Context_Management|Context_Engineering/Agentic_Context_Management]]에서 다룬다.
 
+## Hybrid SSM / Linear Attention 아키텍처
+
+표준 Softmax Attention은 시퀀스 길이 $N$에 대해 연산량 $O(N^2)$·KV Cache 메모리 $O(N)$이 선형 증가하여, 수십만 토큰의 긴 에이전트 세션에서 메모리 대역폭 병목을 일으킨다. 이를 완화하기 위해 **State Space Model(SSM) / Linear Attention 레이어와 소수의 Full Attention 레이어를 교차 배치하는 하이브리드 아키텍처**가 확산되고 있다.
+
+- **Mamba-2 (State Space Duality)**: 시퀀스 길이에 대해 $O(N)$ 시간, **고정 크기 $O(1)$ 상태 메모리**로 동작하면서도 행렬 곱셈(Tensor Core)에 최적화된 블록 구조를 제공한다(Dao & Gu, ICML 2024).
+- **하이브리드 배치의 이유**: 순수 SSM/Linear Attention은 긴 문맥에서 정확한 문자열·키-값 회상(in-context recall) 능력이 Full Attention보다 떨어지는 반면, 전체 레이어의 10~25%만 Full Attention으로 두고 나머지를 Mamba-2 또는 Gated DeltaNet 같은 선형 어텐션으로 대체하면 **회상 정확도를 유지하면서 KV Cache 크기를 수배~수십 배 줄일 수 있다** (예: AI21 **Jamba**, NVIDIA **Nemotron-H**, **Qwen3-Next** 등).
+
 ## SLM-for-Agents
 
 대부분의 실제 에이전트 태스크(도구 하나 호출하기, 정해진 형식으로 라우팅하기, 짧은 코드 조각 수정하기)는 프론티어 모델의 범용 추론 능력을 요구하지 않는다는 것이 업계의 반복된 관찰이다 — NVIDIA 연구진은 이런 태스크 다수에서 **소형 모델(SLM)이 구조적으로 더 적합한 선택**이라고 주장한다: 지연시간이 낮고, 병렬로 여러 인스턴스를 띄우기 쉬우며, 좁은 태스크에 파인튜닝하기도 쉽다. 2026년 기준 이런 SLM의 다수가 앞서 다룬 MoE 구조를 소형화한 형태(예: Total 30B급, Active 3B급)로 나온다는 점도 특징이다 — "작은 모델"이라기보다는 "작은 Active Params를 가진 모델"에 가깝다.
 
-## 경계: 서빙 최적화는 Runtime_Optimization 소관
+## 경계: 서빙 최적화는 Serving_Engineering 소관
 
-이 문서는 **모델이 어떤 구조로 설계되는가**를 다룬다. 그 구조를 실제로 어떻게 빠르게 서빙하는가 — Speculative Decoding, vLLM의 PagedAttention, SGLang의 RadixAttention, Disaggregated Prefill/Decode 같은 추론 인프라 최적화 — 는 이 위키에서 이미 [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Loop_Engineering/Runtime_Optimization]]이 상세히 다루고 있다. 두 문서는 상호 보완적이다: 이 문서는 "무엇을 서빙하는가", Runtime_Optimization은 "어떻게 서빙하는가"에 답한다.
+이 문서는 **모델이 어떤 구조로 설계되는가**를 다룬다. 그 구조를 실제로 어떻게 빠르게 서빙하는가 — Speculative Decoding, vLLM의 PagedAttention, SGLang의 RadixAttention, Disaggregated Prefill/Decode 같은 추론 인프라 최적화 — 는 [[AI/Engineering/Loop_Engineering/Serving_Engineering/Serving_Engineering|Serving_Engineering]]에서 다루며, API 호출 측 애플리케이션 최적화는 [[AI/Engineering/Loop_Engineering/Runtime_Optimization|Runtime_Optimization]]에서 다룬다. 두 레이어는 상호 보완적이다: 이 문서는 "무엇을 서빙하는가", Serving Engineering은 "어떻게 서빙하는가"에 답한다.
 
 ## AI Engineering에서의 역할
 
@@ -79,6 +86,7 @@ YaRN 등으로 컨텍스트 길이를 1M 토큰까지 늘려도, 모델이 32K �
 ## 출처
 - Turing Post "10 Small Language Models to Know in 2026" — [turingpost.com](https://www.turingpost.com/p/slmslist)
 - Belcak et al. (NVIDIA, 2025) "Small Language Models are the Future of Agentic AI" — [arXiv:2506.02153](https://arxiv.org/abs/2506.02153)
+- Dao & Gu (2024) "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2)" — [arXiv:2405.21060](https://arxiv.org/abs/2405.21060)
 - Peng et al. (2023) "YaRN: Efficient Context Window Extension of Large Language Models" — [arXiv:2309.00071](https://arxiv.org/abs/2309.00071)
 - Ding et al. (2024) "LongRoPE: Extending LLM Context Window Beyond 2 Million Tokens" — [arXiv:2402.13753](https://arxiv.org/abs/2402.13753)
 - Local AI Master "RoPE, YaRN, NTK: Long-Context LLM Techniques Explained" (2026) — [localaimaster.com](https://localaimaster.com/blog/rope-yarn-long-context-guide)

@@ -183,7 +183,7 @@ optimized for document retrieval.
 Original: {query}
 Search query:
 """
-optimized_query = llm.generate(rewrite_prompt.format(query=user_query))
+optimized_query = llm.invoke(rewrite_prompt.format(query=user_query)).content
 ```
 
 ### Step-Back Prompting
@@ -207,7 +207,7 @@ Question: {question}
 4.
 5.
 """
-queries = llm.generate(multi_query_prompt)
+queries = llm.invoke(multi_query_prompt).content.splitlines()
 # Search each of 5 queries → union of results → deduplicate
 ```
 
@@ -242,15 +242,15 @@ flowchart TD
 
 Extract only actually relevant parts from retrieved chunks:
 ```python
-from langchain.retrievers.document_compressors import LLMChainExtractor
-from langchain.retrievers import ContextualCompressionRetriever
+from langchain_openai import ChatOpenAI
 
-compressor = LLMChainExtractor.from_llm(llm)
-compression_retriever = ContextualCompressionRetriever(
-    base_compressor=compressor,
-    base_retriever=base_retriever
-)
-# Return only relevant sentences instead of entire chunks
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+compressed_docs = [
+    llm.invoke(
+        f"Extract only the sentences relevant to the query.\nQuery: {query}\nDocument: {doc.page_content}"
+    ).content
+    for doc in base_retriever.invoke(query)
+]
 ```
 
 ## Evaluation Metrics
@@ -267,7 +267,7 @@ compression_retriever = ContextualCompressionRetriever(
 Advanced Retrieval is the **precision layer** of the RAG pipeline. If basic retrieval "finds relevant documents," advanced retrieval "provides the most useful context in optimal form." Reranking alone can improve RAG response quality by 15~30%.
 
 ## Related Concepts
-[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]]
+[[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Chunking_Strategies|Chunking Strategies]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/Vector_Storage|Vector Storage]] · [[en/AI/Engineering/Context_Engineering/Retrieval_Strategies/RAG/HyDE|HyDE]] · [[en/AI/Engineering/Context_Engineering/Context_Compression|Context Compression]]
 
 ## Sources
 1. Reranking for RAG: +40% Accuracy with Cross-Encoders (2025 Guide) — [ailog.fr](https://app.ailog.fr/en/blog/guides/reranking)

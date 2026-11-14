@@ -83,7 +83,7 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_use_double_quant=True,
 )
 model = AutoModelForCausalLM.from_pretrained(
-    "meta-llama/Llama-2-70b",
+    "meta-llama/Llama-3.3-70B-Instruct",
     quantization_config=bnb_config,
 )
 # Add LoRA adapter
@@ -91,6 +91,19 @@ from peft import get_peft_model, LoraConfig
 lora_config = LoraConfig(r=64, lora_alpha=16, target_modules=["q_proj","v_proj"])
 model = get_peft_model(model, lora_config)
 ```
+
+## LoRA Lineage Extensions (DoRA · rsLoRA · GaLore)
+
+| Technique | Key Improvement | When to Use |
+|---|---|---|
+| **DoRA** (Weight-Decomposed LoRA, ICML 2024) | Decomposes weights into magnitude and direction, updating only direction via low-rank adapters | When convergence quality closer to Full FT is needed |
+| **rsLoRA** (Rank-Stabilized LoRA) | Scales updates by $\alpha/\sqrt{r}$ instead of $\alpha/r$ | When high-rank LoRA ($r \ge 64$) training becomes unstable |
+| **GaLore** (Gradient Low-Rank Projection, ICML 2024) | Projects **optimizer gradients** rather than weights into a low-rank subspace | Memory-efficient full-parameter-level training without adapters |
+
+## Multi-LoRA Serving (S-LoRA · Punica · vLLM)
+
+Because LoRA adapters are only tens of MBs, **a single Base Model can stay resident in GPU memory while different LoRA adapters are dynamically applied per request**.
+- **S-LoRA / Punica / vLLM Multi-LoRA**: Batch requests for different tenants/tasks together and execute `B @ A @ x` in parallel at the kernel level, serving hundreds of fine-tuned models on a single cluster without hosting separate 70B instances per tenant.
 
 ## Other PEFT Techniques
 
@@ -124,10 +137,12 @@ Don't want to touch model weights → Prompt Tuning
 PEFT is the core tool of practical AI Engineering. It democratizes LLMs by enabling small teams to customize billion-parameter models on a single GPU. LoRA adapters are interchangeable, enabling Multi-LoRA serving patterns where multiple task-specific adapters run on the same base model.
 
 ## Related Concepts
-[[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]]
+[[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Full_Fine-Tuning|Full Fine-Tuning]] · [[en/AI/Engineering/Model_Engineering/Architecture_and_Efficiency/Quantization|Quantization]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Pre-training_and_Continual_Learning|Pre-training & Continual Learning]] · [[en/AI/Engineering/Model_Engineering/Training_and_Tuning/Model_Merging|Model Merging]]
 
 ## Sources
 - Hu et al. (2021) "LoRA: Low-Rank Adaptation of Large Language Models" — [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
 - Dettmers et al. (2023) "QLoRA: Efficient Finetuning of Quantized LLMs" — [arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
 - Lightning AI "Finetuning LLMs with LoRA and QLoRA: Insights from Hundreds of Experiments" — [lightning.ai](https://lightning.ai/pages/community/lora-insights/)
 - "LoRA vs Full Fine-tuning: An Illusion of Equivalence" (2024) — [arXiv:2410.21228](https://arxiv.org/html/2410.21228v2)
+- Liu et al. (2024) "DoRA: Weight-Decomposed Low-Rank Adaptation" — [arXiv:2402.09353](https://arxiv.org/abs/2402.09353)
+- Sheng et al. (2023) "S-LoRA: Serving Thousands of Concurrent LoRA Adapters" — [arXiv:2311.03285](https://arxiv.org/abs/2311.03285)
