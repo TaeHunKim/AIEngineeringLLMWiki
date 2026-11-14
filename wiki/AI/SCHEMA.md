@@ -6,6 +6,7 @@
 - `sources/`: 각 원본 문서(PDF, 블로그 포스트 등)별 요약, 핵심 내용, 메타데이터가 담긴 페이지. 원본 문서를 수정하지 않고 이곳에 요약본을 생성합니다.
 - `Engineering/`: LLM 기반 AI 시스템을 설계·구축·운영하는 실무 지식 페이지. Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph 8계층 구조로 구성됩니다.
 - `index.md`: 전체 출처와 Engineering 문서에 대한 목록 및 한 줄 요약.
+- `Whats_New.md`: 새로 추가되거나 실질적으로 보강된 문서 목록을 최신 날짜순(역시간순)으로 요약하는 페이지 (`wiki/AI/Whats_New.md` 및 `wiki/en/AI/Whats_New.md`). `noGraph: true` 프론트매터를 통해 Quartz의 Graph View와 Backlinks에서는 제외된다.
 - `log.md`: 문서 인제스트 및 위키 업데이트에 대한 시간순 로그.
 
 ## 언어 및 표기 규칙 (매우 중요)
@@ -56,7 +57,7 @@ KO 문서만 직접 작성하고 EN 문서는 `npm run translate:wiki -- --chang
 **허용되는 자기참조** (기존 확립 관례이므로 유지):
 - 특정 형제 문서 하나를 가리키는 상호참조 — `이 위키의 [[LLM_Memory]] 문서가 정리한 4대 메모리 유형`
 - 출처 표기 — "(이 위키의 기존 소스, 2025년 11월 최초 발행)"
-- `log.md`·`SCHEMA.md` 전체 — 두 파일은 위키 메타 기술이 존재 목적이므로 예외
+- `log.md`·`SCHEMA.md`·`Whats_New.md` 전체 — 세 파일은 위키 메타·업데이트 기술이 존재 목적이므로 L6 예외 (단, `Whats_New.md`는 KO/EN 양쪽 트리에 모두 존재해야 하므로 L3/L4/L5/L8/L9/L10 검사는 그대로 적용됨)
 
 모범 사례로 참고할 문서: `Model_Engineering/Training_and_Tuning/Synthetic_Data_and_Curation`,
 `Context_Engineering/Retrieval_Strategies/RAG/Document_Ingestion`,
@@ -74,8 +75,9 @@ KO 문서만 직접 작성하고 EN 문서는 `npm run translate:wiki -- --chang
    - 해당 페이지가 `Engineering/` 하위 적절한 계층에 없다면 새로 생성합니다.
    - 이미 있다면 내용을 보강하고, 새로운 원본 문서를 출처로 추가(Cross-reference)합니다.
 4. `index.md`에 새로운 Source와 생성/업데이트된 Engineering 페이지 목록을 추가합니다.
-5. `log.md` 파일 끝에 `## [YYYY-MM-DD] ingest | <Document Title>` 형식으로 기록을 남깁니다.
-6. 위 1~5단계는 KO 기준 설명이다 — 각 단계에서 만들어지거나 바뀌는 모든 파일은 **EN 대응 파일도 같은 세션에서 동시에** 반영한다(`log.md`·`SCHEMA.md`는 KO 전용이라 예외).
+5. 단순 오타 수정이나 깨진 링크·포맷 교정을 넘어서는 업데이트(신규 문서 추가, 기존 문서 섹션·내용 보강 등)인 경우 `Whats_New.md`(`wiki/AI/Whats_New.md` 및 `wiki/en/AI/Whats_New.md`) 최상단에 `## YYYY-MM-DD` 섹션을 최신순(역시간순)으로 추가하거나, 같은 날 이미 업데이트가 있었다면 해당 날짜 섹션에 병합하여 요약합니다.
+6. `log.md` 파일 끝에 `## [YYYY-MM-DD] ingest | <Document Title>` 형식으로 기록을 남깁니다.
+7. 위 1~6단계는 KO 기준 설명이다 — 각 단계에서 만들어지거나 바뀌는 모든 파일은 **EN 대응 파일도 같은 세션에서 동시에** 반영한다(`log.md`·`SCHEMA.md`는 KO 전용이라 예외).
 
 ## Lint (유지보수) 규칙
 

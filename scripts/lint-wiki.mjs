@@ -46,6 +46,9 @@ const EN_ROOT = "wiki/en/AI"
 // These two exist only in the KO tree by design and are meta-documentation
 // about the wiki itself, so L3 and L6 do not apply to them.
 const META_FILES = new Set(["log.md", "SCHEMA.md"])
+// Whats_New.md exists in both KO and EN trees (so L3/L4/L5/L8/L9/L10 apply),
+// but its purpose is summarizing wiki updates, so L6 does not apply to it.
+const L6_EXEMPT_FILES = new Set(["log.md", "SCHEMA.md", "Whats_New.md"])
 
 async function* walkMd(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -308,7 +311,7 @@ for (const file of files) {
     }
 
     // L6 — gap / edit-history narration in body prose
-    if (!isMeta && !skip.has("L6")) {
+    if (!L6_EXEMPT_FILES.has(base) && !skip.has("L6")) {
       for (const re of SELF_REFERENCE_PATTERNS) {
         const hit = line.match(re)
         if (hit) {

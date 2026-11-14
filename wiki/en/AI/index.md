@@ -6,6 +6,8 @@ order: 0
 
 This wiki organizes Engineering knowledge for designing, building, and operating LLM-based AI systems.
 
+- **[[en/AI/Whats_New|What's New (Recent Updates)]]**: Reverse-chronological summary of newly added and updated pages
+
 ## Engineering
 
 - [[en/AI/Engineering/index|AI Engineering Wiki]]: Complete AI Engineering architecture — 8 layers: Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph

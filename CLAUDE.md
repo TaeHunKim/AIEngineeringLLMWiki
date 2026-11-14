@@ -45,7 +45,15 @@ page one neither knows nor cares. That content belongs in `wiki/AI/log.md`.
    "[[A]]가 X를 다룬다면, 이 문서는 Y를 다룬다."
 ```
 Allowed: pointing at one specific sibling page (`이 위키의 [[X]] 문서가 …`) and source
-attribution (`이 위키의 기존 소스`). `log.md`/`SCHEMA.md` are exempt — meta is their purpose.
+attribution (`이 위키의 기존 소스`). `log.md`/`SCHEMA.md`/`Whats_New.md` are exempt — meta is their purpose.
+
+### Updating `What's New` (`wiki/AI/Whats_New.md` & `wiki/en/AI/Whats_New.md`)
+
+Whenever you make wiki updates that go beyond minor typo or broken-link/formatting fixes (e.g., adding new documents, adding or expanding sections, or making substantive content/code updates):
+1. Update `wiki/AI/Whats_New.md` (and its English mirror `wiki/en/AI/Whats_New.md`) to summarize the newly added or updated documents with wikilinks.
+2. Keep date sections (`## YYYY-MM-DD`) in **reverse-chronological order** so the newest date is always at the top of the page.
+3. If there are multiple updates on the **same day**, merge them under the existing `## YYYY-MM-DD` section rather than creating duplicate date headings.
+4. Keep `noGraph: true` in the frontmatter so `What's New` stays excluded from Quartz's Graph View and Backlinks.
 
 ### Before committing wiki changes
 

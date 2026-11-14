@@ -481,8 +481,34 @@ export async function loadQuartzConfig(
   ]
   const builtinPageTypes = [builtinPlugins.PageTypes.NotFoundPageType()]
 
+  const noGraphSlugs = new Set<string>(["ai/whats_new", "en/ai/whats_new"])
+  const noGraphTransformer = {
+    name: "NoGraphLinks",
+    htmlPlugins() {
+      return [
+        () => (_tree: unknown, file: { data: Record<string, any> }) => {
+          const slug = (file.data?.slug as string | undefined)?.toLowerCase()
+          const isNoGraph =
+            file.data?.frontmatter?.noGraph === true || (slug ? noGraphSlugs.has(slug) : false)
+          if (isNoGraph && slug) {
+            noGraphSlugs.add(slug)
+            file.data.links = []
+          } else if (Array.isArray(file.data?.links)) {
+            file.data.links = file.data.links.filter(
+              (target: string) => !noGraphSlugs.has(target.toLowerCase()),
+            )
+          }
+        },
+      ]
+    },
+  }
+
   const plugins: PluginTypes = {
-    transformers: [...builtinTransformers, ...(await instantiate(transformers, "transformer"))],
+    transformers: [
+      ...builtinTransformers,
+      ...(await instantiate(transformers, "transformer")),
+      noGraphTransformer,
+    ],
     filters: await instantiate(filters, "filter"),
     emitters: [...builtinEmitters, ...(await instantiate(emitters, "emitter"))],
     pageTypes: [...(await instantiate(pageTypes, "pageType")), ...builtinPageTypes],

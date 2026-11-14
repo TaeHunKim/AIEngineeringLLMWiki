@@ -7,6 +7,8 @@ order: 0
 
 이 위키는 LLM 기반 AI 시스템을 설계·구축·운영하는 Engineering 지식을 정리한 공간입니다.
 
+- **[[AI/Whats_New|What's New (최근 업데이트)]]**: 새로 추가되거나 보강된 문서 요약 (최신순)
+
 ## Engineering
 
 - [[AI/Engineering/index|AI Engineering Wiki]]: AI Engineering 전체 아키텍처 — Model/Prompt/Context/Flow/Agent/Harness/Loop/Graph 8계층
